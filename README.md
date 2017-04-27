@@ -9,4 +9,10 @@ Java 8+ is required.
 
 ## Extension Settings
 
+This extension contributes the following settings:
+
+* `languageTool.language`: Set to the short code for the language to check.  For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/).
+
 ## Known Issues
+
+* Only English (and country variants) are supported.

@@ -19,7 +19,13 @@
     "configuration": {
       "type": "object",
       "title": "LanguageTool Language Server configuration",
-      "properties": {}
+      "properties": {
+        "languageTool.language": {
+          "type": "string",
+          "default": "en",
+          "description": "The language LanguageTool should check against"
+        }
+      }
     }
   },
   "scripts": {

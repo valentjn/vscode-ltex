@@ -60,7 +60,9 @@ export function activate(context: ExtensionContext) {
 	let clientOptions: LanguageClientOptions = {
 		// Register the server for plain text documents
 		documentSelector: ['plaintext'],
-		synchronize: {}
+		synchronize: {
+			configurationSection: 'languageTool'
+		}
 	}
 
 	// Create the language client and start the client.
