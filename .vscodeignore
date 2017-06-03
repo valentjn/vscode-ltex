@@ -6,4 +6,6 @@ src/**
 **/*.map
 .gitignore
 tsconfig.json
-vsc-extension-quickstart.md
+*.vsix
+lib/**
+!lib/languagetool-languageserver/build/install/languagetool-languageserver/**

@@ -18,7 +18,7 @@
 			// we run the custom script "compile" as defined in package.json
 			"args": [
 				"run",
-				"compile",
+				"watch",
 				"--loglevel",
 				"silent"
 			],
@@ -35,7 +35,7 @@
 			"showOutput": "silent",
 			"args": [
 				"run",
-				"vscode:prepublish"
+				"compile"
 			],
 			"isBackground": false,
 			"problemMatcher": "$tsc-watch"
