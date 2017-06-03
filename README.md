@@ -17,5 +17,3 @@ This extension contributes the following settings:
 This repository uses git submodules.  After cloning be sure to run `git submodule update --init`.
 
 ## Known Issues
-
-* Only English (and country variants) are supported.
