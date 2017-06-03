@@ -13,6 +13,9 @@ This extension contributes the following settings:
 
 * `languageTool.language`: Set to the short code for the language to check.  For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/).
 
+## Contributing
+This repository uses git submodules.  After cloning be sure to run `git submodule update --init`.
+
 ## Known Issues
 
 * Only English (and country variants) are supported.
