@@ -10,6 +10,7 @@
   "repository": {
     "url": "https://github.com/adamvoss/vscode-languagetool"
   },
+  "icon": "img/LanguageTool-Icon.png",
   "galleryBanner": {
     "color": "#6565f6",
     "theme": "light"
