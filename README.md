@@ -6,7 +6,8 @@ Provides offline grammar checking in Visual Studio Code using [LanguageTool](htt
 * Issue highlighting with hover description.
 * Replacement suggestions.
 * Checks **plaintext** and **markdown**.
-* Supports **more than 20 languages**.
+* Supports English and country variants.
+  - The code supports all LanguageTool languages, but they could not all be shipped due to size limitations of the Visual Studio Marketplace.
 
 
 ## Requirements
