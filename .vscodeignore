@@ -5,6 +5,9 @@ test/**
 src/**
 **/*.map
 .gitignore
+.gitattributes
+.gitmodules
+.travis.yml
 tsconfig.json
 *.vsix
 lib/**

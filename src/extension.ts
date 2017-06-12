@@ -10,6 +10,37 @@ import { LanguageClient, LanguageClientOptions, SettingMonitor, StreamInfo } fro
 
 export function activate(context: ExtensionContext) {
 
+	function discoverExtensions() {
+		const extensionsDir = path.resolve(context.extensionPath, '..')
+
+		const installedExtensions = fs.readdirSync(extensionsDir)
+
+		const extensionRegEx = /^adamvoss\.vscode-languagetool-(?:.*)-(?:.*?)$/
+		return installedExtensions.filter(s => extensionRegEx.test(s))
+	}
+
+	function buildDesiredClasspath() {
+		const isWindows = process.platform === 'win32';
+
+		const joinCharacter = isWindows ? ';' : ':'
+
+		const additionalPaths = discoverExtensions()
+			.map(p => path.resolve(context.extensionPath, '..', p, 'lib', '*'))
+			.join(joinCharacter);
+
+		let desiredClasspath = path.join('lib', '*');
+		if (additionalPaths) {
+			desiredClasspath += joinCharacter + additionalPaths
+		}
+		return desiredClasspath
+	}
+
+	function setClasspath(text: String, desiredClasspath: String): String {
+		const classpathRegexp = /^((?:set )?CLASSPATH=[%$]APP_HOME%?[\\\/])(.*)$/m
+
+		return text.replace(classpathRegexp, `$1${desiredClasspath}`)
+	}
+
 	function createServer(): Promise<StreamInfo> {
 		return new Promise((resolve, reject) => {
 			var server = net.createServer((socket) => {
@@ -33,9 +64,15 @@ export function activate(context: ExtensionContext) {
 				// Start the child java process
 				let options = { cwd: workspace.rootPath };
 
-				let script = path.resolve(context.extensionPath, 'lib', 'languagetool-languageserver', 'build', 'install', 'languagetool-languageserver', 'bin', isWindows ? 'languagetool-languageserver.bat' : 'languagetool-languageserver')
+				const scriptDir = path.resolve(context.extensionPath, 'lib', 'languagetool-languageserver', 'build', 'install', 'languagetool-languageserver', 'bin')
+				let originalScript = path.resolve(scriptDir, isWindows ? 'languagetool-languageserver.bat' : 'languagetool-languageserver')
+				const newScript = path.resolve(scriptDir, isWindows ? 'languagetool-languageserver-live.bat' : 'languagetool-languageserver-live')
 
-				let process = child_process.spawn(script, [server.address().port.toString()], options);
+				const scriptText = fs.readFileSync(originalScript, "utf8")
+				const newText = setClasspath(scriptText, buildDesiredClasspath())
+				fs.writeFileSync(newScript, newText, { mode: 0o777 })
+
+				let process = child_process.spawn(newScript, [server.address().port.toString()], options);
 
 				// Send raw output to a file
 				if (!fs.existsSync(context.storagePath))

@@ -5,7 +5,7 @@
   "description": "LanguageTool grammar checking for Visual Studio Code.",
   "author": "Adam Voss",
   "license": "Apache-2.0",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "adamvoss",
   "repository": {
     "url": "https://github.com/adamvoss/vscode-languagetool"
@@ -13,7 +13,7 @@
   "icon": "img/LanguageTool-Icon.png",
   "galleryBanner": {
     "color": "#6565f6",
-    "theme": "light"
+    "theme": "dark"
   },
   "engines": {
     "vscode": "^1.8.0"
