@@ -75,16 +75,23 @@ export function activate(context: ExtensionContext) {
 				let process = child_process.spawn(newScript, [server.address().port.toString()], options);
 
 				// Send raw output to a file
-				if (!fs.existsSync(context.storagePath))
-					fs.mkdirSync(context.storagePath);
+				if (context.storagePath) {
+					if (!fs.existsSync(context.storagePath)) {
+						console.log(context.storagePath);
+						fs.mkdirSync(context.storagePath);
+					}
 
-				let logFile = context.storagePath + '/vscode-languagetool-languageserver.log';
-				let logStream = fs.createWriteStream(logFile, { flags: 'w' });
+					let logFile = context.storagePath + '/vscode-languagetool-languageserver.log';
+					let logStream = fs.createWriteStream(logFile, { flags: 'w' });
 
-				process.stdout.pipe(logStream);
-				process.stderr.pipe(logStream);
+					process.stdout.pipe(logStream);
+					process.stderr.pipe(logStream);
 
-				console.log(`Storing log in '${logFile}'`);
+					console.log(`Storing log in '${logFile}'`);
+				}
+				else {
+					console.log("No storagePath, languagetool-languageserver logging disabled.");
+				}
 			});
 		});
 	};
