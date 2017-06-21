@@ -104,10 +104,15 @@ export function activate(context: ExtensionContext) {
 		}
 	}
 
-	// Create the language client and start the client.
-	let disposable = new LanguageClient('languageTool', 'LanguageTool Client', createServer, clientOptions).start();
+	// Allow to enable languageTool in specific workspaces
+	let config = workspace.getConfiguration('languageTool');
 
-	// Push the disposable to the context's subscriptions so that the 
-	// client can be deactivated on extension deactivation
-	context.subscriptions.push(disposable);
+	if (config['enabled']) {
+		// Create the language client and start the client.
+		let disposable = new LanguageClient('languageTool', 'LanguageTool Client', createServer, clientOptions).start();
+
+		// Push the disposable to the context's subscriptions so that the 
+		// client can be deactivated on extension deactivation
+		context.subscriptions.push(disposable);
+	}
 }

@@ -42,6 +42,11 @@
           "type": "string",
           "default": "en",
           "description": "The language LanguageTool should check against"
+        },
+        "languageTool.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Allow to enable languageTool on specific workspaces"
         }
       }
     }
