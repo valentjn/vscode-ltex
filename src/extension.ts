@@ -5,18 +5,15 @@ import * as path from 'path';
 import * as net from 'net';
 import * as child_process from "child_process";
 
-import { workspace, Disposable, ExtensionContext } from 'vscode';
+import { extensions, workspace, Disposable, ExtensionContext } from 'vscode';
 import { LanguageClient, LanguageClientOptions, SettingMonitor, StreamInfo } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
 
-	function discoverExtensions() {
-		const extensionsDir = path.resolve(context.extensionPath, '..')
-
-		const installedExtensions = fs.readdirSync(extensionsDir)
-
-		const extensionRegEx = /^adamvoss\.vscode-languagetool-(?:.*)-(?:.*?)$/
-		return installedExtensions.filter(s => extensionRegEx.test(s))
+	function discoverExtensionPaths() {
+		return extensions.all
+			.filter(x => x.id.startsWith("adamvoss.vscode-languagetool-"))
+			.map(x => x.extensionPath)
 	}
 
 	function buildDesiredClasspath() {
@@ -24,7 +21,7 @@ export function activate(context: ExtensionContext) {
 
 		const joinCharacter = isWindows ? ';' : ':'
 
-		const additionalPaths = discoverExtensions()
+		const additionalPaths = discoverExtensionPaths()
 			.map(p => path.resolve(context.extensionPath, '..', p, 'lib', '*'))
 			.join(joinCharacter);
 
