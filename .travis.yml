@@ -11,7 +11,7 @@ install:
 - "./lib/languagetool-languageserver/gradlew --project-dir ./lib/languagetool-languageserver/
   assemble"
 script:
-- vsce package
+- ./node_modules/.bin/vsce package
 deploy:
   provider: releases
   api_key:
