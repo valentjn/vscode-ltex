@@ -1,11 +1,11 @@
 {
   "name": "vscode-languagetool",
   "displayName": "LanguageTool for Visual Studio Code",
-  "preview": true,
+  "preview": false,
   "description": "LanguageTool grammar checking for Visual Studio Code.",
   "author": "Adam Voss",
   "license": "Apache-2.0",
-  "version": "0.0.4",
+  "version": "3.8.0",
   "publisher": "adamvoss",
   "repository": {
     "url": "https://github.com/adamvoss/vscode-languagetool"
