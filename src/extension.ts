@@ -95,7 +95,7 @@ export function activate(context: ExtensionContext) {
 
 	// Options to control the language client
 	let clientOptions: LanguageClientOptions = {
-		documentSelector: ['plaintext', 'markdown'],
+		documentSelector: ['plaintext', 'markdown', 'latex'],
 		synchronize: {
 			configurationSection: 'languageTool'
 		}

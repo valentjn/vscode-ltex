@@ -30,7 +30,8 @@
   ],
   "activationEvents": [
     "onLanguage:plaintext",
-    "onLanguage:markdown"
+    "onLanguage:markdown",
+    "onLanguage:latex"
   ],
   "main": "./out/src/extension",
   "contributes": {
