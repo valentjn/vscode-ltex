@@ -12,7 +12,7 @@ export function activate(context: ExtensionContext) {
 
 	function discoverExtensionPaths() {
 		return extensions.all
-			.filter(x => x.id.startsWith("adamvoss.vscode-languagetool-"))
+			.filter(x => x.id.startsWith("valentjn.vscode-languagetool-"))
 			.map(x => x.extensionPath)
 	}
 

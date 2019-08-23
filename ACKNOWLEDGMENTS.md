@@ -17,6 +17,6 @@ Avenir LT Std for "LanguageTool"
 
 Distributions of vscode-languagetool include **[languagetool-languageserver][]** under the terms of the [Mozilla Public License, version 2.0][server-license].  For information on dependencies of **languagetool-languageserver** please see [languagetool-languageserver/ACKNOWLEDGMENTS.md][server-acknowledgments].
 
-[languagetool-languageserver]: https://github.com/adamvoss/languagetool-languageserver
-[server-license]: https://github.com/adamvoss/languagetool-languageserver/blob/master/LICENSE.txt
-[server-acknowledgments]: https://github.com/adamvoss/languagetool-languageserver/blob/master/ACKNOWLEDGMENTS.md
+[languagetool-languageserver]: https://github.com/valentjn/languagetool-languageserver
+[server-license]: https://github.com/valentjn/languagetool-languageserver/blob/master/LICENSE.txt
+[server-acknowledgments]: https://github.com/valentjn/languagetool-languageserver/blob/master/ACKNOWLEDGMENTS.md

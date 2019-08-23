@@ -2,7 +2,7 @@
 
 **NOTICE: as of v0.0.2, this extension does not include any languages.  You MUST install a [language support extension][lang-exts].**
 ___
-Provides offline grammar checking in Visual Studio Code using [LanguageTool](https://languagetool.org/) via the [LanguageTool Language Server](https://github.com/adamvoss/languagetool-languageserver).  This extension provides only the core functionality.  You must [install extensions containing the language rules for each language you wish to be able to check][lang-exts].
+Provides offline grammar checking in Visual Studio Code using [LanguageTool](https://languagetool.org/) via the [LanguageTool Language Server](https://github.com/valentjn/languagetool-languageserver).  This extension provides only the core functionality.  You must [install extensions containing the language rules for each language you wish to be able to check][lang-exts].
 
 ## Features
 * Issue highlighting with hover description.
@@ -28,6 +28,6 @@ Contributions welcome!
 This repository uses git submodules.  After cloning, be sure to run `git submodule update --init`.
 
 ## Known Issues
-Please report issues or submit pull requests on [GitHub](https://github.com/adamvoss/vscode-languagetool).
+Please report issues or submit pull requests on [GitHub](https://github.com/valentjn/vscode-languagetool).
 
-[lang-exts]: https://marketplace.visualstudio.com/search?term=LanguageTool&target=VSCode
+[lang-exts]: https://github.com/valentjn/vscode-languagetool
