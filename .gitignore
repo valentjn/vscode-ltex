@@ -1,5 +1,5 @@
-out
-node_modules
-*.vsix
-.vscode-test/
-package-lock.json
+/.vscode-test/
+/node_modules/
+/out/
+/package-lock.json
+/*.vsix
