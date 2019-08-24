@@ -21,7 +21,7 @@ This extension contributes the following settings:
 
 ## Versioning
 
-LanguageTool for Visual Studio code has adopted the versioning of its LanguageTool dependency.  For example, if this extension has version 3.8.0 it is powered by LanguageTool 3.8.  vscode-languagetool 3.8.1, would also use LanguageTool 3.8.  vscode-languagetool 3.9.0 would use LanguageTool 3.9.  **The LanguageTool version of this extension must match the LanguageTool version of your installed language support extensions.**
+LanguageTool for Visual Studio code has adopted the versioning of its LanguageTool dependency.  For example, if this extension has version 4.6.0 it is powered by LanguageTool 4.6.  vscode-languagetool 4.6.1, would also use LanguageTool 4.6.  vscode-languagetool 4.7.0 would use LanguageTool 4.7.  **The LanguageTool version of this extension must match the LanguageTool version of your installed language support extensions.**
 
 ## Contributing
 Contributions welcome!  
