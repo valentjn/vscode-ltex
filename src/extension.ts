@@ -72,23 +72,13 @@ export function activate(context: ExtensionContext) {
 				let process = child_process.spawn(newScript, [server.address().port.toString()], options);
 
 				// Send raw output to a file
-				if (context.storagePath) {
-					if (!fs.existsSync(context.storagePath)) {
-						console.log(context.storagePath);
-						fs.mkdirSync(context.storagePath);
-					}
+				let logFile = '/tmp/vscode-languagetool-languageserver.log';
+				let logStream = fs.createWriteStream(logFile, { flags: 'w' });
 
-					let logFile = context.storagePath + '/vscode-languagetool-languageserver.log';
-					let logStream = fs.createWriteStream(logFile, { flags: 'w' });
+				process.stdout.pipe(logStream);
+				process.stderr.pipe(logStream);
 
-					process.stdout.pipe(logStream);
-					process.stderr.pipe(logStream);
-
-					console.log(`Storing log in '${logFile}'`);
-				}
-				else {
-					console.log("No storagePath, languagetool-languageserver logging disabled.");
-				}
+				console.log(`Storing log in '${logFile}'`);
 			});
 		});
 	};
@@ -108,7 +98,7 @@ export function activate(context: ExtensionContext) {
 		// Create the language client and start the client.
 		let disposable = new LanguageClient('languageTool', 'LanguageTool Client', createServer, clientOptions).start();
 
-		// Push the disposable to the context's subscriptions so that the 
+		// Push the disposable to the context's subscriptions so that the
 		// client can be deactivated on extension deactivation
 		context.subscriptions.push(disposable);
 	}
