@@ -41,7 +41,7 @@
       "properties": {
         "languageTool.language": {
           "type": "string",
-          "default": "en",
+          "default": "en-US",
           "description": "The language LanguageTool should check against"
         },
         "languageTool.enabled": {
