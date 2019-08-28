@@ -37,17 +37,27 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "LanguageTool Language Server configuration",
+      "title": "LanguageTool for Visual Studio Code",
       "properties": {
+        "languageTool.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Allow to enable LanguageTool on specific workspaces"
+        },
         "languageTool.language": {
           "type": "string",
           "default": "en-US",
           "description": "The language LanguageTool should check against"
         },
-        "languageTool.enabled": {
-          "type": "boolean",
-          "default": true,
-          "description": "Allow to enable languageTool on specific workspaces"
+        "languageTool.latex.dummyCommands": {
+          "type": "array",
+          "default": [],
+          "description": "LaTeX documents: Additional LaTeX commands to replace by dummies together with empty arguments (e.g., \"\\cite{}\", \"\\cite[]{}\")"
+        },
+        "languageTool.latex.ignoreCommands": {
+          "type": "array",
+          "default": [],
+          "description": "LaTeX documents: Additional LaTeX commands to ignore together with empty arguments (e.g., \"\\ref{}\", \"\\documentclass[]{}\")"
         }
       }
     }
