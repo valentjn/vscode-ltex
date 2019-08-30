@@ -110,7 +110,7 @@ export function activate(context: ExtensionContext) {
         dictionary.push(word);
         dictionary.sort((a: string, b: string) =>
             a.localeCompare(b, undefined, { sensitivity: 'base' }));
-        config.update('dictionary', dictionary, ((workspace.rootPath) ? true : undefined));
+        config.update('dictionary', dictionary, ((workspace.rootPath) ? undefined : true));
       } else {
         console.warn(`vscode-languagetool: Unknown telemetry event "${param}"`);
       }
