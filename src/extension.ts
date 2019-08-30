@@ -103,7 +103,9 @@ export function activate(context: ExtensionContext) {
     // The client configuration cannot be changed directly by the server, so we send a
     // telemetry notification to the client, which then adds the word to the dictionary.
     languageClient.onTelemetry((param) => {
+      let config = workspace.getConfiguration('languageTool');
       const prefix: string = 'languageTool.addToDictionary ';
+
       if (param.startsWith(prefix)) {
         const word: string = param.substring(prefix.length);
         let languagePrefix: string = config['language'];
