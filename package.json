@@ -77,10 +77,10 @@
   "devDependencies": {
     "@types/mocha": "^2.2.33",
     "@types/node": "^6.0.52",
-    "typescript": "^2.1.5",
-    "vscode": "^1.0.3"
+    "@types/vscode": "^1.37.0",
+    "typescript": "^2.1.5"
   },
   "dependencies": {
-    "vscode-languageclient": "^3.1.0"
+    "vscode-languageclient": "^5.2.1"
   }
 }
