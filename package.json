@@ -42,27 +42,27 @@
         "languageTool.dictionary": {
           "type": "array",
           "default": [],
-          "description": "Additional dictionary words"
+          "description": "List of additional words that should not be counted as spelling errors."
         },
         "languageTool.enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Allow to enable LanguageTool on specific workspaces"
+          "description": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces."
         },
         "languageTool.language": {
           "type": "string",
           "default": "en-US",
-          "description": "The language LanguageTool should check against"
+          "description": "The language (e.g., \"en-US\") LanguageTool should check against."
         },
         "languageTool.latex.dummyCommands": {
           "type": "array",
           "default": [],
-          "description": "LaTeX documents: Additional LaTeX commands to replace by dummies together with empty arguments (e.g., \"\\cite{}\", \"\\cite[]{}\")"
+          "description": "List of additional LaTeX commands to replace by dummy words, listed together with empty arguments (e.g., \"\\cite{}\", \"\\cite[]{}\")."
         },
         "languageTool.latex.ignoreCommands": {
           "type": "array",
           "default": [],
-          "description": "LaTeX documents: Additional LaTeX commands to ignore together with empty arguments (e.g., \"\\ref{}\", \"\\documentclass[]{}\")"
+          "description": "List of additional LaTeX commands to ignore by the LaTeX parser, listed together with empty arguments (e.g., \"\\ref{}\", \"\\documentclass[]{}\")."
         }
       }
     }
