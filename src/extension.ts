@@ -103,14 +103,18 @@ export function activate(context: ExtensionContext) {
     // The client configuration cannot be changed directly by the server, so we send a
     // telemetry notification to the client, which then adds the word to the dictionary.
     languageClient.onTelemetry((param) => {
-      const prefix = "languageTool.addToDictionary ";
+      const prefix: string = 'languageTool.addToDictionary ';
       if (param.startsWith(prefix)) {
         const word: string = param.substring(prefix.length);
-        let dictionary: string[] = config['dictionary'];
+        let languagePrefix: string = config['language'];
+        const dashPos: number = languagePrefix.indexOf('-');
+        if (dashPos != -1) languagePrefix = languagePrefix.substring(0, dashPos);
+        let dictionary: string[] = config[languagePrefix]['dictionary'];
         dictionary.push(word);
         dictionary.sort((a: string, b: string) =>
             a.localeCompare(b, undefined, { sensitivity: 'base' }));
-        config.update('dictionary', dictionary, ((workspace.rootPath) ? undefined : true));
+        config.update(languagePrefix + '.dictionary', dictionary,
+            ((workspace.rootPath) ? undefined : true));
       } else {
         console.warn(`vscode-languagetool: Unknown telemetry event "${param}"`);
       }

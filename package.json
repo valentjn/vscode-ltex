@@ -36,14 +36,8 @@
   "main": "./out/src/extension",
   "contributes": {
     "configuration": {
-      "type": "object",
       "title": "LanguageTool for Visual Studio Code",
       "properties": {
-        "languageTool.dictionary": {
-          "type": "array",
-          "default": [],
-          "description": "List of additional words that should not be counted as spelling errors."
-        },
         "languageTool.enabled": {
           "type": "boolean",
           "default": true,
