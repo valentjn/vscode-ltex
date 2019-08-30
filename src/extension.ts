@@ -95,8 +95,29 @@ export function activate(context: ExtensionContext) {
 	let config = workspace.getConfiguration('languageTool');
 
 	if (config['enabled']) {
-		// Create the language client and start the client.
-		let disposable = new LanguageClient('languageTool', 'LanguageTool Client', createServer, clientOptions).start();
+		// create the language client
+		let languageClient = new LanguageClient(
+				'languageTool', 'LanguageTool Client', createServer, clientOptions);
+
+		// Hack to enable the server to add words to the dictionary.
+		// The client configuration cannot be changed directly by the server, so we send a
+		// telemetry notification to the client, which then adds the word to the dictionary.
+		languageClient.onTelemetry((param) =>
+				{
+					const prefix = "languageTool.addToDictionary ";
+					if (param.startsWith(prefix)) {
+						const word: string = param.substring(prefix.length);
+						let dictionary: string[] = config['dictionary'];
+						dictionary.push(word);
+						dictionary.sort((a: string, b: string) =>
+								a.localeCompare(b, undefined, {sensitivity: 'base'}));
+						config.update('dictionary', dictionary, ((workspace.rootPath) ? true : undefined));
+					} else {
+						console.warn(`vscode-languagetool: Unknown telemetry event "${param}"`);
+					}
+				});
+
+		let disposable = languageClient.start();
 
 		// Push the disposable to the context's subscriptions so that the
 		// client can be deactivated on extension deactivation
