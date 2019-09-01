@@ -1,17 +1,16 @@
 language: java
 dist: bionic
-sudo: false
 jdk:
 - oraclejdk11
 node_js:
 - node
 install:
 - npm install
-- npm install vsce
+- npm install -g vsce
 - "./lib/languagetool-languageserver/gradlew --project-dir ./lib/languagetool-languageserver/
   assemble"
 script:
-- "./node_modules/.bin/vsce package"
+- "vsce package"
 deploy:
   provider: releases
   api_key:
@@ -23,7 +22,7 @@ deploy:
     repo: valentjn/vscode-ltex
     tags: true
 after_deploy:
-- "./node_modules/.bin/vsce publish -p $VSCE_TOKEN"
+- "vsce publish -p $VSCE_TOKEN"
 env:
   global:
     secure: FqSrXLIaTMkyCOTErkr0qKXPs6cKCd+1X7Ctj9lpsdDcTSzyfx/E5NsmOs/rejA0Qd6kKQ6ulZqAU0Z6yDarUp8n+vE0wZ4dz6Zo0xclSIVR+sTBD3aRussz1fI4nHLkCtSuKNiBaUM3tLz8VQtqJLVaW1eyGnoA0+HbCpV28tSVRlurArguLkDo2cPXiSRqGkU5iTXUrsZihDej/4GIsfEotH+keqHNb1SJclMTe5TNjQobU3B2ssOlnPtQeBizkiaSroLRmJGzk7muJDotai6r6Ac/UQ4momAReUho3NadqzDr0XE3Fn47sE3rrggYSZ8xDl0fc5pZJ/w+3+MXVHYjuWXYFX3PvtinZLXiJCr8UFMxpsYbcvdlb3zkqYwpRVGhZ3zGLdQ72E8PHuwNsS3kjD0uNd/L7LhNEEZicoIHkqRgXqnxHYOvTOB7zaWB/3FBz0PMI1EpzhoyrjJi6LwcMnM6jq+RMEgJeR0SSqzt+hE8TP6IHwBVKzNMO1H63MpkFc8OR3FU/XlxgJzc144zjRxoTlrK1i38Pszh4gShReJ0WD0psUhxsBhio8nCZp+YlQGTmam0j7FohnqUMk5WWLIaRy8IBslTPdu6JOR+jlrrQ4acnaj3Zr4wMucrkM5NMFKgrQtc3KaHZ7M7RPX5pvk5IKWThH5/EbOZ8cM=

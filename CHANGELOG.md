@@ -1,5 +1,8 @@
 # Changelog of vscode-ltex
 
+## 4.6.2
+- Don't include vsce in extension
+
 ## 4.6.1
 - Link badges in README.md
 
