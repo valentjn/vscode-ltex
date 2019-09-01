@@ -1,5 +1,8 @@
 # Changelog of vscode-ltex
 
+## 4.6.3
+- Fix deployed *.vsix needed Java 11, not 8
+
 ## 4.6.2
 - Don't include vsce in extension
 
