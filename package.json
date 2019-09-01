@@ -68,9 +68,7 @@
   "scripts": {
     "vscode:prepublish": "tsc -p ./ && ./lib/languagetool-languageserver/gradlew --project-dir ./lib/languagetool-languageserver/ installDist",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "update-vscode": "node ./node_modules/vscode/bin/install",
-    "postinstall": "node ./node_modules/vscode/bin/install"
+    "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.33",
