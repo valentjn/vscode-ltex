@@ -5,7 +5,7 @@
   "description": "LanguageTool grammar checking with LaTeX support",
   "author": "Julian Valentin",
   "license": "Apache-2.0",
-  "version": "4.6.1",
+  "version": "4.6.2",
   "publisher": "valentjn",
   "repository": {
     "url": "https://github.com/valentjn/vscode-ltex"
