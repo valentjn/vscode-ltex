@@ -1,5 +1,8 @@
 # Changelog of vscode-ltex
 
+## 4.6.1
+- Link badges in README.md
+
 ## 4.6.0
 - Forked abandoned repository, rename to vscode-ltex
 - Update to LanguageTool 4.6 (see [4.6 Release Notes](https://github.com/languagetool-org/languagetool/blob/123662bd07059429d9a6d22af6fae164c2ce9dc5/languagetool-standalone/CHANGES.md#46-2019-06-26))
