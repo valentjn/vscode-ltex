@@ -16,7 +16,7 @@ deploy:
   provider: releases
   api_key:
     secure: mIM7HSzdRYW5Mk1etYnC+O2JQbqwl7eOsaYhIQ3i657VpfsQTnvvvmYIR2MXzxOsMY713QN8npr6k2X6NRffzIcyuPw+6OJd3Q+UfYKCLCZZyPJmyu/ItXQMoGC9PPjh0jTLEI/oXd1Eb+uIhCgd1z1vrxsW5SLNL9bpSvfXRk6JkEJENKF088Fr+/H3SdMkG+ndsT8KcVbNxjYpXZisd0twFPiuI9hNy2vJJ7AgDKIZqGRjdU+VS2o+VaKFqU1cF19EUhm6+RPDbUSj4Oe5w9jn0jW9//MZwkyv6T8yjBDwRbimar3fFx6ZEy8ZVG2N1DPpDIW6hik+anBa0qGQQKQ3Obo0wgD7VG5qCJvVjKl6f4OP7l5f/ft5hvUQ1sFChXAeXWD04N3ORnlNnTjVPCJErBj065IRRPbb79WRY5JGQN0sT2iyvoOId/u5uizRrtbWKJ70DpGu1o3Hok0YT8GSIreCD1C/MHAKJ/vn/c2Q+hx2Ku3DJ3bZrhubtirpboCChlL7oeOIGp0U8LmY95UF5bdFy/wuiy/Lxb7cLwuMz7wyUAxRqZY1uduB+AdhTHEHKnzpSf9UR2uRxSclJn+CggYn88RYjB4ARmeUNeDRr40BfwKM627DiNx9qzPEJiemvkZxyIBZzZbsDwytHDkWQKQSasyy8ochODxKZsY=
-  file: vscode-languagetool-*.vsix
+  file: vscode-ltex-*.vsix
   file_glob: true
   skip_cleanup: true
   on:

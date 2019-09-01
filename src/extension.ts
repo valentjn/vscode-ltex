@@ -5,14 +5,14 @@ import * as path from 'path';
 import * as net from 'net';
 import * as child_process from "child_process";
 
-import { extensions, workspace, Disposable, ExtensionContext } from 'vscode';
+import { extensions, workspace, Disposable, ExtensionContext, WorkspaceConfiguration } from 'vscode';
 import { LanguageClient, LanguageClientOptions, SettingMonitor, StreamInfo } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
 
   function discoverExtensionPaths() {
     return extensions.all
-      .filter(x => x.id.startsWith("valentjn.vscode-languagetool-"))
+      .filter(x => x.id.startsWith("valentjn.vscode-ltex-"))
       .map(x => x.extensionPath)
   }
 
@@ -78,7 +78,7 @@ export function activate(context: ExtensionContext) {
             fs.mkdirSync(context.storagePath);
           }
 
-          let logFile = context.storagePath + '/vscode-languagetool-languageserver.log';
+          let logFile = context.storagePath + '/vscode-ltex.log';
           let logStream = fs.createWriteStream(logFile, { flags: 'w' });
           console.log(`Writing log to '${logFile}'`);
 
@@ -97,12 +97,12 @@ export function activate(context: ExtensionContext) {
   let clientOptions: LanguageClientOptions = {
     documentSelector: ['plaintext', 'markdown', 'latex'],
     synchronize: {
-      configurationSection: 'languageTool'
+      configurationSection: 'ltex'
     }
   }
 
   // Allow to enable languageTool in specific workspaces
-  let config = workspace.getConfiguration('languageTool');
+  let config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
 
   if (config['enabled']) {
     // create the language client
@@ -113,8 +113,8 @@ export function activate(context: ExtensionContext) {
     // The client configuration cannot be changed directly by the server, so we send a
     // telemetry notification to the client, which then adds the word to the dictionary.
     languageClient.onTelemetry((param) => {
-      let config = workspace.getConfiguration('languageTool');
-      const prefix: string = 'languageTool.addToDictionary ';
+      let config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
+      const prefix: string = 'ltex.addToDictionary ';
 
       if (param.startsWith(prefix)) {
         const word: string = param.substring(prefix.length);
@@ -128,7 +128,7 @@ export function activate(context: ExtensionContext) {
         config.update(languagePrefix + '.dictionary', dictionary,
             ((workspace.rootPath) ? undefined : true));
       } else {
-        console.warn(`vscode-languagetool: Unknown telemetry event "${param}"`);
+        console.warn(`vscode-ltex: Unknown telemetry event "${param}"`);
       }
     });
 

@@ -1,10 +1,12 @@
-# Changelog
+# Changelog of vscode-ltex
 
 ## 4.6.0
+- Forked abandoned repository, rename to vscode-ltex
 - Update to LanguageTool 4.6 (see [4.6 Release Notes](https://github.com/languagetool-org/languagetool/blob/123662bd07059429d9a6d22af6fae164c2ce9dc5/languagetool-standalone/CHANGES.md#46-2019-06-26))
-- Change URLs from abandoned repository
-- Fix engine version mismatch (`Module ''vscode'' has no exported member 'WorkspaceFoldersChangeEvent`)
-- Enable naive checking of LaTeX source code
+- Update other dependencies (vscode, vscode-languageclient, LSP, JUnit, Gradle)
+- Implement simple LaTeX parser
+
+# Changelog of vscode-languagetool
 
 ## 3.8.0
 - Update to LanguageTool 3.8 (see [3.8 Release Notes](https://github.com/languagetool-org/languagetool/blob/aa1bef4c0108e25eea7f71bd557b6cc4d9c53c2b/languagetool-standalone/CHANGES.md#38-2017-06-27))

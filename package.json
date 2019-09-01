@@ -1,16 +1,16 @@
 {
-  "name": "vscode-languagetool",
-  "displayName": "LanguageTool for Visual Studio Code",
-  "preview": false,
-  "description": "LanguageTool grammar checking for Visual Studio Code.",
+  "name": "vscode-ltex",
+  "displayName": "LTeX",
+  "preview": true,
+  "description": "LanguageTool grammar checking with LaTeX support",
   "author": "Julian Valentin",
   "license": "Apache-2.0",
   "version": "4.6.0",
   "publisher": "valentjn",
   "repository": {
-    "url": "https://github.com/valentjn/vscode-languagetool"
+    "url": "https://github.com/valentjn/vscode-ltex"
   },
-  "icon": "img/LanguageTool-Icon.png",
+  "icon": "img/LTeX-icon.png",
   "galleryBanner": {
     "color": "#6565f6",
     "theme": "dark"
@@ -23,7 +23,8 @@
     "grammar",
     "proofread",
     "checker",
-    "grammar-checker"
+    "grammar-checker",
+    "latex"
   ],
   "categories": [
     "Other"
@@ -36,27 +37,30 @@
   "main": "./out/src/extension",
   "contributes": {
     "configuration": {
-      "title": "LanguageTool for Visual Studio Code",
+      "title": "LTeX",
       "properties": {
-        "languageTool.enabled": {
+        "ltex.enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces."
+          "markdownDescription": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces."
         },
-        "languageTool.language": {
+        "ltex.language": {
           "type": "string",
           "default": "en-US",
-          "description": "The language (e.g., \"en-US\") LanguageTool should check against."
+          "markdownDescription": "The language (e.g., `en-US`) LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension](https://marketplace.visualstudio.com/search?term=ltex&target=VSCode). Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).",
+          "examples": ["en-US", "de-DE"]
         },
-        "languageTool.latex.dummyCommands": {
+        "ltex.commands.ignore": {
           "type": "array",
           "default": [],
-          "description": "List of additional LaTeX commands to replace by dummy words, listed together with empty arguments (e.g., \"\\cite{}\", \"\\cite[]{}\")."
+          "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser, listed together with empty arguments.",
+          "examples": ["\\ref{}", "\\documentclass[]{}"]
         },
-        "languageTool.latex.ignoreCommands": {
+        "ltex.commands.dummy": {
           "type": "array",
           "default": [],
-          "description": "List of additional LaTeX commands to ignore by the LaTeX parser, listed together with empty arguments (e.g., \"\\ref{}\", \"\\documentclass[]{}\")."
+          "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to replace by dummy words, listed together with empty arguments.",
+          "examples": ["\\cite{}", "\\cite[]{}"]
         }
       }
     }
