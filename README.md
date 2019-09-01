@@ -1,5 +1,8 @@
 # LT<sub>E</sub>X Extension for Visual Studio Code: LanguageTool Grammar Checking with L<sup>A</sup>T<sub>E</sub>X Support
 
+![Travis CI build status](https://api.travis-ci.org/valentjn/vscode-ltex.svg?branch=master)
+![GitHub](https://img.shields.io/badge/-fork%20me%20on%20GitHub-blue)
+
 **NOTICE: This extension does not include any languages. You MUST install a [language support extension][lang-exts].**
 
 ___
