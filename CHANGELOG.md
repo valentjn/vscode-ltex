@@ -1,5 +1,9 @@
 # Changelog of vscode-ltex
 
+## 4.6.4
+- Ignore some commands often found in LaTeX preambles
+- Support umlauts and eszett
+
 ## 4.6.3
 - Fix deployed *.vsix needed Java 11, not 8
 
