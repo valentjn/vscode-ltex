@@ -6,7 +6,7 @@ import * as net from 'net';
 import * as child_process from "child_process";
 
 import { env, extensions, workspace, Disposable, ExtensionContext,
-    WorkspaceConfiguration } from 'vscode';
+    WorkspaceConfiguration, ConfigurationTarget} from 'vscode';
 import { LanguageClient, LanguageClientOptions, StreamInfo } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
@@ -139,8 +139,7 @@ export function activate(context: ExtensionContext) {
         dictionary.push(word);
         dictionary.sort((a: string, b: string) =>
             a.localeCompare(b, undefined, { sensitivity: 'base' }));
-        config.update(languagePrefix + '.dictionary', dictionary,
-            ((workspace.rootPath) ? undefined : true));
+        config.update(languagePrefix + '.dictionary', dictionary, ConfigurationTarget.Global);
       } else {
         console.warn(`vscode-ltex: Unknown telemetry event "${param}"`);
       }
