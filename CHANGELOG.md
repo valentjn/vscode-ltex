@@ -1,11 +1,15 @@
 # Changelog of vscode-ltex
 
 ## 4.6.6 (upcoming)
+- Fix "fromPos must be less than toPos" LT errors
 - Localization of diagnostics, initially support of English and German
+- Add timeout for latex.AnnotatedTextBuilder; unfortunately this only displays an error, but does not kill the process
+- Add support for `\(`, `\)`, `\[`, `\]`
+- Don't insert spaces before `\text` in display math
 
 ## 4.6.5
 - Make README.md and package.json consistent
-- Fix second arguments of \(re)newcommand not ignored
+- Fix second arguments of `\(re)newcommand` not ignored
 
 ## 4.6.4
 - Ignore some commands often found in LaTeX preambles
