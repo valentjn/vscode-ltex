@@ -1,6 +1,6 @@
 # Changelog of vscode-ltex
 
-## 4.6.6 (upcoming)
+## 4.6.6
 - Fix "fromPos must be less than toPos" LT errors
 - Localization of diagnostics, initially support of English and German
 - Add timeout for latex.AnnotatedTextBuilder; unfortunately this only displays an error, but does not kill the process
