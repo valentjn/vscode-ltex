@@ -47,7 +47,7 @@
         "ltex.language": {
           "type": "string",
           "default": "en-US",
-          "markdownDescription": "The language (e.g., `en-US`) LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension](https://marketplace.visualstudio.com/search?term=ltex&target=VSCode). Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).",
+          "markdownDescription": "The language (e.g., `en-US`) LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension](https://marketplace.visualstudio.com/search?term=ltex&target=VSCode). See the Marketplace description of the installed *language support extension* for possible values. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).",
           "examples": ["en-US", "de-DE"]
         },
         "ltex.commands.ignore": {
