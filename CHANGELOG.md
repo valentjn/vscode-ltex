@@ -1,6 +1,6 @@
 # Changelog of vscode-ltex
 
-## 4.6.5 (upcoming)
+## 4.6.5
 - Make README.md and package.json consistent
 - Fix second arguments of \(re)newcommand not ignored
 
