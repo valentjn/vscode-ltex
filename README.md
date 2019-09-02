@@ -32,6 +32,9 @@ This extension contributes the following settings:
 * `ltex.<LANGUAGE>.dictionary`: List of additional words that should not be counted as spelling errors. Dictionaries are separated by language; replace `<LANGUAGE>` with the language short code from `ltex.language`. Requires the installation of a [language support extension][lang-exts].
 * `ltex.commands.ignore`: List of additional L<sup>A</sup>T<sub>E</sub>X commands to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser, listed together with empty arguments (e.g., `\ref{}`, `\documentclass[]{}`).
 * `ltex.commands.dummy`: List of additional L<sup>A</sup>T<sub>E</sub>X commands to replace by dummy words, listed together with empty arguments (e.g., `\cite{}`, `\cite[]{}`).
+* `ltex.additionalRules.languageModel`: Path to a directory with rules of a language model with *n*-gram occurrence counts.
+* `ltex.additionalRules.neuralNetworkModel`: Path to a directory with rules of a pretrained neural network model.
+* `ltex.additionalRules.word2VecModel`: Path to a directory with rules of a word2vec language model.
 
 ## Versioning
 

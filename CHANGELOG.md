@@ -1,6 +1,7 @@
 # Changelog of vscode-ltex
 
 ## 4.6.7 (upcoming)
+- Add possibility to use language model *n*-gram data, neural network model data, or word2vec model data
 - `Add to dictionary` now always modifies global settings
 
 ## 4.6.6

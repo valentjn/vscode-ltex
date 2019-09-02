@@ -62,6 +62,21 @@
           "default": [],
           "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to replace by dummy words, listed together with empty arguments.",
           "examples": ["\\cite{}", "\\cite[]{}"]
+        },
+        "ltex.additionalRules.languageModel": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Path to a directory with rules of a language model with *n*-gram occurrence counts."
+        },
+        "ltex.additionalRules.neuralNetworkModel": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Path to a directory with rules of a pretrained neural network model."
+        },
+        "ltex.additionalRules.word2VecModel": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Path to a directory with rules of a word2vec language model."
         }
       }
     }
