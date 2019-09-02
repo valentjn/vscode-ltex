@@ -2,6 +2,7 @@
 
 ## 4.6.5 (upcoming)
 - Make README.md and package.json consistent
+- Fix second arguments of \(re)newcommand not ignored
 
 ## 4.6.4
 - Ignore some commands often found in LaTeX preambles
