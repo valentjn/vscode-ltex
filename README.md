@@ -14,7 +14,7 @@ This extension is a fork of the abandoned [LanguageTool for Visual Studio Code e
 ## Features
 
 * Checks **latex**, **markdown**, and **plaintext** documents
-* Supports **over than 20 languages** according to which [language support extensions][lang-exts] are installed
+* Supports **over 20 languages** according to which [language support extensions][lang-exts] are installed
 * Issue highlighting with hover description
 * Replacement suggestions via quick fixes
 * User dictionaries
@@ -27,7 +27,7 @@ Java 8+ is required.
 
 This extension contributes the following settings:
 
-* `ltex.enabled`: Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces.
+* `ltex.enabled`: Controls whether the extension is enabled. Allows disabling LanguageTool on specific workspaces.
 * `ltex.language`: The language (e.g., `en-US`) LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension][lang-exts]. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).
 * `ltex.<LANGUAGE>.dictionary`: List of additional words that should not be counted as spelling errors. Dictionaries are separated by language; replace `<LANGUAGE>` with the language short code from `ltex.language`. Requires the installation of a [language support extension][lang-exts].
 * `ltex.commands.ignore`: List of additional L<sup>A</sup>T<sub>E</sub>X commands to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser, listed together with empty arguments (e.g., `\ref{}`, `\documentclass[]{}`).
@@ -35,7 +35,7 @@ This extension contributes the following settings:
 
 ## Versioning
 
-The LT<sub>E</sub>X extension has adopted the versioning of its LanguageTool dependency. For example, if this extension has version 4.6.0 it is powered by LanguageTool 4.6. vscode-ltex 4.6.1, would also use LanguageTool 4.6. vscode-ltex 4.7.0 would use LanguageTool 4.7. **The LanguageTool version of this extension must match the LanguageTool version of your installed language support extensions.**
+The LT<sub>E</sub>X extension has adopted the versioning of its LanguageTool dependency. For example, if this extension has version 4.6.0 it is powered by LanguageTool 4.6. vscode-ltex 4.6.1 would also use LanguageTool 4.6. vscode-ltex 4.7.0 would use LanguageTool 4.7. **The LanguageTool version of this extension must match the LanguageTool version of your installed language support extensions.**
 
 ## Contributing
 
