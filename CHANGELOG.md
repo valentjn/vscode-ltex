@@ -1,5 +1,8 @@
 # Changelog of vscode-ltex
 
+## 4.6.6 (upcoming)
+- Localization of diagnostics, initially support of English and German
+
 ## 4.6.5
 - Make README.md and package.json consistent
 - Fix second arguments of \(re)newcommand not ignored

@@ -5,8 +5,9 @@ import * as path from 'path';
 import * as net from 'net';
 import * as child_process from "child_process";
 
-import { extensions, workspace, Disposable, ExtensionContext, WorkspaceConfiguration } from 'vscode';
-import { LanguageClient, LanguageClientOptions, SettingMonitor, StreamInfo } from 'vscode-languageclient';
+import { env, extensions, workspace, Disposable, ExtensionContext,
+    WorkspaceConfiguration } from 'vscode';
+import { LanguageClient, LanguageClientOptions, StreamInfo } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
 
@@ -105,7 +106,13 @@ export function activate(context: ExtensionContext) {
     ],
     synchronize: {
       configurationSection: 'ltex'
-    }
+    },
+    // Until it is specified in the LSP that the locale is automatically sent with
+    // the initialization request, we have to do that manually.
+    // See https://github.com/microsoft/language-server-protocol/issues/754.
+    initializationOptions : {
+      locale: env.language,
+    },
   }
 
   // Allow to enable languageTool in specific workspaces
@@ -139,7 +146,7 @@ export function activate(context: ExtensionContext) {
       }
     });
 
-    let disposable = languageClient.start();
+    let disposable: Disposable = languageClient.start();
 
     // Push the disposable to the context's subscriptions so that the
     // client can be deactivated on extension deactivation
