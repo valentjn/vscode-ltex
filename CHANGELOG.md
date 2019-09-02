@@ -1,5 +1,8 @@
 # Changelog of vscode-ltex
 
+## 4.6.5 (upcoming)
+- Make README.md and package.json consistent
+
 ## 4.6.4
 - Ignore some commands often found in LaTeX preambles
 - Support umlauts and eszett

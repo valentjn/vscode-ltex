@@ -1,22 +1,22 @@
 {
   "name": "vscode-ltex",
   "displayName": "LTeX",
+  "version": "4.6.4",
   "preview": true,
   "description": "LanguageTool grammar checking with LaTeX support",
+  "icon": "img/LTeX-icon.png",
   "author": "Julian Valentin",
-  "license": "Apache-2.0",
-  "version": "4.6.4",
   "publisher": "valentjn",
+  "license": "Apache-2.0",
   "repository": {
     "url": "https://github.com/valentjn/vscode-ltex"
   },
-  "icon": "img/LTeX-icon.png",
+  "engines": {
+    "vscode": "^1.37.0"
+  },
   "galleryBanner": {
     "color": "#6565f6",
     "theme": "dark"
-  },
-  "engines": {
-    "vscode": "^1.37.0"
   },
   "keywords": [
     "spell",
@@ -27,6 +27,7 @@
     "latex"
   ],
   "categories": [
+    "Linters",
     "Other"
   ],
   "activationEvents": [
