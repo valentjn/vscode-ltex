@@ -60,7 +60,7 @@
         "ltex.commands.dummy": {
           "type": "array",
           "default": [],
-          "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to replace by dummy words, listed together with empty arguments.",
+          "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to be replaced by dummy words (i.e., Dummy0, Dummy1, etc.), listed together with empty arguments. LT<sub>E</sub>X internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.",
           "examples": ["\\cite{}", "\\cite[]{}"]
         },
         "ltex.additionalRules.languageModel": {
