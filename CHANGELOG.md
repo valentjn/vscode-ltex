@@ -1,5 +1,10 @@
 # Changelog of vscode-ltex
 
+## 4.6.8 (upcoming)
+- More commands like `\PackageWarning` and `\addbibresource` are ignored
+- Add support for `\url` and `\nolinkurl`
+- Command names can now include `@` (this assumes that users don't write something like `\example@gmail.com` with a command `\example`, otherwise replace with `\example{}@gmail.com`)
+
 ## 4.6.7
 - Add possibility to use language model *n*-gram data, neural network model data, or word2vec model data
 - `Add to dictionary` now always modifies global settings
