@@ -2,6 +2,7 @@
 
 ## 4.6.8 (upcoming)
 - More commands like `\PackageWarning` and `\addbibresource` are ignored
+- Ignore alignment argument of tabular environment
 - Add support for `\url` and `\nolinkurl`
 - Command names can now include `@` (this assumes that users don't write something like `\example@gmail.com` with a command `\example`, otherwise replace with `\example{}@gmail.com`)
 
