@@ -53,7 +53,7 @@
         },
         "ltex.diagnosticSeverity": {
           "type": "string",
-          "default": "warning",
+          "default": "information",
           "enum": ["error", "warning", "information", "hint"],
           "enumDescriptions": [
             "Error diagnostics are usually underlined with a red squiggly line and appear in editor, minimap, Problems tab, and Explorer.",

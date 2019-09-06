@@ -6,6 +6,7 @@
 - Add support for `\url` and `\nolinkurl`
 - Command names can now include `@` (this assumes that users don't write something like `\example@gmail.com` with a command `\example`, otherwise replace with `\example{}@gmail.com`)
 - Add setting `ltex.diagnosticSeverity` to control where and how the diagnostics appear
+- Change default severity from `warning` to `info`
 
 ## 4.6.7
 - Add possibility to use language model *n*-gram data, neural network model data, or word2vec model data
