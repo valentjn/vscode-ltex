@@ -51,6 +51,18 @@
           "markdownDescription": "The language (e.g., `en-US`) LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension](https://marketplace.visualstudio.com/search?term=ltex&target=VSCode). See the Marketplace description of the installed *language support extension* for possible values. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).",
           "examples": ["en-US", "de-DE"]
         },
+        "ltex.diagnosticSeverity": {
+          "type": "string",
+          "default": "warning",
+          "enum": ["error", "warning", "information", "hint"],
+          "enumDescriptions": [
+            "Error diagnostics are usually underlined with a red squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
+            "Warning diagnostics are usually underlined with a yellow squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
+            "Information diagnostics are usually underlined with a blue squiggly line and appear in editor, minimap, and Problems tab, but not in the Explorer.",
+            "Hint diagnostics are not underlined (only subtly marked) and only appear in the editor, not in minimap, Problems tab, or Explorer."
+          ],
+          "markdownDescription": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code."
+        },
         "ltex.commands.ignore": {
           "type": "array",
           "default": [],
