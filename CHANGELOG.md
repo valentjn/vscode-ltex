@@ -4,6 +4,7 @@
 - More commands like `\PackageWarning` and `\addbibresource` are ignored
 - Ignore alignment argument of tabular environment
 - Add support for `\url` and `\nolinkurl`
+- Add support for more accents (`` \` ``, `\'`, `\^`, `\~`, `\"`, `\=`, `\.`, ...)
 - Command names can now include `@` (this assumes that users don't write something like `\example@gmail.com` with a command `\example`, otherwise replace with `\example{}@gmail.com`)
 - Add setting `ltex.diagnosticSeverity` to control where and how the diagnostics appear
 - Change default severity from `warning` to `info`
