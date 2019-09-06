@@ -75,6 +75,25 @@
           "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to be replaced by dummy words (i.e., Dummy0, Dummy1, etc.), listed together with empty arguments. LT<sub>E</sub>X internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.",
           "examples": ["\\cite{}", "\\cite[]{}"]
         },
+        "ltex.configurationTarget": {
+          "type": "object",
+          "default": {"addToDictionary": "global"},
+          "propertyNames": {
+            "type": "string",
+            "enum": ["addToDictionary"]
+          },
+          "properties": {
+            "addToDictionary": {
+              "type": "string",
+              "enum": ["global", "workspace"],
+              "enumDescriptions": [
+                "When adding a word to the dictionary, always update the global configuration.",
+                "When adding a word to the dictionary, update the workspace configuration if currently in a workspace, otherwise the global configuration."
+              ]
+            }
+          },
+          "markdownDescription": "Controls which `settings.json` to update when using one of the quick fixes."
+        },
         "ltex.additionalRules.languageModel": {
           "type": "string",
           "default": "",
