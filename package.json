@@ -75,12 +75,34 @@
           "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to be replaced by dummy words (i.e., Dummy0, Dummy1, etc.), listed together with empty arguments. LT<sub>E</sub>X internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.",
           "examples": ["\\cite{}", "\\cite[]{}"]
         },
+        "ltex.ignoreRuleInSentence" : {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string",
+              "enum": ["rule", "sentence"]
+            },
+            "properties": {
+              "rule": {
+                "type": "string",
+                "markdownDescription": "The identifier of the LanguageTool rule."
+              },
+              "sentence": {
+                "type": "string",
+                "markdownDescription": "The sentence after parsing as supplied to LanguageTool."
+              }
+            }
+          },
+          "markdownDescription": "Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. Add sentences by using the `Ignore in this sentence` quick fix."
+        },
         "ltex.configurationTarget": {
           "type": "object",
-          "default": {"addToDictionary": "global"},
+          "default": {"addToDictionary": "global", "ignoreRuleInSentence": "workspace"},
           "propertyNames": {
             "type": "string",
-            "enum": ["addToDictionary"]
+            "enum": ["addToDictionary", "ignoreRuleInSentence"]
           },
           "properties": {
             "addToDictionary": {
@@ -89,6 +111,14 @@
               "enumDescriptions": [
                 "When adding a word to the dictionary, always update the global configuration.",
                 "When adding a word to the dictionary, update the workspace configuration if currently in a workspace, otherwise the global configuration."
+              ]
+            },
+            "ignoreRuleInSentence": {
+              "type": "string",
+              "enum": ["global", "workspace"],
+              "enumDescriptions": [
+                "When ignoring a rule in a sentence, always update the global configuration.",
+                "When ignoring a rule in a sentence, update the workspace configuration if currently in a workspace, otherwise the global configuration."
               ]
             }
           },

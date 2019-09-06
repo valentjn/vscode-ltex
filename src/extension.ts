@@ -127,11 +127,20 @@ export function activate(context: ExtensionContext) {
     // The client configuration cannot be changed directly by the server, so we send a
     // telemetry notification to the client, which then adds the word to the dictionary.
     languageClient.onTelemetry((param) => {
-      let config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
-      const prefix: string = 'ltex.addToDictionary ';
+      const config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
+      const getConfigurationTarget = ((commandName: string) =>
+          (((config['configurationTarget'][commandName] == 'workspace') &&
+            workspace.rootPath) ? undefined : true));
+      const telemetryPattern: RegExp = /^ltex\.(addToDictionary|ignoreRuleInSentence) (.*)$/;
+      const telemetryMatch = param.match(telemetryPattern);
 
-      if (param.startsWith(prefix)) {
-        const word: string = param.substring(prefix.length);
+      if (telemetryMatch == null) {
+        console.warn(`vscode-ltex: Unknown telemetry event "${param}"`);
+        return;
+      }
+
+      if (telemetryMatch[1] == 'addToDictionary') {
+        const word: string = telemetryMatch[2];
         let languagePrefix: string = config['language'];
         const dashPos: number = languagePrefix.indexOf('-');
         if (dashPos != -1) languagePrefix = languagePrefix.substring(0, dashPos);
@@ -139,12 +148,15 @@ export function activate(context: ExtensionContext) {
         dictionary.push(word);
         dictionary.sort((a: string, b: string) =>
             a.localeCompare(b, undefined, { sensitivity: 'base' }));
-        let configurationTarget =
-            (((config['configurationTarget']['addToDictionary'] == 'workspace') &&
-              workspace.rootPath) ? undefined : true);
-        config.update(languagePrefix + '.dictionary', dictionary, configurationTarget);
-      } else {
-        console.warn(`vscode-ltex: Unknown telemetry event "${param}"`);
+        config.update(languagePrefix + '.dictionary', dictionary, getConfigurationTarget('addToDictionary'));
+      } else if (telemetryMatch[1] == 'ignoreRuleInSentence') {
+        const ignoreRuleInSentencePattern: RegExp = /^(.*?) (.*)$/;
+        const ignoreRuleInSentenceMatch = telemetryMatch[2].match(ignoreRuleInSentencePattern);
+        const rule: string = ignoreRuleInSentenceMatch[1];
+        const sentence: string = ignoreRuleInSentenceMatch[2];
+        config['ignoreRuleInSentence'].push({'rule': rule, 'sentence': sentence});
+        config.update('ignoreRuleInSentence', config['ignoreRuleInSentence'],
+            getConfigurationTarget('ignoreRuleInSentence'));
       }
     });
 
