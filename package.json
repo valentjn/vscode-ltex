@@ -49,12 +49,20 @@
           "type": "string",
           "default": "en-US",
           "markdownDescription": "The language (e.g., `en-US`) LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension](https://marketplace.visualstudio.com/search?term=ltex&target=VSCode). See the Marketplace description of the installed *language support extension* for possible values. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).",
-          "examples": ["en-US", "de-DE"]
+          "examples": [
+            "en-US",
+            "de-DE"
+          ]
         },
         "ltex.diagnosticSeverity": {
           "type": "string",
           "default": "information",
-          "enum": ["error", "warning", "information", "hint"],
+          "enum": [
+            "error",
+            "warning",
+            "information",
+            "hint"
+          ],
           "enumDescriptions": [
             "Error diagnostics are usually underlined with a red squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
             "Warning diagnostics are usually underlined with a yellow squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
@@ -67,22 +75,31 @@
           "type": "array",
           "default": [],
           "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser, listed together with empty arguments.",
-          "examples": ["\\ref{}", "\\documentclass[]{}"]
+          "examples": [
+            "\\ref{}",
+            "\\documentclass[]{}"
+          ]
         },
         "ltex.commands.dummy": {
           "type": "array",
           "default": [],
           "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to be replaced by dummy words (i.e., Dummy0, Dummy1, etc.), listed together with empty arguments. LT<sub>E</sub>X internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.",
-          "examples": ["\\cite{}", "\\cite[]{}"]
+          "examples": [
+            "\\cite{}",
+            "\\cite[]{}"
+          ]
         },
-        "ltex.ignoreRuleInSentence" : {
+        "ltex.ignoreRuleInSentence": {
           "type": "array",
           "default": [],
           "items": {
             "type": "object",
             "propertyNames": {
               "type": "string",
-              "enum": ["rule", "sentence"]
+              "enum": [
+                "rule",
+                "sentence"
+              ]
             },
             "properties": {
               "rule": {
@@ -99,15 +116,24 @@
         },
         "ltex.configurationTarget": {
           "type": "object",
-          "default": {"addToDictionary": "global", "ignoreRuleInSentence": "workspace"},
+          "default": {
+            "addToDictionary": "global",
+            "ignoreRuleInSentence": "workspace"
+          },
           "propertyNames": {
             "type": "string",
-            "enum": ["addToDictionary", "ignoreRuleInSentence"]
+            "enum": [
+              "addToDictionary",
+              "ignoreRuleInSentence"
+            ]
           },
           "properties": {
             "addToDictionary": {
               "type": "string",
-              "enum": ["global", "workspace"],
+              "enum": [
+                "global",
+                "workspace"
+              ],
               "enumDescriptions": [
                 "When adding a word to the dictionary, always update the global configuration.",
                 "When adding a word to the dictionary, update the workspace configuration if currently in a workspace, otherwise the global configuration."
@@ -115,7 +141,10 @@
             },
             "ignoreRuleInSentence": {
               "type": "string",
-              "enum": ["global", "workspace"],
+              "enum": [
+                "global",
+                "workspace"
+              ],
               "enumDescriptions": [
                 "When ignoring a rule in a sentence, always update the global configuration.",
                 "When ignoring a rule in a sentence, update the workspace configuration if currently in a workspace, otherwise the global configuration."
