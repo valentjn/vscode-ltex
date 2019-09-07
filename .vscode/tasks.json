@@ -1,38 +1,29 @@
-// Available variables which can be used inside of strings.
-// ${workspaceRoot}: the root folder of the team
-// ${file}: the current opened file
-// ${fileBasename}: the current opened file's basename
-// ${fileDirname}: the current opened file's dirname
-// ${fileExtname}: the current opened file's extension
-// ${cwd}: the current working directory of the spawned process
 {
 	"version": "2.0.0",
 	"tasks": [
 		{
-			// A task runner that calls a custom npm script that compiles the extension.
-			"taskName": "watch-extension",
+			"label": "Watch extension",
 			"command": "npm",
-			"isShellCommand": true,
-			// show the output window only if unrecognized errors occur.
-			"showOutput": "silent",
-			// we run the custom script "compile" as defined in package.json
+			"type": "shell",
+			"presentation": {
+				"reveal": "silent",
+			},
 			"args": [
 				"run",
 				"watch",
 				"--loglevel",
 				"silent"
 			],
-			// The tsc compiler is started in watching mode
 			"isBackground": true,
-			// use the standard tsc in watch mode problem matcher to find compile problems in the output.
 			"problemMatcher": "$tsc-watch"
 		},
 		{
-			// A task runner that calls a custom npm script that compiles the extension.
-			"taskName": "build-extension",
+			"label": "Build extension",
 			"command": "npm",
-			"isShellCommand": true,
-			"showOutput": "silent",
+			"type": "shell",
+			"presentation": {
+				"reveal": "silent",
+			},
 			"args": [
 				"run",
 				"compile"
@@ -41,10 +32,12 @@
 			"problemMatcher": "$tsc-watch"
 		},
 		{
-			"taskName": "build-server",
+			"label": "Build server",
 			"command": "./lib/languagetool-languageserver/gradlew",
-			"isShellCommand": true,
-			"showOutput": "silent",
+			"type": "shell",
+			"presentation": {
+				"reveal": "silent",
+			},
 			"args": [
 				"--project-dir",
 				"./lib/languagetool-languageserver/",
@@ -55,12 +48,11 @@
 			"promptOnClose": false
 		},
 		{
-			// A task runner that calls a custom npm script that compiles the extension.
-			"taskName": "build",
-			"isBuildCommand": true,
+			"label": "Build extension and server",
+			"group": "build",
 			"dependsOn": [
-				"build-extension",
-				"build-server"
+				"Build server",
+				"Build extension"
 			]
 		}
 	]
