@@ -1,6 +1,6 @@
 # Changelog of vscode-ltex
 
-## 4.6.8 (upcoming)
+## 4.6.8
 - Add setting `ltex.diagnosticSeverity` to control where and how the diagnostics appear
 - Change default severity from `warning` to `info`
 - Add possibility to ignore a LanguageTool rule in a sentence via quick fix
