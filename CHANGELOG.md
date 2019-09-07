@@ -1,15 +1,15 @@
 # Changelog of vscode-ltex
 
 ## 4.6.8 (upcoming)
+- Add setting `ltex.diagnosticSeverity` to control where and how the diagnostics appear
+- Change default severity from `warning` to `info`
+- Add possibility to ignore a LanguageTool rule in a sentence via quick fix
+- Add setting `ltex.configurationTarget` to control which `settings.json` to update when using one of the quick fixes
 - More commands like `\PackageWarning` and `\addbibresource` are ignored
-- Ignore alignment argument of tabular environment
 - Add support for `\url` and `\nolinkurl`
 - Add support for more accents (`` \` ``, `\'`, `\^`, `\~`, `\"`, `\=`, `\.`, ...)
 - Command names can now include `@` (this assumes that users don't write something like `\example@gmail.com` with a command `\example`, otherwise replace with `\example{}@gmail.com`)
-- Add setting `ltex.diagnosticSeverity` to control where and how the diagnostics appear
-- Change default severity from `warning` to `info`
-- Add setting `ltex.configurationTarget` to control which `settings.json` to update when using one of the quick fixes
-- Add possibility to ignore a LanguageTool rule in a sentence via quick fix
+- Ignore alignment argument of tabular environment
 
 ## 4.6.7
 - Add possibility to use language model *n*-gram data, neural network model data, or word2vec model data
