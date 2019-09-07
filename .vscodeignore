@@ -4,6 +4,7 @@
 .gitignore
 .gitmodules
 .travis.yml
+img/*.svg
 lib/
 out/test/
 src/
