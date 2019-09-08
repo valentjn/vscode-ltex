@@ -6,10 +6,12 @@
 .travis.yml
 img/*.svg
 lib/
-out/test/
+node_modules/
+out/
 src/
 test/
 *.vsix
 tsconfig.json
+webpack.config.js
 **/*.map
 !lib/languagetool-languageserver/build/install/languagetool-languageserver/

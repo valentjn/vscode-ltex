@@ -35,7 +35,7 @@
     "onLanguage:markdown",
     "onLanguage:latex"
   ],
-  "main": "./out/src/extension",
+  "main": "./dist/extension",
   "contributes": {
     "configuration": {
       "title": "LTeX",
@@ -172,7 +172,9 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "tsc -p ./ && ./lib/languagetool-languageserver/gradlew --project-dir ./lib/languagetool-languageserver/ installDist",
+    "vscode:prepublish": "tsc -p ./ && ./lib/languagetool-languageserver/gradlew --project-dir ./lib/languagetool-languageserver/ installDist && webpack --mode production",
+    "webpack": "webpack --mode development",
+    "webpack-dev": "webpack --mode development --watch",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./"
   },
@@ -180,7 +182,10 @@
     "@types/mocha": "^2.2.33",
     "@types/node": "^6.0.52",
     "@types/vscode": "^1.37.0",
-    "typescript": "^2.1.5"
+    "ts-loader": "^6.0.4",
+    "typescript": "^2.1.5",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8"
   },
   "dependencies": {
     "vscode-languageclient": "^5.2.1"

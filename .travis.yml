@@ -8,9 +8,7 @@ install:
 - npm install
 - npm install -g vsce
 - "./lib/languagetool-languageserver/gradlew --project-dir ./lib/languagetool-languageserver/
-  assemble"
-- "./lib/languagetool-languageserver/gradlew --project-dir ./lib/languagetool-languageserver/
-  check"
+  assemble check"
 script:
 - vsce package
 deploy:

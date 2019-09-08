@@ -3,31 +3,29 @@
 	"tasks": [
 		{
 			"label": "Watch extension",
-			"command": "npm",
 			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"webpack-dev"
+			],
 			"presentation": {
 				"reveal": "silent",
 			},
-			"args": [
-				"run",
-				"watch",
-				"--loglevel",
-				"silent"
-			],
 			"isBackground": true,
 			"problemMatcher": "$tsc-watch"
 		},
 		{
 			"label": "Build extension",
-			"command": "npm",
 			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"webpack"
+			],
 			"presentation": {
 				"reveal": "silent",
 			},
-			"args": [
-				"run",
-				"compile"
-			],
 			"isBackground": false,
 			"problemMatcher": "$tsc-watch"
 		},
