@@ -1,5 +1,8 @@
 # Changelog of vscode-ltex
 
+## 4.6.9 (upcoming)
+- Bundle Node.js modules to decrease number of files in the extension (this means a slight performance gain)
+
 ## 4.6.8
 - Add setting `ltex.diagnosticSeverity` to control where and how the diagnostics appear
 - Change default severity from `warning` to `info`
