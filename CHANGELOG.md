@@ -1,6 +1,6 @@
 # Changelog of vscode-ltex
 
-## 4.6.9 (upcoming)
+## 4.6.9
 - Bundle Node.js modules to decrease number of files in the extension (this means a slight performance gain)
 
 ## 4.6.8
