@@ -155,17 +155,17 @@
         "ltex.additionalRules.languageModel": {
           "type": "string",
           "default": "",
-          "markdownDescription": "Path to a directory with rules of a language model with *n*-gram occurrence counts."
+          "markdownDescription": "Optional path to a directory with rules of a language model with *n*-gram occurrence counts."
         },
         "ltex.additionalRules.neuralNetworkModel": {
           "type": "string",
           "default": "",
-          "markdownDescription": "Path to a directory with rules of a pretrained neural network model."
+          "markdownDescription": "Optional path to a directory with rules of a pretrained neural network model."
         },
         "ltex.additionalRules.word2VecModel": {
           "type": "string",
           "default": "",
-          "markdownDescription": "Path to a directory with rules of a word2vec language model."
+          "markdownDescription": "Optional path to a directory with rules of a word2vec language model."
         }
       }
     }

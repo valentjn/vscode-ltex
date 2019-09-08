@@ -35,9 +35,9 @@ This extension contributes the following settings:
 * `ltex.commands.dummy`: List of additional L<sup>A</sup>T<sub>E</sub>X commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments (e.g., `\cite{}`, `\cite[]{}`). LT<sub>E</sub>X internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
 * `ltex.ignoreRuleInSentence`: Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. Add sentences by using the `Ignore in this sentence` quick fix.
 * `ltex.configurationTarget`: Controls which `settings.json` to update when using one of the quick fixes. `global` always updates the global configuration, while `workspace` updates the workspace configuration if currently in a workspace, otherwise the global configuration.
-* `ltex.additionalRules.languageModel`: Path to a directory with rules of a language model with *n*-gram occurrence counts.
-* `ltex.additionalRules.neuralNetworkModel`: Path to a directory with rules of a pretrained neural network model.
-* `ltex.additionalRules.word2VecModel`: Path to a directory with rules of a word2vec language model.
+* `ltex.additionalRules.languageModel`: Optional path to a directory with rules of a language model with *n*-gram occurrence counts.
+* `ltex.additionalRules.neuralNetworkModel`: Optional path to a directory with rules of a pretrained neural network model.
+* `ltex.additionalRules.word2VecModel`: Optional path to a directory with rules of a word2vec language model.
 
 ## Versioning
 
