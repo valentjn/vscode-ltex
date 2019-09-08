@@ -42,12 +42,14 @@
         "ltex.enabled": {
           "type": "boolean",
           "default": true,
-          "markdownDescription": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces."
+          "markdownDescription": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces.",
+          "description": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces."
         },
         "ltex.language": {
           "type": "string",
           "default": "en-US",
           "markdownDescription": "The language (e.g., `en-US`) LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension](https://marketplace.visualstudio.com/search?term=ltex&target=VSCode). See the Marketplace description of the installed *language support extension* for possible values. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).",
+          "description": "The language (e.g., en-US) LanguageTool should check against. For supported languages see the list of languages at https://languagetool.org/languages/. Requires the installation of a language support extension via https://marketplace.visualstudio.com/search?term=ltex&target=VSCode. See the Marketplace description of the installed language support extension for possible values. Use a specific variant like en-US or de-DE instead of the generic language code like en or de to obtain spelling corrections (in addition to grammar corrections).",
           "examples": [
             "en-US",
             "de-DE"
@@ -68,12 +70,14 @@
             "Information diagnostics are usually underlined with a blue squiggly line and appear in editor, minimap, and Problems tab, but not in the Explorer.",
             "Hint diagnostics are not underlined (only subtly marked) and only appear in the editor, not in minimap, Problems tab, or Explorer."
           ],
-          "markdownDescription": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code."
+          "markdownDescription": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code.",
+          "description": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code. One of \"error\", \"warning\", \"information\", and \"hint\"."
         },
         "ltex.commands.ignore": {
           "type": "array",
           "default": [],
           "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser, listed together with empty arguments.",
+          "description": "List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., \"\\ref{}\", \"\\documentclass[]{}\").",
           "examples": [
             "\\ref{}",
             "\\documentclass[]{}"
@@ -82,7 +86,8 @@
         "ltex.commands.dummy": {
           "type": "array",
           "default": [],
-          "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments. LT<sub>E</sub>X internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text."
+          "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments. LT<sub>E</sub>X internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.",
+          "description": "List of additional LaTeX commands to be replaced by dummy words (i.e., Dummy0, Dummy1, etc.), listed together with empty arguments (e.g., \"\\cite{}\", \"\\cite[]{}\"). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.",
           "examples": [
             "\\cite{}",
             "\\cite[]{}"
@@ -111,7 +116,8 @@
               }
             }
           },
-          "markdownDescription": "Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. Add sentences by using the `Ignore in this sentence` quick fix."
+          "markdownDescription": "Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. Add sentences by using the `Ignore in this sentence` quick fix.",
+          "description": "Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. Add sentences by using the \"Ignore in this sentence\" quick fix."
         },
         "ltex.configurationTarget": {
           "type": "object",
@@ -150,22 +156,26 @@
               ]
             }
           },
-          "markdownDescription": "Controls which `settings.json` to update when using one of the quick fixes."
+          "markdownDescription": "Controls which `settings.json` to update when using one of the quick fixes.",
+          "description": "Controls which \"settings.json\" to update when using one of the quick fixes. \"global\" always updates the global configuration, while \"workspace\" updates the workspace configuration if currently in a workspace, otherwise the global configuration."
         },
         "ltex.additionalRules.languageModel": {
           "type": "string",
           "default": "",
-          "markdownDescription": "Optional path to a directory with rules of a language model with *n*-gram occurrence counts."
+          "markdownDescription": "Optional path to a directory with rules of a language model with *n*-gram occurrence counts.",
+          "description": "Optional path to a directory with rules of a language model with n-gram occurrence counts."
         },
         "ltex.additionalRules.neuralNetworkModel": {
           "type": "string",
           "default": "",
-          "markdownDescription": "Optional path to a directory with rules of a pretrained neural network model."
+          "markdownDescription": "Optional path to a directory with rules of a pretrained neural network model.",
+          "description": "Optional path to a directory with rules of a pretrained neural network model."
         },
         "ltex.additionalRules.word2VecModel": {
           "type": "string",
           "default": "",
-          "markdownDescription": "Optional path to a directory with rules of a word2vec language model."
+          "markdownDescription": "Optional path to a directory with rules of a word2vec language model.",
+          "description": "Optional path to a directory with rules of a word2vec language model."
         }
       }
     }
