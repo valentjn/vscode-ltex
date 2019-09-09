@@ -30,7 +30,6 @@
     "Other"
   ],
   "activationEvents": [
-    "onLanguage:plaintext",
     "onLanguage:markdown",
     "onLanguage:latex"
   ],

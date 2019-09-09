@@ -1,5 +1,8 @@
 # Changelog of vscode-ltex
 
+## 4.6.10 (upcoming)
+- Don't check plaintext files (fixes [#4][#4])
+
 ## 4.6.9
 - Bundle Node.js modules to decrease number of files in the extension (this means a slight performance gain)
 
@@ -69,3 +72,5 @@
 
 ## 0.0.1
 - Initial release
+
+[#4]: https://github.com/valentjn/vscode-ltex/issues/4

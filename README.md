@@ -7,13 +7,13 @@
 
 ___
 
-Provides offline grammar checking in Visual Studio Code using [LanguageTool](https://languagetool.org/), supporting L<sup>A</sup>T<sub>E</sub>X, Markdown, and plaintext documents. This extension provides only the core functionality. You must [install extensions containing the language rules for each language you wish to be able to check][lang-exts].
+Provides offline grammar checking in Visual Studio Code using [LanguageTool](https://languagetool.org/), supporting L<sup>A</sup>T<sub>E</sub>X and Markdown documents. This extension provides only the core functionality. You must [install extensions containing the language rules for each language you wish to be able to check][lang-exts].
 
 This extension is a fork of the abandoned [LanguageTool for Visual Studio Code extension](https://github.com/adamvoss/vscode-languagetool) by Adam Voss with L<sup>A</sup>T<sub>E</sub>X support, new features (user dictionaries, ignore errors, etc.), and updated dependencies (LanguageTool).
 
 ## Features
 
-* Checks **latex**, **markdown**, and **plaintext** documents
+* Checks **latex** and **markdown** documents
 * Supports **over 20 languages** according to which [language support extensions][lang-exts] are installed
 * Issue highlighting with hover description
 * Replacement suggestions via quick fixes
