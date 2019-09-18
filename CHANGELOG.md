@@ -2,6 +2,7 @@
 
 ## 4.6.10 (upcoming)
 - Don't check plaintext files (fixes [#4][#4])
+- Fix NullPointerException if LanguageTool has not been initialized (fixes [languagetool-languageserver#1][ltls#1])
 
 ## 4.6.9
 - Bundle Node.js modules to decrease number of files in the extension (this means a slight performance gain)
@@ -74,3 +75,4 @@
 - Initial release
 
 [#4]: https://github.com/valentjn/vscode-ltex/issues/4
+[ltls#1]: https://github.com/valentjn/languagetool-languageserver/issues/1
