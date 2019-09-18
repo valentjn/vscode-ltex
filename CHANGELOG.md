@@ -1,6 +1,6 @@
 # Changelog of vscode-ltex
 
-## 4.6.10 (upcoming)
+## 4.6.10
 - Don't check plaintext files (fixes [#4][#4])
 - Fix NullPointerException if LanguageTool has not been initialized (fixes [languagetool-languageserver#1][ltls#1])
 
