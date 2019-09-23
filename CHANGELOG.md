@@ -1,8 +1,11 @@
 # Changelog of vscode-ltex
 
 ## 4.6.11 (upcoming)
+- Detect and prevent infinite loops in `LatexAnnotatedTextBuilder`
+- Fix infinite loop with other line endings than `\n`
+- Fix some more `fromPos must be less than toPos` LT errors
 - Check for interrupts to avoid 100% CPU usage on timeout (this doesn't fix any bugs though)
-- Add support for `\verb|...|` and `\email`
+- Add support for `\email`, `\href`, and `\verb|...|`
 
 ## 4.6.10
 - Don't check plaintext files (fixes [#4][#4])
