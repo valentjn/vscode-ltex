@@ -6,6 +6,8 @@
 - Fix some more `fromPos must be less than toPos` LT errors
 - Check for interrupts to avoid 100% CPU usage on timeout (this doesn't fix any bugs though)
 - Add support for `\email`, `\href`, and `\verb|...|`
+- Add support for more citation commands (`\citep`, `\citet`, etc.)
+- Add support for float/theorem definition commands and starred sectioning commands
 
 ## 4.6.10
 - Don't check plaintext files (fixes [#4][#4])
