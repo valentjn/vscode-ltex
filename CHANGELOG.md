@@ -2,6 +2,7 @@
 
 ## 4.6.11 (upcoming)
 - Check for interrupts to avoid 100% CPU usage on timeout (this doesn't fix any bugs though)
+- Add support for `\verb|...|` and `\email`
 
 ## 4.6.10
 - Don't check plaintext files (fixes [#4][#4])
