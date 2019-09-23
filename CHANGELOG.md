@@ -1,6 +1,6 @@
 # Changelog of vscode-ltex
 
-## 4.6.11 (upcoming)
+## 4.6.11
 - Detect and prevent infinite loops in `LatexAnnotatedTextBuilder`
 - Fix infinite loop with other line endings than `\n`
 - Fix some more `fromPos must be less than toPos` LT errors
