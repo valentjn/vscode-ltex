@@ -1,5 +1,8 @@
 # Changelog of vscode-ltex
 
+## 4.6.12 (upcoming)
+- Increase robustness in case locale or settings are not provided
+
 ## 4.6.11
 - Detect and prevent infinite loops in `LatexAnnotatedTextBuilder`
 - Fix infinite loop with other line endings than `\n`
