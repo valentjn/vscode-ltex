@@ -14,13 +14,13 @@ export function activate(context: ExtensionContext) {
   function discoverExtensionPaths() {
     return extensions.all
       .filter(x => x.id.startsWith("valentjn.vscode-ltex-"))
-      .map(x => x.extensionPath)
+      .map(x => x.extensionPath);
   }
 
   function buildDesiredClasspath() {
     const isWindows = process.platform === 'win32';
 
-    const joinCharacter = isWindows ? ';' : ':'
+    const joinCharacter = isWindows ? ';' : ':';
 
     const additionalPaths = discoverExtensionPaths()
       .map(p => path.resolve(context.extensionPath, '..', p, 'lib', '*'))
@@ -28,15 +28,15 @@ export function activate(context: ExtensionContext) {
 
     let desiredClasspath = path.join('lib', '*');
     if (additionalPaths) {
-      desiredClasspath += joinCharacter + additionalPaths
+      desiredClasspath += joinCharacter + additionalPaths;
     }
-    return desiredClasspath
+    return desiredClasspath;
   }
 
   function setClasspath(text: String, desiredClasspath: String): String {
-    const classpathRegexp = /^((?:set )?CLASSPATH=[%$]APP_HOME%?[\\\/])(.*)$/m
+    const classpathRegexp = /^((?:set )?CLASSPATH=[%$]APP_HOME%?[\\\/])(.*)$/m;
 
-    return text.replace(classpathRegexp, `$1${desiredClasspath}`)
+    return text.replace(classpathRegexp, `$1${desiredClasspath}`);
   }
 
   function createServer(): Promise<StreamInfo> {
@@ -62,13 +62,16 @@ export function activate(context: ExtensionContext) {
         // Start the child java process
         let options = { cwd: workspace.rootPath };
 
-        const scriptDir = path.resolve(context.extensionPath, 'lib', 'languagetool-languageserver', 'build', 'install', 'languagetool-languageserver', 'bin')
-        let originalScript = path.resolve(scriptDir, isWindows ? 'languagetool-languageserver.bat' : 'languagetool-languageserver')
-        const newScript = path.resolve(scriptDir, isWindows ? 'languagetool-languageserver-live.bat' : 'languagetool-languageserver-live')
+        const scriptDir = path.resolve(context.extensionPath, 'lib', 'languagetool-languageserver',
+            'build', 'install', 'languagetool-languageserver', 'bin');
+        let originalScript = path.resolve(scriptDir, isWindows ?
+            'languagetool-languageserver.bat' : 'languagetool-languageserver');
+        const newScript = path.resolve(scriptDir, isWindows ?
+            'languagetool-languageserver-live.bat' : 'languagetool-languageserver-live');
 
-        const scriptText = fs.readFileSync(originalScript, "utf8")
-        const newText = setClasspath(scriptText, buildDesiredClasspath())
-        fs.writeFileSync(newScript, newText, { mode: 0o777 })
+        const scriptText = fs.readFileSync(originalScript, "utf8");
+        const newText = setClasspath(scriptText, buildDesiredClasspath());
+        fs.writeFileSync(newScript, newText, { mode: 0o777 });
 
         let process = child_process.spawn(newScript, [server.address().port.toString()], options);
 
@@ -111,7 +114,7 @@ export function activate(context: ExtensionContext) {
     initializationOptions : {
       locale: env.language,
     },
-  }
+  };
 
   // Allow to enable languageTool in specific workspaces
   let config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
@@ -122,7 +125,7 @@ export function activate(context: ExtensionContext) {
         'languageTool', 'LanguageTool Client', createServer, clientOptions);
 
     // Hack to enable the server to add words to the dictionary.
-    // The client configuration cannot be changed directly by the server, so we send a
+    // The client configuration cannot be directly changed by the server, so we send a
     // telemetry notification to the client, which then adds the word to the dictionary.
     languageClient.onTelemetry((param) => {
       const config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
@@ -146,7 +149,9 @@ export function activate(context: ExtensionContext) {
         dictionary.push(word);
         dictionary.sort((a: string, b: string) =>
             a.localeCompare(b, undefined, { sensitivity: 'base' }));
-        config.update(languagePrefix + '.dictionary', dictionary, getConfigurationTarget('addToDictionary'));
+        config.update(languagePrefix + '.dictionary', dictionary,
+            getConfigurationTarget('addToDictionary'));
+
       } else if (telemetryMatch[1] == 'ignoreRuleInSentence') {
         const ignoreRuleInSentencePattern: RegExp = /^(.*?) (.*)$/;
         const ignoreRuleInSentenceMatch = telemetryMatch[2].match(ignoreRuleInSentencePattern);
