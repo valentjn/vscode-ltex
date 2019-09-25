@@ -143,6 +143,18 @@ class LSPClient(object):
 
 
 
+def processArxivTex(lspClient, tex, texPath, arxivId, saveTex):
+  if saveTex is not None:
+    saveTexPath = os.path.join(saveTex, (
+        "{}.tex".format(arxivId) if os.path.basename(texPath) == arxivId else
+        "{}_{}".format(arxivId, os.path.basename(texPath))))
+    print("Saving LaTeX file as: {}".format(saveTexPath))
+    with open(saveTexPath, "w") as f: f.write(tex)
+
+  lspClient.validate_document(tex, path=texPath)
+
+
+
 def main():
   parser = argparse.ArgumentParser(description=
       "Tests LTeX VS Code extension on randomly chosen arXiv papers.")
@@ -151,6 +163,8 @@ def main():
   parser.add_argument("--port", type=int, default=0, help=
       "Port to use for the communication with the language server. "
       "If omitted, use an arbitrary open port.")
+  parser.add_argument("--save-tex", type=str, help=
+      "Save checked LaTeX files in the specified directory.")
   parser.add_argument("--seed", type=int, help=
       "Use a specific seed to generate arXiv IDs. If omitted, use a random seed.")
   args = parser.parse_args()
@@ -251,7 +265,7 @@ def main():
                   print("Skipping LaTeX file {} due to Unicode decode error.".format(texPath))
                   continue
 
-                lspClient.validate_document(tex, path=texPath)
+                processArxivTex(lspClient, tex, texPath, arxivId, args.save_tex)
       else:
         texPath = tarPath
 
@@ -261,7 +275,7 @@ def main():
           print("Skipping LaTeX file {} due to Unicode decode error.".format(texPath))
           continue
 
-        lspClient.validate_document(tex, path=tarPath)
+        processArxivTex(lspClient, tex, texPath, arxivId, args.save_tex)
 
     time.sleep(5)
 
