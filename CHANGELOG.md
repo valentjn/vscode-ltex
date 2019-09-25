@@ -1,6 +1,6 @@
 # Changelog of vscode-ltex
 
-## 4.6.12 (upcoming)
+## 4.6.12
 - Patch LanguageTool's AnnotatedText with linear interpolation to hopefully fix the `fromPos must be less than toPos` LT errors for good
 - Fix \footnote in math mode messed up text mode and math mode
 - Increase robustness in case locale or settings are not provided
