@@ -24,7 +24,8 @@ export function activate(context: ExtensionContext) {
     const additionalPaths = discoverExtensionPaths()
       .map(p => path.resolve(context.extensionPath, '..', p, 'lib', '*'))
       .join(joinCharacter);
-    let desiredClasspath = path.join(appHome, 'lib', '*');
+    let desiredClasspath = path.join(appHome, 'lib', 'languagetool-patch.jar') + joinCharacter +
+        path.join(appHome, 'lib', '*');
 
     if (additionalPaths) {
       desiredClasspath += joinCharacter + additionalPaths;
