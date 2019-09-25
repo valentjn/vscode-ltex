@@ -18,24 +18,23 @@ export function activate(context: ExtensionContext) {
   }
 
   function buildDesiredClasspath() {
-    const isWindows = process.platform === 'win32';
-
-    const joinCharacter = isWindows ? ';' : ':';
-
+    const isWindows = (process.platform === 'win32');
+    const joinCharacter = (isWindows ? ';' : ':');
+    const appHome = (isWindows ? '%APP_HOME%' : '$APP_HOME');
     const additionalPaths = discoverExtensionPaths()
       .map(p => path.resolve(context.extensionPath, '..', p, 'lib', '*'))
       .join(joinCharacter);
+    let desiredClasspath = path.join(appHome, 'lib', '*');
 
-    let desiredClasspath = path.join('lib', '*');
     if (additionalPaths) {
       desiredClasspath += joinCharacter + additionalPaths;
     }
+
     return desiredClasspath;
   }
 
   function setClasspath(text: String, desiredClasspath: String): String {
-    const classpathRegexp = /^((?:set )?CLASSPATH=[%$]APP_HOME%?[\\\/])(.*)$/m;
-
+    const classpathRegexp = /^((?:set )?CLASSPATH=)(.*)$/m;
     return text.replace(classpathRegexp, `$1${desiredClasspath}`);
   }
 
