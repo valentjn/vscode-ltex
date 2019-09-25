@@ -145,8 +145,7 @@ class LSPClient(object):
 
 def main():
   parser = argparse.ArgumentParser(description=
-      "Tests LTeX language server (which must be already running) on randomly chosen "
-      "arXiv papers.")
+      "Tests LTeX VS Code extension on randomly chosen arXiv papers.")
   parser.add_argument("--seed", type=int, help=
       "Use a specific seed to generate arXiv IDs. If omitted, use a random seed.")
   parser.add_argument("--batch-size", type=int, default=10, help=
@@ -169,6 +168,10 @@ def main():
     raise RuntimeError("No LTeX English language extension found.")
 
   ltexMainPath, ltexLanguagePath = ltexMainPaths[-1], ltexLanguagePaths[-1]
+  print("Using LTeX extension from: {}".format(
+        os.path.join(extensionsPath, ltexMainPath)))
+  print("Using LTeX English language extension from: {}".format(
+        os.path.join(extensionsPath, ltexLanguagePath)))
 
   host, port = "localhost", 0
   addressInfo = socket.getaddrinfo(host, port)[0]
@@ -184,7 +187,7 @@ def main():
           "build", "install", "languagetool-languageserver", "lib", "*"),
         os.path.join(extensionsPath, ltexLanguagePath,  "lib", "*"),
       ]), "App", str(port)]
-  print("Starting LTeX server...")
+  print("Starting LanguageTool language server...")
   process = subprocess.Popen(ltexArgs, stdout=ltexStdout, stderr=ltexStderr)
 
   sock.listen()
