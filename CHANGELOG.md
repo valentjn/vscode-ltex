@@ -2,6 +2,7 @@
 
 ## 4.6.12 (upcoming)
 - Patch LanguageTool's AnnotatedText with linear interpolation to hopefully fix the `fromPos must be less than toPos` LT errors for good
+- Fix \footnote in math mode messed up text mode and math mode
 - Increase robustness in case locale or settings are not provided
 
 ## 4.6.11
