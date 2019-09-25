@@ -1,6 +1,7 @@
+/package-lock.json
+/*.vsix
+
 /.vscode-test/
 /dist/
 /node_modules/
 /out/
-/package-lock.json
-/*.vsix
