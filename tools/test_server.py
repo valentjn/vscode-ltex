@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import argparse
+import datetime
 import gzip
 import io
 import json
@@ -103,9 +104,12 @@ class LSPClient(object):
     if verbose: print("Sending request: {}".format(body))
     self.conn.send(lspRequest)
 
+    startTime = datetime.datetime.now()
     response = self.listen_for_response(requestId)
+    duration = (datetime.datetime.now() - startTime).total_seconds()
     stdoutOutput, stderrOutput = self.print_output()
-    if verbose: print("Received response: {}".format(response))
+
+    if verbose: print("Received response after {:.1f}s: {}".format(duration, response))
 
     if failOnStderrOutput and (len(stderrOutput) > 0):
       raise RuntimeError("Detected output on stderr.")
@@ -133,10 +137,16 @@ class LSPClient(object):
           "textDocument" : {"uri" : uri, "languageId" : "latex", "version" : 1, "text" : text},
         }, verbose=verbose)
 
+    startTime = datetime.datetime.now()
     notification = self.listen_for_notification(uri)
+    duration = (datetime.datetime.now() - startTime).total_seconds()
     stdoutOutput, stderrOutput = self.print_output()
-    if verbose: print("Received notification: {}".format(notification))
-    else: print("Obtained {} rule matches.".format(len(notification["params"]["diagnostics"])))
+
+    if verbose:
+      print("Received notification after {:.1f}s: {}".format(duration, notification))
+    else:
+      print("Obtained {} rule matches after {:.1f}s.".format(
+          len(notification["params"]["diagnostics"]), duration))
 
     if failOnStderrOutput and (len(stderrOutput) > 0):
       raise RuntimeError("Detected output on stderr.")
