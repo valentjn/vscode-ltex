@@ -198,10 +198,8 @@ def main():
 
   lspClient = LSPClient(conn, ltexStdout, ltexStderr)
 
-  # TODO: remove locale after LTeX has been updated to 4.6.12
   lspClient.send_request("initialize", {
         "processId" : os.getpid(), "rootUri" : None, "capabilities" : {},
-        "initializationOptions" : {"locale" : "en-US"},
       }, failOnStderrOutput=False)
 
   #lspClient.send_notification("workspace/didChangeConfiguration", {
