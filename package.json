@@ -33,6 +33,7 @@
     "onLanguage:markdown",
     "onLanguage:latex"
   ],
+  "extensionKind": "workspace",
   "main": "./dist/extension",
   "contributes": {
     "configuration": {

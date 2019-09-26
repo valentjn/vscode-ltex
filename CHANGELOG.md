@@ -1,5 +1,8 @@
 # Changelog of vscode-ltex
 
+## 4.6.13 (upcoming)
+- Fix language extensions not installable on remote machines (fixes [#8][#8])
+
 ## 4.6.12
 - Patch LanguageTool's AnnotatedText with linear interpolation to hopefully fix the `fromPos must be less than toPos` LT errors for good
 - Fix \footnote in math mode messed up text mode and math mode
@@ -91,4 +94,5 @@
 - Initial release
 
 [#4]: https://github.com/valentjn/vscode-ltex/issues/4
+[#8]: https://github.com/valentjn/vscode-ltex/issues/8
 [ltls#1]: https://github.com/valentjn/languagetool-languageserver/issues/1
