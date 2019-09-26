@@ -2,6 +2,7 @@
 
 ## 4.6.13 (upcoming)
 - Fix language extensions not installable on remote machines (fixes [#8][#8])
+- Fix language server not reinitialized after a language extension has been installed (which was missing during initialization)
 
 ## 4.6.12
 - Patch LanguageTool's AnnotatedText with linear interpolation to hopefully fix the `fromPos must be less than toPos` LT errors for good
