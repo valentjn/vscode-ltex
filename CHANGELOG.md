@@ -1,6 +1,6 @@
 # Changelog of vscode-ltex
 
-## 4.6.13 (upcoming)
+## 4.6.13
 - Fix language extensions not installable on remote machines (fixes [#8][#8])
 - Fix language server not reinitialized after a language extension has been installed (which was missing during initialization)
 
