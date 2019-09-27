@@ -6,7 +6,7 @@ import * as net from 'net';
 import * as child_process from "child_process";
 
 import { env, extensions, workspace, Disposable, ExtensionContext,
-    WorkspaceConfiguration} from 'vscode';
+    WorkspaceConfiguration } from 'vscode';
 import { LanguageClient, LanguageClientOptions, StreamInfo } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
@@ -36,6 +36,11 @@ export function activate(context: ExtensionContext) {
   function setClasspath(text: string, desiredClasspath: string): string {
     const classpathRegexp = /^((?:set )?CLASSPATH=)(.*)$/m;
     return text.replace(classpathRegexp, `$1${desiredClasspath}`);
+  }
+
+  function getConfigurationTarget(commandName: string): boolean {
+    return (((config['configurationTarget'][commandName] == 'workspace') &&
+        workspace.rootPath) ? undefined : true);
   }
 
   function createServer(): Promise<StreamInfo> {
@@ -131,15 +136,12 @@ export function activate(context: ExtensionContext) {
   // The client configuration cannot be directly changed by the server, so we send a
   // telemetry notification to the client, which then changes the configuration.
   languageClient.onTelemetry((params) => {
-    const config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
-    const getConfigurationTarget = ((commandName: string) =>
-        (((config['configurationTarget'][commandName] == 'workspace') &&
-          workspace.rootPath) ? undefined : true));
-
     if (!('commandName' in params) || !params['commandName'].startsWith('ltex.')) {
       console.warn(`vscode-ltex: Unknown telemetry event "${params}"`);
       return;
     }
+
+    const config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
 
     if (params['commandName'] === 'ltex.addToDictionary') {
       let languagePrefix: string = config['language'];
