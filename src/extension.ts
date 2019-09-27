@@ -134,32 +134,26 @@ export function activate(context: ExtensionContext) {
       const getConfigurationTarget = ((commandName: string) =>
           (((config['configurationTarget'][commandName] == 'workspace') &&
             workspace.rootPath) ? undefined : true));
-      const telemetryPattern: RegExp = /^ltex\.(addToDictionary|ignoreRuleInSentence) (.*)$/;
-      const telemetryMatch = params.match(telemetryPattern);
 
-      if (telemetryMatch == null) {
+      if (!('commandName' in params) || !params['commandName'].startsWith('ltex.')) {
         console.warn(`vscode-ltex: Unknown telemetry event "${params}"`);
         return;
       }
 
-      if (telemetryMatch[1] == 'addToDictionary') {
-        const word: string = telemetryMatch[2];
+      if (params['commandName'] === 'ltex.addToDictionary') {
         let languagePrefix: string = config['language'];
         const dashPos: number = languagePrefix.indexOf('-');
         if (dashPos != -1) languagePrefix = languagePrefix.substring(0, dashPos);
         let dictionary: string[] = config[languagePrefix]['dictionary'];
-        dictionary.push(word);
+        dictionary.push(params['word']);
         dictionary.sort((a: string, b: string) =>
             a.localeCompare(b, undefined, { sensitivity: 'base' }));
         config.update(languagePrefix + '.dictionary', dictionary,
             getConfigurationTarget('addToDictionary'));
 
-      } else if (telemetryMatch[1] == 'ignoreRuleInSentence') {
-        const ignoreRuleInSentencePattern: RegExp = /^(.*?) (.*)$/;
-        const ignoreRuleInSentenceMatch = telemetryMatch[2].match(ignoreRuleInSentencePattern);
-        const rule: string = ignoreRuleInSentenceMatch[1];
-        const sentence: string = ignoreRuleInSentenceMatch[2];
-        config['ignoreRuleInSentence'].push({'rule': rule, 'sentence': sentence});
+      } else if (params['commandName'] === 'ltex.ignoreRuleInSentence') {
+        config['ignoreRuleInSentence'].push({'rule': params['ruleId'],
+            'sentence': params['sentencePattern']});
         config.update('ignoreRuleInSentence', config['ignoreRuleInSentence'],
             getConfigurationTarget('ignoreRuleInSentence'));
       }
