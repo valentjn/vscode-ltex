@@ -10,14 +10,13 @@ import { env, extensions, workspace, Disposable, ExtensionContext,
 import { LanguageClient, LanguageClientOptions, StreamInfo } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
-
-  function discoverExtensionPaths() {
+  function discoverExtensionPaths(): string[] {
     return extensions.all
       .filter(x => x.id.startsWith("valentjn.vscode-ltex-"))
       .map(x => x.extensionPath);
   }
 
-  function buildDesiredClasspath() {
+  function buildDesiredClasspath(): string {
     const isWindows = (process.platform === 'win32');
     const joinCharacter = (isWindows ? ';' : ':');
     const appHome = (isWindows ? '%APP_HOME%' : '$APP_HOME');
@@ -34,14 +33,14 @@ export function activate(context: ExtensionContext) {
     return desiredClasspath;
   }
 
-  function setClasspath(text: String, desiredClasspath: String): String {
+  function setClasspath(text: string, desiredClasspath: string): string {
     const classpathRegexp = /^((?:set )?CLASSPATH=)(.*)$/m;
     return text.replace(classpathRegexp, `$1${desiredClasspath}`);
   }
 
   function createServer(): Promise<StreamInfo> {
     return new Promise((resolve, reject) => {
-      var server = net.createServer((socket) => {
+      var server: net.Server = net.createServer((socket) => {
         console.log("Creating server");
 
         resolve({
@@ -55,25 +54,27 @@ export function activate(context: ExtensionContext) {
         throw err;
       });
 
-      let isWindows = process.platform === 'win32';
+      const isWindows: boolean = (process.platform === 'win32');
 
       // grab a random port.
       server.listen(() => {
         // Start the child java process
-        let options = { cwd: workspace.rootPath };
+        const options: child_process.SpawnOptions = { cwd: workspace.rootPath };
 
-        const scriptDir = path.resolve(context.extensionPath, 'lib', 'languagetool-languageserver',
-            'build', 'install', 'languagetool-languageserver', 'bin');
-        let originalScript = path.resolve(scriptDir, isWindows ?
+        const scriptDir: string = path.resolve(context.extensionPath, 'lib',
+            'languagetool-languageserver', 'build', 'install',
+            'languagetool-languageserver', 'bin');
+        const originalScript: string = path.resolve(scriptDir, isWindows ?
             'languagetool-languageserver.bat' : 'languagetool-languageserver');
-        const newScript = path.resolve(scriptDir, isWindows ?
+        const newScript: string = path.resolve(scriptDir, isWindows ?
             'languagetool-languageserver-live.bat' : 'languagetool-languageserver-live');
 
-        const scriptText = fs.readFileSync(originalScript, "utf8");
-        const newText = setClasspath(scriptText, buildDesiredClasspath());
+        const scriptText: string = fs.readFileSync(originalScript, "utf8");
+        const newText: string = setClasspath(scriptText, buildDesiredClasspath());
         fs.writeFileSync(newScript, newText, { mode: 0o777 });
 
-        let process = child_process.spawn(newScript, [server.address().port.toString()], options);
+        const process: child_process.ChildProcess = child_process.spawn(
+            newScript, [server.address().port.toString()], options);
 
         // Send raw output to a file
         if (context.storagePath) {
@@ -82,8 +83,8 @@ export function activate(context: ExtensionContext) {
             fs.mkdirSync(context.storagePath);
           }
 
-          let logFile = context.storagePath + '/vscode-ltex.log';
-          let logStream = fs.createWriteStream(logFile, { flags: 'w' });
+          const logFile: string = context.storagePath + '/vscode-ltex.log';
+          const logStream: fs.WriteStream = fs.createWriteStream(logFile, { flags: 'w' });
           console.log(`Writing log to '${logFile}'`);
 
           process.stdout.pipe(logStream);
@@ -98,7 +99,7 @@ export function activate(context: ExtensionContext) {
   };
 
   // Options to control the language client
-  let clientOptions: LanguageClientOptions = {
+  const clientOptions: LanguageClientOptions = {
     documentSelector: [
       {scheme: 'file', language: 'markdown'},
       {scheme: 'untitled', language: 'markdown'},
