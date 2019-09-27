@@ -128,16 +128,16 @@ export function activate(context: ExtensionContext) {
     // Hack to enable the server to add words to the dictionary.
     // The client configuration cannot be directly changed by the server, so we send a
     // telemetry notification to the client, which then adds the word to the dictionary.
-    languageClient.onTelemetry((param) => {
+    languageClient.onTelemetry((params) => {
       const config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
       const getConfigurationTarget = ((commandName: string) =>
           (((config['configurationTarget'][commandName] == 'workspace') &&
             workspace.rootPath) ? undefined : true));
       const telemetryPattern: RegExp = /^ltex\.(addToDictionary|ignoreRuleInSentence) (.*)$/;
-      const telemetryMatch = param.match(telemetryPattern);
+      const telemetryMatch = params.match(telemetryPattern);
 
       if (telemetryMatch == null) {
-        console.warn(`vscode-ltex: Unknown telemetry event "${param}"`);
+        console.warn(`vscode-ltex: Unknown telemetry event "${params}"`);
         return;
       }
 
