@@ -118,12 +118,12 @@ export function activate(context: ExtensionContext) {
   };
 
   // Allow to enable languageTool in specific workspaces
-  let config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
+  const config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
 
   if (!config['enabled']) return;
 
   // create the language client
-  let languageClient = new LanguageClient(
+  const languageClient: LanguageClient = new LanguageClient(
       'languageTool', 'LanguageTool Client', createServer, clientOptions);
 
   // Hack to enable the server to execute commands that change the client configuration
