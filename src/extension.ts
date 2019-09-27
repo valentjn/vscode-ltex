@@ -123,9 +123,8 @@ export function activate(context: ExtensionContext) {
   };
 
   // Allow to enable languageTool in specific workspaces
-  const config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
-
-  if (!config['enabled']) return;
+  const workspaceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
+  if (!workspaceConfig['enabled']) return;
 
   // create the language client
   const languageClient: LanguageClient = new LanguageClient(
@@ -141,23 +140,23 @@ export function activate(context: ExtensionContext) {
       return;
     }
 
-    const config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
+    const resourceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
 
     if (params['commandName'] === 'ltex.addToDictionary') {
-      let languagePrefix: string = config['language'];
+      let languagePrefix: string = resourceConfig['language'];
       const dashPos: number = languagePrefix.indexOf('-');
       if (dashPos != -1) languagePrefix = languagePrefix.substring(0, dashPos);
-      let dictionary: string[] = config[languagePrefix]['dictionary'];
+      let dictionary: string[] = resourceConfig[languagePrefix]['dictionary'];
       dictionary.push(params['word']);
       dictionary.sort((a: string, b: string) =>
           a.localeCompare(b, undefined, { sensitivity: 'base' }));
-      config.update(languagePrefix + '.dictionary', dictionary,
+      resourceConfig.update(languagePrefix + '.dictionary', dictionary,
           getConfigurationTarget('addToDictionary'));
 
     } else if (params['commandName'] === 'ltex.ignoreRuleInSentence') {
-      config['ignoreRuleInSentence'].push({'rule': params['ruleId'],
+      resourceConfig['ignoreRuleInSentence'].push({'rule': params['ruleId'],
           'sentence': params['sentencePattern']});
-      config.update('ignoreRuleInSentence', config['ignoreRuleInSentence'],
+      resourceConfig.update('ignoreRuleInSentence', resourceConfig['ignoreRuleInSentence'],
           getConfigurationTarget('ignoreRuleInSentence'));
     }
   });
