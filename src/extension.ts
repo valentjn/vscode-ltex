@@ -125,9 +125,10 @@ export function activate(context: ExtensionContext) {
     let languageClient = new LanguageClient(
         'languageTool', 'LanguageTool Client', createServer, clientOptions);
 
-    // Hack to enable the server to add words to the dictionary.
+    // Hack to enable the server to execute commands that change the client configuration
+    // (e.g., adding words to the dictionary).
     // The client configuration cannot be directly changed by the server, so we send a
-    // telemetry notification to the client, which then adds the word to the dictionary.
+    // telemetry notification to the client, which then changes the configuration.
     languageClient.onTelemetry((params) => {
       const config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
       const getConfigurationTarget = ((commandName: string) =>
