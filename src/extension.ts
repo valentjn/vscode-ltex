@@ -3,7 +3,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as net from 'net';
-import * as child_process from "child_process";
+import * as child_process from 'child_process';
 
 import { env, extensions, workspace, ConfigurationTarget, Disposable, ExtensionContext,
     Uri, WorkspaceConfiguration } from 'vscode';
@@ -12,7 +12,7 @@ import { LanguageClient, LanguageClientOptions, StreamInfo } from 'vscode-langua
 export function activate(context: ExtensionContext) {
   function discoverExtensionPaths(): string[] {
     return extensions.all
-      .filter(x => x.id.startsWith("valentjn.vscode-ltex-"))
+      .filter(x => x.id.startsWith('valentjn.vscode-ltex-'))
       .map(x => x.extensionPath);
   }
 
@@ -68,14 +68,14 @@ export function activate(context: ExtensionContext) {
   function createServer(): Promise<StreamInfo> {
     return new Promise((resolve, reject) => {
       var server: net.Server = net.createServer((socket) => {
-        console.log("Creating server");
+        console.log('Creating server');
 
         resolve({
           reader: socket,
           writer: socket
         });
 
-        socket.on('end', () => console.log("Disconnected"));
+        socket.on('end', () => console.log('Disconnected'));
       }).on('error', (err) => {
         // handle errors here
         throw err;
@@ -94,7 +94,7 @@ export function activate(context: ExtensionContext) {
         const newScript: string = path.resolve(scriptDir, isWindows ?
             'languagetool-languageserver-live.bat' : 'languagetool-languageserver-live');
 
-        const scriptText: string = fs.readFileSync(originalScript, "utf8");
+        const scriptText: string = fs.readFileSync(originalScript, 'utf8');
         const newText: string = setClasspath(scriptText, buildDesiredClasspath());
         fs.writeFileSync(newScript, newText, { mode: 0o777 });
 
