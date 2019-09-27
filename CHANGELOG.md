@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.6.14 (upcoming)
+
+- Support multi-root workspaces, all configuration settings except `ltex.enabled` are now resource-specific (fixes [#7][#7])
+
 ## 4.6.13
 
 - Fix language extensions not installable on remote machines (fixes [#8][#8])
@@ -112,5 +116,6 @@
 - Initial release
 
 [#4]: https://github.com/valentjn/vscode-ltex/issues/4
+[#7]: https://github.com/valentjn/vscode-ltex/issues/7
 [#8]: https://github.com/valentjn/vscode-ltex/issues/8
 [ltls#1]: https://github.com/valentjn/languagetool-languageserver/issues/1

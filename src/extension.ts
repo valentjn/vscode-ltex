@@ -5,8 +5,8 @@ import * as path from 'path';
 import * as net from 'net';
 import * as child_process from "child_process";
 
-import { env, extensions, workspace, Disposable, ExtensionContext,
-    WorkspaceConfiguration } from 'vscode';
+import { env, extensions, workspace, ConfigurationTarget, Disposable, ExtensionContext,
+    Uri, WorkspaceConfiguration } from 'vscode';
 import { LanguageClient, LanguageClientOptions, StreamInfo } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
@@ -38,9 +38,31 @@ export function activate(context: ExtensionContext) {
     return text.replace(classpathRegexp, `$1${desiredClasspath}`);
   }
 
-  function getConfigurationTarget(commandName: string): boolean {
-    return (((config['configurationTarget'][commandName] == 'workspace') &&
-        workspace.rootPath) ? undefined : true);
+  async function setConfigurationSetting(settingName: string, settingValue: any,
+      resourceConfig: WorkspaceConfiguration, commandName: string): Promise<void> {
+    const configurationTargetString: string = resourceConfig['configurationTarget'][commandName];
+    let configurationTargets: ConfigurationTarget[];
+
+    if (configurationTargetString === 'global') {
+      configurationTargets = [ConfigurationTarget.Global];
+    } else if (configurationTargetString === 'workspace') {
+      configurationTargets = [ConfigurationTarget.Workspace, ConfigurationTarget.Global];
+    } else if (configurationTargetString === 'workspaceFolder') {
+      configurationTargets = [ConfigurationTarget.WorkspaceFolder, ConfigurationTarget.Workspace,
+          ConfigurationTarget.Global];
+    }
+
+    for (const configurationTarget of configurationTargets) {
+      try {
+        await resourceConfig.update(settingName, settingValue, configurationTarget);
+        return;
+      } catch (e) {
+        if (configurationTarget == configurationTargets[configurationTargets.length - 1]) {
+          console.error(`Could not set configuration "${settingName}":`);
+          throw e;
+        }
+      }
+    }
   }
 
   function createServer(): Promise<StreamInfo> {
@@ -140,7 +162,8 @@ export function activate(context: ExtensionContext) {
       return;
     }
 
-    const resourceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
+    const resourceConfig: WorkspaceConfiguration =
+        workspace.getConfiguration('ltex', Uri.parse(params['uri']));
 
     if (params['commandName'] === 'ltex.addToDictionary') {
       let languagePrefix: string = resourceConfig['language'];
@@ -150,14 +173,14 @@ export function activate(context: ExtensionContext) {
       dictionary.push(params['word']);
       dictionary.sort((a: string, b: string) =>
           a.localeCompare(b, undefined, { sensitivity: 'base' }));
-      resourceConfig.update(languagePrefix + '.dictionary', dictionary,
-          getConfigurationTarget('addToDictionary'));
+      setConfigurationSetting(languagePrefix + '.dictionary', dictionary,
+          resourceConfig, 'addToDictionary');
 
     } else if (params['commandName'] === 'ltex.ignoreRuleInSentence') {
       resourceConfig['ignoreRuleInSentence'].push({'rule': params['ruleId'],
           'sentence': params['sentencePattern']});
-      resourceConfig.update('ignoreRuleInSentence', resourceConfig['ignoreRuleInSentence'],
-          getConfigurationTarget('ignoreRuleInSentence'));
+      setConfigurationSetting('ignoreRuleInSentence', resourceConfig['ignoreRuleInSentence'],
+          resourceConfig, 'ignoreRuleInSentence');
     }
   });
 

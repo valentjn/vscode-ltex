@@ -23,7 +23,8 @@
     "grammar",
     "proofread",
     "checker",
-    "latex"
+    "latex",
+    "multi-root ready"
   ],
   "categories": [
     "Linters",
@@ -41,12 +42,14 @@
       "properties": {
         "ltex.enabled": {
           "type": "boolean",
+          "scope": "window",
           "default": true,
           "markdownDescription": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces.",
           "description": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces."
         },
         "ltex.language": {
           "type": "string",
+          "scope": "resource",
           "default": "en-US",
           "markdownDescription": "The language (e.g., `en-US`) LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension](https://marketplace.visualstudio.com/search?term=ltex&target=VSCode). See the Marketplace description of the installed *language support extension* for possible values. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).",
           "description": "The language (e.g., en-US) LanguageTool should check against. For supported languages see the list of languages at https://languagetool.org/languages/. Requires the installation of a language support extension via https://marketplace.visualstudio.com/search?term=ltex&target=VSCode. See the Marketplace description of the installed language support extension for possible values. Use a specific variant like en-US or de-DE instead of the generic language code like en or de to obtain spelling corrections (in addition to grammar corrections).",
@@ -57,6 +60,7 @@
         },
         "ltex.diagnosticSeverity": {
           "type": "string",
+          "scope": "resource",
           "default": "information",
           "enum": [
             "error",
@@ -75,6 +79,7 @@
         },
         "ltex.commands.ignore": {
           "type": "array",
+          "scope": "resource",
           "default": [],
           "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser, listed together with empty arguments.",
           "description": "List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., \"\\ref{}\", \"\\documentclass[]{}\").",
@@ -85,6 +90,7 @@
         },
         "ltex.commands.dummy": {
           "type": "array",
+          "scope": "resource",
           "default": [],
           "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments. LT<sub>E</sub>X internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.",
           "description": "List of additional LaTeX commands to be replaced by dummy words (i.e., Dummy0, Dummy1, etc.), listed together with empty arguments (e.g., \"\\cite{}\", \"\\cite[]{}\"). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.",
@@ -95,6 +101,7 @@
         },
         "ltex.ignoreRuleInSentence": {
           "type": "array",
+          "scope": "resource",
           "default": [],
           "items": {
             "type": "object",
@@ -121,9 +128,10 @@
         },
         "ltex.configurationTarget": {
           "type": "object",
+          "scope": "resource",
           "default": {
             "addToDictionary": "global",
-            "ignoreRuleInSentence": "workspace"
+            "ignoreRuleInSentence": "workspaceFolder"
           },
           "propertyNames": {
             "type": "string",
@@ -137,22 +145,26 @@
               "type": "string",
               "enum": [
                 "global",
-                "workspace"
+                "workspace",
+                "workspaceFolder"
               ],
               "enumDescriptions": [
                 "When adding a word to the dictionary, always update the global configuration.",
-                "When adding a word to the dictionary, update the workspace configuration if currently in a workspace, otherwise the global configuration."
+                "When adding a word to the dictionary, update the workspace configuration if currently in a workspace, otherwise update the global configuration.",
+                "When adding a word to the dictionary, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the global configuration."
               ]
             },
             "ignoreRuleInSentence": {
               "type": "string",
               "enum": [
                 "global",
-                "workspace"
+                "workspace",
+                "workspaceFolder"
               ],
               "enumDescriptions": [
                 "When ignoring a rule in a sentence, always update the global configuration.",
-                "When ignoring a rule in a sentence, update the workspace configuration if currently in a workspace, otherwise the global configuration."
+                "When ignoring a rule in a sentence, update the workspace configuration if currently in a workspace, otherwise update the global configuration.",
+                "When ignoring a rule in a sentence, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the global configuration."
               ]
             }
           },
@@ -161,18 +173,21 @@
         },
         "ltex.additionalRules.languageModel": {
           "type": "string",
+          "scope": "resource",
           "default": "",
           "markdownDescription": "Optional path to a directory with rules of a language model with *n*-gram occurrence counts.",
           "description": "Optional path to a directory with rules of a language model with n-gram occurrence counts."
         },
         "ltex.additionalRules.neuralNetworkModel": {
           "type": "string",
+          "scope": "resource",
           "default": "",
           "markdownDescription": "Optional path to a directory with rules of a pretrained neural network model.",
           "description": "Optional path to a directory with rules of a pretrained neural network model."
         },
         "ltex.additionalRules.word2VecModel": {
           "type": "string",
+          "scope": "resource",
           "default": "",
           "markdownDescription": "Optional path to a directory with rules of a word2vec language model.",
           "description": "Optional path to a directory with rules of a word2vec language model."
