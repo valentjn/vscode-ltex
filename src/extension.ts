@@ -86,8 +86,6 @@ export function activate(context: ExtensionContext) {
       // grab a random port.
       server.listen(() => {
         // Start the child java process
-        const options: child_process.SpawnOptions = { cwd: workspace.rootPath };
-
         const scriptDir: string = path.resolve(context.extensionPath, 'lib',
             'languagetool-languageserver', 'build', 'install',
             'languagetool-languageserver', 'bin');
@@ -101,7 +99,7 @@ export function activate(context: ExtensionContext) {
         fs.writeFileSync(newScript, newText, { mode: 0o777 });
 
         const process: child_process.ChildProcess = child_process.spawn(
-            newScript, [server.address().port.toString()], options);
+            newScript, [server.address().port.toString()]);
 
         // Send raw output to a file
         if (context.storagePath) {
