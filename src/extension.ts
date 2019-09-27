@@ -120,49 +120,49 @@ export function activate(context: ExtensionContext) {
   // Allow to enable languageTool in specific workspaces
   let config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
 
-  if (config['enabled']) {
-    // create the language client
-    let languageClient = new LanguageClient(
-        'languageTool', 'LanguageTool Client', createServer, clientOptions);
+  if (!config['enabled']) return;
 
-    // Hack to enable the server to execute commands that change the client configuration
-    // (e.g., adding words to the dictionary).
-    // The client configuration cannot be directly changed by the server, so we send a
-    // telemetry notification to the client, which then changes the configuration.
-    languageClient.onTelemetry((params) => {
-      const config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
-      const getConfigurationTarget = ((commandName: string) =>
-          (((config['configurationTarget'][commandName] == 'workspace') &&
-            workspace.rootPath) ? undefined : true));
+  // create the language client
+  let languageClient = new LanguageClient(
+      'languageTool', 'LanguageTool Client', createServer, clientOptions);
 
-      if (!('commandName' in params) || !params['commandName'].startsWith('ltex.')) {
-        console.warn(`vscode-ltex: Unknown telemetry event "${params}"`);
-        return;
-      }
+  // Hack to enable the server to execute commands that change the client configuration
+  // (e.g., adding words to the dictionary).
+  // The client configuration cannot be directly changed by the server, so we send a
+  // telemetry notification to the client, which then changes the configuration.
+  languageClient.onTelemetry((params) => {
+    const config: WorkspaceConfiguration = workspace.getConfiguration('ltex');
+    const getConfigurationTarget = ((commandName: string) =>
+        (((config['configurationTarget'][commandName] == 'workspace') &&
+          workspace.rootPath) ? undefined : true));
 
-      if (params['commandName'] === 'ltex.addToDictionary') {
-        let languagePrefix: string = config['language'];
-        const dashPos: number = languagePrefix.indexOf('-');
-        if (dashPos != -1) languagePrefix = languagePrefix.substring(0, dashPos);
-        let dictionary: string[] = config[languagePrefix]['dictionary'];
-        dictionary.push(params['word']);
-        dictionary.sort((a: string, b: string) =>
-            a.localeCompare(b, undefined, { sensitivity: 'base' }));
-        config.update(languagePrefix + '.dictionary', dictionary,
-            getConfigurationTarget('addToDictionary'));
+    if (!('commandName' in params) || !params['commandName'].startsWith('ltex.')) {
+      console.warn(`vscode-ltex: Unknown telemetry event "${params}"`);
+      return;
+    }
 
-      } else if (params['commandName'] === 'ltex.ignoreRuleInSentence') {
-        config['ignoreRuleInSentence'].push({'rule': params['ruleId'],
-            'sentence': params['sentencePattern']});
-        config.update('ignoreRuleInSentence', config['ignoreRuleInSentence'],
-            getConfigurationTarget('ignoreRuleInSentence'));
-      }
-    });
+    if (params['commandName'] === 'ltex.addToDictionary') {
+      let languagePrefix: string = config['language'];
+      const dashPos: number = languagePrefix.indexOf('-');
+      if (dashPos != -1) languagePrefix = languagePrefix.substring(0, dashPos);
+      let dictionary: string[] = config[languagePrefix]['dictionary'];
+      dictionary.push(params['word']);
+      dictionary.sort((a: string, b: string) =>
+          a.localeCompare(b, undefined, { sensitivity: 'base' }));
+      config.update(languagePrefix + '.dictionary', dictionary,
+          getConfigurationTarget('addToDictionary'));
 
-    let disposable: Disposable = languageClient.start();
+    } else if (params['commandName'] === 'ltex.ignoreRuleInSentence') {
+      config['ignoreRuleInSentence'].push({'rule': params['ruleId'],
+          'sentence': params['sentencePattern']});
+      config.update('ignoreRuleInSentence', config['ignoreRuleInSentence'],
+          getConfigurationTarget('ignoreRuleInSentence'));
+    }
+  });
 
-    // Push the disposable to the context's subscriptions so that the
-    // client can be deactivated on extension deactivation
-    context.subscriptions.push(disposable);
-  }
+  let disposable: Disposable = languageClient.start();
+
+  // Push the disposable to the context's subscriptions so that the
+  // client can be deactivated on extension deactivation
+  context.subscriptions.push(disposable);
 }
