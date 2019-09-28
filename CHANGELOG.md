@@ -3,6 +3,7 @@
 ## 4.6.14 (upcoming)
 
 - Support multi-root workspaces, all configuration settings except `ltex.enabled` are now resource-specific (fixes [#7][#7])
+- Save dictionary settings under full language short code (e.g., `en-US` instead of `en`). If you already have a dictionary under `ltex.en.dictionary` and use `en-US` as language (not `en`), you have to rename the settings name to `ltex.en-US.dictionary` (similarly for other languages).
 
 ## 4.6.13
 

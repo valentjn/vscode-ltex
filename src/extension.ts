@@ -164,14 +164,12 @@ export function activate(context: ExtensionContext) {
         workspace.getConfiguration('ltex', Uri.parse(params['uri']));
 
     if (params['commandName'] === 'ltex.addToDictionary') {
-      let languagePrefix: string = resourceConfig['language'];
-      const dashPos: number = languagePrefix.indexOf('-');
-      if (dashPos != -1) languagePrefix = languagePrefix.substring(0, dashPos);
-      let dictionary: string[] = resourceConfig[languagePrefix]['dictionary'];
+      const language: string = resourceConfig['language'];
+      let dictionary: string[] = resourceConfig[language]['dictionary'];
       dictionary.push(params['word']);
       dictionary.sort((a: string, b: string) =>
           a.localeCompare(b, undefined, { sensitivity: 'base' }));
-      setConfigurationSetting(languagePrefix + '.dictionary', dictionary,
+      setConfigurationSetting(language + '.dictionary', dictionary,
           resourceConfig, 'addToDictionary');
 
     } else if (params['commandName'] === 'ltex.ignoreRuleInSentence') {
