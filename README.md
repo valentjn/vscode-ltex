@@ -41,7 +41,7 @@ This extension contributes the following settings:
 
 ## Versioning
 
-The LT<sub>E</sub>X extension has adopted the versioning of its LanguageTool dependency. For example, if this extension has version 4.6.0 it is powered by LanguageTool 4.6. vscode-ltex 4.6.1 would also use LanguageTool 4.6. vscode-ltex 4.7.0 would use LanguageTool 4.7. **The LanguageTool version of this extension must match the LanguageTool version of your installed language support extensions.**
+The LT<sub>E</sub>X extension has adopted the versioning of its LanguageTool dependency. For example, if this extension has version 4.7.0 it is powered by LanguageTool 4.7. LT<sub>E</sub>X 4.7.1 would also use LanguageTool 4.7. LT<sub>E</sub>X 4.8.0 would use LanguageTool 4.8. **The LanguageTool version of this extension must match the LanguageTool version of your installed language support extensions.**
 
 ## Contributing
 
