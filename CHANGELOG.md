@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.7.1 (upcoming)
+
+- Change defaults for `ltex.additionalRules` settings from `""` to `null`
+
 ## 4.7.0
 
 - Update to LanguageTool 4.7 (see [4.7 Release Notes](https://github.com/languagetool-org/languagetool/blob/64f87c18c4d0c13f365d6d85c7aa8c61b7ed2ccf/languagetool-standalone/CHANGES.md#47-2019-09-28))
