@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.7.1 (upcoming)
+## 4.7.1
 
 - Add `ltex.additionalRules.motherTongue` option to enable detection of false friends
 - Change defaults for `ltex.additionalRules` settings from `""` to `null`
