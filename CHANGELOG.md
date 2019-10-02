@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.7.2 (upcoming)
+
+- Add missing error message if legacy false friends could not be loaded
+
 ## 4.7.1
 
 - Add `ltex.additionalRules.motherTongue` option to enable detection of false friends
