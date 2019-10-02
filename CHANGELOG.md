@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.7.2 (upcoming)
+## 4.7.2
 
 - Add missing error message if legacy false friends could not be loaded
 
