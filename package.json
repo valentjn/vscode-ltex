@@ -171,6 +171,17 @@
           "markdownDescription": "Controls which `settings.json` to update when using one of the quick fixes.",
           "description": "Controls which \"settings.json\" to update when using one of the quick fixes. \"global\" always updates the global configuration, while \"workspace\" updates the workspace configuration if currently in a workspace, otherwise the global configuration."
         },
+        "ltex.additionalRules.motherTongue": {
+          "type": ["string", null],
+          "scope": "resource",
+          "default": null,
+          "markdownDescription": "Optional mother tongue of the user (e.g., `de-DE`). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see `ltex.additionalRules.languageModel`).",
+          "description": "Optional mother tongue of the user (e.g., de-DE). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see ltex.additionalRules.languageModel).",
+          "examples": [
+            "en-US",
+            "de-DE"
+          ]
+        },
         "ltex.additionalRules.languageModel": {
           "type": ["string", null],
           "scope": "resource",
