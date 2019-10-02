@@ -6,7 +6,7 @@
 
 ## 4.7.1
 
-- Add `ltex.additionalRules.motherTongue` option to enable detection of false friends
+- Add `ltex.additionalRules.motherTongue` setting to enable detection of false friends (fixes [#11][#11])
 - Change defaults for `ltex.additionalRules` settings from `""` to `null`
 
 ## 4.7.0
@@ -132,4 +132,5 @@
 [#4]: https://github.com/valentjn/vscode-ltex/issues/4
 [#7]: https://github.com/valentjn/vscode-ltex/issues/7
 [#8]: https://github.com/valentjn/vscode-ltex/issues/8
+[#11]: https://github.com/valentjn/vscode-ltex/issues/11
 [ltls#1]: https://github.com/valentjn/languagetool-languageserver/issues/1
