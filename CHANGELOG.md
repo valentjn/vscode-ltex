@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.7.4 (upcoming)
+
+- Fix a bug where the `codeAction` request gets stuck in infinite loop
+
 ## 4.7.3
 
 - Fix null pointer error for word2vec quick fixes (fixes [#12][#12])
