@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.7.3 (upcoming)
+## 4.7.3
 
 - Fix null pointer error for word2vec quick fixes (fixes [#12][#12])
 
