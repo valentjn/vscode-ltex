@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.7.3 (upcoming)
+
+- Fix null pointer error for word2vec quick fixes (fixes [#12][#12])
+
 ## 4.7.2
 
 - Add missing error message if legacy false friends could not be loaded
@@ -133,4 +137,5 @@
 [#7]: https://github.com/valentjn/vscode-ltex/issues/7
 [#8]: https://github.com/valentjn/vscode-ltex/issues/8
 [#11]: https://github.com/valentjn/vscode-ltex/issues/11
+[#12]: https://github.com/valentjn/vscode-ltex/issues/12
 [ltls#1]: https://github.com/valentjn/languagetool-languageserver/issues/1
