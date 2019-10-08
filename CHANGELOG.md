@@ -3,6 +3,7 @@
 ## 4.7.4 (upcoming)
 
 - Fix a bug where the `codeAction` request gets stuck in infinite loop
+- Fix another NullPointerException for word2vec
 
 ## 4.7.3
 
