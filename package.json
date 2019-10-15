@@ -131,12 +131,14 @@
           "scope": "resource",
           "default": {
             "addToDictionary": "global",
+            "disableRule": "workspaceFolder",
             "ignoreRuleInSentence": "workspaceFolder"
           },
           "propertyNames": {
             "type": "string",
             "enum": [
               "addToDictionary",
+              "disableRule",
               "ignoreRuleInSentence"
             ]
           },
@@ -152,6 +154,19 @@
                 "When adding a word to the dictionary, always update the global configuration.",
                 "When adding a word to the dictionary, update the workspace configuration if currently in a workspace, otherwise update the global configuration.",
                 "When adding a word to the dictionary, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the global configuration."
+              ]
+            },
+            "disableRule": {
+              "type": "string",
+              "enum": [
+                "global",
+                "workspace",
+                "workspaceFolder"
+              ],
+              "enumDescriptions": [
+                "When disabling a rule, always update the global configuration.",
+                "When disabling a rule, update the workspace configuration if currently in a workspace, otherwise update the global configuration.",
+                "When disabling a rule, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the global configuration."
               ]
             },
             "ignoreRuleInSentence": {

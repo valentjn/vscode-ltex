@@ -172,6 +172,15 @@ export function activate(context: ExtensionContext) {
       setConfigurationSetting(language + '.dictionary', dictionary,
           resourceConfig, 'addToDictionary');
 
+    } else if (params['commandName'] === 'ltex.disableRule') {
+      const language: string = resourceConfig['language'];
+      let disabledRules: string[] = resourceConfig[language]['disabledRules'];
+      disabledRules.push(params['ruleId']);
+      disabledRules.sort((a: string, b: string) =>
+          a.localeCompare(b, undefined, { sensitivity: 'base' }));
+      setConfigurationSetting(language + '.disabledRules', disabledRules,
+          resourceConfig, 'disableRule');
+
     } else if (params['commandName'] === 'ltex.ignoreRuleInSentence') {
       resourceConfig['ignoreRuleInSentence'].push({'rule': params['ruleId'],
           'sentence': params['sentencePattern']});
