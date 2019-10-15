@@ -25,12 +25,14 @@ Java 8+ is required.
 
 ## Extension Settings
 
-This extension contributes the following settings:
+This extension contributes the following settings. Some settings are separated by language. These settings are located under `ltex.<LANGUAGE>`, where `<LANGUAGE>` has to be replaced with the language short code from `ltex.language`. Language-specific settings require the installation of the respective [language support extension][lang-exts].
 
 * `ltex.enabled`: Controls whether the extension is enabled. Allows disabling LanguageTool on specific workspaces.
 * `ltex.language`: The language (e.g., `en-US`) LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension][lang-exts]. See the Marketplace description of the installed *language support extension* for possible values. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).
 * `ltex.diagnosticSeverity`: Severity of the diagnostics corresponding to the grammar and spelling errors. Allows controlling how and where the diagnostics appear in Visual Studio Code. One of `error`, `warning`, `information`, and `hint`.
-* `ltex.<LANGUAGE>.dictionary`: List of additional words that should not be counted as spelling errors. Dictionaries are separated by language; replace `<LANGUAGE>` with the language short code from `ltex.language`. Requires the installation of a [language support extension][lang-exts].
+* `ltex.<LANGUAGE>.dictionary`: List of additional words that should not be counted as spelling errors.
+* `ltex.<LANGUAGE>.disabledRules`: List of rules that should be disabled (if enabled by default by LanguageTool).
+* `ltex.<LANGUAGE>.enabledRules`: List of rules that should be enabled (if disabled by default by LanguageTool).
 * `ltex.commands.ignore`: List of additional L<sup>A</sup>T<sub>E</sub>X commands to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser, listed together with empty arguments (e.g., `\ref{}`, `\documentclass[]{}`).
 * `ltex.commands.dummy`: List of additional L<sup>A</sup>T<sub>E</sub>X commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments (e.g., `\cite{}`, `\cite[]{}`). LT<sub>E</sub>X internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
 * `ltex.ignoreRuleInSentence`: Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. Add sentences by using the `Ignore in this sentence` quick fix.
