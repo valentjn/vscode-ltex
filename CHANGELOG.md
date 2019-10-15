@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.7.4 (upcoming)
+## 4.7.4
 
 - Add `disabledRules` and `enabledRules` settings (requires update of language extensions)
 - Add `disable rule` quick fix
