@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.7.5 (upcoming)
+## 4.7.5
 
 - Enable ignoring environments such as `lstlisting` and `verbatim`
 - Add `ltex.environments.ignore` setting for defining own environments to ignore
