@@ -99,6 +99,17 @@
             "\\cite[]{}"
           ]
         },
+        "ltex.environments.ignore": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X environments to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser.",
+          "description": "List of additional LaTeX environments to be ignored by the LaTeX parser.",
+          "examples": [
+            "lstlisting",
+            "verbatim"
+          ]
+        },
         "ltex.ignoreRuleInSentence": {
           "type": "array",
           "scope": "resource",
