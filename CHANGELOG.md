@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.7.5 (upcoming)
+
+- Enable ignoring environments such as `lstlisting` and `verbatim`
+
 ## 4.7.4
 
 - Add `disabledRules` and `enabledRules` settings (requires update of language extensions)
