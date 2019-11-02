@@ -32,20 +32,49 @@ The LT<sub>E</sub>X extension has adopted the versioning of its LanguageTool dep
 This extension contributes the following settings. Some settings are separated by language. These settings are located under `ltex.<LANGUAGE>`, where `<LANGUAGE>` has to be replaced with the language short code from `ltex.language`. Language-specific settings require the installation of the respective [language support extension][lang-exts].
 
 * `ltex.enabled`: Controls whether the extension is enabled. Allows disabling LanguageTool on specific workspaces.
-* `ltex.language`: The language (e.g., `en-US`) LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension][lang-exts]. See the Marketplace description of the installed *language support extension* for possible values. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).
-* `ltex.diagnosticSeverity`: Severity of the diagnostics corresponding to the grammar and spelling errors. Allows controlling how and where the diagnostics appear in Visual Studio Code. One of `error`, `warning`, `information`, and `hint`.
+  * Possible values: `true` (default), `false`
+
+* `ltex.language`: The language LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension][lang-exts]. See the Marketplace description of the installed *language support extension* for possible values. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).
+  * Examples: `"en-US"` (default), `"de-DE"`
+
+* `ltex.diagnosticSeverity`: Severity of the diagnostics corresponding to the grammar and spelling errors. Allows controlling how and where the diagnostics appear in Visual Studio Code.
+  * Possible values: `"error"`, `"warning"`, `"information"` (default), `"hint"`
+
 * `ltex.<LANGUAGE>.dictionary`: List of additional words that should not be counted as spelling errors.
-* `ltex.<LANGUAGE>.disabledRules`: List of rules that should be disabled (if enabled by default by LanguageTool).
+  * Example: `["adaptivity", "precomputed", "subproblem"]`; default: `[]`
+
+* `ltex.<LANGUAGE>.disabledRules`: List of rules that should be disabled (if enabled by default by LanguageTool). A cake is being baked by him.
+  * Example: `["EN_QUOTES", "UPPERCASE_SENTENCE_START"]` (for `en-US`); default: `[]`
+
 * `ltex.<LANGUAGE>.enabledRules`: List of rules that should be enabled (if disabled by default by LanguageTool).
-* `ltex.commands.ignore`: List of additional L<sup>A</sup>T<sub>E</sub>X commands to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser, listed together with empty arguments (e.g., `\ref{}`, `\documentclass[]{}`).
-* `ltex.commands.dummy`: List of additional L<sup>A</sup>T<sub>E</sub>X commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments (e.g., `\cite{}`, `\cite[]{}`). LT<sub>E</sub>X internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
-* `ltex.environments.ignore`: List of additional L<sup>A</sup>T<sub>E</sub>X environments to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser (e.g., `lstlisting`, `verbatim`).
+  * Example: `["PASSIVE_VOICE", "OXFORD_SPELLING_NOUNS"]` (for `en-GB`); default: `[]`
+
+* `ltex.commands.ignore`: List of additional L<sup>A</sup>T<sub>E</sub>X commands to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser, listed together with empty arguments.
+  * Example: `["\\documentclass[]{}", "\\renewcommand*{}[]{}"]` (although these two commands are already ignored by default); default: `[]`
+
+* `ltex.commands.dummy`: List of additional L<sup>A</sup>T<sub>E</sub>X commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments. LT<sub>E</sub>X internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
+  * Example: `["\\cite{}", "\\cite[]{}"]` (although these two commands are already replaced by dummy words by default); default: `[]`
+
+* `ltex.environments.ignore`: List of additional L<sup>A</sup>T<sub>E</sub>X environments to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser.
+  * Example: `["lstlisting", "verbatim"]` (although these two environments are already ignored by default); default: `[]`
+
 * `ltex.ignoreRuleInSentence`: Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. Add sentences by using the `Ignore in this sentence` quick fix.
+  * Example: `[{"rule": "THIS_NNS", "sentence": "^\\QThese error in this sentence should be ignored.\\E$"}]`; default: `[]`
+
 * `ltex.configurationTarget`: Controls which `settings.json` to update when using one of the quick fixes. `global` always updates the global configuration, while `workspace` updates the workspace configuration if currently in a workspace, otherwise the global configuration.
-* `ltex.additionalRules.motherTongue`: Optional mother tongue of the user (e.g., `de-DE`). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see `ltex.additionalRules.languageModel`).
+  * Example/default: `{"addToDictionary": "global", "disableRule": "workspaceFolder", "ignoreRuleInSentence": "workspaceFolder"}`
+
+* `ltex.additionalRules.motherTongue`: Optional mother tongue of the user. If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see `ltex.additionalRules.languageModel`).
+  * Examples: `"en-US"`, `"de-DE"`; default: `null`
+
 * `ltex.additionalRules.languageModel`: Optional path to a directory with rules of a language model with *n*-gram occurrence counts.
+  * Examples: `"/path/to/directory"`, `"C:\\path\\to\\directory"`; default: `null`
+
 * `ltex.additionalRules.neuralNetworkModel`: Optional path to a directory with rules of a pretrained neural network model.
+  * Examples: `"/path/to/directory"`, `"C:\\path\\to\\directory"`; default: `null`
+
 * `ltex.additionalRules.word2VecModel`: Optional path to a directory with rules of a word2vec language model.
+  * Examples: `"/path/to/directory"`, `"C:\\path\\to\\directory"`; default: `null`
 
 ## Contributing
 
