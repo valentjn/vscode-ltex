@@ -23,6 +23,10 @@ This extension is a fork of the abandoned [LanguageTool for Visual Studio Code e
 
 Java 8+ is required.
 
+## Versioning
+
+The LT<sub>E</sub>X extension has adopted the versioning of its LanguageTool dependency. For example, if this extension has version 4.7.0 it is powered by LanguageTool 4.7. LT<sub>E</sub>X 4.7.1 would also use LanguageTool 4.7. LT<sub>E</sub>X 4.8.0 would use LanguageTool 4.8. **The LanguageTool version of this extension must match the LanguageTool version of your installed language support extensions.**
+
 ## Extension Settings
 
 This extension contributes the following settings. Some settings are separated by language. These settings are located under `ltex.<LANGUAGE>`, where `<LANGUAGE>` has to be replaced with the language short code from `ltex.language`. Language-specific settings require the installation of the respective [language support extension][lang-exts].
@@ -42,10 +46,6 @@ This extension contributes the following settings. Some settings are separated b
 * `ltex.additionalRules.languageModel`: Optional path to a directory with rules of a language model with *n*-gram occurrence counts.
 * `ltex.additionalRules.neuralNetworkModel`: Optional path to a directory with rules of a pretrained neural network model.
 * `ltex.additionalRules.word2VecModel`: Optional path to a directory with rules of a word2vec language model.
-
-## Versioning
-
-The LT<sub>E</sub>X extension has adopted the versioning of its LanguageTool dependency. For example, if this extension has version 4.7.0 it is powered by LanguageTool 4.7. LT<sub>E</sub>X 4.7.1 would also use LanguageTool 4.7. LT<sub>E</sub>X 4.8.0 would use LanguageTool 4.8. **The LanguageTool version of this extension must match the LanguageTool version of your installed language support extensions.**
 
 ## Contributing
 
