@@ -228,6 +228,27 @@
           "default": null,
           "markdownDescription": "Optional path to a directory with rules of a word2vec language model.",
           "description": "Optional path to a directory with rules of a word2vec language model."
+        },
+        "ltex.performance.initialJavaHeapSize": {
+          "type": "integer",
+          "scope": "window",
+          "default": 64,
+          "markdownDescription": "Initial size of the Java heap memory in megabytes (corresponds to Java's `-Xms` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "Initial size of the Java heap memory in megabytes (corresponds to Java's \"-Xms\" option). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect."
+        },
+        "ltex.performance.maximumJavaHeapSize": {
+          "type": "integer",
+          "scope": "window",
+          "default": 512,
+          "markdownDescription": "Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an `OutOfMemoryError` is thrown. Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "Maximum size of the Java heap memory in megabytes (corresponds to Java's \"-Xmx\" option). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an \"OutOfMemoryError\" is thrown. Changes require reloading the Visual Studio Code window to take effect."
+        },
+        "ltex.performance.sentenceCacheSize": {
+          "type": "integer",
+          "scope": "resource",
+          "default": 2000,
+          "markdownDescription": "Size of the LanguageTool `ResultCache` in sentences (must be a positive integer). If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "Size of the LanguageTool \"ResultCache\" in sentences. If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect."
         }
       }
     }

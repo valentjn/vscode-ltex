@@ -76,6 +76,15 @@ This extension contributes the following settings. Some settings are separated b
 * `ltex.additionalRules.word2VecModel`: Optional path to a directory with rules of a word2vec language model.
   * Examples: `"/path/to/directory"`, `"C:\\path\\to\\directory"`; default: `null`
 
+* `ltex.performance.initialJavaHeapSize`: Initial size of the Java heap memory in megabytes (corresponds to Java's `-Xms` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect.
+  * Example: `64` (default)
+
+* `ltex.performance.maximumJavaHeapSize`: Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an `OutOfMemoryError` is thrown. Changes require reloading the Visual Studio Code window to take effect.
+  * Example: `512` (default)
+
+* `ltex.performance.sentenceCacheSize`: Size of the LanguageTool `ResultCache` in sentences (must be a positive integer). If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect.
+  * Example: `2000` (default)
+
 ## Contributing
 
 Contributions welcome! This repository uses Git submodules. After cloning, be sure to run `git submodule update --init`.
