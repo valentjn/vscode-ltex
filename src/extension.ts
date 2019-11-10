@@ -98,8 +98,14 @@ export function activate(context: ExtensionContext) {
         const newText: string = setClasspath(scriptText, buildDesiredClasspath());
         fs.writeFileSync(newScript, newText, { mode: 0o777 });
 
-        const process: child_process.ChildProcess = child_process.spawn(
-            newScript, [server.address().port.toString()]);
+        const environmentVariables: Object = Object.create(process.env);
+        const workspaceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
+        const initialJavaHeapSize: number = workspaceConfig['performance']['initialJavaHeapSize'];
+        const maximumJavaHeapSize: number = workspaceConfig['performance']['maximumJavaHeapSize'];
+        environmentVariables["LANGUAGETOOL_LANGUAGESERVER_OPTS"] =
+            "-Xms" + initialJavaHeapSize + "m -Xmx" + maximumJavaHeapSize +"m";
+        const childProcess: child_process.ChildProcess = child_process.spawn(
+            newScript, [server.address().port.toString()], {"env": environmentVariables});
 
         // Send raw output to a file
         if (context.storagePath) {
@@ -112,12 +118,12 @@ export function activate(context: ExtensionContext) {
           const logStream: fs.WriteStream = fs.createWriteStream(logFile, { flags: 'w' });
           console.log(`Writing log to '${logFile}'`);
 
-          process.stdout.pipe(logStream);
-          process.stderr.pipe(logStream);
+          childProcess.stdout.pipe(logStream);
+          childProcess.stderr.pipe(logStream);
         } else {
           console.log('No storagePath, logging to Debug Console (= here).');
-          process.stdout.on('data', function(data) { console.log(data.toString()); });
-          process.stderr.on('data', function(data) { console.error(data.toString()); });
+          childProcess.stdout.on('data', function(data) { console.log(data.toString()); });
+          childProcess.stderr.on('data', function(data) { console.error(data.toString()); });
         }
       });
     });

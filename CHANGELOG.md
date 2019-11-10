@@ -2,6 +2,10 @@
 
 ## 4.7.6 (upcoming)
 
+- Add `ltex.performance` settings to give users more control over Java's RAM usage
+- Change default initial Java heap size to 64 MB
+- Change default maximum Java heap size to 512 MB
+- Change default sentence cache size from 10000 to 2000 sentences
 - Add more examples to README.md
 
 ## 4.7.5
