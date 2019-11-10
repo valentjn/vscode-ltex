@@ -6,6 +6,7 @@
 - Change default initial Java heap size to 64 MB
 - Change default maximum Java heap size to 512 MB
 - Change default sentence cache size from 10000 to 2000 sentences
+- Rename logs, enable logging of client messages even if no folder is open
 - Add more examples to README.md
 
 ## 4.7.5

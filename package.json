@@ -249,6 +249,18 @@
           "default": 2000,
           "markdownDescription": "Size of the LanguageTool `ResultCache` in sentences (must be a positive integer). If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect.",
           "description": "Size of the LanguageTool \"ResultCache\" in sentences. If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect."
+        },
+        "ltex.trace.server": {
+          "type": "string",
+          "scope": "window",
+          "default": "off",
+          "enum": [
+            "off",
+            "message",
+            "verbose"
+          ],
+          "markdownDescription": "Debug setting. When reporting issues, set this to `\"verbose\"` to be able to access the `LTeX Language Client` log in `View` → `Output`. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "Debug setting. When reporting issues, set this to \"verbose\" to be able to access the \"LTeX Language Client\" log in \"View\" → \"Output\". Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect."
         }
       }
     }

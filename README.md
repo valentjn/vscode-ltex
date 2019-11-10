@@ -85,6 +85,9 @@ This extension contributes the following settings. Some settings are separated b
 * `ltex.performance.sentenceCacheSize`: Size of the LanguageTool `ResultCache` in sentences (must be a positive integer). If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect.
   * Example: `2000` (default)
 
+* `ltex.trace.server`: Debug setting. When reporting issues, set this to `"verbose"` to be able to access the `LTeX Language Client` log in `View` → `Output`. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.
+  * Possible values: `"off"` (default), `"message"`, `"verbose"`
+
 ## Contributing
 
 Contributions welcome! This repository uses Git submodules. After cloning, be sure to run `git submodule update --init`.
