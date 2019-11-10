@@ -198,7 +198,10 @@
           "description": "Controls which \"settings.json\" to update when using one of the quick fixes. \"global\" always updates the global configuration, while \"workspace\" updates the workspace configuration if currently in a workspace, otherwise the global configuration."
         },
         "ltex.additionalRules.motherTongue": {
-          "type": ["string", null],
+          "type": [
+            "string",
+            null
+          ],
           "scope": "resource",
           "default": null,
           "markdownDescription": "Optional mother tongue of the user (e.g., `de-DE`). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see `ltex.additionalRules.languageModel`).",
@@ -209,21 +212,30 @@
           ]
         },
         "ltex.additionalRules.languageModel": {
-          "type": ["string", null],
+          "type": [
+            "string",
+            null
+          ],
           "scope": "resource",
           "default": null,
           "markdownDescription": "Optional path to a directory with rules of a language model with *n*-gram occurrence counts.",
           "description": "Optional path to a directory with rules of a language model with n-gram occurrence counts."
         },
         "ltex.additionalRules.neuralNetworkModel": {
-          "type": ["string", null],
+          "type": [
+            "string",
+            null
+          ],
           "scope": "resource",
           "default": null,
           "markdownDescription": "Optional path to a directory with rules of a pretrained neural network model.",
           "description": "Optional path to a directory with rules of a pretrained neural network model."
         },
         "ltex.additionalRules.word2VecModel": {
-          "type": ["string", null],
+          "type": [
+            "string",
+            null
+          ],
           "scope": "resource",
           "default": null,
           "markdownDescription": "Optional path to a directory with rules of a word2vec language model.",
