@@ -154,7 +154,7 @@ export function activate(context: ExtensionContext) {
 
   // create the language client
   const languageClient: LanguageClient = new LanguageClient(
-      'languageTool', 'LanguageTool Client', createServer, clientOptions);
+      'ltex', 'LTeX Language Client', createServer, clientOptions);
 
   // Hack to enable the server to execute commands that change the client configuration
   // (e.g., adding words to the dictionary).
