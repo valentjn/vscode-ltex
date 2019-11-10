@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.7.6 (upcoming)
+
+- Add more examples to README.md
+
 ## 4.7.5
 
 - Enable ignoring environments such as `lstlisting` and `verbatim`
