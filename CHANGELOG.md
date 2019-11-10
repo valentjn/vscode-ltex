@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.7.6 (upcoming)
+## 4.7.6
 
 - Add `ltex.performance` settings to give users more control over Java's RAM usage
 - Change default initial Java heap size to 64 MB
