@@ -5,8 +5,8 @@ import * as path from 'path';
 import * as net from 'net';
 import * as child_process from 'child_process';
 
-import { env, extensions, workspace, ConfigurationTarget, Disposable, ExtensionContext,
-    Uri, WorkspaceConfiguration } from 'vscode';
+import { env, extensions, window, workspace, ConfigurationTarget, Disposable, ExtensionContext,
+  OutputChannel, Uri, WorkspaceConfiguration } from 'vscode';
 import { LanguageClient, LanguageClientOptions, StreamInfo } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
@@ -107,24 +107,9 @@ export function activate(context: ExtensionContext) {
         const childProcess: child_process.ChildProcess = child_process.spawn(
             newScript, [server.address().port.toString()], {"env": environmentVariables});
 
-        // Send raw output to a file
-        if (context.storagePath) {
-          if (!fs.existsSync(context.storagePath)) {
-            console.log(context.storagePath);
-            fs.mkdirSync(context.storagePath);
-          }
-
-          const logFile: string = context.storagePath + '/vscode-ltex.log';
-          const logStream: fs.WriteStream = fs.createWriteStream(logFile, { flags: 'w' });
-          console.log(`Writing log to '${logFile}'`);
-
-          childProcess.stdout.pipe(logStream);
-          childProcess.stderr.pipe(logStream);
-        } else {
-          console.log('No storagePath, logging to Debug Console (= here).');
-          childProcess.stdout.on('data', function(data) { console.log(data.toString()); });
-          childProcess.stderr.on('data', function(data) { console.error(data.toString()); });
-        }
+        // log output
+        childProcess.stdout.on('data', function(data) { outputChannel.append(data.toString()); });
+        childProcess.stderr.on('data', function(data) { outputChannel.append(data.toString()); });
       });
     });
   };
@@ -151,6 +136,9 @@ export function activate(context: ExtensionContext) {
   // Allow to enable languageTool in specific workspaces
   const workspaceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
   if (!workspaceConfig['enabled']) return;
+
+  // create output channel for logging
+  const outputChannel: OutputChannel = window.createOutputChannel("LTeX Language Server");
 
   // create the language client
   const languageClient: LanguageClient = new LanguageClient(
