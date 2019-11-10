@@ -44,8 +44,8 @@
           "type": "boolean",
           "scope": "window",
           "default": true,
-          "markdownDescription": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces.",
-          "description": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces."
+          "markdownDescription": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces. Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.language": {
           "type": "string",

@@ -31,7 +31,7 @@ The LT<sub>E</sub>X extension has adopted the versioning of its LanguageTool dep
 
 This extension contributes the following settings. Some settings are separated by language. These settings are located under `ltex.<LANGUAGE>`, where `<LANGUAGE>` has to be replaced with the language short code from `ltex.language`. Language-specific settings require the installation of the respective [language support extension][lang-exts].
 
-* `ltex.enabled`: Controls whether the extension is enabled. Allows disabling LanguageTool on specific workspaces.
+* `ltex.enabled`: Controls whether the extension is enabled. Allows disabling LanguageTool on specific workspaces. Changes require reloading the Visual Studio Code window to take effect.
   * Possible values: `true` (default), `false`
 
 * `ltex.language`: The language LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension][lang-exts]. See the Marketplace description of the installed *language support extension* for possible values. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).
