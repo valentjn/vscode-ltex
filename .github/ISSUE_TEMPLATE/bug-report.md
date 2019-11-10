@@ -30,6 +30,7 @@ Please attach any LTeX-related configuration settings from your `settings.json`.
 First, set the `ltex.trace.server` setting in your `settings.json` to `"verbose"`. Then, reload the VS Code window and reproduce the bug. Go to `View` → `Output` and select `LTeX Language Server` and `LTeX Language Client` in the drop-down list. Paste or attach the relevant parts of these logs here in the GitHub issue.
 
 **Version information**
+- Operating system: Linux (which distribution/version), macOS xx.xx, or Windows xx
 - VS Code: 1.xx.x
 - LTeX: x.xx
 - LTeX language extensions: English/x.xx, ...
