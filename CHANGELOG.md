@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.7.7 (upcoming)
+## 4.7.7
 
 - Remove preview status from extension
 
