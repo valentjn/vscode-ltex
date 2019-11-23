@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.7.7 (upcoming)
+
+- Remove preview status from extension
+
 ## 4.7.6
 
 - Add `ltex.performance` settings to give users more control over Java's RAM usage
