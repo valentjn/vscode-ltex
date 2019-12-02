@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.7.8 (upcoming)
+
+- Minor changes in README.md
+
 ## 4.7.7
 
 - Remove preview status from extension

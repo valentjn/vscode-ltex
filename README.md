@@ -1,20 +1,23 @@
 # LT<sub>E</sub>X Extension for Visual Studio Code: LanguageTool Grammar Checking with L<sup>A</sup>T<sub>E</sub>X Support
 
-[![Travis CI build status](https://api.travis-ci.org/valentjn/vscode-ltex.svg?branch=master)](https://www.travis-ci.org/valentjn/vscode-ltex)
-[![GitHub](https://img.shields.io/badge/-fork%20me%20on%20GitHub-blue)](https://github.com/valentjn/vscode-ltex)
+[![Travis CI build status](https://img.shields.io/travis/valentjn/vscode-ltex/master?logo=travis&style=social)](https://www.travis-ci.org/valentjn/vscode-ltex)&nbsp;&nbsp;&nbsp;
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/valentjn.vscode-ltex?style=social&logo=visual-studio-code)][marketplace]&nbsp;
+[![Rating](https://img.shields.io/visual-studio-marketplace/stars/valentjn.vscode-ltex?style=social&logo=visual-studio-code)][marketplace]&nbsp;&nbsp;&nbsp;
+[![GitHub stars](https://img.shields.io/github/stars/valentjn/vscode-ltex?style=social)](https://github.com/valentjn/vscode-ltex)&nbsp;
+[![GitHub issues](https://img.shields.io/github/issues/valentjn/vscode-ltex?style=social&logo=github)](https://github.com/valentjn/vscode-ltex/issues)
 
 **NOTICE: This extension does not include any languages. You MUST install a [language support extension][lang-exts].**
 
 ___
 
-Provides offline grammar checking in Visual Studio Code using [LanguageTool](https://languagetool.org/), supporting L<sup>A</sup>T<sub>E</sub>X and Markdown documents. This extension provides only the core functionality. You must [install extensions containing the language rules for each language you wish to be able to check][lang-exts].
+Provides offline grammar checking in Visual Studio Code using [LanguageTool](https://languagetool.org/), supporting L<sup>A</sup>T<sub>E</sub>X and Markdown documents. This extension provides only the core functionality. You must [install extensions containing the language rules for each language you wish to be able to check][marketplace-lang-exts].
 
 This extension is a fork of the abandoned [LanguageTool for Visual Studio Code extension](https://github.com/adamvoss/vscode-languagetool) by Adam Voss with L<sup>A</sup>T<sub>E</sub>X support, new features (user dictionaries, ignore errors, etc.), and updated dependencies (LanguageTool).
 
 ## Features
 
 * Checks **latex** and **markdown** documents
-* Supports **over 20 languages** according to which [language support extensions][lang-exts] are installed
+* Supports **over 20 languages** according to which [language support extensions][marketplace-lang-exts] are installed
 * Issue highlighting with hover description
 * Replacement suggestions via quick fixes
 * User dictionaries
@@ -29,12 +32,12 @@ The LT<sub>E</sub>X extension has adopted the versioning of its LanguageTool dep
 
 ## Extension Settings
 
-This extension contributes the following settings. Some settings are separated by language. These settings are located under `ltex.<LANGUAGE>`, where `<LANGUAGE>` has to be replaced with the language short code from `ltex.language`. Language-specific settings require the installation of the respective [language support extension][lang-exts].
+This extension contributes the following settings. Some settings are separated by language. These settings are located under `ltex.<LANGUAGE>`, where `<LANGUAGE>` has to be replaced with the language short code from `ltex.language`. Language-specific settings require the installation of the respective [language support extension][marketplace-lang-exts].
 
 * `ltex.enabled`: Controls whether the extension is enabled. Allows disabling LanguageTool on specific workspaces. Changes require reloading the Visual Studio Code window to take effect.
   * Possible values: `true` (default), `false`
 
-* `ltex.language`: The language LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension][lang-exts]. See the Marketplace description of the installed *language support extension* for possible values. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).
+* `ltex.language`: The language LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension][marketplace-lang-exts]. See the Marketplace description of the installed *language support extension* for possible values. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).
   * Examples: `"en-US"` (default), `"de-DE"`
 
 * `ltex.diagnosticSeverity`: Severity of the diagnostics corresponding to the grammar and spelling errors. Allows controlling how and where the diagnostics appear in Visual Studio Code.
@@ -110,4 +113,5 @@ Please report issues (bugs and feature requests) or submit pull requests on [Git
 
 See [ACKNOWLEDGMENTS.md](./ACKNOWLEDGMENTS.md).
 
-[lang-exts]: https://marketplace.visualstudio.com/search?term=ltex&target=VSCode
+[marketplace]: https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex
+[marketplace-lang-exts]: https://marketplace.visualstudio.com/search?term=ltex&target=VSCode
