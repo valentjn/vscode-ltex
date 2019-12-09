@@ -6,7 +6,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/valentjn/vscode-ltex?style=social)](https://github.com/valentjn/vscode-ltex)&nbsp;
 [![GitHub issues](https://img.shields.io/github/issues/valentjn/vscode-ltex?style=social&logo=github)](https://github.com/valentjn/vscode-ltex/issues)
 
-**NOTICE: This extension does not include any languages. You MUST install a [language support extension][lang-exts].**
+**NOTICE: This extension does not include any languages. You MUST install a [language support extension][marketplace-lang-exts].**
 
 ___
 
