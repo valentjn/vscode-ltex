@@ -240,6 +240,13 @@
           "markdownDescription": "Optional path to a directory with rules of a word2vec language model.",
           "description": "Optional path to a directory with rules of a word2vec language model."
         },
+        "ltex.javaHome": {
+          "type": "string",
+          "scope": "window",
+          "default": "",
+          "markdownDescription": "Override the path to the java installation used to run LanguageTool.",
+          "description": "Override the path to the java installation used to run LanguageTool."
+        },
         "ltex.performance.initialJavaHeapSize": {
           "type": "integer",
           "scope": "window",

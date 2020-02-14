@@ -104,6 +104,9 @@ export function activate(context: ExtensionContext) {
         const maximumJavaHeapSize: number = workspaceConfig['performance']['maximumJavaHeapSize'];
         environmentVariables["LANGUAGETOOL_LANGUAGESERVER_OPTS"] =
             "-Xms" + initialJavaHeapSize + "m -Xmx" + maximumJavaHeapSize +"m";
+        if(workspaceConfig.has('javaHome')){
+          environmentVariables["JAVA_HOME"] =  workspaceConfig['javaHome'];
+        } 
         const childProcess: child_process.ChildProcess = child_process.spawn(
             newScript, [server.address().port.toString()], {"env": environmentVariables});
 
