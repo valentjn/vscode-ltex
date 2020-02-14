@@ -2,6 +2,7 @@
 
 ## 4.7.8 (upcoming)
 
+- Add `ltex.javaHome` setting to control the `JAVA_HOME` environment variable (PR [#24][#24] by mpolitze)
 - Minor changes in README.md
 
 ## 4.7.7
@@ -167,4 +168,5 @@
 [#8]: https://github.com/valentjn/vscode-ltex/issues/8
 [#11]: https://github.com/valentjn/vscode-ltex/issues/11
 [#12]: https://github.com/valentjn/vscode-ltex/issues/12
+[#24]: https://github.com/valentjn/vscode-ltex/issues/24
 [ltls#1]: https://github.com/valentjn/languagetool-languageserver/issues/1
