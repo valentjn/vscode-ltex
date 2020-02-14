@@ -244,8 +244,8 @@
           "type": "string",
           "scope": "window",
           "default": null,
-          "markdownDescription": "Override the path to the java installation used to run LanguageTool.",
-          "description": "Override the path to the java installation used to run LanguageTool."
+          "markdownDescription": "If given, overrides the `JAVA_HOME` environment variable used for running LanguageTool. Otherwise, the value of `JAVA_HOME` of the parent process is used.",
+          "description": "If given, overrides the \"JAVA_HOME\" environment variable used for running LanguageTool. Otherwise, the value of \"JAVA_HOME\" of the parent process is used."
         },
         "ltex.performance.initialJavaHeapSize": {
           "type": "integer",
