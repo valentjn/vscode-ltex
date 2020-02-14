@@ -102,13 +102,13 @@ export function activate(context: ExtensionContext) {
         const workspaceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
         const initialJavaHeapSize: number = workspaceConfig['performance']['initialJavaHeapSize'];
         const maximumJavaHeapSize: number = workspaceConfig['performance']['maximumJavaHeapSize'];
-        environmentVariables["LANGUAGETOOL_LANGUAGESERVER_OPTS"] =
-            "-Xms" + initialJavaHeapSize + "m -Xmx" + maximumJavaHeapSize +"m";
+        environmentVariables['LANGUAGETOOL_LANGUAGESERVER_OPTS'] =
+            '-Xms' + initialJavaHeapSize + 'm -Xmx' + maximumJavaHeapSize + 'm';
         if(workspaceConfig.has('javaHome')){
-          environmentVariables["JAVA_HOME"] =  workspaceConfig['javaHome'];
-        } 
+          environmentVariables['JAVA_HOME'] =  workspaceConfig['javaHome'];
+        }
         const childProcess: child_process.ChildProcess = child_process.spawn(
-            newScript, [server.address().port.toString()], {"env": environmentVariables});
+            newScript, [server.address().port.toString()], {'env': environmentVariables});
 
         // log output
         childProcess.stdout.on('data', function(data) { outputChannel.append(data.toString()); });
@@ -141,7 +141,7 @@ export function activate(context: ExtensionContext) {
   if (!workspaceConfig['enabled']) return;
 
   // create output channel for logging
-  const outputChannel: OutputChannel = window.createOutputChannel("LTeX Language Server");
+  const outputChannel: OutputChannel = window.createOutputChannel('LTeX Language Server');
 
   // create the language client
   const languageClient: LanguageClient = new LanguageClient(
