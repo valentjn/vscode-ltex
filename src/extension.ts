@@ -65,6 +65,10 @@ export function activate(context: ExtensionContext) {
     }
   }
 
+  function convertToStringArray(obj): string[] {
+    return (Array.isArray(obj) ? obj : [obj]);
+  }
+
   function createServer(): Promise<StreamInfo> {
     return new Promise((resolve, reject) => {
       var server: net.Server = net.createServer((socket) => {
@@ -167,7 +171,7 @@ export function activate(context: ExtensionContext) {
     if (params['commandName'] === 'ltex.addToDictionary') {
       const language: string = resourceConfig['language'];
       let dictionary: string[] = resourceConfig[language]['dictionary'];
-      dictionary.push(params['word']);
+      dictionary = dictionary.concat(convertToStringArray(params['word']));
       dictionary.sort((a: string, b: string) =>
           a.localeCompare(b, undefined, { sensitivity: 'base' }));
       setConfigurationSetting(language + '.dictionary', dictionary,
@@ -176,15 +180,21 @@ export function activate(context: ExtensionContext) {
     } else if (params['commandName'] === 'ltex.disableRule') {
       const language: string = resourceConfig['language'];
       let disabledRules: string[] = resourceConfig[language]['disabledRules'];
-      disabledRules.push(params['ruleId']);
+      disabledRules = disabledRules.concat(convertToStringArray(params['ruleId']));
       disabledRules.sort((a: string, b: string) =>
           a.localeCompare(b, undefined, { sensitivity: 'base' }));
       setConfigurationSetting(language + '.disabledRules', disabledRules,
           resourceConfig, 'disableRule');
 
     } else if (params['commandName'] === 'ltex.ignoreRuleInSentence') {
-      resourceConfig['ignoreRuleInSentence'].push({'rule': params['ruleId'],
-          'sentence': params['sentencePattern']});
+      const ruleIds: string[] = convertToStringArray(params['ruleId']);
+      const sentencePatterns: string[] = convertToStringArray(params['sentencePattern']);
+
+      for (let i: number = 0; i < ruleIds.length; i++) {
+        resourceConfig['ignoreRuleInSentence'].push({'rule': ruleIds[i],
+            'sentence': sentencePatterns[i]});
+      }
+
       setConfigurationSetting('ignoreRuleInSentence', resourceConfig['ignoreRuleInSentence'],
           resourceConfig, 'ignoreRuleInSentence');
     }
