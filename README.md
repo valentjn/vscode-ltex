@@ -16,11 +16,11 @@ This extension is a fork of the abandoned [LanguageTool for Visual Studio Code e
 
 ## Features
 
-* Checks **latex** and **markdown** documents
+* Checks **L<sup>A</sup>T<sub>E</sub>X** and **Markdown** documents
 * Supports **over 20 languages** according to which [language support extensions][marketplace-lang-exts] are installed
-* Issue highlighting with hover description
-* Replacement suggestions via quick fixes
-* User dictionaries
+* **Issue highlighting** with hover description
+* **Replacement suggestions** via quick fixes
+* **User dictionaries**
 
 ## Requirements
 
