@@ -126,6 +126,8 @@ export function activate(context: ExtensionContext) {
       {scheme: 'untitled', language: 'markdown'},
       {scheme: 'file', language: 'latex'},
       {scheme: 'untitled', language: 'latex'},
+      {scheme: 'file', language: 'rsweave'},
+      {scheme: 'untitled', language: 'rsweave'},
     ],
     synchronize: {
       configurationSection: 'ltex'

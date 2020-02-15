@@ -2,6 +2,7 @@
 
 ## 4.7.8 (upcoming)
 
+- Add support for R Sweave `.rnw` files (fixes [#22][#22])
 - Add `ltex.javaHome` setting to control the `JAVA_HOME` environment variable (PR [#24][#24] by mpolitze)
 - Add support for `\euro` (fixes [#25][#25])
 - Minor changes in README.md
@@ -169,6 +170,7 @@
 [#8]: https://github.com/valentjn/vscode-ltex/issues/8
 [#11]: https://github.com/valentjn/vscode-ltex/issues/11
 [#12]: https://github.com/valentjn/vscode-ltex/issues/12
+[#22]: https://github.com/valentjn/vscode-ltex/issues/22
 [#24]: https://github.com/valentjn/vscode-ltex/issues/24
 [#25]: https://github.com/valentjn/vscode-ltex/issues/25
 [ltls#1]: https://github.com/valentjn/languagetool-languageserver/issues/1

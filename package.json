@@ -31,7 +31,8 @@
   ],
   "activationEvents": [
     "onLanguage:markdown",
-    "onLanguage:latex"
+    "onLanguage:latex",
+    "onLanguage:rsweave"
   ],
   "extensionKind": ["workspace"],
   "main": "./dist/extension",
