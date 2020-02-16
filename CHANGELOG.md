@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.7.8 (upcoming)
+## 4.7.8
 
 - Add support for R Sweave `.rnw` files (fixes [#22][#22])
 - Enable fixing multiple diagnostics at once (fixes [#23][#23])
