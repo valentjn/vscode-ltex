@@ -245,8 +245,8 @@
           "type": "string",
           "scope": "window",
           "default": null,
-          "markdownDescription": "If given, overrides the `JAVA_HOME` environment variable used for running LanguageTool. Otherwise, the value of `JAVA_HOME` of the parent process is used.",
-          "description": "If given, overrides the \"JAVA_HOME\" environment variable used for running LanguageTool. Otherwise, the value of \"JAVA_HOME\" of the parent process is used."
+          "markdownDescription": "If given, overrides the `JAVA_HOME` environment variable used for running LanguageTool. Otherwise, the value of `JAVA_HOME` of the parent process is used. Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "If given, overrides the \"JAVA_HOME\" environment variable used for running LanguageTool. Otherwise, the value of \"JAVA_HOME\" of the parent process is used. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.performance.initialJavaHeapSize": {
           "type": "integer",

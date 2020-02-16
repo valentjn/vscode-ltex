@@ -79,7 +79,7 @@ This extension contributes the following settings. Some settings are separated b
 * `ltex.additionalRules.word2VecModel`: Optional path to a directory with rules of a word2vec language model.
   * Examples: `"/path/to/directory"`, `"C:\\path\\to\\directory"`; default: `null`
 
-* `ltex.javaHome`: If given, overrides the `JAVA_HOME` environment variable used for running LanguageTool. Otherwise, the value of `JAVA_HOME` of the parent process is used.
+* `ltex.javaHome`: If given, overrides the `JAVA_HOME` environment variable used for running LanguageTool. Otherwise, the value of `JAVA_HOME` of the parent process is used. Changes require reloading the Visual Studio Code window to take effect.
   * Examples: `"/path/to/directory"`, `"C:\\path\\to\\directory"`; default: `null`
 
 * `ltex.performance.initialJavaHeapSize`: Initial size of the Java heap memory in megabytes (corresponds to Java's `-Xms` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect.
