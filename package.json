@@ -81,7 +81,7 @@
           "type": "array",
           "scope": "resource",
           "default": [],
-          "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser, listed together with empty arguments. Don't forget to escape the initial backslash by replacing it with two backslashes.",
+          "markdownDescription": "List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments. Don't forget to escape the initial backslash by replacing it with two backslashes.",
           "description": "List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., \"\\ref{}\", \"\\documentclass[]{}\"). Don't forget to escape the initial backslash by replacing it with two backslashes.",
           "examples": [
             "\\ref{}",
@@ -92,7 +92,7 @@
           "type": "array",
           "scope": "resource",
           "default": [],
-          "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments. LT<sub>E</sub>X internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.",
+          "markdownDescription": "List of additional LaTeX commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments. LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.",
           "description": "List of additional LaTeX commands to be replaced by dummy words (i.e., Dummy0, Dummy1, etc.), listed together with empty arguments (e.g., \"\\cite{}\", \"\\cite[]{}\"). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.",
           "examples": [
             "\\cite{}",
@@ -103,7 +103,7 @@
           "type": "array",
           "scope": "resource",
           "default": [],
-          "markdownDescription": "List of additional L<sup>A</sup>T<sub>E</sub>X environments to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser.",
+          "markdownDescription": "List of additional LaTeX environments to be ignored by the LaTeX parser.",
           "description": "List of additional LaTeX environments to be ignored by the LaTeX parser.",
           "examples": [
             "lstlisting",
@@ -118,7 +118,7 @@
             "FencedCodeBlock",
             "IndentedCodeBlock"
           ],
-          "markdownDescription": "List of Markdown node types to be ignored by the Markdown parser. The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type `Text`. LT<sub>E</sub>X will ignore all nodes (and their `Text` leaves) that have one of the listed node types. The possible node types are listed at <https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html>.",
+          "markdownDescription": "List of Markdown node types to be ignored by the Markdown parser. The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type `Text`. LTeX will ignore all nodes (and their `Text` leaves) that have one of the listed node types. The possible node types are listed at <https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html>.",
           "description": "List of Markdown node types to be ignored by the Markdown parser. The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type \"Text\". LTe>X will ignore all nodes (and their \"Text\" leaves) that have one of the listed node types. The possible node types are listed at https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html."
         },
         "ltex.markdown.dummy": {
@@ -128,7 +128,7 @@
             "AutoLink",
             "Code"
           ],
-          "markdownDescription": "List of Markdown node types to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.) by the Markdown parser. LT<sub>E</sub>X internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. The possible node types are listed at <https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html>.",
+          "markdownDescription": "List of Markdown node types to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.) by the Markdown parser. LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. The possible node types are listed at <https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html>.",
           "description": "List of Markdown node types to be replaced by dummy words (i.e., \"Dummy0\", \"Dummy1\", etc.) by the Markdown parser. LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. The possible node types are listed at https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html."
         },
         "ltex.ignoreRuleInSentence": {
