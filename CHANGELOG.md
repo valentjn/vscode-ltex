@@ -40,7 +40,7 @@
 - Add `disabledRules` and `enabledRules` settings (requires update of language extensions)
 - Add `disable rule` quick fix
 - Fix a bug where the `codeAction` request gets stuck in infinite loop
-- Fix another NullPointerException for word2vec
+- Fix another `NullPointerException` for word2vec
 
 ## 4.7.3
 
@@ -71,7 +71,7 @@
 
 ## 4.6.12
 
-- Patch LanguageTool's AnnotatedText with linear interpolation to hopefully fix the `fromPos must be less than toPos` LT errors for good
+- Patch LanguageTool's `AnnotatedText` with linear interpolation to hopefully fix the `fromPos must be less than toPos` LT errors for good
 - Fix `\footnote` in math mode messed up text mode and math mode
 - Increase robustness in case locale or settings are not provided
 - Ignore all brace and bracket arguments after `\begin{environment}` (`tabular`, `array`, etc.)
@@ -90,7 +90,7 @@
 ## 4.6.10
 
 - Don't check plaintext files (fixes [#4][#4])
-- Fix NullPointerException if LanguageTool has not been initialized (fixes [languagetool-languageserver#1][ltls#1])
+- Fix `NullPointerException` if LanguageTool has not been initialized (fixes [languagetool-languageserver#1][ltls#1])
 
 ## 4.6.9
 
@@ -128,7 +128,7 @@
 
 ## 4.6.4
 
-- Ignore some commands often found in LaTeX preambles
+- Ignore some commands often found in L<sup>A</sup>T<sub>E</sub>X preambles
 - Support umlauts and eszett
 
 ## 4.6.3
@@ -148,13 +148,13 @@
 - Forked abandoned repository, rename to vscode-ltex
 - Update to LanguageTool 4.6 (see [4.6 Release Notes](https://github.com/languagetool-org/languagetool/blob/123662bd07059429d9a6d22af6fae164c2ce9dc5/languagetool-standalone/CHANGES.md#46-2019-06-26))
 - Update other dependencies (vscode, vscode-languageclient, LSP, JUnit, Gradle)
-- Implement simple LaTeX parser
+- Implement simple L<sup>A</sup>T<sub>E</sub>X parser
 
 ## 3.8.0
 
 - Update to LanguageTool 3.8 (see [3.8 Release Notes](https://github.com/languagetool-org/languagetool/blob/aa1bef4c0108e25eea7f71bd557b6cc4d9c53c2b/languagetool-standalone/CHANGES.md#38-2017-06-27))
 - Update versioning to reflect LanguageTool versioning
-- Remove "Preview" flag since no blocker issues have been reported
+- Remove preview flag since no blocker issues have been reported
 
 ## 0.0.4
 
