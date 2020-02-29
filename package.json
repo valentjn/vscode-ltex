@@ -110,6 +110,27 @@
             "verbatim"
           ]
         },
+        "ltex.markdown.ignore": {
+          "type": "array",
+          "scope": "resource",
+          "default": [
+            "CodeBlock",
+            "FencedCodeBlock",
+            "IndentedCodeBlock"
+          ],
+          "markdownDescription": "List of Markdown node types to be ignored by the Markdown parser. The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type `Text`. LT<sub>E</sub>X will ignore all nodes (and their `Text` leaves) that have one of the listed node types. The possible node types are listed at <https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html>.",
+          "description": "List of Markdown node types to be ignored by the Markdown parser. The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type \"Text\". LTe>X will ignore all nodes (and their \"Text\" leaves) that have one of the listed node types. The possible node types are listed at https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html."
+        },
+        "ltex.markdown.dummy": {
+          "type": "array",
+          "scope": "resource",
+          "default": [
+            "AutoLink",
+            "Code"
+          ],
+          "markdownDescription": "List of Markdown node types to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.) by the Markdown parser. LT<sub>E</sub>X internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. The possible node types are listed at <https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html>.",
+          "description": "List of Markdown node types to be replaced by dummy words (i.e., \"Dummy0\", \"Dummy1\", etc.) by the Markdown parser. LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. The possible node types are listed at https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html."
+        },
         "ltex.ignoreRuleInSentence": {
           "type": "array",
           "scope": "resource",

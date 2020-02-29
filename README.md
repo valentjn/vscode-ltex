@@ -61,6 +61,12 @@ This extension contributes the following settings. Some settings are separated b
 * `ltex.environments.ignore`: List of additional L<sup>A</sup>T<sub>E</sub>X environments to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser.
   * Example: `["lstlisting", "verbatim"]` (although these two environments are already ignored by default); default: `[]`
 
+* `ltex.markdown.ignore`: List of Markdown node types to be ignored by the Markdown parser. The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type `Text`. LT<sub>E</sub>X will ignore all nodes (and their `Text` leaves) that have one of the listed node types. The possible node types are listed at <https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html>.
+  * Example: `["CodeBlock", "FencedCodeBlock", "IndentedCodeBlock"]` (default)
+
+* `ltex.markdown.dummy`: List of Markdown node types to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.) by the Markdown parser. LT<sub>E</sub>X internally uses this mechanism for example for links and inline code that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. The possible node types are listed at <https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html>.
+  * Example: `["AutoLink", "Code"]` (default)
+
 * `ltex.ignoreRuleInSentence`: Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. Add sentences by using the `Ignore in this sentence` quick fix.
   * Example: `[{"rule": "THIS_NNS", "sentence": "^\\QThese error in this sentence should be ignored.\\E$"}]`; default: `[]`
 

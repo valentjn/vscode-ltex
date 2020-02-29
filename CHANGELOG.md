@@ -3,6 +3,9 @@
 ## 4.7.9 (upcoming)
 
 - Update the Markdown parser flexmark-java to 0.60.2; this increases the speed of parsing Markdown
+- Add possibility to ignore Markdown elements or replace them by dummy words via `ltex.markdown.ignore` and `ltex.markdown.dummy` (fixes [#26][#26])
+- Ignore Markdown code blocks by default
+- Replace auto-links and inline Markdown code with dummy words by default
 - Fix match positions were sometimes off by one, especially in Markdown documents
 - Rewrite `MarkdownAnnotatedTextBuilder`
 
@@ -181,4 +184,5 @@
 [#23]: https://github.com/valentjn/vscode-ltex/issues/23
 [#24]: https://github.com/valentjn/vscode-ltex/issues/24
 [#25]: https://github.com/valentjn/vscode-ltex/issues/25
+[#26]: https://github.com/valentjn/vscode-ltex/issues/26
 [ltls#1]: https://github.com/valentjn/languagetool-languageserver/issues/1
