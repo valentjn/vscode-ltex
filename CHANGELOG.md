@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.7.9 (upcoming)
+## 4.7.9
 
 - Update the Markdown parser flexmark-java to 0.60.2; this increases the speed of parsing Markdown
 - Add possibility to ignore Markdown elements or replace them by dummy words via `ltex.markdown.ignore` and `ltex.markdown.dummy` (fixes [#26][#26])
