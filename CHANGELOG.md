@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.7.9 (upcoming)
+
+- Update the Markdown parser flexmark-java to 0.60.2; this increases the speed of parsing Markdown
+- Fix match positions were sometimes off by one, especially in Markdown documents
+- Rewrite `MarkdownAnnotatedTextBuilder`
+
 ## 4.7.8
 
 - Add support for R Sweave `.rnw` files (fixes [#22][#22])
