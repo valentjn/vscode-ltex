@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.7.10 (upcoming)
+
+- Minor changes in README.md, CHANGELOG.md, and package.json
+
 ## 4.7.9 — “The Markdown Resonance”
 
 - Update the Markdown parser flexmark-java to 0.60.2; this increases the speed of parsing Markdown

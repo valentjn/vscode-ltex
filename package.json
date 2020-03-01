@@ -17,6 +17,33 @@
     "color": "#6565f6",
     "theme": "dark"
   },
+  "badges": [
+    {
+      "url": "https://img.shields.io/travis/valentjn/vscode-ltex/master?logo=travis&style=social",
+      "href": "https://www.travis-ci.org/valentjn/vscode-ltex",
+      "description": "Travis CI build status"
+    },
+    {
+      "url": "https://img.shields.io/visual-studio-marketplace/i/valentjn.vscode-ltex?style=social&logo=visual-studio-code",
+      "href": "https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex",
+      "description": "Installs"
+    },
+    {
+      "url": "https://img.shields.io/visual-studio-marketplace/stars/valentjn.vscode-ltex?style=social&logo=visual-studio-code",
+      "href": "https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex",
+      "description": "Rating"
+    },
+    {
+      "url": "https://img.shields.io/github/stars/valentjn/vscode-ltex?style=social",
+      "href": "https://github.com/valentjn/vscode-ltex",
+      "description": "GitHub stars"
+    },
+    {
+      "url": "https://img.shields.io/github/issues/valentjn/vscode-ltex?style=social&logo=github",
+      "href": "https://github.com/valentjn/vscode-ltex",
+      "description": "GitHub issues"
+    }
+  ],
   "keywords": [
     "spell",
     "grammar",
