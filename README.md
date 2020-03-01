@@ -62,10 +62,10 @@ This extension contributes the following settings. Some settings are separated b
   * Example: `["lstlisting", "verbatim"]` (although these two environments are already ignored by default); default: `[]`
 
 * `ltex.markdown.ignore`: List of Markdown node types to be ignored by the Markdown parser. The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type `Text`. LT<sub>E</sub>X will ignore all nodes (and their `Text` leaves) that have one of the listed node types. The possible node types are listed at <https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html>.
-  * Example: `["CodeBlock", "FencedCodeBlock", "IndentedCodeBlock"]` (default)
+  * Example/default: `["CodeBlock", "FencedCodeBlock", "IndentedCodeBlock"]`
 
 * `ltex.markdown.dummy`: List of Markdown node types to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.) by the Markdown parser. LT<sub>E</sub>X internally uses this mechanism for example for links and inline code that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. The possible node types are listed at <https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html>.
-  * Example: `["AutoLink", "Code"]` (default)
+  * Example/default: `["AutoLink", "Code"]`
 
 * `ltex.ignoreRuleInSentence`: Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. Add sentences by using the `Ignore in this sentence` quick fix.
   * Example: `[{"rule": "THIS_NNS", "sentence": "^\\QThese error in this sentence should be ignored.\\E$"}]`; default: `[]`
@@ -89,13 +89,13 @@ This extension contributes the following settings. Some settings are separated b
   * Examples: `"/path/to/directory"`, `"C:\\path\\to\\directory"`; default: `null`
 
 * `ltex.performance.initialJavaHeapSize`: Initial size of the Java heap memory in megabytes (corresponds to Java's `-Xms` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect.
-  * Example: `64` (default)
+  * Example/default: `64`
 
 * `ltex.performance.maximumJavaHeapSize`: Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an `OutOfMemoryError` is thrown. Changes require reloading the Visual Studio Code window to take effect.
-  * Example: `512` (default)
+  * Example/default: `512`
 
 * `ltex.performance.sentenceCacheSize`: Size of the LanguageTool `ResultCache` in sentences (must be a positive integer). If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect.
-  * Example: `2000` (default)
+  * Example/default: `2000`
 
 * `ltex.trace.server`: Debug setting. When reporting issues, set this to `"verbose"` to be able to access the `LTeX Language Client` log in `View` → `Output`. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.
   * Possible values: `"off"` (default), `"message"`, `"verbose"`
