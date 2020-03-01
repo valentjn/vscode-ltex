@@ -16,6 +16,8 @@ This extension is a fork of the abandoned [LanguageTool for Visual Studio Code e
 
 ## Features
 
+![LanguageTool Grammar Checking for VS Code with LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/master/img/LTeX-banner.png)
+
 * Checks **L<sup>A</sup>T<sub>E</sub>X** and **Markdown** documents
 * Supports **over 20 languages** according to which [language support extensions][marketplace-lang-exts] are installed
 * **Issue highlighting** with hover description
