@@ -9,7 +9,7 @@ webpack.config.js
 
 .vscode/
 .vscode-test/
-img/*.svg
+img/
 lib/
 misc/
 node_modules/
@@ -18,4 +18,5 @@ src/
 test/
 **/*.map
 
+!img/LTeX-icon.png
 !lib/languagetool-languageserver/build/install/languagetool-languageserver/
