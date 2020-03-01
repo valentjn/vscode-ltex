@@ -10,6 +10,7 @@
   "repository": {
     "url": "https://github.com/valentjn/vscode-ltex"
   },
+  "qna": "https://github.com/valentjn/vscode-ltex/issues?q=is%3Aissue+label%3A-question",
   "engines": {
     "vscode": "^1.37.0"
   },
