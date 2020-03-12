@@ -2,6 +2,7 @@
 
 ## 4.7.10 (upcoming)
 
+- Fix `\dots` in math mode being interpreted as `...`
 - Minor changes in README.md, CHANGELOG.md, and package.json
 
 ## 4.7.9 — “The Markdown Resonance”
