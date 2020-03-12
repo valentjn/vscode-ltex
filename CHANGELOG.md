@@ -2,6 +2,7 @@
 
 ## 4.7.10 (upcoming)
 
+- Fix spelling errors for French dummies (fixes [#27][#27])
 - Fix `\dots` in math mode being interpreted as `...`
 - Minor changes in README.md, CHANGELOG.md, and package.json
 
@@ -190,4 +191,5 @@
 [#24]: https://github.com/valentjn/vscode-ltex/issues/24
 [#25]: https://github.com/valentjn/vscode-ltex/issues/25
 [#26]: https://github.com/valentjn/vscode-ltex/issues/26
+[#27]: https://github.com/valentjn/vscode-ltex/issues/27
 [ltls#1]: https://github.com/valentjn/languagetool-languageserver/issues/1
