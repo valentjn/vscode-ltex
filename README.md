@@ -26,7 +26,17 @@ This extension is a fork of the abandoned [LanguageTool for Visual Studio Code e
 
 ## Requirements
 
-Java 8+ is required.
+* [Java 8+](https://www.java.com/)
+* [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) (if you want to check L<sup>A</sup>T<sub>E</sub>X documents)
+
+## How to Use
+
+1. Install the requirements listed above
+2. Install this extension
+3. Install at least one [language support extension][marketplace-lang-exts] (you may install more than one)
+4. Reload the VS Code window if necessary
+5. Open a L<sup>A</sup>T<sub>E</sub>X or a Markdown document, or open a new file and change the language mode to `LaTeX` or `Markdown` (open the Command Palette and select `Change Language Mode`)
+6. Wait a few seconds, and grammar/spelling errors will be displayed! (if there are any)
 
 ## Versioning
 
@@ -104,7 +114,7 @@ This extension contributes the following settings. Some settings are separated b
 
 ## Contributing
 
-Contributions welcome! This repository uses Git submodules. After cloning, be sure to run `git submodule update --init`.
+Contributions are welcome! This repository uses Git submodules. After cloning, be sure to run `git submodule update --init`.
 
 Please report issues (bugs and feature requests) or submit pull requests on [GitHub](https://github.com/valentjn/vscode-ltex).
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.7.11 (upcoming)
+
+- Add usage instructions to README.md
+
 ## 4.7.10 — “The French Capacitance”
 
 - Fix spelling errors for French dummies (fixes [#27][#27])
