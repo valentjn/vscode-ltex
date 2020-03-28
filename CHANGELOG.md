@@ -67,7 +67,7 @@
 
 ## 4.7.0 — “The Multi-Root Observation”
 
-- Update to LanguageTool 4.7 (see [4.7 Release Notes](https://github.com/languagetool-org/languagetool/blob/64f87c18c4d0c13f365d6d85c7aa8c61b7ed2ccf/languagetool-standalone/CHANGES.md#47-2019-09-28))
+- Update to LanguageTool 4.7 (see [LT 4.7 release notes](https://github.com/languagetool-org/languagetool/blob/64f87c18c4d0c13f365d6d85c7aa8c61b7ed2ccf/languagetool-standalone/CHANGES.md#47-2019-09-28))
 - Support multi-root workspaces, all configuration settings except `ltex.enabled` are now resource-specific (fixes [#7][#7])
 - Save dictionary settings under full language short code (e.g., `en-US` instead of `en`). If you already have a dictionary under `ltex.en.dictionary` and use `en-US` as language (not `en`), you have to rename the settings name to `ltex.en-US.dictionary` (similarly for other languages).
 - Remove diagnostics when a file is closed
@@ -156,13 +156,13 @@
 ## 4.6.0 — “The LTeX Resurgence”
 
 - Forked abandoned repository, rename to vscode-ltex
-- Update to LanguageTool 4.6 (see [4.6 Release Notes](https://github.com/languagetool-org/languagetool/blob/123662bd07059429d9a6d22af6fae164c2ce9dc5/languagetool-standalone/CHANGES.md#46-2019-06-26))
+- Update to LanguageTool 4.6 (see [LT 4.6 release notes](https://github.com/languagetool-org/languagetool/blob/123662bd07059429d9a6d22af6fae164c2ce9dc5/languagetool-standalone/CHANGES.md#46-2019-06-26))
 - Update other dependencies (vscode, vscode-languageclient, LSP, JUnit, Gradle)
 - Implement simple L<sup>A</sup>T<sub>E</sub>X parser
 
 ## 3.8.0
 
-- Update to LanguageTool 3.8 (see [3.8 Release Notes](https://github.com/languagetool-org/languagetool/blob/aa1bef4c0108e25eea7f71bd557b6cc4d9c53c2b/languagetool-standalone/CHANGES.md#38-2017-06-27))
+- Update to LanguageTool 3.8 (see [LT 3.8 release notes](https://github.com/languagetool-org/languagetool/blob/aa1bef4c0108e25eea7f71bd557b6cc4d9c53c2b/languagetool-standalone/CHANGES.md#38-2017-06-27))
 - Update versioning to reflect LanguageTool versioning
 - Remove preview flag since no blocker issues have been reported
 
