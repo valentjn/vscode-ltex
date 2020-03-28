@@ -12,7 +12,7 @@
   },
   "qna": "https://github.com/valentjn/vscode-ltex/issues?q=is%3Aissue+label%3A-question",
   "engines": {
-    "vscode": "^1.37.0"
+    "vscode": "^1.39.0"
   },
   "galleryBanner": {
     "color": "#6565f6",
@@ -343,7 +343,7 @@
   "devDependencies": {
     "@types/mocha": "7.0.2",
     "@types/node": "13.9.5",
-    "@types/vscode": "1.37.0",
+    "@types/vscode": "1.39.0",
     "ts-loader": "6.2.2",
     "typescript": "3.8.3",
     "webpack": "4.42.1",
