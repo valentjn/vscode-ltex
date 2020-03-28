@@ -102,20 +102,19 @@ export function activate(context: ExtensionContext) {
         const newText: string = setClasspath(scriptText, buildDesiredClasspath());
         fs.writeFileSync(newScript, newText, { mode: 0o777 });
 
-        const environmentVariables: Object = Object.create(process.env);
         const workspaceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
         const initialJavaHeapSize: number = workspaceConfig['performance']['initialJavaHeapSize'];
         const maximumJavaHeapSize: number = workspaceConfig['performance']['maximumJavaHeapSize'];
-        environmentVariables['LANGUAGETOOL_LANGUAGESERVER_OPTS'] =
+        process.env['LANGUAGETOOL_LANGUAGESERVER_OPTS'] =
             '-Xms' + initialJavaHeapSize + 'm -Xmx' + maximumJavaHeapSize + 'm';
 
         if (workspaceConfig['javaHome'] != null) {
-          environmentVariables['JAVA_HOME'] = workspaceConfig['javaHome'];
+          process.env['JAVA_HOME'] = workspaceConfig['javaHome'];
         }
 
         const port: number = (server.address() as net.AddressInfo).port;
         const childProcess: child_process.ChildProcess = child_process.spawn(
-            newScript, [port.toString()], {'env': environmentVariables});
+            newScript, [port.toString()], {'env': process.env});
 
         // log output
         childProcess.stdout.on('data', function(data) { outputChannel.append(data.toString()); });
