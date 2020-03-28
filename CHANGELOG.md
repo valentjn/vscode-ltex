@@ -6,14 +6,14 @@
 
 ## 4.7.10 — “The French Capacitance”
 
-- Fix spelling errors for French dummies (fixes [#27][#27])
+- Fix spelling errors for French dummies (fixes [#27](https://github.com/valentjn/vscode-ltex/issues/27))
 - Fix `\dots` in math mode being interpreted as `...`
 - Minor changes in README.md, CHANGELOG.md, and package.json
 
 ## 4.7.9 — “The Markdown Resonance”
 
 - Update the Markdown parser flexmark-java to 0.60.2; this increases the speed of parsing Markdown
-- Add possibility to ignore Markdown elements or replace them by dummy words via `ltex.markdown.ignore` and `ltex.markdown.dummy` (fixes [#26][#26])
+- Add possibility to ignore Markdown elements or replace them by dummy words via `ltex.markdown.ignore` and `ltex.markdown.dummy` (fixes [#26](https://github.com/valentjn/vscode-ltex/issues/26))
 - Ignore Markdown code blocks by default
 - Replace auto-links and inline Markdown code with dummy words by default
 - Fix match positions were sometimes off by one, especially in Markdown documents
@@ -21,10 +21,10 @@
 
 ## 4.7.8 — “The Multi-Diagnostic Equivalency”
 
-- Add support for R Sweave `.rnw` files (fixes [#22][#22])
-- Enable fixing multiple diagnostics at once (fixes [#23][#23])
-- Add `ltex.javaHome` setting to control the `JAVA_HOME` environment variable (PR [#24][#24] by mpolitze)
-- Add support for `\euro` (fixes [#25][#25])
+- Add support for R Sweave `.rnw` files (fixes [#22](https://github.com/valentjn/vscode-ltex/issues/22))
+- Enable fixing multiple diagnostics at once (fixes [#23](https://github.com/valentjn/vscode-ltex/issues/23))
+- Add `ltex.javaHome` setting to control the `JAVA_HOME` environment variable (PR [#24](https://github.com/valentjn/vscode-ltex/issues/24) by mpolitze)
+- Add support for `\euro` (fixes [#25](https://github.com/valentjn/vscode-ltex/issues/25))
 - Minor changes in README.md
 
 ## 4.7.7 — “The Preview Perturbation”
@@ -54,7 +54,7 @@
 
 ## 4.7.3 — “The word2vec Erosion”
 
-- Fix null pointer error for word2vec quick fixes (fixes [#12][#12])
+- Fix null pointer error for word2vec quick fixes (fixes [#12](https://github.com/valentjn/vscode-ltex/issues/12))
 
 ## 4.7.2 — “The Message Dissection”
 
@@ -62,13 +62,13 @@
 
 ## 4.7.1 — “The Mother Tongue Factor”
 
-- Add `ltex.additionalRules.motherTongue` setting to enable detection of false friends (fixes [#11][#11])
+- Add `ltex.additionalRules.motherTongue` setting to enable detection of false friends (fixes [#11](https://github.com/valentjn/vscode-ltex/issues/11))
 - Change defaults for `ltex.additionalRules` settings from `""` to `null`
 
 ## 4.7.0 — “The Multi-Root Observation”
 
 - Update to LanguageTool 4.7 (see [LT 4.7 release notes](https://github.com/languagetool-org/languagetool/blob/64f87c18c4d0c13f365d6d85c7aa8c61b7ed2ccf/languagetool-standalone/CHANGES.md#47-2019-09-28))
-- Support multi-root workspaces, all configuration settings except `ltex.enabled` are now resource-specific (fixes [#7][#7])
+- Support multi-root workspaces, all configuration settings except `ltex.enabled` are now resource-specific (fixes [#7](https://github.com/valentjn/vscode-ltex/issues/7))
 - Save dictionary settings under full language short code (e.g., `en-US` instead of `en`). If you already have a dictionary under `ltex.en.dictionary` and use `en-US` as language (not `en`), you have to rename the settings name to `ltex.en-US.dictionary` (similarly for other languages).
 - Remove diagnostics when a file is closed
 - Prevent insertion of text in TikZ mode
@@ -76,7 +76,7 @@
 
 ## 4.6.13 — “The Remote Permeability”
 
-- Fix language extensions not installable on remote machines (fixes [#8][#8])
+- Fix language extensions not installable on remote machines (fixes [#8](https://github.com/valentjn/vscode-ltex/issues/8))
 - Fix language server not reinitialized after a language extension has been installed (which was missing during initialization)
 
 ## 4.6.12 — “The Interpolation Entanglement”
@@ -99,8 +99,8 @@
 
 ## 4.6.10 — “The Plaintext Decay”
 
-- Don't check plaintext files (fixes [#4][#4])
-- Fix `NullPointerException` if LanguageTool has not been initialized (fixes [languagetool-languageserver#1][ltls#1])
+- Don't check plaintext files (fixes [#4](https://github.com/valentjn/vscode-ltex/issues/4))
+- Fix `NullPointerException` if LanguageTool has not been initialized (fixes [languagetool-languageserver#1](https://github.com/valentjn/languagetool-languageserver/issues/1))
 
 ## 4.6.9 — “The Bundle Valuation”
 
@@ -184,16 +184,3 @@
 ## 0.0.1
 
 - Initial release
-
-[#4]: https://github.com/valentjn/vscode-ltex/issues/4
-[#7]: https://github.com/valentjn/vscode-ltex/issues/7
-[#8]: https://github.com/valentjn/vscode-ltex/issues/8
-[#11]: https://github.com/valentjn/vscode-ltex/issues/11
-[#12]: https://github.com/valentjn/vscode-ltex/issues/12
-[#22]: https://github.com/valentjn/vscode-ltex/issues/22
-[#23]: https://github.com/valentjn/vscode-ltex/issues/23
-[#24]: https://github.com/valentjn/vscode-ltex/issues/24
-[#25]: https://github.com/valentjn/vscode-ltex/issues/25
-[#26]: https://github.com/valentjn/vscode-ltex/issues/26
-[#27]: https://github.com/valentjn/vscode-ltex/issues/27
-[ltls#1]: https://github.com/valentjn/languagetool-languageserver/issues/1
