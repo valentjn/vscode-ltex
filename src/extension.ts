@@ -113,8 +113,9 @@ export function activate(context: ExtensionContext) {
           environmentVariables['JAVA_HOME'] = workspaceConfig['javaHome'];
         }
 
+        const port: number = (server.address() as net.AddressInfo).port;
         const childProcess: child_process.ChildProcess = child_process.spawn(
-            newScript, [server.address().port.toString()], {'env': environmentVariables});
+            newScript, [port.toString()], {'env': environmentVariables});
 
         // log output
         childProcess.stdout.on('data', function(data) { outputChannel.append(data.toString()); });
