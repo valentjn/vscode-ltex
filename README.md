@@ -40,7 +40,7 @@ This extension is a fork of the abandoned [LanguageTool for Visual Studio Code e
 
 ## Versioning
 
-The LT<sub>E</sub>X extension has adopted the versioning of its LanguageTool dependency. For example, if this extension has version 4.7.0 it is powered by LanguageTool 4.7. LT<sub>E</sub>X 4.7.1 would also use LanguageTool 4.7. LT<sub>E</sub>X 4.8.0 would use LanguageTool 4.8. **The LanguageTool version of this extension must match the LanguageTool version of your installed language support extensions.**
+The LT<sub>E</sub>X extension has adopted the versioning of its LanguageTool dependency. For example, if this extension has version 4.7.0 it is powered by LanguageTool 4.7. LT<sub>E</sub>X 4.7.1 would also use LanguageTool 4.7. LT<sub>E</sub>X 4.8.0 would use LanguageTool 4.8. **The LanguageTool version of this extension must match the LanguageTool version of your installed language support extensions.** The easiest way to ensure compatibility is to always update all LT<sub>E</sub>X-related extensions when updating. We will never have incompatible versions published at the same time.
 
 ## Extension Settings
 
