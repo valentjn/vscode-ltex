@@ -62,7 +62,9 @@
     "onLanguage:latex",
     "onLanguage:rsweave"
   ],
-  "extensionKind": ["workspace"],
+  "extensionKind": [
+    "workspace"
+  ],
   "main": "./dist/extension",
   "contributes": {
     "configuration": {
