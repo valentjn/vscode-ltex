@@ -7,13 +7,13 @@
 - Update npm dependencies
 - Update required version of VS Code (now 1.39 or newer)
 - Reduce file size of extension (omitting unneeded dependencies)
-- Add usage instructions to README.md
+- Add usage instructions to readme
 
 ## 4.7.10 — “The French Capacitance”
 
 - Fix spelling errors for French dummies (fixes [#27](https://github.com/valentjn/vscode-ltex/issues/27))
 - Fix `\dots` in math mode being interpreted as `...`
-- Minor changes in README.md, CHANGELOG.md, and package.json
+- Minor changes in readme, changelog, and package.json
 
 ## 4.7.9 — “The Markdown Resonance”
 
@@ -30,7 +30,7 @@
 - Enable fixing multiple diagnostics at once (fixes [#23](https://github.com/valentjn/vscode-ltex/issues/23))
 - Add `ltex.javaHome` setting to control the `JAVA_HOME` environment variable (PR [#24](https://github.com/valentjn/vscode-ltex/issues/24) by mpolitze)
 - Add support for `\euro` (fixes [#25](https://github.com/valentjn/vscode-ltex/issues/25))
-- Minor changes in README.md
+- Minor changes in readme
 
 ## 4.7.7 — “The Preview Perturbation”
 
@@ -43,7 +43,7 @@
 - Change default maximum Java heap size to 512 MB
 - Change default sentence cache size from 10000 to 2000 sentences
 - Rename logs, enable logging of client messages even if no folder is open
-- Add more examples to README.md
+- Add more examples to readme
 
 ## 4.7.5 — “The Listing Collapse”
 
@@ -138,7 +138,7 @@
 
 ## 4.6.5 — “The Consistency Integration”
 
-- Make README.md and package.json consistent
+- Make readme and package.json consistent
 - Fix second arguments of `\(re)newcommand` not ignored
 
 ## 4.6.4 — “The Umlaut Expansion”
@@ -156,7 +156,7 @@
 
 ## 4.6.1 — “The Badges Vortex”
 
-- Link badges in README.md
+- Link badges in readme
 
 ## 4.6.0 — “The LTeX Resurgence”
 
