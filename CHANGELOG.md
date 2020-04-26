@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.9.1 (upcoming)
+
+- Use thin non-breaking space for `\,` (fixes [#35](https://github.com/valentjn/vscode-ltex/issues/35))
+
 ## 4.9.0 — “The Update Alternative”
 
 - Update to LanguageTool 4.9 (see [LT 4.9 release notes](https://github.com/languagetool-org/languagetool/blob/d6a675b8dbf04c57ab0729e82b655f5fb8205dd9/languagetool-standalone/CHANGES.md#49-2020-03-24))
