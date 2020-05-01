@@ -2,6 +2,7 @@
 
 ## 4.9.1 (upcoming)
 
+- Fix sentence cache was invalidated when a single ignore sentence rule was present (fixes [#29](https://github.com/valentjn/vscode-ltex/issues/29))
 - Use thin non-breaking space for `\,` (fixes [#35](https://github.com/valentjn/vscode-ltex/issues/35))
 
 ## 4.9.0 — “The Update Alternative”
