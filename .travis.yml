@@ -1,8 +1,8 @@
 language: java
 os: linux
-dist: trusty
+dist: bionic
 jdk:
-- oraclejdk8
+- oraclejdk11
 node_js:
 - node
 install:

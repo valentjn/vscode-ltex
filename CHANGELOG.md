@@ -2,6 +2,7 @@
 
 ## 4.9.2 (upcoming)
 
+- Update required version of Java (now 11 or newer)
 - Add support for \autoref, \pageref, \autopageref (fixes [#37](https://github.com/valentjn/vscode-ltex/issues/37))
 
 ## 4.9.1 — “The Sentence Cache Acceleration”
