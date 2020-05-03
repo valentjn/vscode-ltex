@@ -88,6 +88,19 @@
             "de-DE"
           ]
         },
+        "ltex.http.uri": {
+          "type": [
+            "string",
+            null
+          ],
+          "scope": "window",
+          "default": null,
+          "markdownDescription": "If set to a non-empty string, LTeX will not use the bundled, built-in version LanguageTool. Instead, LTeX will connect to an external [LanguageTool HTTP server](http://wiki.languagetool.org/http-server). Note that in this mode, the settings under `ltex.additionalRules` and `ltex.<LANGUAGE>.dictionary` will not take any effect.",
+          "description": "If set to a non-empty string, LTeX will not use the bundled, built-in version LanguageTool. Instead, LTeX will connect to an external LanguageTool HTTP server (see http://wiki.languagetool.org/http-server for more information). Note that in this mode, the settings under \"ltex.additionalRules\" and \"ltex.<LANGUAGE>.dictionary\" will not take any effect.",
+          "examples": [
+            "http://localhost:8081/"
+          ]
+        },
         "ltex.diagnosticSeverity": {
           "type": "string",
           "scope": "resource",
