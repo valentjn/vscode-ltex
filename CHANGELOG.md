@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.9.2 (upcoming)
+
+- Add support for \autoref, \pageref, \autopageref (fixes [#37](https://github.com/valentjn/vscode-ltex/issues/37))
+
 ## 4.9.1 — “The Sentence Cache Acceleration”
 
 - Fix sentence cache was invalidated when a single ignore sentence rule was present (fixes [#29](https://github.com/valentjn/vscode-ltex/issues/29))
