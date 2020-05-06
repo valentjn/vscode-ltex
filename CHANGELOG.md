@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.9.2 (upcoming)
+## 4.9.2 — “The Server Renormalization”
 
 - Update required version of Java (now 11 or newer)
 - Add support for external LanguageTool HTTP servers (fixes [#36](https://github.com/valentjn/vscode-ltex/issues/36))
