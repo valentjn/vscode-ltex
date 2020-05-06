@@ -63,7 +63,7 @@ This extension contributes the following settings. Some settings are separated b
 * `ltex.<LANGUAGE>.dictionary`: List of additional words that should not be counted as spelling errors.
   * Example: `["adaptivity", "precomputed", "subproblem"]`; default: `[]`
 
-* `ltex.<LANGUAGE>.disabledRules`: List of rules that should be disabled (if enabled by default by LanguageTool). A cake is being baked by him.
+* `ltex.<LANGUAGE>.disabledRules`: List of rules that should be disabled (if enabled by default by LanguageTool).
   * Example: `["EN_QUOTES", "UPPERCASE_SENTENCE_START"]` (for `en-US`); default: `[]`
 
 * `ltex.<LANGUAGE>.enabledRules`: List of rules that should be enabled (if disabled by default by LanguageTool).
