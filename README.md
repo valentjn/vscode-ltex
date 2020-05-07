@@ -53,9 +53,6 @@ This extension contributes the following settings. Some settings are separated b
 * `ltex.language`: The language LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension][marketplace-lang-exts]. See the Marketplace description of the installed *language support extension* for possible values. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).
   * Examples: `"en-US"` (default), `"de-DE"`
 
-* `ltex.http.uri`: If set to a non-empty string, LT<sub>E</sub>X will not use the bundled, built-in version LanguageTool. Instead, LTeX will connect to an external [LanguageTool HTTP server](http://wiki.languagetool.org/http-server). Note that in this mode, the settings under `ltex.additionalRules` and `ltex.<LANGUAGE>.dictionary` will not take any effect.
-  * Example: `"http://localhost:8081/"`; default: `null`
-
 * `ltex.diagnosticSeverity`: Severity of the diagnostics corresponding to the grammar and spelling errors. Allows controlling how and where the diagnostics appear in Visual Studio Code.
   * Possible values: `"error"`, `"warning"`, `"information"` (default), `"hint"`
 
