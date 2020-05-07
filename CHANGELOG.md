@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.9.3 (upcoming)
+## 4.9.3 — “The Java Collapse”
 
 - Revert back to Java 8
 - Remove support for external LanguageTool HTTP servers
