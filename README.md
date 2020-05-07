@@ -27,7 +27,7 @@ This extension is a fork of the abandoned [LanguageTool for Visual Studio Code e
 ## Requirements
 
 * [VS Code 1.39 or newer](https://code.visualstudio.com/)
-* [Java 11 or newer](https://www.java.com/)
+* [Java 8 or newer](https://www.java.com/)
 * [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) (if you want to check L<sup>A</sup>T<sub>E</sub>X documents)
 
 ## How to Use
