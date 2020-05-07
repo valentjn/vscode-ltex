@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.9.3 (upcoming)
+
+- Revert back to Java 8
+- Remove support for external LanguageTool HTTP servers
+
 ## 4.9.2 — “The Server Renormalization”
 
 - Update required version of Java (now 11 or newer)
