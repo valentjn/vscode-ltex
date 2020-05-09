@@ -6,8 +6,8 @@ import * as net from 'net';
 import * as child_process from 'child_process';
 
 import { env, extensions, window, workspace, ConfigurationTarget, Disposable, ExtensionContext,
-  OutputChannel, Uri, WorkspaceConfiguration } from 'vscode';
-import { LanguageClient, LanguageClientOptions, StreamInfo } from 'vscode-languageclient';
+    OutputChannel, Uri, WorkspaceConfiguration } from 'vscode';
+import { LanguageClient, LanguageClientOptions, ServerOptions, RevealOutputChannelOn } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
   function discoverExtensionPaths(): string[] {
@@ -69,91 +69,72 @@ export function activate(context: ExtensionContext) {
     return (Array.isArray(obj) ? obj : [obj]);
   }
 
-  function createServer(): Promise<StreamInfo> {
-    return new Promise((resolve, reject) => {
-      var server: net.Server = net.createServer((socket) => {
-        console.log('Creating server');
+  function createLanguageClient(): LanguageClient {
+    const isWindows: boolean = (process.platform === 'win32');
 
-        resolve({
-          reader: socket,
-          writer: socket
-        });
+    // Start the child java process
+    const scriptDir: string = path.resolve(context.extensionPath, 'lib',
+        'languagetool-languageserver', 'build', 'install',
+        'languagetool-languageserver', 'bin');
+    const originalScript: string = path.resolve(scriptDir, isWindows ?
+        'languagetool-languageserver.bat' : 'languagetool-languageserver');
+    const newScript: string = path.resolve(scriptDir, isWindows ?
+        'languagetool-languageserver-live.bat' : 'languagetool-languageserver-live');
 
-        socket.on('end', () => console.log('Disconnected'));
-      }).on('error', (err) => {
-        // handle errors here
-        throw err;
-      });
+    const scriptText: string = fs.readFileSync(originalScript, 'utf8');
+    const newText: string = setClasspath(scriptText, buildDesiredClasspath());
+    fs.writeFileSync(newScript, newText, { mode: 0o777 });
 
-      const isWindows: boolean = (process.platform === 'win32');
+    const workspaceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
+    const initialJavaHeapSize: number = workspaceConfig['performance']['initialJavaHeapSize'];
+    const maximumJavaHeapSize: number = workspaceConfig['performance']['maximumJavaHeapSize'];
+    process.env['LANGUAGETOOL_LANGUAGESERVER_OPTS'] =
+        '-Xms' + initialJavaHeapSize + 'm -Xmx' + maximumJavaHeapSize + 'm';
 
-      // grab a random port.
-      server.listen(() => {
-        // Start the child java process
-        const scriptDir: string = path.resolve(context.extensionPath, 'lib',
-            'languagetool-languageserver', 'build', 'install',
-            'languagetool-languageserver', 'bin');
-        const originalScript: string = path.resolve(scriptDir, isWindows ?
-            'languagetool-languageserver.bat' : 'languagetool-languageserver');
-        const newScript: string = path.resolve(scriptDir, isWindows ?
-            'languagetool-languageserver-live.bat' : 'languagetool-languageserver-live');
+    if (workspaceConfig['javaHome'] != null) {
+      process.env['JAVA_HOME'] = workspaceConfig['javaHome'];
+    }
 
-        const scriptText: string = fs.readFileSync(originalScript, 'utf8');
-        const newText: string = setClasspath(scriptText, buildDesiredClasspath());
-        fs.writeFileSync(newScript, newText, { mode: 0o777 });
+    const serverOptions: ServerOptions = {
+      command: newScript,
+      args: [],
+      options: {'env': process.env},
+    };
 
-        const workspaceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
-        const initialJavaHeapSize: number = workspaceConfig['performance']['initialJavaHeapSize'];
-        const maximumJavaHeapSize: number = workspaceConfig['performance']['maximumJavaHeapSize'];
-        process.env['LANGUAGETOOL_LANGUAGESERVER_OPTS'] =
-            '-Xms' + initialJavaHeapSize + 'm -Xmx' + maximumJavaHeapSize + 'm';
+    // Options to control the language client
+    const clientOptions: LanguageClientOptions = {
+      documentSelector: [
+        {scheme: 'file', language: 'markdown'},
+        {scheme: 'untitled', language: 'markdown'},
+        {scheme: 'file', language: 'latex'},
+        {scheme: 'untitled', language: 'latex'},
+        {scheme: 'file', language: 'rsweave'},
+        {scheme: 'untitled', language: 'rsweave'},
+      ],
+      synchronize: {
+        configurationSection: 'ltex',
+      },
+      // Until it is specified in the LSP that the locale is automatically sent with
+      // the initialization request, we have to do that manually.
+      // See https://github.com/microsoft/language-server-protocol/issues/754.
+      initializationOptions : {
+        locale: env.language,
+      },
+      revealOutputChannelOn: RevealOutputChannelOn.Never,
+      traceOutputChannel: window.createOutputChannel('LTeX Language Client'),
+    };
 
-        if (workspaceConfig['javaHome'] != null) {
-          process.env['JAVA_HOME'] = workspaceConfig['javaHome'];
-        }
-
-        const port: number = (server.address() as net.AddressInfo).port;
-        const childProcess: child_process.ChildProcess = child_process.spawn(
-            newScript, [port.toString()], {'env': process.env});
-
-        // log output
-        childProcess.stdout.on('data', function(data) { outputChannel.append(data.toString()); });
-        childProcess.stderr.on('data', function(data) { outputChannel.append(data.toString()); });
-      });
-    });
-  };
-
-  // Options to control the language client
-  const clientOptions: LanguageClientOptions = {
-    documentSelector: [
-      {scheme: 'file', language: 'markdown'},
-      {scheme: 'untitled', language: 'markdown'},
-      {scheme: 'file', language: 'latex'},
-      {scheme: 'untitled', language: 'latex'},
-      {scheme: 'file', language: 'rsweave'},
-      {scheme: 'untitled', language: 'rsweave'},
-    ],
-    synchronize: {
-      configurationSection: 'ltex'
-    },
-    // Until it is specified in the LSP that the locale is automatically sent with
-    // the initialization request, we have to do that manually.
-    // See https://github.com/microsoft/language-server-protocol/issues/754.
-    initializationOptions : {
-      locale: env.language,
-    },
-  };
+    const languageClient: LanguageClient = new LanguageClient(
+        'ltex', 'LTeX Language Server', serverOptions, clientOptions);
+    return languageClient;
+  }
 
   // Allow to enable languageTool in specific workspaces
   const workspaceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
   if (!workspaceConfig['enabled']) return;
 
-  // create output channel for logging
-  const outputChannel: OutputChannel = window.createOutputChannel('LTeX Language Server');
-
   // create the language client
-  const languageClient: LanguageClient = new LanguageClient(
-      'ltex', 'LTeX Language Client', createServer, clientOptions);
+  const languageClient: LanguageClient = createLanguageClient();
 
   // Hack to enable the server to execute commands that change the client configuration
   // (e.g., adding words to the dictionary).
@@ -200,6 +181,7 @@ export function activate(context: ExtensionContext) {
     }
   });
 
+  console.log('Creating server');
   let disposable: Disposable = languageClient.start();
 
   // Push the disposable to the context's subscriptions so that the
