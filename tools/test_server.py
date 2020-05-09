@@ -215,7 +215,7 @@ def main():
         os.path.join(extensionsPath, ltexMainPath, "lib", "languagetool-languageserver",
           "build", "install", "languagetool-languageserver", "lib", "*"),
         os.path.join(extensionsPath, ltexLanguagePath,  "lib", "*"),
-      ]), "App", str(port)]
+      ]), "LanguageToolLanguageServerLauncher", str(port)]
   print("Starting LanguageTool language server...")
   process = subprocess.Popen(ltexArgs, stdout=ltexStdout, stderr=ltexStderr)
 
