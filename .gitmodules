@@ -1,3 +1,0 @@
-[submodule "lib/languagetool-languageserver"]
-	path = lib/languagetool-languageserver
-	url = https://github.com/valentjn/languagetool-languageserver.git

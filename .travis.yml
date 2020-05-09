@@ -1,15 +1,10 @@
-language: java
 os: linux
-dist: trusty
-jdk:
-- oraclejdk8
+dist: bionic
+language: node_js
 node_js:
-- node
+- 13
 install:
-- npm install
 - npm install -g vsce
-- "./lib/languagetool-languageserver/gradlew --project-dir ./lib/languagetool-languageserver/
-  assemble check"
 script:
 - vsce package
 deploy:
