@@ -81,12 +81,2036 @@
           "type": "string",
           "scope": "resource",
           "default": "en-US",
-          "markdownDescription": "The language (e.g., `en-US`) LanguageTool should check against. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).",
-          "description": "The language (e.g., en-US) LanguageTool should check against. Use a specific variant like en-US or de-DE instead of the generic language code like en or de to obtain spelling corrections (in addition to grammar corrections).",
-          "examples": [
+          "enum": [
+            "ar",
+            "ar-DZ",
+            "ast-ES",
+            "be-BY",
+            "br-FR",
+            "ca-ES",
+            "ca-ES-valencia",
+            "da-DK",
+            "de",
+            "de-AT",
+            "de-CH",
+            "de-DE",
+            "de-DE-x-simple-language",
+            "el-GR",
+            "en",
+            "en-AU",
+            "en-CA",
+            "en-GB",
+            "en-NZ",
             "en-US",
-            "de-DE"
-          ]
+            "en-ZA",
+            "eo",
+            "es",
+            "fa",
+            "fr",
+            "ga-IE",
+            "gl-ES",
+            "it",
+            "ja-JP",
+            "km-KH",
+            "nl",
+            "pl-PL",
+            "pt",
+            "pt-AO",
+            "pt-BR",
+            "pt-MZ",
+            "pt-PT",
+            "ro-RO",
+            "ru-RU",
+            "sk-SK",
+            "sl-SI",
+            "sv",
+            "ta-IN",
+            "tl-PH",
+            "uk-UA",
+            "zh-CN"
+          ],
+          "enumDescriptions": [
+            "Arabic",
+            "Arabic (Algeria)",
+            "Asturian",
+            "Belarusian",
+            "Breton",
+            "Catalan",
+            "Catalan (Valencian)",
+            "Danish",
+            "German",
+            "German (Austria)",
+            "German (Swiss)",
+            "German (Germany)",
+            "Simple German",
+            "Greek",
+            "English",
+            "English (Australian)",
+            "English (Canadian)",
+            "English (GB)",
+            "English (New Zealand)",
+            "English (US)",
+            "English (South African)",
+            "Esperanto",
+            "Spanish",
+            "Persian",
+            "French",
+            "Irish",
+            "Galician",
+            "Italian",
+            "Japanese",
+            "Khmer",
+            "Dutch",
+            "Polish",
+            "Portuguese",
+            "Portuguese (Angola preAO)",
+            "Portuguese (Brazil)",
+            "Portuguese (Moçambique preAO)",
+            "Portuguese (Portugal)",
+            "Romanian",
+            "Russian",
+            "Slovak",
+            "Slovenian",
+            "Swedish",
+            "Tamil",
+            "Tagalog",
+            "Ukrainian",
+            "Chinese"
+          ],
+          "markdownDescription": "The language (e.g., `en-US`) LanguageTool should check against. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).",
+          "description": "The language (e.g., en-US) LanguageTool should check against. Use a specific variant like en-US or de-DE instead of the generic language code like en or de to obtain spelling corrections (in addition to grammar corrections)."
+        },
+        "ltex.languageSettings.ar.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `ar` (Arabic) words that should not be counted as spelling errors.",
+          "description": "List of additional \"ar\" (Arabic) words that should not be counted as spelling errors."
+        },
+        "ltex.ar.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ar.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ar.dictionary\"."
+        },
+        "ltex.languageSettings.ar.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ar` (Arabic) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"ar\" (Arabic) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.ar.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ar.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ar.disabledRules\"."
+        },
+        "ltex.languageSettings.ar.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ar` (Arabic) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"ar\" (Arabic) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.ar.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ar.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ar.enabledRules\"."
+        },
+        "ltex.languageSettings.ar-DZ.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `ar-DZ` (Arabic (Algeria)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"ar-DZ\" (Arabic (Algeria)) words that should not be counted as spelling errors."
+        },
+        "ltex.ar-DZ.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ar-DZ.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ar-DZ.dictionary\"."
+        },
+        "ltex.languageSettings.ar-DZ.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ar-DZ` (Arabic (Algeria)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"ar-DZ\" (Arabic (Algeria)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.ar-DZ.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ar-DZ.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ar-DZ.disabledRules\"."
+        },
+        "ltex.languageSettings.ar-DZ.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ar-DZ` (Arabic (Algeria)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"ar-DZ\" (Arabic (Algeria)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.ar-DZ.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ar-DZ.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ar-DZ.enabledRules\"."
+        },
+        "ltex.languageSettings.ast-ES.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `ast-ES` (Asturian) words that should not be counted as spelling errors.",
+          "description": "List of additional \"ast-ES\" (Asturian) words that should not be counted as spelling errors."
+        },
+        "ltex.ast-ES.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ast-ES.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ast-ES.dictionary\"."
+        },
+        "ltex.languageSettings.ast-ES.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ast-ES` (Asturian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"ast-ES\" (Asturian) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.ast-ES.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ast-ES.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ast-ES.disabledRules\"."
+        },
+        "ltex.languageSettings.ast-ES.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ast-ES` (Asturian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"ast-ES\" (Asturian) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.ast-ES.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ast-ES.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ast-ES.enabledRules\"."
+        },
+        "ltex.languageSettings.be-BY.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `be-BY` (Belarusian) words that should not be counted as spelling errors.",
+          "description": "List of additional \"be-BY\" (Belarusian) words that should not be counted as spelling errors."
+        },
+        "ltex.be-BY.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.be-BY.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.be-BY.dictionary\"."
+        },
+        "ltex.languageSettings.be-BY.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `be-BY` (Belarusian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"be-BY\" (Belarusian) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.be-BY.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.be-BY.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.be-BY.disabledRules\"."
+        },
+        "ltex.languageSettings.be-BY.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `be-BY` (Belarusian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"be-BY\" (Belarusian) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.be-BY.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.be-BY.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.be-BY.enabledRules\"."
+        },
+        "ltex.languageSettings.br-FR.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `br-FR` (Breton) words that should not be counted as spelling errors.",
+          "description": "List of additional \"br-FR\" (Breton) words that should not be counted as spelling errors."
+        },
+        "ltex.br-FR.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.br-FR.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.br-FR.dictionary\"."
+        },
+        "ltex.languageSettings.br-FR.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `br-FR` (Breton) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"br-FR\" (Breton) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.br-FR.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.br-FR.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.br-FR.disabledRules\"."
+        },
+        "ltex.languageSettings.br-FR.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `br-FR` (Breton) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"br-FR\" (Breton) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.br-FR.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.br-FR.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.br-FR.enabledRules\"."
+        },
+        "ltex.languageSettings.ca-ES.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `ca-ES` (Catalan) words that should not be counted as spelling errors.",
+          "description": "List of additional \"ca-ES\" (Catalan) words that should not be counted as spelling errors."
+        },
+        "ltex.ca-ES.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ca-ES.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ca-ES.dictionary\"."
+        },
+        "ltex.languageSettings.ca-ES.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ca-ES` (Catalan) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"ca-ES\" (Catalan) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.ca-ES.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ca-ES.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ca-ES.disabledRules\"."
+        },
+        "ltex.languageSettings.ca-ES.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ca-ES` (Catalan) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"ca-ES\" (Catalan) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.ca-ES.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ca-ES.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ca-ES.enabledRules\"."
+        },
+        "ltex.languageSettings.ca-ES-valencia.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `ca-ES-valencia` (Catalan (Valencian)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"ca-ES-valencia\" (Catalan (Valencian)) words that should not be counted as spelling errors."
+        },
+        "ltex.ca-ES-valencia.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ca-ES-valencia.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ca-ES-valencia.dictionary\"."
+        },
+        "ltex.languageSettings.ca-ES-valencia.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ca-ES-valencia` (Catalan (Valencian)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"ca-ES-valencia\" (Catalan (Valencian)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.ca-ES-valencia.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ca-ES-valencia.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ca-ES-valencia.disabledRules\"."
+        },
+        "ltex.languageSettings.ca-ES-valencia.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ca-ES-valencia` (Catalan (Valencian)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"ca-ES-valencia\" (Catalan (Valencian)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.ca-ES-valencia.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ca-ES-valencia.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ca-ES-valencia.enabledRules\"."
+        },
+        "ltex.languageSettings.da-DK.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `da-DK` (Danish) words that should not be counted as spelling errors.",
+          "description": "List of additional \"da-DK\" (Danish) words that should not be counted as spelling errors."
+        },
+        "ltex.da-DK.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.da-DK.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.da-DK.dictionary\"."
+        },
+        "ltex.languageSettings.da-DK.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `da-DK` (Danish) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"da-DK\" (Danish) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.da-DK.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.da-DK.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.da-DK.disabledRules\"."
+        },
+        "ltex.languageSettings.da-DK.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `da-DK` (Danish) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"da-DK\" (Danish) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.da-DK.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.da-DK.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.da-DK.enabledRules\"."
+        },
+        "ltex.languageSettings.de.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `de` (German) words that should not be counted as spelling errors.",
+          "description": "List of additional \"de\" (German) words that should not be counted as spelling errors."
+        },
+        "ltex.de.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de.dictionary\"."
+        },
+        "ltex.languageSettings.de.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `de` (German) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"de\" (German) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.de.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de.disabledRules\"."
+        },
+        "ltex.languageSettings.de.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `de` (German) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"de\" (German) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.de.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de.enabledRules\"."
+        },
+        "ltex.languageSettings.de-AT.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `de-AT` (German (Austria)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"de-AT\" (German (Austria)) words that should not be counted as spelling errors."
+        },
+        "ltex.de-AT.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de-AT.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de-AT.dictionary\"."
+        },
+        "ltex.languageSettings.de-AT.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `de-AT` (German (Austria)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"de-AT\" (German (Austria)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.de-AT.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de-AT.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de-AT.disabledRules\"."
+        },
+        "ltex.languageSettings.de-AT.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `de-AT` (German (Austria)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"de-AT\" (German (Austria)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.de-AT.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de-AT.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de-AT.enabledRules\"."
+        },
+        "ltex.languageSettings.de-CH.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `de-CH` (German (Swiss)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"de-CH\" (German (Swiss)) words that should not be counted as spelling errors."
+        },
+        "ltex.de-CH.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de-CH.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de-CH.dictionary\"."
+        },
+        "ltex.languageSettings.de-CH.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `de-CH` (German (Swiss)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"de-CH\" (German (Swiss)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.de-CH.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de-CH.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de-CH.disabledRules\"."
+        },
+        "ltex.languageSettings.de-CH.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `de-CH` (German (Swiss)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"de-CH\" (German (Swiss)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.de-CH.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de-CH.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de-CH.enabledRules\"."
+        },
+        "ltex.languageSettings.de-DE.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `de-DE` (German (Germany)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"de-DE\" (German (Germany)) words that should not be counted as spelling errors."
+        },
+        "ltex.de-DE.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de-DE.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de-DE.dictionary\"."
+        },
+        "ltex.languageSettings.de-DE.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `de-DE` (German (Germany)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"de-DE\" (German (Germany)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.de-DE.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de-DE.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de-DE.disabledRules\"."
+        },
+        "ltex.languageSettings.de-DE.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `de-DE` (German (Germany)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"de-DE\" (German (Germany)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.de-DE.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de-DE.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de-DE.enabledRules\"."
+        },
+        "ltex.languageSettings.de-DE-x-simple-language.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `de-DE-x-simple-language` (Simple German) words that should not be counted as spelling errors.",
+          "description": "List of additional \"de-DE-x-simple-language\" (Simple German) words that should not be counted as spelling errors."
+        },
+        "ltex.de-DE-x-simple-language.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de-DE-x-simple-language.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de-DE-x-simple-language.dictionary\"."
+        },
+        "ltex.languageSettings.de-DE-x-simple-language.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `de-DE-x-simple-language` (Simple German) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"de-DE-x-simple-language\" (Simple German) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.de-DE-x-simple-language.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de-DE-x-simple-language.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de-DE-x-simple-language.disabledRules\"."
+        },
+        "ltex.languageSettings.de-DE-x-simple-language.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `de-DE-x-simple-language` (Simple German) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"de-DE-x-simple-language\" (Simple German) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.de-DE-x-simple-language.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.de-DE-x-simple-language.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.de-DE-x-simple-language.enabledRules\"."
+        },
+        "ltex.languageSettings.el-GR.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `el-GR` (Greek) words that should not be counted as spelling errors.",
+          "description": "List of additional \"el-GR\" (Greek) words that should not be counted as spelling errors."
+        },
+        "ltex.el-GR.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.el-GR.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.el-GR.dictionary\"."
+        },
+        "ltex.languageSettings.el-GR.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `el-GR` (Greek) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"el-GR\" (Greek) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.el-GR.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.el-GR.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.el-GR.disabledRules\"."
+        },
+        "ltex.languageSettings.el-GR.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `el-GR` (Greek) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"el-GR\" (Greek) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.el-GR.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.el-GR.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.el-GR.enabledRules\"."
+        },
+        "ltex.languageSettings.en.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `en` (English) words that should not be counted as spelling errors.",
+          "description": "List of additional \"en\" (English) words that should not be counted as spelling errors."
+        },
+        "ltex.en.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en.dictionary\"."
+        },
+        "ltex.languageSettings.en.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `en` (English) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"en\" (English) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.en.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en.disabledRules\"."
+        },
+        "ltex.languageSettings.en.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `en` (English) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"en\" (English) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.en.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en.enabledRules\"."
+        },
+        "ltex.languageSettings.en-AU.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `en-AU` (English (Australian)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"en-AU\" (English (Australian)) words that should not be counted as spelling errors."
+        },
+        "ltex.en-AU.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-AU.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-AU.dictionary\"."
+        },
+        "ltex.languageSettings.en-AU.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `en-AU` (English (Australian)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"en-AU\" (English (Australian)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.en-AU.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-AU.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-AU.disabledRules\"."
+        },
+        "ltex.languageSettings.en-AU.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `en-AU` (English (Australian)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"en-AU\" (English (Australian)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.en-AU.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-AU.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-AU.enabledRules\"."
+        },
+        "ltex.languageSettings.en-CA.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `en-CA` (English (Canadian)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"en-CA\" (English (Canadian)) words that should not be counted as spelling errors."
+        },
+        "ltex.en-CA.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-CA.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-CA.dictionary\"."
+        },
+        "ltex.languageSettings.en-CA.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `en-CA` (English (Canadian)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"en-CA\" (English (Canadian)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.en-CA.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-CA.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-CA.disabledRules\"."
+        },
+        "ltex.languageSettings.en-CA.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `en-CA` (English (Canadian)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"en-CA\" (English (Canadian)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.en-CA.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-CA.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-CA.enabledRules\"."
+        },
+        "ltex.languageSettings.en-GB.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `en-GB` (English (GB)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"en-GB\" (English (GB)) words that should not be counted as spelling errors."
+        },
+        "ltex.en-GB.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-GB.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-GB.dictionary\"."
+        },
+        "ltex.languageSettings.en-GB.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `en-GB` (English (GB)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"en-GB\" (English (GB)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.en-GB.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-GB.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-GB.disabledRules\"."
+        },
+        "ltex.languageSettings.en-GB.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `en-GB` (English (GB)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"en-GB\" (English (GB)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.en-GB.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-GB.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-GB.enabledRules\"."
+        },
+        "ltex.languageSettings.en-NZ.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `en-NZ` (English (New Zealand)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"en-NZ\" (English (New Zealand)) words that should not be counted as spelling errors."
+        },
+        "ltex.en-NZ.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-NZ.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-NZ.dictionary\"."
+        },
+        "ltex.languageSettings.en-NZ.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `en-NZ` (English (New Zealand)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"en-NZ\" (English (New Zealand)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.en-NZ.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-NZ.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-NZ.disabledRules\"."
+        },
+        "ltex.languageSettings.en-NZ.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `en-NZ` (English (New Zealand)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"en-NZ\" (English (New Zealand)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.en-NZ.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-NZ.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-NZ.enabledRules\"."
+        },
+        "ltex.languageSettings.en-US.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `en-US` (English (US)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"en-US\" (English (US)) words that should not be counted as spelling errors."
+        },
+        "ltex.en-US.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-US.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-US.dictionary\"."
+        },
+        "ltex.languageSettings.en-US.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `en-US` (English (US)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"en-US\" (English (US)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.en-US.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-US.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-US.disabledRules\"."
+        },
+        "ltex.languageSettings.en-US.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `en-US` (English (US)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"en-US\" (English (US)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.en-US.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-US.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-US.enabledRules\"."
+        },
+        "ltex.languageSettings.en-ZA.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `en-ZA` (English (South African)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"en-ZA\" (English (South African)) words that should not be counted as spelling errors."
+        },
+        "ltex.en-ZA.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-ZA.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-ZA.dictionary\"."
+        },
+        "ltex.languageSettings.en-ZA.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `en-ZA` (English (South African)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"en-ZA\" (English (South African)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.en-ZA.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-ZA.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-ZA.disabledRules\"."
+        },
+        "ltex.languageSettings.en-ZA.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `en-ZA` (English (South African)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"en-ZA\" (English (South African)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.en-ZA.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.en-ZA.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.en-ZA.enabledRules\"."
+        },
+        "ltex.languageSettings.eo.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `eo` (Esperanto) words that should not be counted as spelling errors.",
+          "description": "List of additional \"eo\" (Esperanto) words that should not be counted as spelling errors."
+        },
+        "ltex.eo.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.eo.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.eo.dictionary\"."
+        },
+        "ltex.languageSettings.eo.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `eo` (Esperanto) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"eo\" (Esperanto) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.eo.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.eo.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.eo.disabledRules\"."
+        },
+        "ltex.languageSettings.eo.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `eo` (Esperanto) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"eo\" (Esperanto) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.eo.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.eo.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.eo.enabledRules\"."
+        },
+        "ltex.languageSettings.es.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `es` (Spanish) words that should not be counted as spelling errors.",
+          "description": "List of additional \"es\" (Spanish) words that should not be counted as spelling errors."
+        },
+        "ltex.es.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.es.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.es.dictionary\"."
+        },
+        "ltex.languageSettings.es.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `es` (Spanish) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"es\" (Spanish) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.es.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.es.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.es.disabledRules\"."
+        },
+        "ltex.languageSettings.es.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `es` (Spanish) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"es\" (Spanish) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.es.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.es.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.es.enabledRules\"."
+        },
+        "ltex.languageSettings.fa.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `fa` (Persian) words that should not be counted as spelling errors.",
+          "description": "List of additional \"fa\" (Persian) words that should not be counted as spelling errors."
+        },
+        "ltex.fa.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.fa.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.fa.dictionary\"."
+        },
+        "ltex.languageSettings.fa.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `fa` (Persian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"fa\" (Persian) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.fa.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.fa.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.fa.disabledRules\"."
+        },
+        "ltex.languageSettings.fa.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `fa` (Persian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"fa\" (Persian) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.fa.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.fa.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.fa.enabledRules\"."
+        },
+        "ltex.languageSettings.fr.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `fr` (French) words that should not be counted as spelling errors.",
+          "description": "List of additional \"fr\" (French) words that should not be counted as spelling errors."
+        },
+        "ltex.fr.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.fr.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.fr.dictionary\"."
+        },
+        "ltex.languageSettings.fr.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `fr` (French) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"fr\" (French) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.fr.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.fr.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.fr.disabledRules\"."
+        },
+        "ltex.languageSettings.fr.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `fr` (French) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"fr\" (French) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.fr.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.fr.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.fr.enabledRules\"."
+        },
+        "ltex.languageSettings.ga-IE.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `ga-IE` (Irish) words that should not be counted as spelling errors.",
+          "description": "List of additional \"ga-IE\" (Irish) words that should not be counted as spelling errors."
+        },
+        "ltex.ga-IE.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ga-IE.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ga-IE.dictionary\"."
+        },
+        "ltex.languageSettings.ga-IE.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ga-IE` (Irish) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"ga-IE\" (Irish) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.ga-IE.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ga-IE.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ga-IE.disabledRules\"."
+        },
+        "ltex.languageSettings.ga-IE.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ga-IE` (Irish) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"ga-IE\" (Irish) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.ga-IE.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ga-IE.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ga-IE.enabledRules\"."
+        },
+        "ltex.languageSettings.gl-ES.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `gl-ES` (Galician) words that should not be counted as spelling errors.",
+          "description": "List of additional \"gl-ES\" (Galician) words that should not be counted as spelling errors."
+        },
+        "ltex.gl-ES.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.gl-ES.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.gl-ES.dictionary\"."
+        },
+        "ltex.languageSettings.gl-ES.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `gl-ES` (Galician) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"gl-ES\" (Galician) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.gl-ES.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.gl-ES.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.gl-ES.disabledRules\"."
+        },
+        "ltex.languageSettings.gl-ES.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `gl-ES` (Galician) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"gl-ES\" (Galician) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.gl-ES.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.gl-ES.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.gl-ES.enabledRules\"."
+        },
+        "ltex.languageSettings.it.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `it` (Italian) words that should not be counted as spelling errors.",
+          "description": "List of additional \"it\" (Italian) words that should not be counted as spelling errors."
+        },
+        "ltex.it.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.it.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.it.dictionary\"."
+        },
+        "ltex.languageSettings.it.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `it` (Italian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"it\" (Italian) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.it.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.it.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.it.disabledRules\"."
+        },
+        "ltex.languageSettings.it.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `it` (Italian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"it\" (Italian) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.it.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.it.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.it.enabledRules\"."
+        },
+        "ltex.languageSettings.ja-JP.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `ja-JP` (Japanese) words that should not be counted as spelling errors.",
+          "description": "List of additional \"ja-JP\" (Japanese) words that should not be counted as spelling errors."
+        },
+        "ltex.ja-JP.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ja-JP.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ja-JP.dictionary\"."
+        },
+        "ltex.languageSettings.ja-JP.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ja-JP` (Japanese) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"ja-JP\" (Japanese) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.ja-JP.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ja-JP.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ja-JP.disabledRules\"."
+        },
+        "ltex.languageSettings.ja-JP.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ja-JP` (Japanese) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"ja-JP\" (Japanese) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.ja-JP.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ja-JP.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ja-JP.enabledRules\"."
+        },
+        "ltex.languageSettings.km-KH.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `km-KH` (Khmer) words that should not be counted as spelling errors.",
+          "description": "List of additional \"km-KH\" (Khmer) words that should not be counted as spelling errors."
+        },
+        "ltex.km-KH.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.km-KH.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.km-KH.dictionary\"."
+        },
+        "ltex.languageSettings.km-KH.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `km-KH` (Khmer) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"km-KH\" (Khmer) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.km-KH.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.km-KH.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.km-KH.disabledRules\"."
+        },
+        "ltex.languageSettings.km-KH.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `km-KH` (Khmer) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"km-KH\" (Khmer) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.km-KH.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.km-KH.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.km-KH.enabledRules\"."
+        },
+        "ltex.languageSettings.nl.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `nl` (Dutch) words that should not be counted as spelling errors.",
+          "description": "List of additional \"nl\" (Dutch) words that should not be counted as spelling errors."
+        },
+        "ltex.nl.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.nl.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.nl.dictionary\"."
+        },
+        "ltex.languageSettings.nl.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `nl` (Dutch) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"nl\" (Dutch) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.nl.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.nl.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.nl.disabledRules\"."
+        },
+        "ltex.languageSettings.nl.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `nl` (Dutch) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"nl\" (Dutch) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.nl.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.nl.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.nl.enabledRules\"."
+        },
+        "ltex.languageSettings.pl-PL.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `pl-PL` (Polish) words that should not be counted as spelling errors.",
+          "description": "List of additional \"pl-PL\" (Polish) words that should not be counted as spelling errors."
+        },
+        "ltex.pl-PL.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pl-PL.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pl-PL.dictionary\"."
+        },
+        "ltex.languageSettings.pl-PL.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `pl-PL` (Polish) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"pl-PL\" (Polish) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.pl-PL.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pl-PL.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pl-PL.disabledRules\"."
+        },
+        "ltex.languageSettings.pl-PL.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `pl-PL` (Polish) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"pl-PL\" (Polish) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.pl-PL.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pl-PL.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pl-PL.enabledRules\"."
+        },
+        "ltex.languageSettings.pt.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `pt` (Portuguese) words that should not be counted as spelling errors.",
+          "description": "List of additional \"pt\" (Portuguese) words that should not be counted as spelling errors."
+        },
+        "ltex.pt.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt.dictionary\"."
+        },
+        "ltex.languageSettings.pt.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `pt` (Portuguese) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"pt\" (Portuguese) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.pt.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt.disabledRules\"."
+        },
+        "ltex.languageSettings.pt.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `pt` (Portuguese) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"pt\" (Portuguese) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.pt.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt.enabledRules\"."
+        },
+        "ltex.languageSettings.pt-AO.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `pt-AO` (Portuguese (Angola preAO)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"pt-AO\" (Portuguese (Angola preAO)) words that should not be counted as spelling errors."
+        },
+        "ltex.pt-AO.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt-AO.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt-AO.dictionary\"."
+        },
+        "ltex.languageSettings.pt-AO.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `pt-AO` (Portuguese (Angola preAO)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"pt-AO\" (Portuguese (Angola preAO)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.pt-AO.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt-AO.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt-AO.disabledRules\"."
+        },
+        "ltex.languageSettings.pt-AO.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `pt-AO` (Portuguese (Angola preAO)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"pt-AO\" (Portuguese (Angola preAO)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.pt-AO.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt-AO.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt-AO.enabledRules\"."
+        },
+        "ltex.languageSettings.pt-BR.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `pt-BR` (Portuguese (Brazil)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"pt-BR\" (Portuguese (Brazil)) words that should not be counted as spelling errors."
+        },
+        "ltex.pt-BR.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt-BR.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt-BR.dictionary\"."
+        },
+        "ltex.languageSettings.pt-BR.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `pt-BR` (Portuguese (Brazil)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"pt-BR\" (Portuguese (Brazil)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.pt-BR.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt-BR.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt-BR.disabledRules\"."
+        },
+        "ltex.languageSettings.pt-BR.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `pt-BR` (Portuguese (Brazil)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"pt-BR\" (Portuguese (Brazil)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.pt-BR.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt-BR.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt-BR.enabledRules\"."
+        },
+        "ltex.languageSettings.pt-MZ.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `pt-MZ` (Portuguese (Moçambique preAO)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"pt-MZ\" (Portuguese (Moçambique preAO)) words that should not be counted as spelling errors."
+        },
+        "ltex.pt-MZ.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt-MZ.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt-MZ.dictionary\"."
+        },
+        "ltex.languageSettings.pt-MZ.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `pt-MZ` (Portuguese (Moçambique preAO)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"pt-MZ\" (Portuguese (Moçambique preAO)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.pt-MZ.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt-MZ.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt-MZ.disabledRules\"."
+        },
+        "ltex.languageSettings.pt-MZ.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `pt-MZ` (Portuguese (Moçambique preAO)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"pt-MZ\" (Portuguese (Moçambique preAO)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.pt-MZ.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt-MZ.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt-MZ.enabledRules\"."
+        },
+        "ltex.languageSettings.pt-PT.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `pt-PT` (Portuguese (Portugal)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"pt-PT\" (Portuguese (Portugal)) words that should not be counted as spelling errors."
+        },
+        "ltex.pt-PT.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt-PT.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt-PT.dictionary\"."
+        },
+        "ltex.languageSettings.pt-PT.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `pt-PT` (Portuguese (Portugal)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"pt-PT\" (Portuguese (Portugal)) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.pt-PT.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt-PT.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt-PT.disabledRules\"."
+        },
+        "ltex.languageSettings.pt-PT.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `pt-PT` (Portuguese (Portugal)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"pt-PT\" (Portuguese (Portugal)) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.pt-PT.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.pt-PT.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.pt-PT.enabledRules\"."
+        },
+        "ltex.languageSettings.ro-RO.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `ro-RO` (Romanian) words that should not be counted as spelling errors.",
+          "description": "List of additional \"ro-RO\" (Romanian) words that should not be counted as spelling errors."
+        },
+        "ltex.ro-RO.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ro-RO.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ro-RO.dictionary\"."
+        },
+        "ltex.languageSettings.ro-RO.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ro-RO` (Romanian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"ro-RO\" (Romanian) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.ro-RO.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ro-RO.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ro-RO.disabledRules\"."
+        },
+        "ltex.languageSettings.ro-RO.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ro-RO` (Romanian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"ro-RO\" (Romanian) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.ro-RO.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ro-RO.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ro-RO.enabledRules\"."
+        },
+        "ltex.languageSettings.ru-RU.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `ru-RU` (Russian) words that should not be counted as spelling errors.",
+          "description": "List of additional \"ru-RU\" (Russian) words that should not be counted as spelling errors."
+        },
+        "ltex.ru-RU.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ru-RU.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ru-RU.dictionary\"."
+        },
+        "ltex.languageSettings.ru-RU.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ru-RU` (Russian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"ru-RU\" (Russian) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.ru-RU.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ru-RU.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ru-RU.disabledRules\"."
+        },
+        "ltex.languageSettings.ru-RU.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ru-RU` (Russian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"ru-RU\" (Russian) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.ru-RU.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ru-RU.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ru-RU.enabledRules\"."
+        },
+        "ltex.languageSettings.sk-SK.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `sk-SK` (Slovak) words that should not be counted as spelling errors.",
+          "description": "List of additional \"sk-SK\" (Slovak) words that should not be counted as spelling errors."
+        },
+        "ltex.sk-SK.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.sk-SK.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.sk-SK.dictionary\"."
+        },
+        "ltex.languageSettings.sk-SK.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `sk-SK` (Slovak) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"sk-SK\" (Slovak) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.sk-SK.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.sk-SK.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.sk-SK.disabledRules\"."
+        },
+        "ltex.languageSettings.sk-SK.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `sk-SK` (Slovak) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"sk-SK\" (Slovak) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.sk-SK.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.sk-SK.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.sk-SK.enabledRules\"."
+        },
+        "ltex.languageSettings.sl-SI.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `sl-SI` (Slovenian) words that should not be counted as spelling errors.",
+          "description": "List of additional \"sl-SI\" (Slovenian) words that should not be counted as spelling errors."
+        },
+        "ltex.sl-SI.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.sl-SI.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.sl-SI.dictionary\"."
+        },
+        "ltex.languageSettings.sl-SI.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `sl-SI` (Slovenian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"sl-SI\" (Slovenian) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.sl-SI.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.sl-SI.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.sl-SI.disabledRules\"."
+        },
+        "ltex.languageSettings.sl-SI.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `sl-SI` (Slovenian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"sl-SI\" (Slovenian) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.sl-SI.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.sl-SI.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.sl-SI.enabledRules\"."
+        },
+        "ltex.languageSettings.sv.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `sv` (Swedish) words that should not be counted as spelling errors.",
+          "description": "List of additional \"sv\" (Swedish) words that should not be counted as spelling errors."
+        },
+        "ltex.sv.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.sv.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.sv.dictionary\"."
+        },
+        "ltex.languageSettings.sv.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `sv` (Swedish) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"sv\" (Swedish) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.sv.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.sv.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.sv.disabledRules\"."
+        },
+        "ltex.languageSettings.sv.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `sv` (Swedish) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"sv\" (Swedish) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.sv.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.sv.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.sv.enabledRules\"."
+        },
+        "ltex.languageSettings.ta-IN.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `ta-IN` (Tamil) words that should not be counted as spelling errors.",
+          "description": "List of additional \"ta-IN\" (Tamil) words that should not be counted as spelling errors."
+        },
+        "ltex.ta-IN.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ta-IN.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ta-IN.dictionary\"."
+        },
+        "ltex.languageSettings.ta-IN.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ta-IN` (Tamil) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"ta-IN\" (Tamil) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.ta-IN.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ta-IN.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ta-IN.disabledRules\"."
+        },
+        "ltex.languageSettings.ta-IN.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `ta-IN` (Tamil) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"ta-IN\" (Tamil) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.ta-IN.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.ta-IN.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.ta-IN.enabledRules\"."
+        },
+        "ltex.languageSettings.tl-PH.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `tl-PH` (Tagalog) words that should not be counted as spelling errors.",
+          "description": "List of additional \"tl-PH\" (Tagalog) words that should not be counted as spelling errors."
+        },
+        "ltex.tl-PH.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.tl-PH.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.tl-PH.dictionary\"."
+        },
+        "ltex.languageSettings.tl-PH.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `tl-PH` (Tagalog) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"tl-PH\" (Tagalog) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.tl-PH.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.tl-PH.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.tl-PH.disabledRules\"."
+        },
+        "ltex.languageSettings.tl-PH.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `tl-PH` (Tagalog) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"tl-PH\" (Tagalog) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.tl-PH.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.tl-PH.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.tl-PH.enabledRules\"."
+        },
+        "ltex.languageSettings.uk-UA.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `uk-UA` (Ukrainian) words that should not be counted as spelling errors.",
+          "description": "List of additional \"uk-UA\" (Ukrainian) words that should not be counted as spelling errors."
+        },
+        "ltex.uk-UA.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.uk-UA.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.uk-UA.dictionary\"."
+        },
+        "ltex.languageSettings.uk-UA.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `uk-UA` (Ukrainian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"uk-UA\" (Ukrainian) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.uk-UA.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.uk-UA.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.uk-UA.disabledRules\"."
+        },
+        "ltex.languageSettings.uk-UA.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `uk-UA` (Ukrainian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"uk-UA\" (Ukrainian) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.uk-UA.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.uk-UA.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.uk-UA.enabledRules\"."
+        },
+        "ltex.languageSettings.zh-CN.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of additional `zh-CN` (Chinese) words that should not be counted as spelling errors.",
+          "description": "List of additional \"zh-CN\" (Chinese) words that should not be counted as spelling errors."
+        },
+        "ltex.zh-CN.dictionary": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.zh-CN.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.zh-CN.dictionary\"."
+        },
+        "ltex.languageSettings.zh-CN.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `zh-CN` (Chinese) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"zh-CN\" (Chinese) rules that should be disabled (if enabled by default by LanguageTool)."
+        },
+        "ltex.zh-CN.disabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.zh-CN.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.zh-CN.disabledRules\"."
+        },
+        "ltex.languageSettings.zh-CN.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "List of `zh-CN` (Chinese) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"zh-CN\" (Chinese) rules that should be enabled (if disabled by default by LanguageTool)."
+        },
+        "ltex.zh-CN.enabledRules": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.languageSettings.zh-CN.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.zh-CN.enabledRules\"."
         },
         "ltex.ltex-ls.path": {
           "type": "string",

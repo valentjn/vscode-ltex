@@ -60,7 +60,7 @@ This extension contributes the following settings. Some settings are separated b
   * Possible values: `true` (default), `false`
 
 * `ltex.language`: The language LanguageTool should check against. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).
-  * Examples: `"en-US"` (default), `"de-DE"`
+  * Possible values: `ar` (Arabic), `ar-DZ` (Arabic (Algeria)), `ast-ES` (Asturian), `be-BY` (Belarusian), `br-FR` (Breton), `ca-ES` (Catalan), `ca-ES-valencia` (Catalan (Valencian)), `da-DK` (Danish), `de` (German), `de-AT` (German (Austria)), `de-CH` (German (Swiss)), `de-DE` (German (Germany)), `de-DE-x-simple-language` (Simple German), `el-GR` (Greek), `en` (English), `en-AU` (English (Australian)), `en-CA` (English (Canadian)), `en-GB` (English (GB)), `en-NZ` (English (New Zealand)), `en-US` (English (US), default), `en-ZA` (English (South African)), `eo` (Esperanto), `es` (Spanish), `fa` (Persian), `fr` (French), `ga-IE` (Irish), `gl-ES` (Galician), `it` (Italian), `ja-JP` (Japanese), `km-KH` (Khmer), `nl` (Dutch), `pl-PL` (Polish), `pt` (Portuguese), `pt-AO` (Portuguese (Angola preAO)), `pt-BR` (Portuguese (Brazil)), `pt-MZ` (Portuguese (Moçambique preAO)), `pt-PT` (Portuguese (Portugal)), `ro-RO` (Romanian), `ru-RU` (Russian), `sk-SK` (Slovak), `sl-SI` (Slovenian), `sv` (Swedish), `ta-IN` (Tamil), `tl-PH` (Tagalog), `uk-UA` (Ukrainian), `zh-CN` (Chinese)
 
 * `ltex.languageSettings.<LANGUAGE>.dictionary`: List of additional words that should not be counted as spelling errors.
   * Example: `["adaptivity", "precomputed", "subproblem"]`; default: `[]`
