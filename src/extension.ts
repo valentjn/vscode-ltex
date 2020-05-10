@@ -47,13 +47,13 @@ function createLanguageClient(context: ExtensionContext): LanguageClient {
       'languagetool-languageserver.bat' : 'languagetool-languageserver'));
 
   const workspaceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
-  const initialJavaHeapSize: number = workspaceConfig['performance']['initialJavaHeapSize'];
-  const maximumJavaHeapSize: number = workspaceConfig['performance']['maximumJavaHeapSize'];
+  const initialJavaHeapSize: number = workspaceConfig['java']['initialHeapSize'];
+  const maximumJavaHeapSize: number = workspaceConfig['java']['maximumHeapSize'];
   process.env['LANGUAGETOOL_LANGUAGESERVER_OPTS'] =
       '-Xms' + initialJavaHeapSize + 'm -Xmx' + maximumJavaHeapSize + 'm';
 
-  if (workspaceConfig['javaHome'] != null) {
-    process.env['JAVA_HOME'] = workspaceConfig['javaHome'];
+  if ((workspaceConfig['java'] != null) && (workspaceConfig['java']['path'] != null)) {
+    process.env['JAVA_HOME'] = workspaceConfig['java']['path'];
   }
 
   const serverOptions: ServerOptions = {
