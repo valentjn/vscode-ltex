@@ -62,6 +62,13 @@ function createLanguageClient(context: ExtensionContext): LanguageClient {
     options: {'env': process.env},
   };
 
+  var clientOutputChannel: OutputChannel = null;
+
+  if ((workspaceConfig['trace'] != null) && (workspaceConfig['trace']['server'] != null) &&
+        (workspaceConfig['trace']['server'] != 'off')) {
+    clientOutputChannel = window.createOutputChannel('LTeX Language Client');
+  }
+
   // Options to control the language client
   const clientOptions: LanguageClientOptions = {
         documentSelector: [
@@ -82,12 +89,10 @@ function createLanguageClient(context: ExtensionContext): LanguageClient {
           locale: env.language,
         },
         revealOutputChannelOn: RevealOutputChannelOn.Never,
-        traceOutputChannel: window.createOutputChannel('LTeX Language Client'),
+        traceOutputChannel: clientOutputChannel,
       };
 
-  const languageClient: LanguageClient = new LanguageClient(
-      'ltex', 'LTeX Language Server', serverOptions, clientOptions);
-  return languageClient;
+  return new LanguageClient('ltex', 'LTeX Language Server', serverOptions, clientOptions);
 }
 
 function processTelemetry(params: any) {
