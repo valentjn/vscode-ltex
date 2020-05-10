@@ -1,24 +1,22 @@
 'use strict';
 
-import * as path from 'path';
-
-import { ConfigurationTarget, Disposable, env, ExtensionContext, OutputChannel,
-    Uri, window, workspace, WorkspaceConfiguration } from 'vscode';
-import { LanguageClient, LanguageClientOptions, RevealOutputChannelOn,
-    ServerOptions } from 'vscode-languageclient';
+import * as Path from 'path';
+import * as Code from 'vscode';
+import * as CodeLanguageClient from 'vscode-languageclient';
 
 async function setConfigurationSetting(settingName: string, settingValue: any,
-      resourceConfig: WorkspaceConfiguration, commandName: string): Promise<void> {
+      resourceConfig: Code.WorkspaceConfiguration, commandName: string): Promise<void> {
   const configurationTargetString: string = resourceConfig['configurationTarget'][commandName];
-  let configurationTargets: ConfigurationTarget[];
+  let configurationTargets: Code.ConfigurationTarget[];
 
   if (configurationTargetString === 'global') {
-    configurationTargets = [ConfigurationTarget.Global];
+    configurationTargets = [Code.ConfigurationTarget.Global];
   } else if (configurationTargetString === 'workspace') {
-    configurationTargets = [ConfigurationTarget.Workspace, ConfigurationTarget.Global];
+    configurationTargets = [Code.ConfigurationTarget.Workspace,
+        Code.ConfigurationTarget.Global];
   } else if (configurationTargetString === 'workspaceFolder') {
-    configurationTargets = [ConfigurationTarget.WorkspaceFolder, ConfigurationTarget.Workspace,
-        ConfigurationTarget.Global];
+    configurationTargets = [Code.ConfigurationTarget.WorkspaceFolder,
+        Code.ConfigurationTarget.Workspace, Code.ConfigurationTarget.Global];
   }
 
   for (const configurationTarget of configurationTargets) {
@@ -38,16 +36,17 @@ function convertToStringArray(obj: any): string[] {
   return (Array.isArray(obj) ? obj : [obj]);
 }
 
-function createLanguageClient(context: ExtensionContext): LanguageClient {
+function createLanguageClient(context: Code.ExtensionContext):
+      CodeLanguageClient.LanguageClient {
   const isWindows: boolean = (process.platform === 'win32');
 
   // Start the child java process
-  const ltexLsStartPath: string = path.resolve(context.extensionPath, 'lib',
+  const ltexLsStartPath: string = Path.resolve(context.extensionPath, 'lib',
       'languagetool-languageserver', 'build', 'install',
       'languagetool-languageserver', 'bin', (isWindows ?
       'languagetool-languageserver.bat' : 'languagetool-languageserver'));
 
-  const workspaceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
+  const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
   const initialJavaHeapSize: number = workspaceConfig['java']['initialHeapSize'];
   const maximumJavaHeapSize: number = workspaceConfig['java']['maximumHeapSize'];
   process.env['LTEX_LS_OPTS'] = '-Xms' + initialJavaHeapSize + 'm -Xmx' + maximumJavaHeapSize + 'm';
@@ -56,21 +55,21 @@ function createLanguageClient(context: ExtensionContext): LanguageClient {
     process.env['JAVA_HOME'] = workspaceConfig['java']['path'];
   }
 
-  const serverOptions: ServerOptions = {
+  const serverOptions: CodeLanguageClient.ServerOptions = {
     command: ltexLsStartPath,
     args: [],
     options: {'env': process.env},
   };
 
-  var clientOutputChannel: OutputChannel = null;
+  var clientOutputChannel: Code.OutputChannel = null;
 
   if ((workspaceConfig['trace'] != null) && (workspaceConfig['trace']['server'] != null) &&
         (workspaceConfig['trace']['server'] != 'off')) {
-    clientOutputChannel = window.createOutputChannel('LTeX Language Client');
+    clientOutputChannel = Code.window.createOutputChannel('LTeX Language Client');
   }
 
   // Options to control the language client
-  const clientOptions: LanguageClientOptions = {
+  const clientOptions: CodeLanguageClient.LanguageClientOptions = {
         documentSelector: [
           {scheme: 'file', language: 'markdown'},
           {scheme: 'untitled', language: 'markdown'},
@@ -86,13 +85,14 @@ function createLanguageClient(context: ExtensionContext): LanguageClient {
         // the initialization request, we have to do that manually.
         // See https://github.com/microsoft/language-server-protocol/issues/754.
         initializationOptions: {
-          locale: env.language,
+          locale: Code.env.language,
         },
-        revealOutputChannelOn: RevealOutputChannelOn.Never,
+        revealOutputChannelOn: CodeLanguageClient.RevealOutputChannelOn.Never,
         traceOutputChannel: clientOutputChannel,
       };
 
-  return new LanguageClient('ltex', 'LTeX Language Server', serverOptions, clientOptions);
+  return new CodeLanguageClient.LanguageClient(
+      'ltex', 'LTeX Language Server', serverOptions, clientOptions);
 }
 
 function processTelemetry(params: any) {
@@ -101,8 +101,8 @@ function processTelemetry(params: any) {
     return;
   }
 
-  const resourceConfig: WorkspaceConfiguration =
-      workspace.getConfiguration('ltex', Uri.parse(params['uri']));
+  const resourceConfig: Code.WorkspaceConfiguration =
+      Code.workspace.getConfiguration('ltex', Code.Uri.parse(params['uri']));
 
   if (params['commandName'] === 'ltex.addToDictionary') {
     const language: string = resourceConfig['language'];
@@ -136,13 +136,13 @@ function processTelemetry(params: any) {
   }
 }
 
-export function activate(context: ExtensionContext) {
+export function activate(context: Code.ExtensionContext) {
   // Allow to enable languageTool in specific workspaces
-  const workspaceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
+  const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
   if (!workspaceConfig['enabled']) return;
 
   // create the language client
-  const languageClient: LanguageClient = createLanguageClient(context);
+  const languageClient: CodeLanguageClient.LanguageClient = createLanguageClient(context);
 
   // Hack to enable the server to execute commands that change the client configuration
   // (e.g., adding words to the dictionary).
@@ -151,7 +151,7 @@ export function activate(context: ExtensionContext) {
   languageClient.onTelemetry(processTelemetry);
 
   console.log('Creating server');
-  let disposable: Disposable = languageClient.start();
+  let disposable: Code.Disposable = languageClient.start();
 
   // Push the disposable to the context's subscriptions so that the
   // client can be deactivated on extension deactivation
