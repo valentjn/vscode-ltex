@@ -10,7 +10,7 @@
 				"webpack-dev"
 			],
 			"presentation": {
-				"reveal": "silent",
+				"reveal": "silent"
 			},
 			"isBackground": true,
 			"problemMatcher": "$tsc-watch"
@@ -24,10 +24,14 @@
 				"webpack"
 			],
 			"presentation": {
-				"reveal": "silent",
+				"reveal": "silent"
 			},
 			"isBackground": false,
-			"problemMatcher": "$tsc-watch"
+			"problemMatcher": "$tsc-watch",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
 		}
 	]
 }
