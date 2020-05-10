@@ -211,7 +211,7 @@ def main():
   ltexStderr = tempfile.TemporaryFile("w+b")
   ltexArgs = ["java", "-classpath", os.pathsep.join([
         os.path.join(extensionsPath, ltexMainPath, "lib", "languagetool-languageserver",
-          "build", "install", "languagetool-languageserver", "lib", "languagetool-patch.jar"),
+          "build", "install", "languagetool-languageserver", "lib", "ltex-ls-languagetool-patch.jar"),
         os.path.join(extensionsPath, ltexMainPath, "lib", "languagetool-languageserver",
           "build", "install", "languagetool-languageserver", "lib", "*"),
         os.path.join(extensionsPath, ltexLanguagePath,  "lib", "*"),
