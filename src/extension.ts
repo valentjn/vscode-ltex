@@ -64,26 +64,26 @@ function createLanguageClient(context: ExtensionContext): LanguageClient {
 
   // Options to control the language client
   const clientOptions: LanguageClientOptions = {
-    documentSelector: [
-      {scheme: 'file', language: 'markdown'},
-      {scheme: 'untitled', language: 'markdown'},
-      {scheme: 'file', language: 'latex'},
-      {scheme: 'untitled', language: 'latex'},
-      {scheme: 'file', language: 'rsweave'},
-      {scheme: 'untitled', language: 'rsweave'},
-    ],
-    synchronize: {
-      configurationSection: 'ltex',
-    },
-    // Until it is specified in the LSP that the locale is automatically sent with
-    // the initialization request, we have to do that manually.
-    // See https://github.com/microsoft/language-server-protocol/issues/754.
-    initializationOptions : {
-      locale: env.language,
-    },
-    revealOutputChannelOn: RevealOutputChannelOn.Never,
-    traceOutputChannel: window.createOutputChannel('LTeX Language Client'),
-  };
+        documentSelector: [
+          {scheme: 'file', language: 'markdown'},
+          {scheme: 'untitled', language: 'markdown'},
+          {scheme: 'file', language: 'latex'},
+          {scheme: 'untitled', language: 'latex'},
+          {scheme: 'file', language: 'rsweave'},
+          {scheme: 'untitled', language: 'rsweave'},
+        ],
+        synchronize: {
+          configurationSection: 'ltex',
+        },
+        // Until it is specified in the LSP that the locale is automatically sent with
+        // the initialization request, we have to do that manually.
+        // See https://github.com/microsoft/language-server-protocol/issues/754.
+        initializationOptions: {
+          locale: env.language,
+        },
+        revealOutputChannelOn: RevealOutputChannelOn.Never,
+        traceOutputChannel: window.createOutputChannel('LTeX Language Client'),
+      };
 
   const languageClient: LanguageClient = new LanguageClient(
       'ltex', 'LTeX Language Server', serverOptions, clientOptions);
