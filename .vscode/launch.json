@@ -11,7 +11,7 @@
 			"stopOnEntry": false,
 			"sourceMaps": true,
 			"outFiles": [ "${workspaceRoot}/dist/**/*.js" ],
-			"preLaunchTask": "Build extension and server"
+			"preLaunchTask": "Build extension"
 		},
 		{
 			"name": "Launch tests",
@@ -22,7 +22,7 @@
 			"stopOnEntry": false,
 			"sourceMaps": true,
 			"outFiles": [ "${workspaceRoot}/out/test/**/*.js" ],
-			"preLaunchTask": "Build extension and server"
+			"preLaunchTask": "Build extension"
 		}
 	]
 }
