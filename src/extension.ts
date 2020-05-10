@@ -1,43 +1,12 @@
 'use strict';
 
-import * as fs from 'fs';
 import * as path from 'path';
-import * as net from 'net';
-import * as child_process from 'child_process';
 
-import { env, extensions, window, workspace, ConfigurationTarget, Disposable, ExtensionContext,
-    OutputChannel, Uri, WorkspaceConfiguration } from 'vscode';
+import { env,  window, workspace, ConfigurationTarget, Disposable, ExtensionContext,
+    Uri, WorkspaceConfiguration } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions, RevealOutputChannelOn } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
-  function discoverExtensionPaths(): string[] {
-    return extensions.all
-      .filter(x => x.id.startsWith('valentjn.vscode-ltex-'))
-      .map(x => x.extensionPath);
-  }
-
-  function buildDesiredClasspath(): string {
-    const isWindows = (process.platform === 'win32');
-    const joinCharacter = (isWindows ? ';' : ':');
-    const appHome = (isWindows ? '%APP_HOME%' : '$APP_HOME');
-    const additionalPaths = discoverExtensionPaths()
-      .map(p => path.resolve(context.extensionPath, '..', p, 'lib', '*'))
-      .join(joinCharacter);
-    let desiredClasspath = path.join(appHome, 'lib', 'ltex-ls-languagetool-patch.jar') + joinCharacter +
-        path.join(appHome, 'lib', '*');
-
-    if (additionalPaths) {
-      desiredClasspath += joinCharacter + additionalPaths;
-    }
-
-    return desiredClasspath;
-  }
-
-  function setClasspath(text: string, desiredClasspath: string): string {
-    const classpathRegexp = /^((?:set )?CLASSPATH=)(.*)$/m;
-    return text.replace(classpathRegexp, `$1${desiredClasspath}`);
-  }
-
   async function setConfigurationSetting(settingName: string, settingValue: any,
       resourceConfig: WorkspaceConfiguration, commandName: string): Promise<void> {
     const configurationTargetString: string = resourceConfig['configurationTarget'][commandName];
@@ -73,17 +42,10 @@ export function activate(context: ExtensionContext) {
     const isWindows: boolean = (process.platform === 'win32');
 
     // Start the child java process
-    const scriptDir: string = path.resolve(context.extensionPath, 'lib',
+    const ltexLsStartPath: string = path.resolve(context.extensionPath, 'lib',
         'languagetool-languageserver', 'build', 'install',
-        'languagetool-languageserver', 'bin');
-    const originalScript: string = path.resolve(scriptDir, isWindows ?
-        'languagetool-languageserver.bat' : 'languagetool-languageserver');
-    const newScript: string = path.resolve(scriptDir, isWindows ?
-        'languagetool-languageserver-live.bat' : 'languagetool-languageserver-live');
-
-    const scriptText: string = fs.readFileSync(originalScript, 'utf8');
-    const newText: string = setClasspath(scriptText, buildDesiredClasspath());
-    fs.writeFileSync(newScript, newText, { mode: 0o777 });
+        'languagetool-languageserver', 'bin', (isWindows ?
+        'languagetool-languageserver.bat' : 'languagetool-languageserver'));
 
     const workspaceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
     const initialJavaHeapSize: number = workspaceConfig['performance']['initialJavaHeapSize'];
@@ -96,7 +58,7 @@ export function activate(context: ExtensionContext) {
     }
 
     const serverOptions: ServerOptions = {
-      command: newScript,
+      command: ltexLsStartPath,
       args: [],
       options: {'env': process.env},
     };
