@@ -336,7 +336,7 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "tsc -p ./ && ./lib/languagetool-languageserver/gradlew --project-dir ./lib/languagetool-languageserver/ installDist && webpack --mode production",
+    "vscode:prepublish": "tsc -p ./ && webpack --mode production",
     "webpack": "webpack --mode development",
     "webpack-dev": "webpack --mode development --watch",
     "compile": "tsc -p ./",
