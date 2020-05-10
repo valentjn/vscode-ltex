@@ -2404,6 +2404,7 @@
   "devDependencies": {
     "@types/mocha": "7.0.2",
     "@types/node": "13.9.5",
+    "@types/semver": "5.5.0",
     "@types/vscode": "1.39.0",
     "ts-loader": "6.2.2",
     "typescript": "3.8.3",
@@ -2411,6 +2412,9 @@
     "webpack-cli": "3.3.11"
   },
   "dependencies": {
+    "extract-zip": "2.0.0",
+    "semver": "7.3.2",
+    "tar": "6.0.2",
     "vscode-languageclient": "6.1.3"
   }
 }
