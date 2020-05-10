@@ -28,30 +28,6 @@
 			},
 			"isBackground": false,
 			"problemMatcher": "$tsc-watch"
-		},
-		{
-			"label": "Build server",
-			"command": "./lib/languagetool-languageserver/gradlew",
-			"type": "shell",
-			"presentation": {
-				"reveal": "silent",
-			},
-			"args": [
-				"--project-dir",
-				"./lib/languagetool-languageserver/",
-				"installDist"
-			],
-			"isBackground": false,
-			"problemMatcher": "$tsc-watch",
-			"promptOnClose": false
-		},
-		{
-			"label": "Build extension and server",
-			"group": "build",
-			"dependsOn": [
-				"Build server",
-				"Build extension"
-			]
 		}
 	]
 }
