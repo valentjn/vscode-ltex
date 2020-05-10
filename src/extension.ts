@@ -34,7 +34,7 @@ export function activate(context: ExtensionContext) {
     }
   }
 
-  function convertToStringArray(obj): string[] {
+  function convertToStringArray(obj: any): string[] {
     return (Array.isArray(obj) ? obj : [obj]);
   }
 
