@@ -2,9 +2,10 @@
 
 import * as path from 'path';
 
-import { env,  window, workspace, ConfigurationTarget, Disposable, ExtensionContext,
-    Uri, WorkspaceConfiguration } from 'vscode';
-import { LanguageClient, LanguageClientOptions, ServerOptions, RevealOutputChannelOn } from 'vscode-languageclient';
+import { ConfigurationTarget, Disposable, env, ExtensionContext, OutputChannel,
+    Uri, window, workspace, WorkspaceConfiguration } from 'vscode';
+import { LanguageClient, LanguageClientOptions, RevealOutputChannelOn,
+    ServerOptions } from 'vscode-languageclient';
 
 async function setConfigurationSetting(settingName: string, settingValue: any,
       resourceConfig: WorkspaceConfiguration, commandName: string): Promise<void> {
@@ -49,8 +50,7 @@ function createLanguageClient(context: ExtensionContext): LanguageClient {
   const workspaceConfig: WorkspaceConfiguration = workspace.getConfiguration('ltex');
   const initialJavaHeapSize: number = workspaceConfig['java']['initialHeapSize'];
   const maximumJavaHeapSize: number = workspaceConfig['java']['maximumHeapSize'];
-  process.env['LANGUAGETOOL_LANGUAGESERVER_OPTS'] =
-      '-Xms' + initialJavaHeapSize + 'm -Xmx' + maximumJavaHeapSize + 'm';
+  process.env['LTEX_LS_OPTS'] = '-Xms' + initialJavaHeapSize + 'm -Xmx' + maximumJavaHeapSize + 'm';
 
   if ((workspaceConfig['java'] != null) && (workspaceConfig['java']['path'] != null)) {
     process.env['JAVA_HOME'] = workspaceConfig['java']['path'];
