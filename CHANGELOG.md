@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.0.0 (upcoming)
+
+- Download Java distribution on demand if no suitable Java installation has been found (fixes [#5](https://github.com/valentjn/vscode-ltex/issues/5))
+- Download LT<sub>E</sub>X Language Server on demand with all languages already included; this removes the need for language support extensions (fixes [#6](https://github.com/valentjn/vscode-ltex/issues/6))
+- Use own versioning scheme, i.e., the version of LT<sub>E</sub>X is not tied to the version of LanguageTool anymore
+- Rename settings:
+  - `ltex.<LANGUAGE>.*` to `ltex.languageSettings.<LANGUAGE>.*`
+  - `ltex.javaHome` to `ltex.java.path`
+  - `ltex.performance.initialJavaHeapSize` to `ltex.java.initialHeapSize`
+  - `ltex.performance.maximumJavaHeapSize` to `ltex.java.maximumHeapSize`
+  - `ltex.performance.sentenceCacheSize` to `ltex.sentenceCacheSize`
+- Use proper server/client model for language server/client
+
 ## 4.9.3 — “The Java Collapse”
 
 - Revert back to Java 8

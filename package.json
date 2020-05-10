@@ -81,31 +81,61 @@
           "type": "string",
           "scope": "resource",
           "default": "en-US",
-          "markdownDescription": "The language (e.g., `en-US`) LanguageTool should check against. For supported languages see the [list of languages at LanguageTool.org](https://languagetool.org/languages/). Requires the installation of a [language support extension](https://marketplace.visualstudio.com/search?term=ltex&target=VSCode). See the Marketplace description of the installed *language support extension* for possible values. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).",
-          "description": "The language (e.g., en-US) LanguageTool should check against. For supported languages see the list of languages at https://languagetool.org/languages/. Requires the installation of a language support extension via https://marketplace.visualstudio.com/search?term=ltex&target=VSCode. See the Marketplace description of the installed language support extension for possible values. Use a specific variant like en-US or de-DE instead of the generic language code like en or de to obtain spelling corrections (in addition to grammar corrections).",
+          "markdownDescription": "The language (e.g., `en-US`) LanguageTool should check against. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).",
+          "description": "The language (e.g., en-US) LanguageTool should check against. Use a specific variant like en-US or de-DE instead of the generic language code like en or de to obtain spelling corrections (in addition to grammar corrections).",
           "examples": [
             "en-US",
             "de-DE"
           ]
         },
-        "ltex.diagnosticSeverity": {
+        "ltex.ltex-ls.path": {
           "type": "string",
-          "scope": "resource",
-          "default": "information",
-          "enum": [
-            "error",
-            "warning",
-            "information",
-            "hint"
-          ],
-          "enumDescriptions": [
-            "Error diagnostics are usually underlined with a red squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
-            "Warning diagnostics are usually underlined with a yellow squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
-            "Information diagnostics are usually underlined with a blue squiggly line and appear in editor, minimap, and Problems tab, but not in the Explorer.",
-            "Hint diagnostics are not underlined (only subtly marked) and only appear in the editor, not in minimap, Problems tab, or Explorer."
-          ],
-          "markdownDescription": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code.",
-          "description": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code. One of \"error\", \"warning\", \"information\", and \"hint\"."
+          "scope": "window",
+          "default": null,
+          "markdownDescription": "If this setting is `null`, LTeX automatically downloads the [latest compatible release of ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. In this case, the ltex-ls release downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "If this setting is \"null\", LTeX automatically downloads the latest compatible release of ltex-ls from GitHub (see https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. In this case, the ltex-ls release downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect."
+        },
+        "ltex.java.path": {
+          "type": "string",
+          "scope": "window",
+          "default": null,
+          "markdownDescription": "If this setting is `null` and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the `JAVA_HOME` environment variable. In this case, the Java distribution downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "If this setting is \"null\" and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution (AdoptOpenJDK, see https://adoptopenjdk.net/), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the \"JAVA_HOME\" environment variable. In this case, the Java distribution downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect."
+        },
+        "ltex.javaHome": {
+          "type": "string",
+          "scope": "window",
+          "default": null,
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.path`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.java.path\"."
+        },
+        "ltex.java.initialHeapSize": {
+          "type": "integer",
+          "scope": "window",
+          "default": 64,
+          "markdownDescription": "Initial size of the Java heap memory in megabytes (corresponds to Java's `-Xms` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "Initial size of the Java heap memory in megabytes (corresponds to Java's \"-Xms\" option). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect."
+        },
+        "ltex.performance.initialJavaHeapSize": {
+          "type": "integer",
+          "scope": "window",
+          "default": 64,
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.initialHeapSize`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.java.initialHeapSize\"."
+        },
+        "ltex.java.maximumHeapSize": {
+          "type": "integer",
+          "scope": "window",
+          "default": 512,
+          "markdownDescription": "Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an `OutOfMemoryError` is thrown. Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "Maximum size of the Java heap memory in megabytes (corresponds to Java's \"-Xmx\" option). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an \"OutOfMemoryError\" is thrown. Changes require reloading the Visual Studio Code window to take effect."
+        },
+        "ltex.performance.maximumHeapSize": {
+          "type": "integer",
+          "scope": "window",
+          "default": 64,
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.maximumHeapSize`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.java.maximumHeapSize\"."
         },
         "ltex.commands.ignore": {
           "type": "array",
@@ -292,33 +322,38 @@
           "markdownDescription": "Optional path to a directory with rules of a word2vec language model.",
           "description": "Optional path to a directory with rules of a word2vec language model."
         },
-        "ltex.javaHome": {
-          "type": "string",
-          "scope": "window",
-          "default": null,
-          "markdownDescription": "If given, overrides the `JAVA_HOME` environment variable used for running LanguageTool. Otherwise, the value of `JAVA_HOME` of the parent process is used. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "If given, overrides the \"JAVA_HOME\" environment variable used for running LanguageTool. Otherwise, the value of \"JAVA_HOME\" of the parent process is used. Changes require reloading the Visual Studio Code window to take effect."
-        },
-        "ltex.performance.initialJavaHeapSize": {
-          "type": "integer",
-          "scope": "window",
-          "default": 64,
-          "markdownDescription": "Initial size of the Java heap memory in megabytes (corresponds to Java's `-Xms` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "Initial size of the Java heap memory in megabytes (corresponds to Java's \"-Xms\" option). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect."
-        },
-        "ltex.performance.maximumJavaHeapSize": {
-          "type": "integer",
-          "scope": "window",
-          "default": 512,
-          "markdownDescription": "Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an `OutOfMemoryError` is thrown. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "Maximum size of the Java heap memory in megabytes (corresponds to Java's \"-Xmx\" option). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an \"OutOfMemoryError\" is thrown. Changes require reloading the Visual Studio Code window to take effect."
-        },
-        "ltex.performance.sentenceCacheSize": {
+        "ltex.sentenceCacheSize": {
           "type": "integer",
           "scope": "resource",
           "default": 2000,
           "markdownDescription": "Size of the LanguageTool `ResultCache` in sentences (must be a positive integer). If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect.",
           "description": "Size of the LanguageTool \"ResultCache\" in sentences. If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect."
+        },
+        "ltex.performance.sentenceCacheSize": {
+          "type": "integer",
+          "scope": "resource",
+          "default": 2000,
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.sentenceCacheSize`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.sentenceCacheSize\"."
+        },
+        "ltex.diagnosticSeverity": {
+          "type": "string",
+          "scope": "resource",
+          "default": "information",
+          "enum": [
+            "error",
+            "warning",
+            "information",
+            "hint"
+          ],
+          "enumDescriptions": [
+            "Error diagnostics are usually underlined with a red squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
+            "Warning diagnostics are usually underlined with a yellow squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
+            "Information diagnostics are usually underlined with a blue squiggly line and appear in editor, minimap, and Problems tab, but not in the Explorer.",
+            "Hint diagnostics are not underlined (only subtly marked) and only appear in the editor, not in minimap, Problems tab, or Explorer."
+          ],
+          "markdownDescription": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code.",
+          "description": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code. One of \"error\", \"warning\", \"information\", and \"hint\"."
         },
         "ltex.trace.server": {
           "type": "string",
