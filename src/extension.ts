@@ -173,6 +173,7 @@ async function downloadLtexLs(context: Code.ExtensionContext): Promise<void> {
         });
 
     progress.report({increment: 30, message: 'Extracting ltex-ls...'});
+    log('Removing ltex-ls archive...');
     Fs.unlinkSync(ltexLsArchivePath);
     return Promise.resolve();
   });
@@ -239,6 +240,7 @@ async function downloadJava(context: Code.ExtensionContext): Promise<void> {
     }
 
     progress.report({increment: 30, message: 'Extracting Java...'});
+    log('Removing Java archive...');
     Fs.unlinkSync(javaArchivePath);
     return Promise.resolve();
   });
