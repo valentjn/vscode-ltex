@@ -7,6 +7,7 @@ tsconfig.json
 webpack.config.js
 *.vsix
 
+.github/
 .vscode/
 .vscode-test/
 img/
@@ -15,6 +16,7 @@ node_modules/
 out/
 src/
 test/
+tools/
 **/*.map
 
 !img/LTeX-icon.png
