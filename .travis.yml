@@ -3,11 +3,14 @@
   "dist": "bionic",
   "language": "node_js",
   "node_js": "13",
+  "before_install": "sudo apt-get -y install python3-pip",
   "install": [
     "npm install",
-    "npm install -g vsce"
+    "npm install -g vsce",
+    "pip3 install semver"
   ],
   "script": "vsce package",
+  "before_deploy": "python3 tools/createOfflinePackages.py",
   "deploy": {
     "provider": "releases",
     "token": {
