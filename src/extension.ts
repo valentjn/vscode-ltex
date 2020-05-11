@@ -119,8 +119,17 @@ async function downloadFile(urlStr: string, path: string): Promise<void> {
   });
 }
 
-function isLtexLsCompatible(ltexLsVersion: string): boolean {
-  return SemVer.valid(ltexLsVersion) && SemVer.lte(ltexLsVersion, ltexVersion);
+function getLatestCompatibleLtexLsVersion(versions: string[]): string {
+  let latestVersion: string;
+
+  versions.forEach((version: string) => {
+    if (SemVer.valid(version) && SemVer.lte(version, ltexVersion) &&
+          ((latestVersion == null) || SemVer.gt(version, latestVersion))) {
+      latestVersion = version;
+    }
+  });
+
+  return latestVersion;
 }
 
 async function downloadLtexLs(context: Code.ExtensionContext): Promise<void> {
@@ -139,13 +148,13 @@ async function downloadLtexLs(context: Code.ExtensionContext): Promise<void> {
     const jsonData: any = await doJsonRequest(jsonUrl);
 
     progress.report({increment: 10, message: 'Downloading ltex-ls...'});
-    let ltexLsVersion: string;
+    let ltexLsVersions: string[];
 
-    for (let i = 0; i < jsonData.length; i++) {
-      ltexLsVersion = jsonData[i].tag_name;
-      if (isLtexLsCompatible(ltexLsVersion)) break;
-    }
+    jsonData.forEach((release: any) => {
+      ltexLsVersions.push(release.tag_name);
+    });
 
+    const ltexLsVersion: string = getLatestCompatibleLtexLsVersion(ltexLsVersions);
     log(`Latest compatible release is 'ltex-ls-${ltexLsVersion}'.`);
     const ltexLsUrl: string = 'https://github.com/valentjn/ltex-ls/releases/download/' +
         `${ltexLsVersion}/ltex-ls-${ltexLsVersion}.tar.gz`;
@@ -237,19 +246,15 @@ async function downloadJava(context: Code.ExtensionContext): Promise<void> {
 
 function searchBundledLtexLs(context: Code.ExtensionContext): string {
   const names: string[] = Fs.readdirSync(Path.resolve(context.extensionPath, 'lib'));
-  let ltexLsVersion: string;
+  let ltexLsVersions: string[];
 
   names.forEach((name) => {
     if (name.startsWith("ltex-ls-")) {
-      const curLtexLsVersion: string = name.substr(8);
-
-      if (isLtexLsCompatible(curLtexLsVersion) &&
-            ((ltexLsVersion == null) || SemVer.gt(curLtexLsVersion, ltexLsVersion))) {
-        ltexLsVersion = curLtexLsVersion;
-      }
+      ltexLsVersions.push(name.substr(8));
     }
   });
 
+  const ltexLsVersion: string = getLatestCompatibleLtexLsVersion(ltexLsVersions);
   return ((ltexLsVersion != null) ?
       Path.resolve(context.extensionPath, 'lib', `ltex-ls-${ltexLsVersion}`) : null);
 }
