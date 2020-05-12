@@ -37,7 +37,7 @@ async function setConfigurationSetting(settingName: string, settingValue: any,
       return;
     } catch (e) {
       if (configurationTarget == configurationTargets[configurationTargets.length - 1]) {
-        console.error(`Could not set configuration "${settingName}":`);
+        console.error(`Could not set configuration '${settingName}':`);
         throw e;
       }
     }
@@ -251,7 +251,7 @@ function searchBundledLtexLs(context: Code.ExtensionContext): string {
   let ltexLsVersions: string[];
 
   names.forEach((name) => {
-    if (name.startsWith("ltex-ls-")) {
+    if (name.startsWith('ltex-ls-')) {
       ltexLsVersions.push(name.substr(8));
     }
   });
