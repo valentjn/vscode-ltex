@@ -19,7 +19,8 @@ const ltexVersion = Code.extensions.getExtension('valentjn.vscode-ltex').package
 
 async function setConfigurationSetting(settingName: string, settingValue: any,
       resourceConfig: Code.WorkspaceConfiguration, commandName: string): Promise<void> {
-  const configurationTargetString: string = resourceConfig['configurationTarget'][commandName];
+  const configurationTargetString: string =
+      resourceConfig.get(`configurationTarget.${commandName}`);
   let configurationTargets: Code.ConfigurationTarget[];
 
   if (configurationTargetString === 'global') {
@@ -402,8 +403,8 @@ async function startLanguageClient(
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
   let ltexLsPath: string;
 
-  if ((workspaceConfig['ltex-ls'] != null) && (workspaceConfig['ltex-ls']['path'] != null)) {
-    ltexLsPath = workspaceConfig['ltex-ls']['path'];
+  if (workspaceConfig.get('ltex-ls.path') != null) {
+    ltexLsPath = workspaceConfig.get('ltex-ls.path');
     log(`ltex.ltex-ls.path set to ${ltexLsPath}.`);
   } else {
     log(`ltex.ltex-ls.path not set, searching for ltex-ls in '${libPath}'.`);
@@ -424,7 +425,7 @@ async function startLanguageClient(
 
   let javaHome: string;
 
-  if ((workspaceConfig['java'] != null) && (workspaceConfig['java']['path'] != null)) {
+  if (workspaceConfig.get('java.path') != null) {
     javaHome = process.env['JAVA_HOME'];
     log(`ltex.java.path set to '${javaHome}'.`);
   } else if (numberOfCrashes >= 1) {
@@ -453,8 +454,8 @@ async function startLanguageClient(
   const ltexLsStartPath: string = Path.join(
       ltexLsPath, 'bin', (isWindows ? 'ltex-ls.bat' : 'ltex-ls'));
 
-  const initialJavaHeapSize: number = workspaceConfig['java']['initialHeapSize'];
-  const maximumJavaHeapSize: number = workspaceConfig['java']['maximumHeapSize'];
+  const initialJavaHeapSize: number = workspaceConfig.get('java.initialHeapSize');
+  const maximumJavaHeapSize: number = workspaceConfig.get('java.maximumHeapSize');
   process.env['LTEX_LS_OPTS'] = '-Xms' + initialJavaHeapSize + 'm -Xmx' + maximumJavaHeapSize + 'm';
 
   const serverOptions: CodeLanguageClient.ServerOptions = {
@@ -572,8 +573,8 @@ function processTelemetry(params: any) {
       Code.workspace.getConfiguration('ltex', Code.Uri.parse(params['uri']));
 
   if (params['commandName'] === 'ltex.addToDictionary') {
-    const language: string = resourceConfig['languageSettings']['language'];
-    let dictionary: string[] = resourceConfig[language]['dictionary'];
+    const language: string = resourceConfig.get('language');
+    let dictionary: string[] = resourceConfig.get(`languageSettings.${language}.dictionary`);
     dictionary = dictionary.concat(convertToStringArray(params['word']));
     dictionary.sort((a: string, b: string) =>
         a.localeCompare(b, undefined, { sensitivity: 'base' }));
@@ -581,8 +582,8 @@ function processTelemetry(params: any) {
         resourceConfig, 'addToDictionary');
 
   } else if (params['commandName'] === 'ltex.disableRule') {
-    const language: string = resourceConfig['language'];
-    let disabledRules: string[] = resourceConfig['languageSettings'][language]['disabledRules'];
+    const language: string = resourceConfig.get('language');
+    let disabledRules: string[] = resourceConfig.get(`languageSettings.${language}.disabledRules`);
     disabledRules = disabledRules.concat(convertToStringArray(params['ruleId']));
     disabledRules.sort((a: string, b: string) =>
         a.localeCompare(b, undefined, { sensitivity: 'base' }));
@@ -592,14 +593,14 @@ function processTelemetry(params: any) {
   } else if (params['commandName'] === 'ltex.ignoreRuleInSentence') {
     const ruleIds: string[] = convertToStringArray(params['ruleId']);
     const sentencePatterns: string[] = convertToStringArray(params['sentencePattern']);
+    const ignoredRules: any[] = resourceConfig.get('ignoreRuleInSentence');
 
     for (let i: number = 0; i < ruleIds.length; i++) {
-      resourceConfig['ignoreRuleInSentence'].push({'rule': ruleIds[i],
-          'sentence': sentencePatterns[i]});
+      ignoredRules.push({'rule': ruleIds[i], 'sentence': sentencePatterns[i]});
     }
 
-    setConfigurationSetting('ignoreRuleInSentence', resourceConfig['ignoreRuleInSentence'],
-        resourceConfig, 'ignoreRuleInSentence');
+    setConfigurationSetting('ignoreRuleInSentence', ignoredRules, resourceConfig,
+        'ignoreRuleInSentence');
   }
 }
 
@@ -609,7 +610,7 @@ export function activate(context: Code.ExtensionContext) {
 
   // Allow to enable languageTool in specific workspaces
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
-  if (!workspaceConfig['enabled']) return;
+  if (!workspaceConfig.get('enabled')) return;
 
   // create the language client
   startLanguageClient(context);
