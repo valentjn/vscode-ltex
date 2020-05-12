@@ -7,6 +7,7 @@ import * as Fs from 'fs';
 import * as Http from 'http';
 import * as Https from 'https';
 import * as Path from 'path';
+import * as Rimraf from 'rimraf';
 import * as SemVer from 'semver';
 import * as Tar from 'tar';
 import * as Url from 'url';
@@ -37,7 +38,7 @@ async function setConfigurationSetting(settingName: string, settingValue: any,
       return;
     } catch (e) {
       if (configurationTarget == configurationTargets[configurationTargets.length - 1]) {
-        console.error(`Could not set configuration '${settingName}':`);
+        log(`Could not set configuration '${settingName}'.`);
         throw e;
       }
     }
@@ -92,14 +93,70 @@ async function doJsonRequest(urlStr: string): Promise<any> {
   });
 }
 
-async function downloadFile(urlStr: string, path: string): Promise<void> {
-  let file = Fs.createWriteStream(path);
+class CodeProgress {
+  private taskProgressStack: number[];
+  private taskSizeStack: number[];
+  private taskNameStack: string[];
+  private progressInterface: Code.Progress<{increment?: number, message?: string}>;
+  private progressOnLastUpdate: number;
+
+  public constructor(name: string,
+        progressInterface: Code.Progress<{increment?: number, message?: string}>) {
+    this.taskProgressStack = [0];
+    this.taskSizeStack = [1];
+    this.taskNameStack = [name];
+    this.progressInterface = progressInterface;
+    this.progressOnLastUpdate = 0;
+  }
+
+  public startTask(size: number, name: string) {
+    this.taskProgressStack.push(0);
+    this.taskSizeStack.push(size);
+    this.taskNameStack.push(name);
+    this.showProgress();
+  }
+
+  public updateTask(progress: number) {
+    this.taskProgressStack[this.taskProgressStack.length - 1] = progress;
+    this.showProgress();
+  }
+
+  public finishTask() {
+    const n: number = this.taskProgressStack.length - 1;
+    if (n == 0) throw Error("Could not finish task, task stack already empty.")
+    this.taskProgressStack.pop();
+    this.taskProgressStack[n - 1] += this.taskSizeStack.pop();
+    this.taskNameStack.pop();
+    this.showProgress();
+  }
+
+  public showProgress() {
+    const n: number = this.taskProgressStack.length;
+    let currentProgress: number = 0;
+    let currentSize: number = 1;
+
+    for (let i: number = 0; i < n; i++) {
+      currentSize *= this.taskSizeStack[i];
+      currentProgress += currentSize * this.taskProgressStack[i];
+    }
+
+    const progressIncrement: number = 100 * currentProgress - this.progressOnLastUpdate;
+    const currentName: string = this.taskNameStack[n - 1];
+    this.progressInterface.report({increment: progressIncrement, message: currentName});
+    this.progressOnLastUpdate = 100 * currentProgress;
+  }
+}
+
+async function downloadFile(urlStr: string, path: string, codeProgress: CodeProgress):
+      Promise<void> {
+  let file: Fs.WriteStream = Fs.createWriteStream(path);
+
   return new Promise((resolve, reject) => {
     Https.get(parseUrl(urlStr), (response: Http.IncomingMessage) => {
       if ((response.statusCode === 301) || (response.statusCode === 302) ||
             (response.statusCode === 307)) {
         log(`Redirected to '${response.headers.location}'...`);
-        downloadFile(response.headers.location, path).then(resolve).catch(reject);
+        downloadFile(response.headers.location, path, codeProgress).then(resolve).catch(reject);
         return;
       } else if (response.statusCode !== 200) {
         response.resume();
@@ -107,8 +164,16 @@ async function downloadFile(urlStr: string, path: string): Promise<void> {
         return;
       }
 
+      const fileSize: number = parseInt(response.headers['content-length']);
+      let downloadedSize: number = 0;
       response.pipe(file);
-      file.on('finish', function() {
+
+      response.on('data', (chunk: any) => {
+        downloadedSize += chunk.length;
+        codeProgress.updateTask(downloadedSize / fileSize);
+      });
+
+      file.on('finish', () => {
         file.close();
         resolve();
       });
@@ -120,7 +185,7 @@ async function downloadFile(urlStr: string, path: string): Promise<void> {
 }
 
 function getLatestCompatibleLtexLsVersion(versions: string[]): string {
-  let latestVersion: string;
+  let latestVersion: string = null;
 
   versions.forEach((version: string) => {
     if (SemVer.valid(version) && SemVer.lte(version, ltexVersion) &&
@@ -132,7 +197,80 @@ function getLatestCompatibleLtexLsVersion(versions: string[]): string {
   return latestVersion;
 }
 
-async function downloadLtexLs(context: Code.ExtensionContext): Promise<void> {
+async function installDependency(
+      context: Code.ExtensionContext, urlStr: string, name: string, removeIfExists: boolean,
+      codeProgress: CodeProgress): Promise<void> {
+  codeProgress.startTask(0.1, `Downloading ${name}...`);
+  const url: Url.UrlWithStringQuery = Url.parse(urlStr);
+  const archiveName: string = Path.basename(url.pathname);
+  const archiveType: string = ((Path.extname(archiveName) == '.zip') ? 'zip' : 'tar.gz');
+  const tmpDirPath: string = Fs.mkdtempSync(Path.join(context.extensionPath, 'tmp-'));
+  const archivePath = Path.join(tmpDirPath, archiveName);
+  codeProgress.finishTask();
+
+  try {
+    codeProgress.startTask(0.6, `Downloading ${name}...`);
+    log(`Downloading ${name} from '${urlStr}' to '${archivePath}'...`);
+    await downloadFile(urlStr, archivePath, codeProgress);
+    codeProgress.finishTask();
+
+    codeProgress.startTask(0.3, `Extracting ${name}...`);
+    log(`Extracting ${name} archive to '${tmpDirPath}'...`);
+
+    if (archiveType == 'zip') {
+      await extractZip(archivePath, {dir: tmpDirPath});
+    } else {
+      await Tar.extract({file: archivePath, cwd: tmpDirPath});
+    }
+
+    codeProgress.updateTask(0.8);
+
+    const fileNames: string[] = Fs.readdirSync(tmpDirPath);
+    let extractedDirPath: string;
+
+    for (let i: number = 0; i < fileNames.length; i++) {
+      const filePath: string = Path.join(tmpDirPath, fileNames[i]);
+
+      if (Fs.lstatSync(filePath).isDirectory()) {
+        extractedDirPath = filePath;
+        break;
+      }
+    }
+
+    codeProgress.updateTask(0.85);
+
+    const targetDirPath: string = Path.join(
+        context.extensionPath, 'lib', Path.basename(extractedDirPath));
+    let doMove: boolean = true;
+
+    if (Fs.existsSync(targetDirPath)) {
+      if (removeIfExists) {
+        log(`Target '${targetDirPath}' already exists, removing...`);
+        Rimraf.sync(targetDirPath);
+      } else {
+        log(`Did not move '${extractedDirPath}' to '${targetDirPath}', as target already exists.`);
+        doMove = false;
+      }
+    }
+
+    codeProgress.updateTask(0.9);
+
+    if (doMove) {
+      log(`Moving '${extractedDirPath}' to '${targetDirPath}'...`);
+      Fs.renameSync(extractedDirPath, targetDirPath);
+    }
+
+    codeProgress.finishTask();
+
+    return Promise.resolve();
+  } finally {
+    log(`Removing temporary directory '${tmpDirPath}'...`);
+    Rimraf.sync(tmpDirPath);
+  }
+}
+
+async function installLtexLs(
+      context: Code.ExtensionContext, removeIfExists: boolean): Promise<void> {
   const progressOptions: Code.ProgressOptions = {
         title: 'LTeX',
         location: Code.ProgressLocation.Notification,
@@ -142,13 +280,15 @@ async function downloadLtexLs(context: Code.ExtensionContext): Promise<void> {
   return Code.window.withProgress(progressOptions,
         async (progress: Code.Progress<{increment?: number, message?: string}>,
           token: Code.CancellationToken): Promise<void> => {
-    progress.report({increment: 10, message: 'Downloading ltex-ls...'});
+    const codeProgress: CodeProgress = new CodeProgress(
+        'Downloading and extracting ltex-ls', progress);
+
+    codeProgress.startTask(0.1, 'Preparing download of ltex-ls...');
     const jsonUrl: string = 'https://api.github.com/repos/valentjn/ltex-ls/releases';
     log(`Fetching list of ltex-ls releases from '${jsonUrl}'...`);
     const jsonData: any = await doJsonRequest(jsonUrl);
 
-    progress.report({increment: 10, message: 'Downloading ltex-ls...'});
-    let ltexLsVersions: string[];
+    let ltexLsVersions: string[] = [];
 
     jsonData.forEach((release: any) => {
       ltexLsVersions.push(release.tag_name);
@@ -158,37 +298,31 @@ async function downloadLtexLs(context: Code.ExtensionContext): Promise<void> {
     log(`Latest compatible release is 'ltex-ls-${ltexLsVersion}'.`);
     const ltexLsUrl: string = 'https://github.com/valentjn/ltex-ls/releases/download/' +
         `${ltexLsVersion}/ltex-ls-${ltexLsVersion}.tar.gz`;
-    const ltexLsArchivePath = Path.resolve(context.extensionPath, 'lib',
-        `ltex-ls-${ltexLsVersion}.tar.gz`);
 
-    log(`Downloading ltex-ls from '${ltexLsUrl}' to '${ltexLsArchivePath}'...`);
-    await downloadFile(ltexLsUrl, ltexLsArchivePath);
+    codeProgress.finishTask();
 
-    progress.report({increment: 50, message: 'Extracting ltex-ls...'});
-    log(`Extracting ltex-ls archive...`);
+    codeProgress.startTask(0.9, 'Downloading and extracting ltex-ls...');
+    await installDependency(context, ltexLsUrl, 'ltex-ls', removeIfExists, codeProgress);
+    codeProgress.finishTask();
 
-    await Tar.extract({
-          file: ltexLsArchivePath,
-          cwd: Path.resolve(context.extensionPath, 'lib'),
-        });
-
-    progress.report({increment: 30, message: 'Extracting ltex-ls...'});
-    log('Removing ltex-ls archive...');
-    Fs.unlinkSync(ltexLsArchivePath);
     return Promise.resolve();
   });
 }
 
-async function downloadJava(context: Code.ExtensionContext): Promise<void> {
+async function installJava(
+      context: Code.ExtensionContext, removeIfExists: boolean): Promise<void> {
   const progressOptions: Code.ProgressOptions = {
-    title: 'LTeX',
-    location: Code.ProgressLocation.Notification,
-    cancellable: false,
-  };
+        title: 'LTeX',
+        location: Code.ProgressLocation.Notification,
+        cancellable: false,
+      };
 
   return Code.window.withProgress(progressOptions,
       async (progress: Code.Progress<{increment?: number, message?: string}>,
         token: Code.CancellationToken): Promise<void> => {
+    const codeProgress: CodeProgress = new CodeProgress(
+        'Downloading and extracting Java', progress);
+
     let platform: string = 'linux';
     let arch: string = 'x64';
     let javaArchiveType: string = 'tar.gz';
@@ -216,39 +350,18 @@ async function downloadJava(context: Code.ExtensionContext): Promise<void> {
         `OpenJDK11U-jre_${arch}_${platform}_hotspot_11.0.7_10.${javaArchiveType}`;
     log(`Guessed AdoptOpenJDK archive name '${javaArchiveName}' from your platform and ` +
         'architecture (may not exist).');
-
     const javaUrl: string = 'https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/' +
         `download/jdk-11.0.7%2B10/${javaArchiveName}`;
-    const javaArchivePath = Path.resolve(context.extensionPath, 'lib', javaArchiveName);
 
-    progress.report({increment: 20, message: 'Downloading Java...'});
-    log(`Downloading Java from '${javaUrl}' to '${javaArchivePath}'...`);
-    await downloadFile(javaUrl, javaArchivePath);
+    await installDependency(context, javaUrl, 'Java', removeIfExists, codeProgress);
 
-    progress.report({increment: 50, message: 'Extracting Java...'});
-    log(`Extracting Java archive...`);
-
-    if (javaArchiveType == 'zip') {
-      await extractZip(javaArchivePath, {
-            dir: Path.resolve(context.extensionPath, 'lib')
-          });
-    } else {
-      await Tar.extract({
-            file: javaArchivePath,
-            cwd: Path.resolve(context.extensionPath, 'lib'),
-          });
-    }
-
-    progress.report({increment: 30, message: 'Extracting Java...'});
-    log('Removing Java archive...');
-    Fs.unlinkSync(javaArchivePath);
     return Promise.resolve();
   });
 }
 
 function searchBundledLtexLs(context: Code.ExtensionContext): string {
-  const names: string[] = Fs.readdirSync(Path.resolve(context.extensionPath, 'lib'));
-  let ltexLsVersions: string[];
+  const names: string[] = Fs.readdirSync(Path.join(context.extensionPath, 'lib'));
+  let ltexLsVersions: string[] = [];
 
   names.forEach((name) => {
     if (name.startsWith('ltex-ls-')) {
@@ -258,15 +371,15 @@ function searchBundledLtexLs(context: Code.ExtensionContext): string {
 
   const ltexLsVersion: string = getLatestCompatibleLtexLsVersion(ltexLsVersions);
   return ((ltexLsVersion != null) ?
-      Path.resolve(context.extensionPath, 'lib', `ltex-ls-${ltexLsVersion}`) : null);
+      Path.join(context.extensionPath, 'lib', `ltex-ls-${ltexLsVersion}`) : null);
 }
 
 function searchBundledJava(context: Code.ExtensionContext): string {
-  const javaPath: string = Path.resolve(context.extensionPath, 'lib', 'jdk-11.0.7+10-jre');
+  const javaPath: string = Path.join(context.extensionPath, 'lib', 'jdk-11.0.7+10-jre');
 
   if (Fs.existsSync(javaPath)) {
     if (process.platform == 'darwin') {
-      return Path.resolve(javaPath, 'Contents', 'Home');
+      return Path.join(javaPath, 'Contents', 'Home');
     } else {
       return javaPath;
     }
@@ -275,9 +388,17 @@ function searchBundledJava(context: Code.ExtensionContext): string {
   }
 }
 
-async function startLanguageClient(context: Code.ExtensionContext,
-      useBundledJava?: boolean | false): Promise<void> {
-  const libPath: string = Path.resolve(context.extensionPath, 'lib');
+async function startLanguageClient(
+      context: Code.ExtensionContext, numberOfCrashes: number = 0): Promise<void> {
+  const libPath: string = Path.join(context.extensionPath, 'lib');
+
+  if (numberOfCrashes >= 2) {
+    log(`Crashed at least two times in a row, cleaning '${libPath}'...`);
+    Rimraf.sync(libPath);
+    Fs.mkdirSync(libPath);
+    Fs.writeFileSync(Path.join(libPath, '.keep'), '\n');
+  }
+
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
   let ltexLsPath: string;
 
@@ -290,7 +411,7 @@ async function startLanguageClient(context: Code.ExtensionContext,
 
     if (ltexLsPath == null) {
       log(`Could not find compatible version of ltex-ls in '${libPath}'. Initiating download.`);
-      await downloadLtexLs(context);
+      await installLtexLs(context, false);
       ltexLsPath = searchBundledLtexLs(context);
 
       if (ltexLsPath == null) {
@@ -306,13 +427,13 @@ async function startLanguageClient(context: Code.ExtensionContext,
   if ((workspaceConfig['java'] != null) && (workspaceConfig['java']['path'] != null)) {
     javaHome = process.env['JAVA_HOME'];
     log(`ltex.java.path set to '${javaHome}'.`);
-  } else if (useBundledJava) {
-    log(`ltex.java.path not set, searching for bundled Java in '${libPath}'.`);
+  } else if (numberOfCrashes >= 1) {
+    log(`ltex.java.path not set and crashed before, searching for bundled Java in '${libPath}'.`);
     javaHome = searchBundledJava(context);
 
     if (javaHome == null) {
       log(`Could not find bundled Java in '${libPath}'. Initiating download.`);
-      await downloadJava(context);
+      await installJava(context, false);
       javaHome = searchBundledJava(context);
 
       if (javaHome == null) {
@@ -329,7 +450,7 @@ async function startLanguageClient(context: Code.ExtensionContext,
   }
 
   const isWindows: boolean = (process.platform === 'win32');
-  const ltexLsStartPath: string = Path.resolve(
+  const ltexLsStartPath: string = Path.join(
       ltexLsPath, 'bin', (isWindows ? 'ltex-ls.bat' : 'ltex-ls'));
 
   const initialJavaHeapSize: number = workspaceConfig['java']['initialHeapSize'];
@@ -369,7 +490,7 @@ async function startLanguageClient(context: Code.ExtensionContext,
   let languageClient: CodeLanguageClient.LanguageClient = new CodeLanguageClient.LanguageClient(
       'ltex', 'LTeX Language Server', serverOptions, clientOptions);
   languageClient.clientOptions.errorHandler =
-      new LanguageClientErrorHandler(context, languageClient);
+      new LanguageClientErrorHandler(context, languageClient, numberOfCrashes);
 
   // Hack to enable the server to execute commands that change the client configuration
   // (e.g., adding words to the dictionary).
@@ -379,6 +500,7 @@ async function startLanguageClient(context: Code.ExtensionContext,
 
   log('Starting ltex-ls with Java...');
   log('');
+  languageClient.info('Starting ltex-ls with Java...');
   let disposable: Code.Disposable = languageClient.start();
 
   // Push the disposable to the context's subscriptions so that the
@@ -390,12 +512,18 @@ async function startLanguageClient(context: Code.ExtensionContext,
 
 class LanguageClientErrorHandler implements CodeLanguageClient.ErrorHandler {
   private context: Code.ExtensionContext;
+  private languageClient: CodeLanguageClient.LanguageClient;
   private defaultErrorHandler: CodeLanguageClient.ErrorHandler;
+  private startTime: number;
+  private numberOfCrashes: number;
 
   public constructor(context: Code.ExtensionContext,
-        languageClient: CodeLanguageClient.LanguageClient) {
+        languageClient: CodeLanguageClient.LanguageClient, numberOfCrashes: number) {
     this.context = context;
+    this.languageClient = languageClient;
     this.defaultErrorHandler = languageClient.createDefaultErrorHandler();
+    this.startTime = Date.now();
+    this.numberOfCrashes = numberOfCrashes;
   }
 
   error(error: Error, message: CodeLanguageClient.Message, count: number):
@@ -405,12 +533,29 @@ class LanguageClientErrorHandler implements CodeLanguageClient.ErrorHandler {
 
   closed(): CodeLanguageClient.CloseAction {
     let closeAction: CodeLanguageClient.CloseAction = this.defaultErrorHandler.closed();
+    const hasCrashed: boolean = (Date.now() - this.startTime < 60000);
+    const ignoreLogLineMessage: string = 'There will be a log entry emitted by VS Code telling ' +
+        'you following log entry that the server won\'t be restarted. ' +
+        'You can safely ignore that log entry once. ltex-ls *will* be restarted.';
 
-    if (closeAction == CodeLanguageClient.CloseAction.Restart) {
-      log('ltex-ls got closed, retrying with bundled Java (may need to download first).');
-      startLanguageClient(this.context, true);
+    if (hasCrashed) {
+      this.numberOfCrashes++;
+
+      if (closeAction == CodeLanguageClient.CloseAction.Restart) {
+        log(`ltex-ls crashed (try ${this.numberOfCrashes}), restarting.`);
+        this.languageClient.info(ignoreLogLineMessage);
+        startLanguageClient(this.context, this.numberOfCrashes);
+      } else {
+        log('ltex-ls crashed, will not restart.');
+      }
     } else {
-      log('ltex-ls got closed, will not restart.');
+      if (closeAction == CodeLanguageClient.CloseAction.Restart) {
+        log('ltex-ls closed, restarting.');
+        this.languageClient.info(ignoreLogLineMessage);
+        startLanguageClient(this.context);
+      } else {
+        log('ltex-ls closed, will not restart.');
+      }
     }
 
     return CodeLanguageClient.CloseAction.DoNotRestart;
