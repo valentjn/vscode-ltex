@@ -459,10 +459,10 @@ async function startLanguageClient(
   process.env['LTEX_LS_OPTS'] = '-Xms' + initialJavaHeapSize + 'm -Xmx' + maximumJavaHeapSize + 'm';
 
   const serverOptions: CodeLanguageClient.ServerOptions = {
-    command: ltexLsStartPath,
-    args: [],
-    options: {'env': process.env},
-  };
+        command: ltexLsStartPath,
+        args: [],
+        options: {'env': process.env},
+      };
 
   // Options to control the language client
   const clientOptions: CodeLanguageClient.LanguageClientOptions = {
@@ -577,7 +577,7 @@ function processTelemetry(params: any) {
     let dictionary: string[] = resourceConfig.get(`languageSettings.${language}.dictionary`);
     dictionary = dictionary.concat(convertToStringArray(params['word']));
     dictionary.sort((a: string, b: string) =>
-        a.localeCompare(b, undefined, { sensitivity: 'base' }));
+        a.localeCompare(b, undefined, {sensitivity: 'base'}));
     setConfigurationSetting(`languageSettings.${language}.dictionary`, dictionary,
         resourceConfig, 'addToDictionary');
 
@@ -586,7 +586,7 @@ function processTelemetry(params: any) {
     let disabledRules: string[] = resourceConfig.get(`languageSettings.${language}.disabledRules`);
     disabledRules = disabledRules.concat(convertToStringArray(params['ruleId']));
     disabledRules.sort((a: string, b: string) =>
-        a.localeCompare(b, undefined, { sensitivity: 'base' }));
+        a.localeCompare(b, undefined, {sensitivity: 'base'}));
     setConfigurationSetting(`languageSettings.${language}.disabledRules`, disabledRules,
         resourceConfig, 'disableRule');
 
