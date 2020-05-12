@@ -2113,21 +2113,30 @@
           "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.languageSettings.zh-CN.enabledRules\"."
         },
         "ltex.ltex-ls.path": {
-          "type": "string",
+          "type": [
+            "string",
+            null
+          ],
           "scope": "window",
           "default": null,
           "markdownDescription": "If this setting is `null`, LTeX automatically downloads the [latest compatible release of ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. In this case, the ltex-ls release downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect.",
           "description": "If this setting is \"null\", LTeX automatically downloads the latest compatible release of ltex-ls from GitHub (see https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. In this case, the ltex-ls release downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.java.path": {
-          "type": "string",
+          "type": [
+            "string",
+            null
+          ],
           "scope": "window",
           "default": null,
           "markdownDescription": "If this setting is `null` and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the `JAVA_HOME` environment variable. In this case, the Java distribution downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect.",
           "description": "If this setting is \"null\" and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution (AdoptOpenJDK, see https://adoptopenjdk.net/), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the \"JAVA_HOME\" environment variable. In this case, the Java distribution downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.javaHome": {
-          "type": "string",
+          "type": [
+            "string",
+            null
+          ],
           "scope": "window",
           "default": null,
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.path`.",
@@ -2141,9 +2150,12 @@
           "description": "Initial size of the Java heap memory in megabytes (corresponds to Java's \"-Xms\" option). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.performance.initialJavaHeapSize": {
-          "type": "integer",
+          "type": [
+            "integer",
+            null
+          ],
           "scope": "window",
-          "default": 64,
+          "default": null,
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.initialHeapSize`.",
           "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.java.initialHeapSize\"."
         },
@@ -2155,9 +2167,12 @@
           "description": "Maximum size of the Java heap memory in megabytes (corresponds to Java's \"-Xmx\" option). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an \"OutOfMemoryError\" is thrown. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.performance.maximumHeapSize": {
-          "type": "integer",
+          "type": [
+            "integer",
+            null
+          ],
           "scope": "window",
-          "default": 64,
+          "default": null,
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.maximumHeapSize`.",
           "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.java.maximumHeapSize\"."
         },
@@ -2354,9 +2369,12 @@
           "description": "Size of the LanguageTool \"ResultCache\" in sentences. If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.performance.sentenceCacheSize": {
-          "type": "integer",
+          "type": [
+            "integer",
+            null
+          ],
           "scope": "resource",
-          "default": 2000,
+          "default": null,
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.sentenceCacheSize`.",
           "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.sentenceCacheSize\"."
         },

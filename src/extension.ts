@@ -389,6 +389,17 @@ function searchBundledJava(context: Code.ExtensionContext): string {
   }
 }
 
+function getRenamedSetting(workspaceConfig: Code.WorkspaceConfiguration,
+      newName: string, oldName: string) {
+  const oldValue: any = workspaceConfig.get(oldName);
+
+  if (oldValue != null) {
+    return oldValue;
+  } else {
+    return workspaceConfig.get(newName);
+  }
+}
+
 async function startLanguageClient(
       context: Code.ExtensionContext, numberOfCrashes: number = 0): Promise<void> {
   const libPath: string = Path.join(context.extensionPath, 'lib');
@@ -423,10 +434,9 @@ async function startLanguageClient(
 
   log(`Using ltex-ls from '${ltexLsPath}'.`);
 
-  let javaHome: string;
+  let javaHome: string = getRenamedSetting(workspaceConfig, 'java.path', 'javaHome');
 
-  if (workspaceConfig.get('java.path') != null) {
-    javaHome = process.env['JAVA_HOME'];
+  if (javaHome != null) {
     log(`ltex.java.path set to '${javaHome}'.`);
   } else if (numberOfCrashes >= 1) {
     log(`ltex.java.path not set and crashed before, searching for bundled Java in '${libPath}'.`);
@@ -454,9 +464,11 @@ async function startLanguageClient(
   const ltexLsStartPath: string = Path.join(
       ltexLsPath, 'bin', (isWindows ? 'ltex-ls.bat' : 'ltex-ls'));
 
-  const initialJavaHeapSize: number = workspaceConfig.get('java.initialHeapSize');
-  const maximumJavaHeapSize: number = workspaceConfig.get('java.maximumHeapSize');
-  process.env['LTEX_LS_OPTS'] = '-Xms' + initialJavaHeapSize + 'm -Xmx' + maximumJavaHeapSize + 'm';
+  const initialJavaHeapSize: number = getRenamedSetting(workspaceConfig,
+      'java.initialHeapSize', 'performance.initialJavaHeapSize');
+  const maximumJavaHeapSize: number = getRenamedSetting(workspaceConfig,
+      'java.maximumHeapSize', 'performance.maximumJavaHeapSize');
+  process.env['LTEX_LS_OPTS'] = `-Xms${initialJavaHeapSize}m -Xmx${maximumJavaHeapSize}m`;
 
   const serverOptions: CodeLanguageClient.ServerOptions = {
         command: ltexLsStartPath,
