@@ -15,8 +15,22 @@ import * as Url from 'url';
 
 let clientOutputChannel: Code.OutputChannel;
 let serverOutputChannel: Code.OutputChannel;
-const log: (line: string) => void = (line: string) => {clientOutputChannel.appendLine(line)};
 const ltexVersion = Code.extensions.getExtension('valentjn.vscode-ltex').packageJSON.version;
+
+function log(message: string, type: string = "Info") {
+  const timestamp: string = (new Date()).toISOString();
+  clientOutputChannel.appendLine(`${timestamp} ${type}: ${message}`);
+}
+
+function error(line: string, e?: Error) {
+  log(line, "Error");
+
+  if (e != null) {
+    log("Error name: " + e.name, "Error");
+    log("Error message: " + e.message, "Error");
+    log("Error stack: " + e.stack, "Error");
+  }
+}
 
 async function setConfigurationSetting(settingName: string, settingValue: any,
       resourceConfig: Code.WorkspaceConfiguration, commandName: string): Promise<void> {
@@ -499,9 +513,9 @@ async function installDependencies(context: Code.ExtensionContext, clean: boolea
       throw Error('Could not run ltex-ls.');
     }
   } catch (e) {
-    throw Error('The installation of ltex-ls and/or Java failed with the ' +
-        `following message: '${e.message}'\nYou might want to try offline installation, ` +
-        'see https://github.com/valentjn/vscode-ltex#offline-installation.')
+    error('The installation of ltex-ls and/or Java failed!', e);
+    log('You might want to try offline installation, ' +
+        'see https://github.com/valentjn/vscode-ltex#offline-installation.');
   }
 }
 
@@ -650,10 +664,17 @@ export function activate(context: Code.ExtensionContext) {
   clientOutputChannel = Code.window.createOutputChannel('LTeX Language Client');
   serverOutputChannel = Code.window.createOutputChannel('LTeX Language Server');
 
+  context.subscriptions.push(clientOutputChannel);
+  context.subscriptions.push(serverOutputChannel);
+
   // Allow to enable languageTool in specific workspaces
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
   if (!workspaceConfig.get('enabled')) return;
 
-  // create the language client
-  startLanguageClient(context);
+  try {
+    // create the language client
+    startLanguageClient(context);
+  } catch (e) {
+    error('Could not start the language client!', e);
+  }
 }
