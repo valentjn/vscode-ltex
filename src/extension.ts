@@ -1,5 +1,6 @@
 'use strict';
 
+import * as ChildProcess from 'child_process';
 import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient';
 import * as extractZip from 'extract-zip';
@@ -198,9 +199,8 @@ function getLatestCompatibleLtexLsVersion(versions: string[]): string {
   return latestVersion;
 }
 
-async function installDependency(
-      context: Code.ExtensionContext, urlStr: string, name: string, removeIfExists: boolean,
-      codeProgress: CodeProgress): Promise<void> {
+async function installDependency(context: Code.ExtensionContext, urlStr: string,
+      name: string, codeProgress: CodeProgress): Promise<void> {
   codeProgress.startTask(0.1, `Downloading ${name}...`);
   const url: Url.UrlWithStringQuery = Url.parse(urlStr);
   const archiveName: string = Path.basename(url.pathname);
@@ -242,21 +242,12 @@ async function installDependency(
 
     const targetDirPath: string = Path.join(
         context.extensionPath, 'lib', Path.basename(extractedDirPath));
-    let doMove: boolean = true;
-
-    if (Fs.existsSync(targetDirPath)) {
-      if (removeIfExists) {
-        log(`Target '${targetDirPath}' already exists, removing...`);
-        Rimraf.sync(targetDirPath);
-      } else {
-        log(`Did not move '${extractedDirPath}' to '${targetDirPath}', as target already exists.`);
-        doMove = false;
-      }
-    }
-
+    const targetExists: boolean = Fs.existsSync(targetDirPath);
     codeProgress.updateTask(0.9);
 
-    if (doMove) {
+    if (targetExists) {
+      log(`Did not move '${extractedDirPath}' to '${targetDirPath}', as target already exists.`);
+    } else {
       log(`Moving '${extractedDirPath}' to '${targetDirPath}'...`);
       Fs.renameSync(extractedDirPath, targetDirPath);
     }
@@ -270,8 +261,7 @@ async function installDependency(
   }
 }
 
-async function installLtexLs(
-      context: Code.ExtensionContext, removeIfExists: boolean): Promise<void> {
+async function installLtexLs(context: Code.ExtensionContext): Promise<void> {
   const progressOptions: Code.ProgressOptions = {
         title: 'LTeX',
         location: Code.ProgressLocation.Notification,
@@ -303,15 +293,12 @@ async function installLtexLs(
     codeProgress.finishTask();
 
     codeProgress.startTask(0.9, 'Downloading and extracting ltex-ls...');
-    await installDependency(context, ltexLsUrl, 'ltex-ls', removeIfExists, codeProgress);
+    await installDependency(context, ltexLsUrl, 'ltex-ls', codeProgress);
     codeProgress.finishTask();
-
-    return Promise.resolve();
   });
 }
 
-async function installJava(
-      context: Code.ExtensionContext, removeIfExists: boolean): Promise<void> {
+async function installJava(context: Code.ExtensionContext): Promise<void> {
   const progressOptions: Code.ProgressOptions = {
         title: 'LTeX',
         location: Code.ProgressLocation.Notification,
@@ -354,14 +341,12 @@ async function installJava(
     const javaUrl: string = 'https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/' +
         `download/jdk-11.0.7%2B10/${javaArchiveName}`;
 
-    await installDependency(context, javaUrl, 'Java', removeIfExists, codeProgress);
-
-    return Promise.resolve();
+    await installDependency(context, javaUrl, 'Java', codeProgress);
   });
 }
 
-function searchBundledLtexLs(context: Code.ExtensionContext): string {
-  const names: string[] = Fs.readdirSync(Path.join(context.extensionPath, 'lib'));
+function searchBundledLtexLs(libDirPath: string): string {
+  const names: string[] = Fs.readdirSync(libDirPath);
   let ltexLsVersions: string[] = [];
 
   names.forEach((name) => {
@@ -371,12 +356,11 @@ function searchBundledLtexLs(context: Code.ExtensionContext): string {
   });
 
   const ltexLsVersion: string = getLatestCompatibleLtexLsVersion(ltexLsVersions);
-  return ((ltexLsVersion != null) ?
-      Path.join(context.extensionPath, 'lib', `ltex-ls-${ltexLsVersion}`) : null);
+  return ((ltexLsVersion != null) ? Path.join(libDirPath, `ltex-ls-${ltexLsVersion}`) : null);
 }
 
-function searchBundledJava(context: Code.ExtensionContext): string {
-  const javaPath: string = Path.join(context.extensionPath, 'lib', 'jdk-11.0.7+10-jre');
+function searchBundledJava(libDirPath: string): string {
+  const javaPath: string = Path.join(libDirPath, 'jdk-11.0.7+10-jre');
 
   if (Fs.existsSync(javaPath)) {
     if (process.platform == 'darwin') {
@@ -392,89 +376,189 @@ function searchBundledJava(context: Code.ExtensionContext): string {
 function getRenamedSetting(workspaceConfig: Code.WorkspaceConfiguration,
       newName: string, oldName: string) {
   const oldValue: any = workspaceConfig.get(oldName);
+  return ((oldValue != null) ? oldValue : workspaceConfig.get(newName));
+}
 
-  if (oldValue != null) {
-    return oldValue;
-  } else {
-    return workspaceConfig.get(newName);
+class Dependencies {
+  public ltexLs: string;
+  public java: string;
+}
+
+async function installDependencies(context: Code.ExtensionContext, clean: boolean = false):
+      Promise<Dependencies> {
+  try {
+    let dependencies: Dependencies = new Dependencies();
+    const libDirPath: string = Path.join(context.extensionPath, 'lib');
+    const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
+
+    if (clean) {
+      log(`Cleaning '${libDirPath}'...`);
+      Rimraf.sync(libDirPath);
+      Fs.mkdirSync(libDirPath);
+      Fs.writeFileSync(Path.join(libDirPath, '.keep'), '\n');
+    }
+
+    // try 0: only use ltex.ltexLs.path (don't use lib/, don't download)
+    // try 1: use ltex.ltexLs.path or lib/ (don't download)
+    // try 2: use ltex.ltexLs.path or lib/ or download
+    for (let i: number = 0; i < 3; i++) {
+      log('');
+      dependencies.ltexLs = workspaceConfig.get('ltex-ls.path');
+
+      if (dependencies.ltexLs != null) {
+        log(`ltex.ltex-ls.path set to ${dependencies.ltexLs}.`);
+      } else if (i == 0) {
+        log(`ltex.ltex-ls.path not set.`);
+        continue;
+      } else {
+        log(`Searching for ltex-ls in '${libDirPath}'...`);
+        dependencies.ltexLs = searchBundledLtexLs(libDirPath);
+
+        if (dependencies.ltexLs != null) {
+          log(`ltex-ls found in '${dependencies.ltexLs}'.`);
+        } else {
+          log(`Could not find compatible version of ltex-ls in '${libDirPath}'.`);
+
+          if (i <= 1) {
+            continue;
+          } else {
+            log('Initiating download of ltex-ls...');
+            await installLtexLs(context);
+            dependencies.ltexLs = searchBundledLtexLs(libDirPath);
+
+            if (dependencies.ltexLs != null) {
+              log(`ltex-ls found in '${dependencies.ltexLs}'.`);
+            } else {
+              log('Download or extraction of ltex-ls failed.');
+              continue;
+            }
+          }
+        }
+      }
+    }
+
+    if (dependencies.ltexLs == null) {
+      if (!clean) {
+        return await installDependencies(context, true);
+      } else {
+        throw Error('Could not find/download/extract ltex-ls.');
+      }
+    }
+
+    // try 0: only use ltex.java.path (don't use lib/, don't download)
+    // try 1: use ltex.java.path or lib/ (don't download)
+    // try 2: use ltex.java.path or lib/ or download
+    for (let i: number = 0; i < 3; i++) {
+      log('');
+      dependencies.java = getRenamedSetting(workspaceConfig, 'java.path', 'javaHome');
+
+      if (dependencies.java != null) {
+        log(`ltex.java.path set to '${dependencies.java}'.`);
+      } else if (i == 0) {
+        log(`ltex.java.path not set.`);
+      } else {
+        log(`Searching for bundled Java in '${libDirPath}'.`);
+        dependencies.java = searchBundledJava(libDirPath);
+
+        if (dependencies.java != null) {
+          log(`Bundled Java found in '${dependencies.java}'.`);
+        } else {
+          log(`Could not find bundled Java in '${libDirPath}'.`);
+
+          if (i <= 1) {
+            continue;
+          } else {
+            await installJava(context);
+            dependencies.java = searchBundledJava(libDirPath);
+
+            if (dependencies.java == null) {
+              log('Download or extraction of Java failed. ' +
+                  'Trying to run Java via PATH or JAVA_HOME.');
+            }
+          }
+        }
+      }
+
+      log(`Using ltex-ls from '${dependencies.ltexLs}'.`);
+
+      if (dependencies.java != null) {
+        log(`Using Java from '${dependencies.java}'.`);
+      } else {
+        log('Using Java from PATH or JAVA_HOME (may fail if not installed).');
+      }
+
+      if (await testDependencies(dependencies)) {
+        log('');
+        return dependencies;
+      }
+    }
+
+    if (!clean) {
+      return await installDependencies(context, true);
+    } else {
+      throw Error('Could not run ltex-ls.');
+    }
+  } catch (e) {
+    throw Error('The installation of ltex-ls and/or Java failed with the ' +
+        `following message: '${e.message}'\nYou might want to try offline installation, ` +
+        'see https://github.com/valentjn/vscode-ltex#offline-installation.')
   }
 }
 
-async function startLanguageClient(
-      context: Code.ExtensionContext, numberOfCrashes: number = 0): Promise<void> {
-  const libPath: string = Path.join(context.extensionPath, 'lib');
+async function testDependencies(dependencies: Dependencies): Promise<boolean> {
+  const executable: CodeLanguageClient.Executable = await getLtexLsExecutable(dependencies);
+  executable.args.push("--test");
+  const executableOptions: any = executable.options;
+  executableOptions.timeout = 10000;
 
-  if (numberOfCrashes >= 2) {
-    log(`Crashed at least two times in a row, cleaning '${libPath}'...`);
-    Rimraf.sync(libPath);
-    Fs.mkdirSync(libPath);
-    Fs.writeFileSync(Path.join(libPath, '.keep'), '\n');
+  log('Testing ltex-ls...');
+  logExecutable(executable);
+  const process: any = ChildProcess.spawnSync(
+      executable.command, executable.args, executableOptions);
+
+  const success: boolean = (process.status == 42);
+  log(success ? 'Test successful!' : 'Test failed.');
+
+  return success;
+}
+
+async function getLtexLsExecutable(dependencies: Dependencies):
+      Promise<CodeLanguageClient.Executable> {
+  let env: NodeJS.ProcessEnv = {};
+
+  for (let name in process.env) {
+    env[name] = process.env[name];
   }
 
-  const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
-  let ltexLsPath: string;
-
-  if (workspaceConfig.get('ltex-ls.path') != null) {
-    ltexLsPath = workspaceConfig.get('ltex-ls.path');
-    log(`ltex.ltex-ls.path set to ${ltexLsPath}.`);
-  } else {
-    log(`ltex.ltex-ls.path not set, searching for ltex-ls in '${libPath}'.`);
-    ltexLsPath = searchBundledLtexLs(context);
-
-    if (ltexLsPath == null) {
-      log(`Could not find compatible version of ltex-ls in '${libPath}'. Initiating download.`);
-      await installLtexLs(context, false);
-      ltexLsPath = searchBundledLtexLs(context);
-
-      if (ltexLsPath == null) {
-        throw new Error('Download or extraction of ltex-ls failed. Aborting!');
-      }
-    }
-  }
-
-  log(`Using ltex-ls from '${ltexLsPath}'.`);
-
-  let javaHome: string = getRenamedSetting(workspaceConfig, 'java.path', 'javaHome');
-
-  if (javaHome != null) {
-    log(`ltex.java.path set to '${javaHome}'.`);
-  } else if (numberOfCrashes >= 1) {
-    log(`ltex.java.path not set and crashed before, searching for bundled Java in '${libPath}'.`);
-    javaHome = searchBundledJava(context);
-
-    if (javaHome == null) {
-      log(`Could not find bundled Java in '${libPath}'. Initiating download.`);
-      await installJava(context, false);
-      javaHome = searchBundledJava(context);
-
-      if (javaHome == null) {
-        log('Download or extraction of Java failed. Trying to run Java via PATH or JAVA_HOME.');
-      }
-    }
-  } else {
-    log('ltex.java.path not set. Trying to run Java via PATH or JAVA_HOME.');
-  }
-
-  if (javaHome != null) {
-    log(`Using Java from '${javaHome}', setting JAVA_HOME to this value.`);
-    process.env['JAVA_HOME'] = javaHome;
+  if (dependencies.java != null) {
+    env['JAVA_HOME'] = dependencies.java;
   }
 
   const isWindows: boolean = (process.platform === 'win32');
   const ltexLsStartPath: string = Path.join(
-      ltexLsPath, 'bin', (isWindows ? 'ltex-ls.bat' : 'ltex-ls'));
+    dependencies.ltexLs, 'bin', (isWindows ? 'ltex-ls.bat' : 'ltex-ls'));
 
+  const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
   const initialJavaHeapSize: number = getRenamedSetting(workspaceConfig,
       'java.initialHeapSize', 'performance.initialJavaHeapSize');
   const maximumJavaHeapSize: number = getRenamedSetting(workspaceConfig,
       'java.maximumHeapSize', 'performance.maximumJavaHeapSize');
-  process.env['LTEX_LS_OPTS'] = `-Xms${initialJavaHeapSize}m -Xmx${maximumJavaHeapSize}m`;
+  env['LTEX_LS_OPTS'] = `-Xms${initialJavaHeapSize}m -Xmx${maximumJavaHeapSize}m`;
 
-  const serverOptions: CodeLanguageClient.ServerOptions = {
-        command: ltexLsStartPath,
-        args: [],
-        options: {'env': process.env},
-      };
+  return {command: ltexLsStartPath, args: [], options: {'env': env}};
+}
+
+function logExecutable(executable: CodeLanguageClient.Executable) {
+  log('  Command: ' + JSON.stringify(executable.command));
+  log('  Arguments: ' + JSON.stringify(executable.args));
+  log('  env[\'JAVA_HOME\']: ' + JSON.stringify(executable.options.env['JAVA_HOME']));
+  log('  env[\'LTEX_LS_OPTS\']: ' + JSON.stringify(executable.options.env['LTEX_LS_OPTS']));
+}
+
+async function startLanguageClient(context: Code.ExtensionContext, numberOfCrashes: number = 0):
+      Promise<void> {
+  const dependencies: Dependencies = await installDependencies(context);
+  const serverOptions: CodeLanguageClient.ServerOptions = await getLtexLsExecutable(dependencies);
 
   // Options to control the language client
   const clientOptions: CodeLanguageClient.LanguageClientOptions = {
@@ -502,8 +586,6 @@ async function startLanguageClient(
 
   let languageClient: CodeLanguageClient.LanguageClient = new CodeLanguageClient.LanguageClient(
       'ltex', 'LTeX Language Server', serverOptions, clientOptions);
-  languageClient.clientOptions.errorHandler =
-      new LanguageClientErrorHandler(context, languageClient, numberOfCrashes);
 
   // Hack to enable the server to execute commands that change the client configuration
   // (e.g., adding words to the dictionary).
@@ -511,68 +593,16 @@ async function startLanguageClient(
   // telemetry notification to the client, which then changes the configuration.
   languageClient.onTelemetry(processTelemetry);
 
-  log('Starting ltex-ls with Java...');
+  log('Starting ltex-ls...');
+  logExecutable(serverOptions);
   log('');
-  languageClient.info('Starting ltex-ls with Java...');
+
+  languageClient.info('Starting ltex-ls...');
   let disposable: Code.Disposable = languageClient.start();
 
   // Push the disposable to the context's subscriptions so that the
   // client can be deactivated on extension deactivation
   context.subscriptions.push(disposable);
-
-  return Promise.resolve();
-}
-
-class LanguageClientErrorHandler implements CodeLanguageClient.ErrorHandler {
-  private context: Code.ExtensionContext;
-  private languageClient: CodeLanguageClient.LanguageClient;
-  private defaultErrorHandler: CodeLanguageClient.ErrorHandler;
-  private startTime: number;
-  private numberOfCrashes: number;
-
-  public constructor(context: Code.ExtensionContext,
-        languageClient: CodeLanguageClient.LanguageClient, numberOfCrashes: number) {
-    this.context = context;
-    this.languageClient = languageClient;
-    this.defaultErrorHandler = languageClient.createDefaultErrorHandler();
-    this.startTime = Date.now();
-    this.numberOfCrashes = numberOfCrashes;
-  }
-
-  error(error: Error, message: CodeLanguageClient.Message, count: number):
-        CodeLanguageClient.ErrorAction {
-    return this.defaultErrorHandler.error(error, message, count);
-  }
-
-  closed(): CodeLanguageClient.CloseAction {
-    let closeAction: CodeLanguageClient.CloseAction = this.defaultErrorHandler.closed();
-    const hasCrashed: boolean = (Date.now() - this.startTime < 60000);
-    const ignoreLogLineMessage: string = 'There will be a log entry emitted by VS Code telling ' +
-        'you following log entry that the server won\'t be restarted. ' +
-        'You can safely ignore that log entry once. ltex-ls *will* be restarted.';
-
-    if (hasCrashed) {
-      this.numberOfCrashes++;
-
-      if (closeAction == CodeLanguageClient.CloseAction.Restart) {
-        log(`ltex-ls crashed (try ${this.numberOfCrashes}), restarting.`);
-        this.languageClient.info(ignoreLogLineMessage);
-        startLanguageClient(this.context, this.numberOfCrashes);
-      } else {
-        log('ltex-ls crashed, will not restart.');
-      }
-    } else {
-      if (closeAction == CodeLanguageClient.CloseAction.Restart) {
-        log('ltex-ls closed, restarting.');
-        this.languageClient.info(ignoreLogLineMessage);
-        startLanguageClient(this.context);
-      } else {
-        log('ltex-ls closed, will not restart.');
-      }
-    }
-
-    return CodeLanguageClient.CloseAction.DoNotRestart;
-  }
 }
 
 function processTelemetry(params: any) {
