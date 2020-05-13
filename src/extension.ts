@@ -139,7 +139,7 @@ class CodeProgress {
 
   public finishTask() {
     const n: number = this.taskProgressStack.length - 1;
-    if (n == 0) throw Error("Could not finish task, task stack already empty.")
+    if (n == 0) throw Error("Could not finish task, task stack already empty.");
     this.taskProgressStack.pop();
     this.taskProgressStack[n - 1] += this.taskSizeStack.pop();
     this.taskNameStack.pop();
