@@ -132,8 +132,10 @@ class CodeProgress {
     this.showProgress();
   }
 
-  public updateTask(progress: number) {
-    this.taskProgressStack[this.taskProgressStack.length - 1] = progress;
+  public updateTask(progress: number, name?: string) {
+    const n: number = this.taskProgressStack.length;
+    this.taskProgressStack[n - 1] = progress;
+    if (name != null) this.taskNameStack[n - 1] = name;
     this.showProgress();
   }
 
@@ -144,6 +146,11 @@ class CodeProgress {
     this.taskProgressStack[n - 1] += this.taskSizeStack.pop();
     this.taskNameStack.pop();
     this.showProgress();
+  }
+
+  public getTaskName(): string {
+    const n: number = this.taskProgressStack.length;
+    return this.taskNameStack[n - 1];
   }
 
   public showProgress() {
@@ -166,6 +173,7 @@ class CodeProgress {
 async function downloadFile(urlStr: string, path: string, codeProgress: CodeProgress):
       Promise<void> {
   let file: Fs.WriteStream = Fs.createWriteStream(path);
+  const origTaskName = codeProgress.getTaskName();
 
   return new Promise((resolve, reject) => {
     Https.get(parseUrl(urlStr), (response: Http.IncomingMessage) => {
@@ -181,12 +189,20 @@ async function downloadFile(urlStr: string, path: string, codeProgress: CodeProg
       }
 
       const fileSize: number = parseInt(response.headers['content-length']);
+      const fileSizeMb: number = Math.round(fileSize / 1e6);
       let downloadedSize: number = 0;
+      let downloadedSizeMb: number = 0;
       response.pipe(file);
 
       response.on('data', (chunk: any) => {
         downloadedSize += chunk.length;
-        codeProgress.updateTask(downloadedSize / fileSize);
+        const newDownloadedMb: number = Math.round(downloadedSize / 1e6);
+
+        if (newDownloadedMb != downloadedSizeMb) {
+          downloadedSizeMb = newDownloadedMb;
+          const taskName: string = `${origTaskName} ${downloadedSizeMb}MB/${fileSizeMb}MB`;
+          codeProgress.updateTask(downloadedSize / fileSize, taskName);
+        }
       });
 
       file.on('finish', () => {
