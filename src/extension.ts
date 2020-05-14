@@ -320,8 +320,8 @@ async function installLtexLs(context: Code.ExtensionContext): Promise<void> {
     const ltexLsVersion: string = getLatestCompatibleLtexLsVersion(ltexLsVersions);
 
     if (ltexLsVersion == null) {
-      throw Error('Could not find compatible version of ltex-ls on GitHub. ' +
-          `LTeX version is '${ltexVersion}', ltex-ls versions are ` +
+      throw Error('Could not find a compatible version of ltex-ls on GitHub. ' +
+          `LTeX version is '${ltexVersion}', available ltex-ls versions are ` +
           `'${JSON.stringify(ltexLsVersions)}'.`);
     }
 
@@ -445,7 +445,7 @@ async function installDependencies(context: Code.ExtensionContext): Promise<Depe
       if (dependencies.ltexLs != null) {
         log(`ltex-ls found in '${dependencies.ltexLs}'.`);
       } else {
-        log(`Could not find compatible version of ltex-ls in '${libDirPath}'.`);
+        log(`Could not find a compatible version of ltex-ls in '${libDirPath}'.`);
         log('Initiating download of ltex-ls...');
         await installLtexLs(context);
         dependencies.ltexLs = searchBundledLtexLs(libDirPath);
