@@ -425,52 +425,38 @@ async function installDependencies(context: Code.ExtensionContext): Promise<Depe
     // try 0: only use ltex.ltexLs.path (don't use lib/, don't download)
     // try 1: use ltex.ltexLs.path or lib/ (don't download)
     // try 2: use ltex.ltexLs.path or lib/ or download
-    for (let i: number = 0; i < 3; i++) {
-      log('');
-      dependencies.ltexLs = workspaceConfig.get('ltex-ls.path');
+    log('');
+    dependencies.ltexLs = workspaceConfig.get('ltex-ls.path');
+
+    if (dependencies.ltexLs != null) {
+      log(`ltex.ltex-ls.path set to ${dependencies.ltexLs}.`);
+    } else {
+      log(`ltex.ltex-ls.path not set.`);
+      log(`Searching for ltex-ls in '${libDirPath}'...`);
+      dependencies.ltexLs = searchBundledLtexLs(libDirPath);
 
       if (dependencies.ltexLs != null) {
-        log(`ltex.ltex-ls.path set to ${dependencies.ltexLs}.`);
-      } else if (i == 0) {
-        log(`ltex.ltex-ls.path not set.`);
-        continue;
+        log(`ltex-ls found in '${dependencies.ltexLs}'.`);
       } else {
-        log(`Searching for ltex-ls in '${libDirPath}'...`);
+        log(`Could not find compatible version of ltex-ls in '${libDirPath}'.`);
+        log('Initiating download of ltex-ls...');
+        await installLtexLs(context);
         dependencies.ltexLs = searchBundledLtexLs(libDirPath);
 
         if (dependencies.ltexLs != null) {
           log(`ltex-ls found in '${dependencies.ltexLs}'.`);
         } else {
-          log(`Could not find compatible version of ltex-ls in '${libDirPath}'.`);
-
-          if (i <= 1) {
-            continue;
-          } else {
-            log('Initiating download of ltex-ls...');
-            await installLtexLs(context);
-            dependencies.ltexLs = searchBundledLtexLs(libDirPath);
-
-            if (dependencies.ltexLs != null) {
-              log(`ltex-ls found in '${dependencies.ltexLs}'.`);
-            } else {
-              log('Download or extraction of ltex-ls failed.');
-              continue;
-            }
-          }
+          throw Error('Could not download or extract ltex-ls.');
         }
       }
     }
-
-    if (dependencies.ltexLs == null) {
-      throw Error('Could not find/download/extract ltex-ls.');
-    }
   } catch (e) {
-    error('The installation of ltex-ls failed!', e);
+    error('The download or extraction of ltex-ls failed!', e);
     log('You might want to try offline installation, ' +
         'see https://github.com/valentjn/vscode-ltex#offline-installation.');
     clientOutputChannel.show();
-    Code.window.showErrorMessage('Could not install ltex-ls. You might want to try offline ' +
-        'installation.', 'Show instructions').then(showOfflineInstallationInstructions);
+    Code.window.showErrorMessage('Could not install ltex-ls. You might want to try ' +
+        'offline installation.', 'Show instructions').then(showOfflineInstallationInstructions);
     return null;
   }
 
@@ -485,7 +471,7 @@ async function installDependencies(context: Code.ExtensionContext): Promise<Depe
       if (dependencies.java != null) {
         log(`ltex.java.path set to '${dependencies.java}'.`);
       } else if (i == 0) {
-        log(`ltex.java.path not set.`);
+        log('ltex.java.path not set.');
       } else {
         log(`Searching for bundled Java in '${libDirPath}'.`);
         dependencies.java = searchBundledJava(libDirPath);
@@ -525,11 +511,11 @@ async function installDependencies(context: Code.ExtensionContext): Promise<Depe
 
     throw Error('Could not run ltex-ls.');
   } catch (e) {
-    error('The installation of Java failed!', e);
+    error('The download/extraction/run of Java failed!', e);
     log('You might want to try offline installation, ' +
         'see https://github.com/valentjn/vscode-ltex#offline-installation.');
-    Code.window.showErrorMessage('Could not install Java. You might want to try offline ' +
-        'installation.', 'Show instructions').then(showOfflineInstallationInstructions);
+    Code.window.showErrorMessage('Could not download/extract/run Java. You might want to try ' +
+        'offline installation.', 'Show instructions').then(showOfflineInstallationInstructions);
     return null;
   }
 }
