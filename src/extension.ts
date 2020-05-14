@@ -318,6 +318,13 @@ async function installLtexLs(context: Code.ExtensionContext): Promise<void> {
     });
 
     const ltexLsVersion: string = getLatestCompatibleLtexLsVersion(ltexLsVersions);
+
+    if (ltexLsVersion == null) {
+      throw Error('Could not find compatible version of ltex-ls on GitHub. ' +
+          `LTeX version is '${ltexVersion}', ltex-ls versions are ` +
+          `'${JSON.stringify(ltexLsVersions)}'.`);
+    }
+
     log(`Latest compatible release is 'ltex-ls-${ltexLsVersion}'.`);
     const ltexLsUrl: string = 'https://github.com/valentjn/ltex-ls/releases/download/' +
         `${ltexLsVersion}/ltex-ls-${ltexLsVersion}.tar.gz`;
