@@ -646,11 +646,12 @@ async function startLanguageClient(context: Code.ExtensionContext): Promise<void
   log('');
 
   languageClient.info('Starting ltex-ls...');
-  let disposable: Code.Disposable = languageClient.start();
+  let languageClientDisposable: Code.Disposable = languageClient.start();
 
   // Push the disposable to the context's subscriptions so that the
   // client can be deactivated on extension deactivation
-  context.subscriptions.push(disposable);
+  context.subscriptions.push(languageClientDisposable);
+  context.subscriptions.push(statusBarMessageDisposable);
 }
 
 async function languageClientIsReady(disposable: Code.Disposable): Promise<void> {
