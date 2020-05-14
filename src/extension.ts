@@ -57,8 +57,7 @@ async function setConfigurationSetting(settingName: string, settingValue: any,
       return;
     } catch (e) {
       if (configurationTarget == configurationTargets[configurationTargets.length - 1]) {
-        log(`Could not set configuration '${settingName}'.`);
-        throw e;
+        error(`Could not set configuration '${settingName}'.`, e);
       }
     }
   }
