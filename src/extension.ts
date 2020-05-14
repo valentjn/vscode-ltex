@@ -578,7 +578,7 @@ async function getLtexLsExecutable(dependencies: Dependencies):
   }
 
   const isWindows: boolean = (process.platform === 'win32');
-  const ltexLsStartPath: string = Path.join(
+  const ltexLsScriptPath: string = Path.join(
       dependencies.ltexLs, 'bin', (isWindows ? 'ltex-ls.bat' : 'ltex-ls'));
 
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
@@ -588,7 +588,7 @@ async function getLtexLsExecutable(dependencies: Dependencies):
       'java.maximumHeapSize', 'performance.maximumJavaHeapSize');
   env['LTEX_LS_OPTS'] = `-Xms${initialJavaHeapSize}m -Xmx${maximumJavaHeapSize}m`;
 
-  return {command: ltexLsStartPath, args: [], options: {'env': env}};
+  return {command: ltexLsScriptPath, args: [], options: {'env': env}};
 }
 
 function logExecutable(executable: CodeLanguageClient.Executable) {
@@ -603,7 +603,7 @@ async function startLanguageClient(context: Code.ExtensionContext): Promise<void
   if (dependencies == null) return;
 
   const statusBarMessageDisposable: Code.Disposable =
-      Code.window.setStatusBarMessage('Starting LTeX...');
+      Code.window.setStatusBarMessage('$(loading~spin) Starting LTeX...');
   const serverOptions: CodeLanguageClient.ServerOptions = await getLtexLsExecutable(dependencies);
 
   // Options to control the language client
@@ -655,7 +655,7 @@ async function startLanguageClient(context: Code.ExtensionContext): Promise<void
 
 async function languageClientIsReady(disposable: Code.Disposable): Promise<void> {
   disposable.dispose();
-  Code.window.setStatusBarMessage('LTeX ready', 1000);
+  Code.window.setStatusBarMessage('$(check) LTeX ready', 1000);
 }
 
 function processTelemetry(params: any) {
