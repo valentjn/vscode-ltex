@@ -601,6 +601,9 @@ function logExecutable(executable: CodeLanguageClient.Executable) {
 async function startLanguageClient(context: Code.ExtensionContext): Promise<void> {
   const dependencies: Dependencies = await installDependencies(context);
   if (dependencies == null) return;
+
+  const statusBarMessageDisposable: Code.Disposable =
+      Code.window.setStatusBarMessage('Starting LTeX...');
   const serverOptions: CodeLanguageClient.ServerOptions = await getLtexLsExecutable(dependencies);
 
   // Options to control the language client
@@ -630,6 +633,8 @@ async function startLanguageClient(context: Code.ExtensionContext): Promise<void
   const languageClient: CodeLanguageClient.LanguageClient = new CodeLanguageClient.LanguageClient(
       'ltex', 'LTeX Language Server', serverOptions, clientOptions);
 
+  languageClient.onReady().then(languageClientIsReady.bind(null, statusBarMessageDisposable));
+
   // Hack to enable the server to execute commands that change the client configuration
   // (e.g., adding words to the dictionary).
   // The client configuration cannot be directly changed by the server, so we send a
@@ -646,6 +651,11 @@ async function startLanguageClient(context: Code.ExtensionContext): Promise<void
   // Push the disposable to the context's subscriptions so that the
   // client can be deactivated on extension deactivation
   context.subscriptions.push(disposable);
+}
+
+async function languageClientIsReady(disposable: Code.Disposable): Promise<void> {
+  disposable.dispose();
+  Code.window.setStatusBarMessage('LTeX ready', 1000);
 }
 
 function processTelemetry(params: any) {
