@@ -88,7 +88,7 @@ async function doJsonRequest(urlStr: string): Promise<any> {
         error = new Error(`Request failed with content type ${contentType}`);
       }
 
-      if (error) {
+      if (error != null) {
         response.resume();
         reject(error);
         return;
