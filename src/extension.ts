@@ -598,8 +598,7 @@ function logExecutable(executable: CodeLanguageClient.Executable) {
   log('  env[\'LTEX_LS_OPTS\']: ' + JSON.stringify(executable.options.env['LTEX_LS_OPTS']));
 }
 
-async function startLanguageClient(context: Code.ExtensionContext, numberOfCrashes: number = 0):
-      Promise<void> {
+async function startLanguageClient(context: Code.ExtensionContext): Promise<void> {
   const dependencies: Dependencies = await installDependencies(context);
   if (dependencies == null) return;
   const serverOptions: CodeLanguageClient.ServerOptions = await getLtexLsExecutable(dependencies);
