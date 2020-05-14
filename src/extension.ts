@@ -417,11 +417,11 @@ class Dependencies {
 }
 
 async function installDependencies(context: Code.ExtensionContext): Promise<Dependencies> {
-  try {
-    let dependencies: Dependencies = new Dependencies();
-    const libDirPath: string = Path.join(context.extensionPath, 'lib');
-    const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
+  let dependencies: Dependencies = new Dependencies();
+  const libDirPath: string = Path.join(context.extensionPath, 'lib');
+  const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
 
+  try {
     // try 0: only use ltex.ltexLs.path (don't use lib/, don't download)
     // try 1: use ltex.ltexLs.path or lib/ (don't download)
     // try 2: use ltex.ltexLs.path or lib/ or download
@@ -464,7 +464,17 @@ async function installDependencies(context: Code.ExtensionContext): Promise<Depe
     if (dependencies.ltexLs == null) {
       throw Error('Could not find/download/extract ltex-ls.');
     }
+  } catch (e) {
+    error('The installation of ltex-ls failed!', e);
+    log('You might want to try offline installation, ' +
+        'see https://github.com/valentjn/vscode-ltex#offline-installation.');
+    clientOutputChannel.show();
+    Code.window.showErrorMessage('Could not install ltex-ls. You might want to try offline ' +
+        'installation.', 'Show instructions').then(showOfflineInstallationInstructions);
+    return null;
+  }
 
+  try {
     // try 0: only use ltex.java.path (don't use lib/, don't download)
     // try 1: use ltex.java.path or lib/ (don't download)
     // try 2: use ltex.java.path or lib/ or download
@@ -515,10 +525,18 @@ async function installDependencies(context: Code.ExtensionContext): Promise<Depe
 
     throw Error('Could not run ltex-ls.');
   } catch (e) {
-    error('The installation of ltex-ls and/or Java failed!', e);
+    error('The installation of Java failed!', e);
     log('You might want to try offline installation, ' +
         'see https://github.com/valentjn/vscode-ltex#offline-installation.');
+    Code.window.showErrorMessage('Could not install Java. You might want to try offline ' +
+        'installation.', 'Show instructions').then(showOfflineInstallationInstructions);
+    return null;
   }
+}
+
+async function showOfflineInstallationInstructions(): Promise<void> {
+  Code.env.openExternal(Code.Uri.parse(
+      'https://github.com/valentjn/vscode-ltex#offline-installation'));
 }
 
 async function testDependencies(dependencies: Dependencies): Promise<boolean> {
@@ -689,5 +707,7 @@ export function activate(context: Code.ExtensionContext) {
     startLanguageClient(context);
   } catch (e) {
     error('Could not start the language client!', e);
+    clientOutputChannel.show();
+    Code.window.showErrorMessage('Could not start the language client.');
   }
 }
