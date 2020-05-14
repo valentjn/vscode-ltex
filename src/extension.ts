@@ -580,7 +580,7 @@ async function getLtexLsExecutable(dependencies: Dependencies):
 
   const isWindows: boolean = (process.platform === 'win32');
   const ltexLsStartPath: string = Path.join(
-    dependencies.ltexLs, 'bin', (isWindows ? 'ltex-ls.bat' : 'ltex-ls'));
+      dependencies.ltexLs, 'bin', (isWindows ? 'ltex-ls.bat' : 'ltex-ls'));
 
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
   const initialJavaHeapSize: number = getRenamedSetting(workspaceConfig,
@@ -629,7 +629,7 @@ async function startLanguageClient(context: Code.ExtensionContext, numberOfCrash
         outputChannel: serverOutputChannel,
       };
 
-  let languageClient: CodeLanguageClient.LanguageClient = new CodeLanguageClient.LanguageClient(
+  const languageClient: CodeLanguageClient.LanguageClient = new CodeLanguageClient.LanguageClient(
       'ltex', 'LTeX Language Server', serverOptions, clientOptions);
 
   // Hack to enable the server to execute commands that change the client configuration
