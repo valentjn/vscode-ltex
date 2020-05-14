@@ -520,9 +520,11 @@ async function installDependencies(context: Code.ExtensionContext): Promise<Depe
   }
 }
 
-async function showOfflineInstallationInstructions(): Promise<void> {
-  Code.env.openExternal(Code.Uri.parse(
-      'https://github.com/valentjn/vscode-ltex#offline-installation'));
+async function showOfflineInstallationInstructions(selectedItem: string): Promise<void> {
+  if (selectedItem != null) {
+    Code.env.openExternal(Code.Uri.parse(
+        'https://github.com/valentjn/vscode-ltex#offline-installation'));
+  }
 }
 
 async function testDependencies(dependencies: Dependencies): Promise<boolean> {
