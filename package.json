@@ -2115,7 +2115,7 @@
         "ltex.ltex-ls.path": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "scope": "window",
           "default": null,
@@ -2125,7 +2125,7 @@
         "ltex.java.path": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "scope": "window",
           "default": null,
@@ -2135,7 +2135,7 @@
         "ltex.javaHome": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "scope": "window",
           "default": null,
@@ -2152,7 +2152,7 @@
         "ltex.performance.initialJavaHeapSize": {
           "type": [
             "integer",
-            null
+            "null"
           ],
           "scope": "window",
           "default": null,
@@ -2169,7 +2169,7 @@
         "ltex.performance.maximumHeapSize": {
           "type": [
             "integer",
-            null
+            "null"
           ],
           "scope": "window",
           "default": null,
@@ -2320,7 +2320,7 @@
         "ltex.additionalRules.motherTongue": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "scope": "resource",
           "default": null,
@@ -2334,7 +2334,7 @@
         "ltex.additionalRules.languageModel": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "scope": "resource",
           "default": null,
@@ -2344,7 +2344,7 @@
         "ltex.additionalRules.neuralNetworkModel": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "scope": "resource",
           "default": null,
@@ -2354,7 +2354,7 @@
         "ltex.additionalRules.word2VecModel": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "scope": "resource",
           "default": null,
@@ -2371,7 +2371,7 @@
         "ltex.performance.sentenceCacheSize": {
           "type": [
             "integer",
-            null
+            "null"
           ],
           "scope": "resource",
           "default": null,
