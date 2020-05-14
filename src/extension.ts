@@ -17,18 +17,21 @@ let clientOutputChannel: Code.OutputChannel;
 let serverOutputChannel: Code.OutputChannel;
 const ltexVersion = Code.extensions.getExtension('valentjn.vscode-ltex').packageJSON.version;
 
-function log(message: string, type: string = "Info") {
+function log(message: string, type: string = 'Info') {
   const timestamp: string = (new Date()).toISOString();
-  clientOutputChannel.appendLine(`${timestamp} ${type}: ${message}`);
+  const lines: string[] = message.split(/\r?\n/);
+
+  lines.forEach((line: string) => {
+    clientOutputChannel.appendLine(`${timestamp} ${type}: ${line}`);
+  });
 }
 
-function error(line: string, e?: Error) {
-  log(line, "Error");
+function error(message: string, e?: Error) {
+  log(message, 'Error');
 
   if (e != null) {
-    log("Error name: " + e.name, "Error");
-    log("Error message: " + e.message, "Error");
-    log("Error stack: " + e.stack, "Error");
+    log('Error details:', 'Error');
+    log(e.stack, 'Error');
   }
 }
 
