@@ -537,8 +537,12 @@ async function showOfflineInstallationInstructions(selectedItem: string): Promis
 async function testDependencies(dependencies: Dependencies): Promise<boolean> {
   const executable: CodeLanguageClient.Executable = await getLtexLsExecutable(dependencies);
   executable.args.push('--version');
-  const executableOptions: any = executable.options;
-  executableOptions.timeout = 10000;
+  let executableOptions: ChildProcess.SpawnSyncOptionsWithStringEncoding = {
+        cwd: executable.options.cwd,
+        env: executable.options.env,
+        encoding: 'utf-8',
+        timeout: 10000,
+      };
 
   log('Testing ltex-ls...');
   logExecutable(executable);
