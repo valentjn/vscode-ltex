@@ -523,17 +523,27 @@ async function installDependencies(context: Code.ExtensionContext): Promise<Depe
 
 async function testDependencies(dependencies: Dependencies): Promise<boolean> {
   const executable: CodeLanguageClient.Executable = await getLtexLsExecutable(dependencies);
-  executable.args.push("--test");
+  executable.args.push("--version");
   const executableOptions: any = executable.options;
   executableOptions.timeout = 10000;
 
   log('Testing ltex-ls...');
   logExecutable(executable);
-  const process: any = ChildProcess.spawnSync(
+  const process: ChildProcess.SpawnSyncReturns<string> = ChildProcess.spawnSync(
       executable.command, executable.args, executableOptions);
 
-  const success: boolean = (process.status == 42);
-  log(success ? 'Test successful!' : 'Test failed.');
+  const success: boolean = ((process.status == 0) && process.stdout.includes('ltex-ls'));
+
+  if (success) {
+    log('Test successful!');
+  } else {
+    log('Test failed.');
+    log(`Exit code of ltex-ls: ${process.status}`);
+    log('stdout of ltex-ls:');
+    log(process.stdout);
+    log('stderr of ltex-ls:');
+    log(process.stderr);
+  }
 
   return success;
 }
