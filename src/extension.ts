@@ -143,7 +143,7 @@ class CodeProgress {
 
   public finishTask() {
     const n: number = this.taskProgressStack.length - 1;
-    if (n == 0) throw Error("Could not finish task, task stack already empty.");
+    if (n == 0) throw Error('Could not finish task, task stack already empty.');
     this.taskProgressStack.pop();
     this.taskProgressStack[n - 1] += this.taskSizeStack.pop();
     this.taskNameStack.pop();
@@ -529,7 +529,7 @@ async function showOfflineInstallationInstructions(selectedItem: string): Promis
 
 async function testDependencies(dependencies: Dependencies): Promise<boolean> {
   const executable: CodeLanguageClient.Executable = await getLtexLsExecutable(dependencies);
-  executable.args.push("--version");
+  executable.args.push('--version');
   const executableOptions: any = executable.options;
   executableOptions.timeout = 10000;
 
