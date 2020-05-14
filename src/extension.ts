@@ -572,6 +572,7 @@ function logExecutable(executable: CodeLanguageClient.Executable) {
 async function startLanguageClient(context: Code.ExtensionContext, numberOfCrashes: number = 0):
       Promise<void> {
   const dependencies: Dependencies = await installDependencies(context);
+  if (dependencies == null) return;
   const serverOptions: CodeLanguageClient.ServerOptions = await getLtexLsExecutable(dependencies);
 
   // Options to control the language client
