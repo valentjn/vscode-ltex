@@ -414,19 +414,11 @@ class Dependencies {
   public java: string;
 }
 
-async function installDependencies(context: Code.ExtensionContext, clean: boolean = false):
-      Promise<Dependencies> {
+async function installDependencies(context: Code.ExtensionContext): Promise<Dependencies> {
   try {
     let dependencies: Dependencies = new Dependencies();
     const libDirPath: string = Path.join(context.extensionPath, 'lib');
     const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
-
-    if (clean) {
-      log(`Cleaning '${libDirPath}'...`);
-      Rimraf.sync(libDirPath);
-      Fs.mkdirSync(libDirPath);
-      Fs.writeFileSync(Path.join(libDirPath, '.keep'), '\n');
-    }
 
     // try 0: only use ltex.ltexLs.path (don't use lib/, don't download)
     // try 1: use ltex.ltexLs.path or lib/ (don't download)
@@ -468,11 +460,7 @@ async function installDependencies(context: Code.ExtensionContext, clean: boolea
     }
 
     if (dependencies.ltexLs == null) {
-      if (!clean) {
-        return await installDependencies(context, true);
-      } else {
-        throw Error('Could not find/download/extract ltex-ls.');
-      }
+      throw Error('Could not find/download/extract ltex-ls.');
     }
 
     // try 0: only use ltex.java.path (don't use lib/, don't download)
@@ -523,11 +511,7 @@ async function installDependencies(context: Code.ExtensionContext, clean: boolea
       }
     }
 
-    if (!clean) {
-      return await installDependencies(context, true);
-    } else {
-      throw Error('Could not run ltex-ls.');
-    }
+    throw Error('Could not run ltex-ls.');
   } catch (e) {
     error('The installation of ltex-ls and/or Java failed!', e);
     log('You might want to try offline installation, ' +
