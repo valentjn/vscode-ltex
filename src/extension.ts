@@ -17,7 +17,7 @@ let clientOutputChannel: Code.OutputChannel;
 let serverOutputChannel: Code.OutputChannel;
 const ltexVersion = Code.extensions.getExtension('valentjn.vscode-ltex').packageJSON.version;
 
-function log(message: string, type: string = 'Info') {
+function log(message: string, type: string = 'Info'): void {
   const timestamp: string = (new Date()).toISOString();
   const lines: string[] = message.split(/\r?\n/);
 
@@ -26,7 +26,7 @@ function log(message: string, type: string = 'Info') {
   });
 }
 
-function error(message: string, e?: Error) {
+function error(message: string, e?: Error): void {
   log(message, 'Error');
 
   if (e != null) {
@@ -593,7 +593,7 @@ async function getLtexLsExecutable(dependencies: Dependencies):
   return {command: ltexLsScriptPath, args: [], options: {'env': env}};
 }
 
-function logExecutable(executable: CodeLanguageClient.Executable) {
+function logExecutable(executable: CodeLanguageClient.Executable): void {
   log('  Command: ' + JSON.stringify(executable.command));
   log('  Arguments: ' + JSON.stringify(executable.args));
   log('  env[\'JAVA_HOME\']: ' + JSON.stringify(executable.options.env['JAVA_HOME']));
@@ -661,7 +661,7 @@ async function languageClientIsReady(disposable: Code.Disposable): Promise<void>
   Code.window.setStatusBarMessage('$(check) LTeX ready', 1000);
 }
 
-function processTelemetry(params: any) {
+function processTelemetry(params: any): void {
   if (!('commandName' in params) || !params['commandName'].startsWith('ltex.')) {
     log(`Unknown telemetry event '${params}'.`);
     return;
@@ -702,7 +702,7 @@ function processTelemetry(params: any) {
   }
 }
 
-export function activate(context: Code.ExtensionContext) {
+export function activate(context: Code.ExtensionContext): void {
   clientOutputChannel = Code.window.createOutputChannel('LTeX Language Client');
   serverOutputChannel = Code.window.createOutputChannel('LTeX Language Server');
 
