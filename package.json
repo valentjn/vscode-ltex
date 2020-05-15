@@ -2246,11 +2246,13 @@
             "properties": {
               "rule": {
                 "type": "string",
-                "markdownDescription": "The identifier of the LanguageTool rule."
+                "markdownDescription": "The identifier of the LanguageTool rule.",
+                "description": "The identifier of the LanguageTool rule."
               },
               "sentence": {
                 "type": "string",
-                "markdownDescription": "The sentence after parsing as supplied to LanguageTool."
+                "markdownDescription": "The sentence after parsing as supplied to LanguageTool.",
+                "description": "The sentence after parsing as supplied to LanguageTool."
               }
             }
           },
@@ -2325,7 +2327,7 @@
           "scope": "resource",
           "default": null,
           "markdownDescription": "Optional mother tongue of the user (e.g., `de-DE`). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see `ltex.additionalRules.languageModel`).",
-          "description": "Optional mother tongue of the user (e.g., de-DE). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see ltex.additionalRules.languageModel).",
+          "description": "Optional mother tongue of the user (e.g., \"de-DE\"). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see ltex.additionalRules.languageModel).",
           "examples": [
             "en-US",
             "de-DE"
