@@ -471,8 +471,7 @@ async function installDependencies(context: Code.ExtensionContext): Promise<Depe
     log('You might want to try offline installation, ' +
         'see https://github.com/valentjn/vscode-ltex#offline-installation.');
     clientOutputChannel.show();
-    Code.window.showErrorMessage('Could not install ltex-ls. You might want to try ' +
-        'offline installation.', 'Show instructions').then(showOfflineInstallationInstructions);
+    showOfflineInstallationInstructions(context, 'Could not install ltex-ls');
     return null;
   }
 
@@ -530,17 +529,21 @@ async function installDependencies(context: Code.ExtensionContext): Promise<Depe
     error('The download/extraction/run of Java failed!', e);
     log('You might want to try offline installation, ' +
         'see https://github.com/valentjn/vscode-ltex#offline-installation.');
-    Code.window.showErrorMessage('Could not download/extract/run Java. You might want to try ' +
-        'offline installation.', 'Show instructions').then(showOfflineInstallationInstructions);
+    showOfflineInstallationInstructions(context, 'Could not download/extract/run Java.');
     return null;
   }
 }
 
-async function showOfflineInstallationInstructions(selectedItem: string): Promise<void> {
-  if (selectedItem != null) {
-    Code.env.openExternal(Code.Uri.parse(
-        'https://github.com/valentjn/vscode-ltex#offline-installation'));
-  }
+function showOfflineInstallationInstructions(context: Code.ExtensionContext, message: string): void {
+  Code.window.showErrorMessage(message + ' You might want to try offline installation.',
+        'Try again', 'Offline instructions').then((selectedItem: string) => {
+    if (selectedItem == 'Try again') {
+      startLanguageClient(context);
+    } else if (selectedItem == 'Offline instructions') {
+      Code.env.openExternal(Code.Uri.parse(
+          'https://github.com/valentjn/vscode-ltex#offline-installation'));
+    }
+  });
 }
 
 async function testDependencies(dependencies: Dependencies): Promise<boolean> {
