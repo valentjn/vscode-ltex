@@ -35,6 +35,13 @@ function error(message: string, e?: Error): void {
   }
 }
 
+function logExecutable(executable: CodeLanguageClient.Executable): void {
+  log('  Command: ' + JSON.stringify(executable.command));
+  log('  Arguments: ' + JSON.stringify(executable.args));
+  log('  env[\'JAVA_HOME\']: ' + JSON.stringify(executable.options.env['JAVA_HOME']));
+  log('  env[\'LTEX_LS_OPTS\']: ' + JSON.stringify(executable.options.env['LTEX_LS_OPTS']));
+}
+
 async function setConfigurationSetting(settingName: string, settingValue: any,
       resourceConfig: Code.WorkspaceConfiguration, commandName: string): Promise<void> {
   const configurationTargetString: string =
@@ -591,13 +598,6 @@ async function getLtexLsExecutable(dependencies: Dependencies):
   env['LTEX_LS_OPTS'] = `-Xms${initialJavaHeapSize}m -Xmx${maximumJavaHeapSize}m`;
 
   return {command: ltexLsScriptPath, args: [], options: {'env': env}};
-}
-
-function logExecutable(executable: CodeLanguageClient.Executable): void {
-  log('  Command: ' + JSON.stringify(executable.command));
-  log('  Arguments: ' + JSON.stringify(executable.args));
-  log('  env[\'JAVA_HOME\']: ' + JSON.stringify(executable.options.env['JAVA_HOME']));
-  log('  env[\'LTEX_LS_OPTS\']: ' + JSON.stringify(executable.options.env['LTEX_LS_OPTS']));
 }
 
 async function startLanguageClient(context: Code.ExtensionContext): Promise<void> {
