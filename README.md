@@ -48,10 +48,18 @@ Find more information in the [changelog](https://github.com/valentjn/vscode-ltex
 
 ## Offline Installation
 
-The key component of LT<sub>E</sub>X, the LT<sub>E</sub>X Language Server (ltex-ls), which also includes LanguageTool itself, cannot be included in the LT<sub>E</sub>X version distributed on the Visual Studio Marketplace due to file size restrictions. In addition, ltex-ls requires Java due to its LanguageTool dependency. When activated for the first time, LT<sub>E</sub>X will automatically download and use the latest compatible ltex-ls release from GitHub and, in case no existing installation of Java has been found, a portable Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)). Both will be stored in the extension folder. If you don't want this or if you don't have an Internet connection, there are two alternatives:
+The key component of LT<sub>E</sub>X, the LT<sub>E</sub>X Language Server (ltex-ls), which also includes LanguageTool itself, cannot be included in the LT<sub>E</sub>X version distributed on the Visual Studio Marketplace due to file size restrictions. In addition, ltex-ls requires Java due to its LanguageTool dependency. When activated for the first time, LT<sub>E</sub>X will automatically download and use the latest compatible ltex-ls release from GitHub and, in case no existing installation of Java has been found, a portable Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)). Both will be stored in the extension folder. If you don't have an Internet connection, or if you simply don't want this, there are two alternatives.
 
-* Download the offline version of LT<sub>E</sub>X on the [Releases page](https://github.com/valentjn/vscode-ltex/releases) and install it via `Extensions: Install from VSIX...` on the Command Palette. The offline version includes _everything_ (ltex-ls and a Java distribution). OR
-* Download [ltex-ls](https://github.com/valentjn/ltex-ls/releases) and/or a Java distribution individually and set `ltex.ltex-ls.path` and/or `ltex.java.path` to the respective locations. At least Java 11 is required.
+### First Alternative
+
+Download the offline version of LT<sub>E</sub>X on the [Releases page](https://github.com/valentjn/vscode-ltex/releases) and install it via `Extensions: Install from VSIX...` on the Command Palette. The offline version includes _everything_ (ltex-ls and a Java distribution).
+
+### Second Alternative
+
+Download [ltex-ls](https://github.com/valentjn/ltex-ls/releases) and/or a Java distribution (for instance [AdoptOpenJDK](https://adoptopenjdk.net/)) individually and set `ltex.ltex-ls.path` and/or `ltex.java.path` to the respective locations. If you do this, the versions of ltex-ls and/or Java have to satisfy the following requirements:
+
+* The version of ltex-ls must be smaller than or equal to the version of LT<sub>E</sub>X itself (this extension). Most of the time you want to choose the newest version of ltex-ls that satisfies this requirement. A newer version of ltex-ls will not work, an older version might not work.
+* The version of Java must be at least 11.
 
 ## Extension Settings
 
