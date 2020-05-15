@@ -700,21 +700,27 @@ function processTelemetry(params: any): void {
 
   if (params['commandName'] === 'ltex.addToDictionary') {
     const language: string = resourceConfig.get('language');
-    let dictionary: string[] = resourceConfig.get(`languageSettings.${language}.dictionary`);
+    const dictionarySetting: {[language: string]: string[]} = resourceConfig.get('dictionary');
+    let dictionary: string[] = (
+        ((dictionarySetting != null) && (dictionarySetting[language] != null)) ?
+        dictionarySetting[language] : []);
     dictionary = dictionary.concat(convertToStringArray(params['word']));
     dictionary.sort((a: string, b: string) =>
         a.localeCompare(b, undefined, {sensitivity: 'base'}));
-    setConfigurationSetting(`languageSettings.${language}.dictionary`, dictionary,
-        resourceConfig, 'addToDictionary');
+    dictionarySetting[language] = dictionary;
+    setConfigurationSetting('dictionary', dictionarySetting, resourceConfig, 'addToDictionary');
 
   } else if (params['commandName'] === 'ltex.disableRule') {
     const language: string = resourceConfig.get('language');
-    let disabledRules: string[] = resourceConfig.get(`languageSettings.${language}.disabledRules`);
+    const disabledRulesSetting: {[language: string]: string[]} = resourceConfig.get('disabledRules');
+    let disabledRules: string[] = (
+        ((disabledRulesSetting != null) && (disabledRulesSetting[language] != null)) ?
+        disabledRulesSetting[language] : []);
     disabledRules = disabledRules.concat(convertToStringArray(params['ruleId']));
     disabledRules.sort((a: string, b: string) =>
         a.localeCompare(b, undefined, {sensitivity: 'base'}));
-    setConfigurationSetting(`languageSettings.${language}.disabledRules`, disabledRules,
-        resourceConfig, 'disableRule');
+    disabledRulesSetting[language] = disabledRules;
+    setConfigurationSetting('disabledRules', disabledRules, resourceConfig, 'disableRule');
 
   } else if (params['commandName'] === 'ltex.ignoreRuleInSentence') {
     const ruleIds: string[] = convertToStringArray(params['ruleId']);

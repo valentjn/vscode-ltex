@@ -6,7 +6,9 @@
 - Download LT<sub>E</sub>X Language Server on demand with all languages already included; this removes the need for language support extensions (fixes [#6](https://github.com/valentjn/vscode-ltex/issues/6))
 - Use own versioning scheme, i.e., the version of LT<sub>E</sub>X is not tied to the version of LanguageTool anymore
 - Rename settings:
-  - `ltex.<LANGUAGE>.*` to `ltex.languageSettings.<LANGUAGE>.*`
+  - `ltex.<LANGUAGE>.dictionary` to `ltex.dictionary["<LANGUAGE>"]`
+  - `ltex.<LANGUAGE>.disabledRules` to `ltex.disabledRules["<LANGUAGE>"]`
+  - `ltex.<LANGUAGE>.enabledRules` to `ltex.enabledRules["<LANGUAGE>"]`
   - `ltex.javaHome` to `ltex.java.path`
   - `ltex.performance.initialJavaHeapSize` to `ltex.java.initialHeapSize`
   - `ltex.performance.maximumJavaHeapSize` to `ltex.java.maximumHeapSize`
