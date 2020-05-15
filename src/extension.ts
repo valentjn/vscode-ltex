@@ -26,6 +26,10 @@ function log(message: string, type: string = 'Info'): void {
   });
 }
 
+function warn(message: string): void {
+  log(message, 'Warning');
+}
+
 function error(message: string, e?: Error): void {
   log(message, 'Error');
 
@@ -285,7 +289,7 @@ async function installDependency(context: Code.ExtensionContext, urlStr: string,
     codeProgress.updateTask(0.9);
 
     if (targetExists) {
-      log(`Did not move '${extractedDirPath}' to '${targetDirPath}', as target already exists.`);
+      warn(`Did not move '${extractedDirPath}' to '${targetDirPath}', as target already exists.`);
     } else {
       log(`Moving '${extractedDirPath}' to '${targetDirPath}'...`);
       Fs.renameSync(extractedDirPath, targetDirPath);
