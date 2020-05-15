@@ -180,8 +180,8 @@
             "Ukrainian",
             "Chinese"
           ],
-          "markdownDescription": "The language (e.g., `en-US`) LanguageTool should check against. Use a specific variant like `en-US` or `de-DE` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).",
-          "description": "The language (e.g., en-US) LanguageTool should check against. Use a specific variant like en-US or de-DE instead of the generic language code like en or de to obtain spelling corrections (in addition to grammar corrections)."
+          "markdownDescription": "The language (e.g., `\"en-US\"`) LanguageTool should check against. Use a specific variant like `\"en-US\"` or `\"de-DE\"` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).",
+          "description": "The language (e.g., \"en-US\") LanguageTool should check against. Use a specific variant like \"en-US\" or \"de-DE\" instead of the generic language code like en or de to obtain spelling corrections (in addition to grammar corrections)."
         },
         "ltex.dictionary": {
           "type": [
@@ -1670,8 +1670,8 @@
               ]
             }
           },
-          "markdownDescription": "Controls which `settings.json` to update when using one of the quick fixes.",
-          "description": "Controls which 'settings.json' to update when using one of the quick fixes. 'global' always updates the global configuration, while 'workspace' updates the workspace configuration if currently in a workspace, otherwise the global configuration."
+          "markdownDescription": "Controls which `settings.json` to update when using one of the quick fixes. `\"global\"` always updates the global configuration. `\"workspace\"` updates the workspace configuration if currently in a workspace, otherwise the global configuration. `\"workspaceFolder\"` updates the workspace folder configuration if currently in a workspace folder, otherwise the workspace configuration if currently in a workspace, otherwise the global configuration.",
+          "description": "Controls which 'settings.json' to update when using one of the quick fixes. \"global\" always updates the global configuration. \"workspace\" updates the workspace configuration if currently in a workspace, otherwise the global configuration. \"workspaceFolder\" updates the workspace folder configuration if currently in a workspace folder, otherwise the workspace configuration if currently in a workspace, otherwise the global configuration."
         },
         "ltex.additionalRules.motherTongue": {
           "type": [
@@ -1680,8 +1680,8 @@
           ],
           "scope": "resource",
           "default": null,
-          "markdownDescription": "Optional mother tongue of the user (e.g., `de-DE`). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see `ltex.additionalRules.languageModel`).",
-          "description": "Optional mother tongue of the user (e.g., 'de-DE'). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see ltex.additionalRules.languageModel).",
+          "markdownDescription": "Optional mother tongue of the user (e.g., `\"de-DE\"`). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see `ltex.additionalRules.languageModel`).",
+          "description": "Optional mother tongue of the user (e.g., \"de-DE\"). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see ltex.additionalRules.languageModel).",
           "examples": [
             "en-US",
             "de-DE"
@@ -1750,8 +1750,8 @@
             "Information diagnostics are usually underlined with a blue squiggly line and appear in editor, minimap, and Problems tab, but not in the Explorer.",
             "Hint diagnostics are not underlined (only subtly marked) and only appear in the editor, not in minimap, Problems tab, or Explorer."
           ],
-          "markdownDescription": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code.",
-          "description": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code. One of 'error', 'warning', 'information', and 'hint'."
+          "markdownDescription": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code. One of `\"error\"`, `\"warning\"`, `\"information\"`, and `\"hint\"`.",
+          "description": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code. One of \"error\", \"warning\", \"information\", and \"hint\"."
         },
         "ltex.trace.server": {
           "type": "string",
@@ -1759,11 +1759,16 @@
           "default": "off",
           "enum": [
             "off",
-            "message",
+            "messages",
             "verbose"
           ],
-          "markdownDescription": "Debug setting. When reporting issues, set this to `\"verbose\"` to be able to access the `LTeX Language Client` log in `View` \u2192 `Output`. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "Debug setting. When reporting issues, set this to \"verbose\" to be able to access the 'LTeX Language Client' log in 'View' \u2192 'Output'. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect."
+          "enumDescriptions": [
+            "Don't log any of the communication between language client and server.",
+            "Log the type of requests and responses between language client and server.",
+            "Log the type and contents of requests and responses between language client and server."
+          ],
+          "markdownDescription": "Debug setting to log the communication between language client and server. When reporting issues, set this to `\"verbose\"` and open the `LTeX Language Client` log in `View` \u2192 `Output`. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "Debug setting to log the communication between language client and server. When reporting issues, set this to \"verbose\" and open the 'LTeX Language Client' log in 'View' \u2192 'Output'. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.ar.dictionary": {
           "type": "array",

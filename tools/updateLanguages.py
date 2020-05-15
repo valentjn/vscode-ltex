@@ -119,7 +119,7 @@ def main():
   with open(readmeMdPath, "r") as f: readmeMd = f.read()
 
   replacement = "Possible values: {}".format(", ".join([
-      "`{}` ({}{})".format(languageShortCode, languageName,
+      "`\"{}\"` ({}{})".format(languageShortCode, languageName,
         (", default" if languageShortCode == "en-US" else ""))
       for languageShortCode, languageName in zip(languageShortCodes, languageNames)]))
   readmeMd = re.sub(r"(\n\* `ltex\.language`: .*?\n  \* ).*?\n",
