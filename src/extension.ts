@@ -197,20 +197,20 @@ async function downloadFile(urlStr: string, path: string, codeProgress: CodeProg
         return;
       }
 
-      const fileSize: number = parseInt(response.headers['content-length']);
-      const fileSizeMb: number = Math.round(fileSize / 1e6);
-      let downloadedSize: number = 0;
-      let downloadedSizeMb: number = 0;
+      const totalBytes: number = parseInt(response.headers['content-length']);
+      const totalMb: number = Math.round(totalBytes / 1e6);
+      let downloadedBytes: number = 0;
+      let downloadedMb: number = -1;
       response.pipe(file);
 
       response.on('data', (chunk: any) => {
-        downloadedSize += chunk.length;
-        const newDownloadedMb: number = Math.round(downloadedSize / 1e6);
+        downloadedBytes += chunk.length;
+        const newDownloadedMb: number = Math.round(downloadedBytes / 1e6);
 
-        if (newDownloadedMb != downloadedSizeMb) {
-          downloadedSizeMb = newDownloadedMb;
-          const taskName: string = `${origTaskName} ${downloadedSizeMb}MB/${fileSizeMb}MB`;
-          codeProgress.updateTask(downloadedSize / fileSize, taskName);
+        if (newDownloadedMb != downloadedMb) {
+          downloadedMb = newDownloadedMb;
+          const taskName: string = `${origTaskName} ${downloadedMb}MB/${totalMb}MB`;
+          codeProgress.updateTask(downloadedBytes / totalBytes, taskName);
         }
       });
 
