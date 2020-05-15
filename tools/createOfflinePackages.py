@@ -90,7 +90,7 @@ def downloadJava(platform, arch):
   javaArchivePath = os.path.join(libDirPath, javaArchiveName)
   print("Downloading Java from '{}' to '{}'...".format(javaUrl, javaArchivePath))
   urllib.request.urlretrieve(javaUrl, javaArchivePath)
-  print("Extracting ltex-ls archive...")
+  print("Extracting Java archive...")
 
   if javaArchiveType == "zip":
     with zipfile.ZipFile(javaArchivePath, "r") as f: f.extractall(path=libDirPath)
