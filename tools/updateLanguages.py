@@ -58,7 +58,7 @@ def main():
           },
           "markdownDescription": "List of additional `{0}` ({1}) words that should not be "
             "counted as spelling errors.".format(languageShortCode, languageName),
-          "description": "List of additional \"{0}\" ({1}) words that should not be "
+          "description": "List of additional '{0}' ({1}) words that should not be "
             "counted as spelling errors.".format(languageShortCode, languageName),
         }
         for languageShortCode, languageName in zip(languageShortCodes, languageNames)
@@ -71,7 +71,7 @@ def main():
           },
           "markdownDescription": "List of additional `{0}` ({1}) rules that should be "
             "disabled (if enabled by default by LanguageTool).".format(languageShortCode, languageName),
-          "description": "List of additional \"{0}\" ({1}) rules that should be "
+          "description": "List of additional '{0}' ({1}) rules that should be "
             "disabled (if enabled by default by LanguageTool).".format(languageShortCode, languageName),
         }
         for languageShortCode, languageName in zip(languageShortCodes, languageNames)
@@ -84,7 +84,7 @@ def main():
           },
           "markdownDescription": "List of additional `{0}` ({1}) rules that should be "
             "enabled (if disabled by default by LanguageTool).".format(languageShortCode, languageName),
-          "description": "List of additional \"{0}\" ({1}) rules that should be "
+          "description": "List of additional '{0}' ({1}) rules that should be "
             "enabled (if disabled by default by LanguageTool).".format(languageShortCode, languageName),
         }
         for languageShortCode, languageName in zip(languageShortCodes, languageNames)

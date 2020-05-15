@@ -298,7 +298,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ar` (Arabic) words that should not be counted as spelling errors.",
-              "description": "List of additional \"ar\" (Arabic) words that should not be counted as spelling errors."
+              "description": "List of additional 'ar' (Arabic) words that should not be counted as spelling errors."
             },
             "ar-DZ": {
               "type": "array",
@@ -306,7 +306,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ar-DZ` (Arabic (Algeria)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"ar-DZ\" (Arabic (Algeria)) words that should not be counted as spelling errors."
+              "description": "List of additional 'ar-DZ' (Arabic (Algeria)) words that should not be counted as spelling errors."
             },
             "ast-ES": {
               "type": "array",
@@ -314,7 +314,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ast-ES` (Asturian) words that should not be counted as spelling errors.",
-              "description": "List of additional \"ast-ES\" (Asturian) words that should not be counted as spelling errors."
+              "description": "List of additional 'ast-ES' (Asturian) words that should not be counted as spelling errors."
             },
             "be-BY": {
               "type": "array",
@@ -322,7 +322,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `be-BY` (Belarusian) words that should not be counted as spelling errors.",
-              "description": "List of additional \"be-BY\" (Belarusian) words that should not be counted as spelling errors."
+              "description": "List of additional 'be-BY' (Belarusian) words that should not be counted as spelling errors."
             },
             "br-FR": {
               "type": "array",
@@ -330,7 +330,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `br-FR` (Breton) words that should not be counted as spelling errors.",
-              "description": "List of additional \"br-FR\" (Breton) words that should not be counted as spelling errors."
+              "description": "List of additional 'br-FR' (Breton) words that should not be counted as spelling errors."
             },
             "ca-ES": {
               "type": "array",
@@ -338,7 +338,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ca-ES` (Catalan) words that should not be counted as spelling errors.",
-              "description": "List of additional \"ca-ES\" (Catalan) words that should not be counted as spelling errors."
+              "description": "List of additional 'ca-ES' (Catalan) words that should not be counted as spelling errors."
             },
             "ca-ES-valencia": {
               "type": "array",
@@ -346,7 +346,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ca-ES-valencia` (Catalan (Valencian)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"ca-ES-valencia\" (Catalan (Valencian)) words that should not be counted as spelling errors."
+              "description": "List of additional 'ca-ES-valencia' (Catalan (Valencian)) words that should not be counted as spelling errors."
             },
             "da-DK": {
               "type": "array",
@@ -354,7 +354,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `da-DK` (Danish) words that should not be counted as spelling errors.",
-              "description": "List of additional \"da-DK\" (Danish) words that should not be counted as spelling errors."
+              "description": "List of additional 'da-DK' (Danish) words that should not be counted as spelling errors."
             },
             "de": {
               "type": "array",
@@ -362,7 +362,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de` (German) words that should not be counted as spelling errors.",
-              "description": "List of additional \"de\" (German) words that should not be counted as spelling errors."
+              "description": "List of additional 'de' (German) words that should not be counted as spelling errors."
             },
             "de-AT": {
               "type": "array",
@@ -370,7 +370,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de-AT` (German (Austria)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"de-AT\" (German (Austria)) words that should not be counted as spelling errors."
+              "description": "List of additional 'de-AT' (German (Austria)) words that should not be counted as spelling errors."
             },
             "de-CH": {
               "type": "array",
@@ -378,7 +378,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de-CH` (German (Swiss)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"de-CH\" (German (Swiss)) words that should not be counted as spelling errors."
+              "description": "List of additional 'de-CH' (German (Swiss)) words that should not be counted as spelling errors."
             },
             "de-DE": {
               "type": "array",
@@ -386,7 +386,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de-DE` (German (Germany)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"de-DE\" (German (Germany)) words that should not be counted as spelling errors."
+              "description": "List of additional 'de-DE' (German (Germany)) words that should not be counted as spelling errors."
             },
             "de-DE-x-simple-language": {
               "type": "array",
@@ -394,7 +394,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de-DE-x-simple-language` (Simple German) words that should not be counted as spelling errors.",
-              "description": "List of additional \"de-DE-x-simple-language\" (Simple German) words that should not be counted as spelling errors."
+              "description": "List of additional 'de-DE-x-simple-language' (Simple German) words that should not be counted as spelling errors."
             },
             "el-GR": {
               "type": "array",
@@ -402,7 +402,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `el-GR` (Greek) words that should not be counted as spelling errors.",
-              "description": "List of additional \"el-GR\" (Greek) words that should not be counted as spelling errors."
+              "description": "List of additional 'el-GR' (Greek) words that should not be counted as spelling errors."
             },
             "en": {
               "type": "array",
@@ -410,7 +410,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en` (English) words that should not be counted as spelling errors.",
-              "description": "List of additional \"en\" (English) words that should not be counted as spelling errors."
+              "description": "List of additional 'en' (English) words that should not be counted as spelling errors."
             },
             "en-AU": {
               "type": "array",
@@ -418,7 +418,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-AU` (English (Australian)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"en-AU\" (English (Australian)) words that should not be counted as spelling errors."
+              "description": "List of additional 'en-AU' (English (Australian)) words that should not be counted as spelling errors."
             },
             "en-CA": {
               "type": "array",
@@ -426,7 +426,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-CA` (English (Canadian)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"en-CA\" (English (Canadian)) words that should not be counted as spelling errors."
+              "description": "List of additional 'en-CA' (English (Canadian)) words that should not be counted as spelling errors."
             },
             "en-GB": {
               "type": "array",
@@ -434,7 +434,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-GB` (English (GB)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"en-GB\" (English (GB)) words that should not be counted as spelling errors."
+              "description": "List of additional 'en-GB' (English (GB)) words that should not be counted as spelling errors."
             },
             "en-NZ": {
               "type": "array",
@@ -442,7 +442,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-NZ` (English (New Zealand)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"en-NZ\" (English (New Zealand)) words that should not be counted as spelling errors."
+              "description": "List of additional 'en-NZ' (English (New Zealand)) words that should not be counted as spelling errors."
             },
             "en-US": {
               "type": "array",
@@ -450,7 +450,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-US` (English (US)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"en-US\" (English (US)) words that should not be counted as spelling errors."
+              "description": "List of additional 'en-US' (English (US)) words that should not be counted as spelling errors."
             },
             "en-ZA": {
               "type": "array",
@@ -458,7 +458,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-ZA` (English (South African)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"en-ZA\" (English (South African)) words that should not be counted as spelling errors."
+              "description": "List of additional 'en-ZA' (English (South African)) words that should not be counted as spelling errors."
             },
             "eo": {
               "type": "array",
@@ -466,7 +466,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `eo` (Esperanto) words that should not be counted as spelling errors.",
-              "description": "List of additional \"eo\" (Esperanto) words that should not be counted as spelling errors."
+              "description": "List of additional 'eo' (Esperanto) words that should not be counted as spelling errors."
             },
             "es": {
               "type": "array",
@@ -474,7 +474,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `es` (Spanish) words that should not be counted as spelling errors.",
-              "description": "List of additional \"es\" (Spanish) words that should not be counted as spelling errors."
+              "description": "List of additional 'es' (Spanish) words that should not be counted as spelling errors."
             },
             "fa": {
               "type": "array",
@@ -482,7 +482,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `fa` (Persian) words that should not be counted as spelling errors.",
-              "description": "List of additional \"fa\" (Persian) words that should not be counted as spelling errors."
+              "description": "List of additional 'fa' (Persian) words that should not be counted as spelling errors."
             },
             "fr": {
               "type": "array",
@@ -490,7 +490,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `fr` (French) words that should not be counted as spelling errors.",
-              "description": "List of additional \"fr\" (French) words that should not be counted as spelling errors."
+              "description": "List of additional 'fr' (French) words that should not be counted as spelling errors."
             },
             "ga-IE": {
               "type": "array",
@@ -498,7 +498,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ga-IE` (Irish) words that should not be counted as spelling errors.",
-              "description": "List of additional \"ga-IE\" (Irish) words that should not be counted as spelling errors."
+              "description": "List of additional 'ga-IE' (Irish) words that should not be counted as spelling errors."
             },
             "gl-ES": {
               "type": "array",
@@ -506,7 +506,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `gl-ES` (Galician) words that should not be counted as spelling errors.",
-              "description": "List of additional \"gl-ES\" (Galician) words that should not be counted as spelling errors."
+              "description": "List of additional 'gl-ES' (Galician) words that should not be counted as spelling errors."
             },
             "it": {
               "type": "array",
@@ -514,7 +514,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `it` (Italian) words that should not be counted as spelling errors.",
-              "description": "List of additional \"it\" (Italian) words that should not be counted as spelling errors."
+              "description": "List of additional 'it' (Italian) words that should not be counted as spelling errors."
             },
             "ja-JP": {
               "type": "array",
@@ -522,7 +522,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ja-JP` (Japanese) words that should not be counted as spelling errors.",
-              "description": "List of additional \"ja-JP\" (Japanese) words that should not be counted as spelling errors."
+              "description": "List of additional 'ja-JP' (Japanese) words that should not be counted as spelling errors."
             },
             "km-KH": {
               "type": "array",
@@ -530,7 +530,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `km-KH` (Khmer) words that should not be counted as spelling errors.",
-              "description": "List of additional \"km-KH\" (Khmer) words that should not be counted as spelling errors."
+              "description": "List of additional 'km-KH' (Khmer) words that should not be counted as spelling errors."
             },
             "nl": {
               "type": "array",
@@ -538,7 +538,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `nl` (Dutch) words that should not be counted as spelling errors.",
-              "description": "List of additional \"nl\" (Dutch) words that should not be counted as spelling errors."
+              "description": "List of additional 'nl' (Dutch) words that should not be counted as spelling errors."
             },
             "pl-PL": {
               "type": "array",
@@ -546,7 +546,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pl-PL` (Polish) words that should not be counted as spelling errors.",
-              "description": "List of additional \"pl-PL\" (Polish) words that should not be counted as spelling errors."
+              "description": "List of additional 'pl-PL' (Polish) words that should not be counted as spelling errors."
             },
             "pt": {
               "type": "array",
@@ -554,7 +554,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt` (Portuguese) words that should not be counted as spelling errors.",
-              "description": "List of additional \"pt\" (Portuguese) words that should not be counted as spelling errors."
+              "description": "List of additional 'pt' (Portuguese) words that should not be counted as spelling errors."
             },
             "pt-AO": {
               "type": "array",
@@ -562,7 +562,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt-AO` (Portuguese (Angola preAO)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"pt-AO\" (Portuguese (Angola preAO)) words that should not be counted as spelling errors."
+              "description": "List of additional 'pt-AO' (Portuguese (Angola preAO)) words that should not be counted as spelling errors."
             },
             "pt-BR": {
               "type": "array",
@@ -570,7 +570,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt-BR` (Portuguese (Brazil)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"pt-BR\" (Portuguese (Brazil)) words that should not be counted as spelling errors."
+              "description": "List of additional 'pt-BR' (Portuguese (Brazil)) words that should not be counted as spelling errors."
             },
             "pt-MZ": {
               "type": "array",
@@ -578,7 +578,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt-MZ` (Portuguese (Mo\u00e7ambique preAO)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"pt-MZ\" (Portuguese (Mo\u00e7ambique preAO)) words that should not be counted as spelling errors."
+              "description": "List of additional 'pt-MZ' (Portuguese (Mo\u00e7ambique preAO)) words that should not be counted as spelling errors."
             },
             "pt-PT": {
               "type": "array",
@@ -586,7 +586,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt-PT` (Portuguese (Portugal)) words that should not be counted as spelling errors.",
-              "description": "List of additional \"pt-PT\" (Portuguese (Portugal)) words that should not be counted as spelling errors."
+              "description": "List of additional 'pt-PT' (Portuguese (Portugal)) words that should not be counted as spelling errors."
             },
             "ro-RO": {
               "type": "array",
@@ -594,7 +594,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ro-RO` (Romanian) words that should not be counted as spelling errors.",
-              "description": "List of additional \"ro-RO\" (Romanian) words that should not be counted as spelling errors."
+              "description": "List of additional 'ro-RO' (Romanian) words that should not be counted as spelling errors."
             },
             "ru-RU": {
               "type": "array",
@@ -602,7 +602,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ru-RU` (Russian) words that should not be counted as spelling errors.",
-              "description": "List of additional \"ru-RU\" (Russian) words that should not be counted as spelling errors."
+              "description": "List of additional 'ru-RU' (Russian) words that should not be counted as spelling errors."
             },
             "sk-SK": {
               "type": "array",
@@ -610,7 +610,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `sk-SK` (Slovak) words that should not be counted as spelling errors.",
-              "description": "List of additional \"sk-SK\" (Slovak) words that should not be counted as spelling errors."
+              "description": "List of additional 'sk-SK' (Slovak) words that should not be counted as spelling errors."
             },
             "sl-SI": {
               "type": "array",
@@ -618,7 +618,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `sl-SI` (Slovenian) words that should not be counted as spelling errors.",
-              "description": "List of additional \"sl-SI\" (Slovenian) words that should not be counted as spelling errors."
+              "description": "List of additional 'sl-SI' (Slovenian) words that should not be counted as spelling errors."
             },
             "sv": {
               "type": "array",
@@ -626,7 +626,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `sv` (Swedish) words that should not be counted as spelling errors.",
-              "description": "List of additional \"sv\" (Swedish) words that should not be counted as spelling errors."
+              "description": "List of additional 'sv' (Swedish) words that should not be counted as spelling errors."
             },
             "ta-IN": {
               "type": "array",
@@ -634,7 +634,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ta-IN` (Tamil) words that should not be counted as spelling errors.",
-              "description": "List of additional \"ta-IN\" (Tamil) words that should not be counted as spelling errors."
+              "description": "List of additional 'ta-IN' (Tamil) words that should not be counted as spelling errors."
             },
             "tl-PH": {
               "type": "array",
@@ -642,7 +642,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `tl-PH` (Tagalog) words that should not be counted as spelling errors.",
-              "description": "List of additional \"tl-PH\" (Tagalog) words that should not be counted as spelling errors."
+              "description": "List of additional 'tl-PH' (Tagalog) words that should not be counted as spelling errors."
             },
             "uk-UA": {
               "type": "array",
@@ -650,7 +650,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `uk-UA` (Ukrainian) words that should not be counted as spelling errors.",
-              "description": "List of additional \"uk-UA\" (Ukrainian) words that should not be counted as spelling errors."
+              "description": "List of additional 'uk-UA' (Ukrainian) words that should not be counted as spelling errors."
             },
             "zh-CN": {
               "type": "array",
@@ -658,7 +658,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `zh-CN` (Chinese) words that should not be counted as spelling errors.",
-              "description": "List of additional \"zh-CN\" (Chinese) words that should not be counted as spelling errors."
+              "description": "List of additional 'zh-CN' (Chinese) words that should not be counted as spelling errors."
             }
           },
           "markdownDescription": "Lists of additional words that should not be counted as spelling errors. The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<WORD1>\", \"<WORD2>\", ...], \"<LANGUAGE2>\": [\"<WORD1>\", \"<WORD2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language`. If `null` (the default), no additional spelling errors will be ignored.",
@@ -697,7 +697,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ar` (Arabic) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"ar\" (Arabic) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'ar' (Arabic) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "ar-DZ": {
               "type": "array",
@@ -705,7 +705,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ar-DZ` (Arabic (Algeria)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"ar-DZ\" (Arabic (Algeria)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'ar-DZ' (Arabic (Algeria)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "ast-ES": {
               "type": "array",
@@ -713,7 +713,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ast-ES` (Asturian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"ast-ES\" (Asturian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'ast-ES' (Asturian) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "be-BY": {
               "type": "array",
@@ -721,7 +721,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `be-BY` (Belarusian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"be-BY\" (Belarusian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'be-BY' (Belarusian) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "br-FR": {
               "type": "array",
@@ -729,7 +729,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `br-FR` (Breton) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"br-FR\" (Breton) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'br-FR' (Breton) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "ca-ES": {
               "type": "array",
@@ -737,7 +737,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ca-ES` (Catalan) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"ca-ES\" (Catalan) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'ca-ES' (Catalan) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "ca-ES-valencia": {
               "type": "array",
@@ -745,7 +745,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ca-ES-valencia` (Catalan (Valencian)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"ca-ES-valencia\" (Catalan (Valencian)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'ca-ES-valencia' (Catalan (Valencian)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "da-DK": {
               "type": "array",
@@ -753,7 +753,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `da-DK` (Danish) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"da-DK\" (Danish) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'da-DK' (Danish) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "de": {
               "type": "array",
@@ -761,7 +761,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de` (German) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"de\" (German) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'de' (German) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "de-AT": {
               "type": "array",
@@ -769,7 +769,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de-AT` (German (Austria)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"de-AT\" (German (Austria)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'de-AT' (German (Austria)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "de-CH": {
               "type": "array",
@@ -777,7 +777,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de-CH` (German (Swiss)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"de-CH\" (German (Swiss)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'de-CH' (German (Swiss)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "de-DE": {
               "type": "array",
@@ -785,7 +785,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de-DE` (German (Germany)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"de-DE\" (German (Germany)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'de-DE' (German (Germany)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "de-DE-x-simple-language": {
               "type": "array",
@@ -793,7 +793,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de-DE-x-simple-language` (Simple German) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"de-DE-x-simple-language\" (Simple German) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'de-DE-x-simple-language' (Simple German) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "el-GR": {
               "type": "array",
@@ -801,7 +801,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `el-GR` (Greek) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"el-GR\" (Greek) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'el-GR' (Greek) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "en": {
               "type": "array",
@@ -809,7 +809,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en` (English) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"en\" (English) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'en' (English) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "en-AU": {
               "type": "array",
@@ -817,7 +817,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-AU` (English (Australian)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"en-AU\" (English (Australian)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'en-AU' (English (Australian)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "en-CA": {
               "type": "array",
@@ -825,7 +825,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-CA` (English (Canadian)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"en-CA\" (English (Canadian)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'en-CA' (English (Canadian)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "en-GB": {
               "type": "array",
@@ -833,7 +833,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-GB` (English (GB)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"en-GB\" (English (GB)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'en-GB' (English (GB)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "en-NZ": {
               "type": "array",
@@ -841,7 +841,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-NZ` (English (New Zealand)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"en-NZ\" (English (New Zealand)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'en-NZ' (English (New Zealand)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "en-US": {
               "type": "array",
@@ -849,7 +849,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-US` (English (US)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"en-US\" (English (US)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'en-US' (English (US)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "en-ZA": {
               "type": "array",
@@ -857,7 +857,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-ZA` (English (South African)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"en-ZA\" (English (South African)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'en-ZA' (English (South African)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "eo": {
               "type": "array",
@@ -865,7 +865,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `eo` (Esperanto) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"eo\" (Esperanto) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'eo' (Esperanto) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "es": {
               "type": "array",
@@ -873,7 +873,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `es` (Spanish) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"es\" (Spanish) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'es' (Spanish) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "fa": {
               "type": "array",
@@ -881,7 +881,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `fa` (Persian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"fa\" (Persian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'fa' (Persian) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "fr": {
               "type": "array",
@@ -889,7 +889,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `fr` (French) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"fr\" (French) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'fr' (French) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "ga-IE": {
               "type": "array",
@@ -897,7 +897,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ga-IE` (Irish) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"ga-IE\" (Irish) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'ga-IE' (Irish) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "gl-ES": {
               "type": "array",
@@ -905,7 +905,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `gl-ES` (Galician) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"gl-ES\" (Galician) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'gl-ES' (Galician) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "it": {
               "type": "array",
@@ -913,7 +913,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `it` (Italian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"it\" (Italian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'it' (Italian) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "ja-JP": {
               "type": "array",
@@ -921,7 +921,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ja-JP` (Japanese) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"ja-JP\" (Japanese) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'ja-JP' (Japanese) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "km-KH": {
               "type": "array",
@@ -929,7 +929,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `km-KH` (Khmer) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"km-KH\" (Khmer) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'km-KH' (Khmer) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "nl": {
               "type": "array",
@@ -937,7 +937,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `nl` (Dutch) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"nl\" (Dutch) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'nl' (Dutch) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "pl-PL": {
               "type": "array",
@@ -945,7 +945,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pl-PL` (Polish) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"pl-PL\" (Polish) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'pl-PL' (Polish) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "pt": {
               "type": "array",
@@ -953,7 +953,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt` (Portuguese) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"pt\" (Portuguese) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'pt' (Portuguese) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "pt-AO": {
               "type": "array",
@@ -961,7 +961,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt-AO` (Portuguese (Angola preAO)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"pt-AO\" (Portuguese (Angola preAO)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'pt-AO' (Portuguese (Angola preAO)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "pt-BR": {
               "type": "array",
@@ -969,7 +969,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt-BR` (Portuguese (Brazil)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"pt-BR\" (Portuguese (Brazil)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'pt-BR' (Portuguese (Brazil)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "pt-MZ": {
               "type": "array",
@@ -977,7 +977,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt-MZ` (Portuguese (Mo\u00e7ambique preAO)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"pt-MZ\" (Portuguese (Mo\u00e7ambique preAO)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'pt-MZ' (Portuguese (Mo\u00e7ambique preAO)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "pt-PT": {
               "type": "array",
@@ -985,7 +985,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt-PT` (Portuguese (Portugal)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"pt-PT\" (Portuguese (Portugal)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'pt-PT' (Portuguese (Portugal)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "ro-RO": {
               "type": "array",
@@ -993,7 +993,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ro-RO` (Romanian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"ro-RO\" (Romanian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'ro-RO' (Romanian) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "ru-RU": {
               "type": "array",
@@ -1001,7 +1001,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ru-RU` (Russian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"ru-RU\" (Russian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'ru-RU' (Russian) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "sk-SK": {
               "type": "array",
@@ -1009,7 +1009,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `sk-SK` (Slovak) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"sk-SK\" (Slovak) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'sk-SK' (Slovak) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "sl-SI": {
               "type": "array",
@@ -1017,7 +1017,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `sl-SI` (Slovenian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"sl-SI\" (Slovenian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'sl-SI' (Slovenian) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "sv": {
               "type": "array",
@@ -1025,7 +1025,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `sv` (Swedish) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"sv\" (Swedish) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'sv' (Swedish) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "ta-IN": {
               "type": "array",
@@ -1033,7 +1033,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ta-IN` (Tamil) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"ta-IN\" (Tamil) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'ta-IN' (Tamil) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "tl-PH": {
               "type": "array",
@@ -1041,7 +1041,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `tl-PH` (Tagalog) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"tl-PH\" (Tagalog) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'tl-PH' (Tagalog) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "uk-UA": {
               "type": "array",
@@ -1049,7 +1049,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `uk-UA` (Ukrainian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"uk-UA\" (Ukrainian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'uk-UA' (Ukrainian) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "zh-CN": {
               "type": "array",
@@ -1057,7 +1057,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `zh-CN` (Chinese) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional \"zh-CN\" (Chinese) rules that should be disabled (if enabled by default by LanguageTool)."
+              "description": "List of additional 'zh-CN' (Chinese) rules that should be disabled (if enabled by default by LanguageTool)."
             }
           },
           "markdownDescription": "Lists of rules that should be disabled (if enabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language` and `<RULE>` the ID of the LanguageTool rule. If `null` (the default), no additional rules will be disabled.",
@@ -1092,7 +1092,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ar` (Arabic) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"ar\" (Arabic) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'ar' (Arabic) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "ar-DZ": {
               "type": "array",
@@ -1100,7 +1100,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ar-DZ` (Arabic (Algeria)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"ar-DZ\" (Arabic (Algeria)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'ar-DZ' (Arabic (Algeria)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "ast-ES": {
               "type": "array",
@@ -1108,7 +1108,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ast-ES` (Asturian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"ast-ES\" (Asturian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'ast-ES' (Asturian) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "be-BY": {
               "type": "array",
@@ -1116,7 +1116,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `be-BY` (Belarusian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"be-BY\" (Belarusian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'be-BY' (Belarusian) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "br-FR": {
               "type": "array",
@@ -1124,7 +1124,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `br-FR` (Breton) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"br-FR\" (Breton) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'br-FR' (Breton) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "ca-ES": {
               "type": "array",
@@ -1132,7 +1132,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ca-ES` (Catalan) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"ca-ES\" (Catalan) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'ca-ES' (Catalan) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "ca-ES-valencia": {
               "type": "array",
@@ -1140,7 +1140,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ca-ES-valencia` (Catalan (Valencian)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"ca-ES-valencia\" (Catalan (Valencian)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'ca-ES-valencia' (Catalan (Valencian)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "da-DK": {
               "type": "array",
@@ -1148,7 +1148,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `da-DK` (Danish) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"da-DK\" (Danish) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'da-DK' (Danish) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "de": {
               "type": "array",
@@ -1156,7 +1156,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de` (German) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"de\" (German) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'de' (German) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "de-AT": {
               "type": "array",
@@ -1164,7 +1164,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de-AT` (German (Austria)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"de-AT\" (German (Austria)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'de-AT' (German (Austria)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "de-CH": {
               "type": "array",
@@ -1172,7 +1172,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de-CH` (German (Swiss)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"de-CH\" (German (Swiss)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'de-CH' (German (Swiss)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "de-DE": {
               "type": "array",
@@ -1180,7 +1180,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de-DE` (German (Germany)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"de-DE\" (German (Germany)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'de-DE' (German (Germany)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "de-DE-x-simple-language": {
               "type": "array",
@@ -1188,7 +1188,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `de-DE-x-simple-language` (Simple German) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"de-DE-x-simple-language\" (Simple German) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'de-DE-x-simple-language' (Simple German) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "el-GR": {
               "type": "array",
@@ -1196,7 +1196,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `el-GR` (Greek) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"el-GR\" (Greek) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'el-GR' (Greek) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "en": {
               "type": "array",
@@ -1204,7 +1204,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en` (English) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"en\" (English) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'en' (English) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "en-AU": {
               "type": "array",
@@ -1212,7 +1212,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-AU` (English (Australian)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"en-AU\" (English (Australian)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'en-AU' (English (Australian)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "en-CA": {
               "type": "array",
@@ -1220,7 +1220,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-CA` (English (Canadian)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"en-CA\" (English (Canadian)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'en-CA' (English (Canadian)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "en-GB": {
               "type": "array",
@@ -1228,7 +1228,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-GB` (English (GB)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"en-GB\" (English (GB)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'en-GB' (English (GB)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "en-NZ": {
               "type": "array",
@@ -1236,7 +1236,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-NZ` (English (New Zealand)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"en-NZ\" (English (New Zealand)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'en-NZ' (English (New Zealand)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "en-US": {
               "type": "array",
@@ -1244,7 +1244,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-US` (English (US)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"en-US\" (English (US)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'en-US' (English (US)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "en-ZA": {
               "type": "array",
@@ -1252,7 +1252,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `en-ZA` (English (South African)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"en-ZA\" (English (South African)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'en-ZA' (English (South African)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "eo": {
               "type": "array",
@@ -1260,7 +1260,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `eo` (Esperanto) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"eo\" (Esperanto) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'eo' (Esperanto) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "es": {
               "type": "array",
@@ -1268,7 +1268,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `es` (Spanish) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"es\" (Spanish) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'es' (Spanish) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "fa": {
               "type": "array",
@@ -1276,7 +1276,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `fa` (Persian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"fa\" (Persian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'fa' (Persian) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "fr": {
               "type": "array",
@@ -1284,7 +1284,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `fr` (French) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"fr\" (French) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'fr' (French) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "ga-IE": {
               "type": "array",
@@ -1292,7 +1292,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ga-IE` (Irish) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"ga-IE\" (Irish) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'ga-IE' (Irish) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "gl-ES": {
               "type": "array",
@@ -1300,7 +1300,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `gl-ES` (Galician) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"gl-ES\" (Galician) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'gl-ES' (Galician) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "it": {
               "type": "array",
@@ -1308,7 +1308,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `it` (Italian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"it\" (Italian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'it' (Italian) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "ja-JP": {
               "type": "array",
@@ -1316,7 +1316,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ja-JP` (Japanese) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"ja-JP\" (Japanese) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'ja-JP' (Japanese) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "km-KH": {
               "type": "array",
@@ -1324,7 +1324,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `km-KH` (Khmer) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"km-KH\" (Khmer) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'km-KH' (Khmer) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "nl": {
               "type": "array",
@@ -1332,7 +1332,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `nl` (Dutch) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"nl\" (Dutch) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'nl' (Dutch) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "pl-PL": {
               "type": "array",
@@ -1340,7 +1340,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pl-PL` (Polish) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"pl-PL\" (Polish) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'pl-PL' (Polish) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "pt": {
               "type": "array",
@@ -1348,7 +1348,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt` (Portuguese) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"pt\" (Portuguese) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'pt' (Portuguese) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "pt-AO": {
               "type": "array",
@@ -1356,7 +1356,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt-AO` (Portuguese (Angola preAO)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"pt-AO\" (Portuguese (Angola preAO)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'pt-AO' (Portuguese (Angola preAO)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "pt-BR": {
               "type": "array",
@@ -1364,7 +1364,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt-BR` (Portuguese (Brazil)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"pt-BR\" (Portuguese (Brazil)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'pt-BR' (Portuguese (Brazil)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "pt-MZ": {
               "type": "array",
@@ -1372,7 +1372,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt-MZ` (Portuguese (Mo\u00e7ambique preAO)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"pt-MZ\" (Portuguese (Mo\u00e7ambique preAO)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'pt-MZ' (Portuguese (Mo\u00e7ambique preAO)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "pt-PT": {
               "type": "array",
@@ -1380,7 +1380,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `pt-PT` (Portuguese (Portugal)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"pt-PT\" (Portuguese (Portugal)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'pt-PT' (Portuguese (Portugal)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "ro-RO": {
               "type": "array",
@@ -1388,7 +1388,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ro-RO` (Romanian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"ro-RO\" (Romanian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'ro-RO' (Romanian) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "ru-RU": {
               "type": "array",
@@ -1396,7 +1396,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ru-RU` (Russian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"ru-RU\" (Russian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'ru-RU' (Russian) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "sk-SK": {
               "type": "array",
@@ -1404,7 +1404,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `sk-SK` (Slovak) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"sk-SK\" (Slovak) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'sk-SK' (Slovak) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "sl-SI": {
               "type": "array",
@@ -1412,7 +1412,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `sl-SI` (Slovenian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"sl-SI\" (Slovenian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'sl-SI' (Slovenian) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "sv": {
               "type": "array",
@@ -1420,7 +1420,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `sv` (Swedish) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"sv\" (Swedish) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'sv' (Swedish) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "ta-IN": {
               "type": "array",
@@ -1428,7 +1428,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `ta-IN` (Tamil) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"ta-IN\" (Tamil) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'ta-IN' (Tamil) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "tl-PH": {
               "type": "array",
@@ -1436,7 +1436,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `tl-PH` (Tagalog) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"tl-PH\" (Tagalog) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'tl-PH' (Tagalog) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "uk-UA": {
               "type": "array",
@@ -1444,7 +1444,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `uk-UA` (Ukrainian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"uk-UA\" (Ukrainian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'uk-UA' (Ukrainian) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "zh-CN": {
               "type": "array",
@@ -1452,7 +1452,7 @@
                 "type": "string"
               },
               "markdownDescription": "List of additional `zh-CN` (Chinese) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional \"zh-CN\" (Chinese) rules that should be enabled (if disabled by default by LanguageTool)."
+              "description": "List of additional 'zh-CN' (Chinese) rules that should be enabled (if disabled by default by LanguageTool)."
             }
           },
           "markdownDescription": "Lists of rules that should be enabled (if disabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language` and `<RULE>` the ID of the LanguageTool rule. If `null` (the default), no additional rules will be enabled.",
@@ -1474,7 +1474,7 @@
           "scope": "window",
           "default": null,
           "markdownDescription": "If this setting is `null`, LTeX automatically downloads the [latest compatible release of ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. In this case, the ltex-ls release downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "If this setting is \"null\", LTeX automatically downloads the latest compatible release of ltex-ls from GitHub (see https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. In this case, the ltex-ls release downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect."
+          "description": "If this setting is 'null', LTeX automatically downloads the latest compatible release of ltex-ls from GitHub (see https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. In this case, the ltex-ls release downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.java.path": {
           "type": [
@@ -1484,7 +1484,7 @@
           "scope": "window",
           "default": null,
           "markdownDescription": "If this setting is `null` and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the `JAVA_HOME` environment variable. In this case, the Java distribution downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "If this setting is \"null\" and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution (AdoptOpenJDK, see https://adoptopenjdk.net/), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the \"JAVA_HOME\" environment variable. In this case, the Java distribution downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect."
+          "description": "If this setting is 'null' and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution (AdoptOpenJDK, see https://adoptopenjdk.net/), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the 'JAVA_HOME' environment variable. In this case, the Java distribution downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.javaHome": {
           "type": [
@@ -1494,14 +1494,14 @@
           "scope": "window",
           "default": null,
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.path`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.java.path\"."
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.java.path'."
         },
         "ltex.java.initialHeapSize": {
           "type": "integer",
           "scope": "window",
           "default": 64,
           "markdownDescription": "Initial size of the Java heap memory in megabytes (corresponds to Java's `-Xms` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "Initial size of the Java heap memory in megabytes (corresponds to Java's \"-Xms\" option). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect."
+          "description": "Initial size of the Java heap memory in megabytes (corresponds to Java's '-Xms' option). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.performance.initialJavaHeapSize": {
           "type": [
@@ -1511,14 +1511,14 @@
           "scope": "window",
           "default": null,
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.initialHeapSize`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.java.initialHeapSize\"."
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.java.initialHeapSize'."
         },
         "ltex.java.maximumHeapSize": {
           "type": "integer",
           "scope": "window",
           "default": 512,
           "markdownDescription": "Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an `OutOfMemoryError` is thrown. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "Maximum size of the Java heap memory in megabytes (corresponds to Java's \"-Xmx\" option). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an \"OutOfMemoryError\" is thrown. Changes require reloading the Visual Studio Code window to take effect."
+          "description": "Maximum size of the Java heap memory in megabytes (corresponds to Java's '-Xmx' option). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an 'OutOfMemoryError' is thrown. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.performance.maximumHeapSize": {
           "type": [
@@ -1528,14 +1528,14 @@
           "scope": "window",
           "default": null,
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.maximumHeapSize`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.java.maximumHeapSize\"."
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.java.maximumHeapSize'."
         },
         "ltex.commands.ignore": {
           "type": "array",
           "scope": "resource",
           "default": [],
-          "markdownDescription": "List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments. Don't forget to escape the initial backslash by replacing it with two backslashes.",
-          "description": "List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., \"\\ref{}\", \"\\documentclass[]{}\"). Don't forget to escape the initial backslash by replacing it with two backslashes.",
+          "markdownDescription": "List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., `\\ref{}`, `\\documentclass[]{}`). Don't forget to escape the initial backslash by replacing it with two backslashes.",
+          "description": "List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., '\\ref{}', '\\documentclass[]{}'). Don't forget to escape the initial backslash by replacing it with two backslashes.",
           "examples": [
             "\\ref{}",
             "\\documentclass[]{}"
@@ -1545,8 +1545,8 @@
           "type": "array",
           "scope": "resource",
           "default": [],
-          "markdownDescription": "List of additional LaTeX commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments. LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.",
-          "description": "List of additional LaTeX commands to be replaced by dummy words (i.e., Dummy0, Dummy1, etc.), listed together with empty arguments (e.g., \"\\cite{}\", \"\\cite[]{}\"). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.",
+          "markdownDescription": "List of additional LaTeX commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments (e.g., `\\cite{}`, `\\cite[]{}`). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.",
+          "description": "List of additional LaTeX commands to be replaced by dummy words (i.e., Dummy0, Dummy1, etc.), listed together with empty arguments (e.g., '\\cite{}', '\\cite[]{}'). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.",
           "examples": [
             "\\cite{}",
             "\\cite[]{}"
@@ -1572,7 +1572,7 @@
             "IndentedCodeBlock"
           ],
           "markdownDescription": "List of Markdown node types to be ignored by the Markdown parser. The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type `Text`. LTeX will ignore all nodes (and their `Text` leaves) that have one of the listed node types. The possible node types are listed in the [documentation of flexmark-java](https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html).",
-          "description": "List of Markdown node types to be ignored by the Markdown parser. The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type \"Text\". LTe>X will ignore all nodes (and their \"Text\" leaves) that have one of the listed node types. The possible node types are listed in the documentation of flexmark-java at https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html."
+          "description": "List of Markdown node types to be ignored by the Markdown parser. The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type 'Text'. LTe>X will ignore all nodes (and their 'Text' leaves) that have one of the listed node types. The possible node types are listed in the documentation of flexmark-java at https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html."
         },
         "ltex.markdown.dummy": {
           "type": "array",
@@ -1582,7 +1582,7 @@
             "Code"
           ],
           "markdownDescription": "List of Markdown node types to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.) by the Markdown parser. LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. The possible node types are listed in the [documentation of flexmark-java](https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html).",
-          "description": "List of Markdown node types to be replaced by dummy words (i.e., \"Dummy0\", \"Dummy1\", etc.) by the Markdown parser. LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. The possible node types are listed in the documentation of flexmark-java at https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html."
+          "description": "List of Markdown node types to be replaced by dummy words (i.e., 'Dummy0', 'Dummy1', etc.) by the Markdown parser. LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. The possible node types are listed in the documentation of flexmark-java at https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html."
         },
         "ltex.ignoreRuleInSentence": {
           "type": "array",
@@ -1611,7 +1611,7 @@
             }
           },
           "markdownDescription": "Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. This is a list of objects with two keys each, `rule` and `sentence`. The `rule` value is the identifier of the LanguageTool rule to be ignored. The `sentence` value is a Java-compatible regular expression. All occurrences of the given rule are ignored in sentences (as determined by the LanguageTool tokenizer) that match the regular expression. Although it is possible to manually edit this setting, the intended way is to add rule/sentence pairs by using the `Ignore in this sentence` quick fix. If this list is very large, performance may suffer.",
-          "description": "Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. This is a list of objects with two keys each, \"rule\" and \"sentence\". The \"rule\" value is the identifier of the LanguageTool rule to be ignored. The \"sentence\" value is a Java-compatible regular expression. All occurrences of the given rule are ignored in sentences (as determined by the LanguageTool tokenizer) that match the regular expression. Although it is possible to manually edit this setting, the intended way is to add rule/sentence pairs by using the \"Ignore in this sentence\" quick fix. If this list is very large, performance may suffer."
+          "description": "Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. This is a list of objects with two keys each, 'rule' and 'sentence'. The 'rule' value is the identifier of the LanguageTool rule to be ignored. The 'sentence' value is a Java-compatible regular expression. All occurrences of the given rule are ignored in sentences (as determined by the LanguageTool tokenizer) that match the regular expression. Although it is possible to manually edit this setting, the intended way is to add rule/sentence pairs by using the 'Ignore in this sentence' quick fix. If this list is very large, performance may suffer."
         },
         "ltex.configurationTarget": {
           "type": "object",
@@ -1671,7 +1671,7 @@
             }
           },
           "markdownDescription": "Controls which `settings.json` to update when using one of the quick fixes.",
-          "description": "Controls which \"settings.json\" to update when using one of the quick fixes. \"global\" always updates the global configuration, while \"workspace\" updates the workspace configuration if currently in a workspace, otherwise the global configuration."
+          "description": "Controls which 'settings.json' to update when using one of the quick fixes. 'global' always updates the global configuration, while 'workspace' updates the workspace configuration if currently in a workspace, otherwise the global configuration."
         },
         "ltex.additionalRules.motherTongue": {
           "type": [
@@ -1681,7 +1681,7 @@
           "scope": "resource",
           "default": null,
           "markdownDescription": "Optional mother tongue of the user (e.g., `de-DE`). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see `ltex.additionalRules.languageModel`).",
-          "description": "Optional mother tongue of the user (e.g., \"de-DE\"). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see ltex.additionalRules.languageModel).",
+          "description": "Optional mother tongue of the user (e.g., 'de-DE'). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see ltex.additionalRules.languageModel).",
           "examples": [
             "en-US",
             "de-DE"
@@ -1722,7 +1722,7 @@
           "scope": "resource",
           "default": 2000,
           "markdownDescription": "Size of the LanguageTool `ResultCache` in sentences (must be a positive integer). If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "Size of the LanguageTool \"ResultCache\" in sentences. If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect."
+          "description": "Size of the LanguageTool 'ResultCache' in sentences. If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.performance.sentenceCacheSize": {
           "type": [
@@ -1732,7 +1732,7 @@
           "scope": "resource",
           "default": null,
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.sentenceCacheSize`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to \"ltex.sentenceCacheSize\"."
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.sentenceCacheSize'."
         },
         "ltex.diagnosticSeverity": {
           "type": "string",
@@ -1751,7 +1751,7 @@
             "Hint diagnostics are not underlined (only subtly marked) and only appear in the editor, not in minimap, Problems tab, or Explorer."
           ],
           "markdownDescription": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code.",
-          "description": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code. One of \"error\", \"warning\", \"information\", and \"hint\"."
+          "description": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code. One of 'error', 'warning', 'information', and 'hint'."
         },
         "ltex.trace.server": {
           "type": "string",
@@ -1763,7 +1763,7 @@
             "verbose"
           ],
           "markdownDescription": "Debug setting. When reporting issues, set this to `\"verbose\"` to be able to access the `LTeX Language Client` log in `View` \u2192 `Output`. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "Debug setting. When reporting issues, set this to \"verbose\" to be able to access the \"LTeX Language Client\" log in \"View\" \u2192 \"Output\". Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect."
+          "description": "Debug setting. When reporting issues, set this to \"verbose\" to be able to access the 'LTeX Language Client' log in 'View' \u2192 'Output'. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.ar.dictionary": {
           "type": "array",
