@@ -1486,16 +1486,6 @@
           "markdownDescription": "If this setting is `null` and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the `JAVA_HOME` environment variable. In this case, the Java distribution downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect.",
           "description": "If this setting is 'null' and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution (AdoptOpenJDK, see https://adoptopenjdk.net/), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the 'JAVA_HOME' environment variable. In this case, the Java distribution downloaded by LTeX (if existing) will be deleted to save disk space. Changes require reloading the Visual Studio Code window to take effect."
         },
-        "ltex.javaHome": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "scope": "window",
-          "default": null,
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.path`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.java.path'."
-        },
         "ltex.java.initialHeapSize": {
           "type": "integer",
           "scope": "window",
@@ -1503,32 +1493,12 @@
           "markdownDescription": "Initial size of the Java heap memory in megabytes (corresponds to Java's `-Xms` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect.",
           "description": "Initial size of the Java heap memory in megabytes (corresponds to Java's '-Xms' option). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect."
         },
-        "ltex.performance.initialJavaHeapSize": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "scope": "window",
-          "default": null,
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.initialHeapSize`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.java.initialHeapSize'."
-        },
         "ltex.java.maximumHeapSize": {
           "type": "integer",
           "scope": "window",
           "default": 512,
           "markdownDescription": "Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an `OutOfMemoryError` is thrown. Changes require reloading the Visual Studio Code window to take effect.",
           "description": "Maximum size of the Java heap memory in megabytes (corresponds to Java's '-Xmx' option). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an 'OutOfMemoryError' is thrown. Changes require reloading the Visual Studio Code window to take effect."
-        },
-        "ltex.performance.maximumHeapSize": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "scope": "window",
-          "default": null,
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.maximumHeapSize`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.java.maximumHeapSize'."
         },
         "ltex.commands.ignore": {
           "type": "array",
@@ -1724,16 +1694,6 @@
           "markdownDescription": "Size of the LanguageTool `ResultCache` in sentences (must be a positive integer). If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect.",
           "description": "Size of the LanguageTool 'ResultCache' in sentences. If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect."
         },
-        "ltex.performance.sentenceCacheSize": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "scope": "resource",
-          "default": null,
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.sentenceCacheSize`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.sentenceCacheSize'."
-        },
         "ltex.diagnosticSeverity": {
           "type": "string",
           "scope": "resource",
@@ -1769,6 +1729,46 @@
           ],
           "markdownDescription": "Debug setting to log the communication between language client and server. When reporting issues, set this to `\"verbose\"` and open the `LTeX Language Client` log in `View` \u2192 `Output`. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.",
           "description": "Debug setting to log the communication between language client and server. When reporting issues, set this to \"verbose\" and open the 'LTeX Language Client' log in 'View' \u2192 'Output'. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect."
+        },
+        "ltex.javaHome": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "scope": "window",
+          "default": null,
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.path`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.java.path'."
+        },
+        "ltex.performance.initialJavaHeapSize": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "scope": "window",
+          "default": null,
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.initialHeapSize`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.java.initialHeapSize'."
+        },
+        "ltex.performance.maximumHeapSize": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "scope": "window",
+          "default": null,
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.maximumHeapSize`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.java.maximumHeapSize'."
+        },
+        "ltex.performance.sentenceCacheSize": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "scope": "resource",
+          "default": null,
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.sentenceCacheSize`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.sentenceCacheSize'."
         },
         "ltex.ar.dictionary": {
           "type": "array",
