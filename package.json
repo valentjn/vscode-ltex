@@ -165,7 +165,7 @@
             "Portuguese",
             "Portuguese (Angola preAO)",
             "Portuguese (Brazil)",
-            "Portuguese (Moçambique preAO)",
+            "Portuguese (Mo\u00e7ambique preAO)",
             "Portuguese (Portugal)",
             "Romanian",
             "Russian",
@@ -1654,8 +1654,8 @@
           "type": "array",
           "scope": "resource",
           "default": [],
-          "markdownDescription": "List of additional `pt-MZ` (Portuguese (Moçambique preAO)) words that should not be counted as spelling errors.",
-          "description": "List of additional \"pt-MZ\" (Portuguese (Moçambique preAO)) words that should not be counted as spelling errors."
+          "markdownDescription": "List of additional `pt-MZ` (Portuguese (Mo\u00e7ambique preAO)) words that should not be counted as spelling errors.",
+          "description": "List of additional \"pt-MZ\" (Portuguese (Mo\u00e7ambique preAO)) words that should not be counted as spelling errors."
         },
         "ltex.pt-MZ.dictionary": {
           "type": "array",
@@ -1668,8 +1668,8 @@
           "type": "array",
           "scope": "resource",
           "default": [],
-          "markdownDescription": "List of `pt-MZ` (Portuguese (Moçambique preAO)) rules that should be disabled (if enabled by default by LanguageTool).",
-          "description": "List of additional \"pt-MZ\" (Portuguese (Moçambique preAO)) rules that should be disabled (if enabled by default by LanguageTool)."
+          "markdownDescription": "List of `pt-MZ` (Portuguese (Mo\u00e7ambique preAO)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "description": "List of additional \"pt-MZ\" (Portuguese (Mo\u00e7ambique preAO)) rules that should be disabled (if enabled by default by LanguageTool)."
         },
         "ltex.pt-MZ.disabledRules": {
           "type": "array",
@@ -1682,8 +1682,8 @@
           "type": "array",
           "scope": "resource",
           "default": [],
-          "markdownDescription": "List of `pt-MZ` (Portuguese (Moçambique preAO)) rules that should be enabled (if disabled by default by LanguageTool).",
-          "description": "List of additional \"pt-MZ\" (Portuguese (Moçambique preAO)) rules that should be enabled (if disabled by default by LanguageTool)."
+          "markdownDescription": "List of `pt-MZ` (Portuguese (Mo\u00e7ambique preAO)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "description": "List of additional \"pt-MZ\" (Portuguese (Mo\u00e7ambique preAO)) rules that should be enabled (if disabled by default by LanguageTool)."
         },
         "ltex.pt-MZ.enabledRules": {
           "type": "array",
@@ -2408,8 +2408,8 @@
             "message",
             "verbose"
           ],
-          "markdownDescription": "Debug setting. When reporting issues, set this to `\"verbose\"` to be able to access the `LTeX Language Client` log in `View` → `Output`. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "Debug setting. When reporting issues, set this to \"verbose\" to be able to access the \"LTeX Language Client\" log in \"View\" → \"Output\". Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect."
+          "markdownDescription": "Debug setting. When reporting issues, set this to `\"verbose\"` to be able to access the `LTeX Language Client` log in `View` \u2192 `Output`. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "Debug setting. When reporting issues, set this to \"verbose\" to be able to access the \"LTeX Language Client\" log in \"View\" \u2192 \"Output\". Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect."
         }
       }
     }
