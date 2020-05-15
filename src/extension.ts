@@ -253,12 +253,12 @@ async function installDependency(context: Code.ExtensionContext, urlStr: string,
   codeProgress.finishTask();
 
   try {
-    codeProgress.startTask(0.6, `Downloading ${name}...`);
+    codeProgress.startTask(0.8, `Downloading ${name}...`);
     log(`Downloading ${name} from '${urlStr}' to '${archivePath}'...`);
     await downloadFile(urlStr, archivePath, codeProgress);
     codeProgress.finishTask();
 
-    codeProgress.startTask(0.3, `Extracting ${name}...`);
+    codeProgress.startTask(0.1, `Extracting ${name}...`);
     log(`Extracting ${name} archive to '${tmpDirPath}'...`);
 
     if (archiveType == 'zip') {
