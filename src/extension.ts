@@ -662,6 +662,31 @@ async function startLanguageClient(context: Code.ExtensionContext): Promise<void
 async function languageClientIsReady(disposable: Code.Disposable): Promise<void> {
   disposable.dispose();
   Code.window.setStatusBarMessage('$(check) LTeX ready', 1000);
+
+  const numberOfLanguageSupportExtensions: number = Code.extensions.all.filter(
+      (x: Code.Extension<any>) => x.id.startsWith('valentjn.vscode-ltex-')).length;
+
+  if (numberOfLanguageSupportExtensions > 0) {
+    let message: string = 'Thanks for upgrading to LTeX 5.x! ';
+
+    if (numberOfLanguageSupportExtensions > 1) {
+      message += 'You can remove the LTeX language support ' +
+          'extensions now. They are not needed anymore. ';
+    } else {
+      message += 'You can remove the LTeX language support ' +
+          'extension now. It is not needed anymore. ';
+    }
+
+    message += 'Review the readme for a summary of important major changes.';
+
+    Code.window.showInformationMessage(message,
+          'More info about LTeX 5.x').then((selectedItem: string) => {
+      if (selectedItem != null) {
+        Code.env.openExternal(Code.Uri.parse(
+            'https://github.com/valentjn/vscode-ltex#note-for-transitioning-to-ltex-5x'));
+      }
+    });
+  }
 }
 
 function processTelemetry(params: any): void {
