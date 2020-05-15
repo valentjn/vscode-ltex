@@ -10,6 +10,9 @@
   "repository": {
     "url": "https://github.com/valentjn/vscode-ltex"
   },
+  "bugs": {
+    "url": "https://github.com/valentjn/vscode-ltex/issues"
+  },
   "qna": "https://github.com/valentjn/vscode-ltex/issues?q=is%3Aissue+label%3A-question",
   "engines": {
     "vscode": "^1.39.0"
