@@ -10,7 +10,7 @@ Provides offline grammar checking in Visual Studio Code using [LanguageTool](htt
 
 This extension is a fork of the abandoned [LanguageTool for Visual Studio Code extension](https://github.com/adamvoss/vscode-languagetool) by Adam Voss with L<sup>A</sup>T<sub>E</sub>X support, new features (user dictionaries, ignore errors, etc.), and updated dependencies (LanguageTool).
 
-## Note for Transitioning to LT<sub>E</sub>X 5.0
+## Note for Transitioning to LT<sub>E</sub>X 5.x
 
 LT<sub>E</sub>X has undergone a major rewrite in version 5.0. The most important change is that it now comes with everything included:
 
