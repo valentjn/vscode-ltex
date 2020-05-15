@@ -3,5 +3,8 @@
 
 /.vscode-test/
 /dist/
+/lib/
 /node_modules/
 /out/
+
+!/lib/.keep
