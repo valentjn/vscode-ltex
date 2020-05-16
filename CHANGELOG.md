@@ -136,7 +136,7 @@
 ## 4.6.10 — “The Plaintext Decay”
 
 - Don't check plaintext files (fixes [#4](https://github.com/valentjn/vscode-ltex/issues/4))
-- Fix `NullPointerException` if LanguageTool has not been initialized (fixes [languagetool-languageserver#1](https://github.com/valentjn/languagetool-languageserver/issues/1))
+- Fix `NullPointerException` if LanguageTool has not been initialized (fixes [ltex-ls#1](https://github.com/valentjn/ltex-ls/issues/1))
 
 ## 4.6.9 — “The Bundle Valuation”
 
