@@ -3,6 +3,7 @@
   "dist": "bionic",
   "language": "node_js",
   "node_js": "13",
+  "cache": false,
   "install": [
     "npm install",
     "npm install -g vsce",
