@@ -16,6 +16,7 @@ import semver
 ltexRootDirPath = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 libDirPath = os.path.join(ltexRootDirPath, "lib")
 
+# to get proper logs in Travis CI
 oldPrint = print
 print = (lambda *args, **kwargs: oldPrint(*args, **kwargs, flush=True))
 
