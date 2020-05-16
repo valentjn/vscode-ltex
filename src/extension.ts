@@ -541,7 +541,8 @@ async function installDependencies(context: Code.ExtensionContext): Promise<Depe
   }
 }
 
-function showOfflineInstallationInstructions(context: Code.ExtensionContext, message: string): void {
+function showOfflineInstallationInstructions(context: Code.ExtensionContext,
+      message: string): void {
   Code.window.showErrorMessage(message + ' You might want to try offline installation.',
         'Try again', 'Offline instructions').then((selectedItem: string) => {
     if (selectedItem == 'Try again') {
@@ -719,7 +720,8 @@ function processTelemetry(params: any): void {
 
   } else if (params['commandName'] === 'ltex.disableRule') {
     const language: string = resourceConfig.get('language');
-    const disabledRulesSetting: {[language: string]: string[]} = resourceConfig.get('disabledRules');
+    const disabledRulesSetting: {[language: string]: string[]} =
+        resourceConfig.get('disabledRules');
     let disabledRules: string[] = (
         ((disabledRulesSetting != null) && (disabledRulesSetting[language] != null)) ?
         disabledRulesSetting[language] : []);
