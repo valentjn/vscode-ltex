@@ -23,7 +23,7 @@ print = (lambda *args, **kwargs: oldPrint(*args, **kwargs, flush=True))
 
 
 def cleanLibDir():
-  cmd = ["git", "-C", ltexRootDirPath, "clean", "-f", libDirPath]
+  cmd = ["git", "-C", ltexRootDirPath, "clean", "-f", "-x", libDirPath]
   print("Cleaning lib/ by running '{}'...".format(" ".join(shlex.quote(x) for x in cmd)))
   subprocess.run(cmd)
 
