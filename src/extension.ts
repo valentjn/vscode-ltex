@@ -439,7 +439,10 @@ async function installDependencies(context: Code.ExtensionContext): Promise<Depe
   const libDirPath: string = Path.join(context.extensionPath, 'lib');
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
 
-  if (!Fs.existsSync(libDirPath)) Fs.mkdirSync(libDirPath);
+  if (!Fs.existsSync(libDirPath)) {
+    log(`Creating '${libDirPath}'...`);
+    Fs.mkdirSync(libDirPath);
+  }
 
   try {
     // try 0: only use ltex.ltexLs.path (don't use lib/, don't download)
