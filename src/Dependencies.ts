@@ -16,15 +16,12 @@ import Logger from './Logger';
 
 export default class Dependencies {
   private _context: Code.ExtensionContext;
-  private _startLanguageClient: (((context: Code.ExtensionContext) => Promise<void>) | undefined);
   private _ltexVersion: string;
   private _ltexLsPath: string | null = null;
   private _javaPath: string | null = null;
 
-  public constructor(context: Code.ExtensionContext,
-        startLanguageClient?: (context: Code.ExtensionContext) => Promise<void>) {
+  public constructor(context: Code.ExtensionContext) {
     this._context = context;
-    this._startLanguageClient = startLanguageClient;
     const ltex: Code.Extension<any> | undefined =
         Code.extensions.getExtension('valentjn.vscode-ltex');
     if (ltex == null) throw new Error('Could not get LTeX version.');
@@ -41,7 +38,7 @@ export default class Dependencies {
   }
 
   private static async doJsonRequest(urlStr: string): Promise<any> {
-    return new Promise((resolve: (value?: unknown) => void, reject: (reason?: any) => void) => {
+    return new Promise((resolve: (value: unknown) => void, reject: (reason: Error) => void) => {
       Https.get(Dependencies.parseUrl(urlStr), (response: Http.IncomingMessage) => {
         const contentType: string | undefined = response.headers['content-type'];
         let error: Error | null = null;
@@ -387,8 +384,7 @@ export default class Dependencies {
       Logger.log('You might want to try offline installation, ' +
           'see https://github.com/valentjn/vscode-ltex#offline-installation.');
       Logger.showClientOutputChannel();
-      this.showOfflineInstallationInstructions('Could not install ltex-ls.');
-      return false;
+      return this.showOfflineInstallationInstructions('Could not install ltex-ls.');
     }
 
     try {
@@ -445,23 +441,24 @@ export default class Dependencies {
       Logger.error('The download/extraction/run of Java failed!', e);
       Logger.log('You might want to try offline installation, ' +
           'see https://github.com/valentjn/vscode-ltex#offline-installation.');
-      this.showOfflineInstallationInstructions('Could not download/extract/run Java.');
-      return false;
+      return await this.showOfflineInstallationInstructions('Could not download/extract/run Java.');
     }
   }
 
-  private showOfflineInstallationInstructions(message: string): void {
-    const items: string[] = ((this._startLanguageClient != null) ?
-        ['Try again', 'Offline instructions'] : ['Offline instructions']);
+  private async showOfflineInstallationInstructions(message: string): Promise<boolean> {
+    return new Promise((resolve: (value: boolean) => void) => {
+      Code.window.showErrorMessage(`${message} You might want to try offline installation.`,
+            'Try again', 'Offline instructions').then(async (selectedItem: string | undefined) => {
+        if (selectedItem == 'Try again') {
+          resolve(await this.install());
+          return;
+        } else if (selectedItem == 'Offline instructions') {
+          Code.env.openExternal(Code.Uri.parse(
+              'https://github.com/valentjn/vscode-ltex#offline-installation'));
+        }
 
-    Code.window.showErrorMessage(`${message} You might want to try offline installation.`, ...items)
-          .then((selectedItem: string | undefined) => {
-      if (selectedItem == 'Try again') {
-        if (this._startLanguageClient != null) this._startLanguageClient(this._context);
-      } else if (selectedItem == 'Offline instructions') {
-        Code.env.openExternal(Code.Uri.parse(
-            'https://github.com/valentjn/vscode-ltex#offline-installation'));
-      }
+        resolve(false);
+      });
     });
   }
 

@@ -115,10 +115,11 @@ function processTelemetry(params: any): void {
   }
 }
 
-async function startLanguageClient(context: Code.ExtensionContext): Promise<void> {
-  const dependencies: Dependencies = new Dependencies(context, startLanguageClient);
+async function startLanguageClient(context: Code.ExtensionContext):
+      Promise<CodeLanguageClient.LanguageClient | null> {
+  const dependencies: Dependencies = new Dependencies(context);
   const success: boolean = await dependencies.install();
-  if (success !== true) return;
+  if (success !== true) return Promise.resolve(null);
 
   const statusBarMessageDisposable: Code.Disposable =
       Code.window.setStatusBarMessage('$(loading~spin) Starting LTeX...');
@@ -170,21 +171,31 @@ async function startLanguageClient(context: Code.ExtensionContext): Promise<void
   // client can be deactivated on extension deactivation
   context.subscriptions.push(languageClientDisposable);
   context.subscriptions.push(statusBarMessageDisposable);
+
+  return Promise.resolve(languageClient);
 }
 
-export function activate(context: Code.ExtensionContext): void {
+export class Api {
+  public languageClient: CodeLanguageClient.LanguageClient | null = null;
+}
+
+export async function activate(context: Code.ExtensionContext): Promise<Api> {
+  const api: Api = new Api();
+
   Logger.createOutputChannels(context);
 
   // Allow to enable languageTool in specific workspaces
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
-  if (!workspaceConfig.get('enabled')) return;
+  if (!workspaceConfig.get('enabled')) return api;
 
   try {
     // create the language client
-    startLanguageClient(context);
+    api.languageClient = await startLanguageClient(context);
   } catch (e) {
     Logger.error('Could not start the language client!', e);
     Logger.showClientOutputChannel();
     Code.window.showErrorMessage('Could not start the language client.');
   }
+
+  return api;
 }
