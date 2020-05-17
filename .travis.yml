@@ -23,8 +23,9 @@ jobs:
         - "/usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &"
     - stage: "test"
       os: "osx"
-    - stage: "test"
-      os: "windows"
+    # deactivated due to https://github.com/microsoft/vscode/issues/77499
+    #- stage: "test"
+    #  os: "windows"
     - stage: "deploy"
       if: "tag IS present"
       install:
