@@ -6,11 +6,11 @@ export default class ProgressStack {
   private _taskProgressStack: number[];
   private _taskSizeStack: number[];
   private _taskNameStack: string[];
-  private _progressInterface: Code.Progress<{increment?: number, message?: string}>;
+  private _progressInterface: Code.Progress<{increment?: number; message?: string}>;
   private _progressOnLastUpdate: number;
 
   public constructor(name: string,
-        progressInterface: Code.Progress<{increment?: number, message?: string}>) {
+        progressInterface: Code.Progress<{increment?: number; message?: string}>) {
     this._taskProgressStack = [0];
     this._taskSizeStack = [1];
     this._taskNameStack = [name];

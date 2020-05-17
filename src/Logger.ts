@@ -50,6 +50,11 @@ export default class Logger {
     Logger._clientOutputChannel.show();
   }
 
-  public static get clientOutputChannel(): Code.OutputChannel { return Logger._clientOutputChannel; }
-  public static get serverOutputChannel(): Code.OutputChannel { return Logger._serverOutputChannel; }
+  public static get clientOutputChannel(): Code.OutputChannel {
+    return Logger._clientOutputChannel;
+  }
+
+  public static get serverOutputChannel(): Code.OutputChannel {
+    return Logger._serverOutputChannel;
+  }
 }

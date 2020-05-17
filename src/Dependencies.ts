@@ -17,7 +17,7 @@ import ProgressStack from './ProgressStack';
 import Logger from './Logger';
 
 export default class Dependencies {
-  private static ltexVersion =
+  private static ltexVersion: string =
       Code.extensions.getExtension('valentjn.vscode-ltex').packageJSON.version;
 
   private _context: Code.ExtensionContext;
@@ -41,8 +41,8 @@ export default class Dependencies {
   }
 
   private static async doJsonRequest(urlStr: string): Promise<any> {
-    return new Promise((resolve, reject) => {
-      Https.get(Dependencies.parseUrl(urlStr), (response) => {
+    return new Promise((resolve: (value?: unknown) => void, reject: (reason?: any) => void) => {
+      Https.get(Dependencies.parseUrl(urlStr), (response: Http.IncomingMessage) => {
         const contentType: string = response.headers['content-type'];
         let error: Error;
 
@@ -60,7 +60,11 @@ export default class Dependencies {
 
         response.setEncoding('utf8');
         let rawData = '';
-        response.on('data', (chunk) => { rawData += chunk; });
+
+        response.on('data', (chunk: any) => {
+          rawData += chunk;
+        });
+
         response.on('end', () => {
           try {
             const jsonData: any = JSON.parse(rawData);
@@ -69,7 +73,7 @@ export default class Dependencies {
             reject(e);
           }
         });
-      }).on('error', (e) => {
+      }).on('error', (e: Error) => {
         reject(e);
       });
     });
@@ -77,10 +81,10 @@ export default class Dependencies {
 
   private static async downloadFile(urlStr: string, path: string, codeProgress: ProgressStack):
         Promise<void> {
-    let file: Fs.WriteStream = Fs.createWriteStream(path);
+    const file: Fs.WriteStream = Fs.createWriteStream(path);
     const origTaskName = codeProgress.getTaskName();
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve: () => void, reject: (reason?: any) => void) => {
       Https.get(Dependencies.parseUrl(urlStr), (response: Http.IncomingMessage) => {
         if ((response.statusCode === 301) || (response.statusCode === 302) ||
               (response.statusCode === 307)) {
@@ -115,7 +119,7 @@ export default class Dependencies {
           file.close();
           resolve();
         });
-      }).on('error', (e) => {
+      }).on('error', (e: Error) => {
         Fs.unlinkSync(path);
         reject(e);
       });
@@ -182,7 +186,8 @@ export default class Dependencies {
       codeProgress.updateTask(0.9);
 
       if (targetExists) {
-        Logger.warn(`Did not move '${extractedDirPath}' to '${targetDirPath}', as target already exists.`);
+        Logger.warn(`Did not move '${extractedDirPath}' to '${targetDirPath}', ` +
+            'as target already exists.');
       } else {
         Logger.log(`Moving '${extractedDirPath}' to '${targetDirPath}'...`);
         Fs.renameSync(extractedDirPath, targetDirPath);
@@ -205,8 +210,8 @@ export default class Dependencies {
         };
 
     return Code.window.withProgress(progressOptions,
-          async (progress: Code.Progress<{increment?: number, message?: string}>,
-            token: Code.CancellationToken): Promise<void> => {
+          async (progress: Code.Progress<{increment?: number; message?: string}>):
+            Promise<void> => {
       const codeProgress: ProgressStack = new ProgressStack(
           'Downloading and extracting ltex-ls', progress);
 
@@ -215,7 +220,7 @@ export default class Dependencies {
       Logger.log(`Fetching list of ltex-ls releases from '${jsonUrl}'...`);
       const jsonData: any = await Dependencies.doJsonRequest(jsonUrl);
 
-      let ltexLsVersions: string[] = [];
+      const ltexLsVersions: string[] = [];
 
       jsonData.forEach((release: any) => {
         ltexLsVersions.push(release.tag_name);
@@ -249,8 +254,8 @@ export default class Dependencies {
         };
 
     return Code.window.withProgress(progressOptions,
-        async (progress: Code.Progress<{increment?: number, message?: string}>,
-          token: Code.CancellationToken): Promise<void> => {
+          async (progress: Code.Progress<{increment?: number; message?: string}>):
+            Promise<void> => {
       const codeProgress: ProgressStack = new ProgressStack(
           'Downloading and extracting Java', progress);
 
@@ -290,9 +295,9 @@ export default class Dependencies {
 
   private static searchBundledLtexLs(libDirPath: string): string {
     const names: string[] = Fs.readdirSync(libDirPath);
-    let ltexLsVersions: string[] = [];
+    const ltexLsVersions: string[] = [];
 
-    names.forEach((name) => {
+    names.forEach((name: string) => {
       if (name.startsWith('ltex-ls-')) {
         ltexLsVersions.push(name.substr(8));
       }
@@ -317,7 +322,7 @@ export default class Dependencies {
   }
 
   private static getRenamedSetting(workspaceConfig: Code.WorkspaceConfiguration,
-        newName: string, oldName: string) {
+        newName: string, oldName: string): any {
     const oldValue: any = workspaceConfig.get(oldName);
     return ((oldValue != null) ? oldValue : workspaceConfig.get(newName));
   }
@@ -341,7 +346,7 @@ export default class Dependencies {
       if (this._ltexLsPath != null) {
         Logger.log(`ltex.ltex-ls.path set to ${this._ltexLsPath}.`);
       } else {
-        Logger.log(`ltex.ltex-ls.path not set.`);
+        Logger.log('ltex.ltex-ls.path not set.');
         Logger.log(`Searching for ltex-ls in '${libDirPath}'...`);
         this._ltexLsPath = Dependencies.searchBundledLtexLs(libDirPath);
 
@@ -446,7 +451,7 @@ export default class Dependencies {
   private async test(): Promise<boolean> {
     const executable: CodeLanguageClient.Executable = await this.getLtexLsExecutable();
     executable.args.push('--version');
-    let executableOptions: ChildProcess.SpawnSyncOptionsWithStringEncoding = {
+    const executableOptions: ChildProcess.SpawnSyncOptionsWithStringEncoding = {
           cwd: executable.options.cwd,
           env: executable.options.env,
           encoding: 'utf-8',
@@ -475,10 +480,12 @@ export default class Dependencies {
   }
 
   public async getLtexLsExecutable(): Promise<CodeLanguageClient.Executable> {
-    let env: NodeJS.ProcessEnv = {};
+    const env: NodeJS.ProcessEnv = {};
 
-    for (let name in process.env) {
-      env[name] = process.env[name];
+    for (const name in process.env) {
+      if (Object.prototype.hasOwnProperty.call(process.env, name)) {
+        env[name] = process.env[name];
+      }
     }
 
     if (this._javaPath != null) {

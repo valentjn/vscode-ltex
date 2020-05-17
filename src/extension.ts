@@ -38,63 +38,6 @@ function convertToStringArray(obj: any): string[] {
   return (Array.isArray(obj) ? obj : [obj]);
 }
 
-async function startLanguageClient(context: Code.ExtensionContext): Promise<void> {
-  const dependencies: Dependencies = new Dependencies(context, startLanguageClient);
-  const success: boolean = await dependencies.install();
-  if (success !== true) return;
-
-  const statusBarMessageDisposable: Code.Disposable =
-      Code.window.setStatusBarMessage('$(loading~spin) Starting LTeX...');
-  const serverOptions: CodeLanguageClient.ServerOptions = await dependencies.getLtexLsExecutable();
-
-  // Options to control the language client
-  const clientOptions: CodeLanguageClient.LanguageClientOptions = {
-        documentSelector: [
-          {scheme: 'file', language: 'markdown'},
-          {scheme: 'untitled', language: 'markdown'},
-          {scheme: 'file', language: 'latex'},
-          {scheme: 'untitled', language: 'latex'},
-          {scheme: 'file', language: 'rsweave'},
-          {scheme: 'untitled', language: 'rsweave'},
-        ],
-        synchronize: {
-          configurationSection: 'ltex',
-        },
-        // Until it is specified in the LSP that the locale is automatically sent with
-        // the initialization request, we have to do that manually.
-        // See https://github.com/microsoft/language-server-protocol/issues/754.
-        initializationOptions: {
-          locale: Code.env.language,
-        },
-        revealOutputChannelOn: CodeLanguageClient.RevealOutputChannelOn.Never,
-        traceOutputChannel: Logger.clientOutputChannel,
-        outputChannel: Logger.serverOutputChannel,
-      };
-
-  const languageClient: CodeLanguageClient.LanguageClient = new CodeLanguageClient.LanguageClient(
-      'ltex', 'LTeX Language Server', serverOptions, clientOptions);
-
-  languageClient.onReady().then(languageClientIsReady.bind(null, statusBarMessageDisposable));
-
-  // Hack to enable the server to execute commands that change the client configuration
-  // (e.g., adding words to the dictionary).
-  // The client configuration cannot be directly changed by the server, so we send a
-  // telemetry notification to the client, which then changes the configuration.
-  languageClient.onTelemetry(processTelemetry);
-
-  Logger.log('Starting ltex-ls...');
-  Logger.logExecutable(serverOptions);
-  Logger.log('');
-
-  languageClient.info('Starting ltex-ls...');
-  let languageClientDisposable: Code.Disposable = languageClient.start();
-
-  // Push the disposable to the context's subscriptions so that the
-  // client can be deactivated on extension deactivation
-  context.subscriptions.push(languageClientDisposable);
-  context.subscriptions.push(statusBarMessageDisposable);
-}
-
 async function languageClientIsReady(disposable: Code.Disposable): Promise<void> {
   disposable.dispose();
   Code.window.setStatusBarMessage('$(check) LTeX ready', 1000);
@@ -171,6 +114,63 @@ function processTelemetry(params: any): void {
     setConfigurationSetting('ignoreRuleInSentence', ignoredRules, resourceConfig,
         'ignoreRuleInSentence');
   }
+}
+
+async function startLanguageClient(context: Code.ExtensionContext): Promise<void> {
+  const dependencies: Dependencies = new Dependencies(context, startLanguageClient);
+  const success: boolean = await dependencies.install();
+  if (success !== true) return;
+
+  const statusBarMessageDisposable: Code.Disposable =
+      Code.window.setStatusBarMessage('$(loading~spin) Starting LTeX...');
+  const serverOptions: CodeLanguageClient.ServerOptions = await dependencies.getLtexLsExecutable();
+
+  // Options to control the language client
+  const clientOptions: CodeLanguageClient.LanguageClientOptions = {
+        documentSelector: [
+          {scheme: 'file', language: 'markdown'},
+          {scheme: 'untitled', language: 'markdown'},
+          {scheme: 'file', language: 'latex'},
+          {scheme: 'untitled', language: 'latex'},
+          {scheme: 'file', language: 'rsweave'},
+          {scheme: 'untitled', language: 'rsweave'},
+        ],
+        synchronize: {
+          configurationSection: 'ltex',
+        },
+        // Until it is specified in the LSP that the locale is automatically sent with
+        // the initialization request, we have to do that manually.
+        // See https://github.com/microsoft/language-server-protocol/issues/754.
+        initializationOptions: {
+          locale: Code.env.language,
+        },
+        revealOutputChannelOn: CodeLanguageClient.RevealOutputChannelOn.Never,
+        traceOutputChannel: Logger.clientOutputChannel,
+        outputChannel: Logger.serverOutputChannel,
+      };
+
+  const languageClient: CodeLanguageClient.LanguageClient = new CodeLanguageClient.LanguageClient(
+      'ltex', 'LTeX Language Server', serverOptions, clientOptions);
+
+  languageClient.onReady().then(languageClientIsReady.bind(null, statusBarMessageDisposable));
+
+  // Hack to enable the server to execute commands that change the client configuration
+  // (e.g., adding words to the dictionary).
+  // The client configuration cannot be directly changed by the server, so we send a
+  // telemetry notification to the client, which then changes the configuration.
+  languageClient.onTelemetry(processTelemetry);
+
+  Logger.log('Starting ltex-ls...');
+  Logger.logExecutable(serverOptions);
+  Logger.log('');
+
+  languageClient.info('Starting ltex-ls...');
+  const languageClientDisposable: Code.Disposable = languageClient.start();
+
+  // Push the disposable to the context's subscriptions so that the
+  // client can be deactivated on extension deactivation
+  context.subscriptions.push(languageClientDisposable);
+  context.subscriptions.push(statusBarMessageDisposable);
 }
 
 export function activate(context: Code.ExtensionContext): void {
