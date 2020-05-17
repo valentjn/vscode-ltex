@@ -3,7 +3,7 @@
 .gitmodules
 .markdownlint.json
 .travis.yml
-tsconfig.json
+.tsconfig.json
 .webpack.config.js
 *.vsix
 
