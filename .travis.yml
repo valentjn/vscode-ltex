@@ -7,9 +7,8 @@ language: "node_js"
 node_js: "13"
 cache: false
 stages:
-- "buildAndTest"
-- "buildAndDeploy"
-stage: "buildAndTest"
+- "test"
+- "deploy"
 install:
 - "npm install"
 - "npm install -g vsce"
@@ -23,7 +22,7 @@ script:
 - "if [[ \"$IS_PRERELEASE\" -eq \"0\" ]]; then echo 'Detected stable release.'; else echo 'Detected prerelease.'; fi"
 jobs:
   include:
-  - stage: "buildAndDeploy"
+  - stage: "deploy"
     if: "tag IS present"
     os: "linux"
     before_deploy: "python3 tools/createOfflinePackages.py"
