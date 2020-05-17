@@ -2707,8 +2707,8 @@
     "compile": "tsc -p ./.tsconfig.json",
     "lint": "eslint --max-warnings 0 -c .eslintrc.js {src,test}/**/*.ts",
     "watch": "tsc -watch -p ./.tsconfig.json",
-    "pretest": "npm run compile",
-    "test": "node ./out/test/runTests.js"
+    "pretest": "npm run compile && git clean -f -x lib/",
+    "test": "mocha ./out/test/runTests.js"
   },
   "devDependencies": {
     "@types/mocha": "7.0.2",

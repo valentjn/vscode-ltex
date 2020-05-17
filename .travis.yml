@@ -8,7 +8,7 @@ stages:
   - "deploy"
 install: &commonInstall
   - "npm install"
-  - "npm install -g vsce"
+  - "npm install -g mocha vsce"
 script: &commonScript
   - "npm run lint"
   - "vsce package"

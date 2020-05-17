@@ -5,7 +5,8 @@ import * as Path from 'path';
 export function run(): Promise<void> {
   // Create the mocha test
   const mocha = new Mocha({
-        ui: 'tdd',
+        ui: 'bdd',
+        timeout: 300000,
       });
   mocha.useColors(true);
 

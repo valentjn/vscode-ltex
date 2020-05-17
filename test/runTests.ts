@@ -4,8 +4,6 @@ import * as Fs from 'fs';
 import * as Path from 'path';
 import * as Rimraf from 'rimraf';
 
-import {version as ltexVersion} from '../package.json';
-
 async function main(): Promise<void> {
   let exitCode: number = 1;
   let tmpDirPath: string | undefined;
@@ -22,7 +20,7 @@ async function main(): Promise<void> {
     console.log('Downloading and installing VS Code...');
     const vscodeExecutablePath: string = await CodeTest.downloadAndUnzipVSCode(version, platform);
 
-    console.log('Downloading and installing VS Code...');
+    console.log('Resolving CLI path to VS Code...');
     const cliPath: string = CodeTest.resolveCliPathFromVSCodeExecutablePath(vscodeExecutablePath);
 
     const tmpDirPrefix: string = Path.join(Path.dirname(vscodeExecutablePath), 'tmp-');
@@ -38,8 +36,6 @@ async function main(): Promise<void> {
           '--user-data-dir', userDataDirPath,
           '--extensions-dir', extensionsDirPath,
           '--install-extension', 'james-yu.latex-workshop',
-          '--install-extension', Path.join(__dirname, '..', '..',
-            `vscode-ltex-${ltexVersion}.vsix`),
         ], {
           encoding: 'utf-8',
           stdio: 'inherit',
