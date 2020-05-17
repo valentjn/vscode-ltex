@@ -1,6 +1,8 @@
 {
   "os": [
     "linux",
+    "osx",
+    "windows",
   ],
   "dist": "bionic",
   "language": "node_js",
@@ -20,6 +22,7 @@
   "script": [
     "npm run lint",
     "vsce package",
+    "npm run test",
     "export IS_PRERELEASE=$(python3 tools/checkIfPrerelease.py)",
     "if [[ \"$IS_PRERELEASE\" -eq \"0\" ]]; then echo 'Detected stable release.'; else echo 'Detected prerelease.'; fi",
   ],
