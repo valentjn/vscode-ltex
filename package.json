@@ -2705,6 +2705,7 @@
     "webpack": "webpack --config .webpack.config.js --mode development",
     "webpack-dev": "webpack --config .webpack.config.js --mode development --watch",
     "compile": "tsc -p ./.tsconfig.json",
+    "lint": "eslint --max-warnings 0 -c .eslintrc.json '{src,test}/**/*.ts'",
     "watch": "tsc -watch -p ./.tsconfig.json"
   },
   "devDependencies": {
@@ -2713,6 +2714,10 @@
     "@types/rimraf": "2.0.2",
     "@types/semver": "5.5.0",
     "@types/vscode": "1.39.0",
+    "@typescript-eslint/eslint-plugin": "2.33.0",
+    "@typescript-eslint/parser": "2.33.0",
+    "eslint": "6.0.0",
+    "eslint-config-google": "0.14.0",
     "ts-loader": "6.2.2",
     "typescript": "3.8.3",
     "webpack": "4.42.1",

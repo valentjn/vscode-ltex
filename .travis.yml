@@ -18,6 +18,7 @@
     "pip3 install semver",
   ],
   "script": [
+    "npm run lint",
     "vsce package",
     "export IS_PRERELEASE=$(python3 tools/checkIfPrerelease.py)",
     "if [[ \"$IS_PRERELEASE\" -eq \"0\" ]]; then echo 'Detected stable release.'; else echo 'Detected prerelease.'; fi",
