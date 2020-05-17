@@ -12,7 +12,9 @@ async function main(): Promise<void> {
 
   try {
     console.log('Downloading and installing VS Code...');
-    const vscodeExecutablePath: string = await CodeTest.downloadAndUnzipVSCode('stable');
+    let platform: string | undefined;
+    if (process.platform == 'win32') platform = 'win32-x64-archive';
+    const vscodeExecutablePath: string = await CodeTest.downloadAndUnzipVSCode('stable', platform);
 
     console.log('Downloading and installing VS Code...');
     const cliPath: string = CodeTest.resolveCliPathFromVSCodeExecutablePath(vscodeExecutablePath);
