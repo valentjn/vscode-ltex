@@ -1,71 +1,71 @@
-{
+module.exports = {
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
   },
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "google"
+    "google",
   ],
   "globals": {
     "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
+    "SharedArrayBuffer": "readonly",
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 11,
     "project": "./.tsconfig.json",
-    "sourceType": "module"
+    "sourceType": "module",
   },
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
   ],
   "rules": {
     "@typescript-eslint/no-explicit-any": [
-      "off"
+      "off",
     ],
     "@typescript-eslint/no-inferrable-types": [
-      "off"
+      "off",
     ],
     "@typescript-eslint/no-unused-vars": [
-      "off"
+      "off",
     ],
     "@typescript-eslint/no-unused-vars-experimental": [
-      "warn"
+      "warn",
     ],
     "@typescript-eslint/typedef": [
-      "warn"
+      "warn",
     ],
     "indent": [
-      "off"
+      "off",
     ],
     "linebreak-style": [
       "warn",
-      "unix"
+      (require("os").EOL === "\r\n" ? "windows" : "unix"),
     ],
     "max-len": [
       "warn",
-      100
+      100,
     ],
     "no-unused-vars": [
-      "off"
+      "off",
     ],
     "padded-blocks": [
-      "off"
+      "off",
     ],
     "require-jsdoc": [
-      "off"
+      "off",
     ],
     "quotes": [
       "warn",
-      "single"
+      "single",
     ],
     "semi": [
       "warn",
-      "always"
-    ]
+      "always",
+    ],
   }
 }
