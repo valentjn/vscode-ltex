@@ -2701,9 +2701,9 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "tsc -p ./ && webpack --mode production",
-    "webpack": "webpack --mode development",
-    "webpack-dev": "webpack --mode development --watch",
+    "vscode:prepublish": "tsc -p ./ && webpack --config .webpack.config.js --mode production",
+    "webpack": "webpack --config .webpack.config.js --mode development",
+    "webpack-dev": "webpack --config .webpack.config.js --mode development --watch",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./"
   },

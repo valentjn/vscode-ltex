@@ -4,7 +4,7 @@
 .markdownlint.json
 .travis.yml
 tsconfig.json
-webpack.config.js
+.webpack.config.js
 *.vsix
 
 .github/
