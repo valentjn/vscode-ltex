@@ -26,7 +26,7 @@ async function main(): Promise<void> {
     const extensionsDirPath: string = Path.join(tmpDirPath, 'extensions');
 
     console.log('Installing extensions...');
-    const process: ChildProcess.SpawnSyncReturns<string> = ChildProcess.spawnSync(cliPath, [
+    const childProcess: ChildProcess.SpawnSyncReturns<string> = ChildProcess.spawnSync(cliPath, [
           '--user-data-dir', userDataDirPath,
           '--extensions-dir', extensionsDirPath,
           '--install-extension', 'james-yu.latex-workshop',
@@ -37,7 +37,7 @@ async function main(): Promise<void> {
           stdio: 'inherit',
         });
 
-    if (process.status != 0) throw new Error('Could not install extensions.');
+    if (childProcess.status != 0) throw new Error('Could not install extensions.');
 
     console.log('Running tests...');
     exitCode = await CodeTest.runTests({
