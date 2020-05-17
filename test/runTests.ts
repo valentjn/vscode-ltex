@@ -7,6 +7,7 @@ import * as Rimraf from 'rimraf';
 import {version as ltexVersion} from '../package.json';
 
 async function main(): Promise<void> {
+  let exitCode: number = 1;
   let tmpDirPath: string | undefined;
 
   try {
@@ -27,7 +28,7 @@ async function main(): Promise<void> {
         });
     if (process.status != 0) throw new Error('Could not install extensions.');
 
-    await CodeTest.runTests({
+    exitCode = await CodeTest.runTests({
           vscodeExecutablePath: vscodeExecutablePath,
           launchArgs: [
             '--user-data-dir', userDataDirPath,
@@ -38,11 +39,12 @@ async function main(): Promise<void> {
         });
   } catch (e) {
     console.error('Failed to run tests');
-    console.error(e);
-    process.exit(1);
+    console.error(e.stack);
   } finally {
     if (tmpDirPath != null) Rimraf.sync(tmpDirPath);
   }
+
+  process.exit(exitCode);
 }
 
 main();
