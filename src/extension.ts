@@ -1,5 +1,3 @@
-'use strict';
-
 import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient';
 

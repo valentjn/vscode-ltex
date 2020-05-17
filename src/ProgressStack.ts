@@ -1,5 +1,3 @@
-'use strict';
-
 import * as Code from 'vscode';
 
 export default class ProgressStack {
