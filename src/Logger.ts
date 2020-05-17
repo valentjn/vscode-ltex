@@ -23,17 +23,20 @@ export default class Logger {
 
     if (e != null) {
       Logger.log('Error details:', 'Error');
-      Logger.log(e.stack, 'Error');
+      Logger.log(((e.stack != null) ? e.stack : `${e.name}: ${e.message}`), 'Error');
     }
   }
 
   public static logExecutable(executable: CodeLanguageClient.Executable): void {
     Logger.log('  Command: ' + JSON.stringify(executable.command));
     Logger.log('  Arguments: ' + JSON.stringify(executable.args));
-    Logger.log('  env[\'JAVA_HOME\']: ' +
-        JSON.stringify(executable.options.env['JAVA_HOME']));
-    Logger.log('  env[\'LTEX_LS_OPTS\']: ' +
-        JSON.stringify(executable.options.env['LTEX_LS_OPTS']));
+
+    if (executable.options != null) {
+      Logger.log('  env[\'JAVA_HOME\']: ' +
+          JSON.stringify(executable.options.env['JAVA_HOME']));
+      Logger.log('  env[\'LTEX_LS_OPTS\']: ' +
+          JSON.stringify(executable.options.env['LTEX_LS_OPTS']));
+    }
   }
 
   public static createOutputChannels(context: Code.ExtensionContext): void {

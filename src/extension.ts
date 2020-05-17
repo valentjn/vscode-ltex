@@ -6,7 +6,7 @@ import Logger from './Logger';
 
 async function setConfigurationSetting(settingName: string, settingValue: any,
       resourceConfig: Code.WorkspaceConfiguration, commandName: string): Promise<void> {
-  const configurationTargetString: string =
+  const configurationTargetString: string | undefined =
       resourceConfig.get(`configurationTarget.${commandName}`);
   let configurationTargets: Code.ConfigurationTarget[];
 
@@ -18,6 +18,9 @@ async function setConfigurationSetting(settingName: string, settingValue: any,
   } else if (configurationTargetString === 'workspaceFolder') {
     configurationTargets = [Code.ConfigurationTarget.WorkspaceFolder,
         Code.ConfigurationTarget.Workspace, Code.ConfigurationTarget.Global];
+  } else {
+    Logger.error(`Invalid value '${settingName}' for configurationTarget.`);
+    return;
   }
 
   for (const configurationTarget of configurationTargets) {
@@ -57,7 +60,7 @@ async function languageClientIsReady(disposable: Code.Disposable): Promise<void>
     message += 'Review the readme for a summary of important major changes.';
 
     Code.window.showInformationMessage(message,
-          'More info about LTeX 5.x').then((selectedItem: string) => {
+          'More info about LTeX 5.x').then((selectedItem: string | undefined) => {
       if (selectedItem != null) {
         Code.env.openExternal(Code.Uri.parse(
             'https://github.com/valentjn/vscode-ltex#note-for-transitioning-to-ltex-5x'));
@@ -76,10 +79,9 @@ function processTelemetry(params: any): void {
       Code.workspace.getConfiguration('ltex', Code.Uri.parse(params['uri']));
 
   if (params['commandName'] === 'ltex.addToDictionary') {
-    const language: string = resourceConfig.get('language');
-    const dictionarySetting: {[language: string]: string[]} = resourceConfig.get('dictionary');
-    let dictionary: string[] = (
-        ((dictionarySetting != null) && (dictionarySetting[language] != null)) ?
+    const language: string = resourceConfig.get('language', 'en-US');
+    const dictionarySetting: {[language: string]: string[]} = resourceConfig.get('dictionary', {});
+    let dictionary: string[] = ((dictionarySetting[language] != null) ?
         dictionarySetting[language] : []);
     dictionary = dictionary.concat(convertToStringArray(params['word']));
     dictionary.sort((a: string, b: string) =>
@@ -88,11 +90,10 @@ function processTelemetry(params: any): void {
     setConfigurationSetting('dictionary', dictionarySetting, resourceConfig, 'addToDictionary');
 
   } else if (params['commandName'] === 'ltex.disableRule') {
-    const language: string = resourceConfig.get('language');
+    const language: string = resourceConfig.get('language', 'en-US');
     const disabledRulesSetting: {[language: string]: string[]} =
-        resourceConfig.get('disabledRules');
-    let disabledRules: string[] = (
-        ((disabledRulesSetting != null) && (disabledRulesSetting[language] != null)) ?
+        resourceConfig.get('disabledRules', {});
+    let disabledRules: string[] = ((disabledRulesSetting[language] != null) ?
         disabledRulesSetting[language] : []);
     disabledRules = disabledRules.concat(convertToStringArray(params['ruleId']));
     disabledRules.sort((a: string, b: string) =>
@@ -103,7 +104,7 @@ function processTelemetry(params: any): void {
   } else if (params['commandName'] === 'ltex.ignoreRuleInSentence') {
     const ruleIds: string[] = convertToStringArray(params['ruleId']);
     const sentencePatterns: string[] = convertToStringArray(params['sentencePattern']);
-    const ignoredRules: any[] = resourceConfig.get('ignoreRuleInSentence');
+    const ignoredRules: any[] = resourceConfig.get('ignoreRuleInSentence', []);
 
     for (let i: number = 0; i < ruleIds.length; i++) {
       ignoredRules.push({'rule': ruleIds[i], 'sentence': sentencePatterns[i]});

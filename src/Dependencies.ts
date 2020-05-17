@@ -15,18 +15,20 @@ import ProgressStack from './ProgressStack';
 import Logger from './Logger';
 
 export default class Dependencies {
-  private static ltexVersion: string =
-      Code.extensions.getExtension('valentjn.vscode-ltex').packageJSON.version;
-
   private _context: Code.ExtensionContext;
-  private _startLanguageClient: (context: Code.ExtensionContext) => Promise<void>;
-  private _ltexLsPath: string;
-  private _javaPath: string;
+  private _startLanguageClient: (((context: Code.ExtensionContext) => Promise<void>) | undefined);
+  private _ltexVersion: string;
+  private _ltexLsPath: string | null = null;
+  private _javaPath: string | null = null;
 
   public constructor(context: Code.ExtensionContext,
         startLanguageClient?: (context: Code.ExtensionContext) => Promise<void>) {
     this._context = context;
     this._startLanguageClient = startLanguageClient;
+    const ltex: Code.Extension<any> | undefined =
+        Code.extensions.getExtension('valentjn.vscode-ltex');
+    if (ltex == null) throw new Error('Could not get LTeX version.');
+    this._ltexVersion = ltex.packageJSON.version;
   }
 
   private static parseUrl(urlStr: string): Https.RequestOptions {
@@ -41,12 +43,12 @@ export default class Dependencies {
   private static async doJsonRequest(urlStr: string): Promise<any> {
     return new Promise((resolve: (value?: unknown) => void, reject: (reason?: any) => void) => {
       Https.get(Dependencies.parseUrl(urlStr), (response: Http.IncomingMessage) => {
-        const contentType: string = response.headers['content-type'];
-        let error: Error;
+        const contentType: string | undefined = response.headers['content-type'];
+        let error: Error | null = null;
 
         if (response.statusCode !== 200) {
           error = new Error(`Request failed with status code ${response.statusCode}`);
-        } else if (!/^application\/json/.test(contentType)) {
+        } else if ((contentType != null) && !/^application\/json/.test(contentType)) {
           error = new Error(`Request failed with content type ${contentType}`);
         }
 
@@ -86,6 +88,12 @@ export default class Dependencies {
       Https.get(Dependencies.parseUrl(urlStr), (response: Http.IncomingMessage) => {
         if ((response.statusCode === 301) || (response.statusCode === 302) ||
               (response.statusCode === 307)) {
+          if (response.headers.location == null) {
+            reject(new Error(`Received redirection status code ${response.statusCode}', ` +
+                'but no location header.'));
+            return;
+          }
+
           Logger.log(`Redirected to '${response.headers.location}'...`);
           Dependencies.downloadFile(response.headers.location, path, codeProgress)
               .then(resolve).catch(reject);
@@ -96,22 +104,28 @@ export default class Dependencies {
           return;
         }
 
-        const totalBytes: number = parseInt(response.headers['content-length']);
+        const totalBytes: number = ((response.headers['content-length'] != null) ?
+            parseInt(response.headers['content-length']) : 0);
         const totalMb: number = Math.round(totalBytes / 1e6);
         let downloadedBytes: number = 0;
         let downloadedMb: number = -1;
+        codeProgress.updateTask(0, ((totalBytes > 0) ?
+            `${origTaskName} 0MB/${totalMb}MB` : origTaskName));
+
         response.pipe(file);
 
-        response.on('data', (chunk: any) => {
-          downloadedBytes += chunk.length;
-          const newDownloadedMb: number = Math.round(downloadedBytes / 1e6);
+        if (totalBytes > 0) {
+          response.on('data', (chunk: any) => {
+            downloadedBytes += chunk.length;
+            const newDownloadedMb: number = Math.round(downloadedBytes / 1e6);
 
-          if (newDownloadedMb != downloadedMb) {
-            downloadedMb = newDownloadedMb;
-            const taskName: string = `${origTaskName} ${downloadedMb}MB/${totalMb}MB`;
-            codeProgress.updateTask(downloadedBytes / totalBytes, taskName);
-          }
-        });
+            if (newDownloadedMb != downloadedMb) {
+              downloadedMb = newDownloadedMb;
+              const taskName: string = `${origTaskName} ${downloadedMb}MB/${totalMb}MB`;
+              codeProgress.updateTask(downloadedBytes / totalBytes, taskName);
+            }
+          });
+        }
 
         file.on('finish', () => {
           file.close();
@@ -124,11 +138,11 @@ export default class Dependencies {
     });
   }
 
-  private static getLatestCompatibleLtexLsVersion(versions: string[]): string {
-    let latestVersion: string = null;
+  private getLatestCompatibleLtexLsVersion(versions: string[]): string | null {
+    let latestVersion: string | null = null;
 
     versions.forEach((version: string) => {
-      if (SemVer.valid(version) && SemVer.lte(version, Dependencies.ltexVersion) &&
+      if (SemVer.valid(version) && SemVer.lte(version, this._ltexVersion) &&
             ((latestVersion == null) || SemVer.gt(version, latestVersion))) {
         latestVersion = version;
       }
@@ -141,6 +155,7 @@ export default class Dependencies {
         Promise<void> {
     codeProgress.startTask(0.1, `Downloading ${name}...`);
     const url: Url.UrlWithStringQuery = Url.parse(urlStr);
+    if (url.pathname == null) throw new Error(`Could not get path name from URL '${urlStr}'.`);
     const archiveName: string = Path.basename(url.pathname);
     const archiveType: string = ((Path.extname(archiveName) == '.zip') ? 'zip' : 'tar.gz');
     const tmpDirPath: string = Fs.mkdtempSync(Path.join(this._context.extensionPath, 'tmp-'));
@@ -165,7 +180,7 @@ export default class Dependencies {
       codeProgress.updateTask(0.8);
 
       const fileNames: string[] = Fs.readdirSync(tmpDirPath);
-      let extractedDirPath: string;
+      let extractedDirPath: string | null = null;
 
       for (let i: number = 0; i < fileNames.length; i++) {
         const filePath: string = Path.join(tmpDirPath, fileNames[i]);
@@ -174,6 +189,10 @@ export default class Dependencies {
           extractedDirPath = filePath;
           break;
         }
+      }
+
+      if (extractedDirPath == null) {
+        throw new Error('Could not find a directory after extracting the archive.');
       }
 
       codeProgress.updateTask(0.85);
@@ -224,11 +243,11 @@ export default class Dependencies {
         ltexLsVersions.push(release.tag_name);
       });
 
-      const ltexLsVersion: string = Dependencies.getLatestCompatibleLtexLsVersion(ltexLsVersions);
+      const ltexLsVersion: string | null = this.getLatestCompatibleLtexLsVersion(ltexLsVersions);
 
       if (ltexLsVersion == null) {
         throw Error('Could not find a compatible version of ltex-ls on GitHub. ' +
-            `LTeX version is '${Dependencies.ltexVersion}', available ltex-ls versions are ` +
+            `LTeX version is '${this._ltexVersion}', available ltex-ls versions are ` +
             `'${JSON.stringify(ltexLsVersions)}'.`);
       }
 
@@ -291,7 +310,7 @@ export default class Dependencies {
     });
   }
 
-  private static searchBundledLtexLs(libDirPath: string): string {
+  private searchBundledLtexLs(libDirPath: string): string | null {
     const names: string[] = Fs.readdirSync(libDirPath);
     const ltexLsVersions: string[] = [];
 
@@ -301,11 +320,11 @@ export default class Dependencies {
       }
     });
 
-    const ltexLsVersion: string = Dependencies.getLatestCompatibleLtexLsVersion(ltexLsVersions);
+    const ltexLsVersion: string | null = this.getLatestCompatibleLtexLsVersion(ltexLsVersions);
     return ((ltexLsVersion != null) ? Path.join(libDirPath, `ltex-ls-${ltexLsVersion}`) : null);
   }
 
-  private static searchBundledJava(libDirPath: string): string {
+  private static searchBundledJava(libDirPath: string): string | null {
     const javaPath: string = Path.join(libDirPath, 'jdk-11.0.7+10-jre');
 
     if (Fs.existsSync(javaPath)) {
@@ -339,14 +358,14 @@ export default class Dependencies {
       // try 1: use ltex.ltexLs.path or lib/ (don't download)
       // try 2: use ltex.ltexLs.path or lib/ or download
       Logger.log('');
-      this._ltexLsPath = workspaceConfig.get('ltex-ls.path');
+      this._ltexLsPath = workspaceConfig.get('ltex-ls.path', null);
 
       if (this._ltexLsPath != null) {
         Logger.log(`ltex.ltex-ls.path set to ${this._ltexLsPath}.`);
       } else {
         Logger.log('ltex.ltex-ls.path not set.');
         Logger.log(`Searching for ltex-ls in '${libDirPath}'...`);
-        this._ltexLsPath = Dependencies.searchBundledLtexLs(libDirPath);
+        this._ltexLsPath = this.searchBundledLtexLs(libDirPath);
 
         if (this._ltexLsPath != null) {
           Logger.log(`ltex-ls found in '${this._ltexLsPath}'.`);
@@ -354,7 +373,7 @@ export default class Dependencies {
           Logger.log(`Could not find a compatible version of ltex-ls in '${libDirPath}'.`);
           Logger.log('Initiating download of ltex-ls...');
           await this.installLtexLs();
-          this._ltexLsPath = Dependencies.searchBundledLtexLs(libDirPath);
+          this._ltexLsPath = this.searchBundledLtexLs(libDirPath);
 
           if (this._ltexLsPath != null) {
             Logger.log(`ltex-ls found in '${this._ltexLsPath}'.`);
@@ -436,9 +455,9 @@ export default class Dependencies {
         ['Try again', 'Offline instructions'] : ['Offline instructions']);
 
     Code.window.showErrorMessage(`${message} You might want to try offline installation.`, ...items)
-          .then((selectedItem: string) => {
+          .then((selectedItem: string | undefined) => {
       if (selectedItem == 'Try again') {
-        this._startLanguageClient(this._context);
+        if (this._startLanguageClient != null) this._startLanguageClient(this._context);
       } else if (selectedItem == 'Offline instructions') {
         Code.env.openExternal(Code.Uri.parse(
             'https://github.com/valentjn/vscode-ltex#offline-installation'));
@@ -448,13 +467,17 @@ export default class Dependencies {
 
   private async test(): Promise<boolean> {
     const executable: CodeLanguageClient.Executable = await this.getLtexLsExecutable();
+    if (executable.args == null) executable.args = [];
     executable.args.push('--version');
     const executableOptions: ChildProcess.SpawnSyncOptionsWithStringEncoding = {
-          cwd: executable.options.cwd,
-          env: executable.options.env,
           encoding: 'utf-8',
           timeout: 10000,
         };
+
+    if (executable.options != null) {
+      executableOptions.cwd = executable.options.cwd;
+      executableOptions.env = executable.options.env;
+    }
 
     Logger.log('Testing ltex-ls...');
     Logger.logExecutable(executable);
@@ -478,6 +501,11 @@ export default class Dependencies {
   }
 
   public async getLtexLsExecutable(): Promise<CodeLanguageClient.Executable> {
+    if (this._ltexLsPath == null) {
+      return Promise.reject(new Error('Could not get ltex-ls executable, ' +
+          'has to be installed first.'));
+    }
+
     const env: NodeJS.ProcessEnv = {};
 
     for (const name in process.env) {
