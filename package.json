@@ -168,7 +168,7 @@
             "Portuguese",
             "Portuguese (Angola preAO)",
             "Portuguese (Brazil)",
-            "Portuguese (Mo\u00e7ambique preAO)",
+            "Portuguese (Moçambique preAO)",
             "Portuguese (Portugal)",
             "Romanian",
             "Russian",
@@ -273,7 +273,7 @@
               "Portuguese",
               "Portuguese (Angola preAO)",
               "Portuguese (Brazil)",
-              "Portuguese (Mo\u00e7ambique preAO)",
+              "Portuguese (Moçambique preAO)",
               "Portuguese (Portugal)",
               "Romanian",
               "Russian",
@@ -574,8 +574,8 @@
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-MZ` (Portuguese (Mo\u00e7ambique preAO)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'pt-MZ' (Portuguese (Mo\u00e7ambique preAO)) words that should not be counted as spelling errors."
+              "markdownDescription": "List of additional `pt-MZ` (Portuguese (Moçambique preAO)) words that should not be counted as spelling errors.",
+              "description": "List of additional 'pt-MZ' (Portuguese (Moçambique preAO)) words that should not be counted as spelling errors."
             },
             "pt-PT": {
               "type": "array",
@@ -970,8 +970,8 @@
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-MZ` (Portuguese (Mo\u00e7ambique preAO)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'pt-MZ' (Portuguese (Mo\u00e7ambique preAO)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "List of additional `pt-MZ` (Portuguese (Moçambique preAO)) rules that should be disabled (if enabled by default by LanguageTool).",
+              "description": "List of additional 'pt-MZ' (Portuguese (Moçambique preAO)) rules that should be disabled (if enabled by default by LanguageTool)."
             },
             "pt-PT": {
               "type": "array",
@@ -1362,8 +1362,8 @@
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-MZ` (Portuguese (Mo\u00e7ambique preAO)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'pt-MZ' (Portuguese (Mo\u00e7ambique preAO)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "List of additional `pt-MZ` (Portuguese (Moçambique preAO)) rules that should be enabled (if disabled by default by LanguageTool).",
+              "description": "List of additional 'pt-MZ' (Portuguese (Moçambique preAO)) rules that should be enabled (if disabled by default by LanguageTool)."
             },
             "pt-PT": {
               "type": "array",
@@ -1700,8 +1700,8 @@
             "Log the type of requests and responses between language client and server.",
             "Log the type and contents of requests and responses between language client and server."
           ],
-          "markdownDescription": "Debug setting to log the communication between language client and server. When reporting issues, set this to `\"verbose\"` and open the `LTeX Language Client` log in `View` \u2192 `Output`. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "Debug setting to log the communication between language client and server. When reporting issues, set this to \"verbose\" and open the 'LTeX Language Client' log in 'View' \u2192 'Output'. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect."
+          "markdownDescription": "Debug setting to log the communication between language client and server. When reporting issues, set this to `\"verbose\"` and open the `LTeX Language Client` log in `View` → `Output`. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "Debug setting to log the communication between language client and server. When reporting issues, set this to \"verbose\" and open the 'LTeX Language Client' log in 'View' → 'Output'. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.javaHome": {
           "type": "string",
