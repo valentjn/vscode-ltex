@@ -2706,7 +2706,9 @@
     "webpack-dev": "npx webpack --config .webpack.config.js --mode development --watch",
     "compile": "tsc -p ./.tsconfig.json",
     "lint": "eslint --max-warnings 0 -c .eslintrc.json '{src,test}/**/*.ts'",
-    "watch": "tsc -watch -p ./.tsconfig.json"
+    "watch": "tsc -watch -p ./.tsconfig.json",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTests.js"
   },
   "devDependencies": {
     "@types/mocha": "7.0.2",
@@ -2719,8 +2721,10 @@
     "@typescript-eslint/parser": "2.33.0",
     "eslint": "6.0.0",
     "eslint-config-google": "0.14.0",
+    "mocha": "7.1.2",
     "ts-loader": "6.2.2",
     "typescript": "3.8.3",
+    "vscode-test": "1.3.0",
     "webpack": "4.42.1",
     "webpack-cli": "3.3.11"
   },
