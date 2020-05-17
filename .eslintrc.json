@@ -34,20 +34,20 @@
       "off"
     ],
     "@typescript-eslint/no-unused-vars-experimental": [
-      "error"
+      "warn"
     ],
     "@typescript-eslint/typedef": [
-      "error"
+      "warn"
     ],
     "indent": [
       "off"
     ],
     "linebreak-style": [
-      "error",
+      "warn",
       "unix"
     ],
     "max-len": [
-      "error",
+      "warn",
       100
     ],
     "no-unused-vars": [
@@ -60,11 +60,11 @@
       "off"
     ],
     "quotes": [
-      "error",
+      "warn",
       "single"
     ],
     "semi": [
-      "error",
+      "warn",
       "always"
     ]
   }
