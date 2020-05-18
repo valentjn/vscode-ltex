@@ -58,8 +58,26 @@ describe('LTeX tests', () => {
     await languageClient.onReady();
   });
 
-  it('Test', async () => {
-    const document: Code.TextDocument = await createNewFile('test.md', 'This is an test.');
+  it('test1.md - Test checking of Markdown files', async () => {
+    const document: Code.TextDocument = await createNewFile('test1.md',
+        'This is *an test*.');
+
+    return new Promise((resolve: () => void) => {
+      if (languageClient == null) throw new Error('Language client not initialized.');
+      languageClient.onNotification('textDocument/publishDiagnostics',
+            (params: CodeLanguageClient.PublishDiagnosticsParams) => {
+        if (params.uri == document.uri.toString()) {
+          Assert.equal(params.diagnostics.length, 1);
+          Assert.equal(params.diagnostics[0].source, 'LTeX - EN_A_VS_AN');
+          resolve();
+        }
+      });
+    });
+  });
+
+  it('test1.tex - Test checking of LaTeX files', async () => {
+    const document: Code.TextDocument = await createNewFile('test1.tex',
+        'This is \\textbf{an test}.');
 
     return new Promise((resolve: () => void) => {
       if (languageClient == null) throw new Error('Language client not initialized.');
