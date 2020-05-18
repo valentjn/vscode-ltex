@@ -4,13 +4,18 @@ import * as CodeLanguageClient from 'vscode-languageclient';
 export default class Logger {
   private static _clientOutputChannel: Code.OutputChannel;
   private static _serverOutputChannel: Code.OutputChannel;
+  private static _isDebugMode: boolean = (
+      (Object.prototype.hasOwnProperty.call(process.env, 'LTEX_DEBUG')) &&
+      (process.env.LTEX_DEBUG == '1'));
 
   public static log(message: string, type: string = 'Info'): void {
     const timestamp: string = (new Date()).toISOString();
     const lines: string[] = message.split(/\r?\n/);
 
     lines.forEach((line: string) => {
-      Logger._clientOutputChannel.appendLine(`${timestamp} ${type}: ${line}`);
+      const logLine: string = `${timestamp} ${type}: ${line}`;
+      Logger._clientOutputChannel.appendLine(logLine);
+      if (Logger._isDebugMode) console.log(logLine);
     });
   }
 

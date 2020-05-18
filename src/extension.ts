@@ -177,25 +177,30 @@ async function startLanguageClient(context: Code.ExtensionContext):
 
 export class Api {
   public languageClient: CodeLanguageClient.LanguageClient | null = null;
+  public clientOutputChannel: Code.OutputChannel | null = null;
+  public serverOutputChannel: Code.OutputChannel | null = null;
 }
 
 export async function activate(context: Code.ExtensionContext): Promise<Api> {
-  const api: Api = new Api();
-
   Logger.createOutputChannels(context);
+
+  const api: Api = new Api();
+  api.clientOutputChannel = Logger.clientOutputChannel;
+  api.serverOutputChannel = Logger.serverOutputChannel;
 
   // Allow to enable languageTool in specific workspaces
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
-  if (!workspaceConfig.get('enabled')) return api;
 
-  try {
-    // create the language client
-    api.languageClient = await startLanguageClient(context);
-  } catch (e) {
-    Logger.error('Could not start the language client!', e);
-    Logger.showClientOutputChannel();
-    Code.window.showErrorMessage('Could not start the language client.');
+  if (workspaceConfig.get('enabled')) {
+    try {
+      // create the language client
+      api.languageClient = await startLanguageClient(context);
+    } catch (e) {
+      Logger.error('Could not start the language client!', e);
+      Logger.showClientOutputChannel();
+      Code.window.showErrorMessage('Could not start the language client.');
+    }
   }
 
-  return api;
+  return Promise.resolve(api);
 }
