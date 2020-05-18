@@ -52,6 +52,7 @@ async function main(): Promise<void> {
           ],
           extensionDevelopmentPath: Path.join(__dirname, '..', '..'),
           extensionTestsPath: Path.join(__dirname, './index'),
+          extensionTestsEnv: {'LTEX_DEBUG': '1'},
         });
   } catch (e) {
     console.error(`Failed to run tests: '${e}'`);
