@@ -31,7 +31,7 @@ async function main(): Promise<void> {
     const userDataDirPath: string = Path.join(tmpDirPath, 'user');
     const extensionsDirPath: string = Path.join(tmpDirPath, 'extensions');
 
-    console.log('Installing extensions...');
+    console.log('Calling Code CLI for extension installation...');
     const childProcess: ChildProcess.SpawnSyncReturns<string> = ChildProcess.spawnSync(cliPath, [
           '--user-data-dir', userDataDirPath,
           '--extensions-dir', extensionsDirPath,
@@ -54,10 +54,7 @@ async function main(): Promise<void> {
           extensionTestsPath: Path.join(__dirname, './index'),
         });
   } catch (e) {
-    console.error('Failed to run tests');
-    console.error(`Error name: ${e.name}`);
-    console.error(`Error message: ${e.message}`);
-    console.error(`Error stack: ${e.stack}`);
+    console.error(`Failed to run tests: '${e}'`);
   } finally {
     if (tmpDirPath != null) Rimraf.sync(tmpDirPath);
   }

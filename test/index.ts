@@ -3,7 +3,6 @@ import * as Mocha from 'mocha';
 import * as Path from 'path';
 
 export function run(): Promise<void> {
-  // Create the mocha test
   const mocha = new Mocha({
         ui: 'bdd',
         timeout: 300000,
@@ -18,11 +17,9 @@ export function run(): Promise<void> {
         return reject(e);
       }
 
-      // Add files to the test suite
       files.forEach((x: string) => mocha.addFile(Path.resolve(testsRoot, x)));
 
       try {
-        // Run the mocha test
         mocha.run((failures: number): void => {
           if (failures > 0) {
             reject(new Error(`${failures} tests failed.`));
