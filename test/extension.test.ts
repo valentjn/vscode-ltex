@@ -59,11 +59,18 @@ describe('LTeX tests', () => {
   });
 
   it('Test', async () => {
-    const document: Code.TextDocument = await createNewFile('test.md', 'This is an test.\n');
-    await sleep(20000);
-    const diagnostics: Code.Diagnostic[] = Code.languages.getDiagnostics(document.uri);
-    console.log(diagnostics);
-    Assert.equal(diagnostics.length, 1);
-    Assert.equal(diagnostics[0].source, 'LTeX - EN_A_VS_AN');
+    const document: Code.TextDocument = await createNewFile('test.md', 'This is an test.');
+
+    return new Promise((resolve: () => void) => {
+      if (languageClient == null) throw new Error('Language client not initialized.');
+      languageClient.onNotification('textDocument/publishDiagnostics',
+            (params: CodeLanguageClient.PublishDiagnosticsParams) => {
+        if (params.uri == document.uri.toString()) {
+          Assert.equal(params.diagnostics.length, 1);
+          Assert.equal(params.diagnostics[0].source, 'LTeX - EN_A_VS_AN');
+          resolve();
+        }
+      });
+    });
   });
 });
