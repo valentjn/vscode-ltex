@@ -1,5 +1,6 @@
 import * as ChildProcess from 'child_process';
 import * as CodeTest from 'vscode-test';
+import * as CodeTestRunTest from 'vscode-test/out/runTest';
 import * as Fs from 'fs';
 import * as Path from 'path';
 import * as Rimraf from 'rimraf';
@@ -43,8 +44,7 @@ async function main(): Promise<void> {
 
     if (childProcess.status != 0) throw new Error('Could not install extensions.');
 
-    console.log('Running tests...');
-    exitCode = await CodeTest.runTests({
+    const testOptions: CodeTestRunTest.TestOptions = {
           vscodeExecutablePath: vscodeExecutablePath,
           launchArgs: [
             '--user-data-dir', userDataDirPath,
@@ -53,7 +53,10 @@ async function main(): Promise<void> {
           extensionDevelopmentPath: Path.join(__dirname, '..', '..'),
           extensionTestsPath: Path.join(__dirname, './index'),
           extensionTestsEnv: {'LTEX_DEBUG': '1'},
-        });
+        };
+
+    console.log('Running tests...');
+    exitCode = await CodeTest.runTests(testOptions);
   } catch (e) {
     console.error(`Failed to run tests: '${e}'`);
   } finally {
