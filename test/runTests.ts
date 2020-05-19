@@ -44,6 +44,16 @@ async function main(): Promise<void> {
 
     if (childProcess.status != 0) throw new Error('Could not install extensions.');
 
+    const env: NodeJS.ProcessEnv = {};
+
+    for (const name in process.env) {
+      if (Object.prototype.hasOwnProperty.call(process.env, name)) {
+        env[name] = process.env[name];
+      }
+    }
+
+    env['LTEX_DEBUG'] = '1';
+
     const testOptions: CodeTestRunTest.TestOptions = {
           vscodeExecutablePath: vscodeExecutablePath,
           launchArgs: [
@@ -52,7 +62,7 @@ async function main(): Promise<void> {
           ],
           extensionDevelopmentPath: Path.join(__dirname, '..', '..'),
           extensionTestsPath: Path.join(__dirname, './index'),
-          extensionTestsEnv: {'LTEX_DEBUG': '1'},
+          extensionTestsEnv: env,
         };
 
     console.log('Running tests...');
