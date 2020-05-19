@@ -138,13 +138,15 @@ def main():
   else:
     ltexPlatformArchs = [("linux", "x64"), ("mac", "x64"), ("windows", "x64")]
 
+  cleanLibDir()
+
   for ltexPlatform, ltexArch in ltexPlatformArchs:
     print("")
     print("Processing platform '{}' and architecture '{}'...".format(ltexPlatform, ltexArch))
-    cleanLibDir()
     downloadLtexLs()
     downloadJava(ltexPlatform, ltexArch)
     createPackage(ltexPlatform, ltexArch)
+    cleanLibDir()
 
 
 
