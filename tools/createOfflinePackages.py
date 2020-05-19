@@ -1,7 +1,9 @@
 #!/usr/bin/python
 
+import argparse
 import json
 import os
+import platform
 import shlex
 import shutil
 import subprocess
@@ -103,13 +105,13 @@ def downloadJava(platform, arch):
 
 
 
-def createPackage(platform=None, arch=None):
+def createPackage(ltexPlatform=None, ltexArch=None):
   ltexVersion = getLtexVersion()
 
-  if platform is None:
+  if ltexPlatform is None:
     packageName = "vscode-ltex-{}.vsix".format(ltexVersion)
   else:
-    packageName = "vscode-ltex-{}-offline-{}-{}.vsix".format(ltexVersion, platform, arch)
+    packageName = "vscode-ltex-{}-offline-{}-{}.vsix".format(ltexVersion, ltexPlatform, ltexArch)
 
   cmd = ["vsce", "package", "-o", packageName]
   print("Creating package by running '{}'...".format(" ".join(shlex.quote(x) for x in cmd)))
@@ -118,13 +120,31 @@ def createPackage(platform=None, arch=None):
 
 
 def main():
-  for platform, arch in [("linux", "x64"), ("mac", "x64"), ("windows", "x64")]:
+  parser = argparse.ArgumentParser(description="build offline packages of LTeX")
+  parser.add_argument("--current-system", action="store_true",
+      help="build offline package only for current platform/architecture")
+  args = parser.parse_args()
+
+  if args.current_system:
+    ltexPlatform = {
+          "Linux" : "linux",
+          "Darwin" : "mac",
+          "Windows" : "windows",
+        }[platform.system()]
+    ltexArch = {
+          "x86_64" : "x64",
+        }[platform.machine()]
+    ltexPlatformArchs = [(ltexPlatform, ltexArch)]
+  else:
+    ltexPlatformArchs = [("linux", "x64"), ("mac", "x64"), ("windows", "x64")]
+
+  for ltexPlatform, ltexArch in ltexPlatformArchs:
     print("")
-    print("Processing platform '{}' and architecture '{}'...".format(platform, arch))
+    print("Processing platform '{}' and architecture '{}'...".format(ltexPlatform, ltexArch))
     cleanLibDir()
     downloadLtexLs()
-    downloadJava(platform, arch)
-    createPackage(platform, arch)
+    downloadJava(ltexPlatform, ltexArch)
+    createPackage(ltexPlatform, ltexArch)
 
 
 
