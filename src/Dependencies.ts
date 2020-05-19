@@ -38,8 +38,15 @@ export default class Dependencies {
   }
 
   private static async doJsonRequest(urlStr: string): Promise<any> {
+    const requestOptions: Https.RequestOptions = Dependencies.parseUrl(urlStr);
+
+    if (Object.prototype.hasOwnProperty.call(process.env, 'LTEX_GITHUB_OAUTH_TOKEN')) {
+      if (requestOptions.headers == null) requestOptions.headers = {};
+      requestOptions.headers['Authorization'] = `token ${process.env['LTEX_GITHUB_OAUTH_TOKEN']}`;
+    }
+
     return new Promise((resolve: (value: unknown) => void, reject: (reason: Error) => void) => {
-      Https.get(Dependencies.parseUrl(urlStr), (response: Http.IncomingMessage) => {
+      Https.get(requestOptions, (response: Http.IncomingMessage) => {
         const contentType: string | undefined = response.headers['content-type'];
         let error: Error | null = null;
 
