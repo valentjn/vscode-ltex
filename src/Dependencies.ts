@@ -44,15 +44,9 @@ export default class Dependencies {
         let error: Error | null = null;
 
         if (response.statusCode !== 200) {
-          error = new Error(`Request failed with status code ${response.statusCode}`);
+          error = new Error(`Request failed with status code ${response.statusCode}.`);
         } else if ((contentType != null) && !/^application\/json/.test(contentType)) {
-          error = new Error(`Request failed with content type ${contentType}`);
-        }
-
-        if (error != null) {
-          response.resume();
-          reject(error);
-          return;
+          error = new Error(`Request failed with content type ${contentType}.`);
         }
 
         response.setEncoding('utf8');
@@ -63,11 +57,16 @@ export default class Dependencies {
         });
 
         response.on('end', () => {
-          try {
-            const jsonData: any = JSON.parse(rawData);
-            resolve(jsonData);
-          } catch (e) {
-            reject(e);
+          if (error == null) {
+            try {
+              const jsonData: any = JSON.parse(rawData);
+              resolve(jsonData);
+            } catch (e) {
+              reject(e);
+            }
+          } else {
+            error.message += ` Response body: '${rawData}'.`;
+            reject(error);
           }
         });
       }).on('error', (e: Error) => {
