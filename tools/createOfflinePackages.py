@@ -50,8 +50,14 @@ def getLatestCompatibleLtexLsVersion(versions):
 
 def downloadLtexLs():
   releasesUrl = "https://api.github.com/repos/valentjn/ltex-ls/releases"
+  headers = {}
+
+  if "LTEX_GITHUB_OAUTH_TOKEN" in os.environ:
+    headers["Authorization"] = os.environ["LTEX_GITHUB_OAUTH_TOKEN"]
+
   print("Fetching list of ltex-ls releases from '{}'...".format(releasesUrl))
-  with urllib.request.urlopen(releasesUrl) as f: releases = json.load(f)
+  apiRequest = urllib.request.Request(releasesUrl, headers=headers)
+  with urllib.request.urlopen(apiRequest) as f: releases = json.load(f)
 
   ltexLsVersion = getLatestCompatibleLtexLsVersion([x["tag_name"] for x in releases])
   print("Latest compatible release is 'ltex-ls-{}'.".format(ltexLsVersion))
