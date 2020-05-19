@@ -9,8 +9,6 @@ stages:
 install: &commonInstall
   - "npm install"
   - "npm install -g mocha vsce"
-  - "sudo apt-get -y install python3-pip"
-  - "pip3 install semver"
 script: &commonScript
   - "npm run lint"
   - "vsce package"
@@ -21,15 +19,24 @@ jobs:
       os: "linux"
       install:
         - *commonInstall
+        - "sudo apt-get -y install python3-pip"
+        - "pip3 install semver"
         - "export DISPLAY=':99.0'"
         - "/usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &"
     - stage: "test"
       os: "osx"
+      install:
+        - *commonInstall
+        - "pip3 install semver"
     # deactivated due to https://github.com/microsoft/vscode/issues/77499
     #- stage: "test"
     #  os: "windows"
     - stage: "deploy"
       if: "tag IS present"
+      install:
+        - *commonInstall
+        - "sudo apt-get -y install python3-pip"
+        - "pip3 install semver"
       script:
         - *commonScript
         - "export LTEX_LS_VERSION=\"$(python -c \"import json; print(json.load(open('package.json', 'r'))['version'], end='')\")\""
