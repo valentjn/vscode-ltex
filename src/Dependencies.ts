@@ -6,7 +6,6 @@ import * as Fs from 'fs';
 import * as Http from 'http';
 import * as Https from 'https';
 import * as Path from 'path';
-import * as Rimraf from 'rimraf';
 import * as SemVer from 'semver';
 import * as Tar from 'tar';
 import * as Url from 'url';
@@ -165,61 +164,78 @@ export default class Dependencies {
     const archivePath: string = Path.join(tmpDirPath, archiveName);
     codeProgress.finishTask();
 
-    try {
-      codeProgress.startTask(0.8, `Downloading ${name}...`);
-      Logger.log(`Downloading ${name} from '${urlStr}' to '${archivePath}'...`);
-      await Dependencies.downloadFile(urlStr, archivePath, codeProgress);
-      codeProgress.finishTask();
+    codeProgress.startTask(0.8, `Downloading ${name}...`);
+    Logger.log(`Downloading ${name} from '${urlStr}' to '${archivePath}'...`);
+    await Dependencies.downloadFile(urlStr, archivePath, codeProgress);
+    codeProgress.finishTask();
 
-      codeProgress.startTask(0.1, `Extracting ${name}...`);
-      Logger.log(`Extracting ${name} archive to '${tmpDirPath}'...`);
+    codeProgress.startTask(0.1, `Extracting ${name}...`);
+    Logger.log(`Extracting ${name} archive to '${tmpDirPath}'...`);
 
-      if (archiveType == 'zip') {
-        await extractZip(archivePath, {dir: tmpDirPath});
-      } else {
-        await Tar.extract({file: archivePath, cwd: tmpDirPath});
-      }
+    if (archiveType == 'zip') {
+      await extractZip(archivePath, {dir: tmpDirPath});
+    } else {
+      await Tar.extract({file: archivePath, cwd: tmpDirPath});
+    }
 
-      codeProgress.updateTask(0.8);
+    codeProgress.updateTask(0.8);
 
-      const fileNames: string[] = Fs.readdirSync(tmpDirPath);
-      let extractedDirPath: string | null = null;
+    const fileNames: string[] = Fs.readdirSync(tmpDirPath);
+    let extractedDirPath: string | null = null;
 
-      for (let i: number = 0; i < fileNames.length; i++) {
-        const filePath: string = Path.join(tmpDirPath, fileNames[i]);
+    for (let i: number = 0; i < fileNames.length; i++) {
+      const filePath: string = Path.join(tmpDirPath, fileNames[i]);
+      const stats: Fs.Stats = Fs.lstatSync(filePath);
 
-        if (Fs.lstatSync(filePath).isDirectory()) {
+      if (stats.isDirectory()) {
+        if (extractedDirPath == null) {
           extractedDirPath = filePath;
-          break;
+        } else {
+          Logger.warn('Found multiple directories after extraction: ' +
+              `'${extractedDirPath}' and '${filePath}', using the former.`);
+        }
+      } else {
+        try {
+          Logger.log(`Deleting '${filePath}'...`);
+          Fs.unlinkSync(filePath);
+        } catch (e) {
+          Logger.warn(`Could not delete '${filePath}', leaving temporary file on disk.`, e);
         }
       }
-
-      if (extractedDirPath == null) {
-        throw new Error('Could not find a directory after extracting the archive.');
-      }
-
-      codeProgress.updateTask(0.85);
-
-      const targetDirPath: string = Path.join(
-          this._context.extensionPath, 'lib', Path.basename(extractedDirPath));
-      const targetExists: boolean = Fs.existsSync(targetDirPath);
-      codeProgress.updateTask(0.9);
-
-      if (targetExists) {
-        Logger.warn(`Did not move '${extractedDirPath}' to '${targetDirPath}', ` +
-            'as target already exists.');
-      } else {
-        Logger.log(`Moving '${extractedDirPath}' to '${targetDirPath}'...`);
-        Fs.renameSync(extractedDirPath, targetDirPath);
-      }
-
-      codeProgress.finishTask();
-
-      return Promise.resolve();
-    } finally {
-      Logger.log(`Removing temporary directory '${tmpDirPath}'...`);
-      Rimraf.sync(tmpDirPath);
     }
+
+    if (extractedDirPath == null) {
+      throw new Error('Could not find a directory after extracting the archive.');
+    }
+
+    Logger.log(`Found extracted directory '${extractedDirPath}'.`);
+    codeProgress.updateTask(0.85);
+
+    const targetDirPath: string = Path.join(
+        this._context.extensionPath, 'lib', Path.basename(extractedDirPath));
+    const targetExists: boolean = Fs.existsSync(targetDirPath);
+    codeProgress.updateTask(0.9);
+
+    if (targetExists) {
+      Logger.warn(`Did not move '${extractedDirPath}' to '${targetDirPath}', ` +
+          'as target already exists.');
+    } else {
+      Logger.log(`Moving '${extractedDirPath}' to '${targetDirPath}'...`);
+      Fs.renameSync(extractedDirPath, targetDirPath);
+    }
+
+    codeProgress.updateTask(0.95);
+
+    try {
+      Logger.log(`Deleting '${tmpDirPath}'...`);
+      Fs.rmdirSync(tmpDirPath);
+    } catch (e) {
+      Logger.warn(`Could not delete '${tmpDirPath}', leaving temporary directory on disk.`, e);
+    }
+
+    codeProgress.finishTask();
+
+    return Promise.resolve();
   }
 
   private async installLtexLs(): Promise<void> {
