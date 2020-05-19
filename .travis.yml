@@ -34,7 +34,8 @@ jobs:
         - "pip3 install semver"
       script:
         - *commonScript
-        - "export IS_PRERELEASE=$(python3 tools/checkIfPrerelease.py)"
+        - "export LTEX_LS_VERSION=\"$(python -c \"import json; print(json.load(open('package.json', 'r'))['version'], end='')\")\""
+        - "export IS_PRERELEASE=\"$(python3 -c \"import semver; print('1' if semver.VersionInfo.parse('$LTEX_LS_VERSION').prerelease is not None else '0', end='')\")\""
         - "if [[ \"$IS_PRERELEASE\" -eq \"0\" ]]; then echo 'Detected stable release.'; else echo 'Detected prerelease.'; fi"
       before_deploy: "python3 tools/createOfflinePackages.py"
       deploy:
