@@ -2707,7 +2707,7 @@
     "compile": "tsc -p ./.tsconfig.json",
     "lint": "eslint --max-warnings 0 -c .eslintrc.js {src,test}/**/*.ts",
     "watch": "tsc -watch -p ./.tsconfig.json",
-    "pretest": "git clean -f -x lib/ && npm run vscode:prepublish",
+    "pretest": "git clean -f -x lib/ && npm run vscode:prepublish && python3 tools/createOfflinePackages.py --current-system",
     "test": "mocha ./out/test/runTests.js"
   },
   "devDependencies": {

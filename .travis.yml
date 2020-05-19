@@ -9,6 +9,8 @@ stages:
 install: &commonInstall
   - "npm install"
   - "npm install -g mocha vsce"
+  - "sudo apt-get -y install python3-pip"
+  - "pip3 install semver"
 script: &commonScript
   - "npm run lint"
   - "vsce package"
@@ -28,10 +30,6 @@ jobs:
     #  os: "windows"
     - stage: "deploy"
       if: "tag IS present"
-      install:
-        - *commonInstall
-        - "sudo apt-get -y install python3-pip"
-        - "pip3 install semver"
       script:
         - *commonScript
         - "export LTEX_LS_VERSION=\"$(python -c \"import json; print(json.load(open('package.json', 'r'))['version'], end='')\")\""
