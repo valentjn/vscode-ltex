@@ -56,7 +56,7 @@ export default class Dependencies {
         }
 
         response.setEncoding('utf8');
-        let rawData = '';
+        let rawData: string = '';
 
         response.on('data', (chunk: any) => {
           rawData += chunk;
@@ -79,7 +79,7 @@ export default class Dependencies {
   private static async downloadFile(urlStr: string, path: string, codeProgress: ProgressStack):
         Promise<void> {
     const file: Fs.WriteStream = Fs.createWriteStream(path);
-    const origTaskName = codeProgress.getTaskName();
+    const origTaskName: string = codeProgress.getTaskName();
 
     return new Promise((resolve: () => void, reject: (reason?: any) => void) => {
       Https.get(Dependencies.parseUrl(urlStr), (response: Http.IncomingMessage) => {
@@ -156,7 +156,7 @@ export default class Dependencies {
     const archiveName: string = Path.basename(url.pathname);
     const archiveType: string = ((Path.extname(archiveName) == '.zip') ? 'zip' : 'tar.gz');
     const tmpDirPath: string = Fs.mkdtempSync(Path.join(this._context.extensionPath, 'tmp-'));
-    const archivePath = Path.join(tmpDirPath, archiveName);
+    const archivePath: string = Path.join(tmpDirPath, archiveName);
     codeProgress.finishTask();
 
     try {

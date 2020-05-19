@@ -3,13 +3,13 @@ import * as Mocha from 'mocha';
 import * as Path from 'path';
 
 export function run(): Promise<void> {
-  const mocha = new Mocha({
+  const mocha: Mocha = new Mocha({
         ui: 'bdd',
         timeout: 300000,
       });
   mocha.useColors(true);
 
-  const testsRoot = Path.resolve(__dirname, '..');
+  const testsRoot: string = Path.resolve(__dirname, '..');
 
   return new Promise((resolve: () => void, reject: (reason?: any) => void) => {
     glob('**/**.test.js', {cwd: testsRoot}, (e: Error | null, files: string[]) => {
