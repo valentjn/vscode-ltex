@@ -19,17 +19,19 @@ export default class Logger {
     });
   }
 
-  public static warn(message: string): void {
+  public static warn(message: string, e?: Error): void {
     Logger.log(message, 'Warning');
+    if (e != null) Logger.logError(e, 'Warning');
   }
 
   public static error(message: string, e?: Error): void {
     Logger.log(message, 'Error');
+    if (e != null) Logger.logError(e, 'Error');
+  }
 
-    if (e != null) {
-      Logger.log('Error details:', 'Error');
-      Logger.log(((e.stack != null) ? e.stack : `${e.name}: ${e.message}`), 'Error');
-    }
+  public static logError(e: Error, type: string = 'Info'): void {
+    Logger.log('Error details:', type);
+    Logger.log(((e.stack != null) ? e.stack : `${e.name}: ${e.message}`), type);
   }
 
   public static logExecutable(executable: CodeLanguageClient.Executable): void {
