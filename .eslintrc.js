@@ -38,6 +38,16 @@ module.exports = {
     ],
     "@typescript-eslint/typedef": [
       "warn",
+      {
+        "arrayDestructuring": true,
+        "arrowParameter": true,
+        "memberVariableDeclaration": true,
+        "objectDestructuring": true,
+        "parameter": true,
+        "propertyDeclaration": true,
+        "variableDeclaration": true,
+        "variableDeclarationIgnoreFunction": true,
+      },
     ],
     "indent": [
       "off",
