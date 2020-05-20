@@ -3,72 +3,78 @@ dist: "bionic"
 language: "node_js"
 node_js: "13"
 cache: false
+stages:
+  - "test"
+  - "coverage"
+  - "deploy"
 install: &commonInstall
   - "npm install"
   - "npm install -g vsce"
 script: &commonScript
   - "vsce package"
-stages:
-  - name: "test"
-    script:
-      - *commonScript
-      - "npm run lint"
-      - "npm run test"
-  - name: "coverage"
-    script:
-      - *commonScript
-      - "npm run coverage && nyc report --reporter=text-lcov | coveralls"
-  - name: "deploy"
-    if: "tag IS present"
-    install:
-      - *commonInstall
-      - "sudo apt-get -y install python3-pip"
-      - "pip3 install semver"
-    script:
-      - *commonScript
-      - "export LTEX_LS_VERSION=\"$(python -c \"import json; print(json.load(open('package.json', 'r'))['version'], end='')\")\""
-      - "export IS_PRERELEASE=\"$(python3 -c \"import semver; print('1' if semver.VersionInfo.parse('$LTEX_LS_VERSION').prerelease is not None else '0', end='')\")\""
-      - "if [[ \"$IS_PRERELEASE\" -eq \"0\" ]]; then echo 'Detected stable release.'; else echo 'Detected prerelease.'; fi"
-    before_deploy: "python3 tools/createOfflinePackages.py"
-    deploy:
-      - &deployBlock
-        provider: "releases"
-        token:
-          secure: "AHYqCvN9tkw2qxP8AtVWbTh+G7IKHJXrCFOsYSQA5etxVDGACdk6uMA2Lp6DEkb2rUVsn/6FKWCkDL91PzMVrAzuQ95A4OpSM2edWjgZk/y0BEcldImOg/N0ekcSltRKS2IA7vY6slcsrGKLfmWt/dCxA7U5ddYp3iOJHv89POZck+F0y9W9U2bvsbvi4g9+Kjd+8dwHATz/OiiEBh9FfKMJ7TG27tnQ67wLFp0rYptCDTjQd3sISApdXhy4dFo8D4aZfHnZICZ61cYiEf1F4OypmjhQe5/w7BexEl0VOC26OJQ//W17r9kVavi+d7HiGsAtzJ4ftJTLCrHAZRkc/L4QRBZ95LJAsbp9WgcZZfAljlub+xCC9t+jCzS/OVPRxZfr4nGRNXGfjcVf67LtDAYQXICrgDKqIIm/PtxUGTs6vsVI13FD6HX7F/6pLCJqjGwDWNyezn4vJLMS+/Q6X+ytGl1Vv0zv7mvL0LdhZ/OKQwSC/5YKeQPcJUSZijKgVpLoaX8ZQXlOBwZGS0IG14y0M5Mu+hr1rTT/k0OIplMIBtJMQ0TbfCUbXuhZJLK3ZUGt3v0ptuy27+cy7NV9pWtjlEMHAovv+1RP4TApnD+AR1YHhtA5KEvbGoeTKg/yE5C4KrHEsObedx9RVG2BFkYXWymjvlMtxMR0SnR5uw0="
-        file: "vscode-ltex-*.vsix"
-        file_glob: true
-        # needs to be removed for Travis's dpl v2
-        # see https://blog.travis-ci.com/2019-08-27-deployment-tooling-dpl-v2-preview-release#cleaning-up-the-git-working-directory
-        skip_cleanup: true
-        on:
-          repo: "valentjn/vscode-ltex"
-          tags: true
-          condition: "\"$IS_PRERELEASE\" -eq \"0\""
-      - <<: *deployBlock
-        prerelease: true
-        on:
-          repo: "valentjn/vscode-ltex"
-          tags: true
-          condition: "\"$IS_PRERELEASE\" -eq \"1\""
-    after_deploy: "if [[ \"$IS_PRERELEASE\" -eq \"0\" ]]; then vsce publish -p $VSCE_TOKEN; fi"
 jobs:
   include:
     - stage: "test"
       os: "linux"
       install: &testLinuxInstall
-        - *testCommonInstall
+        - *commonInstall
         - "sudo apt-get -y install python3-pip"
         - "pip3 install semver"
         - "export DISPLAY=':99.0'"
         - "/usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &"
+      script: &testCommonScript
+        - *commonScript
+        - "npm run lint"
+        - "npm run test"
     - stage: "test"
       os: "osx"
       install:
-        - *testCommonInstall
+        - *commonInstall
         - "pip3 install semver"
+      script:
+        - *testCommonScript
     # deactivated due to https://github.com/microsoft/vscode/issues/77499
     #- stage: "test"
     #  os: "windows"
+    - stage: "coverage"
+      install:
+        - *testLinuxInstall
+      script:
+        - *commonScript
+        - "npm run coverage && nyc report --reporter=text-lcov | coveralls"
+    - stage: "deploy"
+      if: "tag IS present"
+      install:
+        - *commonInstall
+        - "sudo apt-get -y install python3-pip"
+        - "pip3 install semver"
+      script:
+        - *commonScript
+        - "export LTEX_LS_VERSION=\"$(python -c \"import json; print(json.load(open('package.json', 'r'))['version'], end='')\")\""
+        - "export IS_PRERELEASE=\"$(python3 -c \"import semver; print('1' if semver.VersionInfo.parse('$LTEX_LS_VERSION').prerelease is not None else '0', end='')\")\""
+        - "if [[ \"$IS_PRERELEASE\" -eq \"0\" ]]; then echo 'Detected stable release.'; else echo 'Detected prerelease.'; fi"
+      before_deploy: "python3 tools/createOfflinePackages.py"
+      deploy:
+        - &deployBlock
+          provider: "releases"
+          token:
+            secure: "AHYqCvN9tkw2qxP8AtVWbTh+G7IKHJXrCFOsYSQA5etxVDGACdk6uMA2Lp6DEkb2rUVsn/6FKWCkDL91PzMVrAzuQ95A4OpSM2edWjgZk/y0BEcldImOg/N0ekcSltRKS2IA7vY6slcsrGKLfmWt/dCxA7U5ddYp3iOJHv89POZck+F0y9W9U2bvsbvi4g9+Kjd+8dwHATz/OiiEBh9FfKMJ7TG27tnQ67wLFp0rYptCDTjQd3sISApdXhy4dFo8D4aZfHnZICZ61cYiEf1F4OypmjhQe5/w7BexEl0VOC26OJQ//W17r9kVavi+d7HiGsAtzJ4ftJTLCrHAZRkc/L4QRBZ95LJAsbp9WgcZZfAljlub+xCC9t+jCzS/OVPRxZfr4nGRNXGfjcVf67LtDAYQXICrgDKqIIm/PtxUGTs6vsVI13FD6HX7F/6pLCJqjGwDWNyezn4vJLMS+/Q6X+ytGl1Vv0zv7mvL0LdhZ/OKQwSC/5YKeQPcJUSZijKgVpLoaX8ZQXlOBwZGS0IG14y0M5Mu+hr1rTT/k0OIplMIBtJMQ0TbfCUbXuhZJLK3ZUGt3v0ptuy27+cy7NV9pWtjlEMHAovv+1RP4TApnD+AR1YHhtA5KEvbGoeTKg/yE5C4KrHEsObedx9RVG2BFkYXWymjvlMtxMR0SnR5uw0="
+          file: "vscode-ltex-*.vsix"
+          file_glob: true
+          # needs to be removed for Travis's dpl v2
+          # see https://blog.travis-ci.com/2019-08-27-deployment-tooling-dpl-v2-preview-release#cleaning-up-the-git-working-directory
+          skip_cleanup: true
+          on:
+            repo: "valentjn/vscode-ltex"
+            tags: true
+            condition: "\"$IS_PRERELEASE\" -eq \"0\""
+        - <<: *deployBlock
+          prerelease: true
+          on:
+            repo: "valentjn/vscode-ltex"
+            tags: true
+            condition: "\"$IS_PRERELEASE\" -eq \"1\""
+      after_deploy: "if [[ \"$IS_PRERELEASE\" -eq \"0\" ]]; then vsce publish -p $VSCE_TOKEN; fi"
 env:
   global:
     - secure: "zbjF+5lVYZz8852STkbc+cajYvHIkSs6fVybr8U7GDYbCIyWZ0PulJsD6bo2e7Q73gtmNPlM3h1GDrVmyWikCLypNbU+k1vbeN3FhWzUc0626w6GNwbKMbgsxEc+VG2GwWDOClzFwA0gu9uKhBJKKsYD1G918eMcXE8IjX976YqcOs+37P7Df+tp2bW73PaLvUmA1n9zwkK8l+dBFQ3EcXt22n03Js0y9MFnPabj6D/G2PI3Lqa5mILpVI0oorzoh7Z9MRqLVssrTw30tLGrs8/8sLK4C81CF1/90/LNj284GYyL7fEnIqEyLpcSLo16Rsuqxy5eNv8G/bM0K21UFZZ6LFOyVrwxRNSCmkur8SLm17RbswZdhSop7LkVsq3SHxWrvqPfBlb7DyHqk65AlQDKhQWnwoqPlVBIGu+2uEGRSHPp9kqO7QqZ1NBvrf9mzlhvSzupJk6XlniDaQL8f76aufXXbj5o7Vxbxdq8naBBXJ9/yNlruKkSlIb5DDg/dEZSXV6B8hesXEEwEhO4UhaTG4xa6vXX/b1cHEDG+N2pZNQyqxvH4J00Z4bN+lztrWHpJP3eWp2wOvbG3S5xPXnrkKRtdqPABA6MC19NXwXbqVbK1YyK5OT14hunO3YsGK+71ytfmqHaLObUmMMMHABK/Lo9722PGqRvIOCcuw0="
