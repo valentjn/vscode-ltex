@@ -2709,7 +2709,7 @@
     "watch": "tsc -watch -p ./.tsconfig.json",
     "pretest": "git clean -f -x lib/ && npm run vscode:prepublish && python3 tools/createOfflinePackages.py --current-system",
     "test": "mocha ./out/test/runTests.js && git clean -f -x lib/ || git clean -f -x lib/",
-    "coverage": "nyc -x **/node_modules.asar/ -x **/test/ npm run test"
+    "coverage": "nyc -x **/node_modules.asar/ -x **/test/ -x .webpack.config.js npm run test"
   },
   "devDependencies": {
     "@types/mocha": "7.0.2",
