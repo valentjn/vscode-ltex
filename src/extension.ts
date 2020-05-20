@@ -70,7 +70,7 @@ async function languageClientIsReady(disposable: Code.Disposable): Promise<void>
 }
 
 function processCommand(params: any): void {
-  if (!('commandName' in params) || !params['commandName'].startsWith('ltex.')) {
+  if (!('command' in params) || !params['command'].startsWith('ltex.')) {
     Logger.log(`Unknown telemetry event '${params}'.`);
     return;
   }
@@ -78,7 +78,7 @@ function processCommand(params: any): void {
   const resourceConfig: Code.WorkspaceConfiguration =
       Code.workspace.getConfiguration('ltex', Code.Uri.parse(params['uri']));
 
-  if (params['commandName'] === 'ltex.addToDictionary') {
+  if (params['command'] === 'ltex.addToDictionary') {
     const language: string = resourceConfig.get('language', 'en-US');
     const dictionarySetting: {[language: string]: string[]} = resourceConfig.get('dictionary', {});
     let dictionary: string[] = ((dictionarySetting[language] != null) ?
@@ -89,7 +89,7 @@ function processCommand(params: any): void {
     dictionarySetting[language] = dictionary;
     setConfigurationSetting('dictionary', dictionarySetting, resourceConfig, 'addToDictionary');
 
-  } else if (params['commandName'] === 'ltex.disableRule') {
+  } else if (params['command'] === 'ltex.disableRule') {
     const language: string = resourceConfig.get('language', 'en-US');
     const disabledRulesSetting: {[language: string]: string[]} =
         resourceConfig.get('disabledRules', {});
@@ -101,7 +101,7 @@ function processCommand(params: any): void {
     disabledRulesSetting[language] = disabledRules;
     setConfigurationSetting('disabledRules', disabledRules, resourceConfig, 'disableRule');
 
-  } else if (params['commandName'] === 'ltex.ignoreRuleInSentence') {
+  } else if (params['command'] === 'ltex.ignoreRuleInSentence') {
     const ruleIds: string[] = convertToStringArray(params['ruleId']);
     const sentencePatterns: string[] = convertToStringArray(params['sentencePattern']);
     const ignoredRules: any[] = resourceConfig.get('ignoreRuleInSentence', []);
