@@ -69,7 +69,7 @@ async function languageClientIsReady(disposable: Code.Disposable): Promise<void>
   }
 }
 
-function processTelemetry(params: any): void {
+function processCommand(params: any): void {
   if (!('commandName' in params) || !params['commandName'].startsWith('ltex.')) {
     Logger.log(`Unknown telemetry event '${params}'.`);
     return;
@@ -112,6 +112,14 @@ function processTelemetry(params: any): void {
 
     setConfigurationSetting('ignoreRuleInSentence', ignoredRules, resourceConfig,
         'ignoreRuleInSentence');
+  }
+}
+
+function processTelemetry(params: any): void {
+  if (!('type' in params)) {
+    Logger.log(`Unknown telemetry event '${params}'.`);
+  } else if (params['type'] == 'command') {
+    processCommand(params);
   }
 }
 
