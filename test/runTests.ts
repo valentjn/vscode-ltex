@@ -29,7 +29,7 @@ async function main(): Promise<void> {
     let tmpDirPath: string | undefined;
 
     try {
-      const tmpDirPrefix: string = Path.join(Path.dirname(vscodeExecutablePath), 'tmp-');
+      const tmpDirPrefix: string = Path.join(ltexDirPath, 'tmp-');
       console.log(`Creating temporary directory with prefix '${tmpDirPrefix}'...`);
       tmpDirPath = Fs.mkdtempSync(tmpDirPrefix);
       console.log(`Created temporary directory '${tmpDirPath}'.`);
