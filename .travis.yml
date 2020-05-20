@@ -10,16 +10,11 @@ script: &commonScript
   - "vsce package"
 stages:
   - name: "test"
-    install: &testCommonInstall
-      - *commonInstall
-      - "npm install -g mocha"
     script:
       - *commonScript
       - "npm run lint"
       - "npm run test"
   - name: "coverage"
-    install:
-      - *testCommonInstall
   - name: "deploy"
     if: "tag IS present"
     install:
