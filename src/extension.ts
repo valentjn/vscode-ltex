@@ -70,40 +70,40 @@ async function languageClientIsReady(disposable: Code.Disposable): Promise<void>
 }
 
 function processCommand(params: any): void {
-  if (!('command' in params) || !params['command'].startsWith('ltex.')) {
+  if (!('command' in params) || !params.command.startsWith('ltex.')) {
     Logger.log(`Unknown telemetry event '${params}'.`);
     return;
   }
 
   const resourceConfig: Code.WorkspaceConfiguration =
-      Code.workspace.getConfiguration('ltex', Code.Uri.parse(params['uri']));
+      Code.workspace.getConfiguration('ltex', Code.Uri.parse(params.uri));
 
-  if (params['command'] === 'ltex.addToDictionary') {
+  if (params.command === 'ltex.addToDictionary') {
     const language: string = resourceConfig.get('language', 'en-US');
     const dictionarySetting: {[language: string]: string[]} = resourceConfig.get('dictionary', {});
     let dictionary: string[] = ((dictionarySetting[language] != null) ?
         dictionarySetting[language] : []);
-    dictionary = dictionary.concat(convertToStringArray(params['word']));
+    dictionary = dictionary.concat(convertToStringArray(params.word));
     dictionary.sort((a: string, b: string) =>
         a.localeCompare(b, undefined, {sensitivity: 'base'}));
     dictionarySetting[language] = dictionary;
     setConfigurationSetting('dictionary', dictionarySetting, resourceConfig, 'addToDictionary');
 
-  } else if (params['command'] === 'ltex.disableRule') {
+  } else if (params.command === 'ltex.disableRule') {
     const language: string = resourceConfig.get('language', 'en-US');
     const disabledRulesSetting: {[language: string]: string[]} =
         resourceConfig.get('disabledRules', {});
     let disabledRules: string[] = ((disabledRulesSetting[language] != null) ?
         disabledRulesSetting[language] : []);
-    disabledRules = disabledRules.concat(convertToStringArray(params['ruleId']));
+    disabledRules = disabledRules.concat(convertToStringArray(params.ruleId));
     disabledRules.sort((a: string, b: string) =>
         a.localeCompare(b, undefined, {sensitivity: 'base'}));
     disabledRulesSetting[language] = disabledRules;
     setConfigurationSetting('disabledRules', disabledRules, resourceConfig, 'disableRule');
 
-  } else if (params['command'] === 'ltex.ignoreRuleInSentence') {
-    const ruleIds: string[] = convertToStringArray(params['ruleId']);
-    const sentencePatterns: string[] = convertToStringArray(params['sentencePattern']);
+  } else if (params.command === 'ltex.ignoreRuleInSentence') {
+    const ruleIds: string[] = convertToStringArray(params.ruleId);
+    const sentencePatterns: string[] = convertToStringArray(params.sentencePattern);
     const ignoredRules: any[] = resourceConfig.get('ignoreRuleInSentence', []);
 
     for (let i: number = 0; i < ruleIds.length; i++) {
@@ -118,7 +118,7 @@ function processCommand(params: any): void {
 function processTelemetry(params: any): void {
   if (!('type' in params)) {
     Logger.log(`Unknown telemetry event '${params}'.`);
-  } else if (params['type'] == 'command') {
+  } else if (params.type == 'command') {
     processCommand(params);
   }
 }
