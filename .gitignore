@@ -1,6 +1,7 @@
 /package-lock.json
 /*.vsix
 
+/.nyc_output/
 /.vscode-test/
 /dist/
 /lib/

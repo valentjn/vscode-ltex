@@ -15,6 +15,9 @@ stages:
       - "npm run lint"
       - "npm run test"
   - name: "coverage"
+    script:
+      - *commonScript
+      - "npm run coverage && nyc report --reporter=text-lcov | coveralls"
   - name: "deploy"
     if: "tag IS present"
     install:
