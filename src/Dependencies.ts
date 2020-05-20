@@ -110,7 +110,7 @@ export default class Dependencies {
             parseInt(response.headers['content-length']) : 0);
         const totalMb: number = Math.round(totalBytes / 1e6);
         let downloadedBytes: number = 0;
-        let downloadedMb: number = -1;
+        let lastTaskNameUpdate: number = Date.now();
         codeProgress.updateTask(0, ((totalBytes > 0) ?
             `${origTaskName} 0MB/${totalMb}MB` : origTaskName));
 
@@ -119,10 +119,11 @@ export default class Dependencies {
         if (totalBytes > 0) {
           response.on('data', (chunk: any) => {
             downloadedBytes += chunk.length;
-            const newDownloadedMb: number = Math.round(downloadedBytes / 1e6);
+            const now: number = Date.now();
 
-            if (newDownloadedMb != downloadedMb) {
-              downloadedMb = newDownloadedMb;
+            if (now - lastTaskNameUpdate >= 500) {
+              lastTaskNameUpdate = now;
+              const downloadedMb: number = Math.round(downloadedBytes / 1e6);
               const taskName: string = `${origTaskName} ${downloadedMb}MB/${totalMb}MB`;
               codeProgress.updateTask(downloadedBytes / totalBytes, taskName);
             }
