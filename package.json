@@ -2701,9 +2701,9 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "tsc -p ./.tsconfig.json && npx webpack --config .webpack.config.js --mode production",
-    "webpack": "npx webpack --config .webpack.config.js --mode development",
-    "webpack-dev": "npx webpack --config .webpack.config.js --mode development --watch",
+    "vscode:prepublish": "tsc -p ./.tsconfig.json && webpack --config .webpack.config.js --mode production",
+    "webpack": "webpack --config .webpack.config.js --mode development",
+    "webpack-dev": "webpack --config .webpack.config.js --mode development --watch",
     "compile": "tsc -p ./.tsconfig.json",
     "lint": "eslint --max-warnings 0 -c .eslintrc.js {src,test}/**/*.ts",
     "watch": "tsc -watch -p ./.tsconfig.json",
