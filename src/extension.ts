@@ -4,6 +4,12 @@ import * as CodeLanguageClient from 'vscode-languageclient';
 import Dependencies from './Dependencies';
 import Logger from './Logger';
 
+export class Api {
+  public languageClient: CodeLanguageClient.LanguageClient | null = null;
+  public clientOutputChannel: Code.OutputChannel | null = null;
+  public serverOutputChannel: Code.OutputChannel | null = null;
+}
+
 async function setConfigurationSetting(settingName: string, settingValue: any,
       resourceConfig: Code.WorkspaceConfiguration, commandName: string): Promise<void> {
   const configurationTargetString: string | undefined =
@@ -181,12 +187,6 @@ async function startLanguageClient(context: Code.ExtensionContext):
   context.subscriptions.push(statusBarMessageDisposable);
 
   return Promise.resolve(languageClient);
-}
-
-export class Api {
-  public languageClient: CodeLanguageClient.LanguageClient | null = null;
-  public clientOutputChannel: Code.OutputChannel | null = null;
-  public serverOutputChannel: Code.OutputChannel | null = null;
 }
 
 export async function activate(context: Code.ExtensionContext): Promise<Api> {
