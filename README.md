@@ -1,10 +1,17 @@
 # LT<sub>E</sub>X Extension for Visual Studio Code: LanguageTool Grammar Checking with L<sup>A</sup>T<sub>E</sub>X Support
 
-[![Travis CI build status](https://img.shields.io/travis/valentjn/vscode-ltex/master?logo=travis&style=social)](https://www.travis-ci.org/valentjn/vscode-ltex)&nbsp;&nbsp;&nbsp;
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/valentjn.vscode-ltex?style=social&logo=visual-studio-code)][marketplace]&nbsp;
-[![Rating](https://img.shields.io/visual-studio-marketplace/stars/valentjn.vscode-ltex?style=social&logo=visual-studio-code)][marketplace]&nbsp;&nbsp;&nbsp;
-[![GitHub stars](https://img.shields.io/github/stars/valentjn/vscode-ltex?style=social)](https://github.com/valentjn/vscode-ltex)&nbsp;
-[![GitHub issues](https://img.shields.io/github/issues/valentjn/vscode-ltex?style=social&logo=github)](https://github.com/valentjn/vscode-ltex/issues)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/valentjn.vscode-ltex?logo=visual-studio-code)][marketplace]&nbsp;
+[![Rating](https://img.shields.io/visual-studio-marketplace/stars/valentjn.vscode-ltex?logo=visual-studio-code)][marketplace]&nbsp;&nbsp;&nbsp;
+[![GitHub stars](https://img.shields.io/github/stars/valentjn/vscode-ltex?logo=github)](https://github.com/valentjn/vscode-ltex)&nbsp;
+[![GitHub issues](https://img.shields.io/github/issues/valentjn/vscode-ltex?logo=github)](https://github.com/valentjn/vscode-ltex/issues)
+
+vscode-ltex:
+[![Travis CI build status of vscode-ltex](https://img.shields.io/travis/valentjn/vscode-ltex/master?logo=travis)](https://www.travis-ci.org/valentjn/vscode-ltex)&nbsp;
+[![Coverage of vscode-ltex](https://img.shields.io/coveralls/github/valentjn/vscode-ltex/master?logo=coveralls)](https://coveralls.io/github/valentjn/vscode-ltex)&nbsp;
+&nbsp;&nbsp;&nbsp;
+ltex-ls:
+[![Travis CI build status of ltex-ls](https://img.shields.io/travis/valentjn/ltex-ls/master?logo=travis)](https://www.travis-ci.org/valentjn/ltex-ls)&nbsp;
+[![Coverage of ltex-ls](https://img.shields.io/coveralls/github/valentjn/ltex-ls/master?logo=coveralls)](https://coveralls.io/github/valentjn/ltex-ls)&nbsp;
 
 Provides offline grammar checking in Visual Studio Code using [LanguageTool](https://languagetool.org/), supporting L<sup>A</sup>T<sub>E</sub>X and Markdown documents.
 
