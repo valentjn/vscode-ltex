@@ -62,7 +62,15 @@ export default class Logger {
     return Logger._clientOutputChannel;
   }
 
+  public static set clientOutputChannel(clientOutputChannel: Code.OutputChannel) {
+    Logger._clientOutputChannel = clientOutputChannel;
+  }
+
   public static get serverOutputChannel(): Code.OutputChannel {
     return Logger._serverOutputChannel;
+  }
+
+  public static set serverOutputChannel(serverOutputChannel: Code.OutputChannel) {
+    Logger._serverOutputChannel = serverOutputChannel;
   }
 }
