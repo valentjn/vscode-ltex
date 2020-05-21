@@ -2716,6 +2716,7 @@
     "@types/node": "13.9.5",
     "@types/rimraf": "2.0.2",
     "@types/semver": "5.5.0",
+    "@types/tar": "4.0.3",
     "@types/vscode": "1.39.0",
     "@types/webpack": "4.1.4",
     "@typescript-eslint/eslint-plugin": "2.33.0",
