@@ -7,7 +7,10 @@ import platform
 import shlex
 import shutil
 import subprocess
+import sys
 import tarfile
+import traceback
+import urllib.error
 import urllib.request
 import zipfile
 
@@ -53,11 +56,20 @@ def downloadLtexLs():
   headers = {}
 
   if "LTEX_GITHUB_OAUTH_TOKEN" in os.environ:
+    print("Setting GitHub OAuth token...")
     headers["Authorization"] = os.environ["LTEX_GITHUB_OAUTH_TOKEN"]
+  else:
+    print("LTEX_GITHUB_OAUTH_TOKEN not set.")
 
   print("Fetching list of ltex-ls releases from '{}'...".format(releasesUrl))
   apiRequest = urllib.request.Request(releasesUrl, headers=headers)
-  with urllib.request.urlopen(apiRequest) as f: releases = json.load(f)
+
+  try:
+    with urllib.request.urlopen(apiRequest) as f: releases = json.load(f)
+  except urllib.error.HTTPError as e:
+    traceback.print_exc()
+    print("Response body: \"{}\"".format(e.read()))
+    sys.exit(1)
 
   ltexLsVersion = getLatestCompatibleLtexLsVersion([x["tag_name"] for x in releases])
   print("Latest compatible release is 'ltex-ls-{}'.".format(ltexLsVersion))
