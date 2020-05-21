@@ -5,6 +5,7 @@ import * as Ltex from '../src/extension';
 
 describe('LTeX tests', () => {
   let api: Ltex.Api | null = null;
+  let languageClient: CodeLanguageClient.LanguageClient | null = null;
 
   async function createNewFile(name: string, contents?: string): Promise<Code.TextDocument> {
     console.log(`Creating new file '${name}'...`);
@@ -53,8 +54,9 @@ describe('LTeX tests', () => {
     });
 
     console.log('Waiting for language client to be ready...');
-    if (api.languageClient == null) throw new Error('Language client not initialized.');
-    await api.languageClient.onReady();
+    languageClient = api.languageClient;
+    if (languageClient == null) throw new Error('Language client not initialized.');
+    await languageClient.onReady();
     console.log('Language client is ready.');
   });
 
@@ -63,11 +65,8 @@ describe('LTeX tests', () => {
         'This is *an test*.');
 
     return new Promise((resolve: () => void) => {
-      if ((api == null) || (api.languageClient == null)) {
-        throw new Error('Language client not initialized.');
-      }
-
-      api.languageClient.onNotification('textDocument/publishDiagnostics',
+      if (languageClient == null) throw new Error('Language client not initialized.');
+      languageClient.onNotification('textDocument/publishDiagnostics',
             (params: CodeLanguageClient.PublishDiagnosticsParams) => {
         if (params.uri == document.uri.toString()) {
           Assert.equal(params.diagnostics.length, 1);
@@ -83,11 +82,8 @@ describe('LTeX tests', () => {
         'This is \\textbf{an test}.');
 
     return new Promise((resolve: () => void) => {
-      if ((api == null) || (api.languageClient == null)) {
-        throw new Error('Language client not initialized.');
-      }
-
-      api.languageClient.onNotification('textDocument/publishDiagnostics',
+      if (languageClient == null) throw new Error('Language client not initialized.');
+      languageClient.onNotification('textDocument/publishDiagnostics',
             (params: CodeLanguageClient.PublishDiagnosticsParams) => {
         if (params.uri == document.uri.toString()) {
           Assert.equal(params.diagnostics.length, 1);
