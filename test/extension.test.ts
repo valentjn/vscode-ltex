@@ -1,9 +1,10 @@
 import * as Assert from 'assert';
 import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient';
+
 import * as Ltex from '../src/extension';
 
-describe('LTeX tests', () => {
+describe('Test extension (end-to-end)', () => {
   let api: Ltex.Api | null = null;
   let languageClient: CodeLanguageClient.LanguageClient | null = null;
 
