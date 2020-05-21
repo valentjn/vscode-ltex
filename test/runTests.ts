@@ -24,7 +24,10 @@ async function main(): Promise<void> {
   console.log('Resolving CLI path to VS Code...');
   const cliPath: string = CodeTest.resolveCliPathFromVSCodeExecutablePath(vscodeExecutablePath);
 
-  for (let testIteration: number = 0; testIteration < 2; testIteration++) {
+  for (let testIteration: number = 0; testIteration < 3; testIteration++) {
+    console.log('');
+    console.log(`Running test iteration ${testIteration}...`);
+
     let exitCode: number = 1;
     let tmpDirPath: string | undefined;
 
@@ -42,7 +45,7 @@ async function main(): Promise<void> {
             '--install-extension', 'james-yu.latex-workshop',
           ];
 
-      if (testIteration == 1) {
+      if (testIteration == 2) {
         let platform: string = 'linux';
         if (process.platform == 'darwin') platform = 'mac';
         else if (process.platform == 'win32') platform = 'windows';
@@ -65,6 +68,16 @@ async function main(): Promise<void> {
       }
 
       env['LTEX_DEBUG'] = '1';
+
+      if (testIteration == 0) {
+        const mockJavaDirPath: string = Path.join(tmpDirPath, 'bin');
+        Fs.mkdirSync(mockJavaDirPath);
+        const mockJavaPath: string = Path.join(mockJavaDirPath, 'java');
+        console.log(`Creating mock Java executable '${mockJavaDirPath}'...`);
+        Fs.writeFileSync(mockJavaPath, '\n', {mode: 0o777});
+        if (!Object.prototype.hasOwnProperty.call(env, 'PATH')) env['PATH'] = '';
+        env['PATH'] = `${mockJavaDirPath}${Path.delimiter}${env['PATH']}`;
+      }
 
       const testOptions: CodeTestRunTest.TestOptions = {
             vscodeExecutablePath: vscodeExecutablePath,
