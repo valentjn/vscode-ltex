@@ -22,6 +22,7 @@ module.exports = {
   },
   "plugins": [
     "@typescript-eslint",
+    "only-warn",
   ],
   "rules": {
     "@typescript-eslint/no-explicit-any": [
