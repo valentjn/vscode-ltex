@@ -57,7 +57,7 @@ def downloadLtexLs():
 
   if "LTEX_GITHUB_OAUTH_TOKEN" in os.environ:
     print("Setting GitHub OAuth token...")
-    headers["Authorization"] = os.environ["LTEX_GITHUB_OAUTH_TOKEN"]
+    headers["Authorization"] = "token {}".format(os.environ["LTEX_GITHUB_OAUTH_TOKEN"])
   else:
     print("LTEX_GITHUB_OAUTH_TOKEN not set.")
 
