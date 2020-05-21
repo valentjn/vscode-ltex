@@ -12,6 +12,7 @@
 .nyc_output/
 .vscode/
 .vscode-test/
+coverage/
 img/
 misc/
 node_modules/

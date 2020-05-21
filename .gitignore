@@ -3,6 +3,7 @@
 
 /.nyc_output/
 /.vscode-test/
+/coverage/
 /dist/
 /lib/
 /node_modules/
