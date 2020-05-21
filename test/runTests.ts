@@ -87,6 +87,12 @@ async function runTestIteration(testIteration: number): Promise<void> {
 }
 
 async function main(): Promise<void> {
+  let fastMode: boolean = false;
+
+  for (const arg of process.argv) {
+    if (arg == '--fast') fastMode = true;
+  }
+
   ltexDirPath = Path.resolve(__dirname, '..', '..');
   let codeVersion: string = 'stable';
   let codePlatform: string | undefined;
@@ -103,6 +109,7 @@ async function main(): Promise<void> {
   cliPath = CodeTest.resolveCliPathFromVSCodeExecutablePath(vscodeExecutablePath);
 
   for (let testIteration: number = 0; testIteration < 3; testIteration++) {
+    if (fastMode && (testIteration != 1)) continue;
     await runTestIteration(testIteration);
   }
 
