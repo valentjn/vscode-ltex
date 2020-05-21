@@ -1,7 +1,7 @@
 import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient';
 import * as ChildProcess from 'child_process';
-import * as extractZip from 'extract-zip';
+import extractZip from 'extract-zip';
 import * as Fs from 'fs';
 import * as Http from 'http';
 import * as Https from 'https';
