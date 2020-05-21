@@ -3,46 +3,12 @@ import * as CodeLanguageClient from 'vscode-languageclient';
 
 import Dependencies from './Dependencies';
 import Logger from './Logger';
+import TelemetryProcessor from './TelemetryProcessor';
 
 export class Api {
   public languageClient: CodeLanguageClient.LanguageClient | null = null;
   public clientOutputChannel: Code.OutputChannel | null = null;
   public serverOutputChannel: Code.OutputChannel | null = null;
-}
-
-async function setConfigurationSetting(settingName: string, settingValue: any,
-      resourceConfig: Code.WorkspaceConfiguration, commandName: string): Promise<void> {
-  const configurationTargetString: string | undefined =
-      resourceConfig.get(`configurationTarget.${commandName}`);
-  let configurationTargets: Code.ConfigurationTarget[];
-
-  if (configurationTargetString === 'global') {
-    configurationTargets = [Code.ConfigurationTarget.Global];
-  } else if (configurationTargetString === 'workspace') {
-    configurationTargets = [Code.ConfigurationTarget.Workspace,
-        Code.ConfigurationTarget.Global];
-  } else if (configurationTargetString === 'workspaceFolder') {
-    configurationTargets = [Code.ConfigurationTarget.WorkspaceFolder,
-        Code.ConfigurationTarget.Workspace, Code.ConfigurationTarget.Global];
-  } else {
-    Logger.error(`Invalid value '${settingName}' for configurationTarget.`);
-    return;
-  }
-
-  for (const configurationTarget of configurationTargets) {
-    try {
-      await resourceConfig.update(settingName, settingValue, configurationTarget);
-      return;
-    } catch (e) {
-      if (configurationTarget == configurationTargets[configurationTargets.length - 1]) {
-        Logger.error(`Could not set configuration '${settingName}'.`, e);
-      }
-    }
-  }
-}
-
-function convertToStringArray(obj: any): string[] {
-  return (Array.isArray(obj) ? obj : [obj]);
 }
 
 async function languageClientIsReady(disposable: Code.Disposable): Promise<void> {
@@ -72,60 +38,6 @@ async function languageClientIsReady(disposable: Code.Disposable): Promise<void>
             'https://github.com/valentjn/vscode-ltex#note-for-transitioning-to-ltex-5x'));
       }
     });
-  }
-}
-
-function processCommand(params: any): void {
-  if (!('command' in params) || !params.command.startsWith('ltex.')) {
-    Logger.log(`Unknown telemetry event '${params}'.`);
-    return;
-  }
-
-  const resourceConfig: Code.WorkspaceConfiguration =
-      Code.workspace.getConfiguration('ltex', Code.Uri.parse(params.uri));
-
-  if (params.command === 'ltex.addToDictionary') {
-    const language: string = resourceConfig.get('language', 'en-US');
-    const dictionarySetting: {[language: string]: string[]} = resourceConfig.get('dictionary', {});
-    let dictionary: string[] = ((dictionarySetting[language] != null) ?
-        dictionarySetting[language] : []);
-    dictionary = dictionary.concat(convertToStringArray(params.word));
-    dictionary.sort((a: string, b: string) =>
-        a.localeCompare(b, undefined, {sensitivity: 'base'}));
-    dictionarySetting[language] = dictionary;
-    setConfigurationSetting('dictionary', dictionarySetting, resourceConfig, 'addToDictionary');
-
-  } else if (params.command === 'ltex.disableRule') {
-    const language: string = resourceConfig.get('language', 'en-US');
-    const disabledRulesSetting: {[language: string]: string[]} =
-        resourceConfig.get('disabledRules', {});
-    let disabledRules: string[] = ((disabledRulesSetting[language] != null) ?
-        disabledRulesSetting[language] : []);
-    disabledRules = disabledRules.concat(convertToStringArray(params.ruleId));
-    disabledRules.sort((a: string, b: string) =>
-        a.localeCompare(b, undefined, {sensitivity: 'base'}));
-    disabledRulesSetting[language] = disabledRules;
-    setConfigurationSetting('disabledRules', disabledRules, resourceConfig, 'disableRule');
-
-  } else if (params.command === 'ltex.ignoreRuleInSentence') {
-    const ruleIds: string[] = convertToStringArray(params.ruleId);
-    const sentencePatterns: string[] = convertToStringArray(params.sentencePattern);
-    const ignoredRules: any[] = resourceConfig.get('ignoreRuleInSentence', []);
-
-    for (let i: number = 0; i < ruleIds.length; i++) {
-      ignoredRules.push({'rule': ruleIds[i], 'sentence': sentencePatterns[i]});
-    }
-
-    setConfigurationSetting('ignoreRuleInSentence', ignoredRules, resourceConfig,
-        'ignoreRuleInSentence');
-  }
-}
-
-function processTelemetry(params: any): void {
-  if (!('type' in params)) {
-    Logger.log(`Unknown telemetry event '${params}'.`);
-  } else if (params.type == 'command') {
-    processCommand(params);
   }
 }
 
@@ -172,7 +84,8 @@ async function startLanguageClient(context: Code.ExtensionContext):
   // (e.g., adding words to the dictionary).
   // The client configuration cannot be directly changed by the server, so we send a
   // telemetry notification to the client, which then changes the configuration.
-  languageClient.onTelemetry(processTelemetry);
+  const telemetryProcessor: TelemetryProcessor = new TelemetryProcessor(context);
+  languageClient.onTelemetry(telemetryProcessor.process, telemetryProcessor);
 
   Logger.log('Starting ltex-ls...');
   Logger.logExecutable(serverOptions);
