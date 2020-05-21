@@ -136,7 +136,7 @@ async function startLanguageClient(context: Code.ExtensionContext):
   if (success !== true) return Promise.resolve(null);
 
   const statusBarMessageDisposable: Code.Disposable =
-      Code.window.setStatusBarMessage('$(loading~spin) Starting LTeX...');
+      Code.window.setStatusBarMessage('$(loading~spin) Starting LTeX...', 60000);
   const serverOptions: CodeLanguageClient.ServerOptions = await dependencies.getLtexLsExecutable();
 
   // Options to control the language client
