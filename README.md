@@ -12,9 +12,9 @@
 [![Travis CI build status of ltex-ls](https://img.shields.io/travis/valentjn/ltex-ls/master?logo=travis)](https://www.travis-ci.org/valentjn/ltex-ls)
 [![Coverage of ltex-ls](https://img.shields.io/coveralls/github/valentjn/ltex-ls/master?logo=coveralls)](https://coveralls.io/github/valentjn/ltex-ls)
 
-Provides offline grammar checking in Visual Studio Code using [LanguageTool](https://languagetool.org/), supporting L<sup>A</sup>T<sub>E</sub>X and Markdown documents.
+**LT<sub>E</sub>X** provides offline grammar checking in Visual Studio Code using [LanguageTool (LT)](https://languagetool.org/), supporting L<sup>A</sup>T<sub>E</sub>X and Markdown documents.
 
-This extension is a fork of the abandoned [LanguageTool for Visual Studio Code extension](https://github.com/adamvoss/vscode-languagetool) by Adam Voss with L<sup>A</sup>T<sub>E</sub>X support, new features (user dictionaries, ignore errors, etc.), and updated dependencies (LanguageTool).
+This extension is a fork of the abandoned [LanguageTool for Visual Studio Code extension](https://github.com/adamvoss/vscode-languagetool) by Adam Voss with L<sup>A</sup>T<sub>E</sub>X support, lots of new features (user dictionaries, ignore errors, etc.), and updated dependencies (LanguageTool).
 
 ## Note for Transitioning to LT<sub>E</sub>X 5.x
 
