@@ -51,7 +51,9 @@ jobs:
       script:
         - *commonScript
         - "export LTEX_LS_VERSION=\"$(python3 -c \"import json; print(json.load(open('package.json', 'r'))['version'], end='')\")\""
+        - "if [[ -z \"$LTEX_LS_VERSION\" ]]; then echo 'Error: LTEX_LS_VERSION not set!'; (exit 1); fi"
         - "export IS_PRERELEASE=\"$(python3 -c \"import semver; print('1' if semver.VersionInfo.parse('$LTEX_LS_VERSION').prerelease is not None else '0', end='')\")\""
+        - "if [[ -z \"$IS_PRERELEASE\" ]]; then echo 'Error: IS_PRERELEASE not set!'; (exit 1); fi"
         - "if [[ \"$IS_PRERELEASE\" -eq \"0\" ]]; then echo 'Detected stable release.'; else echo 'Detected prerelease.'; fi"
       before_deploy: "python3 tools/createOfflinePackages.py"
       deploy:
