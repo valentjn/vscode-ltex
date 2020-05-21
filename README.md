@@ -23,7 +23,7 @@ LT<sub>E</sub>X has undergone a major rewrite in version 5.0. The most important
 
 * All languages are now directly included in LT<sub>E</sub>X, which eliminates the need for language support extensions (e.g., `LTeX - English support`). If you still have any of them installed, you may uninstall them now.
 * Due to file size restrictions of the Visual Studio Marketplace, LT<sub>E</sub>X has to download its core component (which includes LanguageTool) when activated for the first time. Read below for instructions on offline installation.
-* A separate Java installation is not necessary anymore. LT<sub>E</sub>X will automatically download a Java distribution and store it in the extension folder if no suitable Java installation (Java 11 or later) has been found on your computer.
+* A separate Java installation is not necessary anymore. LT<sub>E</sub>X will automatically download a Java distribution and store it in the extension folder if no suitable Java installation (Java 8 or later) has been found on your computer.
 * A few settings have been renamed. Check your `settings.json` for deprecated entries.
 
 Find more information in the [changelog](https://github.com/valentjn/vscode-ltex/blob/master/CHANGELOG.md).
@@ -66,7 +66,7 @@ Download the offline version of LT<sub>E</sub>X on the [Releases page](https://g
 Download [ltex-ls](https://github.com/valentjn/ltex-ls/releases) and/or a Java distribution (for instance [AdoptOpenJDK](https://adoptopenjdk.net/)) individually and set `ltex.ltex-ls.path` and/or `ltex.java.path` to the respective locations. If you do this, the versions of ltex-ls and/or Java have to satisfy the following requirements:
 
 * The version of ltex-ls must be smaller than or equal to the version of LT<sub>E</sub>X itself (this extension). Most of the time you want to choose the newest version of ltex-ls that satisfies this requirement. A newer version of ltex-ls will not work, an older version might not work.
-* The version of Java must be at least 11. Some Java distributions offer a JRE and a JDK; in this case, the JRE (Java Runtime Environment) is sufficient.
+* The version of Java must be at least 8. Some Java distributions offer a JRE and a JDK; in this case, the JRE (Java Runtime Environment) is sufficient.
 
 ## Extension Settings
 
