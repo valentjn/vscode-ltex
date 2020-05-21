@@ -4,7 +4,7 @@ import * as CodeLanguageClient from 'vscode-languageclient';
 import * as Ltex from '../src/extension';
 
 describe('LTeX tests', () => {
-  let languageClient: CodeLanguageClient.LanguageClient | null = null;
+  let api: Ltex.Api | null = null;
 
   async function createNewFile(name: string, contents?: string): Promise<Code.TextDocument> {
     console.log(`Creating new file '${name}'...`);
@@ -33,7 +33,7 @@ describe('LTeX tests', () => {
     console.log('Waiting for activation of LTeX...');
     while (!ltex.isActive) await sleep(200);
 
-    const api: Ltex.Api = ltex.exports;
+    api = ltex.exports;
     if (api.serverOutputChannel == null) throw new Error('Server output channel not initialized.');
 
     // workaround for https://github.com/microsoft/vscode/issues/65108
@@ -54,8 +54,8 @@ describe('LTeX tests', () => {
 
     console.log('Waiting for language client to be ready...');
     if (api.languageClient == null) throw new Error('Language client not initialized.');
-    languageClient = api.languageClient;
-    await languageClient.onReady();
+    await api.languageClient.onReady();
+    console.log('Language client is ready.');
   });
 
   it('test1.md - Test checking of Markdown files', async () => {
@@ -63,8 +63,11 @@ describe('LTeX tests', () => {
         'This is *an test*.');
 
     return new Promise((resolve: () => void) => {
-      if (languageClient == null) throw new Error('Language client not initialized.');
-      languageClient.onNotification('textDocument/publishDiagnostics',
+      if ((api == null) || (api.languageClient == null)) {
+        throw new Error('Language client not initialized.');
+      }
+
+      api.languageClient.onNotification('textDocument/publishDiagnostics',
             (params: CodeLanguageClient.PublishDiagnosticsParams) => {
         if (params.uri == document.uri.toString()) {
           Assert.equal(params.diagnostics.length, 1);
@@ -80,8 +83,11 @@ describe('LTeX tests', () => {
         'This is \\textbf{an test}.');
 
     return new Promise((resolve: () => void) => {
-      if (languageClient == null) throw new Error('Language client not initialized.');
-      languageClient.onNotification('textDocument/publishDiagnostics',
+      if ((api == null) || (api.languageClient == null)) {
+        throw new Error('Language client not initialized.');
+      }
+
+      api.languageClient.onNotification('textDocument/publishDiagnostics',
             (params: CodeLanguageClient.PublishDiagnosticsParams) => {
         if (params.uri == document.uri.toString()) {
           Assert.equal(params.diagnostics.length, 1);
