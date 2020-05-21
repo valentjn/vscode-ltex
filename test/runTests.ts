@@ -24,7 +24,7 @@ async function main(): Promise<void> {
   console.log('Resolving CLI path to VS Code...');
   const cliPath: string = CodeTest.resolveCliPathFromVSCodeExecutablePath(vscodeExecutablePath);
 
-  for (let i: number = 0; i < 2; i++) {
+  for (let testIteration: number = 0; testIteration < 2; testIteration++) {
     let exitCode: number = 1;
     let tmpDirPath: string | undefined;
 
@@ -42,7 +42,7 @@ async function main(): Promise<void> {
             '--install-extension', 'james-yu.latex-workshop',
           ];
 
-      if (i == 1) {
+      if (testIteration == 1) {
         let platform: string = 'linux';
         if (process.platform == 'darwin') platform = 'mac';
         else if (process.platform == 'win32') platform = 'windows';
