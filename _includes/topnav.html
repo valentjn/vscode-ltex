@@ -53,6 +53,7 @@
                 {% if site.feedback_disable == null or site.feedback_disable == false %}
 			{% include feedback.html %}
 		{% endif %}
+        {% comment %}
                 <!--comment out this block if you want to hide search-->
                 <li>
                     <!--start search-->
@@ -74,6 +75,7 @@
                     </script>
                     <!--end search-->
                 </li>
+        {% endcomment %}
             </ul>
         </div>
         </div>
