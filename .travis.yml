@@ -1,0 +1,8 @@
+os: "linux"
+dist: "bionic"
+language: "ruby"
+rvm: "2.7"
+script: "bundle exec jekyll build"
+branches:
+  only:
+    - "gh-pages"
