@@ -1,9 +1,19 @@
 <footer>
+            {% comment %}
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;{{ site.time | date: "%Y"  }} {{site.company_name}}. All rights reserved. <br />
 {% if page.last_updated %}<span>Page last updated:</span> {{page.last_updated}}<br/>{% endif %} Site last generated: {{ site.time | date: "%b %-d, %Y"  }} <br />
 <p><img src="{{ "images/company_logo.png" }}" alt="Company logo"/></p>
+                </div>
+            </div>
+            {% endcomment %}
+            <div class="row">
+                <div class="col-lg-12 footer">
+                    Last update: {{ site.time | date: "%b %-d, %Y"  }}
+                    {% if site.github_editme_path %}
+                    <a target="_blank" rel="noopener" href="https://github.com/{{site.github_editme_path}}{{page.path}}" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me on GitHub</a>
+                    {% endif %}
                 </div>
             </div>
 </footer>
