@@ -3,6 +3,7 @@ title: "LT<sub>E</sub>X – LanguageTool Grammar/Spell Checking for Visual Studi
 title_plaintext: "LTeX – LanguageTool Grammar/Spell Checking for Visual Studio Code with LaTeX Support"
 permalink: "/index.html"
 sidebar: "sidebar"
+toc: false
 ---
 
 <a href="https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex" class="no-external">![Installs](https://img.shields.io/visual-studio-marketplace/i/valentjn.vscode-ltex?logo=visual-studio-code)</a>&nbsp;
