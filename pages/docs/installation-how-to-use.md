@@ -6,8 +6,9 @@ sidebar: "sidebar"
 
 ## Requirements
 
-* [VS Code 1.39 or newer](https://code.visualstudio.com/)
-* [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) (if you want to check L<sup>A</sup>T<sub>E</sub>X documents)
+- 64-bit operating system
+- [VS Code 1.39 or newer](https://code.visualstudio.com/)
+- [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) (if you want to check L<sup>A</sup>T<sub>E</sub>X documents)
 
 ## How to Use
 
@@ -30,5 +31,5 @@ Download the offline version of LT<sub>E</sub>X on the [Releases page](https://g
 
 Download [ltex-ls](https://github.com/valentjn/ltex-ls/releases) and/or a Java distribution (for instance [AdoptOpenJDK](https://adoptopenjdk.net/)) individually and set `ltex.ltex-ls.path` and/or `ltex.java.path` to the respective locations. If you do this, the versions of ltex-ls and/or Java have to satisfy the following requirements:
 
-* The version of ltex-ls must be smaller than or equal to the version of LT<sub>E</sub>X itself (this extension). Most of the time you want to choose the newest version of ltex-ls that satisfies this requirement. A newer version of ltex-ls will not work, an older version might not work.
-* The version of Java must be at least 8. Some Java distributions offer a JRE and a JDK; in this case, the JRE (Java Runtime Environment) is sufficient.
+- The version of ltex-ls must be smaller than or equal to the version of LT<sub>E</sub>X itself (this extension). Most of the time you want to choose the newest version of ltex-ls that satisfies this requirement. A newer version of ltex-ls will not work, an older version might not work.
+- The version of Java must be at least 8. Some Java distributions offer a JRE and a JDK; in this case, the JRE (Java Runtime Environment) is sufficient.
