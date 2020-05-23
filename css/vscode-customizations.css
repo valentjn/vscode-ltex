@@ -28,3 +28,12 @@ footer .githubEditButton {
   vertical-align:-10%;
   margin-left:0.1em;
 }
+
+/* colors */
+.navbar-inverse {
+  background-color: #6666cc;  /* blue: 347dbe */
+  border-color: #4545c4;      /* blue: 015cae */
+}
+.nav > li.active > a { background-color: #6666cc; }  /* blue: 347dbe */
+.nav > li > a:hover { background-color: #5b5bfc; }   /* blue: 248ec2 */
+li.sidebarTitle { color:#5555ff; }
