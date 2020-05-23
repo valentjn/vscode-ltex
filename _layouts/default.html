@@ -50,6 +50,13 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $(".expandable-button").click(function() {
+                $(this).closest("p").next().slideToggle("slow");
+            });
+        });
+    </script>
     {% if page.datatable == true %}
     <!-- Include the standard DataTables bits -->
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css">

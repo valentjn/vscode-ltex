@@ -31,31 +31,27 @@ def formatFullType(settingJson, indent=0):
   if (description is not None) and (indent > 0): markdown += f"{description}\n\n{indent * ' '}"
 
   if "type" not in settingJson:
-    markdown += formatAsJson(settingJson)
+    markdown += formatAsJson(settingJson) + "\n"
   elif settingJson["type"] == "object":
     assert settingJson["propertyNames"]["type"] == "string"
     markdown += "Object with the following properties:\n\n"
-    markdown += "\n".join(f"{indent * ' '}- `{x}`: {formatFullType(y, indent+2)}"
+    markdown += "".join(f"{indent * ' '}- `{x}`: {formatFullType(y, indent+2)}"
         for x, y in settingJson["properties"].items())
-    markdown += "\n"
   elif settingJson["type"] == "array":
     itemTypes = settingJson["items"]
 
     if isinstance(itemTypes, dict):
       markdown += "Array where each entry has the following type:\n\n"
       markdown += f"{indent * ' '}- {formatFullType(itemTypes, indent+2)}"
-      markdown += "\n"
     else:
       markdown += "Array with the following entries:\n\n"
-      markdown += "\n".join(f"{indent * ' '}- {formatFullType(x, indent+2)}" for x in itemTypes)
-      markdown += "\n"
+      markdown += "".join(f"{indent * ' '}- {formatFullType(x, indent+2)}" for x in itemTypes)
   elif "enum" in settingJson:
     enumNames = settingJson["enum"]
     enumDescriptions = settingJson["enumDescriptions"]
     markdown += "One of the following values:\n\n"
-    markdown += "\n".join(f"{indent * ' '}- `{x}`: {y}"
+    markdown += "".join(f"{indent * ' '}- `{x}`: {y}\n"
         for x, y in zip(enumNames, enumDescriptions))
-    markdown += "\n"
   else:
     markdown += f"Scalar of type {formatType(settingJson['type'])}\n"
 
@@ -83,7 +79,7 @@ def formatSetting(settingName, settingJson):
     markdown += f"\n*Default:* {formatAsJson(settingJson['default'])}\n"
 
   if type_ in ["array", "object"]:
-    markdown += f"\n*Full type description:* {formatFullType(settingJson)}\n"
+    markdown += f"\n*Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>\n\n<div markdown='1' style='display:none;'>\n\n{formatFullType(settingJson)}\n</div>\n\n"
 
   return markdown
 
