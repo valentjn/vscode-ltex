@@ -850,7 +850,7 @@ Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` 
 
 ## `ltex.commands.ignore`
 
-List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., `"\ref{}"`, `"\documentclass[]{}"`). Don't forget to escape the initial backslash by replacing it with two backslashes.
+List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., `"\\ref{}"`, `"\\documentclass[]{}"`). Don't forget to escape the initial backslash by replacing it with two backslashes.
 
 *Type:* `array`
 
@@ -873,7 +873,7 @@ Array where each entry has the following type:
 
 ## `ltex.commands.dummy`
 
-List of additional LaTeX commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments (e.g., `"\cite{}"`, `"\cite[]{}"`). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.
+List of additional LaTeX commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments (e.g., `"\\cite{}"`, `"\\cite[]{}"`). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.
 
 *Type:* `array`
 
