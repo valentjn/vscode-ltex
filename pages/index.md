@@ -5,26 +5,29 @@ permalink: "/index.html"
 sidebar: "sidebar"
 ---
 
-Hello World!
+<a href="https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex" class="no-external">![Installs](https://img.shields.io/visual-studio-marketplace/i/valentjn.vscode-ltex?logo=visual-studio-code)</a>&nbsp;
+<a href="https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex" class="no-external">![Rating](https://img.shields.io/visual-studio-marketplace/stars/valentjn.vscode-ltex?logo=visual-studio-code)</a>
 
-## Contributing
+<a href="https://github.com/valentjn/vscode-ltex" class="no-external">![vscode-ltex](https://img.shields.io/badge/vscode--ltex-grey)</a>&nbsp;
+<a href="https://www.travis-ci.org/valentjn/vscode-ltex" class="no-external">![Travis CI build status of vscode-ltex](https://img.shields.io/travis/valentjn/vscode-ltex/feature-ltex5?logo=travis)</a>&nbsp;
+<a href="https://coveralls.io/github/valentjn/vscode-ltex" class="no-external">![Coverage of vscode-ltex](https://img.shields.io/coveralls/github/valentjn/vscode-ltex/feature-ltex5?logo=coveralls)</a>&nbsp;
+<a href="https://github.com/valentjn/vscode-ltex" class="no-external">![GitHub stars](https://img.shields.io/github/stars/valentjn/vscode-ltex?logo=github)</a>&nbsp;
+<a href="https://github.com/valentjn/vscode-ltex/issues" class="no-external">![GitHub issues](https://img.shields.io/github/issues/valentjn/vscode-ltex?logo=github)</a><br/>
+<a href="https://github.com/valentjn/ltex-ls" class="no-external">![ltex-ls](https://img.shields.io/badge/ltex--ls-grey)</a>&nbsp;
+<a href="https://www.travis-ci.org/valentjn/ltex-ls" class="no-external">![Travis CI build status of ltex-ls](https://img.shields.io/travis/valentjn/ltex-ls/feature-ltex5?logo=travis)</a>&nbsp;
+<a href="https://coveralls.io/github/valentjn/ltex-ls" class="no-external">![Coverage of ltex-ls](https://img.shields.io/coveralls/github/valentjn/ltex-ls/feature-ltex5?logo=coveralls)</a>
 
-Contributions are welcome! This repository uses Git submodules. After cloning, be sure to run `git submodule update --init`.
+**LT<sub>E</sub>X** provides offline grammar checking in Visual Studio Code using [LanguageTool&nbsp;(LT)](https://languagetool.org/), supporting L<sup>A</sup>T<sub>E</sub>X and Markdown documents.
 
-Please report issues (bugs and feature requests) or submit pull requests on [GitHub](https://github.com/valentjn/vscode-ltex).
+This extension is a fork of the abandoned [LanguageTool for Visual Studio Code extension](https://github.com/adamvoss/vscode-languagetool) by Adam Voss with L<sup>A</sup>T<sub>E</sub>X support, lots of new features (user dictionaries, ignore errors, etc.), and updated dependencies (LanguageTool).
 
-### How to Report Bugs
+## Features
 
-1. Make sure that your issue is really an LT<sub>E</sub>X bug.
-2. Make sure that your issue can neither be found in the list of known issues below nor in the [list of all open and closed GitHub issues](https://github.com/valentjn/vscode-ltex/issues?q=is%3Aissue) (this applies to feature requests as well).
-3. Set the option `"ltex.trace.server": "verbose"` in your `settings.json`.
-4. Try to understand the bug by selecting `View` → `Output` → `LTeX Language Server`/`LTeX Language Client`.
-5. Append the relevant parts of these logs when opening an issue on GitHub.
+![LanguageTool Grammar Checking for VS Code with LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/master/img/LTeX-banner.png)
 
-### Known Issues
-
-* The L<sup>A</sup>T<sub>E</sub>X parser is not perfect. False positives are sometimes reported as errors. However, it is impossible to fully parse L<sup>A</sup>T<sub>E</sub>X without compiling it.
-
-## Acknowledgments
-
-See [ACKNOWLEDGMENTS.md](./ACKNOWLEDGMENTS.md).
+- Checks **L<sup>A</sup>T<sub>E</sub>X** and **Markdown** documents
+- Comes with **everything included,** no need to install Java or LanguageTool
+- Supports **over 20 languages**
+- **Issue highlighting** with hover description
+- **Replacement suggestions** via quick fixes
+- **User dictionaries**
