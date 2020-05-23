@@ -18,6 +18,29 @@ li.sidebarTitle { font-weight:bold; }
 .nav > li > a { font-weight:bold; }
 .nav ul li a { padding-left:20px; }
 
+/* table of contents */
+div#toc {
+  float:right;
+  margin-left:20px;
+}
+div#toc ul {
+  min-width:200px;
+  max-width:revert;
+}
+div#toc > ul::before {
+  display:inline-block;
+  width:auto;
+  padding-top:0;
+  padding-bottom:10px;
+  padding-left:5px;
+  font-weight:bold;
+}
+div#toc ul li,
+div#toc ul li ul li {
+  margin-top:0;
+  margin-bottom:0;
+}
+
 /* footer */
 footer { font-size:14px; }
 footer .githubEditButton {
