@@ -22,8 +22,7 @@ def fetchLanguages(toolsDirPath, ltexLsPath):
 
 def main():
   parser = argparse.ArgumentParser(description="Fetches all supported language codes from "
-      "LanguageTool and updates the language-specific parts of package.json and README.md "
-      "accordingly")
+      "LanguageTool and updates the language-specific parts of package.json accordingly")
   parser.add_argument("--ltex-ls-path", default="lib/ltex-ls-*",
       help="path to ltex-ls relative from the root directory of LTeX, supports wildcards")
   args = parser.parse_args()
@@ -113,19 +112,6 @@ def main():
   with open(packageJsonPath, "w") as f:
     json.dump(packageJson, f, indent=2)
     f.write("\n")
-
-  print("Updating README.md...")
-  readmeMdPath = os.path.join(ltexPath, "README.md")
-  with open(readmeMdPath, "r") as f: readmeMd = f.read()
-
-  replacement = "Possible values: {}".format(", ".join([
-      "`\"{}\"` ({}{})".format(languageShortCode, languageName,
-        (", default" if languageShortCode == "en-US" else ""))
-      for languageShortCode, languageName in zip(languageShortCodes, languageNames)]))
-  readmeMd = re.sub(r"(\n\* `ltex\.language`: .*?\n  \* ).*?\n",
-      r"\1{}\n".format(replacement), readmeMd)
-
-  with open(readmeMdPath, "w") as f: f.write(readmeMd)
 
 
 

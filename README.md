@@ -52,114 +52,54 @@ Find more information in the [changelog](https://github.com/valentjn/vscode-ltex
 5. Wait until ltex-ls and Java have been found; if necessary, LT<sub>E</sub>X downloads both for you.
 6. Grammar/spelling errors will be displayed! (if there are any)
 
-## Offline Installation
+## Documentation
 
-The key component of LT<sub>E</sub>X, the LT<sub>E</sub>X Language Server (ltex-ls), which also includes LanguageTool itself, cannot be included in the LT<sub>E</sub>X version distributed on the Visual Studio Marketplace due to file size restrictions. In addition, ltex-ls requires Java due to its LanguageTool dependency. When activated for the first time, LT<sub>E</sub>X will automatically download and use the latest compatible ltex-ls release from GitHub and, in case no existing installation of Java has been found, a portable Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)). Both will be stored in the extension folder. If you don't have an Internet connection, or if you simply don't want this, there are two alternatives.
-
-### First Alternative
-
-Download the offline version of LT<sub>E</sub>X on the [Releases page](https://github.com/valentjn/vscode-ltex/releases) and install it via `Extensions: Install from VSIX...` on the Command Palette. The offline version includes _everything_ (ltex-ls and a Java distribution).
-
-### Second Alternative
-
-Download [ltex-ls](https://github.com/valentjn/ltex-ls/releases) and/or a Java distribution (for instance [AdoptOpenJDK](https://adoptopenjdk.net/)) individually and set `ltex.ltex-ls.path` and/or `ltex.java.path` to the respective locations. If you do this, the versions of ltex-ls and/or Java have to satisfy the following requirements:
-
-* The version of ltex-ls must be smaller than or equal to the version of LT<sub>E</sub>X itself (this extension). Most of the time you want to choose the newest version of ltex-ls that satisfies this requirement. A newer version of ltex-ls will not work, an older version might not work.
-* The version of Java must be at least 8. Some Java distributions offer a JRE and a JDK; in this case, the JRE (Java Runtime Environment) is sufficient.
-
-## Extension Settings
-
-This extension contributes the following settings. Some settings are separated by language. These settings are located under `ltex.<LANGUAGE>`, where `<LANGUAGE>` has to be replaced with the language short code from `ltex.language`.
-
-* `ltex.enabled`: Controls whether the extension is enabled. Allows disabling LanguageTool on specific workspaces. Changes require reloading the Visual Studio Code window to take effect.
-  * Possible values: `true` (default), `false`
-
-* `ltex.language`: The language LanguageTool should check against. Use a specific variant like `"en-US"` or `"de-DE"` instead of the generic language code like `"en"` or `"de"` to obtain spelling corrections (in addition to grammar corrections).
-  * Possible values: `"ar"` (Arabic), `"ar-DZ"` (Arabic (Algeria)), `"ast-ES"` (Asturian), `"be-BY"` (Belarusian), `"br-FR"` (Breton), `"ca-ES"` (Catalan), `"ca-ES-valencia"` (Catalan (Valencian)), `"da-DK"` (Danish), `"de"` (German), `"de-AT"` (German (Austria)), `"de-CH"` (German (Swiss)), `"de-DE"` (German (Germany)), `"de-DE-x-simple-language"` (Simple German), `"el-GR"` (Greek), `"en"` (English), `"en-AU"` (English (Australian)), `"en-CA"` (English (Canadian)), `"en-GB"` (English (GB)), `"en-NZ"` (English (New Zealand)), `"en-US"` (English (US), default), `"en-ZA"` (English (South African)), `"eo"` (Esperanto), `"es"` (Spanish), `"fa"` (Persian), `"fr"` (French), `"ga-IE"` (Irish), `"gl-ES"` (Galician), `"it"` (Italian), `"ja-JP"` (Japanese), `"km-KH"` (Khmer), `"nl"` (Dutch), `"pl-PL"` (Polish), `"pt"` (Portuguese), `"pt-AO"` (Portuguese (Angola preAO)), `"pt-BR"` (Portuguese (Brazil)), `"pt-MZ"` (Portuguese (Moçambique preAO)), `"pt-PT"` (Portuguese (Portugal)), `"ro-RO"` (Romanian), `"ru-RU"` (Russian), `"sk-SK"` (Slovak), `"sl-SI"` (Slovenian), `"sv"` (Swedish), `"ta-IN"` (Tamil), `"tl-PH"` (Tagalog), `"uk-UA"` (Ukrainian), `"zh-CN"` (Chinese)
-
-* `ltex.dictionary`: Lists of additional words that should not be counted as spelling errors. The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<WORD1>\", \"<WORD2>\", ...], \"<LANGUAGE2>\": [\"<WORD1>\", \"<WORD2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language`. If `null` (the default), no additional spelling errors will be ignored.
-  * Example: `{"en-US": ["adaptivity", "precomputed", "subproblem"], "de-DE": ["B-Splines"]}`; default: `null`
-
-* `ltex.disabledRules`: Lists of rules that should be disabled (if enabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language` and `<RULE>` the ID of the LanguageTool rule. If `null` (the default), no additional rules will be disabled.
-  * Example: `{"en-US": ["EN_QUOTES", "UPPERCASE_SENTENCE_START"]}`; default: `null`
-
-* `ltex.enabledRules`: Lists of rules that should be enabled (if disabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language` and `<RULE>` the ID of the LanguageTool rule. If `null` (the default), no additional rules will be enabled.
-  * Example: `{"en-GB": ["PASSIVE_VOICE", "OXFORD_SPELLING_NOUNS"]}`; default: `null`
-
-* `ltex.ltex-ls.path`: If this setting is `null`, LT<sub>E</sub>X automatically downloads the [latest compatible release of ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. Use the path to the root directory of ltex-ls (it contains `bin` and `lib` subdirectories). Changes require reloading the Visual Studio Code window to take effect.
-  * Examples: `"/path/to/directory"`, `"C:\\path\\to\\directory"`; default: `null`
-
-* `ltex.java.path`: If this setting is `null` and LT<sub>E</sub>X could not find Java on your computer, LT<sub>E</sub>X automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the `JAVA_HOME` environment variable (it usually contains `bin` and `lib` subdirectories, amongst others). Changes require reloading the Visual Studio Code window to take effect.
-  * Examples: `"/path/to/directory"`, `"C:\\path\\to\\directory"`; default: `null`
-
-* `ltex.java.initialHeapSize`: Initial size of the Java heap memory in megabytes (corresponds to Java's `-Xms` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect.
-  * Example/default: `64`
-
-* `ltex.java.maximumHeapSize`: Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an `OutOfMemoryError` is thrown. Changes require reloading the Visual Studio Code window to take effect.
-  * Example/default: `512`
-
-* `ltex.commands.ignore`: List of additional L<sup>A</sup>T<sub>E</sub>X commands to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser, listed together with empty arguments. Don't forget to escape the initial backslash by replacing it with two backslashes.
-  * Example: `["\\documentclass[]{}", "\\renewcommand*{}[]{}"]` (although these two commands are already ignored by default); default: `[]`
-
-* `ltex.commands.dummy`: List of additional L<sup>A</sup>T<sub>E</sub>X commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments. LT<sub>E</sub>X internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.
-  * Example: `["\\cite{}", "\\cite[]{}"]` (although these two commands are already replaced by dummy words by default); default: `[]`
-
-* `ltex.environments.ignore`: List of additional L<sup>A</sup>T<sub>E</sub>X environments to be ignored by the L<sup>A</sup>T<sub>E</sub>X parser.
-  * Example: `["lstlisting", "verbatim"]` (although these two environments are already ignored by default); default: `[]`
-
-* `ltex.markdown.ignore`: List of Markdown node types to be ignored by the Markdown parser. The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type `Text`. LT<sub>E</sub>X will ignore all nodes (and their `Text` leaves) that have one of the listed node types. The possible node types are listed in the [documentation of flexmark-java](https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html).
-  * Example/default: `["CodeBlock", "FencedCodeBlock", "IndentedCodeBlock"]`
-
-* `ltex.markdown.dummy`: List of Markdown node types to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.) by the Markdown parser. LT<sub>E</sub>X internally uses this mechanism for example for links and inline code that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. The possible node types are listed in the [documentation of flexmark-java](https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html).
-  * Example/default: `["AutoLink", "Code"]`
-
-* `ltex.ignoreRuleInSentence`: Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. This is a list of objects with two keys each, `rule` and `sentence`. The `rule` value is the identifier of the LanguageTool rule to be ignored. The `sentence` value is a Java-compatible regular expression. All occurrences of the given rule are ignored in sentences (as determined by the LanguageTool tokenizer) that match the regular expression. Although it is possible to manually edit this setting, the intended way is to add rule/sentence pairs by using the `Ignore in this sentence` quick fix. If this list is very large, performance may suffer.
-  * Example: `[{"rule": "THIS_NNS", "sentence": "^\\QThese error in this sentence should be ignored.\\E$"}]`; default: `[]`
-
-* `ltex.configurationTarget`: Controls which `settings.json` to update when using one of the quick fixes. `"global"` always updates the global configuration. `"workspace"` updates the workspace configuration if currently in a workspace, otherwise the global configuration. `"workspaceFolder"` updates the workspace folder configuration if currently in a workspace folder, otherwise the workspace configuration if currently in a workspace, otherwise the global configuration.
-  * Example/default: `{"addToDictionary": "global", "disableRule": "workspaceFolder", "ignoreRuleInSentence": "workspaceFolder"}`
-
-* `ltex.additionalRules.motherTongue`: Optional mother tongue of the user. If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see `ltex.additionalRules.languageModel`).
-  * Examples: `"en-US"`, `"de-DE"`; default: `null`
-
-* `ltex.additionalRules.languageModel`: Optional path to a directory with rules of a language model with *n*-gram occurrence counts.
-  * Examples: `"/path/to/directory"`, `"C:\\path\\to\\directory"`; default: `null`
-
-* `ltex.additionalRules.neuralNetworkModel`: Optional path to a directory with rules of a pretrained neural network model.
-  * Examples: `"/path/to/directory"`, `"C:\\path\\to\\directory"`; default: `null`
-
-* `ltex.additionalRules.word2VecModel`: Optional path to a directory with rules of a word2vec language model.
-  * Examples: `"/path/to/directory"`, `"C:\\path\\to\\directory"`; default: `null`
-
-* `ltex.sentenceCacheSize`: Size of the LanguageTool `ResultCache` in sentences (must be a positive integer). If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect.
-  * Example/default: `2000`
-
-* `ltex.diagnosticSeverity`: Severity of the diagnostics corresponding to the grammar and spelling errors. Allows controlling how and where the diagnostics appear in Visual Studio Code.
-  * Possible values: `"error"`, `"warning"`, `"information"` (default), `"hint"`
-
-* `ltex.trace.server`: Debug setting to log the communication between language client and server. When reporting issues, set this to `\"verbose\"` and open the `LTeX Language Client` log in `View` → `Output`. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.
-  * Possible values: `"off"` (default), `"messages"`, `"verbose"`
-
-## Contributing
-
-Contributions are welcome! This repository uses Git submodules. After cloning, be sure to run `git submodule update --init`.
-
-Please report issues (bugs and feature requests) or submit pull requests on [GitHub](https://github.com/valentjn/vscode-ltex).
-
-### How to Report Bugs
-
-1. Make sure that your issue is really an LT<sub>E</sub>X bug.
-2. Make sure that your issue can neither be found in the list of known issues below nor in the [list of all open and closed GitHub issues](https://github.com/valentjn/vscode-ltex/issues?q=is%3Aissue) (this applies to feature requests as well).
-3. Set the option `"ltex.trace.server": "verbose"` in your `settings.json`.
-4. Try to understand the bug by selecting `View` → `Output` → `LTeX Language Server`/`LTeX Language Client`.
-5. Append the relevant parts of these logs when opening an issue on GitHub.
-
-### Known Issues
-
-* The L<sup>A</sup>T<sub>E</sub>X parser is not perfect. False positives are sometimes reported as errors. However, it is impossible to fully parse L<sup>A</sup>T<sub>E</sub>X without compiling it.
-
-## Acknowledgments
-
-See [ACKNOWLEDGMENTS.md](./ACKNOWLEDGMENTS.md).
+- [General Information](https://valentjn.github.io/vscode-ltexhttps://valentjn.github.io/vscode-ltex/index.html)
+  - [Overview](https://valentjn.github.io/vscode-ltex/index.html)
+    - [Features](https://valentjn.github.io/vscode-ltex#features)
+  - [Download — VS Marketplace](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex)
+  - [GitHub — Code/Issues](https://github.com/valentjn/vscode-ltex)
+- [Documentation](https://valentjn.github.io/vscode-ltexhttps://valentjn.github.io/vscode-ltex/docs/installation-how-to-use.html)
+  - [Installation & How to Use](https://valentjn.github.io/vscode-ltex/docs/installation-how-to-use.html)
+    - [Requirements](https://valentjn.github.io/vscode-ltex#requirements)
+    - [How to Use](https://valentjn.github.io/vscode-ltex#how-to-use)
+    - [Offline Installation](https://valentjn.github.io/vscode-ltex#offline-installation)
+      - [First Alternative](https://valentjn.github.io/vscode-ltex#first-alternative)
+      - [Second Alternative](https://valentjn.github.io/vscode-ltex#second-alternative)
+  - [Transitioning to LT<sub>E</sub>X 5.x](https://valentjn.github.io/vscode-ltex/docs/transitioning-to-ltex-5x.html)
+  - [Settings](https://valentjn.github.io/vscode-ltex/docs/settings.html)
+    - [`ltex.enabled`](https://valentjn.github.io/vscode-ltex#ltexenabled)
+    - [`ltex.language`](https://valentjn.github.io/vscode-ltex#ltexlanguage)
+    - [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex#ltexdictionary)
+    - [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex#ltexdisabledrules)
+    - [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex#ltexenabledrules)
+    - [`ltex.ltex-ls.path`](https://valentjn.github.io/vscode-ltex#ltexltex-lspath)
+    - [`ltex.java.path`](https://valentjn.github.io/vscode-ltex#ltexjavapath)
+    - [`ltex.java.initialHeapSize`](https://valentjn.github.io/vscode-ltex#ltexjavainitialheapsize)
+    - [`ltex.java.maximumHeapSize`](https://valentjn.github.io/vscode-ltex#ltexjavamaximumheapsize)
+    - [`ltex.commands.ignore`](https://valentjn.github.io/vscode-ltex#ltexcommandsignore)
+    - [`ltex.commands.dummy`](https://valentjn.github.io/vscode-ltex#ltexcommandsdummy)
+    - [`ltex.environments.ignore`](https://valentjn.github.io/vscode-ltex#ltexenvironmentsignore)
+    - [`ltex.markdown.ignore`](https://valentjn.github.io/vscode-ltex#ltexmarkdownignore)
+    - [`ltex.markdown.dummy`](https://valentjn.github.io/vscode-ltex#ltexmarkdowndummy)
+    - [`ltex.ignoreRuleInSentence`](https://valentjn.github.io/vscode-ltex#ltexignoreruleinsentence)
+    - [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex#ltexconfigurationtarget)
+    - [`ltex.additionalRules.motherTongue`](https://valentjn.github.io/vscode-ltex#ltexadditionalrulesmothertongue)
+    - [`ltex.additionalRules.languageModel`](https://valentjn.github.io/vscode-ltex#ltexadditionalruleslanguagemodel)
+    - [`ltex.additionalRules.neuralNetworkModel`](https://valentjn.github.io/vscode-ltex#ltexadditionalrulesneuralnetworkmodel)
+    - [`ltex.additionalRules.word2VecModel`](https://valentjn.github.io/vscode-ltex#ltexadditionalrulesword2vecmodel)
+    - [`ltex.sentenceCacheSize`](https://valentjn.github.io/vscode-ltex#ltexsentencecachesize)
+    - [`ltex.diagnosticSeverity`](https://valentjn.github.io/vscode-ltex#ltexdiagnosticseverity)
+    - [`ltex.trace.server`](https://valentjn.github.io/vscode-ltex#ltextraceserver)
+  - [Advanced Features](https://valentjn.github.io/vscode-ltex/docs/advanced-features.html)
+    - [Magic Comments](https://valentjn.github.io/vscode-ltex#magic-comments)
+    - [Ignoring False Positives with Regular Expressions](https://valentjn.github.io/vscode-ltex#ignoring-false-positives-with-regular-expressions)
+  - [Changelog](https://valentjn.github.io/vscode-ltex/docs/changelog.html)
+  - [Contributing Code/Issues](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html)
+    - [How to Report Bugs](https://valentjn.github.io/vscode-ltex#how-to-report-bugs)
+    - [Known Issues](https://valentjn.github.io/vscode-ltex#known-issues)
+  - [Acknowledgments](https://valentjn.github.io/vscode-ltex/docs/acknowledgments.html)
+    - [LanguageTool Extension for Visual Studio Code](https://valentjn.github.io/vscode-ltex#languagetool-extension-for-visual-studio-code)
+    - [ltex-ls](https://valentjn.github.io/vscode-ltex#ltex-ls)
 
 [marketplace]: https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex
