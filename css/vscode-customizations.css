@@ -16,7 +16,7 @@
 /* sidebar */
 li.sidebarTitle { font-weight:bold; }
 .nav > li > a { font-weight:bold; }
-.nav ul li a { padding-left:20px; }
+.nav ul li a { padding-left:30px; }
 
 /* table of contents */
 div#toc {
