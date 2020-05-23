@@ -19,8 +19,8 @@ entries:
       - title: "Documentation"
         output: "web"
         folderitems:
-          - title: "Installation"
-            url: "/docs/installation.html"
+          - title: "Installation & How to Use"
+            url: "/docs/installation-how-to-use.html"
             output: "web"
           - title: "Settings"
             url: "/docs/settings.html"

@@ -1,7 +1,7 @@
 ---
-title: "Installation"
+title: "Installation & How to Use"
 sidebar: "sidebar"
-permalink: "/docs/installation.html"
+permalink: "/docs/installation-how-to-use.html"
 ---
 
 ## Requirements
