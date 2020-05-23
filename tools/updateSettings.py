@@ -96,8 +96,8 @@ def main():
   settingsMarkdown = [formatSetting(x, y) for x, y in settingsJson.items()]
   markdown = """---
 title: "Settings"
-sidebar: "sidebar"
 permalink: "/docs/settings.html"
+sidebar: "sidebar"
 ---
 
 """

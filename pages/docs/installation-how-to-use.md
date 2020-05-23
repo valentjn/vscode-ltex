@@ -1,7 +1,7 @@
 ---
 title: "Installation & How to Use"
-sidebar: "sidebar"
 permalink: "/docs/installation-how-to-use.html"
+sidebar: "sidebar"
 ---
 
 ## Requirements

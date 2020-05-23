@@ -1,7 +1,7 @@
 ---
 title: "Settings"
-sidebar: "sidebar"
 permalink: "/docs/settings.html"
+sidebar: "sidebar"
 ---
 
 ## `ltex.enabled`
