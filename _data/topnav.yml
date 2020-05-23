@@ -3,9 +3,9 @@
 topnav:
 - title: Topnav
   items:
-    - title: "<i class=\"fa fa-lg\"><img src=\"images/logo-visual-studio.svg\" style=\"height:0.8em; margin-top:-0.2em; filter:invert(100%);\"/></i> VS Marketplace/Download"
+    - title: "<i class=\"fa fa-lg\"><img src=\"images/logo-visual-studio.svg\" style=\"height:0.8em; margin-top:-0.2em; filter:invert(100%);\"/></i> Download"
       external_url: https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex
-    - title: "<i class=\"fa fa-github fa-lg\"></i> GitHub/Issues"
+    - title: "<i class=\"fa fa-github fa-lg\"></i> Code/Issues"
       external_url: https://github.com/valentjn/vscode-ltex
 
 #Topnav dropdowns
