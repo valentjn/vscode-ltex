@@ -20,10 +20,10 @@ This extension is a fork of the abandoned [LanguageTool for Visual Studio Code e
 
 LT<sub>E</sub>X has undergone a major rewrite in version 5.0. The most important change is that it now comes with everything included:
 
-* All languages are now directly included in LT<sub>E</sub>X, which eliminates the need for language support extensions (e.g., `LTeX - English support`). If you still have any of them installed, you may uninstall them now.
-* Due to file size restrictions of the Visual Studio Marketplace, LT<sub>E</sub>X has to download its core component (which includes LanguageTool) when activated for the first time. Read below for instructions on offline installation.
-* A separate Java installation is not necessary anymore. LT<sub>E</sub>X will automatically download a Java distribution and store it in the extension folder if no suitable Java installation (Java 8 or later) has been found on your computer.
-* A few settings have been renamed. Check your `settings.json` for deprecated entries.
+- All languages are now directly included in LT<sub>E</sub>X, which eliminates the need for language support extensions (e.g., `LTeX - English support`). If you still have any of them installed, you may uninstall them now.
+- Due to file size restrictions of the Visual Studio Marketplace, LT<sub>E</sub>X has to download its core component (which includes LanguageTool) when activated for the first time. Read below for instructions on offline installation.
+- A separate Java installation is not necessary anymore. LT<sub>E</sub>X will automatically download a Java distribution and store it in the extension folder if no suitable Java installation (Java 8 or later) has been found on your computer.
+- A few settings have been renamed. Check your `settings.json` for deprecated entries.
 
 Find more information in the [changelog](https://github.com/valentjn/vscode-ltex/blob/master/CHANGELOG.md).
 
@@ -31,17 +31,17 @@ Find more information in the [changelog](https://github.com/valentjn/vscode-ltex
 
 ![LanguageTool Grammar Checking for VS Code with LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/master/img/LTeX-banner.png)
 
-* Checks **L<sup>A</sup>T<sub>E</sub>X** and **Markdown** documents
-* Comes with **everything included,** no need to install Java or LanguageTool
-* Supports **over 20 languages**
-* **Issue highlighting** with hover description
-* **Replacement suggestions** via quick fixes
-* **User dictionaries**
+- Checks **L<sup>A</sup>T<sub>E</sub>X** and **Markdown** documents
+- Comes with **everything included,** no need to install Java or LanguageTool
+- Supports **over 20 languages**
+- **Issue highlighting** with hover description
+- **Replacement suggestions** via quick fixes
+- **User dictionaries**
 
 ## Requirements
 
-* [VS Code 1.39 or newer](https://code.visualstudio.com/)
-* [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) (if you want to check L<sup>A</sup>T<sub>E</sub>X documents)
+- [VS Code 1.39 or newer](https://code.visualstudio.com/)
+- [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) (if you want to check L<sup>A</sup>T<sub>E</sub>X documents)
 
 ## How to Use
 
