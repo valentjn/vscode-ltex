@@ -42,3 +42,7 @@ footer .githubEditButton {
 .nav > li.active > a { background-color: #6666cc; }  /* blue: 347dbe */
 .nav > li > a:hover { background-color: #5b5bfc; }   /* blue: 248ec2 */
 li.sidebarTitle { color:#5555ff; }
+code {
+  color:#5555ff;
+  background-color:#f2f2f9;
+}
