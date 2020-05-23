@@ -43,6 +43,14 @@ div#toc ul li ul li {
 
 /* links */
 a.no-external::after { content:none; }
+a[href^="http://"]:not(.btn, .no-external)::after,
+a[href^="https://"]:not(.btn, .no-external)::after {
+  margin-right:-17px;
+}
+a[href^="http://"]:not(.btn, .no-external),
+a[href^="https://"]:not(.btn, .no-external) {
+  padding-right:17px;
+}
 
 /* footer */
 footer { font-size:14px; }
