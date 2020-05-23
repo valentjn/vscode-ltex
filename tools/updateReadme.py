@@ -65,8 +65,7 @@ def main():
       children.append({"title": entry["title"], "url" : url,
           "children" : grandChildren})
 
-    structure.append({"title" : folder["title"], "url" : serverUrl + children[0]["url"],
-        "children" : children})
+    structure.append({"title" : folder["title"], "url" : children[0]["url"], "children" : children})
 
   markdown = convertToMarkdown(structure)
 

@@ -55,12 +55,11 @@ Find more information in the [changelog](https://github.com/valentjn/vscode-ltex
 
 ## Documentation
 
-- [General Information](https://valentjn.github.io/vscode-ltexhttps://valentjn.github.io/vscode-ltex/index.html)
+- [General Information](https://valentjn.github.io/vscode-ltex/index.html)
   - [Overview](https://valentjn.github.io/vscode-ltex/index.html)
-    - [Features](https://valentjn.github.io/vscode-ltex#features)
   - [Download — VS Marketplace](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex)
   - [GitHub — Code/Issues](https://github.com/valentjn/vscode-ltex)
-- [Documentation](https://valentjn.github.io/vscode-ltexhttps://valentjn.github.io/vscode-ltex/docs/installation-how-to-use.html)
+- [Documentation](https://valentjn.github.io/vscode-ltex/docs/installation-how-to-use.html)
   - [Installation & How to Use](https://valentjn.github.io/vscode-ltex/docs/installation-how-to-use.html)
     - [Requirements](https://valentjn.github.io/vscode-ltex#requirements)
     - [How to Use](https://valentjn.github.io/vscode-ltex#how-to-use)
