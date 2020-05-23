@@ -180,8 +180,8 @@
             "Ukrainian",
             "Chinese"
           ],
-          "markdownDescription": "The language (e.g., `\"en-US\"`) LanguageTool should check against. Use a specific variant like `\"en-US\"` or `\"de-DE\"` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).",
-          "description": "The language (e.g., \"en-US\") LanguageTool should check against. Use a specific variant like \"en-US\" or \"de-DE\" instead of the generic language code like en or de to obtain spelling corrections (in addition to grammar corrections)."
+          "markdownDescription": "The language (e.g., `\"en-US\"`) LanguageTool should check against. Use a specific variant like `\"en-US\"` or `\"de-DE\"` instead of the generic language code like `\"en\"` or `\"de\"` to obtain spelling corrections (in addition to grammar corrections).",
+          "description": "The language (e.g., \"en-US\") LanguageTool should check against. Use a specific variant like \"en-US\" or \"de-DE\" instead of the generic language code like \"en\" or \"de\" to obtain spelling corrections (in addition to grammar corrections)."
         },
         "ltex.dictionary": {
           "type": "object",
@@ -1492,8 +1492,8 @@
           "items": {
             "type": "string"
           },
-          "markdownDescription": "List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., `\\ref{}`, `\\documentclass[]{}`). Don't forget to escape the initial backslash by replacing it with two backslashes.",
-          "description": "List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., '\\ref{}', '\\documentclass[]{}'). Don't forget to escape the initial backslash by replacing it with two backslashes.",
+          "markdownDescription": "List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., `\"\\\\ref{}\"`, `\"\\\\documentclass[]{}\"`). Don't forget to escape the initial backslash by replacing it with two backslashes.",
+          "description": "List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., '\"\\\\ref{}\"', '\"\\\\documentclass[]{}\"'). Don't forget to escape the initial backslash by replacing it with two backslashes.",
           "examples": [
             "\\ref{}",
             "\\documentclass[]{}"
@@ -1506,8 +1506,8 @@
           "items": {
             "type": "string"
           },
-          "markdownDescription": "List of additional LaTeX commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments (e.g., `\\cite{}`, `\\cite[]{}`). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.",
-          "description": "List of additional LaTeX commands to be replaced by dummy words (i.e., Dummy0, Dummy1, etc.), listed together with empty arguments (e.g., '\\cite{}', '\\cite[]{}'). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.",
+          "markdownDescription": "List of additional LaTeX commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments (e.g., `\"\\\\cite{}\"`, `\"\\\\cite[]{}\"`). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.",
+          "description": "List of additional LaTeX commands to be replaced by dummy words (i.e., Dummy0, Dummy1, etc.), listed together with empty arguments (e.g., '\"\\\\cite{}\"', '\"\\\\cite[]{}\"'). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.",
           "examples": [
             "\\cite{}",
             "\\cite[]{}"
