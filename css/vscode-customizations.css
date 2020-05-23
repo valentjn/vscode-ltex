@@ -12,3 +12,19 @@
 
 /* links in topnav */
 .navbar-right .btn { font-weight:bold; }
+
+/* footer */
+footer { font-size:14px; }
+footer .githubEditButton {
+  margin-left:1em;
+  margin-bottom:0;
+}
+.footer {
+  display:flex;
+  justify-content:right;
+  align-items:center;
+}
+.fa-github {
+  vertical-align:-10%;
+  margin-left:0.1em;
+}
