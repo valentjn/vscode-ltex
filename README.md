@@ -40,6 +40,7 @@ Find more information in the [changelog](https://github.com/valentjn/vscode-ltex
 
 ## Requirements
 
+- 64-bit operating system
 - [VS Code 1.39 or newer](https://code.visualstudio.com/)
 - [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) (if you want to check L<sup>A</sup>T<sub>E</sub>X documents)
 
