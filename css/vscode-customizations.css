@@ -1,0 +1,11 @@
+/* logo in topnav */
+.navbar-brand {
+  display:flex;
+  align-items:center;
+}
+.fa-home::before { content: none; }
+.navbar-brand > img {
+  display:inline-block;
+  height:2em;
+  margin-right:0.2em;
+}
