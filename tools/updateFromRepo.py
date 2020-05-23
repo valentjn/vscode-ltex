@@ -5,6 +5,8 @@ import json
 import os
 import re
 
+
+
 def formatList(json_):
   return "\n".join(f"- `{x}`" for x in json_)
 
@@ -83,14 +85,9 @@ def formatSetting(settingName, settingJson):
 
   return markdown
 
-def main():
-  parser = argparse.ArgumentParser(description="update settings.md according to package.json")
-  parser.add_argument("--source",
-      default=os.path.join(os.path.dirname(__file__), "..", "..", "vscode-ltex", "package.json"),
-      help="path to package.json")
-  args = parser.parse_args()
-
-  with open(args.source, "r") as f: packageJson = json.load(f)
+def updateSettings(ltexRepoDirPath, pagesRepoDirPath):
+  packageJsonPath = os.path.join(ltexRepoDirPath, "package.json")
+  with open(packageJsonPath, "r") as f: packageJson = json.load(f)
 
   settingsJson = packageJson["contributes"]["configuration"]["properties"]
   settingsMarkdown = [formatSetting(x, y) for x, y in settingsJson.items()]
@@ -104,8 +101,62 @@ sidebar: "sidebar"
   markdown += "\n".join(x for x in settingsMarkdown if x is not None)
   markdown = re.sub("\n\n+", "\n\n", markdown)
 
-  destPath = os.path.join(os.path.dirname(__file__), "..", "pages", "docs", "settings.md")
-  with open(destPath, "w") as f: f.write(markdown)
+  dstPath = os.path.join(pagesRepoDirPath, "pages", "docs", "settings.md")
+  with open(dstPath, "w") as f: f.write(markdown)
+
+
+
+def copyMarkdown(srcPath, dstPath, metaData):
+  with open(srcPath, "r") as f: markdown = f.read()
+  markdown = metaData + "\n".join(markdown.split("\n")[2:])
+  with open(dstPath, "w") as f: f.write(markdown)
+
+def updateChangelog(ltexRepoDirPath, pagesRepoDirPath):
+  copyMarkdown(os.path.join(ltexRepoDirPath, "CHANGELOG.md"),
+      os.path.join(pagesRepoDirPath, "pages", "docs", "changelog.md"), """---
+title: "Changelog"
+permalink: "/docs/changelog.html"
+sidebar: "sidebar"
+toc: false
+---
+
+""")
+
+def updateContributing(ltexRepoDirPath, pagesRepoDirPath):
+  copyMarkdown(os.path.join(ltexRepoDirPath, "CONTRIBUTING.md"),
+      os.path.join(pagesRepoDirPath, "pages", "docs", "contributing-code-issues.md"), """---
+title: "Contributing Code/Issues"
+permalink: "/docs/contributing-code-issues.html"
+sidebar: "sidebar"
+---
+
+""")
+
+def updateAcknowledgments(ltexRepoDirPath, pagesRepoDirPath):
+  copyMarkdown(os.path.join(ltexRepoDirPath, "ACKNOWLEDGMENTS.md"),
+      os.path.join(pagesRepoDirPath, "pages", "docs", "acknowledgments.md"), """---
+title: "Acknowledgments"
+permalink: "/docs/acknowledgments.html"
+sidebar: "sidebar"
+---
+
+""")
+
+
+
+def main():
+  parser = argparse.ArgumentParser(description="update Markdown according to main repo")
+  parser.add_argument("--ltex-repo",
+      default=os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "vscode-ltex")),
+      help="path to main repo")
+  args = parser.parse_args()
+
+  ltexRepoDirPath = args.ltex_repo
+  pagesRepoDirPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+  updateSettings(ltexRepoDirPath, pagesRepoDirPath)
+  updateChangelog(ltexRepoDirPath, pagesRepoDirPath)
+  updateContributing(ltexRepoDirPath, pagesRepoDirPath)
+  updateAcknowledgments(ltexRepoDirPath, pagesRepoDirPath)
 
 
 
