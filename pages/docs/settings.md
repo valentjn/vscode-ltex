@@ -14,58 +14,58 @@ Controls whether the extension is enabled. Allows to disable LanguageTool on spe
 
 ## `ltex.language`
 
-The language (e.g., `"en-US"`) LanguageTool should check against. Use a specific variant like `"en-US"` or `"de-DE"` instead of the generic language code like `en` or `de` to obtain spelling corrections (in addition to grammar corrections).
+The language (e.g., `"en-US"`) LanguageTool should check against. Use a specific variant like `"en-US"` or `"de-DE"` instead of the generic language code like `"en"` or `"de"` to obtain spelling corrections (in addition to grammar corrections).
 
 *Type:* `string`
 
 *Possible values:*
 
-- `ar`: Arabic
-- `ar-DZ`: Arabic (Algeria)
-- `ast-ES`: Asturian
-- `be-BY`: Belarusian
-- `br-FR`: Breton
-- `ca-ES`: Catalan
-- `ca-ES-valencia`: Catalan (Valencian)
-- `da-DK`: Danish
-- `de`: German
-- `de-AT`: German (Austria)
-- `de-CH`: German (Swiss)
-- `de-DE`: German (Germany)
-- `de-DE-x-simple-language`: Simple German
-- `el-GR`: Greek
-- `en`: English
-- `en-AU`: English (Australian)
-- `en-CA`: English (Canadian)
-- `en-GB`: English (GB)
-- `en-NZ`: English (New Zealand)
-- `en-US`: English (US)
-- `en-ZA`: English (South African)
-- `eo`: Esperanto
-- `es`: Spanish
-- `fa`: Persian
-- `fr`: French
-- `ga-IE`: Irish
-- `gl-ES`: Galician
-- `it`: Italian
-- `ja-JP`: Japanese
-- `km-KH`: Khmer
-- `nl`: Dutch
-- `pl-PL`: Polish
-- `pt`: Portuguese
-- `pt-AO`: Portuguese (Angola preAO)
-- `pt-BR`: Portuguese (Brazil)
-- `pt-MZ`: Portuguese (Moçambique preAO)
-- `pt-PT`: Portuguese (Portugal)
-- `ro-RO`: Romanian
-- `ru-RU`: Russian
-- `sk-SK`: Slovak
-- `sl-SI`: Slovenian
-- `sv`: Swedish
-- `ta-IN`: Tamil
-- `tl-PH`: Tagalog
-- `uk-UA`: Ukrainian
-- `zh-CN`: Chinese
+- `"ar"`: Arabic
+- `"ar-DZ"`: Arabic (Algeria)
+- `"ast-ES"`: Asturian
+- `"be-BY"`: Belarusian
+- `"br-FR"`: Breton
+- `"ca-ES"`: Catalan
+- `"ca-ES-valencia"`: Catalan (Valencian)
+- `"da-DK"`: Danish
+- `"de"`: German
+- `"de-AT"`: German (Austria)
+- `"de-CH"`: German (Swiss)
+- `"de-DE"`: German (Germany)
+- `"de-DE-x-simple-language"`: Simple German
+- `"el-GR"`: Greek
+- `"en"`: English
+- `"en-AU"`: English (Australian)
+- `"en-CA"`: English (Canadian)
+- `"en-GB"`: English (GB)
+- `"en-NZ"`: English (New Zealand)
+- `"en-US"`: English (US)
+- `"en-ZA"`: English (South African)
+- `"eo"`: Esperanto
+- `"es"`: Spanish
+- `"fa"`: Persian
+- `"fr"`: French
+- `"ga-IE"`: Irish
+- `"gl-ES"`: Galician
+- `"it"`: Italian
+- `"ja-JP"`: Japanese
+- `"km-KH"`: Khmer
+- `"nl"`: Dutch
+- `"pl-PL"`: Polish
+- `"pt"`: Portuguese
+- `"pt-AO"`: Portuguese (Angola preAO)
+- `"pt-BR"`: Portuguese (Brazil)
+- `"pt-MZ"`: Portuguese (Moçambique preAO)
+- `"pt-PT"`: Portuguese (Portugal)
+- `"ro-RO"`: Romanian
+- `"ru-RU"`: Russian
+- `"sk-SK"`: Slovak
+- `"sl-SI"`: Slovenian
+- `"sv"`: Swedish
+- `"ta-IN"`: Tamil
+- `"tl-PH"`: Tagalog
+- `"uk-UA"`: Ukrainian
+- `"zh-CN"`: Chinese
 
 *Default:* `"en-US"`
 
@@ -850,14 +850,14 @@ Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` 
 
 ## `ltex.commands.ignore`
 
-List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., `\ref{}`, `\documentclass[]{}`). Don't forget to escape the initial backslash by replacing it with two backslashes.
+List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., `"\ref{}"`, `"\documentclass[]{}"`). Don't forget to escape the initial backslash by replacing it with two backslashes.
 
 *Type:* `array`
 
 *Examples:*
 
-- `\ref{}`
-- `\documentclass[]{}`
+- `"\\ref{}"`
+- `"\\documentclass[]{}"`
 
 *Default:* `[]`
 
@@ -873,14 +873,14 @@ Array where each entry has the following type:
 
 ## `ltex.commands.dummy`
 
-List of additional LaTeX commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments (e.g., `\cite{}`, `\cite[]{}`). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.
+List of additional LaTeX commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments (e.g., `"\cite{}"`, `"\cite[]{}"`). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.
 
 *Type:* `array`
 
 *Examples:*
 
-- `\cite{}`
-- `\cite[]{}`
+- `"\\cite{}"`
+- `"\\cite[]{}"`
 
 *Default:* `[]`
 
@@ -902,8 +902,8 @@ List of additional LaTeX environments to be ignored by the LaTeX parser.
 
 *Examples:*
 
-- `lstlisting`
-- `verbatim`
+- `"lstlisting"`
+- `"verbatim"`
 
 *Default:* `[]`
 
@@ -1018,8 +1018,8 @@ Optional mother tongue of the user (e.g., `"de-DE"`). If set, additional rules w
 
 *Examples:*
 
-- `en-US`
-- `de-DE`
+- `"en-US"`
+- `"de-DE"`
 
 *Default:* `null`
 
@@ -1063,10 +1063,10 @@ Severity of the diagnostics corresponding to the grammar and spelling errors. Al
 
 *Possible values:*
 
-- `error`: Error diagnostics are usually underlined with a red squiggly line and appear in editor, minimap, Problems tab, and Explorer.
-- `warning`: Warning diagnostics are usually underlined with a yellow squiggly line and appear in editor, minimap, Problems tab, and Explorer.
-- `information`: Information diagnostics are usually underlined with a blue squiggly line and appear in editor, minimap, and Problems tab, but not in the Explorer.
-- `hint`: Hint diagnostics are not underlined (only subtly marked) and only appear in the editor, not in minimap, Problems tab, or Explorer.
+- `"error"`: Error diagnostics are usually underlined with a red squiggly line and appear in editor, minimap, Problems tab, and Explorer.
+- `"warning"`: Warning diagnostics are usually underlined with a yellow squiggly line and appear in editor, minimap, Problems tab, and Explorer.
+- `"information"`: Information diagnostics are usually underlined with a blue squiggly line and appear in editor, minimap, and Problems tab, but not in the Explorer.
+- `"hint"`: Hint diagnostics are not underlined (only subtly marked) and only appear in the editor, not in minimap, Problems tab, or Explorer.
 
 *Default:* `"information"`
 
@@ -1078,8 +1078,8 @@ Debug setting to log the communication between language client and server. When 
 
 *Possible values:*
 
-- `off`: Don't log any of the communication between language client and server.
-- `messages`: Log the type of requests and responses between language client and server.
-- `verbose`: Log the type and contents of requests and responses between language client and server.
+- `"off"`: Don't log any of the communication between language client and server.
+- `"messages"`: Log the type of requests and responses between language client and server.
+- `"verbose"`: Log the type and contents of requests and responses between language client and server.
 
 *Default:* `"off"`

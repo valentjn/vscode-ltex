@@ -8,7 +8,7 @@ import re
 
 
 def formatList(json_):
-  return "\n".join(f"- `{x}`" for x in json_)
+  return "\n".join(f"- {formatAsJson(x)}" for x in json_)
 
 def formatType(type_):
   if isinstance(type_, str) or (len(type_) == 1):
@@ -19,7 +19,7 @@ def formatType(type_):
     return ", ".join(f"`{x}`" for x in type_[:-2]) + f", `{type_[-2]}` or `{type_[-1]}`"
 
 def formatEnum(enumNames, enumDescriptions, indent=0):
-  formatEnumEntries = (lambda x, y: f"`{x}`: {y}" if y is not None else f"`{x}`")
+  formatEnumEntries = (lambda x, y: formatAsJson(x) + (f": {y}" if y is not None else ""))
   markdown = "\n".join(f"- {formatEnumEntries(x, y)}" for x, y in zip(enumNames, enumDescriptions))
   markdown += "\n"
   return markdown
