@@ -1,7 +1,7 @@
 ---
 title: "Settings"
 sidebar: "sidebar"
-permalink: "docs_settings.html"
+permalink: "/docs/settings.html"
 ---
 
 ## `ltex.enabled`
