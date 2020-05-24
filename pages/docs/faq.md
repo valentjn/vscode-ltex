@@ -26,7 +26,7 @@ The language support extension were only necessary for LTeX 4.x. Starting with L
 
 This depends on whether the multiple languages only occur in different files (i.e., every file is written in a single language), or whether multiple languages occur in one file.
 
-- In the first case, it is possible to use [multi-root workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces#_settings). This enables you to have one `settings.json` per folder, and allows you to set `ltex.language` just for that folder.
+- In the first case, it is possible to use [multi-root workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces#_settings). This enables you to have one `settings.json` per folder, and allows you to set [`ltex.language`](settings.html#ltexlanguage) just for that folder.
 - The more flexible way, which works for both cases, is using [magic comments](advanced-features.html#magic-comments).
 
 ## What does LTeX stand for?
