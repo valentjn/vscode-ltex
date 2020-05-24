@@ -39,7 +39,7 @@ layout: default
     {% endunless %}
 
 
-   {{content | replace: "LTeX", "LT<sub>E</sub>X" | replace: "LaTeX", "L<sup>A</sup>T<sub>E</sub>X" | replace: "LT<sub>E</sub>X:", "LTeX:"}}
+   {{content | replace: "LaTeX", "L<sup>A</sup>T<sub>E</sub>X" | replace: "TeX", "T<sub>E</sub>X" | replace: "LT<sub>E</sub>X:", "LTeX:"}}
 
     <div class="tags">
         {% if page.tags != null %}

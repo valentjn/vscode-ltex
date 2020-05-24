@@ -114,8 +114,8 @@ sidebar: "sidebar"
 def copyMarkdown(srcPath, dstPath, metaData, ltexRepoDirPath, pagesRepoDirPath):
   with open(srcPath, "r") as f: markdown = f.read()
   markdown = metaData + "\n".join(markdown.split("\n")[2:])
-  markdown = markdown.replace("LT<sub>E</sub>X", "LTeX").replace(
-      "L<sup>A</sup>T<sub>E</sub>X", "LaTeX")
+  markdown = markdown.replace("L<sup>A</sup>T<sub>E</sub>X", "LaTeX").replace(
+      "T<sub>E</sub>X", "TeX")
   with open(dstPath, "w") as f: f.write(markdown)
   linkSettings(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 
