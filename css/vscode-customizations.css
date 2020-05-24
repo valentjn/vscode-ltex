@@ -25,7 +25,7 @@ div#toc {
 }
 div#toc ul {
   min-width:200px;
-  max-width:revert;
+  max-width:400px;
 }
 div#toc > ul::before {
   display:inline-block;
