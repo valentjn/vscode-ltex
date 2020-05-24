@@ -277,8 +277,8 @@ export default class Dependencies {
 
       codeProgress.finishTask();
 
-      codeProgress.startTask(0.9, 'Downloading and extracting ltex-ls...');
-      await this.installDependency(ltexLsUrl, 'ltex-ls', codeProgress);
+      codeProgress.startTask(0.9, `Downloading and extracting ltex-ls ${ltexLsVersion}...`);
+      await this.installDependency(ltexLsUrl, `ltex-ls ${ltexLsVersion}`, codeProgress);
       codeProgress.finishTask();
     });
   }
@@ -326,7 +326,7 @@ export default class Dependencies {
       const javaUrl: string = 'https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/' +
           `download/jdk-11.0.7%2B10/${javaArchiveName}`;
 
-      await this.installDependency(javaUrl, 'Java', codeProgress);
+      await this.installDependency(javaUrl, 'Java 11.0.7_10', codeProgress);
     });
   }
 
