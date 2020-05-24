@@ -202,7 +202,7 @@
         "ltex.dictionary": {
           "type": "object",
           "scope": "resource",
-          "default": null,
+          "default": {},
           "propertyNames": {
             "type": "string",
             "enum": [
@@ -674,8 +674,8 @@
               "description": "List of additional 'zh-CN' (Chinese) words that should not be counted as spelling errors."
             }
           },
-          "markdownDescription": "Lists of additional words that should not be counted as spelling errors. The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<WORD1>\", \"<WORD2>\", ...], \"<LANGUAGE2>\": [\"<WORD1>\", \"<WORD2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language`. If `null` (the default), no additional spelling errors will be ignored.",
-          "description": "Lists of additional words that should not be counted as spelling errors. This setting is language-specific, so you have to use an object of the format '{\"<LANGUAGE1>\": [\"<WORD1>\", \"<WORD2>\", ...], \"<LANGUAGE2>\": [\"<WORD1>\", \"<WORD2>\", ...], ...}', where '<LANGUAGE>' denotes the language code in 'ltex.language'. If 'null' (the default), no additional spelling errors will be ignored.",
+          "markdownDescription": "Lists of additional words that should not be counted as spelling errors. The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<WORD1>\", \"<WORD2>\", ...], \"<LANGUAGE2>\": [\"<WORD1>\", \"<WORD2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language`. By default, no additional spelling errors will be ignored.",
+          "description": "Lists of additional words that should not be counted as spelling errors. This setting is language-specific, so you have to use an object of the format '{\"<LANGUAGE1>\": [\"<WORD1>\", \"<WORD2>\", ...], \"<LANGUAGE2>\": [\"<WORD1>\", \"<WORD2>\", ...], ...}', where '<LANGUAGE>' denotes the language code in 'ltex.language'. By default, no additional spelling errors will be ignored.",
           "examples": [
             {
               "en-US": [
@@ -692,7 +692,7 @@
         "ltex.disabledRules": {
           "type": "object",
           "scope": "resource",
-          "default": null,
+          "default": {},
           "propertyNames": {
             "type": "string",
             "enum": [],
@@ -1070,8 +1070,8 @@
               "description": "List of additional 'zh-CN' (Chinese) rules that should be disabled (if enabled by default by LanguageTool)."
             }
           },
-          "markdownDescription": "Lists of rules that should be disabled (if enabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language` and `<RULE>` the ID of the LanguageTool rule. If `null` (the default), no additional rules will be disabled.",
-          "description": "Lists of rules that should be disabled (if enabled by default by LanguageTool). This setting is language-specific, so you have to use an object of the format '{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}', where '<LANGUAGE>' denotes the language code in 'ltex.language' and '<RULE>' the ID of the LanguageTool rule. If 'null' (the default), no additional rules will be disabled.",
+          "markdownDescription": "Lists of rules that should be disabled (if enabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language` and `<RULE>` the ID of the LanguageTool rule. By default, no additional rules will be disabled.",
+          "description": "Lists of rules that should be disabled (if enabled by default by LanguageTool). This setting is language-specific, so you have to use an object of the format '{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}', where '<LANGUAGE>' denotes the language code in 'ltex.language' and '<RULE>' the ID of the LanguageTool rule. By default, no additional rules will be disabled.",
           "examples": [
             {
               "en-US": [
@@ -1084,7 +1084,7 @@
         "ltex.enabledRules": {
           "type": "object",
           "scope": "resource",
-          "default": null,
+          "default": {},
           "propertyNames": {
             "type": "string",
             "enum": [],
@@ -1462,8 +1462,8 @@
               "description": "List of additional 'zh-CN' (Chinese) rules that should be enabled (if disabled by default by LanguageTool)."
             }
           },
-          "markdownDescription": "Lists of rules that should be enabled (if disabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language` and `<RULE>` the ID of the LanguageTool rule. If `null` (the default), no additional rules will be enabled.",
-          "description": "Lists of rules that should be enabled (if disabled by default by LanguageTool). This setting is language-specific, so you have to use an object of the format '{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}', where '<LANGUAGE>' denotes the language code in 'ltex.language' and '<RULE>' the ID of the LanguageTool rule. If 'null' (the default), no additional rules will be enabled.",
+          "markdownDescription": "Lists of rules that should be enabled (if disabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language` and `<RULE>` the ID of the LanguageTool rule. By default, no additional rules will be enabled.",
+          "description": "Lists of rules that should be enabled (if disabled by default by LanguageTool). This setting is language-specific, so you have to use an object of the format '{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}', where '<LANGUAGE>' denotes the language code in 'ltex.language' and '<RULE>' the ID of the LanguageTool rule. By default, no additional rules will be enabled.",
           "examples": [
             {
               "en-GB": [
@@ -1476,14 +1476,14 @@
         "ltex.ltex-ls.path": {
           "type": "string",
           "scope": "window",
-          "default": null,
-          "markdownDescription": "If this setting is `null`, LTeX automatically downloads the [latest compatible release of ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. Use the path to the root directory of ltex-ls (it contains `bin` and `lib` subdirectories). Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "If this setting is 'null', LTeX automatically downloads the latest compatible release of ltex-ls from GitHub (see https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. Use the path to the root directory of ltex-ls (it contains 'bin' and 'lib' subdirectories). Changes require reloading the Visual Studio Code window to take effect."
+          "default": "",
+          "markdownDescription": "If set to an empty string, LTeX automatically downloads the [latest compatible release of ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. Use the path to the root directory of ltex-ls (it contains `bin` and `lib` subdirectories). Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "If set to an empty string, LTeX automatically downloads the latest compatible release of ltex-ls from GitHub (see https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. Use the path to the root directory of ltex-ls (it contains 'bin' and 'lib' subdirectories). Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.ltex-ls.languageToolHttpServerUri": {
           "type": "string",
           "scope": "window",
-          "default": null,
+          "default": "",
           "markdownDescription": "If set to a non-empty string, LTeX will not use the bundled, built-in version of LanguageTool. Instead, LTeX will connect to an external [LanguageTool HTTP server](http://wiki.languagetool.org/http-server). Set this setting to the root URI of the server, and do not append `v2/check` or similar. Note that in this mode, the settings under `ltex.dictionary` and `ltex.additionalRules` will not take any effect, and the `Add to dictionary` quick fix will not appear.",
           "description": "If set to a non-empty string, LTeX will not use the bundled, built-in version of LanguageTool. Instead, LTeX will connect to an external LanguageTool HTTP server (see http://wiki.languagetool.org/http-server for more information). Set this setting to the root URI of the server, and do not append 'v2/check' or similar. Note that in this mode, the settings under 'ltex.dictionary' and 'ltex.additionalRules' will not take any effect, and the 'Add to dictionary' quick fix will not appear.",
           "examples": [
@@ -1493,9 +1493,9 @@
         "ltex.java.path": {
           "type": "string",
           "scope": "window",
-          "default": null,
-          "markdownDescription": "If this setting is `null` and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the `JAVA_HOME` environment variable (it usually contains `bin` and `lib` subdirectories, amongst others). Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "If this setting is 'null' and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution (AdoptOpenJDK, see https://adoptopenjdk.net/), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the 'JAVA_HOME' environment variable (it usually contains 'bin' and 'lib' subdirectories, amongst others). Changes require reloading the Visual Studio Code window to take effect."
+          "default": "",
+          "markdownDescription": "If set to an empty string and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the `JAVA_HOME` environment variable (it usually contains `bin` and `lib` subdirectories, amongst others). Changes require reloading the Visual Studio Code window to take effect.",
+          "description": "If set to an empty string and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution (AdoptOpenJDK, see https://adoptopenjdk.net/), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the 'JAVA_HOME' environment variable (it usually contains 'bin' and 'lib' subdirectories, amongst others). Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.java.initialHeapSize": {
           "type": "integer",
@@ -1672,7 +1672,7 @@
         "ltex.additionalRules.motherTongue": {
           "type": "string",
           "scope": "resource",
-          "default": null,
+          "default": "",
           "markdownDescription": "Optional mother tongue of the user (e.g., `\"de-DE\"`). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see `ltex.additionalRules.languageModel`).",
           "description": "Optional mother tongue of the user (e.g., \"de-DE\"). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see ltex.additionalRules.languageModel).",
           "examples": [
@@ -1683,21 +1683,21 @@
         "ltex.additionalRules.languageModel": {
           "type": "string",
           "scope": "resource",
-          "default": null,
+          "default": "",
           "markdownDescription": "Optional path to a directory with rules of a language model with *n*-gram occurrence counts.",
           "description": "Optional path to a directory with rules of a language model with n-gram occurrence counts."
         },
         "ltex.additionalRules.neuralNetworkModel": {
           "type": "string",
           "scope": "resource",
-          "default": null,
+          "default": "",
           "markdownDescription": "Optional path to a directory with rules of a pretrained neural network model.",
           "description": "Optional path to a directory with rules of a pretrained neural network model."
         },
         "ltex.additionalRules.word2VecModel": {
           "type": "string",
           "scope": "resource",
-          "default": null,
+          "default": "",
           "markdownDescription": "Optional path to a directory with rules of a word2vec language model.",
           "description": "Optional path to a directory with rules of a word2vec language model."
         },
@@ -1745,28 +1745,40 @@
           "description": "Debug setting to log the communication between language client and server. When reporting issues, set this to \"verbose\" and open the 'LTeX Language Client' log in 'View' → 'Output'. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect."
         },
         "ltex.javaHome": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "scope": "window",
           "default": null,
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.path`.",
           "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.java.path'."
         },
         "ltex.performance.initialJavaHeapSize": {
-          "type": "integer",
+          "type": [
+            "integer",
+            "null"
+          ],
           "scope": "window",
           "default": null,
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.initialHeapSize`.",
           "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.java.initialHeapSize'."
         },
         "ltex.performance.maximumHeapSize": {
-          "type": "integer",
+          "type": [
+            "integer",
+            "null"
+          ],
           "scope": "window",
           "default": null,
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.maximumHeapSize`.",
           "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.java.maximumHeapSize'."
         },
         "ltex.performance.sentenceCacheSize": {
-          "type": "integer",
+          "type": [
+            "integer",
+            "null"
+          ],
           "scope": "resource",
           "default": null,
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.sentenceCacheSize`.",
