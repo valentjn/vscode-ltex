@@ -41,6 +41,9 @@ div#toc ul li ul li {
   margin-bottom:0;
 }
 
+/* inline code */
+code + a > code { margin-left:0; }
+
 /* links */
 a.no-external::after { content:none; }
 a[href^="http://"]:not(.btn, .no-external)::after,
