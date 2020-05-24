@@ -57,7 +57,7 @@ def main():
         url = serverUrl + entry["url"]
         markdownPath = "{}{}.md".format(os.path.join(pagesRootDirPath, "pages"),
             os.path.splitext(entry["url"])[0])
-        grandChildren = getMarkdownStructure(serverUrl, markdownPath)
+        grandChildren = getMarkdownStructure(url, markdownPath)
       else:
         url = entry["external_url"]
         grandChildren = []
