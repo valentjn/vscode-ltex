@@ -31,3 +31,4 @@ This extension is a fork of the abandoned [LanguageTool for Visual Studio Code e
 - **Issue highlighting** with hover description
 - **Replacement suggestions** via quick fixes
 - **User dictionaries**
+- Possibility to use **external LanguageTool servers**

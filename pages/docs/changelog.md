@@ -11,13 +11,13 @@ toc: false
 - Download LTeX Language Server on demand with all languages already included; this removes the need for language support extensions (fixes [#6](https://github.com/valentjn/vscode-ltex/issues/6))
 - Use own versioning scheme, i.e., the version of LTeX is not tied to the version of LanguageTool anymore
 - Rename settings:
-  - `ltex.<LANGUAGE>.dictionary` to `ltex.dictionary["<LANGUAGE>"]`
-  - `ltex.<LANGUAGE>.disabledRules` to `ltex.disabledRules["<LANGUAGE>"]`
-  - `ltex.<LANGUAGE>.enabledRules` to `ltex.enabledRules["<LANGUAGE>"]`
-  - `ltex.javaHome` to `ltex.java.path`
-  - `ltex.performance.initialJavaHeapSize` to `ltex.java.initialHeapSize`
-  - `ltex.performance.maximumJavaHeapSize` to `ltex.java.maximumHeapSize`
-  - `ltex.performance.sentenceCacheSize` to `ltex.sentenceCacheSize`
+  - `ltex.<LANGUAGE>.dictionary` to [`ltex.dictionary`](settings.html#ltexdictionary) (object with `<LANGUAGE>` keys)
+  - `ltex.<LANGUAGE>.disabledRules` to [`ltex.disabledRules`](settings.html#ltexdisabledrules) (object with `<LANGUAGE>` keys)
+  - `ltex.<LANGUAGE>.enabledRules` to [`ltex.enabledRules`](settings.html#ltexenabledrules) (object with `<LANGUAGE>` keys)
+  - `ltex.javaHome` to [`ltex.java.path`](settings.html#ltexjavapath)
+  - `ltex.performance.initialJavaHeapSize` to [`ltex.java.initialHeapSize`](settings.html#ltexjavainitialheapsize)
+  - `ltex.performance.maximumJavaHeapSize` to [`ltex.java.maximumHeapSize`](settings.html#ltexjavamaximumheapsize)
+  - `ltex.performance.sentenceCacheSize` to [`ltex.sentenceCacheSize`](settings.html#ltexsentencecachesize)
 - Use proper server/client model for language server/client
 
 ## 4.9.3 — “The Java Collapse” (May 7, 2020)
@@ -54,7 +54,7 @@ toc: false
 ## 4.7.9 — “The Markdown Resonance” (February 29, 2020)
 
 - Update the Markdown parser flexmark-java to 0.60.2; this increases the speed of parsing Markdown
-- Add possibility to ignore Markdown elements or replace them by dummy words via `ltex.markdown.ignore` and `ltex.markdown.dummy` (fixes [#26](https://github.com/valentjn/vscode-ltex/issues/26))
+- Add possibility to ignore Markdown elements or replace them by dummy words via [`ltex.markdown.ignore`](settings.html#ltexmarkdownignore) and [`ltex.markdown.dummy`](settings.html#ltexmarkdowndummy) (fixes [#26](https://github.com/valentjn/vscode-ltex/issues/26))
 - Ignore Markdown code blocks by default
 - Replace auto-links and inline Markdown code with dummy words by default
 - Fix match positions were sometimes off by one, especially in Markdown documents
@@ -84,7 +84,7 @@ toc: false
 ## 4.7.5 — “The Listing Collapse” (October 22, 2019)
 
 - Enable ignoring environments such as `lstlisting` and `verbatim`
-- Add `ltex.environments.ignore` setting for defining own environments to ignore
+- Add [`ltex.environments.ignore`](settings.html#ltexenvironmentsignore) setting for defining own environments to ignore
 
 ## 4.7.4 — “The Disabling Allocation” (October 15, 2019)
 
@@ -103,13 +103,13 @@ toc: false
 
 ## 4.7.1 — “The Mother Tongue Factor” (October 2, 2019)
 
-- Add `ltex.additionalRules.motherTongue` setting to enable detection of false friends (fixes [#11](https://github.com/valentjn/vscode-ltex/issues/11))
+- Add [`ltex.additionalRules.motherTongue`](settings.html#ltexadditionalrulesmothertongue) setting to enable detection of false friends (fixes [#11](https://github.com/valentjn/vscode-ltex/issues/11))
 - Change defaults for `ltex.additionalRules` settings from `""` to `null`
 
 ## 4.7.0 — “The Multi-Root Observation” (October 1, 2019)
 
 - Update to LanguageTool 4.7 (see [LT 4.7 release notes](https://github.com/languagetool-org/languagetool/blob/64f87c18c4d0c13f365d6d85c7aa8c61b7ed2ccf/languagetool-standalone/CHANGES.md#47-2019-09-28))
-- Support multi-root workspaces, all configuration settings except `ltex.enabled` are now resource-specific (fixes [#7](https://github.com/valentjn/vscode-ltex/issues/7))
+- Support multi-root workspaces, all configuration settings except [`ltex.enabled`](settings.html#ltexenabled) are now resource-specific (fixes [#7](https://github.com/valentjn/vscode-ltex/issues/7))
 - Save dictionary settings under full language short code (e.g., `en-US` instead of `en`). If you already have a dictionary under `ltex.en.dictionary` and use `en-US` as language (not `en`), you have to rename the settings name to `ltex.en-US.dictionary` (similarly for other languages).
 - Remove diagnostics when a file is closed
 - Prevent insertion of text in TikZ mode
@@ -149,10 +149,10 @@ toc: false
 
 ## 4.6.8 — “The Severity Manifestation” (September 7, 2019)
 
-- Add setting `ltex.diagnosticSeverity` to control where and how the diagnostics appear
+- Add setting [`ltex.diagnosticSeverity`](settings.html#ltexdiagnosticseverity) to control where and how the diagnostics appear
 - Change default severity from `warning` to `info`
 - Add possibility to ignore a LanguageTool rule in a sentence via quick fix
-- Add setting `ltex.configurationTarget` to control which `settings.json` to update when using one of the quick fixes
+- Add setting [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) to control which `settings.json` to update when using one of the quick fixes
 - More commands like `\PackageWarning` and `\addbibresource` are ignored
 - Add support for `\url` and `\nolinkurl`
 - Add support for more accents (`` \` ``, `\'`, `\^`, `\~`, `\"`, `\=`, `\.`, ...)

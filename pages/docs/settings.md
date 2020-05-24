@@ -71,7 +71,7 @@ The language (e.g., `"en-US"`) LanguageTool should check against. Use a specific
 
 ## `ltex.dictionary`
 
-Lists of additional words that should not be counted as spelling errors. The lists are language-specific, so use an object of the format `{"<LANGUAGE1>": ["<WORD1>", "<WORD2>", ...], "<LANGUAGE2>": ["<WORD1>", "<WORD2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language`. If `null` (the default), no additional spelling errors will be ignored.
+Lists of additional words that should not be counted as spelling errors. The lists are language-specific, so use an object of the format `{"<LANGUAGE1>": ["<WORD1>", "<WORD2>", ...], "<LANGUAGE2>": ["<WORD1>", "<WORD2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage). If `null` (the default), no additional spelling errors will be ignored.
 
 *Type:* `object`
 
@@ -320,7 +320,7 @@ Object with the following properties:
 
 ## `ltex.disabledRules`
 
-Lists of rules that should be disabled (if enabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{"<LANGUAGE1>": ["<RULE1>", "<RULE2>", ...], "<LANGUAGE2>": ["<RULE1>", "<RULE2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language` and `<RULE>` the ID of the LanguageTool rule. If `null` (the default), no additional rules will be disabled.
+Lists of rules that should be disabled (if enabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{"<LANGUAGE1>": ["<RULE1>", "<RULE2>", ...], "<LANGUAGE2>": ["<RULE1>", "<RULE2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage) and `<RULE>` the ID of the LanguageTool rule. If `null` (the default), no additional rules will be disabled.
 
 *Type:* `object`
 
@@ -569,7 +569,7 @@ Object with the following properties:
 
 ## `ltex.enabledRules`
 
-Lists of rules that should be enabled (if disabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{"<LANGUAGE1>": ["<RULE1>", "<RULE2>", ...], "<LANGUAGE2>": ["<RULE1>", "<RULE2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language` and `<RULE>` the ID of the LanguageTool rule. If `null` (the default), no additional rules will be enabled.
+Lists of rules that should be enabled (if disabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{"<LANGUAGE1>": ["<RULE1>", "<RULE2>", ...], "<LANGUAGE2>": ["<RULE1>", "<RULE2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage) and `<RULE>` the ID of the LanguageTool rule. If `null` (the default), no additional rules will be enabled.
 
 *Type:* `object`
 
@@ -824,6 +824,16 @@ If this setting is `null`, LTeX automatically downloads the [latest compatible r
 
 *Default:* `null`
 
+## `ltex.ltex-ls.languageToolHttpServerUri`
+
+If set to a non-empty string, LTeX will not use the bundled, built-in version of LanguageTool. Instead, LTeX will connect to an external [LanguageTool HTTP server](http://wiki.languagetool.org/http-server). Set this setting to the root URI of the server, and do not append `v2/check` or similar. Note that in this mode, the settings under [`ltex.dictionary`](settings.html#ltexdictionary) and `ltex.additionalRules` will not take any effect, and the `Add to dictionary` quick fix will not appear.
+
+*Type:* `string`
+
+*Example:* `"http://localhost:8081/"`
+
+*Default:* `null`
+
 ## `ltex.java.path`
 
 If this setting is `null` and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the `JAVA_HOME` environment variable (it usually contains `bin` and `lib` subdirectories, amongst others). Changes require reloading the Visual Studio Code window to take effect.
@@ -1012,7 +1022,7 @@ Object with the following properties:
 
 ## `ltex.additionalRules.motherTongue`
 
-Optional mother tongue of the user (e.g., `"de-DE"`). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see `ltex.additionalRules.languageModel`).
+Optional mother tongue of the user (e.g., `"de-DE"`). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see [`ltex.additionalRules.languageModel`](settings.html#ltexadditionalruleslanguagemodel)).
 
 *Type:* `string`
 

@@ -4,6 +4,10 @@ import argparse
 import json
 import os
 import re
+import sys
+
+sys.path.append(os.path.dirname(__file__))
+from linkSettings import linkSettings
 
 
 
@@ -103,15 +107,17 @@ sidebar: "sidebar"
 
   dstPath = os.path.join(pagesRepoDirPath, "pages", "docs", "settings.md")
   with open(dstPath, "w") as f: f.write(markdown)
+  linkSettings(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 
 
 
-def copyMarkdown(srcPath, dstPath, metaData):
+def copyMarkdown(srcPath, dstPath, metaData, ltexRepoDirPath, pagesRepoDirPath):
   with open(srcPath, "r") as f: markdown = f.read()
   markdown = metaData + "\n".join(markdown.split("\n")[2:])
   markdown = markdown.replace("LT<sub>E</sub>X", "LTeX").replace(
       "L<sup>A</sup>T<sub>E</sub>X", "LaTeX")
   with open(dstPath, "w") as f: f.write(markdown)
+  linkSettings(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 
 def updateChangelog(ltexRepoDirPath, pagesRepoDirPath):
   copyMarkdown(os.path.join(ltexRepoDirPath, "CHANGELOG.md"),
@@ -122,7 +128,7 @@ sidebar: "sidebar"
 toc: false
 ---
 
-""")
+""", ltexRepoDirPath, pagesRepoDirPath)
 
 def updateContributing(ltexRepoDirPath, pagesRepoDirPath):
   copyMarkdown(os.path.join(ltexRepoDirPath, "CONTRIBUTING.md"),
@@ -132,7 +138,7 @@ permalink: "/docs/contributing-code-issues.html"
 sidebar: "sidebar"
 ---
 
-""")
+""", ltexRepoDirPath, pagesRepoDirPath)
 
 def updateAcknowledgments(ltexRepoDirPath, pagesRepoDirPath):
   copyMarkdown(os.path.join(ltexRepoDirPath, "ACKNOWLEDGMENTS.md"),
@@ -142,7 +148,7 @@ permalink: "/docs/acknowledgments.html"
 sidebar: "sidebar"
 ---
 
-""")
+""", ltexRepoDirPath, pagesRepoDirPath)
 
 
 
