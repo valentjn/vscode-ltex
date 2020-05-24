@@ -15,6 +15,12 @@ describe('Test Logger', () => {
     Assert.equal(Logger.serverOutputChannel, serverOutputChannel);
   });
 
+  it('Test log()', () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    Logger.log(null);
+  });
+
   it('Test warn()', () => {
     Logger.warn('Test');
     Logger.warn('Test', new Error('Error message'));

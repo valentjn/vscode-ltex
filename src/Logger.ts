@@ -10,6 +10,7 @@ export default class Logger {
 
   public static log(message: string, type: string = 'Info'): void {
     const timestamp: string = (new Date()).toISOString();
+    if (message == null) message = '';
     const lines: string[] = message.split(/\r?\n/);
 
     lines.forEach((line: string) => {
