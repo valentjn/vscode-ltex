@@ -40,6 +40,9 @@ def convertToMarkdown(structure, indent=0):
 
   return markdown
 
+def processTitle(title):
+  return title.replace("LTeX", "LT<sub>E</sub>X").replace("LaTeX", "L<sup>A</sup>T<sub>E</sub>X")
+
 def main():
   serverUrl = "https://valentjn.github.io/vscode-ltex"
   pagesRootDirPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..",
@@ -62,10 +65,11 @@ def main():
         url = entry["external_url"]
         grandChildren = []
 
-      children.append({"title": entry["title"], "url" : url,
+      children.append({"title": processTitle(entry["title"]), "url" : url,
           "children" : grandChildren})
 
-    structure.append({"title" : folder["title"], "url" : children[0]["url"], "children" : children})
+    structure.append({"title" : processTitle(folder["title"]), "url" : children[0]["url"],
+        "children" : children})
 
   markdown = convertToMarkdown(structure)
 
