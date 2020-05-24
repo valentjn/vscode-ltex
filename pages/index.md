@@ -23,7 +23,7 @@ This extension is a fork of the abandoned [LanguageTool for Visual Studio Code e
 
 ## Features
 
-![LanguageTool Grammar Checking for VS Code with LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/master/img/LTeX-banner.png)
+![LanguageTool Grammar Checking for VS Code with LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/master/img/banner-ltex.png)
 
 - Checks **LaTeX** and **Markdown** documents
 - Comes with **everything included,** no need to install Java or LanguageTool
