@@ -71,13 +71,13 @@ The language (e.g., `"en-US"`) LanguageTool should check against. Use a specific
 
 ## `ltex.dictionary`
 
-Lists of additional words that should not be counted as spelling errors. The lists are language-specific, so use an object of the format `{"<LANGUAGE1>": ["<WORD1>", "<WORD2>", ...], "<LANGUAGE2>": ["<WORD1>", "<WORD2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage). If `null` (the default), no additional spelling errors will be ignored.
+Lists of additional words that should not be counted as spelling errors. The lists are language-specific, so use an object of the format `{"<LANGUAGE1>": ["<WORD1>", "<WORD2>", ...], "<LANGUAGE2>": ["<WORD1>", "<WORD2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage). By default, no additional spelling errors will be ignored.
 
 *Type:* `object`
 
 *Example:* `{"en-US": ["adaptivity", "precomputed", "subproblem"], "de-DE": ["B-Splines"]}`
 
-*Default:* `null`
+*Default:* `{}`
 
 *Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
 
@@ -320,13 +320,13 @@ Object with the following properties:
 
 ## `ltex.disabledRules`
 
-Lists of rules that should be disabled (if enabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{"<LANGUAGE1>": ["<RULE1>", "<RULE2>", ...], "<LANGUAGE2>": ["<RULE1>", "<RULE2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage) and `<RULE>` the ID of the LanguageTool rule. If `null` (the default), no additional rules will be disabled.
+Lists of rules that should be disabled (if enabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{"<LANGUAGE1>": ["<RULE1>", "<RULE2>", ...], "<LANGUAGE2>": ["<RULE1>", "<RULE2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage) and `<RULE>` the ID of the LanguageTool rule. By default, no additional rules will be disabled.
 
 *Type:* `object`
 
 *Example:* `{"en-US": ["EN_QUOTES", "UPPERCASE_SENTENCE_START"]}`
 
-*Default:* `null`
+*Default:* `{}`
 
 *Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
 
@@ -569,13 +569,13 @@ Object with the following properties:
 
 ## `ltex.enabledRules`
 
-Lists of rules that should be enabled (if disabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{"<LANGUAGE1>": ["<RULE1>", "<RULE2>", ...], "<LANGUAGE2>": ["<RULE1>", "<RULE2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage) and `<RULE>` the ID of the LanguageTool rule. If `null` (the default), no additional rules will be enabled.
+Lists of rules that should be enabled (if disabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{"<LANGUAGE1>": ["<RULE1>", "<RULE2>", ...], "<LANGUAGE2>": ["<RULE1>", "<RULE2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage) and `<RULE>` the ID of the LanguageTool rule. By default, no additional rules will be enabled.
 
 *Type:* `object`
 
 *Example:* `{"en-GB": ["PASSIVE_VOICE", "OXFORD_SPELLING_NOUNS"]}`
 
-*Default:* `null`
+*Default:* `{}`
 
 *Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
 
@@ -818,11 +818,11 @@ Object with the following properties:
 
 ## `ltex.ltex-ls.path`
 
-If this setting is `null`, LTeX automatically downloads the [latest compatible release of ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. Use the path to the root directory of ltex-ls (it contains `bin` and `lib` subdirectories). Changes require reloading the Visual Studio Code window to take effect.
+If set to an empty string, LTeX automatically downloads the [latest compatible release of ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. Use the path to the root directory of ltex-ls (it contains `bin` and `lib` subdirectories). Changes require reloading the Visual Studio Code window to take effect.
 
 *Type:* `string`
 
-*Default:* `null`
+*Default:* `""`
 
 ## `ltex.ltex-ls.languageToolHttpServerUri`
 
@@ -832,15 +832,15 @@ If set to a non-empty string, LTeX will not use the bundled, built-in version of
 
 *Example:* `"http://localhost:8081/"`
 
-*Default:* `null`
+*Default:* `""`
 
 ## `ltex.java.path`
 
-If this setting is `null` and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the `JAVA_HOME` environment variable (it usually contains `bin` and `lib` subdirectories, amongst others). Changes require reloading the Visual Studio Code window to take effect.
+If set to an empty string and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the `JAVA_HOME` environment variable (it usually contains `bin` and `lib` subdirectories, amongst others). Changes require reloading the Visual Studio Code window to take effect.
 
 *Type:* `string`
 
-*Default:* `null`
+*Default:* `""`
 
 ## `ltex.java.initialHeapSize`
 
@@ -1031,7 +1031,7 @@ Optional mother tongue of the user (e.g., `"de-DE"`). If set, additional rules w
 - `"en-US"`
 - `"de-DE"`
 
-*Default:* `null`
+*Default:* `""`
 
 ## `ltex.additionalRules.languageModel`
 
@@ -1039,7 +1039,7 @@ Optional path to a directory with rules of a language model with *n*-gram occurr
 
 *Type:* `string`
 
-*Default:* `null`
+*Default:* `""`
 
 ## `ltex.additionalRules.neuralNetworkModel`
 
@@ -1047,7 +1047,7 @@ Optional path to a directory with rules of a pretrained neural network model.
 
 *Type:* `string`
 
-*Default:* `null`
+*Default:* `""`
 
 ## `ltex.additionalRules.word2VecModel`
 
@@ -1055,7 +1055,7 @@ Optional path to a directory with rules of a word2vec language model.
 
 *Type:* `string`
 
-*Default:* `null`
+*Default:* `""`
 
 ## `ltex.sentenceCacheSize`
 
