@@ -24,29 +24,44 @@
   },
   "badges": [
     {
-      "url": "https://img.shields.io/travis/valentjn/vscode-ltex/master?logo=travis&style=social",
+      "url": "https://img.shields.io/visual-studio-marketplace/i/valentjn.vscode-ltex?logo=visual-studio-code",
+      "href": "https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex",
+      "description": "installs"
+    },
+    {
+      "url": "https://img.shields.io/visual-studio-marketplace/stars/valentjn.vscode-ltex?logo=visual-studio-code",
+      "href": "https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex",
+      "description": "rating"
+    },
+    {
+      "url": "https://img.shields.io/travis/valentjn/vscode-ltex/master?logo=travis&label=vscode-ltex%20build",
       "href": "https://www.travis-ci.org/valentjn/vscode-ltex",
-      "description": "Travis CI build status"
+      "description": "Travis CI build status of vscode-ltex"
     },
     {
-      "url": "https://img.shields.io/visual-studio-marketplace/i/valentjn.vscode-ltex?style=social&logo=visual-studio-code",
-      "href": "https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex",
-      "description": "Installs"
+      "url": "https://img.shields.io/coveralls/github/valentjn/vscode-ltex/master?logo=coveralls&label=vscode-ltex%20coverage",
+      "href": "https://coveralls.io/github/valentjn/vscode-ltex",
+      "description": "Coverage of vscode-ltex"
     },
     {
-      "url": "https://img.shields.io/visual-studio-marketplace/stars/valentjn.vscode-ltex?style=social&logo=visual-studio-code",
-      "href": "https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex",
-      "description": "Rating"
-    },
-    {
-      "url": "https://img.shields.io/github/stars/valentjn/vscode-ltex?style=social",
+      "url": "https://img.shields.io/github/stars/valentjn/vscode-ltex?logo=github&label=vscode-ltex%20stars",
       "href": "https://github.com/valentjn/vscode-ltex",
-      "description": "GitHub stars"
+      "description": "GitHub stars of vscode-ltex"
     },
     {
-      "url": "https://img.shields.io/github/issues/valentjn/vscode-ltex?style=social&logo=github",
+      "url": "https://img.shields.io/github/issues/valentjn/vscode-ltex?logo=github&label=vscode-ltex%20issues",
       "href": "https://github.com/valentjn/vscode-ltex",
-      "description": "GitHub issues"
+      "description": "GitHub issues of vscode-ltex"
+    },
+    {
+      "url": "https://img.shields.io/travis/valentjn/vscode-ltex/master?logo=travis&label=ltex-ls%20build",
+      "href": "https://www.travis-ci.org/valentjn/vscode-ltex",
+      "description": "Travis CI build status of ltex-ls"
+    },
+    {
+      "url": "https://img.shields.io/coveralls/github/valentjn/vscode-ltex/master?logo=coveralls&label=ltex-ls%20coverage",
+      "href": "https://coveralls.io/github/valentjn/vscode-ltex",
+      "description": "Coverage of ltex-ls"
     }
   ],
   "keywords": [
