@@ -31,5 +31,5 @@ Download the offline version of LTeX on the [Releases page](https://github.com/v
 
 Download [ltex-ls](https://github.com/valentjn/ltex-ls/releases) and/or a Java distribution (for instance [AdoptOpenJDK](https://adoptopenjdk.net/)) individually and set [`ltex.ltex-ls.path`](settings.html#ltexltex-lspath) and/or [`ltex.java.path`](settings.html#ltexjavapath) to the respective locations. If you do this, the versions of ltex-ls and/or Java have to satisfy the following requirements:
 
-- The version of ltex-ls must be smaller than or equal to the version of LTeX itself (this extension). Most of the time you want to choose the newest version of ltex-ls that satisfies this requirement. A newer version of ltex-ls will not work, an older version might not work.
+- The version of ltex-ls must be lower than or equal to the version of LTeX itself (this extension). Most of the time you want to choose the newest version of ltex-ls that satisfies this requirement. An older or a newer version than the one that satisfies this rule might work or not.
 - The version of Java must be at least 8. Some Java distributions offer a JRE and a JDK; in this case, the JRE (Java Runtime Environment) is sufficient.
