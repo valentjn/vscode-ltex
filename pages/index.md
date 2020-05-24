@@ -1,6 +1,5 @@
 ---
-title: "LT<sub>E</sub>X – LanguageTool Grammar/Spell Checking for Visual Studio Code with L<sup>A</sup>T<sub>E</sub>X Support"
-title_plaintext: "LTeX – LanguageTool Grammar/Spell Checking for Visual Studio Code with LaTeX Support"
+title: "LTeX – LanguageTool Grammar/Spell Checking for Visual Studio Code with LaTeX Support"
 permalink: "/index.html"
 sidebar: "sidebar"
 toc: false
@@ -18,15 +17,15 @@ toc: false
 <a href="https://www.travis-ci.org/valentjn/ltex-ls" class="no-external">![Travis CI build status of ltex-ls](https://img.shields.io/travis/valentjn/ltex-ls/feature-ltex5?logo=travis)</a>&nbsp;
 <a href="https://coveralls.io/github/valentjn/ltex-ls" class="no-external">![Coverage of ltex-ls](https://img.shields.io/coveralls/github/valentjn/ltex-ls/feature-ltex5?logo=coveralls)</a>
 
-**LT<sub>E</sub>X** provides offline grammar checking in Visual Studio Code using [LanguageTool&nbsp;(LT)](https://languagetool.org/), supporting L<sup>A</sup>T<sub>E</sub>X and Markdown documents.
+**LTeX** provides offline grammar checking in Visual Studio Code using [LanguageTool&nbsp;(LT)](https://languagetool.org/), supporting LaTeX and Markdown documents.
 
-This extension is a fork of the abandoned [LanguageTool for Visual Studio Code extension](https://github.com/adamvoss/vscode-languagetool) by Adam Voss with L<sup>A</sup>T<sub>E</sub>X support, lots of new features (user dictionaries, ignore errors, etc.), and updated dependencies (LanguageTool).
+This extension is a fork of the abandoned [LanguageTool for Visual Studio Code extension](https://github.com/adamvoss/vscode-languagetool) by Adam Voss with LaTeX support, lots of new features (user dictionaries, ignore errors, etc.), and updated dependencies (LanguageTool).
 
 ## Features
 
 ![LanguageTool Grammar Checking for VS Code with LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/master/img/LTeX-banner.png)
 
-- Checks **L<sup>A</sup>T<sub>E</sub>X** and **Markdown** documents
+- Checks **LaTeX** and **Markdown** documents
 - Comes with **everything included,** no need to install Java or LanguageTool
 - Supports **over 20 languages**
 - **Issue highlighting** with hover description

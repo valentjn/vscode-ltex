@@ -8,8 +8,8 @@ toc: false
 ## 5.0.0 (upcoming)
 
 - Download Java distribution on demand if no suitable Java installation has been found (fixes [#5](https://github.com/valentjn/vscode-ltex/issues/5))
-- Download LT<sub>E</sub>X Language Server on demand with all languages already included; this removes the need for language support extensions (fixes [#6](https://github.com/valentjn/vscode-ltex/issues/6))
-- Use own versioning scheme, i.e., the version of LT<sub>E</sub>X is not tied to the version of LanguageTool anymore
+- Download LTeX Language Server on demand with all languages already included; this removes the need for language support extensions (fixes [#6](https://github.com/valentjn/vscode-ltex/issues/6))
+- Use own versioning scheme, i.e., the version of LTeX is not tied to the version of LanguageTool anymore
 - Rename settings:
   - `ltex.<LANGUAGE>.dictionary` to `ltex.dictionary["<LANGUAGE>"]`
   - `ltex.<LANGUAGE>.disabledRules` to `ltex.disabledRules["<LANGUAGE>"]`
@@ -179,7 +179,7 @@ toc: false
 
 ## 4.6.4 — “The Umlaut Expansion” (September 1, 2019)
 
-- Ignore some commands often found in L<sup>A</sup>T<sub>E</sub>X preambles
+- Ignore some commands often found in LaTeX preambles
 - Support umlauts and eszett
 
 ## 4.6.3 — “The Version Interruption” (September 1, 2019)
@@ -199,7 +199,7 @@ toc: false
 - Forked abandoned repository, rename to vscode-ltex
 - Update to LanguageTool 4.6 (see [LT 4.6 release notes](https://github.com/languagetool-org/languagetool/blob/123662bd07059429d9a6d22af6fae164c2ce9dc5/languagetool-standalone/CHANGES.md#46-2019-06-26))
 - Update other dependencies (vscode, vscode-languageclient, LSP, JUnit, Gradle)
-- Implement simple L<sup>A</sup>T<sub>E</sub>X parser
+- Implement simple LaTeX parser
 
 ## 3.8.0 (July 8, 2017)
 
