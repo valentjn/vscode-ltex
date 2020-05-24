@@ -29,7 +29,7 @@ Find more information in the [changelog](https://github.com/valentjn/vscode-ltex
 
 ## Features
 
-![LanguageTool Grammar Checking for VS Code with LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/master/img/LTeX-banner.png)
+![LanguageTool Grammar Checking for VS Code with LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/master/img/banner-ltex.png)
 
 - Checks **L<sup>A</sup>T<sub>E</sub>X** and **Markdown** documents
 - Comes with **everything included,** no need to install Java or LanguageTool

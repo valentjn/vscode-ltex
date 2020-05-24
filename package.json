@@ -3,7 +3,7 @@
   "displayName": "LTeX",
   "version": "4.9.3",
   "description": "LanguageTool grammar checking with LaTeX support",
-  "icon": "img/LTeX-icon.png",
+  "icon": "img/logo-ltex.png",
   "author": "Julian Valentin",
   "publisher": "valentjn",
   "license": "Apache-2.0",

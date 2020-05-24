@@ -22,4 +22,4 @@ test/
 tools/
 **/*.map
 
-!img/LTeX-icon.png
+!img/logo-ltex.png
