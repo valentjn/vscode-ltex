@@ -9,7 +9,7 @@ toc: false
 
 - Download Java distribution on demand if no suitable Java installation has been found (fixes [#5](https://github.com/valentjn/vscode-ltex/issues/5))
 - Download LTeX Language Server on demand with all languages already included; this removes the need for language support extensions (fixes [#6](https://github.com/valentjn/vscode-ltex/issues/6))
-- Use own versioning scheme, i.e., the version of LTeX is not tied to the version of LanguageTool anymore
+- Adhere to [semantic versioning](https://semver.org/). This means that the version of LTeX is not tied to the version of LanguageTool anymore, as the version of LanguageTool is not a semantic version.
 - Rename settings:
   - `ltex.<LANGUAGE>.dictionary` to [`ltex.dictionary`](settings.html#ltexdictionary) (object with `<LANGUAGE>` keys)
   - `ltex.<LANGUAGE>.disabledRules` to [`ltex.disabledRules`](settings.html#ltexdisabledrules) (object with `<LANGUAGE>` keys)
