@@ -37,6 +37,7 @@ Find more information in the [changelog](https://github.com/valentjn/vscode-ltex
 - **Issue highlighting** with hover description
 - **Replacement suggestions** via quick fixes
 - **User dictionaries**
+- Possibility to use **external LanguageTool servers**
 
 ## Requirements
 
@@ -74,6 +75,7 @@ Find more information in the [changelog](https://github.com/valentjn/vscode-ltex
     - [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules)
     - [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules)
     - [`ltex.ltex-ls.path`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lspath)
+    - [`ltex.ltex-ls.languageToolHttpServerUri`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lslanguagetoolhttpserveruri)
     - [`ltex.java.path`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavapath)
     - [`ltex.java.initialHeapSize`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavainitialheapsize)
     - [`ltex.java.maximumHeapSize`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavamaximumheapsize)

@@ -1480,6 +1480,16 @@
           "markdownDescription": "If this setting is `null`, LTeX automatically downloads the [latest compatible release of ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. Use the path to the root directory of ltex-ls (it contains `bin` and `lib` subdirectories). Changes require reloading the Visual Studio Code window to take effect.",
           "description": "If this setting is 'null', LTeX automatically downloads the latest compatible release of ltex-ls from GitHub (see https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. Use the path to the root directory of ltex-ls (it contains 'bin' and 'lib' subdirectories). Changes require reloading the Visual Studio Code window to take effect."
         },
+        "ltex.ltex-ls.languageToolHttpServerUri": {
+          "type": "string",
+          "scope": "window",
+          "default": null,
+          "markdownDescription": "If set to a non-empty string, LTeX will not use the bundled, built-in version of LanguageTool. Instead, LTeX will connect to an external [LanguageTool HTTP server](http://wiki.languagetool.org/http-server). Set this setting to the root URI of the server, and do not append `v2/check` or similar. Note that in this mode, the settings under `ltex.dictionary` and `ltex.additionalRules` will not take any effect, and the `Add to dictionary` quick fix will not appear.",
+          "description": "If set to a non-empty string, LTeX will not use the bundled, built-in version of LanguageTool. Instead, LTeX will connect to an external LanguageTool HTTP server (see http://wiki.languagetool.org/http-server for more information). Set this setting to the root URI of the server, and do not append 'v2/check' or similar. Note that in this mode, the settings under 'ltex.dictionary' and 'ltex.additionalRules' will not take any effect, and the 'Add to dictionary' quick fix will not appear.",
+          "examples": [
+            "http://localhost:8081/"
+          ]
+        },
         "ltex.java.path": {
           "type": "string",
           "scope": "window",
