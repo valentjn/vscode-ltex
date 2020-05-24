@@ -378,16 +378,16 @@ export default class Dependencies {
       // try 1: use ltex.ltexLs.path or lib/ (don't download)
       // try 2: use ltex.ltexLs.path or lib/ or download
       Logger.log('');
-      this._ltexLsPath = workspaceConfig.get('ltex-ls.path', null);
+      this._ltexLsPath = workspaceConfig.get('ltex-ls.path', '');
 
-      if (this._ltexLsPath != null) {
+      if ((this._ltexLsPath != null) && (this._ltexLsPath.length > 0)) {
         Logger.log(`ltex.ltex-ls.path set to ${this._ltexLsPath}.`);
       } else {
         Logger.log('ltex.ltex-ls.path not set.');
         Logger.log(`Searching for ltex-ls in '${libDirPath}'...`);
         this._ltexLsPath = this.searchBundledLtexLs(libDirPath);
 
-        if (this._ltexLsPath != null) {
+        if ((this._ltexLsPath != null) && (this._ltexLsPath.length > 0)) {
           Logger.log(`ltex-ls found in '${this._ltexLsPath}'.`);
         } else {
           Logger.log(`Could not find a compatible version of ltex-ls in '${libDirPath}'.`);
@@ -395,7 +395,7 @@ export default class Dependencies {
           await this.installLtexLs();
           this._ltexLsPath = this.searchBundledLtexLs(libDirPath);
 
-          if (this._ltexLsPath != null) {
+          if ((this._ltexLsPath != null) && (this._ltexLsPath.length > 0)) {
             Logger.log(`ltex-ls found in '${this._ltexLsPath}'.`);
           } else {
             throw Error('Could not download or extract ltex-ls.');
@@ -418,7 +418,7 @@ export default class Dependencies {
         Logger.log('');
         this._javaPath = Dependencies.getRenamedSetting(workspaceConfig, 'java.path', 'javaHome');
 
-        if (this._javaPath != null) {
+        if ((this._javaPath != null) && (this._javaPath.length > 0)) {
           Logger.log(`ltex.java.path set to '${this._javaPath}'.`);
         } else if (i == 0) {
           Logger.log('ltex.java.path not set.');
@@ -426,7 +426,7 @@ export default class Dependencies {
           Logger.log(`Searching for bundled Java in '${libDirPath}'.`);
           this._javaPath = Dependencies.searchBundledJava(libDirPath);
 
-          if (this._javaPath != null) {
+          if ((this._javaPath != null) && (this._javaPath.length > 0)) {
             Logger.log(`Bundled Java found in '${this._javaPath}'.`);
           } else {
             Logger.log(`Could not find bundled Java in '${libDirPath}'.`);
@@ -437,7 +437,7 @@ export default class Dependencies {
               await this.installJava();
               this._javaPath = Dependencies.searchBundledJava(libDirPath);
 
-              if (this._javaPath == null) {
+              if ((this._javaPath != null) && (this._javaPath.length > 0)) {
                 Logger.log('Download or extraction of Java failed. ' +
                     'Trying to run Java via PATH or JAVA_HOME.');
               }
@@ -447,7 +447,7 @@ export default class Dependencies {
 
         Logger.log(`Using ltex-ls from '${this._ltexLsPath}'.`);
 
-        if (this._javaPath != null) {
+        if ((this._javaPath != null) && (this._javaPath.length > 0)) {
           Logger.log(`Using Java from '${this._javaPath}'.`);
         } else {
           Logger.log('Using Java from PATH or JAVA_HOME (may fail if not installed).');
