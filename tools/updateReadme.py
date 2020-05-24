@@ -6,7 +6,7 @@ import re
 import yaml
 
 def getSlug(markdown):
-  return re.sub(r"[ ]", "-", re.sub(r"[`\.]", "", markdown)).lower()
+  return re.sub(r"[^a-z0-9\-]", "", re.sub(r"[ ]", "-", markdown.lower()))
 
 def getMarkdownStructure(baseUrl, markdownPath):
   with open(markdownPath, "r") as f: markdown = f.read()
