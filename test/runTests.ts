@@ -20,6 +20,18 @@ async function runTestIteration(testIteration: number): Promise<void> {
   const tmpDirPath: string = Fs.mkdtempSync(tmpDirPrefix);
   console.log(`Created temporary directory '${tmpDirPath}'.`);
 
+  const ltexLibDirPath: string = Path.join(ltexDirPath, 'lib');
+  const gitCleanArgs: string[] = ['-C', ltexDirPath, 'clean', '-f', '-x', ltexLibDirPath];
+  console.log(`Cleaning '${ltexLibDirPath}'...`);
+  const childProcess: ChildProcess.SpawnSyncReturns<string> = ChildProcess.spawnSync(
+      'git', gitCleanArgs, {encoding: 'utf-8', timeout: 10000});
+
+  if (childProcess.status != 0) {
+    throw new Error(`Could not clean '${ltexLibDirPath}'. ` +
+        `Exit code: ${childProcess.status}. stdout: '${childProcess.stdout}'. ` +
+        `stderr: '${childProcess.stderr}'.`);
+  }
+
   try {
     const userDataDirPath: string = Path.join(tmpDirPath, 'user');
     const extensionsDirPath: string = Path.join(tmpDirPath, 'extensions');
