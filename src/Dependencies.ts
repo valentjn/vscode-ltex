@@ -118,7 +118,7 @@ export default class Dependencies {
         let downloadedBytes: number = 0;
         let lastTaskNameUpdate: number = Date.now();
         codeProgress.updateTask(0, ((totalBytes > 0) ?
-            `${origTaskName} 0MB/${totalMb}MB` : origTaskName));
+            `${origTaskName}  0MB/${totalMb}MB` : origTaskName));
 
         response.pipe(file);
 
@@ -130,7 +130,7 @@ export default class Dependencies {
             if (now - lastTaskNameUpdate >= 500) {
               lastTaskNameUpdate = now;
               const downloadedMb: number = Math.round(downloadedBytes / 1e6);
-              const taskName: string = `${origTaskName} ${downloadedMb}MB/${totalMb}MB`;
+              const taskName: string = `${origTaskName}  ${downloadedMb}MB/${totalMb}MB`;
               codeProgress.updateTask(downloadedBytes / totalBytes, taskName);
             }
           });
