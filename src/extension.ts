@@ -22,20 +22,20 @@ async function languageClientIsReady(disposable: Code.Disposable): Promise<void>
     let message: string = 'Thanks for upgrading to LTeX 5.x! ';
 
     if (numberOfLanguageSupportExtensions > 1) {
-      message += 'You can remove the LTeX language support ' +
+      message += 'You should remove the LTeX language support ' +
           'extensions now. They are not needed anymore. ';
     } else {
-      message += 'You can remove the LTeX language support ' +
+      message += 'You should remove the LTeX language support ' +
           'extension now. It is not needed anymore. ';
     }
 
-    message += 'Review the readme for a summary of important major changes.';
+    message += 'Review a summary of important major changes.';
 
     Code.window.showInformationMessage(message,
           'More info about LTeX 5.x').then((selectedItem: string | undefined) => {
       if (selectedItem != null) {
         Code.env.openExternal(Code.Uri.parse(
-            'https://github.com/valentjn/vscode-ltex#note-for-transitioning-to-ltex-5x'));
+            'https://valentjn.github.io/vscode-ltex/docs/transitioning-to-ltex-5x.html'));
       }
     });
   }
