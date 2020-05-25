@@ -21,10 +21,14 @@ export default class Dependencies {
 
   public constructor(context: Code.ExtensionContext) {
     this._context = context;
-    const ltex: Code.Extension<any> | undefined =
+    const ltexExtension: Code.Extension<any> | undefined =
         Code.extensions.getExtension('valentjn.vscode-ltex');
-    if (ltex == null) throw new Error('Could not get LTeX version.');
-    this._ltexVersion = ltex.packageJSON.version;
+    if (ltexExtension == null) throw new Error('Could not get LTeX version.');
+    this._ltexVersion = ltexExtension.packageJSON.version;
+  }
+
+  private static isValidPath(path: string | null): boolean {
+    return ((path != null) && (path.length > 0));
   }
 
   private static parseUrl(urlStr: string): Https.RequestOptions {
@@ -380,14 +384,14 @@ export default class Dependencies {
       Logger.log('');
       this._ltexLsPath = workspaceConfig.get('ltex-ls.path', '');
 
-      if ((this._ltexLsPath != null) && (this._ltexLsPath.length > 0)) {
+      if (Dependencies.isValidPath(this._ltexLsPath)) {
         Logger.log(`ltex.ltex-ls.path set to ${this._ltexLsPath}.`);
       } else {
         Logger.log('ltex.ltex-ls.path not set.');
         Logger.log(`Searching for ltex-ls in '${libDirPath}'...`);
         this._ltexLsPath = this.searchBundledLtexLs(libDirPath);
 
-        if ((this._ltexLsPath != null) && (this._ltexLsPath.length > 0)) {
+        if (Dependencies.isValidPath(this._ltexLsPath)) {
           Logger.log(`ltex-ls found in '${this._ltexLsPath}'.`);
         } else {
           Logger.log(`Could not find a compatible version of ltex-ls in '${libDirPath}'.`);
@@ -395,7 +399,7 @@ export default class Dependencies {
           await this.installLtexLs();
           this._ltexLsPath = this.searchBundledLtexLs(libDirPath);
 
-          if ((this._ltexLsPath != null) && (this._ltexLsPath.length > 0)) {
+          if (Dependencies.isValidPath(this._ltexLsPath)) {
             Logger.log(`ltex-ls found in '${this._ltexLsPath}'.`);
           } else {
             throw Error('Could not download or extract ltex-ls.');
@@ -418,7 +422,7 @@ export default class Dependencies {
         Logger.log('');
         this._javaPath = Dependencies.getRenamedSetting(workspaceConfig, 'java.path', 'javaHome');
 
-        if ((this._javaPath != null) && (this._javaPath.length > 0)) {
+        if (Dependencies.isValidPath(this._javaPath)) {
           Logger.log(`ltex.java.path set to '${this._javaPath}'.`);
         } else if (i == 0) {
           Logger.log('ltex.java.path not set.');
@@ -426,7 +430,7 @@ export default class Dependencies {
           Logger.log(`Searching for bundled Java in '${libDirPath}'.`);
           this._javaPath = Dependencies.searchBundledJava(libDirPath);
 
-          if ((this._javaPath != null) && (this._javaPath.length > 0)) {
+          if (Dependencies.isValidPath(this._javaPath)) {
             Logger.log(`Bundled Java found in '${this._javaPath}'.`);
           } else {
             Logger.log(`Could not find bundled Java in '${libDirPath}'.`);
@@ -437,7 +441,7 @@ export default class Dependencies {
               await this.installJava();
               this._javaPath = Dependencies.searchBundledJava(libDirPath);
 
-              if ((this._javaPath != null) && (this._javaPath.length > 0)) {
+              if (Dependencies.isValidPath(this._javaPath)) {
                 Logger.log('Download or extraction of Java failed. ' +
                     'Trying to run Java via PATH or JAVA_HOME.');
               }
@@ -447,7 +451,7 @@ export default class Dependencies {
 
         Logger.log(`Using ltex-ls from '${this._ltexLsPath}'.`);
 
-        if ((this._javaPath != null) && (this._javaPath.length > 0)) {
+        if (Dependencies.isValidPath(this._javaPath)) {
           Logger.log(`Using Java from '${this._javaPath}'.`);
         } else {
           Logger.log('Using Java from PATH or JAVA_HOME (may fail if not installed).');
@@ -519,7 +523,7 @@ export default class Dependencies {
   }
 
   public async getLtexLsExecutable(): Promise<CodeLanguageClient.Executable> {
-    if (this._ltexLsPath == null) {
+    if (!Dependencies.isValidPath(this._ltexLsPath)) {
       return Promise.reject(new Error('Could not get ltex-ls executable, ' +
           'has to be installed first.'));
     }
@@ -532,13 +536,13 @@ export default class Dependencies {
       }
     }
 
-    if (this._javaPath != null) {
-      env['JAVA_HOME'] = this._javaPath;
+    if (Dependencies.isValidPath(this._javaPath)) {
+      env['JAVA_HOME'] = this._javaPath!;
     }
 
     const isWindows: boolean = (process.platform === 'win32');
     const ltexLsScriptPath: string = Path.join(
-        this._ltexLsPath, 'bin', (isWindows ? 'ltex-ls.bat' : 'ltex-ls'));
+        this._ltexLsPath!, 'bin', (isWindows ? 'ltex-ls.bat' : 'ltex-ls'));
 
     const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
     const initialJavaHeapSize: number = Dependencies.getRenamedSetting(workspaceConfig,
