@@ -4,13 +4,13 @@
 [![Rating](https://img.shields.io/visual-studio-marketplace/stars/valentjn.vscode-ltex?logo=visual-studio-code)][marketplace]
 
 [![vscode-ltex](https://img.shields.io/badge/vscode--ltex-grey)](https://github.com/valentjn/vscode-ltex)&nbsp;
-[![Travis CI build status of vscode-ltex](https://img.shields.io/travis/valentjn/vscode-ltex/master?logo=travis)](https://www.travis-ci.org/valentjn/vscode-ltex)&nbsp;
-[![Coverage of vscode-ltex](https://img.shields.io/coveralls/github/valentjn/vscode-ltex/master?logo=coveralls)](https://coveralls.io/github/valentjn/vscode-ltex)&nbsp;
+[![Travis CI build status of vscode-ltex](https://img.shields.io/travis/valentjn/vscode-ltex/release?logo=travis)](https://www.travis-ci.org/valentjn/vscode-ltex)&nbsp;
+[![Coverage of vscode-ltex](https://img.shields.io/coveralls/github/valentjn/vscode-ltex/release?logo=coveralls)](https://coveralls.io/github/valentjn/vscode-ltex)&nbsp;
 [![GitHub stars](https://img.shields.io/github/stars/valentjn/vscode-ltex?logo=github)](https://github.com/valentjn/vscode-ltex)&nbsp;
 [![GitHub issues](https://img.shields.io/github/issues/valentjn/vscode-ltex?logo=github)](https://github.com/valentjn/vscode-ltex/issues)\
 [![ltex-ls](https://img.shields.io/badge/ltex--ls-grey)](https://github.com/valentjn/ltex-ls)&nbsp;
-[![Travis CI build status of ltex-ls](https://img.shields.io/travis/valentjn/ltex-ls/master?logo=travis)](https://www.travis-ci.org/valentjn/ltex-ls)&nbsp;
-[![Coverage of ltex-ls](https://img.shields.io/coveralls/github/valentjn/ltex-ls/master?logo=coveralls)](https://coveralls.io/github/valentjn/ltex-ls)
+[![Travis CI build status of ltex-ls](https://img.shields.io/travis/valentjn/ltex-ls/release?logo=travis)](https://www.travis-ci.org/valentjn/ltex-ls)&nbsp;
+[![Coverage of ltex-ls](https://img.shields.io/coveralls/github/valentjn/ltex-ls/release?logo=coveralls)](https://coveralls.io/github/valentjn/ltex-ls)
 
 **LT<sub>E</sub>X** provides offline grammar checking in Visual Studio Code using [LanguageTool (LT)](https://languagetool.org/), supporting L<sup>A</sup>T<sub>E</sub>X and Markdown documents.
 
@@ -29,7 +29,7 @@ Find more information in the [changelog](https://valentjn.github.io/vscode-ltex/
 
 ## Features
 
-![LanguageTool Grammar Checking for VS Code with LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/master/img/banner-ltex.png)
+![LanguageTool Grammar Checking for VS Code with LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/release/img/banner-ltex.png)
 
 - Checks **L<sup>A</sup>T<sub>E</sub>X** and **Markdown** documents
 - Comes with **everything included,** no need to install Java or LanguageTool

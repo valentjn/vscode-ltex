@@ -6,4 +6,4 @@ As a fork of the abandoned [LanguageTool for Visual Studio Code extension](https
 
 ## ltex-ls
 
-Distributions of LT<sub>E</sub>X include [ltex-ls](https://github.com/valentjn/ltex-ls) under the terms of the [Mozilla Public License, version 2.0](https://github.com/valentjn/ltex-ls/blob/master/LICENSE.md). For information on dependencies of ltex-ls, please see [ltex-ls/ACKNOWLEDGMENTS.md](https://github.com/valentjn/ltex-ls/blob/master/ACKNOWLEDGMENTS.md).
+Distributions of LT<sub>E</sub>X include [ltex-ls](https://github.com/valentjn/ltex-ls) under the terms of the [Mozilla Public License, version 2.0](https://github.com/valentjn/ltex-ls/blob/release/LICENSE.md). For information on dependencies of ltex-ls, please see [ltex-ls/ACKNOWLEDGMENTS.md](https://github.com/valentjn/ltex-ls/blob/release/ACKNOWLEDGMENTS.md).

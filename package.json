@@ -34,12 +34,12 @@
       "description": "rating"
     },
     {
-      "url": "https://img.shields.io/travis/valentjn/vscode-ltex/master?logo=travis&label=vscode-ltex%20build",
+      "url": "https://img.shields.io/travis/valentjn/vscode-ltex/release?logo=travis&label=vscode-ltex%20build",
       "href": "https://www.travis-ci.org/valentjn/vscode-ltex",
       "description": "Travis CI build status of vscode-ltex"
     },
     {
-      "url": "https://img.shields.io/coveralls/github/valentjn/vscode-ltex/master?logo=coveralls&label=vscode-ltex%20coverage",
+      "url": "https://img.shields.io/coveralls/github/valentjn/vscode-ltex/release?logo=coveralls&label=vscode-ltex%20coverage",
       "href": "https://coveralls.io/github/valentjn/vscode-ltex",
       "description": "Coverage of vscode-ltex"
     },
@@ -54,12 +54,12 @@
       "description": "GitHub issues of vscode-ltex"
     },
     {
-      "url": "https://img.shields.io/travis/valentjn/vscode-ltex/master?logo=travis&label=ltex-ls%20build",
+      "url": "https://img.shields.io/travis/valentjn/vscode-ltex/release?logo=travis&label=ltex-ls%20build",
       "href": "https://www.travis-ci.org/valentjn/vscode-ltex",
       "description": "Travis CI build status of ltex-ls"
     },
     {
-      "url": "https://img.shields.io/coveralls/github/valentjn/vscode-ltex/master?logo=coveralls&label=ltex-ls%20coverage",
+      "url": "https://img.shields.io/coveralls/github/valentjn/vscode-ltex/release?logo=coveralls&label=ltex-ls%20coverage",
       "href": "https://coveralls.io/github/valentjn/vscode-ltex",
       "description": "Coverage of ltex-ls"
     }
