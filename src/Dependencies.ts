@@ -18,6 +18,8 @@ export default class Dependencies {
   private _ltexVersion: string;
   private _ltexLsPath: string | null = null;
   private _javaPath: string | null = null;
+  private static _offlineInstructionsUrl: string = 'https://valentjn.github.io/vscode-ltex/docs/' +
+      'installation-how-to-use.html#offline-installation';
 
   public constructor(context: Code.ExtensionContext) {
     this._context = context;
@@ -408,8 +410,8 @@ export default class Dependencies {
       }
     } catch (e) {
       Logger.error('The download or extraction of ltex-ls failed!', e);
-      Logger.log('You might want to try offline installation, ' +
-          'see https://github.com/valentjn/vscode-ltex#offline-installation.');
+      Logger.log('You might want to try offline installation, see ' +
+          `${Dependencies._offlineInstructionsUrl}.`);
       Logger.showClientOutputChannel();
       return this.showOfflineInstallationInstructions('Could not install ltex-ls.');
     }
@@ -466,8 +468,8 @@ export default class Dependencies {
       throw Error('Could not run ltex-ls.');
     } catch (e) {
       Logger.error('The download/extraction/run of Java failed!', e);
-      Logger.log('You might want to try offline installation, ' +
-          'see https://github.com/valentjn/vscode-ltex#offline-installation.');
+      Logger.log('You might want to try offline installation, see ' +
+          `${Dependencies._offlineInstructionsUrl}.`);
       return await this.showOfflineInstallationInstructions('Could not download/extract/run Java.');
     }
   }
@@ -480,8 +482,7 @@ export default class Dependencies {
           resolve(await this.install());
           return;
         } else if (selectedItem == 'Offline instructions') {
-          Code.env.openExternal(Code.Uri.parse(
-              'https://github.com/valentjn/vscode-ltex#offline-installation'));
+          Code.env.openExternal(Code.Uri.parse(Dependencies._offlineInstructionsUrl));
         }
 
         resolve(false);
