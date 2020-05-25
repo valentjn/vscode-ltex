@@ -2,8 +2,8 @@
 
 ## 5.0.0 (upcoming)
 
-- Download Java distribution on demand if no suitable Java installation has been found (fixes [#5](https://github.com/valentjn/vscode-ltex/issues/5))
 - Download LT<sub>E</sub>X Language Server on demand with all languages already included; this removes the need for language support extensions (fixes [#6](https://github.com/valentjn/vscode-ltex/issues/6))
+- Download Java distribution on demand if no suitable Java installation has been found (fixes [#5](https://github.com/valentjn/vscode-ltex/issues/5))
 - Adhere to [semantic versioning](https://semver.org/). This means that the version of LT<sub>E</sub>X is not tied to the version of LanguageTool anymore, as the version of LanguageTool is not a semantic version.
 - Rename settings:
   - `ltex.<LANGUAGE>.dictionary` to `ltex.dictionary` (object with `<LANGUAGE>` keys)
@@ -13,6 +13,9 @@
   - `ltex.performance.initialJavaHeapSize` to `ltex.java.initialHeapSize`
   - `ltex.performance.maximumJavaHeapSize` to `ltex.java.maximumHeapSize`
   - `ltex.performance.sentenceCacheSize` to `ltex.sentenceCacheSize`
+- Add support for external LanguageTool HTTP servers (fixes [#36](https://github.com/valentjn/vscode-ltex/issues/36))
+- Add support for magic comments, enables changing the language in the middle of documents (fixes [#21](https://github.com/valentjn/vscode-ltex/issues/21))
+- Remove `null` types and default values from settings, use empty string/array/object instead (fixes [#41](https://github.com/valentjn/vscode-ltex/issues/41))
 - Use proper server/client model for language server/client
 
 ## 4.9.3 — “The Java Collapse” (May 7, 2020)
