@@ -32,7 +32,7 @@ Although LTeX ships with its own version of LanguageTool (LT), it's possible to 
 - You want to run your own LT HTTP server, usually on `localhost`. This might be because the version of LT that comes with LTeX does not work, because you want to use an older or newer version of LT than LTeX's LT, or because you use other programs that use LT as well and you only want one instance of LT running.
 - You want to use [LanguageTool Plus](https://languagetoolplus.com/), the paid premium version of LT.
 
-To connect to an LT HTTP server, set the setting [`ltex.ltex-ls.languageToolHttpServerUri`](settings.html#ltexltexlslanguagetoolhttpserveruri) to the root URI of the server, for instance, `http://localhost:8081/`. Note that in this mode, LT<sub>E</sub>X will still depend on ltex-ls and Java, as the interface for communicating with LT over HTTP is in ltex-ls.
+To connect to an LT HTTP server, set the setting [`ltex.ltex-ls.languageToolHttpServerUri`](settings.html#ltexltexlslanguagetoolhttpserveruri) to the root URI of the server, for instance, `http://localhost:8081/`. Note that in this mode, LTeX will still depend on ltex-ls and Java, as the interface for communicating with LT over HTTP is in ltex-ls.
 
 ## Ignoring False Positives with Regular Expressions
 
