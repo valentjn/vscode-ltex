@@ -51,7 +51,7 @@ Find more information in the [changelog](https://valentjn.github.io/vscode-ltex/
 2. Install this extension
 3. Reload the VS Code window if necessary
 4. Open a L<sup>A</sup>T<sub>E</sub>X or a Markdown document, or open a new file and change the language mode to `LaTeX` or `Markdown` (open the Command Palette and select `Change Language Mode`)
-5. Wait until ltex-ls and Java have been found; if necessary, LT<sub>E</sub>X downloads both for you.
+5. Wait until [ltex-ls](https://valentjn.github.io/vscode-ltex/docs/faq.html#whats-the-difference-between-vscode-ltex-ltex-ls-and-languagetool) and Java have been found; if necessary, LT<sub>E</sub>X downloads both for you. Alternatively, you can choose [offline installation](https://valentjn.github.io/vscode-ltex/docs/installation-how-to-use.html#offline-installation).
 6. Grammar/spelling errors will be displayed! (if there are any)
 
 ## Documentation
