@@ -25,11 +25,15 @@ The key component of LTeX, the LTeX Language Server (ltex-ls), which also includ
 
 ### First Alternative
 
-Download the offline version of LTeX on the [Releases page](https://github.com/valentjn/vscode-ltex/releases) and install it via `Extensions: Install from VSIX...` on the Command Palette. The offline version includes _everything_ (ltex-ls and a Java distribution).
+Download the offline version of LTeX at the [Releases page on GitHub](https://github.com/valentjn/vscode-ltex/releases) and install it via `Extensions: Install from VSIX...` on the Command Palette. The offline version includes _everything_ (ltex-ls and a Java distribution). Reload the Visual Studio Code window after installing the offline version.
 
 ### Second Alternative
 
-Download [ltex-ls](https://github.com/valentjn/ltex-ls/releases) and/or a Java distribution (for instance [AdoptOpenJDK](https://adoptopenjdk.net/)) individually and set [`ltex.ltex-ls.path`](settings.html#ltexltex-lspath) and/or [`ltex.java.path`](settings.html#ltexjavapath) to the respective locations. If you do this, the versions of ltex-ls and/or Java have to satisfy the following requirements:
+Download [ltex-ls](https://github.com/valentjn/ltex-ls/releases) and/or a Java distribution (for instance [AdoptOpenJDK](https://adoptopenjdk.net/)) individually and set [`ltex.ltex-ls.path`](settings.html#ltexltex-lspath) and/or [`ltex.java.path`](settings.html#ltexjavapath) to the respective locations. Note that the versions of ltex-ls and/or Java have to satisfy the following requirements:
 
 - The version of ltex-ls must be lower than or equal to the version of LTeX itself (this extension). Most of the time you want to choose the newest version of ltex-ls that satisfies this requirement. An older or a newer version than the one that satisfies this rule might work or not.
 - The version of Java must be at least 8. Some Java distributions offer a JRE and a JDK; in this case, the JRE (Java Runtime Environment) is sufficient.
+
+If you download Java, you can also decide to install it system-wide. In this case, LTeX should be able to detect its location without having to set [`ltex.java.path`](settings.html#ltexjavapath). If not, you can still set [`ltex.java.path`](settings.html#ltexjavapath) to the location of your system-wide installation.
+
+Reload the Visual Studio Code window after installing ltex-ls and/or Java.
