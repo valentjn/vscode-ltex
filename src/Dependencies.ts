@@ -501,23 +501,21 @@ export default class Dependencies {
 
     Logger.log('Testing ltex-ls...');
     Logger.logExecutable(executable);
-    const process: ChildProcess.SpawnSyncReturns<string> = ChildProcess.spawnSync(
+    const childProcess: ChildProcess.SpawnSyncReturns<string> = ChildProcess.spawnSync(
         executable.command, executable.args, executableOptions);
 
-    const success: boolean = ((process.status == 0) && process.stdout.includes('ltex-ls'));
-
-    if (success) {
+    if ((childProcess.status == 0) && childProcess.stdout.includes('ltex-ls')) {
       Logger.log('Test successful!');
+      return true;
     } else {
       Logger.log('Test failed.');
-      Logger.log(`Exit code of ltex-ls: ${process.status}`);
+      Logger.log(`Exit code of ltex-ls: ${childProcess.status}`);
       Logger.log('stdout of ltex-ls:');
-      Logger.log(process.stdout);
+      Logger.log(childProcess.stdout);
       Logger.log('stderr of ltex-ls:');
-      Logger.log(process.stderr);
+      Logger.log(childProcess.stderr);
+      return false;
     }
-
-    return success;
   }
 
   public async getLtexLsExecutable(): Promise<CodeLanguageClient.Executable> {
