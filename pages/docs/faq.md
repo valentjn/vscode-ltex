@@ -16,11 +16,11 @@ In the case of LTeX, the “language” is not a single natural language, but al
 - [ltex-ls](https://github.com/valentjn/ltex-ls) is an editor-independent language server (although it has only been tested with VS Code) written in Java. Incoming LaTeX or Markdown code is parsed, converted to plaintext, and passed to LanguageTool.
 - [LanguageTool](https://github.com/languagetool-org/languagetool) is a grammar and spell checker written in Java. It can be used via its Java API or standalone. LanguageTool is responsible for the actual checking.
 
-When we talk about LTeX, we usually mean the combination of vscode-ltex and ltex-ls.
+When talking about LTeX, we usually mean the combination of vscode-ltex and ltex-ls.
 
 ## What happened to the Language Support Extensions?
 
-The language support extension were only necessary for LTeX 4.x. Starting with LTeX 5.x, all languages supported by LanguageTool are included in ltex-ls, which is downloaded automatically by LTeX. Therefore, the language support extensions are not available anymore on the Visual Studio Marketplace. If you have LTeX 5.x installed and there are no problems after the upgrade, you may remove any installed language support extensions.
+The language support extension were only necessary for LTeX 4.x. Starting with LTeX 5.x, all languages supported by LanguageTool are included in ltex-ls, which is downloaded automatically by LTeX. Therefore, the language support extensions are not available anymore on the Visual Studio Marketplace. If you have LTeX 5.x installed and there are no problems after the upgrade, you should remove any installed language support extensions.
 
 ## How can I check multiple languages at once?
 
