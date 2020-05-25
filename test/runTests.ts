@@ -73,7 +73,7 @@ async function runTestIteration(testIteration: number): Promise<void> {
       Fs.writeFileSync(mockJavaPath, '\n', {mode: 0o777});
       if (!Object.prototype.hasOwnProperty.call(env, 'PATH')) env['PATH'] = '';
       env['PATH'] = `${mockJavaDirPath}${Path.delimiter}${env['PATH']}`;
-      env['JAVA_HOME'] = '';
+      env['JAVA_HOME'] = '/nonExistentDirectory';
     }
 
     const testOptions: CodeTestRunTest.TestOptions = {
