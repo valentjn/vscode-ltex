@@ -127,7 +127,7 @@ export default class TelemetryProcessor {
   }
 
   private processProgress(params: any): void {
-    if (params.operation != 'validateDocument') {
+    if (params.operation != 'checkDocument') {
       Logger.warn(`Unknown operation '${params.operation}' in telemetry event '${params}'.`);
       return;
     }
