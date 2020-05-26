@@ -39,11 +39,6 @@
       "description": "Travis CI build status of vscode-ltex"
     },
     {
-      "url": "https://img.shields.io/coveralls/github/valentjn/vscode-ltex/release?logo=coveralls&label=vscode-ltex%20coverage",
-      "href": "https://coveralls.io/github/valentjn/vscode-ltex",
-      "description": "Coverage of vscode-ltex"
-    },
-    {
       "url": "https://img.shields.io/github/stars/valentjn/vscode-ltex?logo=github&label=vscode-ltex%20stars",
       "href": "https://github.com/valentjn/vscode-ltex",
       "description": "GitHub stars of vscode-ltex"
@@ -2761,8 +2756,7 @@
     "lint": "eslint --max-warnings 0 -c .eslintrc.js {src,test}/**/*.ts",
     "watch": "tsc -watch",
     "pretest": "git clean -f -x lib/ && npm run vscode:prepublish && python3 tools/createOfflinePackages.py --current-system",
-    "test": "mocha ./out/test/runTests.js",
-    "coverage": "nyc npm run test"
+    "test": "mocha ./out/test/runTests.js"
   },
   "devDependencies": {
     "@types/mocha": "7.0.2",
@@ -2774,14 +2768,11 @@
     "@types/webpack": "4.1.4",
     "@typescript-eslint/eslint-plugin": "2.33.0",
     "@typescript-eslint/parser": "2.33.0",
-    "coveralls": "3.1.0",
     "eslint": "6.0.0",
     "eslint-config-google": "0.14.0",
     "eslint-plugin-only-warn": "1.0.2",
     "mocha": "7.1.2",
-    "nyc": "15.0.1",
     "rimraf": "3.0.2",
-    "ts-loader": "6.2.2",
     "typescript": "3.8.3",
     "vscode-test": "1.3.0",
     "webpack": "4.42.1",

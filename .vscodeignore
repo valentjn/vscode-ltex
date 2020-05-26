@@ -4,17 +4,14 @@
 .gitmodules
 .markdownlint.json
 .mocharc.json
-.nycrc.json
 .travis.yml
 .tsconfig.json
 .webpack.config.js
 *.vsix
 
 .github/
-.nyc_output/
 .vscode/
 .vscode-test/
-coverage/
 img/
 misc/
 node_modules/

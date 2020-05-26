@@ -5,7 +5,6 @@ node_js: "13"
 cache: false
 stages:
   - "test"
-  - "coverage"
   - "deploy"
 install: &commonInstall
   - "npm install"
@@ -16,7 +15,7 @@ jobs:
   include:
     - stage: "test"
       os: "linux"
-      install: &testLinuxInstall
+      install:
         - *commonInstall
         - "sudo apt-get -y install python3-pip"
         - "pip3 install semver"
@@ -36,12 +35,6 @@ jobs:
     # deactivated due to https://github.com/microsoft/vscode/issues/77499
     #- stage: "test"
     #  os: "windows"
-    - stage: "coverage"
-      install:
-        - *testLinuxInstall
-      script:
-        - *commonScript
-        - "npm run coverage && nyc report --reporter=text-lcov | coveralls"
     - stage: "deploy"
       if: "tag IS present"
       install:
