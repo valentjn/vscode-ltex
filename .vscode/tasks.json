@@ -36,7 +36,7 @@
 		{
 			"label": "Analyze coverage (fast)",
 			"type": "shell",
-			"command": "npm run compile && npx nyc -x **/node_modules.asar/ -x **/test/ -x .webpack.config.js mocha --unhandled-rejections=strict ./out/test/runTests.js --fast && npx nyc report --reporter=lcov && firefox coverage/lcov-report/index.html",
+			"command": "npm run compile && npx nyc mocha ./out/test/runTests.js --fast && npx nyc report --reporter=lcov && firefox coverage/lcov-report/index.html",
 			"problemMatcher": []
 		}
 	]

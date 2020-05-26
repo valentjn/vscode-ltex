@@ -1,0 +1,7 @@
+{
+  "exclude": [
+    "**/node_modules.asar/",
+    "**/test/",
+    ".webpack.config.js"
+  ]
+}

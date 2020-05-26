@@ -3,6 +3,8 @@
 .gitignore
 .gitmodules
 .markdownlint.json
+.mocharc.json
+.nycrc.json
 .travis.yml
 .tsconfig.json
 .webpack.config.js
