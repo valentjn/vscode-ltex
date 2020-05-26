@@ -2754,12 +2754,12 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "tsc -p ./.tsconfig.json && webpack --config .webpack.config.js --mode production",
+    "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production",
     "webpack": "webpack --config .webpack.config.js --mode development",
     "webpack-dev": "webpack --config .webpack.config.js --mode development --watch",
-    "compile": "tsc -p ./.tsconfig.json",
+    "compile": "tsc",
     "lint": "eslint --max-warnings 0 -c .eslintrc.js {src,test}/**/*.ts",
-    "watch": "tsc -watch -p ./.tsconfig.json",
+    "watch": "tsc -watch",
     "pretest": "git clean -f -x lib/ && npm run vscode:prepublish && python3 tools/createOfflinePackages.py --current-system",
     "test": "mocha ./out/test/runTests.js",
     "coverage": "nyc npm run test"
