@@ -10,7 +10,6 @@ toc: false
 
 <a href="https://github.com/valentjn/vscode-ltex" class="no-external">![vscode-ltex](https://img.shields.io/badge/vscode--ltex-grey)</a>&nbsp;
 <a href="https://www.travis-ci.org/valentjn/vscode-ltex" class="no-external">![Travis CI build status of vscode-ltex](https://img.shields.io/travis/valentjn/vscode-ltex/release?logo=travis)</a>&nbsp;
-<a href="https://coveralls.io/github/valentjn/vscode-ltex" class="no-external">![Coverage of vscode-ltex](https://img.shields.io/coveralls/github/valentjn/vscode-ltex/release?logo=coveralls)</a>&nbsp;
 <a href="https://github.com/valentjn/vscode-ltex" class="no-external">![GitHub stars](https://img.shields.io/github/stars/valentjn/vscode-ltex?logo=github)</a>&nbsp;
 <a href="https://github.com/valentjn/vscode-ltex/issues" class="no-external">![GitHub issues](https://img.shields.io/github/issues/valentjn/vscode-ltex?logo=github)</a><br/>
 <a href="https://github.com/valentjn/ltex-ls" class="no-external">![ltex-ls](https://img.shields.io/badge/ltex--ls-grey)</a>&nbsp;
