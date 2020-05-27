@@ -5,8 +5,8 @@
 .markdownlint.json
 .mocharc.json
 .travis.yml
-.tsconfig.json
 .webpack.config.js
+tsconfig.json
 *.vsix
 
 .github/
