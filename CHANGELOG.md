@@ -17,6 +17,7 @@
 - Add support for magic comments, enables changing the language in the middle of documents (fixes [#21](https://github.com/valentjn/vscode-ltex/issues/21))
 - Remove `null` types and default values from settings, use empty string/array/object instead (fixes [#41](https://github.com/valentjn/vscode-ltex/issues/41))
 - Use proper server/client model for language server/client
+- Make documentation more extensive, put it on own [website](https://valentjn.github.io/vscode-ltex/)
 
 ## 4.9.3 — “The Java Collapse” (May 7, 2020)
 
