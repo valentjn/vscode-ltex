@@ -3,11 +3,11 @@
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/valentjn.vscode-ltex?logo=visual-studio-code)][marketplace]&nbsp;
 [![Rating](https://img.shields.io/visual-studio-marketplace/stars/valentjn.vscode-ltex?logo=visual-studio-code)][marketplace]
 
-[![vscode-ltex](https://img.shields.io/badge/vscode--ltex-grey)](https://github.com/valentjn/vscode-ltex)&nbsp;
+[![vscode-ltex](https://img.shields.io/badge/vscode--ltex-blue)](https://github.com/valentjn/vscode-ltex)&nbsp;
 [![Travis CI build status of vscode-ltex](https://img.shields.io/travis/valentjn/vscode-ltex/release?logo=travis)](https://www.travis-ci.org/valentjn/vscode-ltex)&nbsp;
 [![GitHub stars](https://img.shields.io/github/stars/valentjn/vscode-ltex?logo=github)](https://github.com/valentjn/vscode-ltex)&nbsp;
 [![GitHub issues](https://img.shields.io/github/issues/valentjn/vscode-ltex?logo=github)](https://github.com/valentjn/vscode-ltex/issues)\
-[![ltex-ls](https://img.shields.io/badge/ltex--ls-grey)](https://github.com/valentjn/ltex-ls)&nbsp;
+[![ltex-ls](https://img.shields.io/badge/ltex--ls-blue)](https://github.com/valentjn/ltex-ls)&nbsp;
 [![Travis CI build status of ltex-ls](https://img.shields.io/travis/valentjn/ltex-ls/release?logo=travis)](https://www.travis-ci.org/valentjn/ltex-ls)&nbsp;
 [![Coverage of ltex-ls](https://img.shields.io/coveralls/github/valentjn/ltex-ls/release?logo=coveralls)](https://coveralls.io/github/valentjn/ltex-ls)
 
