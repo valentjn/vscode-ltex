@@ -8,18 +8,18 @@ sidebar: "sidebar"
 
 Magic comments are special comments which contents are interpreted by LTeX and which can be used to change some LTeX settings in the middle of the document. The comments have the following form:
 
-- LaTeX: `% LTeX: <SETTINGS>` on its own line (can be preceded by whitespace)
-- Markdown: `# LTeX: <SETTINGS>` at the end of a line (can be preceded by anything). Markdown doesn't really support comments, [but there are some possibilities to workaround this.](https://stackoverflow.com/a/32190021) The recommended way is as follows:
+- LaTeX: `% LTeX: SETTINGS` on its own line (can be surrounded by whitespace)
+- Markdown: `[comment]: <> "LTeX: SETTINGS"` on its own line (can be surrounded by whitespace). Markdown doesn't really support comments, [but there are some possibilities to workaround this.](https://stackoverflow.com/a/32190021) The recommended way is as follows:
 
-  ```Markdown
+  ```plaintext
   (empty line)
-  [comment]: # LTeX: <settings>
+  [comment]: <> "LTeX: SETTINGS"
   (empty line)
   ```
 
-Magic comments are case-insensitive (except for the setting values), and the space before and after `LTeX:` can be any amount of whitespace (or can be omitted altogether).
+Magic comments are case-insensitive (except for the setting values), and the spaces in the magic comment line can be any amount of whitespace, even no amount at all.
 
-`<SETTINGS>` is a whitespace-separated list of `KEY=VALUE` pairs. Neither `KEY` nor `VALUE` are enclosed in quotation marks. Currently, only the following setting is supported:
+`SETTINGS` has to be replaced with a whitespace-separated list of `KEY=VALUE` pairs. Neither `KEY` nor `VALUE` are enclosed in quotation marks. Currently, only the following setting is supported:
 
 - `language`: Changes the value of [`ltex.language`](settings.html#ltexlanguage) for the rest of the document.
 
