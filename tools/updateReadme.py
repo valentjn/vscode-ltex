@@ -78,7 +78,8 @@ def main():
   with open(readmePath, "r") as f: readme = f.read()
 
   readme = re.sub(r"## Documentation\n\n.*?^( *[^\-\*\n ])",
-      r"## Documentation\n\n{}\n\1".format(markdown), readme, flags=re.MULTILINE | re.DOTALL)
+      r"## Information & Documentation\n\n{}\n\1".format(markdown), readme,
+      flags=re.MULTILINE | re.DOTALL)
 
   with open(readmePath, "w") as f: f.write(readme)
 

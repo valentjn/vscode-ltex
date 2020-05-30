@@ -53,7 +53,7 @@ Find more information in the [changelog](https://valentjn.github.io/vscode-ltex/
 5. Wait until [ltex-ls](https://valentjn.github.io/vscode-ltex/docs/faq.html#whats-the-difference-between-vscode-ltex-ltex-ls-and-languagetool) and Java have been found; if necessary, LT<sub>E</sub>X downloads both for you. Alternatively, you can choose [offline installation](https://valentjn.github.io/vscode-ltex/docs/installation-how-to-use.html#offline-installation).
 6. Grammar/spelling errors will be displayed! (if there are any)
 
-## Documentation
+## Information & Documentation
 
 - [General Information](https://valentjn.github.io/vscode-ltex/index.html)
   - [Overview](https://valentjn.github.io/vscode-ltex/index.html)
