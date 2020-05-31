@@ -77,7 +77,7 @@ def main():
   readmePath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "README.md"))
   with open(readmePath, "r") as f: readme = f.read()
 
-  readme = re.sub(r"## Documentation\n\n.*?^( *[^\-\*\n ])",
+  readme = re.sub(r"## Information & Documentation\n\n.*?^( *[^\-\*\n ])",
       r"## Information & Documentation\n\n{}\n\1".format(markdown), readme,
       flags=re.MULTILINE | re.DOTALL)
 
