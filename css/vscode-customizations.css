@@ -48,7 +48,10 @@ h3 { font-size:125%; }
 code + a > code { margin-left:0; }
 
 /* links */
-a.no-external::after { content:none; }
+a.no-external::after,
+a[href^="https://valentjn.github.io/vscode-ltex"]::after {
+  content:none;
+}
 a[href^="http://"]:not(.btn, .no-external)::after,
 a[href^="https://"]:not(.btn, .no-external)::after {
   margin-right:-17px;
