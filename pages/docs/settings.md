@@ -860,7 +860,7 @@ Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` 
 
 ## `ltex.commands.ignore`
 
-List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., `"\\ref{}"`, `"\\documentclass[]{}"`). Don't forget to escape the initial backslash by replacing it with two backslashes.
+List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., `"\\ref{}"`, `"\\documentclass[]{}"`). The whole command with its arguments is ignored. The difference to commands that are unknown to the LaTeX parser is that for these, the parser only ignores the command name part and leaves the arguments as they are. Don't forget to escape the initial backslash by replacing it with two backslashes. Note that many common commands are already ignored by default, even if you set this setting to an empty array.
 
 *Type:* `array`
 
@@ -883,7 +883,7 @@ Array where each entry has the following type:
 
 ## `ltex.commands.dummy`
 
-List of additional LaTeX commands to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments (e.g., `"\\cite{}"`, `"\\cite[]{}"`). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes.
+List of additional LaTeX commands to be replaced with dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments (e.g., `"\\cite{}"`, `"\\cite[]{}"`). The whole command with its arguments is replaced with the dummy word. LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes. Note that many common commands are already replaced with dummy words by default, even if you set this setting to an empty array.
 
 *Type:* `array`
 
@@ -906,7 +906,7 @@ Array where each entry has the following type:
 
 ## `ltex.environments.ignore`
 
-List of additional LaTeX environments to be ignored by the LaTeX parser.
+List of additional LaTeX environments to be ignored by the LaTeX parser. Note that some environments are already ignored by default, even if you set this setting to an empty array.
 
 *Type:* `array`
 
