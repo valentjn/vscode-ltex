@@ -16,6 +16,7 @@
 - Add support for external LanguageTool HTTP servers (fixes [#36](https://github.com/valentjn/vscode-ltex/issues/36))
 - Add support for magic comments, enables changing the language in the middle of documents (fixes [#21](https://github.com/valentjn/vscode-ltex/issues/21))
 - Check `\footnote` and `\todo` contents separately, preventing “double period” warnings (fixes [#42](https://github.com/valentjn/vscode-ltex/issues/42))
+- Add support for more BibL<sup>A</sup>T<sub>E</sub>X citation commands, add support for plural dummies, add support for `\eg`, `\egc`, `\ie`, `\iec` (fixes [#43](https://github.com/valentjn/vscode-ltex/issues/43))
 - Add visual feedback in status bar during startup and checks that take a long time
 - Remove `null` types and default values from settings, use empty string/array/object instead (fixes [#41](https://github.com/valentjn/vscode-ltex/issues/41))
 - Use proper server/client model for language server/client
