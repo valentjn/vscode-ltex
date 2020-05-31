@@ -32,6 +32,9 @@ async function runTestIteration(testIteration: number): Promise<void> {
         `stderr: '${childProcess.stderr}'.`);
   }
 
+  const originalPath: string | undefined = process.env['PATH'];
+  const originalJavaHome: string | undefined = process.env['JAVA_HOME'];
+
   try {
     const userDataDirPath: string = Path.join(tmpDirPath, 'user');
     const extensionsDirPath: string = Path.join(tmpDirPath, 'extensions');
@@ -55,6 +58,20 @@ async function runTestIteration(testIteration: number): Promise<void> {
 
     if (childProcess.status != 0) throw new Error('Could not install extensions.');
 
+    if (testIteration == 0) {
+      const mockJavaDirPath: string = Path.join(tmpDirPath, 'bin');
+      Fs.mkdirSync(mockJavaDirPath);
+      const mockJavaPath: string = Path.join(mockJavaDirPath, 'java');
+      console.log(`Creating mock Java executable '${mockJavaPath}'...`);
+      Fs.writeFileSync(mockJavaPath, '\n', {mode: 0o777});
+      process.env['PATH'] = ((process.env['PATH'] != null) ?
+          `${mockJavaDirPath}${Path.delimiter}${process.env['PATH']}` : mockJavaDirPath);
+      process.env['JAVA_HOME'] = '/nonExistentDirectory';
+    } else {
+      process.env['PATH'] = originalPath;
+      process.env['JAVA_HOME'] = originalJavaHome;
+    }
+
     const env: NodeJS.ProcessEnv = {};
 
     for (const name in process.env) {
@@ -64,17 +81,6 @@ async function runTestIteration(testIteration: number): Promise<void> {
     }
 
     env['LTEX_DEBUG'] = '1';
-
-    if (testIteration == 0) {
-      const mockJavaDirPath: string = Path.join(tmpDirPath, 'bin');
-      Fs.mkdirSync(mockJavaDirPath);
-      const mockJavaPath: string = Path.join(mockJavaDirPath, 'java');
-      console.log(`Creating mock Java executable '${mockJavaPath}'...`);
-      Fs.writeFileSync(mockJavaPath, '\n', {mode: 0o777});
-      if (!Object.prototype.hasOwnProperty.call(env, 'PATH')) env['PATH'] = '';
-      env['PATH'] = `${mockJavaDirPath}${Path.delimiter}${env['PATH']}`;
-      env['JAVA_HOME'] = '/nonExistentDirectory';
-    }
 
     const testOptions: CodeTestRunTest.TestOptions = {
           vscodeExecutablePath: vscodeExecutablePath,
