@@ -41,6 +41,9 @@ div#toc ul li ul li {
   margin-bottom:0;
 }
 
+/* headings */
+h3 { font-size:125%; }
+
 /* inline code */
 code + a > code { margin-left:0; }
 
