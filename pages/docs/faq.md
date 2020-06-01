@@ -22,6 +22,12 @@ When talking about LTeX, we usually mean the combination of vscode-ltex and ltex
 
 The language support extension were only necessary for LTeX 4.x. Starting with LTeX 5.x, all languages supported by LanguageTool are included in ltex-ls, which is downloaded automatically by LTeX. Therefore, the language support extensions are not available anymore on the Visual Studio Marketplace. If you have LTeX 5.x installed and there are no problems after the upgrade, you should remove any installed language support extensions.
 
+## How can I prevent LTeX from redownloading ltex-ls and Java after every update?
+
+[As explained above](faq.html#whats-the-difference-between-vscode-ltex-ltex-ls-and-languagetool), ltex-ls is a necessary component of LTeX. Due to file size restrictions of the Visual Studio Marketplace, it is not possible to include ltex-ls in the extension itself. You can [install ltex-ls](installation-how-to-use.html#second-alternative-download-ltex-lsjava-manually) locally on your computer by setting `ltex.ltex-ls.path`. However, this is not recommended as automatic updates of LTeX might break compatibility with ltex-ls.
+
+If LTeX keeps downloading Java after every update, then you don't have a compatible version of Java installed on your computer. You can prevent LTeX from doing this by [installing Java](installation-how-to-use.html#second-alternative-download-ltex-lsjava-manually). Usually, it is not necessary to set `ltex.java.path` after the installation of Java, but you can use this setting if LTeX still doesn't find Java.
+
 ## How can I check multiple languages at once?
 
 This depends on whether the multiple languages only occur in different files (i.e., every file is written in a single language), or whether multiple languages occur in one file.
