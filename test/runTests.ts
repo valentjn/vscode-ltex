@@ -74,6 +74,7 @@ async function runTestIteration(testIteration: number): Promise<void> {
       process.env['PATH'] = ((process.env['PATH'] != null) ?
           `${mockJavaDirPath}${Path.delimiter}${process.env['PATH']}` : mockJavaDirPath);
       process.env['JAVA_HOME'] = '/nonExistentDirectory';
+      process.env['LTEX_JAVA_HOME'] = '/nonExistentDirectory';
     } else {
       if (originalPath != null) {
         process.env['PATH'] = originalPath;
@@ -85,6 +86,10 @@ async function runTestIteration(testIteration: number): Promise<void> {
         process.env['JAVA_HOME'] = originalJavaHome;
       } else if (process.env['JAVA_HOME'] != null) {
         delete process.env['JAVA_HOME'];
+      }
+
+      if (process.env['LTEX_JAVA_HOME'] != null) {
+        delete process.env['LTEX_JAVA_HOME'];
       }
     }
 

@@ -539,6 +539,8 @@ export default class Dependencies {
 
     if (Dependencies.isValidPath(this._javaPath)) {
       env['JAVA_HOME'] = this._javaPath!;
+    } else if ((env['LTEX_JAVA_HOME'] != null) && Dependencies.isValidPath(env['LTEX_JAVA_HOME'])) {
+      env['JAVA_HOME'] = env['LTEX_JAVA_HOME'];
     }
 
     const isWindows: boolean = (process.platform === 'win32');
