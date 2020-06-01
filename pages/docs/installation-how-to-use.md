@@ -27,6 +27,8 @@ When activated for the first time, LTeX will automatically download and use the 
 
 If you don't have an Internet connection, or if you simply don't want this, there are two alternatives.
 
+In case there are any problems, you will find additional debug info in `View` → `Output` → `LTeX Language Server` and `LTeX Language Client`.
+
 ### First Alternative: Download the Offline Version of LTeX
 
 Download the offline version of LTeX at the [Releases page on GitHub](https://github.com/valentjn/vscode-ltex/releases) and install it via `Extensions: Install from VSIX...` on the Command Palette. The offline version includes _everything_ (ltex-ls and a Java distribution). Reload the Visual Studio Code window after installing the offline version.
