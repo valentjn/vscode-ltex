@@ -11,9 +11,19 @@ let ltexDirPath: string;
 let vscodeExecutablePath: string;
 let cliPath: string;
 
+const originalPath: string | undefined = process.env['PATH'];
+const originalJavaHome: string | undefined = process.env['JAVA_HOME'];
+
 async function runTestIteration(testIteration: number): Promise<void> {
+  const useOfflinePackage: boolean = ((testIteration & 1) != 0);
+  const useMockJava: boolean = ((testIteration & 2) != 0);
+
   console.log('');
   console.log(`Running test iteration ${testIteration}...`);
+  console.log('');
+  console.log(`useOfflinePackage = ${useOfflinePackage}`);
+  console.log(`useMockJava = ${useMockJava}`);
+  console.log('');
 
   const tmpDirPrefix: string = Path.join(ltexDirPath, 'tmp-');
   console.log(`Creating temporary directory with prefix '${tmpDirPrefix}'...`);
@@ -32,9 +42,6 @@ async function runTestIteration(testIteration: number): Promise<void> {
         `stderr: '${childProcess.stderr}'.`);
   }
 
-  const originalPath: string | undefined = process.env['PATH'];
-  const originalJavaHome: string | undefined = process.env['JAVA_HOME'];
-
   try {
     const userDataDirPath: string = Path.join(tmpDirPath, 'user');
     const extensionsDirPath: string = Path.join(tmpDirPath, 'extensions');
@@ -44,7 +51,7 @@ async function runTestIteration(testIteration: number): Promise<void> {
           '--install-extension', 'james-yu.latex-workshop',
         ];
 
-    if (testIteration == 2) {
+    if (useOfflinePackage) {
       let platform: string = 'linux';
       if (process.platform == 'darwin') platform = 'mac';
       else if (process.platform == 'win32') platform = 'windows';
@@ -58,7 +65,7 @@ async function runTestIteration(testIteration: number): Promise<void> {
 
     if (childProcess.status != 0) throw new Error('Could not install extensions.');
 
-    if (testIteration == 0) {
+    if (useMockJava) {
       const mockJavaDirPath: string = Path.join(tmpDirPath, 'bin');
       Fs.mkdirSync(mockJavaDirPath);
       const mockJavaPath: string = Path.join(mockJavaDirPath, 'java');
@@ -68,11 +75,20 @@ async function runTestIteration(testIteration: number): Promise<void> {
           `${mockJavaDirPath}${Path.delimiter}${process.env['PATH']}` : mockJavaDirPath);
       process.env['JAVA_HOME'] = '/nonExistentDirectory';
     } else {
-      process.env['PATH'] = originalPath;
-      process.env['JAVA_HOME'] = originalJavaHome;
+      if (originalPath != null) {
+        process.env['PATH'] = originalPath;
+      } else if (process.env['PATH'] != null) {
+        delete process.env['PATH'];
+      }
+
+      if (originalJavaHome != null) {
+        process.env['JAVA_HOME'] = originalJavaHome;
+      } else if (process.env['JAVA_HOME'] != null) {
+        delete process.env['JAVA_HOME'];
+      }
     }
 
-    if (testIteration == 2) {
+    if (useOfflinePackage) {
       console.log(`Removing '${ltexLibDirPath}'...`);
       Rimraf.sync(ltexLibDirPath);
       const ltexOfflineLibDirPath: string =
