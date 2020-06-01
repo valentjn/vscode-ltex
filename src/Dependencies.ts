@@ -444,6 +444,8 @@ export default class Dependencies {
               this._javaPath = Dependencies.searchBundledJava(libDirPath);
 
               if (Dependencies.isValidPath(this._javaPath)) {
+                Logger.log(`Java found in '${this._javaPath}'.`);
+              } else {
                 Logger.log('Download or extraction of Java failed. ' +
                     'Trying to run Java via PATH or JAVA_HOME.');
               }
