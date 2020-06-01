@@ -41,7 +41,7 @@ def formatFullType(settingJson, indent=0):
   elif settingJson["type"] == "object":
     assert settingJson["propertyNames"]["type"] == "string"
     markdown += "Object with the following properties:\n\n"
-    markdown += "".join(f"{indent * ' '}- `{x}`: {formatFullType(y, indent+2)}"
+    markdown += "".join(f"{indent * ' '}- `{formatAsJson(x)}`: {formatFullType(y, indent+2)}"
         for x, y in settingJson["properties"].items())
   elif settingJson["type"] == "array":
     itemTypes = settingJson["items"]
@@ -56,7 +56,7 @@ def formatFullType(settingJson, indent=0):
     enumNames = settingJson["enum"]
     enumDescriptions = settingJson["enumDescriptions"]
     markdown += "One of the following values:\n\n"
-    markdown += "".join(f"{indent * ' '}- `{x}`: {y}\n"
+    markdown += "".join(f"{indent * ' '}- `{formatAsJson(x)}`: {y}\n"
         for x, y in zip(enumNames, enumDescriptions))
   else:
     markdown += f"Scalar of type {formatType(settingJson['type'])}\n"
