@@ -151,7 +151,7 @@ async function main(): Promise<void> {
   console.log('Resolving CLI path to VS Code...');
   cliPath = CodeTest.resolveCliPathFromVSCodeExecutablePath(vscodeExecutablePath);
 
-  for (let testIteration: number = 0; testIteration < 3; testIteration++) {
+  for (let testIteration: number = 0; testIteration < 4; testIteration++) {
     if (fastMode && (testIteration != 1)) continue;
     await runTestIteration(testIteration);
   }
