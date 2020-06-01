@@ -1,6 +1,6 @@
 # Changelog
 
-## 5.0.0 (upcoming)
+## 5.0.0 — “The Rewrite Materialization” (June 1, 2020)
 
 - Download LT<sub>E</sub>X Language Server on demand with all languages already included; this removes the need for language support extensions (fixes [#6](https://github.com/valentjn/vscode-ltex/issues/6))
 - Download Java distribution on demand if no suitable Java installation has been found (fixes [#5](https://github.com/valentjn/vscode-ltex/issues/5))
