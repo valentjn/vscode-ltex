@@ -72,6 +72,15 @@ async function runTestIteration(testIteration: number): Promise<void> {
       process.env['JAVA_HOME'] = originalJavaHome;
     }
 
+    if (testIteration == 2) {
+      console.log(`Removing '${ltexLibDirPath}'...`);
+      Rimraf.sync(ltexLibDirPath);
+      const ltexOfflineLibDirPath: string =
+          Path.join(extensionsDirPath, `valentjn.vscode-ltex-${ltexVersion}`, 'lib');
+      console.log(`Moving '${ltexOfflineLibDirPath}' to '${ltexLibDirPath}'...`);
+      Fs.renameSync(ltexOfflineLibDirPath, ltexLibDirPath);
+    }
+
     const env: NodeJS.ProcessEnv = {};
 
     for (const name in process.env) {
