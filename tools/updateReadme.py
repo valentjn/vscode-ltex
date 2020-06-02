@@ -24,7 +24,7 @@ def getMarkdownStructure(baseUrl, markdownPath):
     listToAppend = structure
     for i in range(level): listToAppend = listToAppend[-1]["children"]
     slug = getSlug(match[1])
-    listToAppend.append({"title" : match[1], "url" : "{}#{}".format(baseUrl, slug),
+    listToAppend.append({"title" : processTitle(match[1]), "url" : "{}#{}".format(baseUrl, slug),
         "children" : []})
 
   return structure
@@ -42,7 +42,7 @@ def convertToMarkdown(structure, indent=0):
 
 def processTitle(title):
   return title.replace("LaTeX", "L<sup>A</sup>T<sub>E</sub>X").replace(
-      "TeX", "</sup>T<sub>E</sub>X")
+      "TeX", "T<sub>E</sub>X")
 
 def main():
   serverUrl = "https://valentjn.github.io/vscode-ltex"
