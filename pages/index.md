@@ -5,16 +5,17 @@ sidebar: "sidebar"
 toc: false
 ---
 
-<a href="https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex" class="no-external">![Installs](https://img.shields.io/visual-studio-marketplace/i/valentjn.vscode-ltex?logo=visual-studio-code)</a>&nbsp;
-<a href="https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex" class="no-external">![Rating](https://img.shields.io/visual-studio-marketplace/stars/valentjn.vscode-ltex?logo=visual-studio-code)</a>
+<a href="https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex" class="no-external">![latest release](https://badgen.net/badge/-/release/585858?label=)![version number](https://badgen.net/vs-marketplace/v/valentjn.vscode-ltex?label=)![release date](https://badgen.net/github/last-commit/valentjn/vscode-ltex/release?label=)</a>&nbsp;
+<a href="https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex" class="no-external">![installs](https://badgen.net/vs-marketplace/i/valentjn.vscode-ltex)</a>&nbsp;
+<a href="https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex" class="no-external">![rating](https://badgen.net/vs-marketplace/rating/valentjn.vscode-ltex)</a>
 
-<a href="https://github.com/valentjn/vscode-ltex" class="no-external">![vscode-ltex](https://img.shields.io/badge/vscode--ltex-blue)</a>&nbsp;
-<a href="https://www.travis-ci.org/valentjn/vscode-ltex" class="no-external">![Travis CI build status of vscode-ltex](https://img.shields.io/travis/valentjn/vscode-ltex/release?logo=travis)</a>&nbsp;
-<a href="https://github.com/valentjn/vscode-ltex" class="no-external">![GitHub stars](https://img.shields.io/github/stars/valentjn/vscode-ltex?logo=github)</a>&nbsp;
-<a href="https://github.com/valentjn/vscode-ltex/issues" class="no-external">![GitHub issues](https://img.shields.io/github/issues/valentjn/vscode-ltex?logo=github)</a><br/>
-<a href="https://github.com/valentjn/ltex-ls" class="no-external">![ltex-ls](https://img.shields.io/badge/ltex--ls-blue)</a>&nbsp;
-<a href="https://www.travis-ci.org/valentjn/ltex-ls" class="no-external">![Travis CI build status of ltex-ls](https://img.shields.io/travis/valentjn/ltex-ls/release?logo=travis)</a>&nbsp;
-<a href="https://coveralls.io/github/valentjn/ltex-ls" class="no-external">![Coverage of ltex-ls](https://img.shields.io/coveralls/github/valentjn/ltex-ls/release?logo=coveralls)</a>
+<a href="https://github.com/valentjn/vscode-ltex" class="no-external">![vscode-ltex](https://badgen.net/badge/-/vscode-ltex/?label=)</a>&nbsp;
+<a href="https://www.travis-ci.org/valentjn/vscode-ltex" class="no-external">![Travis CI build status](https://badgen.net/travis/valentjn/vscode-ltex/release)</a>&nbsp;
+<a href="https://github.com/valentjn/vscode-ltex" class="no-external">![GitHub stars](https://badgen.net/github/stars/valentjn/vscode-ltex)</a>&nbsp;
+<a href="https://github.com/valentjn/vscode-ltex/issues" class="no-external">![GitHub issues](https://badgen.net/github/open-issues/valentjn/vscode-ltex?label=issues)</a><br/>
+<a href="https://github.com/valentjn/ltex-ls" class="no-external">![ltex-ls](https://badgen.net/badge/-/ltex-ls/?label=)</a>&nbsp;
+<a href="https://www.travis-ci.org/valentjn/ltex-ls" class="no-external">![Travis CI build status](https://badgen.net/travis/valentjn/vscode-ltex/release)</a>&nbsp;
+<a href="https://coveralls.io/github/valentjn/ltex-ls" class="no-external">![coverage](https://badgen.net/coveralls/c/github/valentjn/ltex-ls/release)</a>
 
 **LTeX** provides offline grammar checking in Visual Studio Code using [LanguageTool&nbsp;(LT)](https://languagetool.org/), supporting LaTeX and Markdown documents.
 
