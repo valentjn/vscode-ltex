@@ -28,10 +28,22 @@ If the bug occurs for a specific document (e.g. LaTeX), please attach it. If its
 Please attach all configuration settings starting with `ltex.` from your `settings.json`. Don't omit anything, as it might be related to the bug. If some of your settings are too large (e.g., your user dictionary), or if you have too many settings, temporarily remove some irrelevant settings from your `settings.json` and see if the bug still occurs.
 
 **"LTeX Language Server" log file**
-First, reproduce the bug. Then, go to `View` → `Output` and select `LTeX Language Server` in the drop-down list. Paste or attach the relevant part of this log here in the GitHub issue.
+First, reproduce the bug. Then, go to `View` → `Output` and select `LTeX Language Server` in the drop-down list. Paste the relevant part of this log here (leave the "details" tags and the backticks as they are to have nice formatting):
+
+<details>
+```
+REPLACE_WITH_LTEX_LANGUAGE_SERVER_LOG
+```
+</details>
 
 **"LTeX Language Client" log file**
-First, set the `ltex.trace.server` setting in your `settings.json` to `"verbose"`. Then, reload the VS Code window and reproduce the bug. Go to `View` → `Output` and select `LTeX Language Client` in the drop-down list. Paste or attach the relevant part of this log here in the GitHub issue.
+First, set the `ltex.trace.server` setting in your `settings.json` to `"verbose"`. Then, reload the VS Code window and reproduce the bug. Go to `View` → `Output` and select `LTeX Language Client` in the drop-down list. Paste the relevant part of this log here (leave the "details" tags and the backticks as they are to have nice formatting):
+
+<details>
+```
+REPLACE_WITH_LTEX_LANGUAGE_CLIENT_LOG
+```
+</details>
 
 **Version information**
 List here the version information of the relevant software.
