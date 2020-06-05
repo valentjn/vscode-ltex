@@ -25,10 +25,13 @@ A clear and concise description of what you expected to happen.
 If the bug occurs for a specific document (e.g. LaTeX), please attach it. If its contents are confidential, please create and attach a smaller example for which the bug still occurs so that we can reproduce it.
 
 **LTeX configuration**
-Please attach any LTeX-related configuration settings from your `settings.json`.
+Please attach all configuration settings starting with `ltex.` from your `settings.json`. Don't omit anything, as it might be related to the bug. If some of your settings are too large (e.g., your user dictionary), or if you have too many settings, temporarily remove some irrelevant settings from your `settings.json` and see if the bug still occurs.
 
-** Log files**
-First, set the `ltex.trace.server` setting in your `settings.json` to `"verbose"`. Then, reload the VS Code window and reproduce the bug. Go to `View` → `Output` and select `LTeX Language Server` and `LTeX Language Client` in the drop-down list. Paste or attach the relevant parts of these logs here in the GitHub issue.
+**"LTeX Language Server" log file**
+First, reproduce the bug. Then, go to `View` → `Output` and select `LTeX Language Server` in the drop-down list. Paste or attach the relevant part of this log here in the GitHub issue.
+
+**"LTeX Language Client" log file**
+First, set the `ltex.trace.server` setting in your `settings.json` to `"verbose"`. Then, reload the VS Code window and reproduce the bug. Go to `View` → `Output` and select `LTeX Language Client` in the drop-down list. Paste or attach the relevant part of this log here in the GitHub issue.
 
 **Version information**
 List here the version information of the relevant software.
@@ -36,8 +39,7 @@ List here the version information of the relevant software.
 - Operating system: Linux (which distribution/version), macOS xx.xx, or Windows xx
 - VS Code: 1.xx.x
 - LTeX: x.xx
-- LTeX language extensions: English/x.xx, ...
-- Java: x.xx (usually from `java -version`)
+- Java: x.xx (usually obtained with `java -version`, only if not using Java automatically downloaded by LTeX)
 
 **Additional context/information**
 You can add any other context or information about the problem here.
