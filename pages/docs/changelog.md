@@ -5,6 +5,11 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 5.0.1 (upcoming)
+
+- Fix `Value is not accepted` warning when using [`ltex.disabledRules`](settings.html#ltexdisabledrules) or [`ltex.enabledRules`](settings.html#ltexenabledrules) (fixes part of [#44](https://github.com/valentjn/vscode-ltex/issues/44))
+- Change badges in readme
+
 ## 5.0.0 — “The Rewrite Materialization” (June 1, 2020)
 
 - Download LTeX Language Server on demand with all languages already included; this removes the need for language support extensions (fixes [#6](https://github.com/valentjn/vscode-ltex/issues/6))
