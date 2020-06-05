@@ -5,14 +5,21 @@ import glob
 import json
 import os
 import re
+import shlex
 import subprocess
 
 
 
+toolsDirPath = os.path.dirname(os.path.abspath(__file__))
+
+def run(cmd, **kwargs):
+  print("Running {}...".format(" ".join(shlex.quote(x) for x in cmd)))
+  return subprocess.run(cmd, stdout=subprocess.PIPE, cwd=toolsDirPath)
+
 def fetchLanguages(toolsDirPath, ltexLsPath):
   classPath = os.pathsep.join([toolsDirPath, os.path.join(ltexLsPath, "lib", "*")])
-  process = subprocess.run(["java", "-cp", classPath,
-      os.path.join(toolsDirPath, "LanguageToolLanguageLister.java")], stdout=subprocess.PIPE)
+  run(["javac", "-cp", classPath, "LanguageToolLanguageLister.java"])
+  process = run(["java", "-cp", classPath, "LanguageToolLanguageLister"])
   stdout = process.stdout.decode()
   languages = sorted([dict(zip(("languageShortCode", "languageName"), line.split(";")))
       for line in stdout.splitlines()], key=lambda x: x["languageShortCode"])
@@ -27,7 +34,6 @@ def main():
       help="path to ltex-ls relative from the root directory of LTeX, supports wildcards")
   args = parser.parse_args()
 
-  toolsDirPath = os.path.dirname(os.path.abspath(__file__))
   ltexPath = os.path.abspath(os.path.join(toolsDirPath, ".."))
   ltexLsPaths = glob.glob(os.path.join(ltexPath, args.ltex_ls_path))
   assert len(ltexLsPaths) > 0, "ltex-ls not found"

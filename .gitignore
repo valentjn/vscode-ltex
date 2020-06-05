@@ -1,3 +1,5 @@
+*.class
+
 /package-lock.json
 /*.vsix
 
