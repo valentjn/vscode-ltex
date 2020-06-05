@@ -68,6 +68,8 @@ def main():
         }
         for languageShortCode, languageName in zip(languageShortCodes, languageNames)
       }
+  settings["ltex.disabledRules"]["propertyNames"]["enum"] = languageShortCodes
+  settings["ltex.disabledRules"]["propertyNames"]["enumDescriptions"] = languageNames
   settings["ltex.disabledRules"]["properties"] = {
         languageShortCode: {
           "type": "array",
@@ -81,6 +83,8 @@ def main():
         }
         for languageShortCode, languageName in zip(languageShortCodes, languageNames)
       }
+  settings["ltex.enabledRules"]["propertyNames"]["enum"] = languageShortCodes
+  settings["ltex.enabledRules"]["propertyNames"]["enumDescriptions"] = languageNames
   settings["ltex.enabledRules"]["properties"] = {
         languageShortCode: {
           "type": "array",
