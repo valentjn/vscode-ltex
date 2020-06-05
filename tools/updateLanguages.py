@@ -116,7 +116,7 @@ def main():
           }
 
   with open(packageJsonPath, "w") as f:
-    json.dump(packageJson, f, indent=2)
+    json.dump(packageJson, f, indent=2, ensure_ascii=False)
     f.write("\n")
 
 
