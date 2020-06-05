@@ -9,6 +9,7 @@ assignees: ""
 
 **Is your feature request related to a problem? Please describe.**
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+Using actual real-world examples that explain why you and many other users would benefit from the feature increases the request's chances of being implemented.
 
 **Describe the solution you'd like**
 A clear and concise description of what you want to happen.
