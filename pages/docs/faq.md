@@ -28,6 +28,10 @@ The language support extension were only necessary for LTeX 4.x. Starting with L
 
 If LTeX keeps downloading Java after every update, then you don't have a compatible version of Java installed on your computer. You can prevent LTeX from doing this by [installing Java](installation-how-to-use.html#second-alternative-download-ltex-lsjava-manually). Usually, it is not necessary to set [`ltex.java.path`](settings.html#ltexjavapath) after the installation of Java, but you can use this setting if LTeX still doesn't find Java.
 
+## Why does LTeX have such a high CPU load?
+
+LanguageTool is not only a simple spell checker that just looks up some words in a dictionary. It is a powerful grammar checker that [checks thousands of grammar rules](https://community.languagetool.org/rule/list?lang=en) at once. This means that checking a document for the first time, either after activating the LTeX extension or after opening a document to be checked, may take a while. The exact duration depends on the length of the document and the power of the computer, but it is usually around 30 seconds and may be up to two minutes. After this initial check, edits are checked very quickly due to the feature of sentence caching (see [`ltex.sentenceCacheSize`](settings.html#ltexsentencecachesize)), and should not cause any significant CPU load.
+
 ## How can I check multiple languages at once?
 
 This depends on whether the multiple languages only occur in different files (i.e., every file is written in a single language), or whether multiple languages occur in one file.
