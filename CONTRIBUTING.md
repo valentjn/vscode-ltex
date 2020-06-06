@@ -10,9 +10,10 @@ Contributions are welcome! Please go to our [GitHub repository](https://github.c
 
 1. Make sure that your issue is really an LT<sub>E</sub>X bug.
 2. Make sure that your issue can neither be found in the list of known issues below nor in the [list of all open and closed GitHub issues](https://github.com/valentjn/vscode-ltex/issues?q=is%3Aissue).
-3. Set the option `"ltex.trace.server": "verbose"` in your `settings.json`.
-4. Try to understand the bug by selecting `View` → `Output` → `LTeX Language Server`/`LTeX Language Client`.
-5. Select the `Bug report` template when [opening an issue on GitHub](https://github.com/valentjn/vscode-ltex/issues/new/choose) and fill in as much info as you can. This will help us reproduce the issue.
+3. If your bug is occurring for a long document, please remove some parts of your document and see if the bug still occurs. Similarly, if you have a lot of `ltex.` settings, please remove some settings and see if the bug still occurs.
+4. Set the option `"ltex.trace.server": "verbose"` in your `settings.json`.
+5. Try to understand the bug by selecting `View` → `Output` → `LTeX Language Server`/`LTeX Language Client`.
+6. Select the `Bug report` template when [opening an issue on GitHub](https://github.com/valentjn/vscode-ltex/issues/new/choose) and fill in as much info as you can. This will help us reproduce the issue.
 
 ### Known Issues
 
