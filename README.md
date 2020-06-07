@@ -112,6 +112,7 @@ Find more information in the [changelog](https://valentjn.github.io/vscode-ltex/
     - [How to Request Features](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#how-to-request-features)
     - [How to Contribute Code](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#how-to-contribute-code)
       - [Branches & Pull Requests](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#branches--pull-requests)
+      - [Code Checks](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#code-checks)
       - [Versioning](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#versioning)
       - [Documentation](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#documentation)
   - [Acknowledgments](https://valentjn.github.io/vscode-ltex/docs/acknowledgments.html)
