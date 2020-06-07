@@ -38,7 +38,25 @@ Contributions are welcome! Please go to our [GitHub repository](https://github.c
 
 Both repositories currently have two main branches: `develop` and `release`. The `develop` branch is where new changes are integrated, so choose this as the target branch of your pull requests. The `release` branch always points to the latest release.
 
-In order for pull requests to be merged, checks from Travis CI have to pass (successful build and tests on all platforms). In the case of ltex-ls, Coveralls additionally checks for at least 90% code coverage by the tests.
+### Code Checks
+
+In order for pull requests to be merged, a number of checks have to pass. This is automatically enforced by GitHub. The necessary checks depend on the project you contribute to:
+
+- vscode-ltex
+  - Successful build (strict mode)
+  - No ESLint warnings
+  - Successful Mocha end-to-end and unit tests
+  - Everything above is checked for Linux and Mac
+- ltex-ls
+  - Successful build
+  - No Checkstyle warnings (we use a slightly modified Google style)
+  - No SpotBugs warnings
+  - No Checker Framework warnings
+  - Successful JUnit unit tests
+  - Everything above is checked for Linux, Mac, and Windows
+  - Code coverage of at least 90% (checked by Coveralls)
+
+Look at `.travis.yml` in the root directory of the respective project to learn how to execute the checks locally on your machine.
 
 ### Versioning
 
