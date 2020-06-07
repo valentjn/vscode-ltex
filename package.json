@@ -44,6 +44,12 @@
   ],
   "main": "./dist/extension",
   "contributes": {
+    "commands": [
+      {
+        "title": "LTeX: Report bug in LTeX",
+        "command": "ltex.reportBug"
+      }
+    ],
     "configuration": {
       "title": "LTeX",
       "properties": {

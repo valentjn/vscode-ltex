@@ -1,6 +1,7 @@
 import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient';
 
+import BugReporter from './BugReporter';
 import Dependencies from './Dependencies';
 import Logger from './Logger';
 import LoggingOutputChannel from './LoggingOutputChannel';
@@ -11,6 +12,8 @@ export class Api {
   public clientOutputChannel: LoggingOutputChannel | null = null;
   public serverOutputChannel: LoggingOutputChannel | null = null;
 }
+
+let dependencies: Dependencies | null = null;
 
 async function languageClientIsReady(disposable: Code.Disposable): Promise<void> {
   disposable.dispose();
@@ -44,7 +47,11 @@ async function languageClientIsReady(disposable: Code.Disposable): Promise<void>
 
 async function startLanguageClient(context: Code.ExtensionContext):
       Promise<CodeLanguageClient.LanguageClient | null> {
-  const dependencies: Dependencies = new Dependencies(context);
+  if (dependencies == null) {
+    Logger.error('Dependencies not initialized!');
+    return Promise.resolve(null);
+  }
+
   const success: boolean = await dependencies.install();
   if (success !== true) return Promise.resolve(null);
 
@@ -109,6 +116,11 @@ export async function activate(context: Code.ExtensionContext): Promise<Api> {
   const api: Api = new Api();
   api.clientOutputChannel = Logger.clientOutputChannel;
   api.serverOutputChannel = Logger.serverOutputChannel;
+
+  dependencies = new Dependencies(context);
+  const bugReporter: BugReporter = new BugReporter(context, dependencies);
+  context.subscriptions.push(Code.commands.registerCommand('ltex.reportBug',
+      bugReporter.report.bind(bugReporter)));
 
   // Allow to enable languageTool in specific workspaces
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');

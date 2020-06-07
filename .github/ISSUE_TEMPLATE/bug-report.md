@@ -7,6 +7,8 @@ assignees: ""
 
 ---
 
+Note: It is highly recommended to follow the instructions at https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#how-to-report-bugs and use the `LTeX: Report bug in LTeX` command from within Visual Studio Code.
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 

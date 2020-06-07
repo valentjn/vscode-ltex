@@ -21,4 +21,5 @@ test/
 tools/
 **/*.map
 
+!.github/ISSUE_TEMPLATE/bug-report.md
 !img/logo-ltex.png
