@@ -18,6 +18,9 @@ export default class Dependencies {
   private _ltexVersion: string;
   private _ltexLsPath: string | null = null;
   private _javaPath: string | null = null;
+  private _ltexLsVersion: string | null = null;
+  private _javaVersion: string | null = null;
+
   private static _offlineInstructionsUrl: string = 'https://valentjn.github.io/vscode-ltex/docs/' +
       'installation-how-to-use.html#offline-installation';
 
@@ -510,10 +513,28 @@ export default class Dependencies {
     Logger.logExecutable(executable);
     const childProcess: ChildProcess.SpawnSyncReturns<string> = ChildProcess.spawnSync(
         executable.command, executable.args, executableOptions);
+    let success: boolean = false;
 
     if ((childProcess.status == 0) && childProcess.stdout.includes('ltex-ls')) {
+      try {
+        const versionInfo: any = JSON.parse(childProcess.stdout);
+
+        if (Object.prototype.hasOwnProperty.call(versionInfo, 'ltex-ls')) {
+          this._ltexLsVersion = versionInfo['ltex-ls'];
+        }
+
+        if (Object.prototype.hasOwnProperty.call(versionInfo, 'java')) {
+          this._javaVersion = versionInfo['java'];
+        }
+
+        success = true;
+      } catch (e) {
+        // don't throw error as debug info is printed below
+      }
+    }
+
+    if (success) {
       Logger.log('Test successful!');
-      return true;
     } else {
       Logger.log('Test failed.');
       Logger.log(`Exit code of ltex-ls: ${childProcess.status}`);
@@ -521,8 +542,9 @@ export default class Dependencies {
       Logger.log(childProcess.stdout);
       Logger.log('stderr of ltex-ls:');
       Logger.log(childProcess.stderr);
-      return false;
     }
+
+    return success;
   }
 
   public async getLtexLsExecutable(): Promise<CodeLanguageClient.Executable> {
@@ -557,5 +579,13 @@ export default class Dependencies {
     env['LTEX_LS_OPTS'] = `-Xms${initialJavaHeapSize}m -Xmx${maximumJavaHeapSize}m`;
 
     return {command: ltexLsScriptPath, args: [], options: {'env': env}};
+  }
+
+  public get ltexLsVersion(): string | null {
+    return this._ltexLsVersion;
+  }
+
+  public get javaVersion(): string | null {
+    return this._javaVersion;
   }
 }
