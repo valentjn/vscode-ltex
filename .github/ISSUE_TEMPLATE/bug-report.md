@@ -22,7 +22,7 @@ Steps to reproduce the behavior:
 A clear and concise description of what you expected to happen.
 
 **Sample document**
-If the bug occurs for a specific document (e.g. LaTeX), please paste it here. If your document is long and/or confidential, please create and attach a smaller example for which the bug still occurs so that we can reproduce it. Paste your document here (leaving the "details" tags and the backticks as they are to help keep the issue clear):
+If the bug occurs for a specific document (e.g. LaTeX), please paste it here. If your document is very long or confidential, please create and attach a smaller example for which the bug still occurs so that we can reproduce it.
 
 <details>
 
@@ -33,7 +33,7 @@ REPLACE_THIS_WITH_SAMPLE_DOCUMENT
 </details>
 
 **LTeX configuration**
-Please paste all configuration settings starting with `ltex.` from your `settings.json`. Don't omit anything that could be related to the bug. If some of your settings are too large (e.g., your user dictionary), or if you have too many settings, temporarily remove some irrelevant settings from your `settings.json` and see if the bug still occurs. Paste your configuration here (leaving the "details" tags and the backticks as they are to help keep the issue clear):
+Please paste all configuration settings starting with `ltex.` from your `settings.json`. You can help us by temporarily removing some irrelevant settings from your `settings.json` and see if the bug still occurs.
 
 <details>
 
@@ -44,7 +44,7 @@ REPLACE_THIS_WITH_LTEX_CONFIGURATION
 </details>
 
 **"LTeX Language Server" log file**
-First, reproduce the bug. Then, go to `View` → `Output` and select `LTeX Language Server` in the drop-down list. Paste this log here (leaving the "details" tags and the backticks as they are to help keep the issue clear):
+First, reproduce the bug. Then, go to `View` → `Output` and select `LTeX Language Server` in the drop-down list. Paste this log here:
 
 <details>
 
@@ -55,9 +55,7 @@ REPLACE_THIS_WITH_LTEX_LANGUAGE_SERVER_LOG
 </details>
 
 **"LTeX Language Client" log file**
-First, set the `ltex.trace.server` setting in your `settings.json` to `"verbose"`. Then, reload the VS Code window and reproduce the bug. Go to `View` → `Output` and select `LTeX Language Client` in the drop-down list. Note: The log will contain your checked document. As mentioned above, if your document is long and/or confidential, please create a smaller example for which the bug still occurs.
-
-Paste your log here (leaving the "details" tags and the backticks as they are to help keep the issue clear):
+First, set the `ltex.trace.server` setting in your `settings.json` to `"verbose"`. Then, reload the VS Code window and reproduce the bug. Go to `View` → `Output` and select `LTeX Language Client` in the drop-down list. Paste this log here (note: it will contain your checked document):
 
 <details>
 
@@ -72,7 +70,8 @@ List here the version information of the relevant software.
 
 - Operating system: Linux (which distribution/version), macOS xx.xx, or Windows xx
 - VS Code: 1.xx.x
-- LTeX: x.xx
+- vscode-ltex: x.xx
+- ltex-ls: x.xx (only if not using ltex-ls automatically downloaded by LTeX)
 - Java: x.xx (usually obtained with `java -version`, only if not using Java automatically downloaded by LTeX)
 
 **Additional context/information**
