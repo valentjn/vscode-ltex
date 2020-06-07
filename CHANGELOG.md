@@ -1,6 +1,6 @@
 # Changelog
 
-## 5.0.1 (upcoming)
+## 5.0.1 — “The Acceptance Incursion” (June 7, 2020)
 
 - Fix `Value is not accepted` warning when using `ltex.disabledRules` or `ltex.enabledRules` (fixes part of [#44](https://github.com/valentjn/vscode-ltex/issues/44))
 - Change badges in readme
