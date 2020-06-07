@@ -3,12 +3,13 @@ import * as CodeLanguageClient from 'vscode-languageclient';
 
 import Dependencies from './Dependencies';
 import Logger from './Logger';
+import LoggingOutputChannel from './LoggingOutputChannel';
 import TelemetryProcessor from './TelemetryProcessor';
 
 export class Api {
   public languageClient: CodeLanguageClient.LanguageClient | null = null;
-  public clientOutputChannel: Code.OutputChannel | null = null;
-  public serverOutputChannel: Code.OutputChannel | null = null;
+  public clientOutputChannel: LoggingOutputChannel | null = null;
+  public serverOutputChannel: LoggingOutputChannel | null = null;
 }
 
 async function languageClientIsReady(disposable: Code.Disposable): Promise<void> {

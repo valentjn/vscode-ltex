@@ -1,12 +1,11 @@
 import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient';
 
+import LoggingOutputChannel from './LoggingOutputChannel';
+
 export default class Logger {
-  private static _clientOutputChannel: Code.OutputChannel;
-  private static _serverOutputChannel: Code.OutputChannel;
-  private static _isDebugMode: boolean = (
-      (Object.prototype.hasOwnProperty.call(process.env, 'LTEX_DEBUG')) &&
-      (process.env.LTEX_DEBUG == '1'));
+  private static _clientOutputChannel: LoggingOutputChannel;
+  private static _serverOutputChannel: LoggingOutputChannel;
 
   public static log(message: string, type: string = 'Info'): void {
     const timestamp: string = (new Date()).toISOString();
@@ -16,7 +15,6 @@ export default class Logger {
     lines.forEach((line: string) => {
       const logLine: string = `${timestamp} ${type}: ${line}`;
       Logger._clientOutputChannel.appendLine(logLine);
-      if (Logger._isDebugMode) console.log(logLine);
     });
   }
 
@@ -48,8 +46,8 @@ export default class Logger {
   }
 
   public static createOutputChannels(context: Code.ExtensionContext): void {
-    Logger._clientOutputChannel = Code.window.createOutputChannel('LTeX Language Client');
-    Logger._serverOutputChannel = Code.window.createOutputChannel('LTeX Language Server');
+    Logger._clientOutputChannel = new LoggingOutputChannel('LTeX Language Client');
+    Logger._serverOutputChannel = new LoggingOutputChannel('LTeX Language Server');
 
     context.subscriptions.push(Logger._clientOutputChannel);
     context.subscriptions.push(Logger._serverOutputChannel);
@@ -59,19 +57,19 @@ export default class Logger {
     Logger._clientOutputChannel.show();
   }
 
-  public static get clientOutputChannel(): Code.OutputChannel {
+  public static get clientOutputChannel(): LoggingOutputChannel {
     return Logger._clientOutputChannel;
   }
 
-  public static set clientOutputChannel(clientOutputChannel: Code.OutputChannel) {
+  public static set clientOutputChannel(clientOutputChannel: LoggingOutputChannel) {
     Logger._clientOutputChannel = clientOutputChannel;
   }
 
-  public static get serverOutputChannel(): Code.OutputChannel {
+  public static get serverOutputChannel(): LoggingOutputChannel {
     return Logger._serverOutputChannel;
   }
 
-  public static set serverOutputChannel(serverOutputChannel: Code.OutputChannel) {
+  public static set serverOutputChannel(serverOutputChannel: LoggingOutputChannel) {
     Logger._serverOutputChannel = serverOutputChannel;
   }
 }

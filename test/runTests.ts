@@ -102,16 +102,6 @@ async function runTestIteration(testIteration: number): Promise<void> {
       Fs.renameSync(ltexOfflineLibDirPath, ltexLibDirPath);
     }
 
-    const env: NodeJS.ProcessEnv = {};
-
-    for (const name in process.env) {
-      if (Object.prototype.hasOwnProperty.call(process.env, name)) {
-        env[name] = process.env[name];
-      }
-    }
-
-    env['LTEX_DEBUG'] = '1';
-
     const testOptions: CodeTestRunTest.TestOptions = {
           vscodeExecutablePath: vscodeExecutablePath,
           launchArgs: [
@@ -120,7 +110,6 @@ async function runTestIteration(testIteration: number): Promise<void> {
           ],
           extensionDevelopmentPath: ltexDirPath,
           extensionTestsPath: Path.join(__dirname, './index'),
-          extensionTestsEnv: env,
         };
 
     console.log('Running tests...');

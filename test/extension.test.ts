@@ -36,22 +36,17 @@ describe('Test extension (end-to-end)', () => {
     while (!ltex.isActive) await sleep(200);
 
     api = ltex.exports;
-    if (api.serverOutputChannel == null) throw new Error('Server output channel not initialized.');
 
-    // workaround for https://github.com/microsoft/vscode/issues/65108
-    console.log('Showing server output channel...');
-    api.serverOutputChannel.show();
-
-    Code.workspace.textDocuments.forEach((x: Code.TextDocument): void => {
-      if (x.languageId == 'Log') console.log(x.getText());
+    if (api.clientOutputChannel == null) throw new Error('Client output channel not initialized.');
+    console.log(api.clientOutputChannel.getContents());
+    api.clientOutputChannel.onAppend((text: string) => {
+      console.log(text);
     });
 
-    Code.workspace.onDidChangeTextDocument((event: Code.TextDocumentChangeEvent): void => {
-      if (event.document.languageId == 'Log') {
-        event.contentChanges.forEach((x: Code.TextDocumentContentChangeEvent) => {
-          console.log(x.text);
-        });
-      }
+    if (api.serverOutputChannel == null) throw new Error('Server output channel not initialized.');
+    console.log(api.serverOutputChannel.getContents());
+    api.serverOutputChannel.onAppend((text: string) => {
+      console.log(text);
     });
 
     console.log('Waiting for language client to be ready...');

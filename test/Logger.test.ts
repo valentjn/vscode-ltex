@@ -1,14 +1,14 @@
 import * as Assert from 'assert';
-import * as Code from 'vscode';
 
 import Logger from '../src/Logger';
+import LoggingOutputChannel from '../src/LoggingOutputChannel';
 
 describe('Test Logger', () => {
   before(() => {
-    const clientOutputChannel: Code.OutputChannel =
-        Code.window.createOutputChannel('LTeX Language Client');
-    const serverOutputChannel: Code.OutputChannel =
-        Code.window.createOutputChannel('LTeX Language Server');
+    const clientOutputChannel: LoggingOutputChannel =
+        new LoggingOutputChannel('LTeX Language Client');
+    const serverOutputChannel: LoggingOutputChannel =
+        new LoggingOutputChannel('LTeX Language Server');
     Logger.clientOutputChannel = clientOutputChannel;
     Logger.serverOutputChannel = serverOutputChannel;
     Assert.equal(Logger.clientOutputChannel, clientOutputChannel);
@@ -22,10 +22,25 @@ describe('Test Logger', () => {
   });
 
   it('Test warn()', () => {
-    Logger.warn('Test');
-    Logger.warn('Test', new Error('Error message'));
-    Logger.error('Test');
-    Logger.error('Test', new Error('Error message'));
+    Logger.clientOutputChannel.clear();
+    Logger.warn('Test1');
+    Logger.warn('Test2', new Error('Error1'));
+    const log: string = Logger.clientOutputChannel.getContents();
+    Assert.ok(log.includes('Warning'));
+    Assert.ok(log.includes('Test1'));
+    Assert.ok(log.includes('Test2'));
+    Assert.ok(log.includes('Error1'));
+  });
+
+  it('Test error()', () => {
+    Logger.clientOutputChannel.clear();
+    Logger.error('Test1');
+    Logger.error('Test2', new Error('Error1'));
+    const log: string = Logger.clientOutputChannel.getContents();
+    Assert.ok(log.includes('Error'));
+    Assert.ok(log.includes('Test1'));
+    Assert.ok(log.includes('Test2'));
+    Assert.ok(log.includes('Error1'));
   });
 
   it('Test showClientOutputChannel()', () => {
