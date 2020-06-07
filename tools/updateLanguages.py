@@ -12,6 +12,13 @@ import subprocess
 
 toolsDirPath = os.path.dirname(os.path.abspath(__file__))
 
+
+
+def removeKeyIfPresent(d, key):
+  if key in d: del d[key]
+
+
+
 def run(cmd, **kwargs):
   print("Running {}...".format(" ".join(shlex.quote(x) for x in cmd)))
   return subprocess.run(cmd, stdout=subprocess.PIPE, cwd=toolsDirPath)
@@ -26,6 +33,8 @@ def fetchLanguages(toolsDirPath, ltexLsPath):
   languageShortCodes = [x["languageShortCode"] for x in languages]
   languageNames = [x["languageName"] for x in languages]
   return languageShortCodes, languageNames
+
+
 
 def main():
   parser = argparse.ArgumentParser(description="Fetches all supported language codes from "
@@ -53,8 +62,8 @@ def main():
 
   settings["ltex.language"]["enum"] = languageShortCodes
   settings["ltex.language"]["enumDescriptions"] = languageNames
-  settings["ltex.dictionary"]["propertyNames"]["enum"] = languageShortCodes
-  settings["ltex.dictionary"]["propertyNames"]["enumDescriptions"] = languageNames
+
+  removeKeyIfPresent(settings["ltex.dictionary"], "propertyNames")
   settings["ltex.dictionary"]["properties"] = {
         languageShortCode: {
           "type": "array",
@@ -68,8 +77,8 @@ def main():
         }
         for languageShortCode, languageName in zip(languageShortCodes, languageNames)
       }
-  settings["ltex.disabledRules"]["propertyNames"]["enum"] = languageShortCodes
-  settings["ltex.disabledRules"]["propertyNames"]["enumDescriptions"] = languageNames
+
+  removeKeyIfPresent(settings["ltex.disabledRules"], "propertyNames")
   settings["ltex.disabledRules"]["properties"] = {
         languageShortCode: {
           "type": "array",
@@ -83,8 +92,8 @@ def main():
         }
         for languageShortCode, languageName in zip(languageShortCodes, languageNames)
       }
-  settings["ltex.enabledRules"]["propertyNames"]["enum"] = languageShortCodes
-  settings["ltex.enabledRules"]["propertyNames"]["enumDescriptions"] = languageNames
+
+  removeKeyIfPresent(settings["ltex.enabledRules"], "propertyNames")
   settings["ltex.enabledRules"]["properties"] = {
         languageShortCode: {
           "type": "array",
