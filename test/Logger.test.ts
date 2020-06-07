@@ -11,8 +11,8 @@ describe('Test Logger', () => {
         new LoggingOutputChannel('LTeX Language Server');
     Logger.clientOutputChannel = clientOutputChannel;
     Logger.serverOutputChannel = serverOutputChannel;
-    Assert.equal(Logger.clientOutputChannel, clientOutputChannel);
-    Assert.equal(Logger.serverOutputChannel, serverOutputChannel);
+    Assert.strictEqual(Logger.clientOutputChannel, clientOutputChannel);
+    Assert.strictEqual(Logger.serverOutputChannel, serverOutputChannel);
   });
 
   it('Test log()', () => {

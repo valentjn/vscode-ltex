@@ -65,8 +65,8 @@ describe('Test extension (end-to-end)', () => {
       languageClient.onNotification('textDocument/publishDiagnostics',
             (params: CodeLanguageClient.PublishDiagnosticsParams) => {
         if (params.uri == document.uri.toString()) {
-          Assert.equal(params.diagnostics.length, 1);
-          Assert.equal(params.diagnostics[0].source, 'LTeX - EN_A_VS_AN');
+          Assert.strictEqual(params.diagnostics.length, 1);
+          Assert.strictEqual(params.diagnostics[0].source, 'LTeX - EN_A_VS_AN');
           resolve();
         }
       });
@@ -82,8 +82,8 @@ describe('Test extension (end-to-end)', () => {
       languageClient.onNotification('textDocument/publishDiagnostics',
             (params: CodeLanguageClient.PublishDiagnosticsParams) => {
         if (params.uri == document.uri.toString()) {
-          Assert.equal(params.diagnostics.length, 1);
-          Assert.equal(params.diagnostics[0].source, 'LTeX - EN_A_VS_AN');
+          Assert.strictEqual(params.diagnostics.length, 1);
+          Assert.strictEqual(params.diagnostics[0].source, 'LTeX - EN_A_VS_AN');
           resolve();
         }
       });
