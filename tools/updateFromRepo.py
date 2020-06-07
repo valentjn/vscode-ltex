@@ -39,7 +39,6 @@ def formatFullType(settingJson, indent=0):
   if "type" not in settingJson:
     markdown += formatAsJson(settingJson) + "\n"
   elif settingJson["type"] == "object":
-    assert settingJson["propertyNames"]["type"] == "string"
     markdown += "Object with the following properties:\n\n"
     markdown += "".join(f"{indent * ' '}- {formatAsJson(x)}: {formatFullType(y, indent+2)}"
         for x, y in settingJson["properties"].items())
