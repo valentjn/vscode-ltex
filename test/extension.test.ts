@@ -60,14 +60,18 @@ describe('Test extension (end-to-end)', () => {
     const document: Code.TextDocument = await createNewFile('test1.md',
         'This is *an test*.');
 
-    return new Promise((resolve: () => void) => {
+    return new Promise((resolve: () => void, reject: (e: Error) => void) => {
       if (languageClient == null) throw new Error('Language client not initialized.');
       languageClient.onNotification('textDocument/publishDiagnostics',
             (params: CodeLanguageClient.PublishDiagnosticsParams) => {
         if (params.uri == document.uri.toString()) {
-          Assert.strictEqual(params.diagnostics.length, 1);
-          Assert.strictEqual(params.diagnostics[0].source, 'LTeX - EN_A_VS_AN');
-          resolve();
+          try {
+            Assert.strictEqual(params.diagnostics.length, 1);
+            Assert.strictEqual(params.diagnostics[0].source, 'LTeX - EN_A_VS_AN');
+            resolve();
+          } catch (e) {
+            reject(e);
+          }
         }
       });
     });
@@ -77,14 +81,18 @@ describe('Test extension (end-to-end)', () => {
     const document: Code.TextDocument = await createNewFile('test1.tex',
         'This is \\textbf{an test}.');
 
-    return new Promise((resolve: () => void) => {
+    return new Promise((resolve: () => void, reject: (e: Error) => void) => {
       if (languageClient == null) throw new Error('Language client not initialized.');
       languageClient.onNotification('textDocument/publishDiagnostics',
             (params: CodeLanguageClient.PublishDiagnosticsParams) => {
         if (params.uri == document.uri.toString()) {
-          Assert.strictEqual(params.diagnostics.length, 1);
-          Assert.strictEqual(params.diagnostics[0].source, 'LTeX - EN_A_VS_AN');
-          resolve();
+          try {
+            Assert.strictEqual(params.diagnostics.length, 1);
+            Assert.strictEqual(params.diagnostics[0].source, 'LTeX - EN_A_VS_AN');
+            resolve();
+          } catch (e) {
+            reject(e);
+          }
         }
       });
     });
