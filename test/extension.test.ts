@@ -46,10 +46,7 @@ describe('Test extension (end-to-end)', () => {
     console.log('Language client is ready.');
   });
 
-  it('test1.md - Test checking of Markdown files', async () => {
-    const document: Code.TextDocument = await createNewFile('markdown',
-        'This is an *test*.');
-
+  async function testCheckingResult(document: Code.TextDocument): Promise<void> {
     return new Promise((resolve: () => void, reject: (e: Error) => void) => {
       if (languageClient == null) throw new Error('Language client not initialized.');
       languageClient.onNotification('textDocument/publishDiagnostics',
@@ -65,26 +62,17 @@ describe('Test extension (end-to-end)', () => {
         }
       });
     });
+  }
+
+  it('test1.md - Test checking of Markdown files', async () => {
+    const document: Code.TextDocument = await createNewFile('markdown',
+        'This is an *test*.');
+    return testCheckingResult(document);
   });
 
   it('test1.tex - Test checking of LaTeX files', async () => {
     const document: Code.TextDocument = await createNewFile('latex',
         'This is an \\textbf{test}.');
-
-    return new Promise((resolve: () => void, reject: (e: Error) => void) => {
-      if (languageClient == null) throw new Error('Language client not initialized.');
-      languageClient.onNotification('textDocument/publishDiagnostics',
-            (params: CodeLanguageClient.PublishDiagnosticsParams) => {
-        if (params.uri == document.uri.toString()) {
-          try {
-            Assert.strictEqual(params.diagnostics.length, 1);
-            Assert.strictEqual(params.diagnostics[0].source, 'LTeX - EN_A_VS_AN');
-            resolve();
-          } catch (e) {
-            reject(e);
-          }
-        }
-      });
-    });
+    return testCheckingResult(document);
   });
 });
