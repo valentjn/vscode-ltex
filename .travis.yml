@@ -24,6 +24,9 @@ jobs:
       script: &testCommonScript
         - *commonScript
         - "npm run lint"
+        # to suppress "async hook stack has become corrupted" errors
+        # (https://github.com/microsoft/vscode/issues/85601)
+        - "export NODE_OPTIONS='--no-force-async-hooks-checks'"
         - "npm run test"
     - stage: "test"
       os: "osx"
