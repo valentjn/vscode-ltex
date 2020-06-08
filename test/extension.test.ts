@@ -8,19 +8,9 @@ describe('Test extension (end-to-end)', () => {
   let api: Ltex.Api | null = null;
   let languageClient: CodeLanguageClient.LanguageClient | null = null;
 
-  async function createNewFile(name: string, contents?: string): Promise<Code.TextDocument> {
-    console.log(`Creating new file '${name}'...`);
-    const uri: Code.Uri = Code.Uri.parse(`untitled:${name}`);
-    const textDocument: Code.TextDocument = await Code.workspace.openTextDocument(uri);
-
-    if (contents != null) {
-      console.log(`Inserting text '${contents}'...`);
-      const workspaceEdit: Code.WorkspaceEdit = new Code.WorkspaceEdit();
-      workspaceEdit.insert(uri, new Code.Position(0, 0), contents);
-      await Code.workspace.applyEdit(workspaceEdit);
-    }
-
-    return textDocument;
+  async function createNewFile(codeLanguage: string, contents?: string):
+        Promise<Code.TextDocument> {
+    return await Code.workspace.openTextDocument({language: codeLanguage, content: contents});
   }
 
   async function sleep(ms: number): Promise<void> {
@@ -31,7 +21,7 @@ describe('Test extension (end-to-end)', () => {
     const ltex: Code.Extension<Ltex.Api> | undefined =
         Code.extensions.getExtension('valentjn.vscode-ltex');
     if (ltex == null) throw new Error('Could not find LTeX.');
-    await createNewFile('activate.md');
+    await createNewFile('markdown');
     console.log('Waiting for activation of LTeX...');
     while (!ltex.isActive) await sleep(200);
 
@@ -57,8 +47,8 @@ describe('Test extension (end-to-end)', () => {
   });
 
   it('test1.md - Test checking of Markdown files', async () => {
-    const document: Code.TextDocument = await createNewFile('test1.md',
-        'This is *an test*.');
+    const document: Code.TextDocument = await createNewFile('markdown',
+        'This is an *test*.');
 
     return new Promise((resolve: () => void, reject: (e: Error) => void) => {
       if (languageClient == null) throw new Error('Language client not initialized.');
@@ -78,8 +68,8 @@ describe('Test extension (end-to-end)', () => {
   });
 
   it('test1.tex - Test checking of LaTeX files', async () => {
-    const document: Code.TextDocument = await createNewFile('test1.tex',
-        'This is \\textbf{an test}.');
+    const document: Code.TextDocument = await createNewFile('latex',
+        'This is an \\textbf{test}.');
 
     return new Promise((resolve: () => void, reject: (e: Error) => void) => {
       if (languageClient == null) throw new Error('Language client not initialized.');
