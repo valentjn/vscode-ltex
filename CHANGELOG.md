@@ -2,8 +2,12 @@
 
 ## 5.1.0 (upcoming)
 
-- Add command `LTeX: Report bug in LTeX` to report bugs from within Visual Studio Code
-- Improve code quality by fixing hundreds of Checkstyle, SpotBugs, and Checker Framework warnings
+- Delay diagnostics at the current caret position (e.g., incomplete word or sentence) until the user has finished typing (fixes [#46](https://github.com/valentjn/vscode-ltex/issues/46))
+- Add command `LTeX: Report bug in LTeX` for reporting LT<sub>E</sub>X bugs from within VS Code
+- Improve code quality of LT<sub>E</sub>X LS by fixing hundreds of Checkstyle, SpotBugs, and Checker Framework warnings
+- Migrate LT<sub>E</sub>X LS from Gradle to Maven
+- Update NPM dependencies
+- Update Maven dependencies
 
 ## 5.0.2 — “The Disabling Submergence” (June 18, 2020)
 
