@@ -40,8 +40,8 @@ export default class Logger {
     if (executable.options != null) {
       Logger.log('  env[\'JAVA_HOME\']: ' +
           JSON.stringify(executable.options.env['JAVA_HOME']));
-      Logger.log('  env[\'LTEX_LS_OPTS\']: ' +
-          JSON.stringify(executable.options.env['LTEX_LS_OPTS']));
+      Logger.log('  env[\'JAVA_OPTS\']: ' +
+          JSON.stringify(executable.options.env['JAVA_OPTS']));
     }
   }
 

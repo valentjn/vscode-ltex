@@ -576,7 +576,7 @@ export default class Dependencies {
         'java.initialHeapSize', 'performance.initialJavaHeapSize');
     const maximumJavaHeapSize: number = Dependencies.getRenamedSetting(workspaceConfig,
         'java.maximumHeapSize', 'performance.maximumJavaHeapSize');
-    env['LTEX_LS_OPTS'] = `-Xms${initialJavaHeapSize}m -Xmx${maximumJavaHeapSize}m`;
+    env['JAVA_OPTS'] = `-Xms${initialJavaHeapSize}m -Xmx${maximumJavaHeapSize}m`;
 
     return {command: ltexLsScriptPath, args: [], options: {'env': env}};
   }
