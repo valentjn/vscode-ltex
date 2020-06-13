@@ -5,6 +5,15 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 6.0.0 (upcoming)
+
+- Delay diagnostics at the current caret position (e.g., incomplete word or sentence) until the user has finished typing (fixes [#46](https://github.com/valentjn/vscode-ltex/issues/46))
+- Add command `LTeX: Report bug in LTeX` for reporting LTeX bugs from within VS Code
+- Improve code quality of LTeX LS by fixing hundreds of Checkstyle, SpotBugs, and Checker Framework warnings
+- Migrate LTeX LS from Gradle to Maven
+- Update NPM dependencies
+- Update Maven dependencies
+
 ## 5.0.1 — “The Acceptance Incursion” (June 7, 2020)
 
 - Fix `Value is not accepted` warning when using [`ltex.disabledRules`](settings.html#ltexdisabledrules) or [`ltex.enabledRules`](settings.html#ltexenabledrules) (fixes part of [#44](https://github.com/valentjn/vscode-ltex/issues/44))
