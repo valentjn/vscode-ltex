@@ -21,6 +21,8 @@ toc: false
 
 This extension is a fork of the abandoned [LanguageTool for Visual Studio Code extension](https://github.com/adamvoss/vscode-languagetool) by Adam Voss with LaTeX support, lots of new features (user dictionaries, ignore errors, etc.), and updated dependencies (LanguageTool).
 
+<div style="margin-bottom:30px;"></div>
+
 ## Features
 
 ![LanguageTool Grammar Checking for VS Code with LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/release/img/banner-ltex.png)
@@ -32,3 +34,9 @@ This extension is a fork of the abandoned [LanguageTool for Visual Studio Code e
 - **Replacement suggestions** via quick fixes
 - **User dictionaries**
 - Possibility to use **external LanguageTool servers**
+
+<div style="margin-bottom:30px;"></div>
+
+## Facts & Figures
+
+{% include stats/summary.html %}

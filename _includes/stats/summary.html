@@ -1,0 +1,34 @@
+{% assign statsSummary = site.data.stats.summary] %}
+
+<p class="world-map">
+  <img src="{{ "images/stats/map.png" | relative_url }}"/>
+  <span class="world-map-text-1" style="position:absolute; left:5%; top:50%; transform:rotate(5deg);">
+    {{statsSummary.averageRating}} ({{statsSummary.numberOfRatings}})<br/>
+    average rating
+  </span>
+  <span class="world-map-text-2">
+    {{statsSummary.installs}} downloads
+  </span>
+  <span class="world-map-text-3">
+    {{statsSummary.users}} active users<br/>
+    from around the world
+  </span>
+</p>
+
+<p class="world-map-sources">
+  Sources:
+  <a href="https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex">
+    Usage estimated from install/update counts from Marketplace data
+  </a>,
+  <a href="https://github.com/valentjn/vscode-ltex/stargazers">
+    map shows locations of GitHub stargazers
+  </a>,
+  <a href="https://osm.org/copyright">
+    location data &copy; OpenStreetMap contributors, ODbL 1.0
+  </a>,
+  <a href="https://www.naturalearthdata.com/">
+    world map made with Natural Earth (public domain)
+  </a>.
+  All data shown are solely based on publicly available sources.
+  LTeX does neither collect nor send any usage data to the Internet.
+</p>

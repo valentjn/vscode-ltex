@@ -2,8 +2,23 @@ os: "linux"
 dist: "bionic"
 language: "ruby"
 rvm: "2.7"
-script: "bundle exec jekyll build"
+before_install:
+  - "if [ \"$TRAVIS_BRANCH\" == \"gh-pages-release\" ]; then openssl aes-256-cbc -K $encrypted_30e851d6214e_key -iv $encrypted_30e851d6214e_iv -in github.key.enc -out github.key -d && chmod 600 github.key && eval \"$(ssh-agent)\" && ssh-add github.key; fi"
+install:
+  # - Cartopy from Ubuntu packages fails due to missing images
+  # - Build Shapely from source due to assertion error (https://stackoverflow.com/a/60126085)
+  - "if [ \"$TRAVIS_BRANCH\" == \"gh-pages-release\" ]; then sudo apt-get -y install libgeos-dev libproj-dev python3-matplotlib python3-pip python3-scipy python3-setuptools python3-wheel python3-yaml && pip3 install bokeh cartopy && pip3 uninstall -y shapely && pip3 install shapely --no-binary shapely && npm install -g vsce; fi"
+  - "bundle install --jobs=3"
+script:
+  # exit on error
+  - "set -e"
+  - "if [ \"$TRAVIS_BRANCH\" == \"gh-pages-release\" ]; then git remote set-branches --add origin gh-pages && git fetch origin gh-pages:gh-pages && git checkout gh-pages && git reset --hard gh-pages-release && python3 tools/updateStats.py && python3 tools/plotStats.py; fi"
+  - "bundle exec jekyll build"
+  - "if [ \"$TRAVIS_BRANCH\" == \"gh-pages-release\" ]; then python3 tools/pushStats.py; fi"
 branches:
   only:
-    - "gh-pages"
-    - "/.*/"
+    # build all branches except gh-pages
+    - "/^(?!gh-pages$).*$/"
+env:
+  global:
+    - secure: "CFA/8jlWrT3pvyMGZjMgH57LixkMx5rvbr9+3zVLRyY6KMrqpFQ8psH16LzOu+hpn4yV3cr/+tlrv8tFfY+zr5NKBtMbqv+IhoZJ3bhJuQyCAKpGP0zYCYLHRvd0HHE6f+T+X1RYqSr7C3VCrwwLdHMBPYjWSmHEcxvD4xNpu7Cx1ZKpd9WhmTYTbmn8UZqd6LILnOAP0GR0MRRFS5Sk1/Y9F+fMGWDbq/xFtXtUDHPvpsA4YMfDmvzG7afj7QuHe/0FBffknEoJSQbuoQJ7B4vsgAaGz69C5uTuCZRszrJWwtVEtn5enqYwN+VBSSFGcrGAjXk87jSkb9zeXAb8Ac69DgAer6O6kB3e6ZVYQQaPrV9Yd7MCcv5zuJdOtGFOQziU1KEUlhPwGpZxajlay7+o3wZKBEamYg9MYg74y4A9WXYMmXpCukKdrLmo6fyIEXANXMWlDPTWcGMzF8v1rEmwC5ZjG6vlIP5ESbDSs0bba26TuSPAk4U39uJ5N/4MaUareoLebQZLwxvBJV9hzXUthVtqKHbk5M8cTk7bAJWD9WX2J6Fm4dD5zegVSiQDPfGG8rGBudt0Y9pK8jSLNmFepRFOL91YwOcwMneqBdCSsf4VHT1OajM65liAMhuHD/etMuuCoWcZTs8V/YhR8igeVm13DJkJ4ojKnc4KIww="
