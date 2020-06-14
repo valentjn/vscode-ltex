@@ -29,17 +29,12 @@ def main():
   commitMessage = "Update data and plots"
 
   commitCmd = ["git", "commit", "-m", commitMessage]
-  pushCmd = ["git", "push", "origin", "gh-pages"]
-
-  if lastCommitMessage == commitMessage:
-    commitCmd.append("--amend")
-    pushCmd.append("-f")
-
+  if lastCommitMessage == commitMessage: commitCmd.append("--amend")
   run(commitCmd)
   run(["git", "status"])
 
   run(["git", "remote", "set-url", "origin", "git@github.com:valentjn/vscode-ltex"])
-  run(pushCmd)
+  run(["git", "push", "-f", "origin", "gh-pages"])
 
 
 
