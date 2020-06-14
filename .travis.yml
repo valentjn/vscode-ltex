@@ -12,7 +12,7 @@ install:
 script:
   # exit on error
   - "set -e"
-  - "if [ \"$TRAVIS_BRANCH\" == \"gh-pages-release\" ]; then git remote set-branches --add origin gh-pages && git fetch origin gh-pages:gh-pages && git checkout gh-pages && git reset --hard gh-pages-release && python3 tools/updateStats.py && python3 tools/plotStats.py; fi"
+  - "if [ \"$TRAVIS_BRANCH\" == \"gh-pages-release\" ]; then git remote set-branches --add origin gh-pages && git fetch origin gh-pages:gh-pages && git checkout gh-pages && git reset --hard gh-pages-release && git checkout origin/gh-pages _data/stats/map.json _data/stats/stats.json && python3 tools/updateStats.py && python3 tools/plotStats.py; fi"
   - "bundle exec jekyll build"
   - "if [ \"$TRAVIS_BRANCH\" == \"gh-pages-release\" ]; then python3 tools/pushStats.py; fi"
 branches:
