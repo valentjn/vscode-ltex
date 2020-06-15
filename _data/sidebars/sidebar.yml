@@ -13,7 +13,7 @@ entries:
           - title: "Download — VS Marketplace"
             external_url: "https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex"
             output: "web"
-          - title: "GitHub — Code/Issues"
+          - title: "Code/Issues — GitHub"
             external_url: "https://github.com/valentjn/vscode-ltex"
             output: "web"
       - title: "Documentation"
