@@ -36,14 +36,14 @@ Both repositories currently have two main branches: `develop` and `release`. The
 
 ### Code Checks
 
-In order for pull requests to be merged, a number of checks have to pass. This is automatically enforced by GitHub. The necessary checks depend on the project you contribute to:
+In order for pull requests to be merged, a number of checks have to pass. This is automatically enforced by GitHub and Travis CI. The necessary checks depend on the project you contribute to:
 
-- vscode-ltex
+- vscode-ltex:
   - Successful build (strict mode)
   - No ESLint warnings
   - Successful Mocha end-to-end and unit tests
   - Everything above is checked for Linux and Mac
-- ltex-ls
+- ltex-ls:
   - Successful build
   - No Checkstyle warnings (we use a slightly modified Google style)
   - No SpotBugs warnings
