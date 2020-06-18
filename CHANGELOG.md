@@ -1,6 +1,6 @@
 # Changelog
 
-## 5.0.2 (upcoming)
+## 5.0.2 — “The Disabling Submergence” (June 18, 2020)
 
 - Fix `Disable rule` quick fix using wrong setting structure (fixes [#61](https://github.com/valentjn/vscode-ltex/issues/61))
 
