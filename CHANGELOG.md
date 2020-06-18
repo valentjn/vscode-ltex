@@ -5,6 +5,10 @@
 - Add command `LTeX: Report bug in LTeX` to report bugs from within Visual Studio Code
 - Improve code quality by fixing hundreds of Checkstyle, SpotBugs, and Checker Framework warnings
 
+## 5.0.2 — “The Disabling Submergence” (June 18, 2020)
+
+- Fix `Disable rule` quick fix using wrong setting structure (fixes [#61](https://github.com/valentjn/vscode-ltex/issues/61))
+
 ## 5.0.1 — “The Acceptance Incursion” (June 7, 2020)
 
 - Fix `Value is not accepted` warning when using `ltex.disabledRules` or `ltex.enabledRules` (fixes part of [#44](https://github.com/valentjn/vscode-ltex/issues/44))

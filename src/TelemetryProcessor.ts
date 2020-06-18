@@ -81,7 +81,7 @@ export default class TelemetryProcessor {
           a.localeCompare(b, undefined, {sensitivity: 'base'}));
       disabledRulesSetting[language] = disabledRules;
       TelemetryProcessor.setConfigurationSetting(
-          'disabledRules', disabledRules, resourceConfig, 'disableRule');
+          'disabledRules', disabledRulesSetting, resourceConfig, 'disableRule');
 
     } else if (params.command === 'ltex.ignoreRuleInSentence') {
       const ruleIds: string[] = TelemetryProcessor.convertToStringArray(params.ruleId);
