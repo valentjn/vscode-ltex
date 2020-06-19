@@ -16,7 +16,7 @@ def run(cmd, **kwargs):
 
 def main():
   run(["git", "status"])
-  run(["git", "add", "_data/stats/", "_includes/stats/", "images/stats/"])
+  run(["git", "add", "_data/stats/*.yml", "_includes/stats/", "images/stats/"])
   run(["git", "status"])
   hasChanges = (run(["git", "diff-index", "--quiet", "HEAD"], check=False).returncode == 1)
 
@@ -26,7 +26,7 @@ def main():
 
   lastCommitMessage = run(["git", "log", "-1", "--pretty=format:%B"],
       stdout=subprocess.PIPE).stdout.decode()
-  commitMessage = "Update data and plots"
+  commitMessage = "Update plotted stats"
 
   commitCmd = ["git", "commit", "-m", commitMessage]
   if lastCommitMessage == commitMessage: commitCmd.append("--amend")

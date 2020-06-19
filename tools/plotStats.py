@@ -109,7 +109,8 @@ def plotStats():
       (numberOfHalfStars * "<i class=\"fa fa-star-half-o\" aria-hidden=\"true\"></i>") +
       (numberOfEmptyStars * "<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"))
 
-  writeToSummaryYaml("users", deltaUpdateCounts[-1])
+  numberOfUsers = (max(deltaUpdateCounts[-5:]) if len(deltaUpdateCounts) > 0 else 0)
+  writeToSummaryYaml("users", numberOfUsers)
   writeToSummaryYaml("installs", lastStatEntry["i"])
   writeToSummaryYaml("averageRating", averageRatingHtml)
   writeToSummaryYaml("numberOfRatings", lastStatEntry["rc"])
