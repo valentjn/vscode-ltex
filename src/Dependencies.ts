@@ -180,7 +180,7 @@ export default class Dependencies {
     codeProgress.finishTask();
 
     codeProgress.startTask(0.1, `Extracting ${name}...`);
-    Logger.log(`Extracting ${name} archive to '${tmpDirPath}'...`);
+    Logger.log(`Extracting '${archivePath}' to '${tmpDirPath}'...`);
 
     if (archiveType == 'zip') {
       await extractZip(archivePath, {dir: tmpDirPath});
@@ -194,6 +194,7 @@ export default class Dependencies {
 
     const fileNames: string[] = Fs.readdirSync(tmpDirPath);
     let extractedDirPath: string | null = null;
+    Logger.log(`Searching for a directory in '${tmpDirPath}'...`);
 
     for (let i: number = 0; i < fileNames.length; i++) {
       const filePath: string = Path.join(tmpDirPath, fileNames[i]);
