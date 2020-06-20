@@ -1613,7 +1613,7 @@
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.java.initialHeapSize`.",
           "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.java.initialHeapSize'."
         },
-        "ltex.performance.maximumHeapSize": {
+        "ltex.performance.maximumJavaHeapSize": {
           "type": [
             "integer",
             "null"

@@ -5,6 +5,7 @@
 - Delay diagnostics at the current caret position (e.g., incomplete word or sentence) until the user has finished typing (fixes [#46](https://github.com/valentjn/vscode-ltex/issues/46))
 - Add command `LTeX: Report bug in LTeX` for reporting LT<sub>E</sub>X bugs from within VS Code
 - Fix add to dictionary and disable rule quick fixes using wrong language when used with magic comments
+- Fix deprecation message for `ltex.performance.maximumJavaHeapSize` not shown
 - Improve code quality of LT<sub>E</sub>X LS by fixing hundreds of Checkstyle, SpotBugs, and Checker Framework warnings
 - Migrate LT<sub>E</sub>X LS from Gradle to Maven
 - Update NPM dependencies
