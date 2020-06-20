@@ -9,6 +9,7 @@ toc: false
 {% include stats/users.html %}
 {% include stats/install.html %}
 {% include stats/updateCount.html %}
+{% include stats/downloadCount.html %}
 {% include stats/trendingdaily.html %}
 {% include stats/trendingweekly.html %}
 {% include stats/trendingmonthly.html %}

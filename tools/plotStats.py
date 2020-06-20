@@ -81,6 +81,7 @@ def plotStats():
         ("td", "trendingdaily"),
         ("tw", "trendingweekly"),
         ("tm", "trendingmonthly"),
+        ("dc", "downloadCount"),
       ]
 
   for name in names:
@@ -90,8 +91,9 @@ def plotStats():
       dates = releaseDates
       values = deltaUpdateCounts
     else:
-      dates = statDates
-      values = [x[name[0]] for x in stats["statistics"].values()]
+      statsSubset = [(parseDate(x), y[name[0]])
+          for x, y in stats["statistics"].items() if name[0] in y]
+      dates, values = list(zip(*statsSubset))
 
     figure.line(dates, values)
     script, divs = bokeh.embed.components(figure)
