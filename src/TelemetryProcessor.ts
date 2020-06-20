@@ -57,11 +57,11 @@ export default class TelemetryProcessor {
       const dictionarySetting: {[language: string]: string[]} =
           resourceConfig.get('dictionary', {});
 
-      for (const language in params.word) {
-        if (!Object.prototype.hasOwnProperty.call(params.word, language)) continue;
+      for (const language in params.words) {
+        if (!Object.prototype.hasOwnProperty.call(params.words, language)) continue;
         let dictionary: string[] = ((dictionarySetting[language] != null) ?
             dictionarySetting[language] : []);
-        dictionary = dictionary.concat(params.word[language]);
+        dictionary = dictionary.concat(params.words[language]);
         dictionary.sort((a: string, b: string) =>
             a.localeCompare(b, undefined, {sensitivity: 'base'}));
         dictionarySetting[language] = dictionary;
@@ -70,15 +70,15 @@ export default class TelemetryProcessor {
       TelemetryProcessor.setConfigurationSetting(
           'dictionary', dictionarySetting, resourceConfig, 'addToDictionary');
 
-    } else if (params.command === 'ltex.disableRule') {
+    } else if (params.command === 'ltex.disableRules') {
       const disabledRulesSetting: {[language: string]: string[]} =
           resourceConfig.get('disabledRules', {});
 
-      for (const language in params.ruleId) {
-        if (!Object.prototype.hasOwnProperty.call(params.ruleId, language)) continue;
+      for (const language in params.ruleIds) {
+        if (!Object.prototype.hasOwnProperty.call(params.ruleIds, language)) continue;
         let disabledRules: string[] = ((disabledRulesSetting[language] != null) ?
             disabledRulesSetting[language] : []);
-        disabledRules = disabledRules.concat(params.ruleId[language]);
+        disabledRules = disabledRules.concat(params.ruleIds[language]);
         disabledRules.sort((a: string, b: string) =>
             a.localeCompare(b, undefined, {sensitivity: 'base'}));
         disabledRulesSetting[language] = disabledRules;
@@ -87,9 +87,9 @@ export default class TelemetryProcessor {
       TelemetryProcessor.setConfigurationSetting(
           'disabledRules', disabledRulesSetting, resourceConfig, 'disableRule');
 
-    } else if (params.command === 'ltex.ignoreRuleInSentence') {
-      const ruleIds: string[] = params.ruleId;
-      const sentencePatterns: string[] = params.sentencePattern;
+    } else if (params.command === 'ltex.ignoreRulesInSentence') {
+      const ruleIds: string[] = params.ruleIds;
+      const sentencePatterns: string[] = params.sentencePatterns;
       const ignoredRules: any[] = resourceConfig.get('ignoreRuleInSentence', []);
 
       for (let i: number = 0; i < ruleIds.length; i++) {
