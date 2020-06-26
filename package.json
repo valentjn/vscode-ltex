@@ -2619,7 +2619,7 @@
     "@types/semver": "7.2.0",
     "@types/tar": "4.0.3",
     "@types/vscode": "1.39.0",
-    "@types/webpack": "4.41.17",
+    "@types/webpack": "4.41.18",
     "@typescript-eslint/eslint-plugin": "2.34.0",
     "@typescript-eslint/parser": "2.34.0",
     "eslint": "6.8.0",
