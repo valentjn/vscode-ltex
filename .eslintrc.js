@@ -67,6 +67,12 @@ module.exports = {
       "warn",
       100,
     ],
+    "no-constant-condition": [
+      "warn",
+      {
+        "checkLoops": false
+      }
+    ],
     "no-unused-vars": [
       "off",
     ],
