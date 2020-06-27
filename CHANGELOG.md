@@ -2,6 +2,7 @@
 
 ## 6.0.0 (upcoming)
 
+- Update LanguageTool to 5.0 (see [LT 5.0 release notes](https://github.com/languagetool-org/languagetool/blob/v5.0/languagetool-standalone/CHANGES.md#50-2020-06-27))
 - Add support for internationalized user interface of LT<sub>E</sub>X
 - Add German translations for user interface of LT<sub>E</sub>X
 - Delay diagnostics at the current caret position (e.g., incomplete word or sentence) until the user has finished typing (fixes [#46](https://github.com/valentjn/vscode-ltex/issues/46))
@@ -28,7 +29,7 @@
 
 - Download LT<sub>E</sub>X Language Server on demand with all languages already included; this removes the need for language support extensions (fixes [#6](https://github.com/valentjn/vscode-ltex/issues/6))
 - Download Java distribution on demand if no suitable Java installation has been found (fixes [#5](https://github.com/valentjn/vscode-ltex/issues/5))
-- Adhere to [semantic versioning](https://semver.org/). This means that the version of LT<sub>E</sub>X is not tied to the version of LanguageTool anymore, as the version of LanguageTool is not a semantic version. LT<sub>E</sub>X 5.0.0 uses LanguageTool 4.9.0.
+- Adhere to [semantic versioning](https://semver.org/). This means that the version of LT<sub>E</sub>X is not tied to the version of LanguageTool anymore, as the version of LanguageTool is not a semantic version. LT<sub>E</sub>X 5.0.0 uses LanguageTool 4.9.
 - Rename settings:
   - `ltex.<LANGUAGE>.dictionary` to `ltex.dictionary` (object with `<LANGUAGE>` keys)
   - `ltex.<LANGUAGE>.disabledRules` to `ltex.disabledRules` (object with `<LANGUAGE>` keys)
@@ -64,7 +65,7 @@
 
 ## 4.9.0 — “The Update Alternative” (March 28, 2020)
 
-- Update to LanguageTool 4.9 (see [LT 4.9 release notes](https://github.com/languagetool-org/languagetool/blob/d6a675b8dbf04c57ab0729e82b655f5fb8205dd9/languagetool-standalone/CHANGES.md#49-2020-03-24))
+- Update to LanguageTool 4.9 (see [LT 4.9 release notes](https://github.com/languagetool-org/languagetool/blob/v4.9/languagetool-standalone/CHANGES.md#49-2020-03-24))
 - Update other Java dependencies
 - Update npm dependencies
 - Update required version of VS Code (now 1.39 or newer)
@@ -134,7 +135,7 @@
 
 ## 4.7.0 — “The Multi-Root Observation” (October 1, 2019)
 
-- Update to LanguageTool 4.7 (see [LT 4.7 release notes](https://github.com/languagetool-org/languagetool/blob/64f87c18c4d0c13f365d6d85c7aa8c61b7ed2ccf/languagetool-standalone/CHANGES.md#47-2019-09-28))
+- Update to LanguageTool 4.7 (see [LT 4.7 release notes](https://github.com/languagetool-org/languagetool/blob/v4.7/languagetool-standalone/CHANGES.md#47-2019-09-28))
 - Support multi-root workspaces, all configuration settings except `ltex.enabled` are now resource-specific (fixes [#7](https://github.com/valentjn/vscode-ltex/issues/7))
 - Save dictionary settings under full language short code (e.g., `en-US` instead of `en`). If you already have a dictionary under `ltex.en.dictionary` and use `en-US` as language (not `en`), you have to rename the settings name to `ltex.en-US.dictionary` (similarly for other languages).
 - Remove diagnostics when a file is closed
@@ -223,13 +224,13 @@
 ## 4.6.0 — “The LTeX Resurgence” (September 1, 2019)
 
 - Forked abandoned repository, rename to vscode-ltex
-- Update to LanguageTool 4.6 (see [LT 4.6 release notes](https://github.com/languagetool-org/languagetool/blob/123662bd07059429d9a6d22af6fae164c2ce9dc5/languagetool-standalone/CHANGES.md#46-2019-06-26))
+- Update to LanguageTool 4.6 (see [LT 4.6 release notes](https://github.com/languagetool-org/languagetool/blob/v4.6/languagetool-standalone/CHANGES.md#46-2019-06-26))
 - Update other dependencies (vscode, vscode-languageclient, LSP, JUnit, Gradle)
 - Implement simple L<sup>A</sup>T<sub>E</sub>X parser
 
 ## 3.8.0 (July 8, 2017)
 
-- Update to LanguageTool 3.8 (see [LT 3.8 release notes](https://github.com/languagetool-org/languagetool/blob/aa1bef4c0108e25eea7f71bd557b6cc4d9c53c2b/languagetool-standalone/CHANGES.md#38-2017-06-27))
+- Update to LanguageTool 3.8 (see [LT 3.8 release notes](https://github.com/languagetool-org/languagetool/blob/v3.8/languagetool-standalone/CHANGES.md#38-2017-06-27))
 - Update versioning to reflect LanguageTool versioning
 - Remove preview flag since no blocker issues have been reported
 
