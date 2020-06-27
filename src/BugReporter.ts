@@ -96,15 +96,15 @@ export default class BugReporter {
         Logger.clientOutputChannel.getContents());
 
     const platform: string = `${Os.type} (${Os.platform}), ${Os.arch}, ${Os.release}`;
-    bugReport = bugReport.replace(/^- Operating system: .*$/, `- Operating system: ${platform}`);
+    bugReport = bugReport.replace(/^- Operating system: .*$/m, `- Operating system: ${platform}`);
 
-    bugReport = bugReport.replace(/^- VS Code: .*$/, `- VS Code: ${Code.version}`);
+    bugReport = bugReport.replace(/^- VS Code: .*$/m, `- VS Code: ${Code.version}`);
 
     const extension: Code.Extension<any> | undefined =
         Code.extensions.getExtension('valentjn.vscode-ltex');
 
     if (extension != null) {
-      bugReport = bugReport.replace(/^- vscode-ltex: .*$/,
+      bugReport = bugReport.replace(/^- vscode-ltex: .*$/m,
           `- vscode-ltex: ${extension.packageJSON.version}`);
     }
 
@@ -112,13 +112,13 @@ export default class BugReporter {
       const ltexLsVersion: string | null = this._dependencies.ltexLsVersion;
 
       if (ltexLsVersion != null) {
-        bugReport = bugReport.replace(/^- ltex-ls: .*$/, `- ltex-ls: ${ltexLsVersion}`);
+        bugReport = bugReport.replace(/^- ltex-ls: .*$/m, `- ltex-ls: ${ltexLsVersion}`);
       }
 
       const javaVersion: string | null = this._dependencies.javaVersion;
 
       if (javaVersion != null) {
-        bugReport = bugReport.replace(/^- Java: .*$/, `- Java: ${javaVersion}`);
+        bugReport = bugReport.replace(/^- Java: .*$/m, `- Java: ${javaVersion}`);
       }
     }
 
