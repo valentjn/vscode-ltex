@@ -10,8 +10,9 @@ import * as SemVer from 'semver';
 import * as Tar from 'tar';
 import * as Url from 'url';
 
-import ProgressStack from './ProgressStack';
+import {i18n} from './I18n';
 import Logger from './Logger';
+import ProgressStack from './ProgressStack';
 
 export default class Dependencies {
   private _context: Code.ExtensionContext;
@@ -28,7 +29,7 @@ export default class Dependencies {
     this._context = context;
     const ltexExtension: Code.Extension<any> | undefined =
         Code.extensions.getExtension('valentjn.vscode-ltex');
-    if (ltexExtension == null) throw new Error('Could not get LTeX version.');
+    if (ltexExtension == null) throw new Error(i18n('couldNotGetLtexVersion'));
     this._ltexVersion = ltexExtension.packageJSON.version;
   }
 
@@ -59,9 +60,9 @@ export default class Dependencies {
         let error: Error | null = null;
 
         if (response.statusCode !== 200) {
-          error = new Error(`Request failed with status code ${response.statusCode}.`);
+          error = new Error(i18n('requestFailedWithStatusCode', response.statusCode));
         } else if ((contentType != null) && !/^application\/json/.test(contentType)) {
-          error = new Error(`Request failed with content type ${contentType}.`);
+          error = new Error(i18n('requestFailedWithContentType', contentType));
         }
 
         response.setEncoding('utf8');
@@ -80,7 +81,7 @@ export default class Dependencies {
               reject(e);
             }
           } else {
-            error.message += ` Response body: '${rawData}'.`;
+            error.message += ` ${i18n('responseBody', rawData)}`;
             reject(error);
           }
         });
@@ -100,18 +101,18 @@ export default class Dependencies {
         if ((response.statusCode === 301) || (response.statusCode === 302) ||
               (response.statusCode === 307)) {
           if (response.headers.location == null) {
-            reject(new Error(`Received redirection status code ${response.statusCode}', ` +
-                'but no location header.'));
+            reject(new Error(i18n('receivedRedirectionStatusCodeWithoutLocationHeader',
+                response.statusCode)));
             return;
           }
 
-          Logger.log(`Redirected to '${response.headers.location}'...`);
+          Logger.log(i18n('redirectedTo', response.headers.location));
           Dependencies.downloadFile(response.headers.location, path, codeProgress)
               .then(resolve).catch(reject);
           return;
         } else if (response.statusCode !== 200) {
           response.resume();
-          reject(new Error(`Request failed with status code ${response.statusCode}.`));
+          reject(new Error(i18n('requestFailedWithStatusCode', response.statusCode)));
           return;
         }
 
@@ -165,22 +166,22 @@ export default class Dependencies {
 
   private async installDependency(urlStr: string, name: string, codeProgress: ProgressStack):
         Promise<void> {
-    codeProgress.startTask(0.1, `Downloading ${name}...`);
+    codeProgress.startTask(0.1, i18n('downloading', name));
     const url: Url.UrlWithStringQuery = Url.parse(urlStr);
-    if (url.pathname == null) throw new Error(`Could not get path name from URL '${urlStr}'.`);
+    if (url.pathname == null) throw new Error(i18n('couldNotGetPathNameFromUrl', urlStr));
     const archiveName: string = Path.basename(url.pathname);
     const archiveType: string = ((Path.extname(archiveName) == '.zip') ? 'zip' : 'tar.gz');
     const tmpDirPath: string = Fs.mkdtempSync(Path.join(this._context.extensionPath, 'tmp-'));
     const archivePath: string = Path.join(tmpDirPath, archiveName);
     codeProgress.finishTask();
 
-    codeProgress.startTask(0.8, `Downloading ${name}...`);
-    Logger.log(`Downloading ${name} from '${urlStr}' to '${archivePath}'...`);
+    codeProgress.startTask(0.8, i18n('downloading', name));
+    Logger.log(i18n('downloadingFromTo', name, urlStr, archivePath));
     await Dependencies.downloadFile(urlStr, archivePath, codeProgress);
     codeProgress.finishTask();
 
-    codeProgress.startTask(0.1, `Extracting ${name}...`);
-    Logger.log(`Extracting '${archivePath}' to '${tmpDirPath}'...`);
+    codeProgress.startTask(0.1, i18n('extracting', name));
+    Logger.log(i18n('extractingTo', archivePath, tmpDirPath));
 
     if (archiveType == 'zip') {
       await extractZip(archivePath, {dir: tmpDirPath});
@@ -188,13 +189,13 @@ export default class Dependencies {
       await Tar.extract({file: archivePath, cwd: tmpDirPath});
     }
 
-    Logger.log(`Removing '${archivePath}'...`);
+    Logger.log(i18n('deleting', archivePath));
     Fs.unlinkSync(archivePath);
     codeProgress.updateTask(0.8);
 
     const fileNames: string[] = Fs.readdirSync(tmpDirPath);
     let extractedDirPath: string | null = null;
-    Logger.log(`Searching for a directory in '${tmpDirPath}'...`);
+    Logger.log(i18n('searchingForDirectory', tmpDirPath));
 
     for (let i: number = 0; i < fileNames.length; i++) {
       const filePath: string = Path.join(tmpDirPath, fileNames[i]);
@@ -204,24 +205,23 @@ export default class Dependencies {
         if (extractedDirPath == null) {
           extractedDirPath = filePath;
         } else {
-          Logger.warn('Found multiple directories after extraction: ' +
-              `'${extractedDirPath}' and '${filePath}', using the former.`);
+          Logger.warn(i18n('foundMultipleDirectoriesAfterExtraction', extractedDirPath, filePath));
         }
       } else {
         try {
-          Logger.log(`Deleting '${filePath}'...`);
+          Logger.log(i18n('deleting', filePath));
           Fs.unlinkSync(filePath);
         } catch (e) {
-          Logger.warn(`Could not delete '${filePath}', leaving temporary file on disk.`, e);
+          Logger.warn(i18n('couldNotDeleteLeavingTemporaryFileOnDisk', filePath), e);
         }
       }
     }
 
     if (extractedDirPath == null) {
-      throw new Error('Could not find a directory after extracting the archive.');
+      throw new Error(i18n('couldNotFindDirectoryAfterExtractingArchive'));
     }
 
-    Logger.log(`Found extracted directory '${extractedDirPath}'.`);
+    Logger.log(i18n('foundExtractedDirectory', extractedDirPath));
     codeProgress.updateTask(0.85);
 
     const targetDirPath: string = Path.join(
@@ -230,20 +230,19 @@ export default class Dependencies {
     codeProgress.updateTask(0.9);
 
     if (targetExists) {
-      Logger.warn(`Did not move '${extractedDirPath}' to '${targetDirPath}', ` +
-          'as target already exists.');
+      Logger.warn(i18n('didNotMoveAsTargetAlreadyExists', extractedDirPath, targetDirPath));
     } else {
-      Logger.log(`Moving '${extractedDirPath}' to '${targetDirPath}'...`);
+      Logger.log(i18n('movingTo', extractedDirPath, targetDirPath));
       Fs.renameSync(extractedDirPath, targetDirPath);
     }
 
     codeProgress.updateTask(0.95);
 
     try {
-      Logger.log(`Deleting '${tmpDirPath}'...`);
+      Logger.log(i18n('deleting', tmpDirPath));
       Fs.rmdirSync(tmpDirPath);
     } catch (e) {
-      Logger.warn(`Could not delete '${tmpDirPath}', leaving temporary directory on disk.`, e);
+      Logger.warn(i18n('couldNotDeleteLeavingTemporaryFileOnDisk', tmpDirPath), e);
     }
 
     codeProgress.finishTask();
@@ -262,11 +261,11 @@ export default class Dependencies {
           async (progress: Code.Progress<{increment?: number; message?: string}>):
             Promise<void> => {
       const codeProgress: ProgressStack = new ProgressStack(
-          'Downloading and extracting ltex-ls', progress);
+          i18n('downloadingAndExtractingLtexLs'), progress);
 
-      codeProgress.startTask(0.1, 'Preparing download of ltex-ls...');
+      codeProgress.startTask(0.1, i18n('preparingDownloadOfLtexLs'));
       const jsonUrl: string = 'https://api.github.com/repos/valentjn/ltex-ls/releases';
-      Logger.log(`Fetching list of ltex-ls releases from '${jsonUrl}'...`);
+      Logger.log(i18n('fetchingListOfLtexLsReleases', jsonUrl));
       const jsonData: any = await Dependencies.doJsonRequest(jsonUrl);
 
       const ltexLsVersions: string[] = [];
@@ -278,18 +277,17 @@ export default class Dependencies {
       const ltexLsVersion: string | null = this.getLatestCompatibleLtexLsVersion(ltexLsVersions);
 
       if (ltexLsVersion == null) {
-        throw Error('Could not find a compatible version of ltex-ls on GitHub. ' +
-            `LTeX version is '${this._ltexVersion}', available ltex-ls versions are ` +
-            `'${JSON.stringify(ltexLsVersions)}'.`);
+        throw Error(i18n('couldNotFindCompatibleVersionOfLtexLsOnGitHub',
+            this._ltexVersion, JSON.stringify(ltexLsVersions)));
       }
 
-      Logger.log(`Latest compatible release is 'ltex-ls-${ltexLsVersion}'.`);
+      Logger.log(i18n('latestCompatibleReleaseIsLtexLsVersion', ltexLsVersion));
       const ltexLsUrl: string = 'https://github.com/valentjn/ltex-ls/releases/download/' +
           `${ltexLsVersion}/ltex-ls-${ltexLsVersion}.tar.gz`;
 
       codeProgress.finishTask();
 
-      codeProgress.startTask(0.9, `Downloading and extracting ltex-ls ${ltexLsVersion}...`);
+      codeProgress.startTask(0.9, i18n('downloadingAndExtractingLtexLsVersion', ltexLsVersion));
       await this.installDependency(ltexLsUrl, `ltex-ls ${ltexLsVersion}`, codeProgress);
       codeProgress.finishTask();
     });
@@ -306,7 +304,7 @@ export default class Dependencies {
           async (progress: Code.Progress<{increment?: number; message?: string}>):
             Promise<void> => {
       const codeProgress: ProgressStack = new ProgressStack(
-          'Downloading and extracting Java', progress);
+          i18n('downloadingAndExtractingJava'), progress);
 
       let platform: string = 'linux';
       let arch: string = 'x64';
@@ -333,8 +331,7 @@ export default class Dependencies {
 
       const javaArchiveName: string =
           `OpenJDK11U-jre_${arch}_${platform}_hotspot_11.0.7_10.${javaArchiveType}`;
-      Logger.log(`Guessed AdoptOpenJDK archive name '${javaArchiveName}' from your platform and ` +
-          'architecture (may not exist).');
+      Logger.log(i18n('guessedAdoptOpenJdkArchiveName', javaArchiveName));
       const javaUrl: string = 'https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/' +
           `download/jdk-11.0.7%2B10/${javaArchiveName}`;
 
@@ -381,7 +378,7 @@ export default class Dependencies {
     const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
 
     if (!Fs.existsSync(libDirPath)) {
-      Logger.log(`Creating '${libDirPath}'...`);
+      Logger.log(i18n('creating', libDirPath));
       Fs.mkdirSync(libDirPath);
     }
 
@@ -393,33 +390,33 @@ export default class Dependencies {
       this._ltexLsPath = workspaceConfig.get('ltex-ls.path', '');
 
       if (Dependencies.isValidPath(this._ltexLsPath)) {
-        Logger.log(`ltex.ltex-ls.path set to ${this._ltexLsPath}.`);
+        Logger.log(i18n('ltexLtexLsPathSetTo', this._ltexLsPath));
       } else {
-        Logger.log('ltex.ltex-ls.path not set.');
-        Logger.log(`Searching for ltex-ls in '${libDirPath}'...`);
+        Logger.log(i18n('ltexLtexLsPathNotSet'));
+        Logger.log(i18n('searchingForLtexLsIn', libDirPath));
         this._ltexLsPath = this.searchBundledLtexLs(libDirPath);
 
         if (Dependencies.isValidPath(this._ltexLsPath)) {
-          Logger.log(`ltex-ls found in '${this._ltexLsPath}'.`);
+          Logger.log(i18n('ltexLsFoundIn', this._ltexLsPath));
         } else {
-          Logger.log(`Could not find a compatible version of ltex-ls in '${libDirPath}'.`);
-          Logger.log('Initiating download of ltex-ls...');
+          Logger.log(i18n('couldNotFindCompatibleVersionOfLtexLsIn', libDirPath));
+          Logger.log(i18n('initiatingDownloadOfLtexLs'));
           await this.installLtexLs();
           this._ltexLsPath = this.searchBundledLtexLs(libDirPath);
 
           if (Dependencies.isValidPath(this._ltexLsPath)) {
-            Logger.log(`ltex-ls found in '${this._ltexLsPath}'.`);
+            Logger.log(i18n('ltexLsFoundIn', this._ltexLsPath));
           } else {
-            throw Error('Could not download or extract ltex-ls.');
+            throw Error(i18n('couldNotDownloadOrExtractLtexLs'));
           }
         }
       }
     } catch (e) {
-      Logger.error('The download or extraction of ltex-ls failed!', e);
-      Logger.log('You might want to try offline installation, see ' +
-          `${Dependencies._offlineInstructionsUrl}.`);
+      Logger.error(i18n('downloadOrExtractionOfLtexLsFailed'), e);
+      Logger.log(i18n('youMightWantToTryOfflineInstallationSee',
+          Dependencies._offlineInstructionsUrl));
       Logger.showClientOutputChannel();
-      return this.showOfflineInstallationInstructions('Could not install ltex-ls.');
+      return this.showOfflineInstallationInstructions(i18n('couldNotInstallLtexLs'));
     }
 
     try {
@@ -431,17 +428,17 @@ export default class Dependencies {
         this._javaPath = Dependencies.getRenamedSetting(workspaceConfig, 'java.path', 'javaHome');
 
         if (Dependencies.isValidPath(this._javaPath)) {
-          Logger.log(`ltex.java.path set to '${this._javaPath}'.`);
+          Logger.log(i18n('ltexJavaPathSetTo', this._javaPath));
         } else if (i == 0) {
-          Logger.log('ltex.java.path not set.');
+          Logger.log(i18n('ltexJavaPathNotSet'));
         } else {
-          Logger.log(`Searching for bundled Java in '${libDirPath}'.`);
+          Logger.log(i18n('searchingForJavaIn', libDirPath));
           this._javaPath = Dependencies.searchBundledJava(libDirPath);
 
           if (Dependencies.isValidPath(this._javaPath)) {
-            Logger.log(`Bundled Java found in '${this._javaPath}'.`);
+            Logger.log(i18n('javaFoundIn', this._javaPath));
           } else {
-            Logger.log(`Could not find bundled Java in '${libDirPath}'.`);
+            Logger.log(i18n('couldNotFindJavaIn', libDirPath));
 
             if (i <= 1) {
               continue;
@@ -450,21 +447,20 @@ export default class Dependencies {
               this._javaPath = Dependencies.searchBundledJava(libDirPath);
 
               if (Dependencies.isValidPath(this._javaPath)) {
-                Logger.log(`Java found in '${this._javaPath}'.`);
+                Logger.log(i18n('javaFoundIn', this._javaPath));
               } else {
-                Logger.log('Download or extraction of Java failed. ' +
-                    'Trying to run Java via PATH or JAVA_HOME.');
+                Logger.log(i18n('downloadOrExtractionOfJavaFailed'));
               }
             }
           }
         }
 
-        Logger.log(`Using ltex-ls from '${this._ltexLsPath}'.`);
+        Logger.log(i18n('usingLtexLsFrom', this._ltexLsPath));
 
         if (Dependencies.isValidPath(this._javaPath)) {
-          Logger.log(`Using Java from '${this._javaPath}'.`);
+          Logger.log(i18n('usingJavaFrom', this._javaPath));
         } else {
-          Logger.log('Using Java from PATH or JAVA_HOME (may fail if not installed).');
+          Logger.log(i18n('usingJavaFromPathOrJavaHome'));
         }
 
         if (await this.test()) {
@@ -473,23 +469,24 @@ export default class Dependencies {
         }
       }
 
-      throw Error('Could not run ltex-ls.');
+      throw Error(i18n('couldNotRunLtexLs'));
     } catch (e) {
-      Logger.error('The download/extraction/run of Java failed!', e);
-      Logger.log('You might want to try offline installation, see ' +
-          `${Dependencies._offlineInstructionsUrl}.`);
-      return await this.showOfflineInstallationInstructions('Could not download/extract/run Java.');
+      Logger.error(i18n('downloadExtractionRunOfJavaFailed'), e);
+      Logger.log(i18n('youMightWantToTryOfflineInstallationSee',
+          Dependencies._offlineInstructionsUrl));
+      return await this.showOfflineInstallationInstructions(i18n('couldNotDownloadExtractRunJava'));
     }
   }
 
   private async showOfflineInstallationInstructions(message: string): Promise<boolean> {
     return new Promise((resolve: (value: boolean) => void) => {
-      Code.window.showErrorMessage(`${message} You might want to try offline installation.`,
-            'Try again', 'Offline instructions').then(async (selectedItem: string | undefined) => {
-        if (selectedItem == 'Try again') {
+      Code.window.showErrorMessage(`${message} ${i18n('youMightWantToTryOfflineInstallation')}`,
+            i18n('tryAgain'), i18n('offlineInstructions')).then(
+            async (selectedItem: string | undefined) => {
+        if (selectedItem == i18n('tryAgain')) {
           resolve(await this.install());
           return;
-        } else if (selectedItem == 'Offline instructions') {
+        } else if (selectedItem == i18n('offlineInstructions')) {
           Code.env.openExternal(Code.Uri.parse(Dependencies._offlineInstructionsUrl));
         }
 
@@ -512,7 +509,7 @@ export default class Dependencies {
       executableOptions.env = executable.options.env;
     }
 
-    Logger.log('Testing ltex-ls...');
+    Logger.log(i18n('testingLtexLs'));
     Logger.logExecutable(executable);
     const childProcess: ChildProcess.SpawnSyncReturns<string> = ChildProcess.spawnSync(
         executable.command, executable.args, executableOptions);
@@ -537,13 +534,13 @@ export default class Dependencies {
     }
 
     if (success) {
-      Logger.log('Test successful!');
+      Logger.log(i18n('testSuccessful'));
     } else {
-      Logger.log('Test failed.');
-      Logger.log(`Exit code of ltex-ls: ${childProcess.status}`);
-      Logger.log('stdout of ltex-ls:');
+      Logger.log(i18n('testFailed'));
+      Logger.log(i18n('exitCodeOfLtexLs', childProcess.status));
+      Logger.log(i18n('stdoutOfLtexLs'));
       Logger.log(childProcess.stdout);
-      Logger.log('stderr of ltex-ls:');
+      Logger.log(i18n('stderrOfLtexLs'));
       Logger.log(childProcess.stderr);
     }
 
@@ -552,8 +549,7 @@ export default class Dependencies {
 
   public async getLtexLsExecutable(): Promise<CodeLanguageClient.Executable> {
     if (!Dependencies.isValidPath(this._ltexLsPath)) {
-      return Promise.reject(new Error('Could not get ltex-ls executable, ' +
-          'has to be installed first.'));
+      return Promise.reject(new Error(i18n('couldNotGetLtexLsExecutable')));
     }
 
     const env: NodeJS.ProcessEnv = {};

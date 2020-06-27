@@ -1,5 +1,7 @@
 import * as Code from 'vscode';
 
+import {i18n} from './I18n';
+
 export default class ProgressStack {
   private _taskProgressStack: number[];
   private _taskSizeStack: number[];
@@ -32,7 +34,7 @@ export default class ProgressStack {
 
   public finishTask(): void {
     const n: number = this._taskProgressStack.length - 1;
-    if (n == 0) throw Error('Could not finish task, task stack already empty.');
+    if (n == 0) throw Error(i18n('couldNotFinishTask'));
     this._taskProgressStack.pop();
     this._taskProgressStack[n - 1] += this._taskSizeStack.pop() as number;
     this._taskNameStack.pop();

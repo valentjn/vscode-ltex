@@ -4,14 +4,13 @@ import * as Os from 'os';
 import * as Path from 'path';
 
 import Dependencies from './Dependencies';
+import {i18n} from './I18n';
 import Logger from './Logger';
 
 export default class BugReporter {
   private _context: Code.ExtensionContext;
   private _dependencies: Dependencies;
 
-  private static _howToLabel: string = 'How to report bugs';
-  private static _reportBugLabel: string = 'Copy report and create issue';
   private static _howToUrl: string = 'https://valentjn.github.io/vscode-ltex/docs/' +
       'contributing-code-issues.html#how-to-report-bugs';
   private static _reportBugUrl: string = 'https://github.com/valentjn/vscode-ltex/issues/new?' +
@@ -126,17 +125,15 @@ export default class BugReporter {
   }
 
   public report(): void {
-    Logger.log('Creating bug report...');
+    Logger.log(i18n('creatingBugReport'));
     const bugReport: string = this.createReport();
 
-    Code.window.showInformationMessage('Thanks for helping to improve LTeX. Be sure to read ' +
-          'the instructions on how to report bugs first. When you create the issue on GitHub, ' +
-          'paste the bug report from the clipboard into the description of the issue.',
-          BugReporter._howToLabel, BugReporter._reportBugLabel).then(
+    Code.window.showInformationMessage(i18n('thanksForHelpingToImproveLtex'),
+          i18n('howToReportBugs'), i18n('copyReportAndCreateIssue')).then(
           async (selectedItem: string | undefined) => {
-      if (selectedItem == BugReporter._howToLabel) {
+      if (selectedItem == i18n('howToReportBugs')) {
         Code.env.openExternal(Code.Uri.parse(BugReporter._howToUrl));
-      } else if (selectedItem == BugReporter._reportBugLabel) {
+      } else if (selectedItem == i18n('copyReportAndCreateIssue')) {
         Code.env.clipboard.writeText(bugReport);
         Code.env.openExternal(Code.Uri.parse(BugReporter._reportBugUrl));
       }

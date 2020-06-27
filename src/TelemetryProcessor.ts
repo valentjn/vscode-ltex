@@ -1,5 +1,6 @@
 import * as Code from 'vscode';
 
+import {i18n} from './I18n';
 import Logger from './Logger';
 
 export default class TelemetryProcessor {
@@ -33,7 +34,7 @@ export default class TelemetryProcessor {
       configurationTargets = [Code.ConfigurationTarget.WorkspaceFolder,
           Code.ConfigurationTarget.Workspace, Code.ConfigurationTarget.Global];
     } else {
-      Logger.error(`Invalid value '${settingName}' for configurationTarget.`);
+      Logger.error(i18n('invalidValueForConfigurationTarget', configurationTargetString));
       return;
     }
 
@@ -43,7 +44,7 @@ export default class TelemetryProcessor {
         return;
       } catch (e) {
         if (configurationTarget == configurationTargets[configurationTargets.length - 1]) {
-          Logger.error(`Could not set configuration '${settingName}'.`, e);
+          Logger.error(i18n('couldNotSetConfiguration', settingName), e);
         }
       }
     }
@@ -100,7 +101,7 @@ export default class TelemetryProcessor {
           'ignoreRuleInSentence', ignoredRules, resourceConfig, 'ignoreRuleInSentence');
 
     } else {
-      Logger.warn(`Unknown command '${params.command}' in telemetry event '${params}'.`);
+      Logger.warn(i18n('unknownCommandInTelemetryEvent', params.command, params));
     }
   }
 
@@ -122,7 +123,7 @@ export default class TelemetryProcessor {
     for (const uri of uris) {
       if (now - this._progressMap[uri].startTime >= 5000) {
         this._statusBarMessageDisposable =
-            Code.window.setStatusBarMessage('$(loading~spin) LTeX is checking...', 300000);
+            Code.window.setStatusBarMessage(`$(loading~spin) ${i18n('ltexIsChecking')}`, 300000);
         this._context.subscriptions.push(this._statusBarMessageDisposable);
         break;
       }
@@ -131,7 +132,7 @@ export default class TelemetryProcessor {
 
   private processProgress(params: any): void {
     if (params.operation != 'checkDocument') {
-      Logger.warn(`Unknown operation '${params.operation}' in telemetry event '${params}'.`);
+      Logger.warn(i18n('unknownOperationInTelemetryEvent', params.operation, params));
       return;
     }
 
@@ -156,13 +157,13 @@ export default class TelemetryProcessor {
 
   public process(params: any): void {
     if (!Object.prototype.hasOwnProperty.call(params, 'type')) {
-      Logger.warn(`Missing 'type' in telemetry event '${params}'.`);
+      Logger.warn(i18n('missingTypeInTelemetryEvent', params));
     } else if (params.type == 'command') {
       this.processCommand(params);
     } else if (params.type == 'progress') {
       this.processProgress(params);
     } else {
-      Logger.warn(`Unknown type '${params.type}' in telemetry event '${params}'.`);
+      Logger.warn(i18n('unknownTypeInTelemetryEvent', params.type, params));
     }
   }
 }

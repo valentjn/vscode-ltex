@@ -46,8 +46,8 @@
   "contributes": {
     "commands": [
       {
-        "title": "LTeX: Report bug in LTeX",
-        "command": "ltex.reportBug"
+        "command": "ltex.reportBug",
+        "title": "%ltex.i18n.command.ltex.reportBug.title%"
       }
     ],
     "configuration": {
@@ -57,8 +57,8 @@
           "type": "boolean",
           "scope": "window",
           "default": true,
-          "markdownDescription": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces. Changes require reloading the Visual Studio Code window to take effect."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.enabled.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.enabled.description%"
         },
         "ltex.language": {
           "type": "string",
@@ -113,55 +113,55 @@
             "zh-CN"
           ],
           "enumDescriptions": [
-            "Arabic",
-            "Arabic (Algeria)",
-            "Asturian",
-            "Belarusian",
-            "Breton",
-            "Catalan",
-            "Catalan (Valencian)",
-            "Danish",
-            "German",
-            "German (Austria)",
-            "German (Swiss)",
-            "German (Germany)",
-            "Simple German",
-            "Greek",
-            "English",
-            "English (Australian)",
-            "English (Canadian)",
-            "English (GB)",
-            "English (New Zealand)",
-            "English (US)",
-            "English (South African)",
-            "Esperanto",
-            "Spanish",
-            "Persian",
-            "French",
-            "Irish",
-            "Galician",
-            "Italian",
-            "Japanese",
-            "Khmer",
-            "Dutch",
-            "Polish",
-            "Portuguese",
-            "Portuguese (Angola preAO)",
-            "Portuguese (Brazil)",
-            "Portuguese (Moçambique preAO)",
-            "Portuguese (Portugal)",
-            "Romanian",
-            "Russian",
-            "Slovak",
-            "Slovenian",
-            "Swedish",
-            "Tamil",
-            "Tagalog",
-            "Ukrainian",
-            "Chinese"
+            "%ltex.i18n.configuration.ltex.language.ar.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ar-DZ.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ast-ES.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.be-BY.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.br-FR.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ca-ES.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ca-ES-valencia.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.da-DK.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.de.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.de-AT.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.de-CH.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.de-DE.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.de-DE-x-simple-language.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.el-GR.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.en.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.en-AU.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.en-CA.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.en-GB.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.en-NZ.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.en-US.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.en-ZA.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.eo.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.es.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.fa.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.fr.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ga-IE.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.gl-ES.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.it.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ja-JP.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.km-KH.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.nl.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.pl-PL.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.pt.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.pt-AO.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.pt-BR.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.pt-MZ.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.pt-PT.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ro-RO.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ru-RU.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.sk-SK.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.sl-SI.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.sv.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ta-IN.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.tl-PH.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.uk-UA.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.zh-CN.enumDescription%"
           ],
-          "markdownDescription": "The language (e.g., `\"en-US\"`) LanguageTool should check against. Use a specific variant like `\"en-US\"` or `\"de-DE\"` instead of the generic language code like `\"en\"` or `\"de\"` to obtain spelling corrections (in addition to grammar corrections).",
-          "description": "The language (e.g., \"en-US\") LanguageTool should check against. Use a specific variant like \"en-US\" or \"de-DE\" instead of the generic language code like \"en\" or \"de\" to obtain spelling corrections (in addition to grammar corrections)."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.language.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.language.description%"
         },
         "ltex.dictionary": {
           "type": "object",
@@ -173,372 +173,372 @@
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ar` (Arabic) words that should not be counted as spelling errors.",
-              "description": "List of additional 'ar' (Arabic) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.ar.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.ar.description%"
             },
             "ar-DZ": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ar-DZ` (Arabic (Algeria)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'ar-DZ' (Arabic (Algeria)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.ar-DZ.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.ar-DZ.description%"
             },
             "ast-ES": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ast-ES` (Asturian) words that should not be counted as spelling errors.",
-              "description": "List of additional 'ast-ES' (Asturian) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.ast-ES.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.ast-ES.description%"
             },
             "be-BY": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `be-BY` (Belarusian) words that should not be counted as spelling errors.",
-              "description": "List of additional 'be-BY' (Belarusian) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.be-BY.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.be-BY.description%"
             },
             "br-FR": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `br-FR` (Breton) words that should not be counted as spelling errors.",
-              "description": "List of additional 'br-FR' (Breton) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.br-FR.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.br-FR.description%"
             },
             "ca-ES": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ca-ES` (Catalan) words that should not be counted as spelling errors.",
-              "description": "List of additional 'ca-ES' (Catalan) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.ca-ES.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.ca-ES.description%"
             },
             "ca-ES-valencia": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ca-ES-valencia` (Catalan (Valencian)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'ca-ES-valencia' (Catalan (Valencian)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.ca-ES-valencia.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.ca-ES-valencia.description%"
             },
             "da-DK": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `da-DK` (Danish) words that should not be counted as spelling errors.",
-              "description": "List of additional 'da-DK' (Danish) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.da-DK.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.da-DK.description%"
             },
             "de": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de` (German) words that should not be counted as spelling errors.",
-              "description": "List of additional 'de' (German) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.de.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.de.description%"
             },
             "de-AT": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de-AT` (German (Austria)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'de-AT' (German (Austria)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.de-AT.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.de-AT.description%"
             },
             "de-CH": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de-CH` (German (Swiss)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'de-CH' (German (Swiss)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.de-CH.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.de-CH.description%"
             },
             "de-DE": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de-DE` (German (Germany)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'de-DE' (German (Germany)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.de-DE.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.de-DE.description%"
             },
             "de-DE-x-simple-language": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de-DE-x-simple-language` (Simple German) words that should not be counted as spelling errors.",
-              "description": "List of additional 'de-DE-x-simple-language' (Simple German) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.de-DE-x-simple-language.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.de-DE-x-simple-language.description%"
             },
             "el-GR": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `el-GR` (Greek) words that should not be counted as spelling errors.",
-              "description": "List of additional 'el-GR' (Greek) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.el-GR.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.el-GR.description%"
             },
             "en": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en` (English) words that should not be counted as spelling errors.",
-              "description": "List of additional 'en' (English) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.en.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.en.description%"
             },
             "en-AU": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-AU` (English (Australian)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'en-AU' (English (Australian)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.en-AU.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.en-AU.description%"
             },
             "en-CA": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-CA` (English (Canadian)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'en-CA' (English (Canadian)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.en-CA.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.en-CA.description%"
             },
             "en-GB": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-GB` (English (GB)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'en-GB' (English (GB)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.en-GB.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.en-GB.description%"
             },
             "en-NZ": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-NZ` (English (New Zealand)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'en-NZ' (English (New Zealand)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.en-NZ.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.en-NZ.description%"
             },
             "en-US": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-US` (English (US)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'en-US' (English (US)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.en-US.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.en-US.description%"
             },
             "en-ZA": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-ZA` (English (South African)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'en-ZA' (English (South African)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.en-ZA.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.en-ZA.description%"
             },
             "eo": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `eo` (Esperanto) words that should not be counted as spelling errors.",
-              "description": "List of additional 'eo' (Esperanto) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.eo.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.eo.description%"
             },
             "es": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `es` (Spanish) words that should not be counted as spelling errors.",
-              "description": "List of additional 'es' (Spanish) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.es.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.es.description%"
             },
             "fa": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `fa` (Persian) words that should not be counted as spelling errors.",
-              "description": "List of additional 'fa' (Persian) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.fa.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.fa.description%"
             },
             "fr": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `fr` (French) words that should not be counted as spelling errors.",
-              "description": "List of additional 'fr' (French) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.fr.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.fr.description%"
             },
             "ga-IE": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ga-IE` (Irish) words that should not be counted as spelling errors.",
-              "description": "List of additional 'ga-IE' (Irish) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.ga-IE.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.ga-IE.description%"
             },
             "gl-ES": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `gl-ES` (Galician) words that should not be counted as spelling errors.",
-              "description": "List of additional 'gl-ES' (Galician) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.gl-ES.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.gl-ES.description%"
             },
             "it": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `it` (Italian) words that should not be counted as spelling errors.",
-              "description": "List of additional 'it' (Italian) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.it.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.it.description%"
             },
             "ja-JP": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ja-JP` (Japanese) words that should not be counted as spelling errors.",
-              "description": "List of additional 'ja-JP' (Japanese) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.ja-JP.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.ja-JP.description%"
             },
             "km-KH": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `km-KH` (Khmer) words that should not be counted as spelling errors.",
-              "description": "List of additional 'km-KH' (Khmer) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.km-KH.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.km-KH.description%"
             },
             "nl": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `nl` (Dutch) words that should not be counted as spelling errors.",
-              "description": "List of additional 'nl' (Dutch) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.nl.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.nl.description%"
             },
             "pl-PL": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pl-PL` (Polish) words that should not be counted as spelling errors.",
-              "description": "List of additional 'pl-PL' (Polish) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.pl-PL.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.pl-PL.description%"
             },
             "pt": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt` (Portuguese) words that should not be counted as spelling errors.",
-              "description": "List of additional 'pt' (Portuguese) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.pt.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.pt.description%"
             },
             "pt-AO": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-AO` (Portuguese (Angola preAO)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'pt-AO' (Portuguese (Angola preAO)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.pt-AO.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.pt-AO.description%"
             },
             "pt-BR": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-BR` (Portuguese (Brazil)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'pt-BR' (Portuguese (Brazil)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.pt-BR.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.pt-BR.description%"
             },
             "pt-MZ": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-MZ` (Portuguese (Moçambique preAO)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'pt-MZ' (Portuguese (Moçambique preAO)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.pt-MZ.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.pt-MZ.description%"
             },
             "pt-PT": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-PT` (Portuguese (Portugal)) words that should not be counted as spelling errors.",
-              "description": "List of additional 'pt-PT' (Portuguese (Portugal)) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.pt-PT.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.pt-PT.description%"
             },
             "ro-RO": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ro-RO` (Romanian) words that should not be counted as spelling errors.",
-              "description": "List of additional 'ro-RO' (Romanian) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.ro-RO.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.ro-RO.description%"
             },
             "ru-RU": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ru-RU` (Russian) words that should not be counted as spelling errors.",
-              "description": "List of additional 'ru-RU' (Russian) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.ru-RU.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.ru-RU.description%"
             },
             "sk-SK": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `sk-SK` (Slovak) words that should not be counted as spelling errors.",
-              "description": "List of additional 'sk-SK' (Slovak) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.sk-SK.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.sk-SK.description%"
             },
             "sl-SI": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `sl-SI` (Slovenian) words that should not be counted as spelling errors.",
-              "description": "List of additional 'sl-SI' (Slovenian) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.sl-SI.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.sl-SI.description%"
             },
             "sv": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `sv` (Swedish) words that should not be counted as spelling errors.",
-              "description": "List of additional 'sv' (Swedish) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.sv.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.sv.description%"
             },
             "ta-IN": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ta-IN` (Tamil) words that should not be counted as spelling errors.",
-              "description": "List of additional 'ta-IN' (Tamil) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.ta-IN.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.ta-IN.description%"
             },
             "tl-PH": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `tl-PH` (Tagalog) words that should not be counted as spelling errors.",
-              "description": "List of additional 'tl-PH' (Tagalog) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.tl-PH.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.tl-PH.description%"
             },
             "uk-UA": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `uk-UA` (Ukrainian) words that should not be counted as spelling errors.",
-              "description": "List of additional 'uk-UA' (Ukrainian) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.uk-UA.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.uk-UA.description%"
             },
             "zh-CN": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `zh-CN` (Chinese) words that should not be counted as spelling errors.",
-              "description": "List of additional 'zh-CN' (Chinese) words that should not be counted as spelling errors."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.zh-CN.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.zh-CN.description%"
             }
           },
-          "markdownDescription": "Lists of additional words that should not be counted as spelling errors. The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<WORD1>\", \"<WORD2>\", ...], \"<LANGUAGE2>\": [\"<WORD1>\", \"<WORD2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language`. By default, no additional spelling errors will be ignored.",
-          "description": "Lists of additional words that should not be counted as spelling errors. This setting is language-specific, so you have to use an object of the format '{\"<LANGUAGE1>\": [\"<WORD1>\", \"<WORD2>\", ...], \"<LANGUAGE2>\": [\"<WORD1>\", \"<WORD2>\", ...], ...}', where '<LANGUAGE>' denotes the language code in 'ltex.language'. By default, no additional spelling errors will be ignored.",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.dictionary.description%",
           "examples": [
             {
               "en-US": [
@@ -562,372 +562,372 @@
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ar` (Arabic) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'ar' (Arabic) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.ar.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.ar.description%"
             },
             "ar-DZ": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ar-DZ` (Arabic (Algeria)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'ar-DZ' (Arabic (Algeria)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.ar-DZ.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.ar-DZ.description%"
             },
             "ast-ES": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ast-ES` (Asturian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'ast-ES' (Asturian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.ast-ES.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.ast-ES.description%"
             },
             "be-BY": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `be-BY` (Belarusian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'be-BY' (Belarusian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.be-BY.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.be-BY.description%"
             },
             "br-FR": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `br-FR` (Breton) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'br-FR' (Breton) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.br-FR.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.br-FR.description%"
             },
             "ca-ES": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ca-ES` (Catalan) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'ca-ES' (Catalan) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.ca-ES.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.ca-ES.description%"
             },
             "ca-ES-valencia": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ca-ES-valencia` (Catalan (Valencian)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'ca-ES-valencia' (Catalan (Valencian)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.ca-ES-valencia.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.ca-ES-valencia.description%"
             },
             "da-DK": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `da-DK` (Danish) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'da-DK' (Danish) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.da-DK.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.da-DK.description%"
             },
             "de": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de` (German) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'de' (German) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.de.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.de.description%"
             },
             "de-AT": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de-AT` (German (Austria)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'de-AT' (German (Austria)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.de-AT.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.de-AT.description%"
             },
             "de-CH": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de-CH` (German (Swiss)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'de-CH' (German (Swiss)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.de-CH.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.de-CH.description%"
             },
             "de-DE": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de-DE` (German (Germany)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'de-DE' (German (Germany)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.de-DE.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.de-DE.description%"
             },
             "de-DE-x-simple-language": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de-DE-x-simple-language` (Simple German) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'de-DE-x-simple-language' (Simple German) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.de-DE-x-simple-language.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.de-DE-x-simple-language.description%"
             },
             "el-GR": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `el-GR` (Greek) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'el-GR' (Greek) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.el-GR.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.el-GR.description%"
             },
             "en": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en` (English) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'en' (English) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.en.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.en.description%"
             },
             "en-AU": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-AU` (English (Australian)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'en-AU' (English (Australian)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.en-AU.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.en-AU.description%"
             },
             "en-CA": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-CA` (English (Canadian)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'en-CA' (English (Canadian)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.en-CA.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.en-CA.description%"
             },
             "en-GB": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-GB` (English (GB)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'en-GB' (English (GB)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.en-GB.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.en-GB.description%"
             },
             "en-NZ": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-NZ` (English (New Zealand)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'en-NZ' (English (New Zealand)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.en-NZ.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.en-NZ.description%"
             },
             "en-US": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-US` (English (US)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'en-US' (English (US)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.en-US.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.en-US.description%"
             },
             "en-ZA": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-ZA` (English (South African)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'en-ZA' (English (South African)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.en-ZA.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.en-ZA.description%"
             },
             "eo": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `eo` (Esperanto) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'eo' (Esperanto) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.eo.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.eo.description%"
             },
             "es": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `es` (Spanish) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'es' (Spanish) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.es.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.es.description%"
             },
             "fa": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `fa` (Persian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'fa' (Persian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.fa.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.fa.description%"
             },
             "fr": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `fr` (French) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'fr' (French) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.fr.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.fr.description%"
             },
             "ga-IE": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ga-IE` (Irish) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'ga-IE' (Irish) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.ga-IE.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.ga-IE.description%"
             },
             "gl-ES": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `gl-ES` (Galician) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'gl-ES' (Galician) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.gl-ES.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.gl-ES.description%"
             },
             "it": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `it` (Italian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'it' (Italian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.it.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.it.description%"
             },
             "ja-JP": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ja-JP` (Japanese) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'ja-JP' (Japanese) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.ja-JP.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.ja-JP.description%"
             },
             "km-KH": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `km-KH` (Khmer) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'km-KH' (Khmer) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.km-KH.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.km-KH.description%"
             },
             "nl": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `nl` (Dutch) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'nl' (Dutch) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.nl.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.nl.description%"
             },
             "pl-PL": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pl-PL` (Polish) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'pl-PL' (Polish) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.pl-PL.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.pl-PL.description%"
             },
             "pt": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt` (Portuguese) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'pt' (Portuguese) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.pt.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.pt.description%"
             },
             "pt-AO": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-AO` (Portuguese (Angola preAO)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'pt-AO' (Portuguese (Angola preAO)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.pt-AO.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.pt-AO.description%"
             },
             "pt-BR": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-BR` (Portuguese (Brazil)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'pt-BR' (Portuguese (Brazil)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.pt-BR.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.pt-BR.description%"
             },
             "pt-MZ": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-MZ` (Portuguese (Moçambique preAO)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'pt-MZ' (Portuguese (Moçambique preAO)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.pt-MZ.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.pt-MZ.description%"
             },
             "pt-PT": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-PT` (Portuguese (Portugal)) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'pt-PT' (Portuguese (Portugal)) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.pt-PT.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.pt-PT.description%"
             },
             "ro-RO": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ro-RO` (Romanian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'ro-RO' (Romanian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.ro-RO.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.ro-RO.description%"
             },
             "ru-RU": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ru-RU` (Russian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'ru-RU' (Russian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.ru-RU.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.ru-RU.description%"
             },
             "sk-SK": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `sk-SK` (Slovak) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'sk-SK' (Slovak) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.sk-SK.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.sk-SK.description%"
             },
             "sl-SI": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `sl-SI` (Slovenian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'sl-SI' (Slovenian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.sl-SI.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.sl-SI.description%"
             },
             "sv": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `sv` (Swedish) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'sv' (Swedish) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.sv.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.sv.description%"
             },
             "ta-IN": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ta-IN` (Tamil) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'ta-IN' (Tamil) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.ta-IN.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.ta-IN.description%"
             },
             "tl-PH": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `tl-PH` (Tagalog) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'tl-PH' (Tagalog) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.tl-PH.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.tl-PH.description%"
             },
             "uk-UA": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `uk-UA` (Ukrainian) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'uk-UA' (Ukrainian) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.uk-UA.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.uk-UA.description%"
             },
             "zh-CN": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `zh-CN` (Chinese) rules that should be disabled (if enabled by default by LanguageTool).",
-              "description": "List of additional 'zh-CN' (Chinese) rules that should be disabled (if enabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.zh-CN.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.zh-CN.description%"
             }
           },
-          "markdownDescription": "Lists of rules that should be disabled (if enabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language` and `<RULE>` the ID of the LanguageTool rule. By default, no additional rules will be disabled.",
-          "description": "Lists of rules that should be disabled (if enabled by default by LanguageTool). This setting is language-specific, so you have to use an object of the format '{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}', where '<LANGUAGE>' denotes the language code in 'ltex.language' and '<RULE>' the ID of the LanguageTool rule. By default, no additional rules will be disabled.",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.disabledRules.description%",
           "examples": [
             {
               "en-US": [
@@ -947,372 +947,372 @@
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ar` (Arabic) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'ar' (Arabic) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.ar.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.ar.description%"
             },
             "ar-DZ": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ar-DZ` (Arabic (Algeria)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'ar-DZ' (Arabic (Algeria)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.ar-DZ.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.ar-DZ.description%"
             },
             "ast-ES": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ast-ES` (Asturian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'ast-ES' (Asturian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.ast-ES.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.ast-ES.description%"
             },
             "be-BY": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `be-BY` (Belarusian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'be-BY' (Belarusian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.be-BY.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.be-BY.description%"
             },
             "br-FR": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `br-FR` (Breton) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'br-FR' (Breton) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.br-FR.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.br-FR.description%"
             },
             "ca-ES": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ca-ES` (Catalan) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'ca-ES' (Catalan) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.ca-ES.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.ca-ES.description%"
             },
             "ca-ES-valencia": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ca-ES-valencia` (Catalan (Valencian)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'ca-ES-valencia' (Catalan (Valencian)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.ca-ES-valencia.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.ca-ES-valencia.description%"
             },
             "da-DK": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `da-DK` (Danish) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'da-DK' (Danish) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.da-DK.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.da-DK.description%"
             },
             "de": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de` (German) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'de' (German) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.de.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.de.description%"
             },
             "de-AT": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de-AT` (German (Austria)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'de-AT' (German (Austria)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.de-AT.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.de-AT.description%"
             },
             "de-CH": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de-CH` (German (Swiss)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'de-CH' (German (Swiss)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.de-CH.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.de-CH.description%"
             },
             "de-DE": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de-DE` (German (Germany)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'de-DE' (German (Germany)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.de-DE.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.de-DE.description%"
             },
             "de-DE-x-simple-language": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `de-DE-x-simple-language` (Simple German) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'de-DE-x-simple-language' (Simple German) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.de-DE-x-simple-language.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.de-DE-x-simple-language.description%"
             },
             "el-GR": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `el-GR` (Greek) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'el-GR' (Greek) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.el-GR.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.el-GR.description%"
             },
             "en": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en` (English) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'en' (English) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.en.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.en.description%"
             },
             "en-AU": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-AU` (English (Australian)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'en-AU' (English (Australian)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.en-AU.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.en-AU.description%"
             },
             "en-CA": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-CA` (English (Canadian)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'en-CA' (English (Canadian)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.en-CA.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.en-CA.description%"
             },
             "en-GB": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-GB` (English (GB)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'en-GB' (English (GB)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.en-GB.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.en-GB.description%"
             },
             "en-NZ": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-NZ` (English (New Zealand)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'en-NZ' (English (New Zealand)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.en-NZ.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.en-NZ.description%"
             },
             "en-US": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-US` (English (US)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'en-US' (English (US)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.en-US.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.en-US.description%"
             },
             "en-ZA": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `en-ZA` (English (South African)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'en-ZA' (English (South African)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.en-ZA.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.en-ZA.description%"
             },
             "eo": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `eo` (Esperanto) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'eo' (Esperanto) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.eo.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.eo.description%"
             },
             "es": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `es` (Spanish) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'es' (Spanish) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.es.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.es.description%"
             },
             "fa": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `fa` (Persian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'fa' (Persian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.fa.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.fa.description%"
             },
             "fr": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `fr` (French) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'fr' (French) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.fr.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.fr.description%"
             },
             "ga-IE": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ga-IE` (Irish) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'ga-IE' (Irish) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.ga-IE.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.ga-IE.description%"
             },
             "gl-ES": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `gl-ES` (Galician) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'gl-ES' (Galician) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.gl-ES.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.gl-ES.description%"
             },
             "it": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `it` (Italian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'it' (Italian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.it.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.it.description%"
             },
             "ja-JP": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ja-JP` (Japanese) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'ja-JP' (Japanese) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.ja-JP.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.ja-JP.description%"
             },
             "km-KH": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `km-KH` (Khmer) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'km-KH' (Khmer) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.km-KH.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.km-KH.description%"
             },
             "nl": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `nl` (Dutch) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'nl' (Dutch) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.nl.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.nl.description%"
             },
             "pl-PL": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pl-PL` (Polish) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'pl-PL' (Polish) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.pl-PL.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.pl-PL.description%"
             },
             "pt": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt` (Portuguese) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'pt' (Portuguese) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.pt.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.pt.description%"
             },
             "pt-AO": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-AO` (Portuguese (Angola preAO)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'pt-AO' (Portuguese (Angola preAO)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.pt-AO.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.pt-AO.description%"
             },
             "pt-BR": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-BR` (Portuguese (Brazil)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'pt-BR' (Portuguese (Brazil)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.pt-BR.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.pt-BR.description%"
             },
             "pt-MZ": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-MZ` (Portuguese (Moçambique preAO)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'pt-MZ' (Portuguese (Moçambique preAO)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.pt-MZ.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.pt-MZ.description%"
             },
             "pt-PT": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `pt-PT` (Portuguese (Portugal)) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'pt-PT' (Portuguese (Portugal)) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.pt-PT.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.pt-PT.description%"
             },
             "ro-RO": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ro-RO` (Romanian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'ro-RO' (Romanian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.ro-RO.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.ro-RO.description%"
             },
             "ru-RU": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ru-RU` (Russian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'ru-RU' (Russian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.ru-RU.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.ru-RU.description%"
             },
             "sk-SK": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `sk-SK` (Slovak) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'sk-SK' (Slovak) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.sk-SK.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.sk-SK.description%"
             },
             "sl-SI": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `sl-SI` (Slovenian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'sl-SI' (Slovenian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.sl-SI.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.sl-SI.description%"
             },
             "sv": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `sv` (Swedish) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'sv' (Swedish) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.sv.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.sv.description%"
             },
             "ta-IN": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `ta-IN` (Tamil) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'ta-IN' (Tamil) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.ta-IN.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.ta-IN.description%"
             },
             "tl-PH": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `tl-PH` (Tagalog) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'tl-PH' (Tagalog) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.tl-PH.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.tl-PH.description%"
             },
             "uk-UA": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `uk-UA` (Ukrainian) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'uk-UA' (Ukrainian) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.uk-UA.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.uk-UA.description%"
             },
             "zh-CN": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "markdownDescription": "List of additional `zh-CN` (Chinese) rules that should be enabled (if disabled by default by LanguageTool).",
-              "description": "List of additional 'zh-CN' (Chinese) rules that should be enabled (if disabled by default by LanguageTool)."
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.zh-CN.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.zh-CN.description%"
             }
           },
-          "markdownDescription": "Lists of rules that should be enabled (if disabled by default by LanguageTool). The lists are language-specific, so use an object of the format `{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}`, where `<LANGUAGE>` denotes the language code in `ltex.language` and `<RULE>` the ID of the LanguageTool rule. By default, no additional rules will be enabled.",
-          "description": "Lists of rules that should be enabled (if disabled by default by LanguageTool). This setting is language-specific, so you have to use an object of the format '{\"<LANGUAGE1>\": [\"<RULE1>\", \"<RULE2>\", ...], \"<LANGUAGE2>\": [\"<RULE1>\", \"<RULE2>\", ...], ...}', where '<LANGUAGE>' denotes the language code in 'ltex.language' and '<RULE>' the ID of the LanguageTool rule. By default, no additional rules will be enabled.",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.enabledRules.description%",
           "examples": [
             {
               "en-GB": [
@@ -1326,15 +1326,15 @@
           "type": "string",
           "scope": "window",
           "default": "",
-          "markdownDescription": "If set to an empty string, LTeX automatically downloads the [latest compatible release of ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. Use the path to the root directory of ltex-ls (it contains `bin` and `lib` subdirectories). Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "If set to an empty string, LTeX automatically downloads the latest compatible release of ltex-ls from GitHub (see https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. Use the path to the root directory of ltex-ls (it contains 'bin' and 'lib' subdirectories). Changes require reloading the Visual Studio Code window to take effect."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.path.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.ltex-ls.path.description%"
         },
         "ltex.ltex-ls.languageToolHttpServerUri": {
           "type": "string",
           "scope": "window",
           "default": "",
-          "markdownDescription": "If set to a non-empty string, LTeX will not use the bundled, built-in version of LanguageTool. Instead, LTeX will connect to an external [LanguageTool HTTP server](http://wiki.languagetool.org/http-server). Set this setting to the root URI of the server, and do not append `v2/check` or similar. Note that in this mode, the settings under `ltex.dictionary` and `ltex.additionalRules` will not take any effect, and the `Add to dictionary` quick fix will not appear.",
-          "description": "If set to a non-empty string, LTeX will not use the bundled, built-in version of LanguageTool. Instead, LTeX will connect to an external LanguageTool HTTP server (see http://wiki.languagetool.org/http-server for more information). Set this setting to the root URI of the server, and do not append 'v2/check' or similar. Note that in this mode, the settings under 'ltex.dictionary' and 'ltex.additionalRules' will not take any effect, and the 'Add to dictionary' quick fix will not appear.",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.languageToolHttpServerUri.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.ltex-ls.languageToolHttpServerUri.description%",
           "examples": [
             "http://localhost:8081/"
           ]
@@ -1343,22 +1343,22 @@
           "type": "string",
           "scope": "window",
           "default": "",
-          "markdownDescription": "If set to an empty string and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the `JAVA_HOME` environment variable (it usually contains `bin` and `lib` subdirectories, amongst others). Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "If set to an empty string and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution (AdoptOpenJDK, see https://adoptopenjdk.net/), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the 'JAVA_HOME' environment variable (it usually contains 'bin' and 'lib' subdirectories, amongst others). Changes require reloading the Visual Studio Code window to take effect."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.java.path.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.java.path.description%"
         },
         "ltex.java.initialHeapSize": {
           "type": "integer",
           "scope": "window",
           "default": 64,
-          "markdownDescription": "Initial size of the Java heap memory in megabytes (corresponds to Java's `-Xms` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "Initial size of the Java heap memory in megabytes (corresponds to Java's '-Xms' option). Decreasing this might decrease RAM usage of the Java process. Changes require reloading the Visual Studio Code window to take effect."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.java.initialHeapSize.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.java.initialHeapSize.description%"
         },
         "ltex.java.maximumHeapSize": {
           "type": "integer",
           "scope": "window",
           "default": 512,
-          "markdownDescription": "Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` option, must be a positive integer). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an `OutOfMemoryError` is thrown. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "Maximum size of the Java heap memory in megabytes (corresponds to Java's '-Xmx' option). Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an 'OutOfMemoryError' is thrown. Changes require reloading the Visual Studio Code window to take effect."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.java.maximumHeapSize.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.java.maximumHeapSize.description%"
         },
         "ltex.commands.ignore": {
           "type": "array",
@@ -1367,8 +1367,8 @@
           "items": {
             "type": "string"
           },
-          "markdownDescription": "List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., `\"\\\\ref{}\"`, `\"\\\\documentclass[]{}\"`). The whole command with its arguments is ignored. The difference to commands that are unknown to the LaTeX parser is that for these, the parser only ignores the command name part and leaves the arguments as they are. Don't forget to escape the initial backslash by replacing it with two backslashes. Note that many common commands are already ignored by default, even if you set this setting to an empty array.",
-          "description": "List of additional LaTeX commands to be ignored by the LaTeX parser, listed together with empty arguments (e.g., '\"\\\\ref{}\"', '\"\\\\documentclass[]{}\"'). The whole command with its arguments is ignored. The difference to commands that are unknown to the LaTeX parser is that for these, the parser only ignores the command name part and leaves the arguments as they are. Don't forget to escape the initial backslash by replacing it with two backslashes. Note that many common commands are already ignored by default, even if you set this setting to an empty array.",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.commands.ignore.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.commands.ignore.description%",
           "examples": [
             "\\ref{}",
             "\\documentclass[]{}"
@@ -1381,8 +1381,8 @@
           "items": {
             "type": "string"
           },
-          "markdownDescription": "List of additional LaTeX commands to be replaced with dummy words (i.e., `Dummy0`, `Dummy1`, etc.), listed together with empty arguments (e.g., `\"\\\\cite{}\"`, `\"\\\\cite[]{}\"`). The whole command with its arguments is replaced with the dummy word. LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes. Note that many common commands are already replaced with dummy words by default, even if you set this setting to an empty array.",
-          "description": "List of additional LaTeX commands to be replaced with dummy words (i.e., Dummy0, Dummy1, etc.), listed together with empty arguments (e.g., '\"\\\\cite{}\"', '\"\\\\cite[]{}\"'). The whole command with its arguments is replaced with the dummy word. LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. Don't forget to escape the initial backslash by replacing it with two backslashes. Note that many common commands are already replaced with dummy words by default, even if you set this setting to an empty array.",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.commands.dummy.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.commands.dummy.description%",
           "examples": [
             "\\cite{}",
             "\\cite[]{}"
@@ -1395,8 +1395,8 @@
           "items": {
             "type": "string"
           },
-          "markdownDescription": "List of additional LaTeX environments to be ignored by the LaTeX parser. Note that some environments are already ignored by default, even if you set this setting to an empty array.",
-          "description": "List of additional LaTeX environments to be ignored by the LaTeX parser. Note that some environments are ignored by default, even if you set this setting to an empty array.",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.environments.ignore.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.environments.ignore.description%",
           "examples": [
             "lstlisting",
             "verbatim"
@@ -1413,8 +1413,8 @@
           "items": {
             "type": "string"
           },
-          "markdownDescription": "List of Markdown node types to be ignored by the Markdown parser. The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type `Text`. LTeX will ignore all nodes (and their `Text` leaves) that have one of the listed node types. The possible node types are listed in the [documentation of flexmark-java](https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html).",
-          "description": "List of Markdown node types to be ignored by the Markdown parser. The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type 'Text'. LTe>X will ignore all nodes (and their 'Text' leaves) that have one of the listed node types. The possible node types are listed in the documentation of flexmark-java at https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.markdown.ignore.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.markdown.ignore.description%"
         },
         "ltex.markdown.dummy": {
           "type": "array",
@@ -1426,8 +1426,8 @@
           "items": {
             "type": "string"
           },
-          "markdownDescription": "List of Markdown node types to be replaced by dummy words (i.e., `Dummy0`, `Dummy1`, etc.) by the Markdown parser. LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. The possible node types are listed in the [documentation of flexmark-java](https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html).",
-          "description": "List of Markdown node types to be replaced by dummy words (i.e., 'Dummy0', 'Dummy1', etc.) by the Markdown parser. LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text. The possible node types are listed in the documentation of flexmark-java at https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.60.2/com/vladsch/flexmark/ast/package-summary.html."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.markdown.dummy.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.markdown.dummy.description%"
         },
         "ltex.ignoreRuleInSentence": {
           "type": "array",
@@ -1445,18 +1445,18 @@
             "properties": {
               "rule": {
                 "type": "string",
-                "markdownDescription": "The identifier of the LanguageTool rule.",
-                "description": "The identifier of the LanguageTool rule."
+                "markdownDescription": "%ltex.i18n.configuration.ltex.ignoreRuleInSentence.rule.markdownDescription%",
+                "description": "%ltex.i18n.configuration.ltex.ignoreRuleInSentence.rule.description%"
               },
               "sentence": {
                 "type": "string",
-                "markdownDescription": "The sentence after parsing as supplied to LanguageTool.",
-                "description": "The sentence after parsing as supplied to LanguageTool."
+                "markdownDescription": "%ltex.i18n.configuration.ltex.ignoreRuleInSentence.sentence.markdownDescription%",
+                "description": "%ltex.i18n.configuration.ltex.ignoreRuleInSentence.sentence.description%"
               }
             }
           },
-          "markdownDescription": "Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. This is a list of objects with two keys each, `rule` and `sentence`. The `rule` value is the identifier of the LanguageTool rule to be ignored. The `sentence` value is a Java-compatible regular expression. All occurrences of the given rule are ignored in sentences (as determined by the LanguageTool tokenizer) that match the regular expression. Although it is possible to manually edit this setting, the intended way is to add rule/sentence pairs by using the `Ignore in this sentence` quick fix. If this list is very large, performance may suffer.",
-          "description": "Individual rule/sentence pairs to ignore, i.e., no diagnostics of the specified rule will be displayed for the specified sentence. This is a list of objects with two keys each, 'rule' and 'sentence'. The 'rule' value is the identifier of the LanguageTool rule to be ignored. The 'sentence' value is a Java-compatible regular expression. All occurrences of the given rule are ignored in sentences (as determined by the LanguageTool tokenizer) that match the regular expression. Although it is possible to manually edit this setting, the intended way is to add rule/sentence pairs by using the 'Ignore in this sentence' quick fix. If this list is very large, performance may suffer."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.ignoreRuleInSentence.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.ignoreRuleInSentence.description%"
         },
         "ltex.configurationTarget": {
           "type": "object",
@@ -1483,9 +1483,9 @@
                 "workspaceFolder"
               ],
               "enumDescriptions": [
-                "When adding a word to the dictionary, always update the global configuration.",
-                "When adding a word to the dictionary, update the workspace configuration if currently in a workspace, otherwise update the global configuration.",
-                "When adding a word to the dictionary, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the global configuration."
+                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.addToDictionary.global.enumDescription%",
+                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.addToDictionary.workspace.enumDescription%",
+                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.addToDictionary.workspaceFolder.enumDescription%"
               ]
             },
             "disableRule": {
@@ -1496,9 +1496,9 @@
                 "workspaceFolder"
               ],
               "enumDescriptions": [
-                "When disabling a rule, always update the global configuration.",
-                "When disabling a rule, update the workspace configuration if currently in a workspace, otherwise update the global configuration.",
-                "When disabling a rule, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the global configuration."
+                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.disableRule.global.enumDescription%",
+                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.disableRule.workspace.enumDescription%",
+                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.disableRule.workspaceFolder.enumDescription%"
               ]
             },
             "ignoreRuleInSentence": {
@@ -1509,21 +1509,21 @@
                 "workspaceFolder"
               ],
               "enumDescriptions": [
-                "When ignoring a rule in a sentence, always update the global configuration.",
-                "When ignoring a rule in a sentence, update the workspace configuration if currently in a workspace, otherwise update the global configuration.",
-                "When ignoring a rule in a sentence, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the global configuration."
+                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.ignoreRuleInSentence.global.enumDescription%",
+                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.ignoreRuleInSentence.workspace.enumDescription%",
+                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.ignoreRuleInSentence.workspaceFolder.enumDescription%"
               ]
             }
           },
-          "markdownDescription": "Controls which `settings.json` to update when using one of the quick fixes. `\"global\"` always updates the global configuration. `\"workspace\"` updates the workspace configuration if currently in a workspace, otherwise the global configuration. `\"workspaceFolder\"` updates the workspace folder configuration if currently in a workspace folder, otherwise the workspace configuration if currently in a workspace, otherwise the global configuration.",
-          "description": "Controls which 'settings.json' to update when using one of the quick fixes. \"global\" always updates the global configuration. \"workspace\" updates the workspace configuration if currently in a workspace, otherwise the global configuration. \"workspaceFolder\" updates the workspace folder configuration if currently in a workspace folder, otherwise the workspace configuration if currently in a workspace, otherwise the global configuration."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.i18n.configurationTarget.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.i18n.configurationTarget.description%"
         },
         "ltex.additionalRules.motherTongue": {
           "type": "string",
           "scope": "resource",
           "default": "",
-          "markdownDescription": "Optional mother tongue of the user (e.g., `\"de-DE\"`). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see `ltex.additionalRules.languageModel`).",
-          "description": "Optional mother tongue of the user (e.g., \"de-DE\"). If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see ltex.additionalRules.languageModel).",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.additionalRules.motherTongue.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.additionalRules.motherTongue.description%",
           "examples": [
             "en-US",
             "de-DE"
@@ -1533,29 +1533,29 @@
           "type": "string",
           "scope": "resource",
           "default": "",
-          "markdownDescription": "Optional path to a directory with rules of a language model with *n*-gram occurrence counts.",
-          "description": "Optional path to a directory with rules of a language model with n-gram occurrence counts."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.additionalRules.languageModel.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.additionalRules.languageModel.description%"
         },
         "ltex.additionalRules.neuralNetworkModel": {
           "type": "string",
           "scope": "resource",
           "default": "",
-          "markdownDescription": "Optional path to a directory with rules of a pretrained neural network model.",
-          "description": "Optional path to a directory with rules of a pretrained neural network model."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.additionalRules.neuralNetworkModel.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.additionalRules.neuralNetworkModel.description%"
         },
         "ltex.additionalRules.word2VecModel": {
           "type": "string",
           "scope": "resource",
           "default": "",
-          "markdownDescription": "Optional path to a directory with rules of a word2vec language model.",
-          "description": "Optional path to a directory with rules of a word2vec language model."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.additionalRules.word2VecModel.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.additionalRules.word2VecModel.description%"
         },
         "ltex.sentenceCacheSize": {
           "type": "integer",
           "scope": "resource",
           "default": 2000,
-          "markdownDescription": "Size of the LanguageTool `ResultCache` in sentences (must be a positive integer). If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "Size of the LanguageTool 'ResultCache' in sentences. If only a small portion of the text changed (e.g., a single key press in the editor), LanguageTool uses the cache to avoid rechecking the complete text. LanguageTool internally splits the text into sentences, and sentences that have already been checked are skipped. Decreasing this might decrease RAM usage of the Java process. If you set this too small, checking time may increase significantly. Changes require reloading the Visual Studio Code window to take effect."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.sentenceCacheSize.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.sentenceCacheSize.description%"
         },
         "ltex.diagnosticSeverity": {
           "type": "string",
@@ -1568,13 +1568,13 @@
             "hint"
           ],
           "enumDescriptions": [
-            "Error diagnostics are usually underlined with a red squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
-            "Warning diagnostics are usually underlined with a yellow squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
-            "Information diagnostics are usually underlined with a blue squiggly line and appear in editor, minimap, and Problems tab, but not in the Explorer.",
-            "Hint diagnostics are not underlined (only subtly marked) and only appear in the editor, not in minimap, Problems tab, or Explorer."
+            "%ltex.i18n.configuration.ltex.diagnosticSeverity.error.enumDescription%",
+            "%ltex.i18n.configuration.ltex.diagnosticSeverity.warning.enumDescription%",
+            "%ltex.i18n.configuration.ltex.diagnosticSeverity.information.enumDescription%",
+            "%ltex.i18n.configuration.ltex.diagnosticSeverity.hint.enumDescription%"
           ],
-          "markdownDescription": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code. One of `\"error\"`, `\"warning\"`, `\"information\"`, and `\"hint\"`.",
-          "description": "Severity of the diagnostics corresponding to the grammar and spelling errors. Allows to control how and where the diagnostics appear in Visual Studio Code. One of \"error\", \"warning\", \"information\", and \"hint\"."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.diagnosticSeverity.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.diagnosticSeverity.description%"
         },
         "ltex.trace.server": {
           "type": "string",
@@ -1586,12 +1586,12 @@
             "verbose"
           ],
           "enumDescriptions": [
-            "Don't log any of the communication between language client and server.",
-            "Log the type of requests and responses between language client and server.",
-            "Log the type and contents of requests and responses between language client and server."
+            "%ltex.i18n.configuration.ltex.trace.server.off.enumDescription%",
+            "%ltex.i18n.configuration.ltex.trace.server.messages.enumDescription%",
+            "%ltex.i18n.configuration.ltex.trace.server.verbose.enumDescription%"
           ],
-          "markdownDescription": "Debug setting to log the communication between language client and server. When reporting issues, set this to `\"verbose\"` and open the `LTeX Language Client` log in `View` → `Output`. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.",
-          "description": "Debug setting to log the communication between language client and server. When reporting issues, set this to \"verbose\" and open the 'LTeX Language Client' log in 'View' → 'Output'. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect."
+          "markdownDescription": "%ltex.i18n.configuration.ltex.trace.server.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.trace.server.description%"
         },
         "ltex.javaHome": {
           "type": [

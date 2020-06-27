@@ -3,6 +3,7 @@ import * as CodeLanguageClient from 'vscode-languageclient';
 
 import BugReporter from './BugReporter';
 import Dependencies from './Dependencies';
+import {I18n, i18n} from './I18n';
 import Logger from './Logger';
 import LoggingOutputChannel from './LoggingOutputChannel';
 import TelemetryProcessor from './TelemetryProcessor';
@@ -17,26 +18,24 @@ let dependencies: Dependencies | null = null;
 
 async function languageClientIsReady(disposable: Code.Disposable): Promise<void> {
   disposable.dispose();
-  Code.window.setStatusBarMessage('$(check) LTeX ready', 1000);
+  Code.window.setStatusBarMessage(`$(check) ${i18n('ltexReady')}`, 1000);
 
   const numberOfLanguageSupportExtensions: number = Code.extensions.all.filter(
       (x: Code.Extension<any>) => x.id.startsWith('valentjn.vscode-ltex-')).length;
 
   if (numberOfLanguageSupportExtensions > 0) {
-    let message: string = 'Thanks for upgrading to LTeX 5.x! ';
+    let message: string = `${i18n('thanksForUpgradingToLtex5x')} `;
 
     if (numberOfLanguageSupportExtensions > 1) {
-      message += 'You should remove the LTeX language support ' +
-          'extensions now. They are not needed anymore. ';
+      message += `${i18n('removeLanguageSupportExtensions')} `;
     } else {
-      message += 'You should remove the LTeX language support ' +
-          'extension now. It is not needed anymore. ';
+      message += `${i18n('removeLanguageSupportExtension')} `;
     }
 
-    message += 'Review a summary of important major changes.';
+    message += i18n('reviewSummaryOfImportantMajorChanges');
 
     Code.window.showInformationMessage(message,
-          'More info about LTeX 5.x').then((selectedItem: string | undefined) => {
+          i18n('moreInfoAboutLtex5x')).then((selectedItem: string | undefined) => {
       if (selectedItem != null) {
         Code.env.openExternal(Code.Uri.parse(
             'https://valentjn.github.io/vscode-ltex/docs/transitioning-to-ltex-5x.html'));
@@ -56,7 +55,7 @@ async function startLanguageClient(context: Code.ExtensionContext):
   if (success !== true) return Promise.resolve(null);
 
   const statusBarMessageDisposable: Code.Disposable =
-      Code.window.setStatusBarMessage('$(loading~spin) Starting LTeX...', 60000);
+      Code.window.setStatusBarMessage(`$(loading~spin) ${i18n('startingLtex')}`, 60000);
   const serverOptions: CodeLanguageClient.ServerOptions = await dependencies.getLtexLsExecutable();
 
   // Options to control the language client
@@ -84,7 +83,7 @@ async function startLanguageClient(context: Code.ExtensionContext):
       };
 
   const languageClient: CodeLanguageClient.LanguageClient = new CodeLanguageClient.LanguageClient(
-      'ltex', 'LTeX Language Server', serverOptions, clientOptions);
+      'ltex', i18n('ltexLanguageServer'), serverOptions, clientOptions);
 
   languageClient.onReady().then(languageClientIsReady.bind(null, statusBarMessageDisposable));
 
@@ -95,11 +94,11 @@ async function startLanguageClient(context: Code.ExtensionContext):
   const telemetryProcessor: TelemetryProcessor = new TelemetryProcessor(context);
   languageClient.onTelemetry(telemetryProcessor.process, telemetryProcessor);
 
-  Logger.log('Starting ltex-ls...');
+  Logger.log(i18n('startingLtexLs'));
   Logger.logExecutable(serverOptions);
   Logger.log('');
 
-  languageClient.info('Starting ltex-ls...');
+  languageClient.info(i18n('startingLtexLs'));
   const languageClientDisposable: Code.Disposable = languageClient.start();
 
   // Push the disposable to the context's subscriptions so that the
@@ -112,6 +111,7 @@ async function startLanguageClient(context: Code.ExtensionContext):
 
 export async function activate(context: Code.ExtensionContext): Promise<Api> {
   Logger.createOutputChannels(context);
+  I18n.initialize(context);
 
   const api: Api = new Api();
   api.clientOutputChannel = Logger.clientOutputChannel;
@@ -130,9 +130,9 @@ export async function activate(context: Code.ExtensionContext): Promise<Api> {
       // create the language client
       api.languageClient = await startLanguageClient(context);
     } catch (e) {
-      Logger.error('Could not start the language client!', e);
+      Logger.error(i18n('couldNotStartLanguageClient'), e);
       Logger.showClientOutputChannel();
-      Code.window.showErrorMessage('Could not start the language client.');
+      Code.window.showErrorMessage(i18n('couldNotStartLanguageClient'));
     }
   }
 

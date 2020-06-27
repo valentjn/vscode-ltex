@@ -2,6 +2,8 @@
 
 ## 6.0.0 (upcoming)
 
+- Add support for internationalized user interface of LT<sub>E</sub>X
+- Add German translations for user interface of LT<sub>E</sub>X
 - Delay diagnostics at the current caret position (e.g., incomplete word or sentence) until the user has finished typing (fixes [#46](https://github.com/valentjn/vscode-ltex/issues/46))
 - Add command `LTeX: Report bug in LTeX` for reporting LT<sub>E</sub>X bugs from within VS Code
 - Fix `\todo` couldn't be ignored (fixes [#63](https://github.com/valentjn/vscode-ltex/issues/63))
