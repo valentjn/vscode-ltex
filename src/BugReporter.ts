@@ -2,6 +2,7 @@ import * as Code from 'vscode';
 import * as Fs from 'fs';
 import * as Os from 'os';
 import * as Path from 'path';
+import * as Querystring from 'querystring';
 
 import Dependencies from './Dependencies';
 import {i18n} from './I18n';
@@ -135,7 +136,8 @@ export default class BugReporter {
         Code.env.openExternal(Code.Uri.parse(BugReporter._howToUrl));
       } else if (selectedItem == i18n('copyReportAndCreateIssue')) {
         Code.env.clipboard.writeText(bugReport);
-        Code.env.openExternal(Code.Uri.parse(BugReporter._reportBugUrl));
+        Code.env.openExternal(Code.Uri.parse(BugReporter._reportBugUrl +
+            Querystring.escape(i18n('enterSummaryOfIssueInTitleFieldAndReplaceSentence'))));
       }
     });
   }

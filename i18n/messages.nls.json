@@ -28,6 +28,7 @@
   "downloadOrExtractionOfLtexLsFailed": "The download or extraction of ltex-ls failed!",
   "downloadOrExtractionOfJavaFailed": "The download or extraction of Java failed. Trying to run Java via PATH or JAVA_HOME.",
   "downloadExtractionRunOfJavaFailed": "The download/extraction/run of Java failed!",
+  "enterSummaryOfIssueInTitleFieldAndReplaceSentence": "Enter a summary of the issue in the title field above and replace this sentence with the bug report from your clipboard.",
   "exitCodeOfLtexLs": "Exit code of ltex-ls: {0}",
   "extracting": "Extracting {0}...",
   "extractingTo": "Extracting '{0}' to '{1}'...",
