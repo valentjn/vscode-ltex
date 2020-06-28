@@ -826,7 +826,7 @@ If set to an empty string, LTeX automatically downloads the [latest compatible r
 
 ## `ltex.ltex-ls.languageToolHttpServerUri`
 
-If set to a non-empty string, LTeX will not use the bundled, built-in version of LanguageTool. Instead, LTeX will connect to an external [LanguageTool HTTP server](http://wiki.languagetool.org/http-server). Set this setting to the root URI of the server, and do not append `v2/check` or similar. Note that in this mode, the settings under [`ltex.dictionary`](settings.html#ltexdictionary) and `ltex.additionalRules` will not take any effect, and the `Add to dictionary` quick fix will not appear.
+If set to a non-empty string, LTeX will not use the bundled, built-in version of LanguageTool. Instead, LTeX will connect to an external [LanguageTool HTTP server](http://wiki.languagetool.org/http-server). Set this setting to the root URI of the server, and do not append `v2/check` or similar. Note that in this mode, the settings [`ltex.dictionary`](settings.html#ltexdictionary) and `ltex.additionalRules` will not take any effect, and the `Add to dictionary` quick fix will not appear.
 
 *Type:* `string`
 
@@ -982,7 +982,7 @@ Array where each entry has the following type:
   - `"rule"`: The identifier of the LanguageTool rule.
 
     Scalar of type `string`
-  - `"sentence"`: The sentence after parsing as supplied to LanguageTool.
+  - `"sentence"`: The sentence after parsing as supplied by LanguageTool.
 
     Scalar of type `string`
 
