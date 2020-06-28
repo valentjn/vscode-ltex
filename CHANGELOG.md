@@ -1,6 +1,6 @@
 # Changelog
 
-## 6.0.0 (upcoming)
+## 6.0.0 — “The Internationalization Proposition” (June 28, 2020)
 
 - Update LanguageTool to 5.0 (see [LT 5.0 release notes](https://github.com/languagetool-org/languagetool/blob/v5.0/languagetool-standalone/CHANGES.md#50-2020-06-27))
 - Add support for internationalized user interface of LT<sub>E</sub>X
