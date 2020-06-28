@@ -189,8 +189,6 @@ export default class Dependencies {
       await Tar.extract({file: archivePath, cwd: tmpDirPath});
     }
 
-    Logger.log(i18n('deleting', archivePath));
-    Fs.unlinkSync(archivePath);
     codeProgress.updateTask(0.8);
 
     const fileNames: string[] = Fs.readdirSync(tmpDirPath);
