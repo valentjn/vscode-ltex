@@ -116,44 +116,44 @@ def updatePackageJson(ltLanguageShortCodes, ltLanguageNames):
     json.dump(packageJson, f, indent=2, ensure_ascii=False)
     f.write("\n")
 
-def updatePackageI18nJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
-  packageI18nJsonPath = (os.path.join(ltexPath, "package.nls.json") if uiLanguage == "eng" else
-      os.path.join(ltexPath, "i18n", uiLanguage, "package.i18n.json"))
-  with open(packageI18nJsonPath, "r") as f: oldPackageI18nJson = json.load(f)
+def updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
+  packageNlsJsonPath = (os.path.join(ltexPath, "package.nls.json") if uiLanguage == "en" else
+      os.path.join(ltexPath, "package.nls.{}.json".format(uiLanguage)))
+  with open(packageNlsJsonPath, "r") as f: oldPackageNlsJson = json.load(f)
 
-  newPackageI18nJson = {}
+  newPackageNlsJson = {}
 
-  for key, value in oldPackageI18nJson.items():
+  for key, value in oldPackageNlsJson.items():
     if key == "ltex.i18n.configuration.ltex.language.description":
-      newPackageI18nJson[key] = value
+      newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
         prefix = f"ltex.i18n.configuration.ltex.language.{ltLanguageShortCode}"
-        newPackageI18nJson[f"{prefix}.enumDescription"] = ltLanguageName
+        newPackageNlsJson[f"{prefix}.enumDescription"] = ltLanguageName
 
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.language\..+\.", key) is not None:
       continue
 
     elif key == "ltex.i18n.configuration.ltex.dictionary.description":
-      newPackageI18nJson[key] = value
+      newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
         prefix = f"ltex.i18n.configuration.ltex.dictionary.{ltLanguageShortCode}"
 
-        if uiLanguage == "deu":
-          newPackageI18nJson[f"{prefix}.markdownDescription"] = (
+        if uiLanguage == "de":
+          newPackageNlsJson[f"{prefix}.markdownDescription"] = (
               "Liste von zusätzlichen Wörtern der Sprache "
               f"`{ltLanguageShortCode}` ({ltLanguageName}), die nicht als Schreibfehler "
               "gewertet werden sollen.")
-          newPackageI18nJson[f"{prefix}.description"] = (
+          newPackageNlsJson[f"{prefix}.description"] = (
               "Liste von zusätzlichen Wörtern der Sprache "
               f"'{ltLanguageShortCode}' ({ltLanguageName}), die nicht als Schreibfehler "
               "gewertet werden sollen.")
         else:
-          newPackageI18nJson[f"{prefix}.markdownDescription"] = (
+          newPackageNlsJson[f"{prefix}.markdownDescription"] = (
               f"List of additional `{ltLanguageShortCode}` ({ltLanguageName}) words that should "
               "not be counted as spelling errors.")
-          newPackageI18nJson[f"{prefix}.description"] = (
+          newPackageNlsJson[f"{prefix}.description"] = (
               f"List of additional '{ltLanguageShortCode}' ({ltLanguageName}) words that should "
               "not be counted as spelling errors.")
 
@@ -161,25 +161,25 @@ def updatePackageI18nJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
       continue
 
     elif key == "ltex.i18n.configuration.ltex.disabledRules.description":
-      newPackageI18nJson[key] = value
+      newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
         prefix = f"ltex.i18n.configuration.ltex.disabledRules.{ltLanguageShortCode}"
 
-        if uiLanguage == "deu":
-          newPackageI18nJson[f"{prefix}.markdownDescription"] = (
+        if uiLanguage == "de":
+          newPackageNlsJson[f"{prefix}.markdownDescription"] = (
               "Liste von zusätzlichen Regeln der Sprache "
               f"`{ltLanguageShortCode}` ({ltLanguageName}), die deaktiviert werden sollen "
               "(falls standardmäßig durch LanguageTool aktiviert).")
-          newPackageI18nJson[f"{prefix}.description"] = (
+          newPackageNlsJson[f"{prefix}.description"] = (
               "Liste von zusätzlichen Regeln der Sprache "
               f"'{ltLanguageShortCode}' ({ltLanguageName}), die deaktiviert werden sollen "
               "(falls standardmäßig durch LanguageTool aktiviert).")
         else:
-          newPackageI18nJson[f"{prefix}.markdownDescription"] = (
+          newPackageNlsJson[f"{prefix}.markdownDescription"] = (
               f"List of additional `{ltLanguageShortCode}` ({ltLanguageName}) rules that should "
               "be disabled (if enabled by default by LanguageTool).")
-          newPackageI18nJson[f"{prefix}.description"] = (
+          newPackageNlsJson[f"{prefix}.description"] = (
               f"List of additional '{ltLanguageShortCode}' ({ltLanguageName}) rules that should "
               "be disabled (if enabled by default by LanguageTool).")
 
@@ -187,25 +187,25 @@ def updatePackageI18nJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
       continue
 
     elif key == "ltex.i18n.configuration.ltex.enabledRules.description":
-      newPackageI18nJson[key] = value
+      newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
         prefix = f"ltex.i18n.configuration.ltex.enabledRules.{ltLanguageShortCode}"
 
-        if uiLanguage == "deu":
-          newPackageI18nJson[f"{prefix}.markdownDescription"] = (
+        if uiLanguage == "de":
+          newPackageNlsJson[f"{prefix}.markdownDescription"] = (
               "Liste von zusätzlichen Regeln der Sprache "
               f"`{ltLanguageShortCode}` ({ltLanguageName}), die aktiviert werden sollen "
               "(falls standardmäßig durch LanguageTool deaktiviert).")
-          newPackageI18nJson[f"{prefix}.description"] = (
+          newPackageNlsJson[f"{prefix}.description"] = (
               "Liste von zusätzlichen Regeln der Sprache "
               f"'{ltLanguageShortCode}' ({ltLanguageName}), die aktiviert werden sollen "
               "(falls standardmäßig durch LanguageTool deaktiviert).")
         else:
-          newPackageI18nJson[f"{prefix}.markdownDescription"] = (
+          newPackageNlsJson[f"{prefix}.markdownDescription"] = (
               f"List of additional `{ltLanguageShortCode}` ({ltLanguageName}) rules that should "
               "be enabled (if disabled by default by LanguageTool).")
-          newPackageI18nJson[f"{prefix}.description"] = (
+          newPackageNlsJson[f"{prefix}.description"] = (
               f"List of additional '{ltLanguageShortCode}' ({ltLanguageName}) rules that should "
               "be enabled (if disabled by default by LanguageTool).")
 
@@ -213,10 +213,10 @@ def updatePackageI18nJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
       continue
 
     else:
-      newPackageI18nJson[key] = value
+      newPackageNlsJson[key] = value
 
-  with open(packageI18nJsonPath, "w") as f:
-    json.dump(newPackageI18nJson, f, indent=2, ensure_ascii=False)
+  with open(packageNlsJsonPath, "w") as f:
+    json.dump(newPackageNlsJson, f, indent=2, ensure_ascii=False)
     f.write("\n")
 
 
@@ -243,12 +243,14 @@ def main():
   updatePackageJson(ltLanguageShortCodes, ltLanguageNames)
 
   print("Updating package.nls.json...")
-  updatePackageI18nJson(ltLanguageShortCodes, ltLanguageNames, "eng")
+  updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, "en")
 
-  for uiLanguage in sorted(os.listdir(os.path.join(ltexPath, "i18n"))):
-    if not os.path.isdir(os.path.join(ltexPath, "i18n", uiLanguage)): continue
-    print("Updating i18n/{}/package.i18n.json...".format(uiLanguage))
-    updatePackageI18nJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage)
+  for fileName in sorted(os.listdir(os.path.join(ltexPath))):
+    match = re.match(r"^package\.nls\.([A-Za-z0-9\-_]+)\.json$", fileName)
+    if match is None: continue
+    uiLanguage = match.group(1)
+    print("Updating package.nls.{}.json...".format(uiLanguage))
+    updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage)
 
 
 
