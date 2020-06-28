@@ -1,6 +1,6 @@
 ---
-title: "Transitioning to LTeX 5.x"
-permalink: "/docs/transitioning-to-ltex-5x.html"
+title: "Transitioning from LTeX 4.x"
+permalink: "/docs/transitioning-from-ltex-4x.html"
 sidebar: "sidebar"
 ---
 
