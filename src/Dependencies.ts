@@ -240,7 +240,7 @@ export default class Dependencies {
       Logger.log(i18n('deleting', tmpDirPath));
       Fs.rmdirSync(tmpDirPath);
     } catch (e) {
-      Logger.warn(i18n('couldNotDeleteLeavingTemporaryFileOnDisk', tmpDirPath), e);
+      Logger.warn(i18n('couldNotDeleteLeavingTemporaryDirectoryOnDisk', tmpDirPath), e);
     }
 
     codeProgress.finishTask();

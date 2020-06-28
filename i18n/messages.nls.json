@@ -2,6 +2,7 @@
   "creating": "Creating '{0}'...",
   "creatingBugReport": "Creating bug report...",
   "copyReportAndCreateIssue": "Copy report and create issue",
+  "couldNotDeleteLeavingTemporaryDirectoryOnDisk": "Could not delete '{0}', leaving temporary directory on disk.",
   "couldNotDeleteLeavingTemporaryFileOnDisk": "Could not delete '{0}', leaving temporary file on disk.",
   "couldNotDownloadOrExtractLtexLs": "Could not download or extract ltex-ls.",
   "couldNotDownloadExtractRunJava": "Could not download/extract/run Java.",
