@@ -66,7 +66,6 @@
           "default": "en-US",
           "enum": [
             "ar",
-            "ar-DZ",
             "ast-ES",
             "be-BY",
             "br-FR",
@@ -114,7 +113,6 @@
           ],
           "enumDescriptions": [
             "%ltex.i18n.configuration.ltex.language.ar.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.ar-DZ.enumDescription%",
             "%ltex.i18n.configuration.ltex.language.ast-ES.enumDescription%",
             "%ltex.i18n.configuration.ltex.language.be-BY.enumDescription%",
             "%ltex.i18n.configuration.ltex.language.br-FR.enumDescription%",
@@ -175,14 +173,6 @@
               },
               "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.ar.markdownDescription%",
               "description": "%ltex.i18n.configuration.ltex.dictionary.ar.description%"
-            },
-            "ar-DZ": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.ar-DZ.markdownDescription%",
-              "description": "%ltex.i18n.configuration.ltex.dictionary.ar-DZ.description%"
             },
             "ast-ES": {
               "type": "array",
@@ -565,14 +555,6 @@
               "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.ar.markdownDescription%",
               "description": "%ltex.i18n.configuration.ltex.disabledRules.ar.description%"
             },
-            "ar-DZ": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.ar-DZ.markdownDescription%",
-              "description": "%ltex.i18n.configuration.ltex.disabledRules.ar-DZ.description%"
-            },
             "ast-ES": {
               "type": "array",
               "items": {
@@ -949,14 +931,6 @@
               },
               "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.ar.markdownDescription%",
               "description": "%ltex.i18n.configuration.ltex.enabledRules.ar.description%"
-            },
-            "ar-DZ": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.ar-DZ.markdownDescription%",
-              "description": "%ltex.i18n.configuration.ltex.enabledRules.ar-DZ.description%"
             },
             "ast-ES": {
               "type": "array",
@@ -1653,27 +1627,6 @@
           "default": [],
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed. Use `\"ltex.disabledRules\": {\"ar\": [\"<RULE1>\", \"<RULE2>\", ...]}` instead.",
           "deprecationMessage": "Deprecated: This setting has been renamed. Use '\"ltex.disabledRules\": {\"ar\": [\"<RULE1>\", \"<RULE2>\", ...]}' instead."
-        },
-        "ltex.ar-DZ.dictionary": {
-          "type": "array",
-          "scope": "resource",
-          "default": [],
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed. Use `\"ltex.dictionary\": {\"ar-DZ\": [\"<WORD1>\", \"<WORD2>\", ...]}` instead.",
-          "deprecationMessage": "Deprecated: This setting has been renamed. Use '\"ltex.dictionary\": {\"ar-DZ\": [\"<WORD1>\", \"<WORD2>\", ...]}' instead."
-        },
-        "ltex.ar-DZ.enabledRules": {
-          "type": "array",
-          "scope": "resource",
-          "default": [],
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed. Use `\"ltex.enabledRules\": {\"ar-DZ\": [\"<RULE1>\", \"<RULE2>\", ...]}` instead.",
-          "deprecationMessage": "Deprecated: This setting has been renamed. Use '\"ltex.enabledRules\": {\"ar-DZ\": [\"<RULE1>\", \"<RULE2>\", ...]}' instead."
-        },
-        "ltex.ar-DZ.disabledRules": {
-          "type": "array",
-          "scope": "resource",
-          "default": [],
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed. Use `\"ltex.disabledRules\": {\"ar-DZ\": [\"<RULE1>\", \"<RULE2>\", ...]}` instead.",
-          "deprecationMessage": "Deprecated: This setting has been renamed. Use '\"ltex.disabledRules\": {\"ar-DZ\": [\"<RULE1>\", \"<RULE2>\", ...]}' instead."
         },
         "ltex.ast-ES.dictionary": {
           "type": "array",
