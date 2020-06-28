@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import argparse
+import functools
 import json
 import os
 import re
@@ -22,8 +23,9 @@ def formatType(type_):
   else:
     return ", ".join(f"`{x}`" for x in type_[:-2]) + f", `{type_[-2]}` or `{type_[-1]}`"
 
-def formatEnum(enumNames, enumDescriptions, indent=0):
-  formatEnumEntries = (lambda x, y: formatAsJson(x) + (f": {y}" if y is not None else ""))
+def formatEnum(enumNames, enumDescriptions, packageNlsJson, indent=0):
+  formatEnumEntries = (lambda x, y: formatAsJson(x) +
+      (f": {formatDescription(y, packageNlsJson)}" if y is not None else ""))
   markdown = "\n".join(f"- {formatEnumEntries(x, y)}" for x, y in zip(enumNames, enumDescriptions))
   markdown += "\n"
   return markdown
@@ -31,40 +33,55 @@ def formatEnum(enumNames, enumDescriptions, indent=0):
 def formatAsJson(json_):
   return f"`{json.dumps(json_)}`"
 
-def formatFullType(settingJson, indent=0):
+def replaceNlsKey(packageNlsJson, match):
+  key = match.group(1)
+  if key not in packageNlsJson: raise RuntimeError("unknown NLS key '{}'".format(key))
+  return packageNlsJson[key]
+
+def formatDescription(description, packageNlsJson):
+  return re.sub(r"%([A-Za-z0-9\-_\.]+)%", functools.partial(replaceNlsKey, packageNlsJson),
+      description)
+
+def formatFullType(settingJson, packageNlsJson, indent=0):
   markdown = ""
   description = settingJson.get("markdownDescription", None)
-  if (description is not None) and (indent > 0): markdown += f"{description}\n\n{indent * ' '}"
+
+  if (description is not None) and (indent > 0):
+    markdown += f"{formatDescription(description, packageNlsJson)}\n\n{indent * ' '}"
 
   if "type" not in settingJson:
     markdown += formatAsJson(settingJson) + "\n"
   elif settingJson["type"] == "object":
     markdown += "Object with the following properties:\n\n"
-    markdown += "".join(f"{indent * ' '}- {formatAsJson(x)}: {formatFullType(y, indent+2)}"
+    markdown += "".join(
+        f"{indent * ' '}- {formatAsJson(x)}: {formatFullType(y, packageNlsJson, indent+2)}"
         for x, y in settingJson["properties"].items())
   elif settingJson["type"] == "array":
     itemTypes = settingJson["items"]
 
     if isinstance(itemTypes, dict):
       markdown += "Array where each entry has the following type:\n\n"
-      markdown += f"{indent * ' '}- {formatFullType(itemTypes, indent+2)}"
+      markdown += f"{indent * ' '}- {formatFullType(itemTypes, packageNlsJson, indent+2)}"
     else:
       markdown += "Array with the following entries:\n\n"
-      markdown += "".join(f"{indent * ' '}- {formatFullType(x, indent+2)}" for x in itemTypes)
+      markdown += "".join(
+          f"{indent * ' '}- {formatFullType(x, packageNlsJson, indent+2)}" for x in itemTypes)
   elif "enum" in settingJson:
     enumNames = settingJson["enum"]
     enumDescriptions = settingJson["enumDescriptions"]
     markdown += "One of the following values:\n\n"
-    markdown += "".join(f"{indent * ' '}- {formatAsJson(x)}: {y}\n"
+    markdown += "".join(
+        f"{indent * ' '}- {formatAsJson(x)}: {formatDescription(y, packageNlsJson)}\n"
         for x, y in zip(enumNames, enumDescriptions))
   else:
     markdown += f"Scalar of type {formatType(settingJson['type'])}\n"
 
   return markdown
 
-def formatSetting(settingName, settingJson):
+def formatSetting(settingName, settingJson, packageNlsJson):
   if "markdownDescription" not in settingJson: return None
-  markdown = f"## `{settingName}`\n\n{settingJson['markdownDescription']}\n"
+  markdown = (f"## `{settingName}`\n\n"
+      f"{formatDescription(settingJson['markdownDescription'], packageNlsJson)}\n")
 
   type_ = settingJson["type"]
   examples = settingJson.get("examples", [])
@@ -73,7 +90,7 @@ def formatSetting(settingName, settingJson):
   if "enum" in settingJson:
     enum = settingJson["enum"]
     enumDescriptions = settingJson.get("enumDescriptions", len(enum) * [None])
-    markdown += f"\n*Possible values:*\n\n{formatEnum(enum, enumDescriptions)}\n"
+    markdown += f"\n*Possible values:*\n\n{formatEnum(enum, enumDescriptions, packageNlsJson)}\n"
 
   if len(examples) == 1:
     markdown += f"\n*Example:* {formatAsJson(examples[0])}\n"
@@ -84,7 +101,9 @@ def formatSetting(settingName, settingJson):
     markdown += f"\n*Default:* {formatAsJson(settingJson['default'])}\n"
 
   if type_ in ["array", "object"]:
-    markdown += f"\n*Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>\n\n<div markdown='1' style='display:none;'>\n\n{formatFullType(settingJson)}\n</div>\n\n"
+    markdown += ("\n*Full type description:* <button class='expandable-button btn btn-default'>"
+        "Click to show/hide</button>\n\n<div markdown='1' style='display:none;'>\n\n"
+        f"{formatFullType(settingJson, packageNlsJson)}\n</div>\n\n")
 
   return markdown
 
@@ -92,8 +111,11 @@ def updateSettings(ltexRepoDirPath, pagesRepoDirPath):
   packageJsonPath = os.path.join(ltexRepoDirPath, "package.json")
   with open(packageJsonPath, "r") as f: packageJson = json.load(f)
 
+  packageNlsJsonPath = os.path.join(ltexRepoDirPath, "package.nls.json")
+  with open(packageNlsJsonPath, "r") as f: packageNlsJson = json.load(f)
+
   settingsJson = packageJson["contributes"]["configuration"]["properties"]
-  settingsMarkdown = [formatSetting(x, y) for x, y in settingsJson.items()]
+  settingsMarkdown = [formatSetting(x, y, packageNlsJson) for x, y in settingsJson.items()]
   markdown = """---
 title: "Settings"
 permalink: "/docs/settings.html"
