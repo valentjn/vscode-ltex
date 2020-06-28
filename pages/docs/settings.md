@@ -21,7 +21,6 @@ The language (e.g., `"en-US"`) LanguageTool should check against. Use a specific
 *Possible values:*
 
 - `"ar"`: Arabic
-- `"ar-DZ"`: Arabic (Algeria)
 - `"ast-ES"`: Asturian
 - `"be-BY"`: Belarusian
 - `"br-FR"`: Breton
@@ -86,11 +85,6 @@ Lists of additional words that should not be counted as spelling errors. The lis
 Object with the following properties:
 
 - `"ar"`: List of additional `ar` (Arabic) words that should not be counted as spelling errors.
-
-  Array where each entry has the following type:
-
-  - Scalar of type `string`
-- `"ar-DZ"`: List of additional `ar-DZ` (Arabic (Algeria)) words that should not be counted as spelling errors.
 
   Array where each entry has the following type:
 
@@ -339,11 +333,6 @@ Object with the following properties:
   Array where each entry has the following type:
 
   - Scalar of type `string`
-- `"ar-DZ"`: List of additional `ar-DZ` (Arabic (Algeria)) rules that should be disabled (if enabled by default by LanguageTool).
-
-  Array where each entry has the following type:
-
-  - Scalar of type `string`
 - `"ast-ES"`: List of additional `ast-ES` (Asturian) rules that should be disabled (if enabled by default by LanguageTool).
 
   Array where each entry has the following type:
@@ -584,11 +573,6 @@ Lists of rules that should be enabled (if disabled by default by LanguageTool). 
 Object with the following properties:
 
 - `"ar"`: List of additional `ar` (Arabic) rules that should be enabled (if disabled by default by LanguageTool).
-
-  Array where each entry has the following type:
-
-  - Scalar of type `string`
-- `"ar-DZ"`: List of additional `ar-DZ` (Arabic (Algeria)) rules that should be enabled (if disabled by default by LanguageTool).
 
   Array where each entry has the following type:
 
