@@ -12,6 +12,10 @@ export default class BugReporter {
   private _context: Code.ExtensionContext;
   private _dependencies: Dependencies;
 
+  private static readonly _maxNumberOfDocumentLines: number = 200;
+  private static readonly _maxNumberOfConfigLines: number = 1000;
+  private static readonly _maxNumberOfServerLogLines: number = 100;
+  private static readonly _maxNumberOfClientLogLines: number = 1000;
   private static readonly _howToUrl: string = 'https://valentjn.github.io/vscode-ltex/docs/' +
       'contributing-code-issues.html#how-to-report-bugs';
   private static readonly _reportBugUrl: string = 'https://github.com/valentjn/vscode-ltex/' +
@@ -68,7 +72,9 @@ export default class BugReporter {
         }
       }
 
-      bugReport = bugReport.replace('REPLACE_THIS_WITH_SAMPLE_DOCUMENT', document.getText());
+      const documentText: string = BugReporter.truncateStringAtEnd(
+          document.getText(), BugReporter._maxNumberOfDocumentLines);
+      bugReport = bugReport.replace('REPLACE_THIS_WITH_SAMPLE_DOCUMENT', documentText);
     }
 
     const config: any = JSON.parse(JSON.stringify(Code.workspace.getConfiguration('ltex')));
@@ -87,13 +93,17 @@ export default class BugReporter {
       }
     }
 
-    const configJson: string = JSON.stringify(config, null, 2);
+    let configJson: string = JSON.stringify(config, null, 2);
+    configJson = BugReporter.truncateStringAtEnd(configJson, BugReporter._maxNumberOfConfigLines);
     bugReport = bugReport.replace('REPLACE_THIS_WITH_LTEX_CONFIGURATION', configJson);
 
-    bugReport = bugReport.replace('REPLACE_THIS_WITH_LTEX_LANGUAGE_SERVER_LOG',
-        Logger.serverOutputChannel.getContents());
-    bugReport = bugReport.replace('REPLACE_THIS_WITH_LTEX_LANGUAGE_CLIENT_LOG',
-        Logger.clientOutputChannel.getContents());
+    const serverLog: string = BugReporter.truncateStringAtStart(
+        Logger.serverOutputChannel.getContents(), BugReporter._maxNumberOfServerLogLines);
+    bugReport = bugReport.replace('REPLACE_THIS_WITH_LTEX_LANGUAGE_SERVER_LOG', serverLog);
+
+    const clientLog: string = BugReporter.truncateStringAtStart(
+        Logger.clientOutputChannel.getContents(), BugReporter._maxNumberOfClientLogLines);
+    bugReport = bugReport.replace('REPLACE_THIS_WITH_LTEX_LANGUAGE_CLIENT_LOG', clientLog);
 
     const platform: string = `${Os.type} (${Os.platform}), ${Os.arch}, ${Os.release}`;
     bugReport = bugReport.replace(/^- Operating system: .*$/m, `- Operating system: ${platform}`);
@@ -123,6 +133,18 @@ export default class BugReporter {
     }
 
     return bugReport;
+  }
+
+  private static truncateStringAtStart(str: string, maxNumberOfLines: number): string {
+    const lines: string[] = str.split('\n');
+    return ((lines.length > maxNumberOfLines) ?
+        ('[... truncated]\n' + lines.slice(-maxNumberOfLines).join('\n')) : str);
+  }
+
+  private static truncateStringAtEnd(str: string, maxNumberOfLines: number): string {
+    const lines: string[] = str.split('\n');
+    return ((lines.length > maxNumberOfLines) ?
+        (lines.slice(0, maxNumberOfLines).join('\n') + '\n[... truncated]') : str);
   }
 
   public report(): void {
