@@ -12,10 +12,10 @@ export default class BugReporter {
   private _context: Code.ExtensionContext;
   private _dependencies: Dependencies;
 
-  private static _howToUrl: string = 'https://valentjn.github.io/vscode-ltex/docs/' +
+  private static readonly _howToUrl: string = 'https://valentjn.github.io/vscode-ltex/docs/' +
       'contributing-code-issues.html#how-to-report-bugs';
-  private static _reportBugUrl: string = 'https://github.com/valentjn/vscode-ltex/issues/new?' +
-      'assignees=&labels=1-bug%2C+2-unconfirmed&title=&body=';
+  private static readonly _reportBugUrl: string = 'https://github.com/valentjn/vscode-ltex/' +
+      'issues/new?assignees=&labels=1-bug%2C+2-unconfirmed&title=&body=';
 
   public constructor(context: Code.ExtensionContext, dependencies: Dependencies) {
     this._context = context;
