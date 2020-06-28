@@ -38,7 +38,7 @@ async function languageClientIsReady(disposable: Code.Disposable): Promise<void>
           i18n('moreInfoAboutLtex5x')).then((selectedItem: string | undefined) => {
       if (selectedItem != null) {
         Code.env.openExternal(Code.Uri.parse(
-            'https://valentjn.github.io/vscode-ltex/docs/transitioning-to-ltex-5x.html'));
+            'https://valentjn.github.io/vscode-ltex/docs/transitioning-from-ltex-4x.html'));
       }
     });
   }
