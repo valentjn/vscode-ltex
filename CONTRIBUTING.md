@@ -13,7 +13,9 @@ Contributions are welcome! Please go to our [GitHub repository](https://github.c
 3. If your bug is occurring for a long document, please remove some parts of your document and see if the bug still occurs. Similarly, if you have a lot of `ltex.` settings, please remove some settings and see if the bug still occurs.
 4. Set the option `"ltex.trace.server": "verbose"` in your `settings.json`.
 5. Try to understand the bug by selecting `View` → `Output` → `LTeX Language Server`/`LTeX Language Client`.
-6. Select the `Bug report` template when [opening an issue on GitHub](https://github.com/valentjn/vscode-ltex/issues/new/choose) and fill in as much info as you can. This will help us reproduce the issue.
+6. Do one of the following:
+   - Reproduce the bug and keep the document for which it occurs open. Execute the command `LTeX: Report bug in LTeX` inside Visual Studio Code from the Command Palette (`Ctrl+Shift+P`) and click on `Copy report and create issue`. This will copy a prefilled bug report to your clipboard and open the `New issue` page on GitHub in your browser (you may have to confirm that you really want to open the page). Enter a summary of the issue in the title field and paste the bug report from your clipboard into the description field. Before submitting the bug report, check that it doesn't contain any confidential data. OR
+   - Manually [open an issue on GitHub](https://github.com/valentjn/vscode-ltex/issues/new/choose), select the `Bug report` template, and fill in as much info as you can (the `LTeX: Report bug in LTeX` command would do that for you). This will help us reproduce the issue.
 
 ### Known Issues and Limitations
 
