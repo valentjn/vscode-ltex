@@ -124,17 +124,19 @@ def updatePackageI18nJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
   newPackageI18nJson = {}
 
   for key, value in oldPackageI18nJson.items():
-    newPackageI18nJson[key] = value
-
     if key == "ltex.i18n.configuration.ltex.language.description":
+      newPackageI18nJson[key] = value
+
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
         prefix = f"ltex.i18n.configuration.ltex.language.{ltLanguageShortCode}"
         newPackageI18nJson[f"{prefix}.enumDescription"] = ltLanguageName
 
-    elif re.match(r"^ltex\.configuration\.ltex\.language\..+\.", key) is not None:
+    elif re.match(r"^ltex\.i18n\.configuration\.ltex\.language\..+\.", key) is not None:
       continue
 
     elif key == "ltex.i18n.configuration.ltex.dictionary.description":
+      newPackageI18nJson[key] = value
+
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
         prefix = f"ltex.i18n.configuration.ltex.dictionary.{ltLanguageShortCode}"
 
@@ -155,10 +157,12 @@ def updatePackageI18nJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
               f"List of additional '{ltLanguageShortCode}' ({ltLanguageName}) words that should "
               "not be counted as spelling errors.")
 
-    elif re.match(r"^ltex\.configuration\.ltex\.dictionary\..+\.", key) is not None:
+    elif re.match(r"^ltex\.i18n\.configuration\.ltex\.dictionary\..+\.", key) is not None:
       continue
 
     elif key == "ltex.i18n.configuration.ltex.disabledRules.description":
+      newPackageI18nJson[key] = value
+
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
         prefix = f"ltex.i18n.configuration.ltex.disabledRules.{ltLanguageShortCode}"
 
@@ -179,10 +183,12 @@ def updatePackageI18nJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
               f"List of additional '{ltLanguageShortCode}' ({ltLanguageName}) rules that should "
               "be disabled (if enabled by default by LanguageTool).")
 
-    elif re.match(r"^ltex\.configuration\.ltex\.disabledRules\..+\.", key) is not None:
+    elif re.match(r"^ltex\.i18n\.configuration\.ltex\.disabledRules\..+\.", key) is not None:
       continue
 
     elif key == "ltex.i18n.configuration.ltex.enabledRules.description":
+      newPackageI18nJson[key] = value
+
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
         prefix = f"ltex.i18n.configuration.ltex.enabledRules.{ltLanguageShortCode}"
 
@@ -203,8 +209,11 @@ def updatePackageI18nJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
               f"List of additional '{ltLanguageShortCode}' ({ltLanguageName}) rules that should "
               "be enabled (if disabled by default by LanguageTool).")
 
-    elif re.match(r"^ltex\.configuration\.ltex\.enabledRules\..+\.", key) is not None:
+    elif re.match(r"^ltex\.i18n\.configuration\.ltex\.enabledRules\..+\.", key) is not None:
       continue
+
+    else:
+      newPackageI18nJson[key] = value
 
   with open(packageI18nJsonPath, "w") as f:
     json.dump(newPackageI18nJson, f, indent=2, ensure_ascii=False)
