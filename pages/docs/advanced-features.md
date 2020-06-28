@@ -22,6 +22,9 @@ Magic comments are case-insensitive (except for the setting values), and the spa
 `SETTINGS` has to be replaced with a whitespace-separated list of `KEY=VALUE` pairs. Neither `KEY` nor `VALUE` are enclosed in quotation marks. The following settings are supported:
 
 - `enabled`: One of `true` or `false`. Makes it possible to disable LTeX for the rest of the document, or to enable it again.
+
+  *Example:* `enabled=false`
+
 - `language`: Changes the value of [`ltex.language`](settings.html#ltexlanguage) for the rest of the document.
 
   *Example:* `language=de-DE`
