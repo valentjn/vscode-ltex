@@ -101,8 +101,12 @@ export default class BugReporter {
         Logger.serverOutputChannel.getContents(), BugReporter._maxNumberOfServerLogLines);
     bugReport = bugReport.replace('REPLACE_THIS_WITH_LTEX_LANGUAGE_SERVER_LOG', serverLog);
 
-    const clientLog: string = BugReporter.truncateStringAtStart(
-        Logger.clientOutputChannel.getContents(), BugReporter._maxNumberOfClientLogLines);
+    let clientLog: string = Logger.clientOutputChannel.getContents();
+    clientLog = clientLog.replace(new RegExp(/"[A-Za-z0-9\-_]+": \{\s*/.source +
+        /"dictionary": \[\],\s*"enabledRules": \[\],\s*/.source +
+        /"disabledRules": \[\]\s*\},?[\r\n]*/.source, 'g'), '');
+    clientLog = BugReporter.truncateStringAtStart(
+        clientLog, BugReporter._maxNumberOfClientLogLines);
     bugReport = bugReport.replace('REPLACE_THIS_WITH_LTEX_LANGUAGE_CLIENT_LOG', clientLog);
 
     const platform: string = `${Os.type} (${Os.platform}), ${Os.arch}, ${Os.release}`;
