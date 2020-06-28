@@ -72,7 +72,7 @@
   "testingLtexLs": "Testing ltex-ls...",
   "testFailed": "Test failed.",
   "testSuccessful": "Test successful!",
-  "thanksForUpgradingToLtex5x": "Thanks for upgrading to LTeX 5.x!",
+  "thanksForUpgradingFromLtex4x": "Thanks for upgrading from LTeX 4.x to 5.x or later!",
   "thanksForHelpingToImproveLtex": "Thanks for helping to improve LTeX. Be sure to read the instructions on how to report bugs first. When you create the issue on GitHub, paste the bug report from the clipboard into the description of the issue.",
   "tryAgain": "Try again",
   "unknownCommandInTelemetryEvent": "Unknown command '{0}' in telemetry event '{1}'.",

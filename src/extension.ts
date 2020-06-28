@@ -24,7 +24,7 @@ async function languageClientIsReady(disposable: Code.Disposable): Promise<void>
       (x: Code.Extension<any>) => x.id.startsWith('valentjn.vscode-ltex-')).length;
 
   if (numberOfLanguageSupportExtensions > 0) {
-    let message: string = `${i18n('thanksForUpgradingToLtex5x')} `;
+    let message: string = `${i18n('thanksForUpgradingFromLtex4x')} `;
 
     if (numberOfLanguageSupportExtensions > 1) {
       message += `${i18n('removeLanguageSupportExtensions')} `;
