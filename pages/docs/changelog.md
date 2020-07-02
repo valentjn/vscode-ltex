@@ -5,6 +5,10 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 6.0.1 — “The Freeze Paradox” (July 2, 2020)
+
+- Fix freezes when checking German text by working around [languagetool-org/languagetool#3181](https://github.com/languagetool-org/languagetool/issues/3181) introduced by LanguageTool 5.0 (fixes [#68](https://github.com/valentjn/vscode-ltex/issues/68))
+
 ## 6.0.0 — “The Internationalization Proposition” (June 28, 2020)
 
 - Update LanguageTool to 5.0 (see [LT 5.0 release notes](https://github.com/languagetool-org/languagetool/blob/v5.0/languagetool-standalone/CHANGES.md#50-2020-06-27))
