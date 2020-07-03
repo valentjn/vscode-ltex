@@ -1,4 +1,16 @@
+<!--
+   - Copyright (C) 2020 Julian Valentin, LTeX Development Community
+   -
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/.
+   -->
+
 # Changelog
+
+## 6.0.2 (upcoming)
+
+- Relicense vscode-ltex under the Mozilla Public License Version 2.0
 
 ## 6.0.1 — “The Freeze Paradox” (July 2, 2020)
 
