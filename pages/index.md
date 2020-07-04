@@ -16,11 +16,11 @@ toc: false
 <a href="https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex" class="no-external">![rating](https://badgen.net/vs-marketplace/rating/valentjn.vscode-ltex)</a>
 
 <a href="https://github.com/valentjn/vscode-ltex" class="no-external">![vscode-ltex](https://badgen.net/badge/-/vscode-ltex/?label=)</a>&nbsp;
-<a href="https://www.travis-ci.org/valentjn/vscode-ltex" class="no-external">![Travis CI build status](https://badgen.net/travis/valentjn/vscode-ltex/release)</a>&nbsp;
-<a href="https://github.com/valentjn/vscode-ltex" class="no-external">![GitHub stars](https://badgen.net/github/stars/valentjn/vscode-ltex)</a>&nbsp;
-<a href="https://github.com/valentjn/vscode-ltex/issues" class="no-external">![GitHub issues](https://badgen.net/github/open-issues/valentjn/vscode-ltex?label=issues)</a><br/>
+<a href="https://www.travis-ci.org/valentjn/vscode-ltex" class="no-external">![build status](https://badgen.net/travis/valentjn/vscode-ltex/release)</a>&nbsp;
+<a href="https://github.com/valentjn/vscode-ltex" class="no-external">![stars](https://badgen.net/github/stars/valentjn/vscode-ltex)</a>&nbsp;
+<a href="https://github.com/valentjn/vscode-ltex/issues" class="no-external">![open issues](https://badgen.net/github/open-issues/valentjn/vscode-ltex?label=open/closed%20issues&color=blue)</a>&nbsp;<a href="https://github.com/valentjn/vscode-ltex/issues" class="no-external">![closed issues](https://badgen.net/github/closed-issues/valentjn/vscode-ltex?label=)</a><br/>
 <a href="https://github.com/valentjn/ltex-ls" class="no-external">![ltex-ls](https://badgen.net/badge/-/ltex-ls/?label=)</a>&nbsp;
-<a href="https://www.travis-ci.org/valentjn/ltex-ls" class="no-external">![Travis CI build status](https://badgen.net/travis/valentjn/vscode-ltex/release)</a>&nbsp;
+<a href="https://www.travis-ci.org/valentjn/ltex-ls" class="no-external">![build status](https://badgen.net/travis/valentjn/vscode-ltex/release)</a>&nbsp;
 <a href="https://coveralls.io/github/valentjn/ltex-ls" class="no-external">![coverage](https://badgen.net/coveralls/c/github/valentjn/ltex-ls/release)</a>
 
 **LTeX** provides offline grammar checking in Visual Studio Code using [LanguageTool&nbsp;(LT)](https://languagetool.org/), supporting LaTeX and Markdown documents.
