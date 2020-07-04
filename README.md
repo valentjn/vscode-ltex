@@ -13,11 +13,11 @@
 [![rating](https://badgen.net/vs-marketplace/rating/valentjn.vscode-ltex)][marketplace]
 
 [![vscode-ltex](https://badgen.net/badge/-/vscode-ltex/?label=)](https://github.com/valentjn/vscode-ltex)&nbsp;
-[![Travis CI build status](https://badgen.net/travis/valentjn/vscode-ltex/release)](https://www.travis-ci.org/valentjn/vscode-ltex)&nbsp;
-[![GitHub stars](https://badgen.net/github/stars/valentjn/vscode-ltex)](https://github.com/valentjn/vscode-ltex)&nbsp;
-[![GitHub issues](https://badgen.net/github/open-issues/valentjn/vscode-ltex?label=issues)](https://github.com/valentjn/vscode-ltex/issues)\
+[![build status](https://badgen.net/travis/valentjn/vscode-ltex/release)](https://www.travis-ci.org/valentjn/vscode-ltex)&nbsp;
+[![stars](https://badgen.net/github/stars/valentjn/vscode-ltex)](https://github.com/valentjn/vscode-ltex)&nbsp;
+[![open issues](https://badgen.net/github/open-issues/valentjn/vscode-ltex?label=open/closed%20issues&color=blue)](https://github.com/valentjn/vscode-ltex/issues)&nbsp;[![closed issues](https://badgen.net/github/closed-issues/valentjn/vscode-ltex?label=)](https://github.com/valentjn/vscode-ltex/issues)\
 [![ltex-ls](https://badgen.net/badge/-/ltex-ls/?label=)](https://github.com/valentjn/ltex-ls)&nbsp;
-[![Travis CI build status](https://badgen.net/travis/valentjn/vscode-ltex/release)](https://www.travis-ci.org/valentjn/ltex-ls)&nbsp;
+[![build status](https://badgen.net/travis/valentjn/vscode-ltex/release)](https://www.travis-ci.org/valentjn/ltex-ls)&nbsp;
 [![coverage](https://badgen.net/coveralls/c/github/valentjn/ltex-ls/release)](https://coveralls.io/github/valentjn/ltex-ls)
 
 **LT<sub>E</sub>X** provides offline grammar checking in Visual Studio Code using [LanguageTool (LT)](https://languagetool.org/), supporting L<sup>A</sup>T<sub>E</sub>X and Markdown documents.
