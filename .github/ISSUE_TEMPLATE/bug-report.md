@@ -4,7 +4,6 @@ about: "Create a report to help us improve (fill in as many details as you can).
 title: ""
 labels: "1-bug, 2-unconfirmed"
 assignees: ""
-
 ---
 
 Note: It is highly recommended to follow the instructions at https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#how-to-report-bugs and use the `LTeX: Report bug in LTeX` command from within Visual Studio Code.

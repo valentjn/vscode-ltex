@@ -4,7 +4,6 @@ about: "Suggest an idea for this project. See https://valentjn.github.io/vscode-
 title: ""
 labels: "1-feature-request"
 assignees: ""
-
 ---
 
 **Is your feature request related to a problem? Please describe.**
