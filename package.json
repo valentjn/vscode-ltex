@@ -2580,7 +2580,7 @@
     "eslint-plugin-only-warn": "1.0.2",
     "mocha": "8.0.1",
     "rimraf": "3.0.2",
-    "ts-loader": "7.0.5",
+    "ts-loader": "8.0.0",
     "typescript": "3.9.6",
     "vscode-test": "1.4.0",
     "webpack": "4.43.0",
