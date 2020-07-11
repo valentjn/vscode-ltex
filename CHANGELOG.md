@@ -11,6 +11,7 @@
 ## 6.0.2 (upcoming)
 
 - Relicense vscode-ltex under the Mozilla Public License Version 2.0
+- Update some NPM dependencies
 
 ## 6.0.1 — “The Freeze Paradox” (July 2, 2020)
 
