@@ -11,6 +11,12 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 6.0.2 (upcoming)
+
+- Make Windows startup script of LTeX LS (`ltex-ls.bat`) honor `JAVA_HOME` (fixes [#75](https://github.com/valentjn/vscode-ltex/issues/75))
+- Relicense vscode-ltex under the Mozilla Public License Version 2.0
+- Update some NPM dependencies
+
 ## 6.0.1 — “The Freeze Paradox” (July 2, 2020)
 
 - Fix freezes when checking German text by working around [languagetool-org/languagetool#3181](https://github.com/languagetool-org/languagetool/issues/3181) introduced by LanguageTool 5.0 (fixes [#68](https://github.com/valentjn/vscode-ltex/issues/68))
