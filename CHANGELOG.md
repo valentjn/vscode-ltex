@@ -10,6 +10,7 @@
 
 ## 6.0.2 (upcoming)
 
+- Make Windows startup script of LT<sub>E</sub>X LS (`ltex-ls.bat`) honor `JAVA_HOME` (fixes [#75](https://github.com/valentjn/vscode-ltex/issues/75))
 - Relicense vscode-ltex under the Mozilla Public License Version 2.0
 - Update some NPM dependencies
 
