@@ -18,6 +18,15 @@ from linkSettings import linkSettings
 
 
 
+licenseHeader = """
+# Copyright (C) 2020 Julian Valentin, LTeX Development Community
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+"""
+
+
 def formatList(json_):
   return "\n".join(f"- {formatAsJson(x)}" for x in json_)
 
@@ -122,13 +131,13 @@ def updateSettings(ltexRepoDirPath, pagesRepoDirPath):
 
   settingsJson = packageJson["contributes"]["configuration"]["properties"]
   settingsMarkdown = [formatSetting(x, y, packageNlsJson) for x, y in settingsJson.items()]
-  markdown = """---
+  markdown = """---{}
 title: "Settings"
 permalink: "/docs/settings.html"
 sidebar: "sidebar"
 ---
 
-"""
+""".format(licenseHeader)
   markdown += "\n".join(x for x in settingsMarkdown if x is not None)
   markdown = re.sub("\n\n+", "\n\n", markdown)
 
@@ -140,7 +149,9 @@ sidebar: "sidebar"
 
 def copyMarkdown(srcPath, dstPath, metaData, ltexRepoDirPath, pagesRepoDirPath):
   with open(srcPath, "r") as f: markdown = f.read()
-  markdown = metaData + "\n".join(markdown.split("\n")[2:])
+  lines = markdown.split("\n")
+  i = next(i for i, line in enumerate(lines) if line.startswith("#"))
+  markdown = metaData + "\n".join(lines[i+1:])
   markdown = markdown.replace("L<sup>A</sup>T<sub>E</sub>X", "LaTeX").replace(
       "T<sub>E</sub>X", "TeX")
   with open(dstPath, "w") as f: f.write(markdown)
@@ -148,34 +159,31 @@ def copyMarkdown(srcPath, dstPath, metaData, ltexRepoDirPath, pagesRepoDirPath):
 
 def updateChangelog(ltexRepoDirPath, pagesRepoDirPath):
   copyMarkdown(os.path.join(ltexRepoDirPath, "CHANGELOG.md"),
-      os.path.join(pagesRepoDirPath, "pages", "docs", "changelog.md"), """---
+      os.path.join(pagesRepoDirPath, "pages", "docs", "changelog.md"), """---{}
 title: "Changelog"
 permalink: "/docs/changelog.html"
 sidebar: "sidebar"
 toc: false
 ---
-
-""", ltexRepoDirPath, pagesRepoDirPath)
+""".format(licenseHeader), ltexRepoDirPath, pagesRepoDirPath)
 
 def updateContributing(ltexRepoDirPath, pagesRepoDirPath):
   copyMarkdown(os.path.join(ltexRepoDirPath, "CONTRIBUTING.md"),
-      os.path.join(pagesRepoDirPath, "pages", "docs", "contributing-code-issues.md"), """---
+      os.path.join(pagesRepoDirPath, "pages", "docs", "contributing-code-issues.md"), """---{}
 title: "Contributing Code/Issues"
 permalink: "/docs/contributing-code-issues.html"
 sidebar: "sidebar"
 ---
-
-""", ltexRepoDirPath, pagesRepoDirPath)
+""".format(licenseHeader), ltexRepoDirPath, pagesRepoDirPath)
 
 def updateAcknowledgments(ltexRepoDirPath, pagesRepoDirPath):
   copyMarkdown(os.path.join(ltexRepoDirPath, "ACKNOWLEDGMENTS.md"),
-      os.path.join(pagesRepoDirPath, "pages", "docs", "acknowledgments.md"), """---
+      os.path.join(pagesRepoDirPath, "pages", "docs", "acknowledgments.md"), """---{}
 title: "Acknowledgments"
 permalink: "/docs/acknowledgments.html"
 sidebar: "sidebar"
 ---
-
-""", ltexRepoDirPath, pagesRepoDirPath)
+""".format(licenseHeader), ltexRepoDirPath, pagesRepoDirPath)
 
 
 
