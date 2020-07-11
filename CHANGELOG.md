@@ -8,7 +8,7 @@
 
 # Changelog
 
-## 6.0.2 (upcoming)
+## 6.0.2 — “The Startup Congruence” (July 11, 2020)
 
 - Make Windows startup script of LT<sub>E</sub>X LS (`ltex-ls.bat`) honor `JAVA_HOME` (fixes [#75](https://github.com/valentjn/vscode-ltex/issues/75))
 - Relicense vscode-ltex under the Mozilla Public License Version 2.0
