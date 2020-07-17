@@ -2566,7 +2566,7 @@
     "test": "mocha ./out/test/runTests.js"
   },
   "devDependencies": {
-    "@types/mocha": "7.0.2",
+    "@types/mocha": "8.0.0",
     "@types/node": "14.0.23",
     "@types/rimraf": "3.0.0",
     "@types/semver": "7.3.1",
