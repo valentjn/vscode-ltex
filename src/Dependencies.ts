@@ -389,9 +389,9 @@ export default class Dependencies {
     }
 
     try {
-      // try 0: only use ltex.ltexLs.path (don't use lib/, don't download)
-      // try 1: use ltex.ltexLs.path or lib/ (don't download)
-      // try 2: use ltex.ltexLs.path or lib/ or download
+      // try 0: use ltex.ltexLs.path
+      // try 1: use lib/ (don't download)
+      // try 2: download and use lib/
       Logger.log('');
       this._ltexLsPath = workspaceConfig.get('ltex-ls.path', '');
 
@@ -426,16 +426,19 @@ export default class Dependencies {
     }
 
     try {
-      // try 0: only use ltex.java.path (don't use lib/, don't download)
-      // try 1: use ltex.java.path or lib/ (don't download)
-      // try 2: use ltex.java.path or lib/ or download
-      for (let i: number = 0; i < 3; i++) {
+      // try 0: use ltex.java.path, Java 11+ only
+      // try 1: use lib/ (don't download), Java 11+ only
+      // try 2: download and use lib/, Java 11+ only
+      // try 3: use ltex.java.path
+      // try 4: use lib/ (don't download)
+      // try 5: download and use lib/
+      for (let i: number = 0; i < 6; i++) {
         Logger.log('');
         this._javaPath = Dependencies.getRenamedSetting(workspaceConfig, 'java.path', 'javaHome');
 
         if (Dependencies.isValidPath(this._javaPath)) {
           Logger.log(i18n('ltexJavaPathSetTo', this._javaPath));
-        } else if (i == 0) {
+        } else if (i % 3 == 0) {
           Logger.log(i18n('ltexJavaPathNotSet'));
         } else {
           Logger.log(i18n('searchingForJavaIn', libDirPath));
@@ -446,7 +449,7 @@ export default class Dependencies {
           } else {
             Logger.log(i18n('couldNotFindJavaIn', libDirPath));
 
-            if (i <= 1) {
+            if (i % 3 <= 1) {
               continue;
             } else {
               await this.installJava();
@@ -469,7 +472,9 @@ export default class Dependencies {
           Logger.log(i18n('usingJavaFromPathOrJavaHome'));
         }
 
-        if (await this.test()) {
+        const requireJava11: boolean = (i < 3);
+
+        if (await this.test(requireJava11)) {
           Logger.log('');
           return true;
         }
@@ -501,7 +506,7 @@ export default class Dependencies {
     });
   }
 
-  private async test(): Promise<boolean> {
+  private async test(requireJava11: boolean): Promise<boolean> {
     const executable: CodeLanguageClient.Executable = await this.getLtexLsExecutable();
     if (executable.args == null) executable.args = [];
     executable.args.push('--version');
@@ -520,37 +525,60 @@ export default class Dependencies {
     const childProcess: ChildProcess.SpawnSyncReturns<string> = ChildProcess.spawnSync(
         executable.command, executable.args, executableOptions);
     let success: boolean = false;
+    let ltexLsVersion: string = '';
+    let javaVersion: string = '';
+    let javaMajorVersion: number = -1;
 
     if ((childProcess.status == 0) && childProcess.stdout.includes('ltex-ls')) {
       try {
         const versionInfo: any = JSON.parse(childProcess.stdout);
 
         if (Object.prototype.hasOwnProperty.call(versionInfo, 'ltex-ls')) {
-          this._ltexLsVersion = versionInfo['ltex-ls'];
+          ltexLsVersion = versionInfo['ltex-ls'];
         }
 
         if (Object.prototype.hasOwnProperty.call(versionInfo, 'java')) {
-          this._javaVersion = versionInfo['java'];
+          const match: RegExpMatchArray | null = versionInfo['java'].match(/(\d+)\.(\d+)/);
+
+          if ((match != null) && (match.length >= 3)) {
+            javaVersion = versionInfo['java'];
+            javaMajorVersion = parseInt(match[1]);
+            if (javaMajorVersion == 1) javaMajorVersion = parseInt(match[2]);
+          }
         }
 
-        success = true;
+        if ((ltexLsVersion.length > 0) && (javaVersion.length > 0)) {
+          success = true;
+        }
       } catch (e) {
         // don't throw error as debug info is printed below
       }
     }
 
-    if (success) {
-      Logger.log(i18n('testSuccessful'));
-    } else {
+    if (!success) {
       Logger.log(i18n('testFailed'));
       Logger.log(i18n('exitCodeOfLtexLs', childProcess.status));
       Logger.log(i18n('stdoutOfLtexLs'));
       Logger.log(childProcess.stdout);
       Logger.log(i18n('stderrOfLtexLs'));
       Logger.log(childProcess.stderr);
+      return false;
+    } else if (javaMajorVersion >= 11) {
+      Logger.log(i18n('testSuccessful'));
+      this._ltexLsVersion = ltexLsVersion;
+      this._javaVersion = javaVersion;
+      return true;
+    } else if (requireJava11) {
+      Logger.log(i18n('testFailedDueToTooOldJava', javaMajorVersion, javaVersion));
+      return false;
+    } else {
+      Logger.log(i18n('testSuccessfulButJavaIsTooOld', javaMajorVersion, javaVersion));
+      Code.window.showWarningMessage(i18n('couldNotDownloadOrExtractJava11', javaMajorVersion,
+          javaVersion));
+      this._ltexLsVersion = ltexLsVersion;
+      this._javaVersion = javaVersion;
+      return true;
     }
-
-    return success;
   }
 
   public async getLtexLsExecutable(): Promise<CodeLanguageClient.Executable> {
