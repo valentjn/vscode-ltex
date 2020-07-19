@@ -31,7 +31,7 @@ export default class Dependencies {
 
   private static readonly _offlineInstructionsUrl: string = 'https://valentjn.github.io/' +
       'vscode-ltex/docs/installation-how-to-use.html#offline-installation';
-  private static readonly _javaVersion: string = '11.0.7+10';
+  private static readonly _javaVersion: string = '11.0.8+10';
 
   public constructor(context: Code.ExtensionContext) {
     this._context = context;

@@ -10,6 +10,7 @@
 
 ## 6.1.0 (upcoming)
 
+- Upgrade bundled AdoptOpenJDK JRE to 11.0.8+10
 - Update some NPM dependencies
 
 ## 6.0.2 — “The Startup Congruence” (July 11, 2020)

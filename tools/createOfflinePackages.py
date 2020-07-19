@@ -27,7 +27,7 @@ import semver
 
 ltexRootDirPath = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 libDirPath = os.path.join(ltexRootDirPath, "lib")
-javaVersion = "11.0.7+10"
+javaVersion = "11.0.8+10"
 
 # to get proper logs in Travis CI
 oldPrint = print
