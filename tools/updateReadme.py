@@ -21,6 +21,7 @@ def getMarkdownStructure(baseUrl, markdownPath):
   for i in range(2): match = next(iterator)
   metadata = yaml.load(markdown[:match.start()], Loader=yaml.SafeLoader)
   if not metadata.get("toc", True): return []
+  markdown = markdown[match.end():]
 
   matches = re.findall(r"^(#+) (.*)$", markdown, flags=re.MULTILINE)
   structure = []
