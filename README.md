@@ -118,6 +118,7 @@ Find more information in the [changelog](https://valentjn.github.io/vscode-ltex/
     - [Where can I ask a question that's not answered here?](https://valentjn.github.io/vscode-ltex/docs/faq.html#where-can-i-ask-a-question-thats-not-answered-here)
   - [Changelog](https://valentjn.github.io/vscode-ltex/docs/changelog.html)
   - [Contributing Code/Issues](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html)
+    - [Ways of Contribution](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#ways-of-contribution)
     - [How to Report Bugs](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#how-to-report-bugs)
       - [Known Issues and Limitations](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#known-issues-and-limitations)
     - [How to Request Features](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#how-to-request-features)
