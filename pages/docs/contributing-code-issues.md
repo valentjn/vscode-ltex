@@ -10,11 +10,20 @@ permalink: "/docs/contributing-code-issues.html"
 sidebar: "sidebar"
 ---
 
-Contributions are welcome! Please go to our [GitHub repository](https://github.com/valentjn/vscode-ltex) to
+## Ways of Contribution
 
-- report bugs,
-- request a new feature, or
-- contribute code.
+Thank you for considering contributing to LTeX. There are many ways to do so:
+
+- You can [report bugs](#how-to-report-bugs) to help make LTeX better.
+- You can [request features](#how-to-request-features) to make LTeX more powerful.
+- You can [contribute code](#how-to-contribute-code) to accelerate the pace of LTeX's development.
+- You can [edit the documentation](#documentation) to make LTeX easier to use.
+
+If you like LTeX, but are not able to contribute in any of these ways, there are still some quick and simple alternatives to show your gratitude:
+
+- You can star the [repository on GitHub](https://github.com/valentjn/vscode-ltex).
+- You can write a positive review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex).
+- You can [gift a coffee](https://ko-fi.com/valentjn) to LTeX's maintainer/main developer.
 
 ## How to Report Bugs
 
