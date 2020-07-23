@@ -15,6 +15,7 @@ toc: false
 
 - Download Java 11 if only Java 8 is installed (see [#39](https://github.com/valentjn/vscode-ltex/issues/39) and [documentation](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html))
 - Upgrade bundled AdoptOpenJDK JRE to 11.0.8+10
+- Fix problems with spaces in paths when using LTeX LS on Windows (fixes [#80](https://github.com/valentjn/vscode-ltex/issues/80))
 - Update some NPM dependencies
 
 ## 6.0.2 — “The Startup Congruence” (July 11, 2020)
