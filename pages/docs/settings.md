@@ -816,7 +816,7 @@ If set to an empty string, LTeX automatically downloads the [latest compatible r
 
 ## `ltex.ltex-ls.languageToolHttpServerUri`
 
-If set to a non-empty string, LTeX will not use the bundled, built-in version of LanguageTool. Instead, LTeX will connect to an external [LanguageTool HTTP server](http://wiki.languagetool.org/http-server). Set this setting to the root URI of the server, and do not append `v2/check` or similar. Note that in this mode, the settings [`ltex.dictionary`](settings.html#ltexdictionary) and `ltex.additionalRules` will not take any effect, and the `Add to dictionary` quick fix will not appear.
+If set to a non-empty string, LTeX will not use the bundled, built-in version of LanguageTool. Instead, LTeX will connect to an external [LanguageTool HTTP server](http://wiki.languagetool.org/http-server). Set this setting to the root URI of the server, and do not append `v2/check` or similar. Note that in this mode, the settings [`ltex.dictionary`](settings.html#ltexdictionary), [`ltex.additionalRules.languageModel`](settings.html#ltexadditionalruleslanguagemodel), [`ltex.additionalRules.neuralNetworkModel`](settings.html#ltexadditionalrulesneuralnetworkmodel), and [`ltex.additionalRules.word2VecModel`](settings.html#ltexadditionalrulesword2vecmodel) will not take any effect, and the `Add to dictionary` quick fix will not appear.
 
 *Type:* `string`
 
