@@ -21,7 +21,6 @@ If you like LTeX, but are not able to contribute in any of these ways, there are
 
 - You can star the [repository on GitHub](https://github.com/valentjn/vscode-ltex).
 - You can write a positive review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex).
-- You can [gift a coffee](https://ko-fi.com/valentjn) to LTeX's maintainer/main developer.
 
 ## How to Report Bugs
 
