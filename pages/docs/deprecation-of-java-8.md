@@ -12,7 +12,7 @@ sidebar: "sidebar"
 
 Java 8 has been published in 2014 and is approaching its end of life. Fortunately, with Java 11, a new long-term support (LTS) release of Java is available. Therefore, starting November 1, 2020, new versions of LTeX will require Java 11 or newer (in the following: “Java 11+”).
 
-## What Do I Have To Do?
+## What Do I Have to Do?
 
 Due to LTeX's feature of automatically downloading Java 11 (via [AdoptOpenJDK](https://adoptopenjdk.net/)) if necessary, the impact on most users will be minimal. The necessary actions you should perform depend on how you used LTeX with Java in the past (substitute “Java 8” with any other version older than Java 11):
 
