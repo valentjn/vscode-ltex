@@ -13,9 +13,10 @@ toc: false
 
 ## 6.1.0 (upcoming)
 
-- Download Java 11 if only Java 8 is installed (see [#39](https://github.com/valentjn/vscode-ltex/issues/39) and [documentation](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html))
-- Upgrade bundled AdoptOpenJDK JRE to 11.0.8+10
+- Download Java 11 if only Java 8 is installed; LTeX support for Java 8 will end on November 1, 2020 (see [documentation](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html) and [#39](https://github.com/valentjn/vscode-ltex/issues/39))
+- Add support for babel commands (see [documentation](https://valentjn.github.io/vscode-ltex/docs/advanced-features.html#multilingual-latex-documents-with-the-babel-package), fixes [#81](https://github.com/valentjn/vscode-ltex/issues/81))
 - Fix problems with spaces in paths when using LTeX LS on Windows (fixes [#80](https://github.com/valentjn/vscode-ltex/issues/80))
+- Update bundled AdoptOpenJDK JRE to 11.0.8+10
 - Update some NPM dependencies
 
 ## 6.0.2 — “The Startup Congruence” (July 11, 2020)
