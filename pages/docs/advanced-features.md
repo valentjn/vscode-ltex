@@ -47,18 +47,22 @@ LTeX supports automatically switching its [`ltex.language`](settings.html#ltexla
 - `\foreignlanguage{LANGUAGE}{TEXT}`: Switches the language for the contents `TEXT` of the last argument.
 - `\begin{otherlanguage}{LANGUAGE}TEXT\end{otherlanguage}`: Switches the language for the contents `TEXT` of the environment.
 
-Here, `LANGUAGE` is the short code of the language (see [`ltex.language`](settings.html#ltexlanguage)) you want to use for checking `TEXT`. For some languages, babel only supports the general language like `pl` for Polish, but no variants like `pl-PL`. In this case, LTeX also recognizes the language if you omit the variant part after the dash, so that both LTeX and babel can work. If you can, supply the variant as LTeX won't display spelling errors (only grammar errors) if the general language is listed in the description of [`ltex.language`](settings.html#ltexlanguage).
-
-Alternatively, it's possible to use one of babel's language names like `english`, `amerian`, `german`, etc. Refer to the [babel manual](https://ctan.org/pkg/babel) for a list of possible language codes and names. Keep in mind that not all languages supported by LTeX are supported by babel, and vice versa.
+Here, `LANGUAGE` is one of babel's language names like `english`, `american`, `ngerman`, etc. Refer to the [babel manual](https://ctan.org/pkg/babel) for a list of possible language names. Keep in mind that not all languages supported by LTeX are supported by babel, and vice versa.
 
 In addition, as the commands and environments given above are quite long, LTeX supports the following shortcuts:
 
 - `\textLANGUAGETAG{TEXT}`: Short version of `\foreignlanguage{LANGUAGE}{TEXT}`.
 - `\begin{LANGUAGETAG}TEXT\end{LANGUAGETAG}`: Short version of `\begin{otherlanguage}{LANGUAGE}TEXT\end{otherlanguage}`.
 
-`LANGUAGETAG` can be either the same as `LANGUAGE` (e.g., `en-US`), or the same but without dashes (`enUS`). `\textLANGUAGETAG` only works without dashes (`\textenUS`). In order for babel to recognize the shortcuts, you have to use the `\babeltags` command in the form `\babeltags{LANGUAGETAG1=LANGUAGE1, LANGUAGETAG2=LANGUAGE2, ...}` (e.g., `\babeltags{enUS=en-US, de-DE=german}`). The `\babeltags` command should be in your preamble, and it's not required that it's in the same document as the text to be checked.
+`LANGUAGETAG` can be any of the following:
 
-As `it` (Italian) and `sl` (Slovenian) would lead to `\textit` and `\textsl`, which are already defined by LaTeX, these two language short codes are not supported. In this case, you have to resort to using the language names `italian` and `slovenian`.
+- A language name like `english`, `american`, `ngerman`.
+- A language short code like `en-US` or `de-DE` (see [`ltex.language`](settings.html#ltexlanguage)).
+- A language short code with dashes removed. `\textLANGUAGETAG` only works without dashes (`\textenUS`).
+
+In order for babel to recognize the shortcuts, you have to use the `\babeltags` command in the form `\babeltags{LANGUAGETAG1=LANGUAGE1, LANGUAGETAG2=LANGUAGE2, ...}` (e.g., `\babeltags{enUS=american, de-DE=ngerman, french=french}`). The `\babeltags` command should be in your preamble, and it's not required that it's in the same document as the text to be checked.
+
+As `it` (Italian) and `sl` (Slovene) would lead to `\textit` and `\textsl`, which are already taken by LaTeX, these two language short codes are not supported. In this case, you have to resort to using the language names `italian` and `slovene`.
 
 Finally, note that it's not recommended (nor should it be necessary) to use magic comments and babel commands in the same document.
 
