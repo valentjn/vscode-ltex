@@ -35,6 +35,33 @@ Magic comments are case-insensitive (except for the setting values), and the spa
 
   *Example:* `language=de-DE`
 
+## Multilingual LaTeX Documents with the babel Package
+
+While magic comments can be used to switch languages in a LaTeX document, this only makes sense for long parts of text. If you just want to use few words from another language, using magic comments can be cumbersome.
+
+The preferred way of having multiple languages in one LaTeX document is using the [babel package](https://ctan.org/pkg/babel). This statement even holds if you don't use LTeX, as otherwise hyphenation and other language-specific aspects will be wrong in your typeset document. For instance, some words that exist in both English and German are hyphenated differently, depending on which language is used (example: `ham·​burg·​er` vs. `Ham·​bur·​ger`).
+
+LTeX supports automatically switching its [`ltex.language`](settings.html#ltexlanguage) setting for a number of basic babel commands and environments. These are:
+
+- `\selectlanguage{LANGUAGE}`: Switches the language for the rest of the document.
+- `\foreignlanguage{LANGUAGE}{TEXT}`: Switches the language for the contents `TEXT` of the last argument.
+- `\begin{otherlanguage}{LANGUAGE}TEXT\end{otherlanguage}`: Switches the language for the contents `TEXT` of the environment.
+
+Here, `LANGUAGE` is the short code of the language (see [`ltex.language`](settings.html#ltexlanguage)) you want to use for checking `TEXT`. For some languages, babel only supports the general language like `pl` for Polish, but no variants like `pl-PL`. In this case, LTeX also recognizes the language if you omit the variant part after the dash, so that both LTeX and babel can work. If you can, supply the variant as LTeX won't display spelling errors (only grammar errors) if the general language is listed in the description of [`ltex.language`](settings.html#ltexlanguage).
+
+Alternatively, it's possible to use one of babel's language names like `english`, `amerian`, `german`, etc. Refer to the [babel manual](https://ctan.org/pkg/babel) for a list of possible language codes and names. Keep in mind that not all languages supported by LTeX are supported by babel, and vice versa.
+
+In addition, as the commands and environments given above are quite long, LTeX supports the following shortcuts:
+
+- `\textLANGUAGETAG{TEXT}`: Short version of `\foreignlanguage{LANGUAGE}{TEXT}`.
+- `\begin{LANGUAGETAG}TEXT\end{LANGUAGETAG}`: Short version of `\begin{otherlanguage}{LANGUAGE}TEXT\end{otherlanguage}`.
+
+`LANGUAGETAG` can be either the same as `LANGUAGE` (e.g., `en-US`), or the same but without dashes (`enUS`). `\textLANGUAGETAG` only works without dashes (`\textenUS`). In order for babel to recognize the shortcuts, you have to use the `\babeltags` command in the form `\babeltags{LANGUAGETAG1=LANGUAGE1, LANGUAGETAG2=LANGUAGE2, ...}` (e.g., `\babeltags{enUS=en-US, de-DE=german}`). The `\babeltags` command should be in your preamble, and it's not required that it's in the same document as the text to be checked.
+
+As `it` (Italian) and `sl` (Slovenian) would lead to `\textit` and `\textsl`, which are already defined by LaTeX, these two language short codes are not supported. In this case, you have to resort to using the language names `italian` and `slovenian`.
+
+Finally, note that it's not recommended (nor should it be necessary) to use magic comments and babel commands in the same document.
+
 ## Ignoring False Positives with Regular Expressions
 
 It's possible to use [`ltex.ignoreRuleInSentence`](settings.html#ltexignoreruleinsentence) to make LTeX ignore false positives based on regular expressions.
