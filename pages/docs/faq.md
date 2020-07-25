@@ -45,6 +45,14 @@ This depends on whether the multiple languages only occur in different files (i.
 - In the first case, it is possible to use [multi-root workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces#_settings). This enables you to have one `settings.json` per folder, and allows you to set [`ltex.language`](settings.html#ltexlanguage) just for that folder.
 - The more flexible way, which works for both cases, is using [magic comments](advanced-features.html#magic-comments).
 
+## How can I fix multiple spelling errors at the same time?
+
+If you have a technical text with many unknown words, adding them one by one to the user dictionary can be tedious. To add multiple words at once, select text that contains the words and execute the `Add all unknown words in selection to dictionary` quickfix, which you can select by pressing `Ctrl+.`. Similarly, you can execute the other quickfixes for multiple words at once:
+
+- Replace multiple occurrences of the same misspelled word
+- Ignore all errors in the selection
+- Disable all LanguageTool rules with matches in the selection
+
 ## What does LTeX stand for?
 
 LTeX is a portmanteau word from LT (LanguageTool) and TeX/LaTeX. TeX itself is an abbreviation of the Greek “τέχνη” (art/craft), while LaTeX is short for “Lamport TeX” after its creator Leslie Lamport. The X is pronounced like the “ch” in “loch”.
