@@ -11,6 +11,10 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 6.1.1 — “The Space Saturation” (July 26, 2020)
+
+- Fix another problem with spaces in paths when using LTeX LS on Windows (fixes [#80](https://github.com/valentjn/vscode-ltex/issues/80))
+
 ## 6.1.0 — “The babel Momentum” (July 26, 2020)
 
 - Download Java 11 if only Java 8 is installed; LTeX support for Java 8 will end on November 1, 2020 (see [documentation](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html) and [#39](https://github.com/valentjn/vscode-ltex/issues/39))
