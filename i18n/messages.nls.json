@@ -16,7 +16,6 @@
   "couldNotGetLtexVersion": "Could not get LTeX version.",
   "couldNotGetPathNameFromUrl": "Could not get path name from URL '{0}'.",
   "couldNotInstallLtexLs": "Could not install ltex-ls.",
-  "couldNotRunLtexLs": "Could not run ltex-ls.",
   "couldNotSetConfiguration": "Could not set configuration '{0}'.",
   "couldNotStartLanguageClient": "Could not start the language client!",
   "dependenciesNotInitialized": "Dependencies not initialized!",

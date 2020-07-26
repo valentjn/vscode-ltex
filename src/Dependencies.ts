@@ -425,14 +425,14 @@ export default class Dependencies {
       return this.showOfflineInstallationInstructions(i18n('couldNotInstallLtexLs'));
     }
 
-    try {
-      // try 0: use ltex.java.path, Java 11+ only
-      // try 1: use lib/ (don't download), Java 11+ only
-      // try 2: download and use lib/, Java 11+ only
-      // try 3: use ltex.java.path
-      // try 4: use lib/ (don't download)
-      // try 5: download and use lib/
-      for (let i: number = 0; i < 6; i++) {
+    // try 0: use ltex.java.path, Java 11+ only
+    // try 1: use lib/ (don't download), Java 11+ only
+    // try 2: download and use lib/, Java 11+ only
+    // try 3: use ltex.java.path
+    // try 4: use lib/ (don't download)
+    // try 5: download and use lib/
+    for (let i: number = 0; i < 6; i++) {
+      try {
         Logger.log('');
         this._javaPath = Dependencies.getRenamedSetting(workspaceConfig, 'java.path', 'javaHome');
 
@@ -478,15 +478,15 @@ export default class Dependencies {
           Logger.log('');
           return true;
         }
+      } catch (e) {
+        Logger.error(i18n('downloadExtractionRunOfJavaFailed', e));
       }
-
-      throw Error(i18n('couldNotRunLtexLs'));
-    } catch (e) {
-      Logger.error(i18n('downloadExtractionRunOfJavaFailed'), e);
-      Logger.log(i18n('youMightWantToTryOfflineInstallationSee',
-          Dependencies._offlineInstructionsUrl));
-      return await this.showOfflineInstallationInstructions(i18n('couldNotDownloadExtractRunJava'));
     }
+
+    Logger.error(i18n('downloadExtractionRunOfJavaFailed'));
+    Logger.log(i18n('youMightWantToTryOfflineInstallationSee',
+        Dependencies._offlineInstructionsUrl));
+    return await this.showOfflineInstallationInstructions(i18n('couldNotDownloadExtractRunJava'));
   }
 
   private async showOfflineInstallationInstructions(message: string): Promise<boolean> {
