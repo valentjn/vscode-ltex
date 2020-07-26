@@ -1,7 +1,7 @@
 {
   "name": "vscode-ltex",
   "displayName": "LTeX",
-  "version": "6.1.0-beta.1",
+  "version": "6.1.0-beta.2",
   "description": "LanguageTool grammar checking with LaTeX support",
   "icon": "img/logo-ltex.png",
   "author": "Julian Valentin",
