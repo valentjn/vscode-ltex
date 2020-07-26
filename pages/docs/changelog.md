@@ -11,7 +11,7 @@ sidebar: "sidebar"
 toc: false
 ---
 
-## 6.1.0 (upcoming)
+## 6.1.0 — “The babel Momentum” (July 26, 2020)
 
 - Download Java 11 if only Java 8 is installed; LTeX support for Java 8 will end on November 1, 2020 (see [documentation](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html) and [#39](https://github.com/valentjn/vscode-ltex/issues/39))
 - Add support for babel commands (see [documentation](https://valentjn.github.io/vscode-ltex/docs/advanced-features.html#multilingual-latex-documents-with-the-babel-package), fixes [#81](https://github.com/valentjn/vscode-ltex/issues/81))
