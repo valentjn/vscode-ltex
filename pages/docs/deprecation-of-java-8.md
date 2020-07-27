@@ -24,7 +24,7 @@ Due to LTeX's feature of automatically downloading Java 11 (via [AdoptOpenJDK](h
 
   *Necessary actions:* You should update your system-wide installation of Java, i.e., remove your old Java installation via the Windows Control Panel or your Linux package manager, and install Java 11+ via Windows installer, Linux package, etc. Otherwise, LTeX will continue to work, but it will download Java 11 to the extension folder after every update of LTeX.
 
-* **Scenario:** You have Java 8 installed in a custom location and you use the [`ltex.java.path`](settings.html#ltexjavapath) to point to this location.
+* **Scenario:** You have Java 8 installed in a custom location and you use the [`ltex.java.path`](settings.html#ltexjavapath) setting to point to this location.
 
   *Necessary actions:* You should update the Java installation of your custom location. Otherwise, LTeX will continue to work, but it will download Java 11 to the extension folder after every update of LTeX. Don't forget to update [`ltex.java.path`](settings.html#ltexjavapath) if the name of the directory of your Java installation included the Java version.
 
