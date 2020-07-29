@@ -9,6 +9,7 @@ import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient';
 
 import BugReporter from './BugReporter';
+import CommandHandler from './CommandHandler';
 import Dependencies from './Dependencies';
 import {I18n, i18n} from './I18n';
 import Logger from './Logger';
@@ -141,6 +142,11 @@ export async function activate(context: Code.ExtensionContext): Promise<Api> {
       Logger.showClientOutputChannel();
       Code.window.showErrorMessage(i18n('couldNotStartLanguageClient'));
     }
+  }
+
+  if (api.languageClient != null) {
+    const commandHandler: CommandHandler = new CommandHandler(api.languageClient);
+    commandHandler.register(context);
   }
 
   return Promise.resolve(api);

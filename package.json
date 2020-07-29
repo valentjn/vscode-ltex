@@ -46,6 +46,14 @@
   "contributes": {
     "commands": [
       {
+        "command": "ltex.checkCurrentDocument",
+        "title": "%ltex.i18n.command.ltex.checkCurrentDocument.title%"
+      },
+      {
+        "command": "ltex.checkAllDocumentsInWorkspace",
+        "title": "%ltex.i18n.command.ltex.checkAllDocumentsInWorkspace.title%"
+      },
+      {
         "command": "ltex.reportBug",
         "title": "%ltex.i18n.command.ltex.reportBug.title%"
       }

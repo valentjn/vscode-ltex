@@ -10,6 +10,7 @@
 
 ## 6.2.0 (upcoming)
 
+- Add commands `LTeX: Check current document` and `LTeX: Check all documents in workspace` (fixes [#84](https://github.com/valentjn/vscode-ltex/issues/84))
 - Skip front matter in Markdown
 - Ignore more preamble commands (e.g., `\automark`, `\directlua`, `\setuptoc`)
 

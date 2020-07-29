@@ -1,4 +1,6 @@
 {
+  "ltex.i18n.command.ltex.checkCurrentDocument.title": "LTeX: Check current document",
+  "ltex.i18n.command.ltex.checkAllDocumentsInWorkspace.title": "LTeX: Check all documents in workspace",
   "ltex.i18n.command.ltex.reportBug.title": "LTeX: Report bug in LTeX",
   "ltex.i18n.configuration.ltex.enabled.markdownDescription": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces. Changes require reloading the Visual Studio Code window to take effect.",
   "ltex.i18n.configuration.ltex.enabled.description": "Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces. Changes require reloading the Visual Studio Code window to take effect.",
