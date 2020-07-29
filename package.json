@@ -1571,6 +1571,13 @@
           "markdownDescription": "%ltex.i18n.configuration.ltex.diagnosticSeverity.markdownDescription%",
           "description": "%ltex.i18n.configuration.ltex.diagnosticSeverity.description%"
         },
+        "ltex.clearDiagnosticsWhenClosingFile": {
+          "type": "boolean",
+          "scope": "resource",
+          "default": true,
+          "markdownDescription": "%ltex.i18n.configuration.ltex.clearDiagnosticsWhenClosingFile.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.clearDiagnosticsWhenClosingFile.description%"
+        },
         "ltex.trace.server": {
           "type": "string",
           "scope": "window",
