@@ -5,6 +5,7 @@
 		"lib": true,
 		"node_modules": true,
 		"out": true,
+		"tmp-*": true,
 		"package-lock.json": true,
 		"**/*.class": true,
 		"**/*.vsix": true,
