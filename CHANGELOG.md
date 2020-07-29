@@ -10,9 +10,9 @@
 
 ## 6.2.0 (upcoming)
 
-- Add commands `LTeX: Check current document` and `LTeX: Check all documents in workspace` (fixes [#84](https://github.com/valentjn/vscode-ltex/issues/84))
-- Add commands `LTeX: Clear diagnostics in current document` and `LTeX: Clear all diagnostics`
-- Add setting `ltex.clearDiagnosticsWhenClosingFile`
+- Add commands [`LTeX: Check current document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexcheckcurrentdocument) and [`LTeX: Check all documents in workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexcheckalldocumentsinworkspace) (fixes [#84](https://github.com/valentjn/vscode-ltex/issues/84))
+- Add commands [`LTeX: Clear diagnostics in current document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexcleardiagnosticsincurrentdocument) and [`LTeX: Clear all diagnostics`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexclearalldiagnostics)
+- Add setting [`ltex.clearDiagnosticsWhenClosingFile`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexcleardiagnosticswhenclosingfile)
 - Skip front matter in Markdown
 - Ignore more preamble commands (e.g., `\automark`, `\directlua`, `\setuptoc`)
 
@@ -45,7 +45,7 @@
 - Add German translations for user interface of LT<sub>E</sub>X
 - Delay diagnostics at the current caret position (e.g., incomplete word or sentence) until the user has finished typing (fixes [#46](https://github.com/valentjn/vscode-ltex/issues/46))
 - Add `enabled` to magic comments (fixes [#67](https://github.com/valentjn/vscode-ltex/issues/67))
-- Add command `LTeX: Report bug in LTeX` for reporting LT<sub>E</sub>X bugs from within VS Code
+- Add command [`LTeX: Report bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexreportbug) for reporting LT<sub>E</sub>X bugs from within VS Code
 - Fix `\todo` couldn't be ignored (fixes [#63](https://github.com/valentjn/vscode-ltex/issues/63))
 - Fix wrong language-dependent settings used for magic comments
 - Fix add to dictionary and disable rule quick fixes using wrong language when used with magic comments
