@@ -8,6 +8,11 @@
 
 # Changelog
 
+## 6.2.0 (upcoming)
+
+- Skip front matter in Markdown
+- Ignore more preamble commands (e.g., `\automark`, `\directlua`, `\setuptoc`)
+
 ## 6.1.1 — “The Space Saturation” (July 26, 2020)
 
 - Fix another problem with spaces in paths when using LT<sub>E</sub>X LS on Windows (fixes [#80](https://github.com/valentjn/vscode-ltex/issues/80))
