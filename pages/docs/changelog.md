@@ -40,7 +40,7 @@ toc: false
 - Add German translations for user interface of LTeX
 - Delay diagnostics at the current caret position (e.g., incomplete word or sentence) until the user has finished typing (fixes [#46](https://github.com/valentjn/vscode-ltex/issues/46))
 - Add `enabled` to magic comments (fixes [#67](https://github.com/valentjn/vscode-ltex/issues/67))
-- Add command `LTeX: Report bug in LTeX` for reporting LTeX bugs from within VS Code
+- Add command [`LTeX: Report bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexreportbug) for reporting LTeX bugs from within VS Code
 - Fix `\todo` couldn't be ignored (fixes [#63](https://github.com/valentjn/vscode-ltex/issues/63))
 - Fix wrong language-dependent settings used for magic comments
 - Fix add to dictionary and disable rule quick fixes using wrong language when used with magic comments
