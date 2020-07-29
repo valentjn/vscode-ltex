@@ -11,6 +11,14 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 6.2.0 (upcoming)
+
+- Add commands [`LTeX: Check current document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexcheckcurrentdocument) and [`LTeX: Check all documents in workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexcheckalldocumentsinworkspace) (fixes [#84](https://github.com/valentjn/vscode-ltex/issues/84))
+- Add commands [`LTeX: Clear diagnostics in current document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexcleardiagnosticsincurrentdocument) and [`LTeX: Clear all diagnostics`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexclearalldiagnostics)
+- Add setting [`ltex.clearDiagnosticsWhenClosingFile`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexcleardiagnosticswhenclosingfile)
+- Skip front matter in Markdown
+- Ignore more preamble commands (e.g., `\automark`, `\directlua`, `\setuptoc`)
+
 ## 6.1.1 — “The Space Saturation” (July 26, 2020)
 
 - Fix another problem with spaces in paths when using LTeX LS on Windows (fixes [#80](https://github.com/valentjn/vscode-ltex/issues/80))
