@@ -48,7 +48,7 @@ This depends on whether the multiple languages only occur in different files (i.
 
 ## How can I fix multiple spelling errors at the same time?
 
-If you have a technical text with many unknown words, adding them one by one to the user dictionary can be tedious. To add multiple words at once, select text that contains the words and execute the `Add all unknown words in selection to dictionary` quickfix, which you can select by pressing `Ctrl+.`. Similarly, you can execute the other quickfixes for multiple words at once:
+If you have a technical text with many unknown words, adding them one by one to the user dictionary can be tedious. To add multiple words at once, select text that contains the words and execute the `Add all unknown words in selection to dictionary` quickfix, which you can select by pressing `Ctrl+.` (control and period keys together). Similarly, you can execute the other quickfixes for multiple words at once:
 
 - Replace multiple occurrences of the same misspelled word
 - Ignore all errors in the selection
