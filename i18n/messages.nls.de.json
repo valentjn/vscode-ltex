@@ -1,7 +1,7 @@
 {
   "copyReportAndCreateIssue": "Bericht kopieren und Problem erstellen",
   "couldNotDownloadExtractRunJava": "Herunterladen/Entpacken/Ausführung von Java fehlgeschlagen.",
-  "couldNotDownloadOrExtractJava11": "Herunterladen oder Entpacken von Java 11 fehlgeschlagen, jedoch wurde eine funktionierende Installation von Java {0} (Version {1}) auf Ihrem System gefunden. Die Verwendung von LTeX mit Java-Versionen älter als 11 ist deprecated. [In Zukunft wird LTeX Java 11 oder neuer voraussetzen.](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html) Bitte aktualisieren Sie Java zu Java 11 oder neuer so bald wie möglich.",
+  "couldNotDownloadOrExtractJava11": "Herunterladen oder Entpacken von Java 11 fehlgeschlagen, jedoch wurde eine funktionierende Installation von Java {0} (Version {1}) auf Ihrem System gefunden. Die Verwendung von LTeX mit Java-Versionen älter als 11 ist deprecated. [In Zukunft wird LTeX Java 11 oder neuer voraussetzen.](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html) Bitte aktualisieren Sie so bald wie möglich Java zu Version 11 oder neuer.",
   "couldNotInstallLtexLs": "Installation von ltex-ls fehlgeschlagen.",
   "couldNotStartLanguageClient": "Start des Language Clients fehlgeschlagen!",
   "downloading": "Lade {0} herunter ...",
