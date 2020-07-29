@@ -122,6 +122,12 @@ def formatSetting(settingName, settingJson, packageNlsJson):
 
   return markdown
 
+def formatCommand(commandJson, packageNlsJson):
+  if "markdownDescription" not in commandJson: return None
+  markdown = (f"## `{formatDescription(commandJson['title'], packageNlsJson)}`\n\n"
+      f"{formatDescription(commandJson['markdownDescription'], packageNlsJson)}\n")
+  return markdown
+
 def updateSettings(ltexRepoDirPath, pagesRepoDirPath):
   packageJsonPath = os.path.join(ltexRepoDirPath, "package.json")
   with open(packageJsonPath, "r") as f: packageJson = json.load(f)
@@ -142,6 +148,29 @@ sidebar: "sidebar"
   markdown = re.sub("\n\n+", "\n\n", markdown)
 
   dstPath = os.path.join(pagesRepoDirPath, "pages", "docs", "settings.md")
+  with open(dstPath, "w") as f: f.write(markdown)
+  linkSettings(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
+
+def updateCommands(ltexRepoDirPath, pagesRepoDirPath):
+  packageJsonPath = os.path.join(ltexRepoDirPath, "package.json")
+  with open(packageJsonPath, "r") as f: packageJson = json.load(f)
+
+  packageNlsJsonPath = os.path.join(ltexRepoDirPath, "package.nls.json")
+  with open(packageNlsJsonPath, "r") as f: packageNlsJson = json.load(f)
+
+  commandsJson = packageJson["contributes"]["commands"]
+  commandsMarkdown = [formatCommand(x, packageNlsJson) for x in commandsJson]
+  markdown = """---{}
+title: "Commands"
+permalink: "/docs/commands.html"
+sidebar: "sidebar"
+---
+
+""".format(licenseHeader)
+  markdown += "\n".join(x for x in commandsMarkdown if x is not None)
+  markdown = re.sub("\n\n+", "\n\n", markdown)
+
+  dstPath = os.path.join(pagesRepoDirPath, "pages", "docs", "commands.md")
   with open(dstPath, "w") as f: f.write(markdown)
   linkSettings(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 
@@ -197,6 +226,7 @@ def main():
   ltexRepoDirPath = args.ltex_repo
   pagesRepoDirPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
   updateSettings(ltexRepoDirPath, pagesRepoDirPath)
+  updateCommands(ltexRepoDirPath, pagesRepoDirPath)
   updateChangelog(ltexRepoDirPath, pagesRepoDirPath)
   updateContributing(ltexRepoDirPath, pagesRepoDirPath)
   updateAcknowledgments(ltexRepoDirPath, pagesRepoDirPath)
