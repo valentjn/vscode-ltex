@@ -47,23 +47,23 @@
     "commands": [
       {
         "command": "ltex.checkCurrentDocument",
-        "title": "%ltex.i18n.command.ltex.checkCurrentDocument.title%"
+        "title": "%ltex.i18n.commands.ltex.checkCurrentDocument.title%"
       },
       {
         "command": "ltex.checkAllDocumentsInWorkspace",
-        "title": "%ltex.i18n.command.ltex.checkAllDocumentsInWorkspace.title%"
+        "title": "%ltex.i18n.commands.ltex.checkAllDocumentsInWorkspace.title%"
       },
       {
         "command": "ltex.clearDiagnosticsInCurrentDocument",
-        "title": "%ltex.i18n.command.ltex.clearDiagnosticsInCurrentDocument.title%"
+        "title": "%ltex.i18n.commands.ltex.clearDiagnosticsInCurrentDocument.title%"
       },
       {
         "command": "ltex.clearAllDiagnostics",
-        "title": "%ltex.i18n.command.ltex.clearAllDiagnostics.title%"
+        "title": "%ltex.i18n.commands.ltex.clearAllDiagnostics.title%"
       },
       {
         "command": "ltex.reportBug",
-        "title": "%ltex.i18n.command.ltex.reportBug.title%"
+        "title": "%ltex.i18n.commands.ltex.reportBug.title%"
       }
     ],
     "configuration": {
