@@ -14,7 +14,7 @@ import re
 import sys
 
 sys.path.append(os.path.dirname(__file__))
-from linkSettings import linkSettings
+from linkSettingsAndCommands import linkSettingsAndCommands
 
 
 
@@ -149,7 +149,7 @@ sidebar: "sidebar"
 
   dstPath = os.path.join(pagesRepoDirPath, "pages", "docs", "settings.md")
   with open(dstPath, "w") as f: f.write(markdown)
-  linkSettings(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
+  linkSettingsAndCommands(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 
 def updateCommands(ltexRepoDirPath, pagesRepoDirPath):
   packageJsonPath = os.path.join(ltexRepoDirPath, "package.json")
@@ -172,7 +172,7 @@ sidebar: "sidebar"
 
   dstPath = os.path.join(pagesRepoDirPath, "pages", "docs", "commands.md")
   with open(dstPath, "w") as f: f.write(markdown)
-  linkSettings(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
+  linkSettingsAndCommands(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 
 
 
@@ -184,7 +184,7 @@ def copyMarkdown(srcPath, dstPath, metaData, ltexRepoDirPath, pagesRepoDirPath):
   markdown = markdown.replace("L<sup>A</sup>T<sub>E</sub>X", "LaTeX").replace(
       "T<sub>E</sub>X", "TeX")
   with open(dstPath, "w") as f: f.write(markdown)
-  linkSettings(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
+  linkSettingsAndCommands(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 
 def updateChangelog(ltexRepoDirPath, pagesRepoDirPath):
   copyMarkdown(os.path.join(ltexRepoDirPath, "CHANGELOG.md"),
