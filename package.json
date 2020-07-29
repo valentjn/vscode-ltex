@@ -54,6 +54,14 @@
         "title": "%ltex.i18n.command.ltex.checkAllDocumentsInWorkspace.title%"
       },
       {
+        "command": "ltex.clearDiagnosticsInCurrentDocument",
+        "title": "%ltex.i18n.command.ltex.clearDiagnosticsInCurrentDocument.title%"
+      },
+      {
+        "command": "ltex.clearAllDiagnostics",
+        "title": "%ltex.i18n.command.ltex.clearAllDiagnostics.title%"
+      },
+      {
         "command": "ltex.reportBug",
         "title": "%ltex.i18n.command.ltex.reportBug.title%"
       }

@@ -24,6 +24,11 @@ export default class CommandHandler {
         this.checkCurrentDocument.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.checkAllDocumentsInWorkspace',
         this.checkAllDocumentsInWorkspace.bind(this)));
+    context.subscriptions.push(Code.commands.registerCommand(
+        'ltex.clearDiagnosticsInCurrentDocument',
+        this.clearDiagnosticsInCurrentDocument.bind(this)));
+    context.subscriptions.push(Code.commands.registerCommand('ltex.clearAllDiagnostics',
+        this.clearAllDiagnostics.bind(this)));
   }
 
   public async checkDocument(uri: Code.Uri, codeLanguageId?: string,
@@ -89,5 +94,19 @@ export default class CommandHandler {
       codeProgress.finishTask();
       return Promise.resolve(true);
     });
+  }
+
+  public clearDiagnosticsInCurrentDocument(): void {
+    const diagnostics: Code.DiagnosticCollection | undefined = this._languageClient.diagnostics;
+    if (diagnostics == null) return;
+    const textEditor: Code.TextEditor | undefined = Code.window.activeTextEditor;
+    if (textEditor == null) return;
+    diagnostics.set(textEditor.document.uri, undefined);
+  }
+
+  public clearAllDiagnostics(): void {
+    const diagnostics: Code.DiagnosticCollection | undefined = this._languageClient.diagnostics;
+    if (diagnostics == null) return;
+    diagnostics.clear();
   }
 }
