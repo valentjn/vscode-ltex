@@ -166,6 +166,8 @@ permalink: "/docs/commands.html"
 sidebar: "sidebar"
 ---
 
+To run a command, open the Command Palette (`Ctrl+Shift+P`) and start typing the name of the command. The commands can only be run after the extension has been activated, i.e., after at least one Markdown or LaTeX file has been opened in the current workspace.
+
 """.format(licenseHeader)
   markdown += "\n".join(x for x in commandsMarkdown if x is not None)
   markdown = re.sub("\n\n+", "\n\n", markdown)

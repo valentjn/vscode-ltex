@@ -10,6 +10,8 @@ permalink: "/docs/commands.html"
 sidebar: "sidebar"
 ---
 
+To run a command, open the Command Palette (`Ctrl+Shift+P`) and start typing the name of the command. The commands can only be run after the extension has been activated, i.e., after at least one Markdown or LaTeX file has been opened in the current workspace.
+
 ## `LTeX: Check current document`
 
 Triggers a re-check of the active document. The active document is the one whose editor currently has focus, or, if none has focus, the one which was changed most recently. It is usually not necessary to run this command as LTeX automatically checks documents when being opened or changed.
