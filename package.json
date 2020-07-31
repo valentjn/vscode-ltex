@@ -2606,7 +2606,7 @@
     "eslint": "6.8.0",
     "eslint-config-google": "0.14.0",
     "eslint-plugin-only-warn": "1.0.2",
-    "mocha": "8.0.1",
+    "mocha": "8.1.0",
     "rimraf": "3.0.2",
     "ts-loader": "8.0.1",
     "typescript": "3.9.7",
