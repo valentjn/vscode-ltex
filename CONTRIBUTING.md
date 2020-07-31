@@ -46,7 +46,7 @@ If you like LTeX, but are not able to contribute in any of these ways, there are
 
 ## How to Contribute Code
 
-[As explained in the FAQ](https://valentjn.github.io/vscode-ltex/docs/faq.html#whats-the-difference-between-vscode-ltex-ltex-ls-and-languagetool), LT<sub>E</sub>X consists of two components: [vscode-ltex](https://github.com/valentjn/vscode-ltex) and [ltex-ls](https://github.com/valentjn/ltex-ls). vscode-ltex is written in TypeScript and consists mostly of boilerplate code to find, download and extract ltex-ls and Java. ltex-ls is written in Java and is the actual interface to the LanguageTool backend.
+[As explained in the FAQ](https://valentjn.github.io/vscode-ltex/docs/faq.html#whats-the-difference-between-vscode-ltex-ltex-ls-and-languagetool), LT<sub>E</sub>X consists of two components: [vscode-ltex](https://github.com/valentjn/vscode-ltex) and [ltex-ls](https://github.com/valentjn/ltex-ls). vscode-ltex is written in TypeScript and consists mostly of boilerplate code to find, download, and extract ltex-ls and Java. ltex-ls is written in Java and is the actual interface to the LanguageTool backend.
 
 ### Branches & Pull Requests
 
