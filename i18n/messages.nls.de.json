@@ -3,6 +3,8 @@
   "checkingDocumentN": "Prüfe Dokument {0}/{1} ...  ({2})",
   "copyReportAndCreateIssue": "Bericht kopieren und Problem erstellen",
   "couldNotCheckDocument": "Prüfung des Dokuments '{0}' fehlgeschlagen: '{1}'",
+  "couldNotCheckDocumentsAsNoDocumentsWereFound": "Prüfung der Dokumente fehlgeschlagen, da keine *.md- oder *.tex-Dokumente gefunden wurden. Nur Dokumente, die in einem der geöffneten Arbeitsbereichs-Ordner gespeichert sind, können überprüft werden. [Mehr Informationen ...](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexcheckalldocumentsinworkspace)",
+  "couldNotCheckDocumentsAsNoFoldersWereOpened": "Prüfung der Dokumente fehlgeschlagen, da keine Ordner im Arbeitsbereich geöffnet sind. Bitte öffnen Sie zuerst einen Ordner im Arbeitsbereich. [Mehr Informationen ...](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexcheckalldocumentsinworkspace)",
   "couldNotDownloadExtractRunJava": "Herunterladen/Entpacken/Ausführung von Java fehlgeschlagen.",
   "couldNotDownloadOrExtractJava11": "Herunterladen oder Entpacken von Java 11 fehlgeschlagen, jedoch wurde eine funktionierende Installation von Java {0} (Version {1}) auf Ihrem System gefunden. Die Verwendung von LTeX mit Java-Versionen älter als 11 ist deprecated. [In Zukunft wird LTeX Java 11 oder neuer voraussetzen.](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html) Bitte aktualisieren Sie so bald wie möglich Java zu Version 11 oder neuer.",
   "couldNotInstallLtexLs": "Installation von ltex-ls fehlgeschlagen.",

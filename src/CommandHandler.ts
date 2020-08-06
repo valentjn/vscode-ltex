@@ -92,7 +92,15 @@ export default class CommandHandler {
       }
 
       codeProgress.finishTask();
-      return Promise.resolve(true);
+
+      if (n > 0) {
+        return Promise.resolve(true);
+      } else {
+        Code.window.showErrorMessage((Code.workspace.workspaceFolders == null) ?
+            i18n('couldNotCheckDocumentsAsNoFoldersWereOpened') :
+            i18n('couldNotCheckDocumentsAsNoDocumentsWereFound'));
+        return Promise.resolve(false);
+      }
     });
   }
 

@@ -5,6 +5,8 @@
   "creatingBugReport": "Creating bug report...",
   "copyReportAndCreateIssue": "Copy report and create issue",
   "couldNotCheckDocument": "Could not check document '{0}': '{1}'",
+  "couldNotCheckDocumentsAsNoDocumentsWereFound": "Could not check documents as no *.md or *.tex documents were found. Only documents that are saved in one of the opened workspace folders can be checked. [More information...](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexcheckalldocumentsinworkspace)",
+  "couldNotCheckDocumentsAsNoFoldersWereOpened": "Could not check documents as no folders are opened in the current workspace. Please open a folder in the workspace first. [More information...](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexcheckalldocumentsinworkspace)",
   "couldNotDeleteLeavingTemporaryDirectoryOnDisk": "Could not delete '{0}', leaving temporary directory on disk.",
   "couldNotDeleteLeavingTemporaryFileOnDisk": "Could not delete '{0}', leaving temporary file on disk.",
   "couldNotDownloadExtractRunJava": "Could not download/extract/run Java.",
