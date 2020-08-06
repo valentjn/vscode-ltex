@@ -30,7 +30,11 @@ describe('Test extension (end-to-end)', () => {
     if (ltex == null) throw new Error('Could not find LTeX.');
     await createNewFile('markdown');
     console.log('Waiting for activation of LTeX...');
-    while (!ltex.isActive) await sleep(200);
+
+    for (let i: number = 0; i < 120; i++) {
+      if (ltex.isActive) break;
+      await sleep(500);
+    }
 
     api = ltex.exports;
 
