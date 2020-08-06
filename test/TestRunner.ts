@@ -52,6 +52,9 @@ async function runTestIteration(testIteration: number): Promise<void> {
   try {
     const userDataDirPath: string = Path.join(tmpDirPath, 'user');
     const extensionsDirPath: string = Path.join(tmpDirPath, 'extensions');
+    const workspaceDirPath: string = Path.join(tmpDirPath, 'workspace');
+    Fs.mkdirSync(workspaceDirPath);
+
     const cliArgs: string[] = [
           '--user-data-dir', userDataDirPath,
           '--extensions-dir', extensionsDirPath,
@@ -114,6 +117,7 @@ async function runTestIteration(testIteration: number): Promise<void> {
           launchArgs: [
             '--user-data-dir', userDataDirPath,
             '--extensions-dir', extensionsDirPath,
+            workspaceDirPath,
           ],
           extensionDevelopmentPath: ltexDirPath,
           extensionTestsPath: Path.join(__dirname, './index'),
