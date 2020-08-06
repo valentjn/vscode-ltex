@@ -18,6 +18,7 @@ node_modules/
 out/
 src/
 test/
+tmp-*/
 tools/
 **/*.map
 
