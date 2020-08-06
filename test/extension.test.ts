@@ -28,7 +28,8 @@ describe('Test extension (end-to-end)', () => {
     const ltex: Code.Extension<Ltex.Api> | undefined =
         Code.extensions.getExtension('valentjn.vscode-ltex');
     if (ltex == null) throw new Error('Could not find LTeX.');
-    await createNewFile('markdown');
+
+    const document: Code.TextDocument = await createNewFile('markdown', 'This is an *test*.');
     console.log('Waiting for activation of LTeX...');
 
     for (let i: number = 0; i < 120; i++) {
@@ -55,6 +56,21 @@ describe('Test extension (end-to-end)', () => {
     if (languageClient == null) throw new Error('Language client not initialized.');
     await languageClient.onReady();
     console.log('Language client is ready.');
+
+    let ltexReady: boolean = false;
+
+    for (let i: number = 0; i < 120; i++) {
+      const diagnostics: Code.Diagnostic[] = Code.languages.getDiagnostics(document.uri);
+
+      if ((diagnostics.length == 1) && (diagnostics[0].source == 'LTeX - EN_A_VS_AN')) {
+        ltexReady = true;
+        break;
+      }
+
+      await sleep(500);
+    }
+
+    if (!ltexReady) throw new Error('LTeX not successfully initialized.');
   });
 
   async function assertCheckingResult(document: Code.TextDocument): Promise<void> {
