@@ -80,6 +80,12 @@ describe('Test extension (end-to-end)', () => {
     Assert.strictEqual(diagnostics[0].source, 'LTeX - EN_A_VS_AN');
   }
 
+  beforeEach(async () => {
+    console.log('Closing all editors...');
+    Code.commands.executeCommand('workbench.action.closeAllEditors');
+    await sleep(200);
+  });
+
   it('Test checking of Markdown files', async () => {
     const document: Code.TextDocument = await createNewFile('markdown',
         'This is an *test*.');
