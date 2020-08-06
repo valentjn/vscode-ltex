@@ -57,7 +57,7 @@ describe('Test extension (end-to-end)', () => {
     console.log('Language client is ready.');
   });
 
-  async function testCheckingResult(document: Code.TextDocument): Promise<void> {
+  async function assertCheckingResult(document: Code.TextDocument): Promise<void> {
     return new Promise((resolve: () => void, reject: (e: Error) => void) => {
       if (languageClient == null) throw new Error('Language client not initialized.');
       languageClient.onNotification('textDocument/publishDiagnostics',
@@ -78,12 +78,12 @@ describe('Test extension (end-to-end)', () => {
   it('Test checking of Markdown files', async () => {
     const document: Code.TextDocument = await createNewFile('markdown',
         'This is an *test*.');
-    return testCheckingResult(document);
+    return assertCheckingResult(document);
   });
 
   it('Test checking of LaTeX files', async () => {
     const document: Code.TextDocument = await createNewFile('latex',
         'This is an \\textbf{test}.');
-    return testCheckingResult(document);
+    return assertCheckingResult(document);
   });
 });
