@@ -75,13 +75,13 @@ describe('Test extension (end-to-end)', () => {
     });
   }
 
-  it('test1.md - Test checking of Markdown files', async () => {
+  it('Test checking of Markdown files', async () => {
     const document: Code.TextDocument = await createNewFile('markdown',
         'This is an *test*.');
     return testCheckingResult(document);
   });
 
-  it('test1.tex - Test checking of LaTeX files', async () => {
+  it('Test checking of LaTeX files', async () => {
     const document: Code.TextDocument = await createNewFile('latex',
         'This is an \\textbf{test}.');
     return testCheckingResult(document);
