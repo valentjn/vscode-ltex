@@ -24,9 +24,12 @@ describe('Test settings', () => {
     const document: Code.TextDocument = await TestTools.createNewFile('latex',
         'This is an \\textbf{test}.');
     await TestTools.sleep(5000);
+
     Assert.strictEqual(Code.languages.getDiagnostics(document.uri).length, 1);
+
     await Code.commands.executeCommand('workbench.action.closeActiveEditor');
     await TestTools.sleep(1000);
+
     Assert.strictEqual(Code.languages.getDiagnostics(document.uri).length, 0);
   });
 
@@ -37,9 +40,12 @@ describe('Test settings', () => {
       const document: Code.TextDocument = await TestTools.createNewFile('latex',
           'This is an \\textbf{test}.');
       await TestTools.sleep(5000);
+
       Assert.strictEqual(Code.languages.getDiagnostics(document.uri).length, 1);
+
       await Code.commands.executeCommand('workbench.action.closeActiveEditor');
       await TestTools.sleep(1000);
+
       Assert.strictEqual(Code.languages.getDiagnostics(document.uri).length, 1);
     } finally {
       Code.workspace.getConfiguration('ltex').update('clearDiagnosticsWhenClosingFile', undefined,
