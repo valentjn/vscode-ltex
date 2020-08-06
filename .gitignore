@@ -8,5 +8,6 @@
 /lib/
 /node_modules/
 /out/
+/tmp-*/
 
 !/lib/.keep
