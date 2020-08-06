@@ -29,6 +29,8 @@ describe('Test extension (end-to-end)', () => {
         Code.extensions.getExtension('valentjn.vscode-ltex');
     if (ltex == null) throw new Error('Could not find LTeX.');
 
+    Code.workspace.getConfiguration('ltex').update('trace.server', 'messages',
+        Code.ConfigurationTarget.Global);
     const document: Code.TextDocument = await createNewFile('markdown', 'This is an *test*.');
     console.log('Waiting for activation of LTeX...');
 
