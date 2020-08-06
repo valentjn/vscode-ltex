@@ -14,8 +14,9 @@
 - Add commands [`LTeX: Clear diagnostics in current document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexcleardiagnosticsincurrentdocument) and [`LTeX: Clear all diagnostics`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexclearalldiagnostics)
 - Add setting [`ltex.clearDiagnosticsWhenClosingFile`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexcleardiagnosticswhenclosingfile)
 - Skip front matter in Markdown
-- Ignore more L<sup>A</sup>T<sub>E</sub>X preamble commands (e.g., `\automark`, `\directlua`, `\setuptoc`)
+- Ignore more L<sup>A</sup>T<sub>E</sub>X preamble commands (e.g., `\automark`, `\color`, `\DeclareSIUnit`, `\directlua`, `\setuptoc`)
 - Add support for German babel hyphenation commands `"-`, `""`, `"|`, `"=`, `"~`
+- Use non-breaking space for `~`
 
 ## 6.1.1 — “The Space Saturation” (July 26, 2020)
 
