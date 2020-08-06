@@ -58,21 +58,10 @@ describe('Test extension (end-to-end)', () => {
   });
 
   async function assertCheckingResult(document: Code.TextDocument): Promise<void> {
-    return new Promise((resolve: () => void, reject: (e: Error) => void) => {
-      if (languageClient == null) throw new Error('Language client not initialized.');
-      languageClient.onNotification('textDocument/publishDiagnostics',
-            (params: CodeLanguageClient.PublishDiagnosticsParams) => {
-        if (params.uri == document.uri.toString()) {
-          try {
-            Assert.strictEqual(params.diagnostics.length, 1);
-            Assert.strictEqual(params.diagnostics[0].source, 'LTeX - EN_A_VS_AN');
-            resolve();
-          } catch (e) {
-            reject(e);
-          }
-        }
-      });
-    });
+    await sleep(5000);
+    const diagnostics: Code.Diagnostic[] = Code.languages.getDiagnostics(document.uri);
+    Assert.strictEqual(diagnostics.length, 1);
+    Assert.strictEqual(diagnostics[0].source, 'LTeX - EN_A_VS_AN');
   }
 
   it('Test checking of Markdown files', async () => {
