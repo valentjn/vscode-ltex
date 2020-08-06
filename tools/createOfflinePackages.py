@@ -88,11 +88,14 @@ def downloadLtexLs():
   print("Downloading ltex-ls from '{}' to '{}'...".format(ltexLsUrl, ltexLsArchivePath))
   urllib.request.urlretrieve(ltexLsUrl, ltexLsArchivePath)
 
-  print("Extracting ltex-ls archive...")
-  with tarfile.open(ltexLsArchivePath, "r:gz") as f: f.extractall(path=libDirPath)
+  ltexLsArchivePath(ltexLsArchivePath)
 
   print("Removing ltex-ls archive...")
   os.remove(ltexLsArchivePath)
+
+def extractLtexLs(ltexLsArchivePath):
+  print("Extracting ltex-ls archive...")
+  with tarfile.open(ltexLsArchivePath, "r:gz") as f: f.extractall(path=libDirPath)
 
 
 
@@ -149,6 +152,8 @@ def main():
   parser = argparse.ArgumentParser(description="build offline packages of LTeX")
   parser.add_argument("--current-system", action="store_true",
       help="build offline package only for current platform/architecture")
+  parser.add_argument("--ltex-ls-path", metavar="PATH",
+      help="don't download ltex-ls from GitHub, but use *.tar.gz archive from this path")
   args = parser.parse_args()
 
   if args.current_system:
@@ -164,12 +169,18 @@ def main():
   else:
     ltexPlatformArchs = [("linux", "x64"), ("mac", "x64"), ("windows", "x64")]
 
+  ltexLsArchivePath = args.ltex_ls_path
   cleanLibDir()
 
   for ltexPlatform, ltexArch in ltexPlatformArchs:
     print("")
     print("Processing platform '{}' and architecture '{}'...".format(ltexPlatform, ltexArch))
-    downloadLtexLs()
+
+    if ltexLsArchivePath is None:
+      downloadLtexLs()
+    else:
+      extractLtexLs(ltexLsArchivePath)
+
     downloadJava(ltexPlatform, ltexArch)
     createPackage(ltexPlatform, ltexArch)
     cleanLibDir()
