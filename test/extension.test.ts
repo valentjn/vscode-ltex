@@ -38,29 +38,4 @@ describe('Test extension (end-to-end)', () => {
         'This is an \\textbf{test}.');
     return assertCheckingResult(document);
   });
-
-  it('Test deletion of diagnostics when closing files', async () => {
-    const document: Code.TextDocument = await TestTools.createNewFile('latex',
-        'This is an \\textbf{test}.');
-    await assertCheckingResult(document);
-    Code.commands.executeCommand('workbench.action.closeActiveEditor');
-    await TestTools.sleep(1000);
-    Assert.strictEqual(Code.languages.getDiagnostics(document.uri).length, 0);
-  });
-
-  it('Test ltex.clearDiagnosticsWhenClosingFile', async () => {
-    try {
-      Code.workspace.getConfiguration('ltex').update('clearDiagnosticsWhenClosingFile', false,
-          Code.ConfigurationTarget.Global);
-      const document: Code.TextDocument = await TestTools.createNewFile('latex',
-          'This is an \\textbf{test}.');
-      await assertCheckingResult(document);
-      Code.commands.executeCommand('workbench.action.closeActiveEditor');
-      await TestTools.sleep(1000);
-      Assert.strictEqual(Code.languages.getDiagnostics(document.uri).length, 1);
-    } finally {
-      Code.workspace.getConfiguration('ltex').update('clearDiagnosticsWhenClosingFile', undefined,
-          Code.ConfigurationTarget.Global);
-    }
-  });
 });
