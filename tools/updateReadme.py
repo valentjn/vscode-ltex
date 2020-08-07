@@ -48,8 +48,14 @@ def convertToMarkdown(structure, indent=0):
   return markdown
 
 def processTitle(title):
-  return title.replace("LaTeX", "L<sup>A</sup>T<sub>E</sub>X").replace(
-      "TeX", "T<sub>E</sub>X").replace("LT<sub>E</sub>X: ", "LTeX: ")
+  title = title.replace("LaTeX", "L<sup>A</sup>T<sub>E</sub>X").replace("TeX", "T<sub>E</sub>X")
+  prevTitle = None
+
+  while title != prevTitle:
+    prevTitle = title
+    title = re.sub(r"(`.*?)LT<sub>E</sub>X", r"\1LTeX", title)
+
+  return title
 
 def main():
   serverUrl = "https://valentjn.github.io/vscode-ltex"

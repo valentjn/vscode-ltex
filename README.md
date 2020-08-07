@@ -111,7 +111,7 @@ Find more information in the [changelog](https://valentjn.github.io/vscode-ltex/
     - [`LTeX: Check all documents in workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-all-documents-in-workspace)
     - [`LTeX: Clear diagnostics in current document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-clear-diagnostics-in-current-document)
     - [`LTeX: Clear all diagnostics`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-clear-all-diagnostics)
-    - [`LTeX: Report bug in LT<sub>E</sub>X`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-report-bug-in-ltex)
+    - [`LTeX: Report bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-report-bug-in-ltex)
   - [Advanced Features](https://valentjn.github.io/vscode-ltex/docs/advanced-features.html)
     - [Magic Comments](https://valentjn.github.io/vscode-ltex/docs/advanced-features.html#magic-comments)
     - [Multilingual L<sup>A</sup>T<sub>E</sub>X Documents with the babel Package](https://valentjn.github.io/vscode-ltex/docs/advanced-features.html#multilingual-latex-documents-with-the-babel-package)
