@@ -88,7 +88,7 @@ def downloadLtexLs():
   print("Downloading ltex-ls from '{}' to '{}'...".format(ltexLsUrl, ltexLsArchivePath))
   urllib.request.urlretrieve(ltexLsUrl, ltexLsArchivePath)
 
-  ltexLsArchivePath(ltexLsArchivePath)
+  extractLtexLs(ltexLsArchivePath)
 
   print("Removing ltex-ls archive...")
   os.remove(ltexLsArchivePath)
