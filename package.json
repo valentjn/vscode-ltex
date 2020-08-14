@@ -2597,7 +2597,7 @@
     "@types/mocha": "8.0.2",
     "@types/node": "14.0.27",
     "@types/rimraf": "3.0.0",
-    "@types/semver": "7.3.1",
+    "@types/semver": "7.3.2",
     "@types/tar": "4.0.3",
     "@types/vscode": "1.39.0",
     "@types/webpack": "4.41.21",
