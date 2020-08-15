@@ -8,8 +8,9 @@
 
 # Changelog
 
-## 6.2.1 (upcoming)
+## 6.3.0 (upcoming)
 
+- Add support for `an` article when before a formula starting with a vowel (e.g., `an $n$-dimensional problem`, fixes [#92](https://github.com/valentjn/vscode-ltex/issues/92))
 - Fix links to documentation in various places (readme, changelog, error messages, etc.)
 
 ## 6.2.0 — “The Command Isotope” (August 7, 2020)
