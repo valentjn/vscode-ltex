@@ -14,7 +14,8 @@ sidebar: "sidebar"
 
 - 64-bit operating system
 - [VS Code 1.39 or newer](https://code.visualstudio.com/)
-- [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) (if you want to check LaTeX documents)
+- Optional:
+  - If you want to check LaTeX documents: [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
 ## How to Use
 
