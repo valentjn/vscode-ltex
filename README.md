@@ -6,7 +6,7 @@
    - file, You can obtain one at https://mozilla.org/MPL/2.0/.
    -->
 
-# LT<sub>E</sub>X Extension for Visual Studio Code: LanguageTool Grammar Checking with L<sup>A</sup>T<sub>E</sub>X Support
+# LT<sub>E</sub>X Extension for VS Code: Grammar/Spell Checker with LanguageTool and L<sup>A</sup>T<sub>E</sub>X Support
 
 [![latest release](https://badgen.net/badge/-/release/585858?label=)![version number](https://badgen.net/vs-marketplace/v/valentjn.vscode-ltex?label=)![release date](https://badgen.net/github/last-commit/valentjn/vscode-ltex/release?label=)][marketplace]&nbsp;
 [![installs](https://badgen.net/vs-marketplace/i/valentjn.vscode-ltex)][marketplace]&nbsp;
@@ -20,13 +20,22 @@
 [![build status](https://badgen.net/travis/valentjn/vscode-ltex/release)](https://www.travis-ci.org/valentjn/ltex-ls)&nbsp;
 [![coverage](https://badgen.net/coveralls/c/github/valentjn/ltex-ls/release)](https://coveralls.io/github/valentjn/ltex-ls)
 
-**LT<sub>E</sub>X** provides offline grammar checking in Visual Studio Code using [LanguageTool (LT)](https://languagetool.org/), supporting L<sup>A</sup>T<sub>E</sub>X and Markdown documents.
+**LT<sub>E</sub>X** provides offline grammar checking of various markup languages in Visual Studio Code using [LanguageTool (LT)](https://languagetool.org/). LT<sub>E</sub>X currently supports L<sup>A</sup>T<sub>E</sub>X and Markdown documents.
 
-This extension is a fork of the abandoned [LanguageTool for Visual Studio Code extension](https://github.com/adamvoss/vscode-languagetool) by Adam Voss with L<sup>A</sup>T<sub>E</sub>X support, lots of new features (user dictionaries, ignore errors, etc.), and updated dependencies (LanguageTool).
+The difference to regular spell checkers is that LT<sub>E</sub>X not only detects spelling errors, but also many grammar and stylistic errors such as:
+
+- `This is an mistake.`
+- `The bananas is tasty.`
+- `We look forward to welcome you.`
+- `Are human beings any different than animals?`
+
+A classic use case of LT<sub>E</sub>X is checking scientific L<sup>A</sup>T<sub>E</sub>X papers in VS Code, but why not check your next blog post, book chapter, or long e-mail before you send it to someone else?
+
+LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageTool for Visual Studio Code extension](https://github.com/adamvoss/vscode-languagetool) by Adam Voss<sup>†</sup>.
 
 ## Features
 
-![LanguageTool Grammar Checking for VS Code with LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/release/img/banner-ltex.png)
+![Grammar/Spell Checker for VS Code with LanguageTool and LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/release/img/banner-ltex.png)
 
 - Checks **L<sup>A</sup>T<sub>E</sub>X** and **Markdown** documents
 - Comes with **everything included,** no need to install Java or LanguageTool
