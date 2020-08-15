@@ -207,6 +207,15 @@ sidebar: "sidebar"
 ---
 """.format(licenseHeader), ltexRepoDirPath, pagesRepoDirPath)
 
+def updateCodeOfConduct(ltexRepoDirPath, pagesRepoDirPath):
+  copyMarkdown(os.path.join(ltexRepoDirPath, "CODE_OF_CONDUCT.md"),
+      os.path.join(pagesRepoDirPath, "pages", "docs", "code-of-conduct.md"), """---
+title: "Code of Conduct"
+permalink: "/docs/code-of-conduct.html"
+sidebar: "sidebar"
+---
+""", ltexRepoDirPath, pagesRepoDirPath)
+
 def updateAcknowledgments(ltexRepoDirPath, pagesRepoDirPath):
   copyMarkdown(os.path.join(ltexRepoDirPath, "ACKNOWLEDGMENTS.md"),
       os.path.join(pagesRepoDirPath, "pages", "docs", "acknowledgments.md"), """---{}
@@ -231,6 +240,7 @@ def main():
   updateCommands(ltexRepoDirPath, pagesRepoDirPath)
   updateChangelog(ltexRepoDirPath, pagesRepoDirPath)
   updateContributing(ltexRepoDirPath, pagesRepoDirPath)
+  updateCodeOfConduct(ltexRepoDirPath, pagesRepoDirPath)
   updateAcknowledgments(ltexRepoDirPath, pagesRepoDirPath)
 
 
