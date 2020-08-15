@@ -45,6 +45,7 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
 - **User dictionaries**
 - **Multilingual support** with babel commands or magic comments
 - Possibility to use **external LanguageTool servers**
+- **Extensive [documentation](https://valentjn.github.io/vscode-ltex/)**
 
 ## Requirements
 
