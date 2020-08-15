@@ -87,3 +87,32 @@ In addition, there is the possibility to work on the [documentation](https://val
 Analogously to the actual extension, there are two branches, which are stored in the [repository of vscode-ltex](https://github.com/valentjn/vscode-ltex): `gh-pages-develop` and `gh-pages-release`. Improvements go to `gh-pages-develop`, while `gh-pages-release` reflects the documentation for the latest release. Pushes to `gh-pages-release` will trigger Travis CI: It will hard-reset the actual `gh-pages` branch used for generating the site to `gh-pages-release`, and add a commit for updating the usage statistics on the homepage. To keep the statistics up-to-date, a cron job triggers this process once a day.
 
 At the bottom of each page, you'll find an “Edit me” button that takes you directly to the corresponding Markdown document in the GitHub repo.
+
+## Maintainer Guidelines
+
+Here are some guidelines the maintainers of LTeX follow.
+
+### Guidelines about Issues
+
+- **Stale issues** are closed seven days after they became stale. An issue becomes stale if:
+  - The issue is missing information.
+  - The issue is declared stale by a maintainer.
+- **Discussions** may happen on any issue regardless of its state. Discussions don't prolong the lifetime of stale issues, and they must be about the original issue, otherwise a new issue must be opened.
+- Issues may only be **reopened** if the reason for closing it doesn't exist anymore.
+  - *Examples:* Missing information is provided, bug occurs again due to a regression, etc.
+- Issues may be **locked** if they violate the [Code of Conduct](https://valentjn.github.io/vscode-ltex/docs/code-of-conduct.html).
+
+### Guidelines about Versioning
+
+- **Semantic versioning** is used for vscode-ltex.
+  - For bugfixes, the patch version is increased.
+  - For new features, the minor version is increased.
+  - For breaking changes, the major version is increased.
+    - *Explanation:* Breaking changes are changes that may require action from users (e.g., most changes of existing LTeX settings).
+- If a new release of vscode-ltex makes a **new version of ltex-ls** necessary, the version of ltex-ls is set to that of vscode-ltex.
+
+### Guidelines about Fundamental Changes
+
+- **Fundamental changes** are announced as an issue, in the documentation, and/or as message boxes in VS Code three months before their implementation.
+  - *Explanation:* Fundamental changes are possibly breaking changes that change the foundation of LTeX (e.g., upgrade from Java 8 to Java 11).
+- **Documentation of fundamental changes** and associated deprecated settings may be deleted three months after their implementation.
