@@ -51,7 +51,8 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
 
 - 64-bit operating system
 - [VS Code 1.39 or newer](https://code.visualstudio.com/)
-- [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) (if you want to check L<sup>A</sup>T<sub>E</sub>X documents)
+- Optional:
+  - If you want to check L<sup>A</sup>T<sub>E</sub>X documents: [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
 ## How to Use
 
