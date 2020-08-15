@@ -5,7 +5,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-title: "LTeX – LanguageTool Grammar/Spell Checking for Visual Studio Code with LaTeX Support"
+title: "LTeX – Grammar/Spell Checker for VS Code with LanguageTool and LaTeX Support"
 permalink: "/index.html"
 sidebar: "sidebar"
 toc: false
@@ -23,15 +23,24 @@ toc: false
 <a href="https://www.travis-ci.org/valentjn/ltex-ls" class="no-external">![build status](https://badgen.net/travis/valentjn/vscode-ltex/release)</a>&nbsp;
 <a href="https://coveralls.io/github/valentjn/ltex-ls" class="no-external">![coverage](https://badgen.net/coveralls/c/github/valentjn/ltex-ls/release)</a>
 
-**LTeX** provides offline grammar checking in Visual Studio Code using [LanguageTool&nbsp;(LT)](https://languagetool.org/), supporting LaTeX and Markdown documents.
+**LTeX** provides offline grammar checking of various markup languages in Visual Studio Code using [LanguageTool&nbsp;(LT)](https://languagetool.org/). LTeX currently supports LaTeX and Markdown documents.
 
-This extension is a fork of the abandoned [LanguageTool for Visual Studio Code extension](https://github.com/adamvoss/vscode-languagetool) by Adam Voss with LaTeX support, lots of new features (user dictionaries, ignore errors, etc.), and updated dependencies (LanguageTool).
+The difference to regular spell checkers is that LTeX not only detects spelling errors, but also many grammar and stylistic errors such as:
+
+- `This is an mistake.`
+- `The bananas is tasty.`
+- `We look forward to welcome you.`
+- `Are human beings any different than animals?`
+
+A classic use case of LTeX is checking scientific LaTeX papers in VS Code, but why not check your next blog post, book chapter, or long e-mail before you send it to someone else?
+
+LTeX is a successor (since it's a fork) of the abandoned [LanguageTool for Visual Studio Code extension](https://github.com/adamvoss/vscode-languagetool) by Adam Voss<sup>†</sup>.
 
 <div style="margin-bottom:30px;"></div>
 
 ## Features
 
-![LanguageTool Grammar Checking for VS Code with LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/release/img/banner-ltex.png)
+![Grammar/Spell Checker for VS Code with LanguageTool and LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/release/img/banner-ltex.png)
 
 - Checks **LaTeX** and **Markdown** documents
 - Comes with **everything included,** no need to install Java or LanguageTool
