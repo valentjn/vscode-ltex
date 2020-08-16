@@ -1,0 +1,24 @@
+name: "Label Commenter"
+
+on:
+  issues:
+    types:
+      - "labeled"
+      - "unlabeled"
+  pull_request_target:
+    types:
+      - "labeled"
+      - "unlabeled"
+
+jobs:
+  comment:
+    runs-on: "ubuntu-18.04"
+    steps:
+      - uses: "actions/checkout@2036a08e25fa78bbd946711a407b529a0a1204bf"
+        with:
+          ref: "develop"
+      - name: "Label Commenter"
+        uses: "peaceiris/actions-label-commenter@v1.5.0"
+        with:
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
+          config_file: ".github/label-commenter-config.yml"
