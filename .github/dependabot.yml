@@ -6,3 +6,7 @@ updates:
       interval: "weekly"
       day: "friday"
     open-pull-requests-limit: 10
+    assignees:
+    - "valentjn"
+    labels:
+    - "pr-dependabot"
