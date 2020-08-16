@@ -93,9 +93,7 @@ Analogously to the actual extension, there are two branches, which are stored in
 
 At the bottom of each page, you'll find an “Edit me” button that takes you directly to the corresponding Markdown document in the GitHub repo.
 
-## Maintainer Guidelines
-
-Here are some guidelines the maintainers of LTeX follow.
+## Contribution Guidelines
 
 ### Guidelines about Issues
 
