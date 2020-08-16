@@ -34,6 +34,8 @@ If you like LTeX, but are not able to contribute in any of these ways, there are
    - Reproduce the bug and keep the document for which it occurs open. Execute the command [`LTeX: Report bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-report-bug-in-ltex) inside Visual Studio Code from the Command Palette (`Ctrl+Shift+P`) and click on `Copy report and create issue`. This will copy a prefilled bug report to your clipboard and open the `New issue` page on GitHub in your browser (you may have to confirm that you really want to open the page). Enter a summary of the issue in the title field and paste the bug report from your clipboard into the description field. Before submitting the bug report, check that it doesn't contain any confidential data. OR
    - Manually [open an issue on GitHub](https://github.com/valentjn/vscode-ltex/issues/new/choose), select the `Bug report` template, and fill in as much info as you can (the [`LTeX: Report bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-report-bug-in-ltex) command would do that for you). This will help us reproduce the issue.
 
+**Important:** Please follow the issue template. Issues that don't follow the template or that don't contain the vital information requested in the template (especially minimal example document and settings) may be immediately closed as invalid.
+
 ### Known Issues and Limitations
 
 - The LaTeX parser is not perfect. False positives are sometimes reported as errors. However, it is impossible to fully parse LaTeX without compiling it.
@@ -44,6 +46,8 @@ If you like LTeX, but are not able to contribute in any of these ways, there are
 1. Make sure that your feature is actually about LT<sub>E</sub>X (not about LanguageTool, for example).
 2. Make sure that your feature is not in the [list of all open and closed GitHub issues](https://github.com/valentjn/vscode-ltex/issues?q=is%3Aissue).
 3. Select the `Feature request` template when [opening an issue on GitHub](https://github.com/valentjn/vscode-ltex/issues/new/choose) and fill in as much info as you can. Using actual real-world examples that explain why you and many other users would benefit from the feature increases the request's chances of being implemented.
+
+**Important:** Please follow the issue template. Issues that don't follow the template or that don't contain vital information requested in the template may be immediately closed as invalid.
 
 ## How to Contribute Code
 
@@ -99,6 +103,7 @@ Here are some guidelines the maintainers of LTeX follow.
 - **Discussions** may happen on any issue regardless of its state. Discussions don't prolong the lifetime of stale issues, and they must be about the original issue, otherwise a new issue must be opened.
 - Issues may only be **reopened** if the reason for closing it doesn't exist anymore.
   - *Examples:* Missing information is provided, bug occurs again due to a regression, etc.
+- Issues that don't follow the **template** may be closed immediately.
 - Issues may be **locked** if they violate the [Code of Conduct](https://valentjn.github.io/vscode-ltex/docs/code-of-conduct.html).
 
 ### Guidelines about Versioning

@@ -6,7 +6,7 @@ labels: "1-bug, 2-unconfirmed"
 assignees: ""
 ---
 
-Note: It is highly recommended to follow the instructions at https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#how-to-report-bugs and use the `LTeX: Report bug in LTeX` command from within Visual Studio Code.
+Note: It is highly recommended to follow the instructions at https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#how-to-report-bugs and use the `LTeX: Report bug in LTeX` command from within Visual Studio Code. Per the contribution guidelines, deleting parts of the template or not filling in vital information may result in the issue to be immediately closed as invalid.
 
 **Describe the bug**
 A clear and concise description of what the bug is.
