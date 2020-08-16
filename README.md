@@ -137,7 +137,7 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
       - [Code Checks](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#code-checks)
       - [Versioning](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#versioning)
       - [Documentation](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#documentation)
-    - [Maintainer Guidelines](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#maintainer-guidelines)
+    - [Contribution Guidelines](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#contribution-guidelines)
       - [Guidelines about Issues](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#guidelines-about-issues)
       - [Guidelines about Versioning](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#guidelines-about-versioning)
       - [Guidelines about Fundamental Changes](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#guidelines-about-fundamental-changes)
