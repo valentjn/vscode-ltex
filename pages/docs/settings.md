@@ -808,7 +808,7 @@ Object with the following properties:
 
 ## `ltex.ltex-ls.path`
 
-If set to an empty string, LTeX automatically downloads the [latest compatible release of ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. Use the path to the root directory of ltex-ls (it contains `bin` and `lib` subdirectories). Changes require reloading the Visual Studio Code window to take effect.
+If set to an empty string, LTeX automatically downloads the [latest compatible release of ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. Use the path to the root directory of ltex-ls (it contains `bin` and `lib` subdirectories). `~` is expanded to the user's home directory. Changes require reloading the Visual Studio Code window to take effect.
 
 *Type:* `string`
 
@@ -826,7 +826,7 @@ If set to a non-empty string, LTeX will not use the bundled, built-in version of
 
 ## `ltex.java.path`
 
-If set to an empty string and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the `JAVA_HOME` environment variable (it usually contains `bin` and `lib` subdirectories, amongst others). Changes require reloading the Visual Studio Code window to take effect.
+If set to an empty string and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the `JAVA_HOME` environment variable (it usually contains `bin` and `lib` subdirectories, amongst others). `~` is expanded to the user's home directory. Changes require reloading the Visual Studio Code window to take effect.
 
 *Type:* `string`
 
@@ -1025,7 +1025,7 @@ Optional mother tongue of the user (e.g., `"de-DE"`). If set, additional rules w
 
 ## `ltex.additionalRules.languageModel`
 
-Optional path to a directory with rules of a language model with *n*-gram occurrence counts.
+Optional path to a directory with rules of a language model with *n*-gram occurrence counts. `~` is expanded to the user's home directory.
 
 *Type:* `string`
 
@@ -1033,7 +1033,7 @@ Optional path to a directory with rules of a language model with *n*-gram occurr
 
 ## `ltex.additionalRules.neuralNetworkModel`
 
-Optional path to a directory with rules of a pretrained neural network model.
+Optional path to a directory with rules of a pretrained neural network model. `~` is expanded to the user's home directory.
 
 *Type:* `string`
 
@@ -1041,7 +1041,7 @@ Optional path to a directory with rules of a pretrained neural network model.
 
 ## `ltex.additionalRules.word2VecModel`
 
-Optional path to a directory with rules of a word2vec language model.
+Optional path to a directory with rules of a word2vec language model. `~` is expanded to the user's home directory.
 
 *Type:* `string`
 
