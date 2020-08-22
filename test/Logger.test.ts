@@ -23,7 +23,7 @@ describe('Test Logger', () => {
   });
 
   it('Test log()', () => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     Logger.log(null);
   });
