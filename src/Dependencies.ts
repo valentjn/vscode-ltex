@@ -12,6 +12,7 @@ import extractZip from 'extract-zip';
 import * as Fs from 'fs';
 import * as Http from 'http';
 import * as Https from 'https';
+import * as Os from 'os';
 import * as Path from 'path';
 import * as SemVer from 'semver';
 import * as Tar from 'tar';
@@ -43,6 +44,12 @@ export default class Dependencies {
 
   private static isValidPath(path: string | null): boolean {
     return ((path != null) && (path.length > 0));
+  }
+
+  private static normalizePath(path: string | null): string | null {
+    if (path == null) return null;
+    const homeDirPath: string = Os.homedir();
+    return path.replace(/^~($|\/|\\)/, `${homeDirPath}$1`);
   }
 
   private static parseUrl(urlStr: string): Https.RequestOptions {
@@ -393,7 +400,7 @@ export default class Dependencies {
       // try 1: use lib/ (don't download)
       // try 2: download and use lib/
       Logger.log('');
-      this._ltexLsPath = workspaceConfig.get('ltex-ls.path', '');
+      this._ltexLsPath = Dependencies.normalizePath(workspaceConfig.get('ltex-ls.path', ''));
 
       if (Dependencies.isValidPath(this._ltexLsPath)) {
         Logger.log(i18n('ltexLtexLsPathSetTo', this._ltexLsPath));
@@ -434,7 +441,8 @@ export default class Dependencies {
     for (let i: number = 0; i < 6; i++) {
       try {
         Logger.log('');
-        this._javaPath = Dependencies.getRenamedSetting(workspaceConfig, 'java.path', 'javaHome');
+        this._javaPath = Dependencies.normalizePath(Dependencies.getRenamedSetting(
+            workspaceConfig, 'java.path', 'javaHome'));
 
         if (Dependencies.isValidPath(this._javaPath)) {
           Logger.log(i18n('ltexJavaPathSetTo', this._javaPath));
@@ -597,7 +605,7 @@ export default class Dependencies {
     if (Dependencies.isValidPath(this._javaPath)) {
       env['JAVA_HOME'] = this._javaPath!;
     } else if ((env['LTEX_JAVA_HOME'] != null) && Dependencies.isValidPath(env['LTEX_JAVA_HOME'])) {
-      env['JAVA_HOME'] = env['LTEX_JAVA_HOME'];
+      env['JAVA_HOME'] = Dependencies.normalizePath(env['LTEX_JAVA_HOME'])!;
     }
 
     const isWindows: boolean = (process.platform === 'win32');
