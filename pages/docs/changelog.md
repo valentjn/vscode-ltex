@@ -11,6 +11,12 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 6.3.0 — “The Vowel Extraction” (August 22, 2020)
+
+- Add support for `an` article when before a formula starting with a vowel (e.g., `an $n$-dimensional problem`, fixes [#92](https://github.com/valentjn/vscode-ltex/issues/92))
+- Add support for `~/` and `~\` in settings (fixes [#99](https://github.com/valentjn/vscode-ltex/issues/99))
+- Fix links to documentation in various places (readme, changelog, error messages, etc.)
+
 ## 6.2.0 — “The Command Isotope” (August 7, 2020)
 
 - Add commands [`LTeX: Check current document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-current-document) and [`LTeX: Check all documents in workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-all-documents-in-workspace) (fixes [#84](https://github.com/valentjn/vscode-ltex/issues/84))
