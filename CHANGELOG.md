@@ -8,7 +8,7 @@
 
 # Changelog
 
-## 6.3.0 (upcoming)
+## 6.3.0 — “The Vowel Extraction” (August 22, 2020)
 
 - Add support for `an` article when before a formula starting with a vowel (e.g., `an $n$-dimensional problem`, fixes [#92](https://github.com/valentjn/vscode-ltex/issues/92))
 - Add support for `~/` and `~\` in settings (fixes [#99](https://github.com/valentjn/vscode-ltex/issues/99))
