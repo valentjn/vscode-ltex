@@ -17,6 +17,12 @@ sidebar: "sidebar"
 - Optional:
   - If you want to check LaTeX documents: [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
+## Download Providers
+
+- [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex) (VS Code will download from here)
+- [Open VSX](https://open-vsx.org/extension/valentjn/vscode-ltex)
+- [GitHub](https://github.com/valentjn/ltex-ls/releases) (+ packages for offline installation)
+
 ## How to Use
 
 1. Install the requirements listed above
