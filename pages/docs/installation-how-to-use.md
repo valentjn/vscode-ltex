@@ -30,7 +30,7 @@ sidebar: "sidebar"
 
 The key component of LTeX, the LTeX Language Server (ltex-ls), which also includes LanguageTool itself, cannot be included in the LTeX version distributed on the Visual Studio Marketplace due to file size restrictions. In addition, ltex-ls requires Java due to its LanguageTool dependency.
 
-When activated for the first time, LTeX will automatically download and use the latest compatible ltex-ls release from GitHub and, in case no existing installation of Java has been found, a portable Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)). Both will be stored in the extension folder.
+When activated for the first time, LTeX will automatically download and use the latest compatible ltex-ls release from GitHub and, in case no existing installation of Java has been found, a portable Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)). Both will be stored in the extension folder. Note that after this initial installation, no connection to the Internet is necessary. Checking your documents is completely offline.
 
 If you don't have an Internet connection, or if you simply don't want this, there are two alternatives.
 
