@@ -8,6 +8,10 @@
 
 # Changelog
 
+## 6.3.1 (upcoming)
+
+- Fix skipping of YAML front matter (fixes [#104](https://github.com/valentjn/vscode-ltex/issues/104))
+
 ## 6.3.0 — “The Vowel Extraction” (August 22, 2020)
 
 - Add support for `an` article when before a formula starting with a vowel (e.g., `an $n$-dimensional problem`, fixes [#92](https://github.com/valentjn/vscode-ltex/issues/92))
