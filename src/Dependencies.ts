@@ -46,7 +46,7 @@ export default class Dependencies {
     return ((path != null) && (path.length > 0));
   }
 
-  private static normalizePath(path: string | null): string | null {
+  private static normalizePath(path: string | null | undefined): string | null {
     if (path == null) return null;
     const homeDirPath: string = Os.homedir();
     return path.replace(/^~($|\/|\\)/, `${homeDirPath}$1`);
@@ -380,12 +380,6 @@ export default class Dependencies {
     }
   }
 
-  private static getRenamedSetting(workspaceConfig: Code.WorkspaceConfiguration,
-        newName: string, oldName: string): any {
-    const oldValue: any = workspaceConfig.get(oldName);
-    return ((oldValue != null) ? oldValue : workspaceConfig.get(newName));
-  }
-
   public async install(): Promise<boolean> {
     const libDirPath: string = Path.join(this._context.extensionPath, 'lib');
     const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
@@ -441,8 +435,7 @@ export default class Dependencies {
     for (let i: number = 0; i < 6; i++) {
       try {
         Logger.log('');
-        this._javaPath = Dependencies.normalizePath(Dependencies.getRenamedSetting(
-            workspaceConfig, 'java.path', 'javaHome'));
+        this._javaPath = Dependencies.normalizePath(workspaceConfig.get('java.path'));
 
         if (Dependencies.isValidPath(this._javaPath)) {
           Logger.log(i18n('ltexJavaPathSetTo', this._javaPath));
@@ -613,11 +606,13 @@ export default class Dependencies {
         this._ltexLsPath!, 'bin', (isWindows ? 'ltex-ls.bat' : 'ltex-ls'));
 
     const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
-    const initialJavaHeapSize: number = Dependencies.getRenamedSetting(workspaceConfig,
-        'java.initialHeapSize', 'performance.initialJavaHeapSize');
-    const maximumJavaHeapSize: number = Dependencies.getRenamedSetting(workspaceConfig,
-        'java.maximumHeapSize', 'performance.maximumJavaHeapSize');
-    env['JAVA_OPTS'] = `-Xms${initialJavaHeapSize}m -Xmx${maximumJavaHeapSize}m`;
+    const initialJavaHeapSize: number | undefined = workspaceConfig.get('java.initialHeapSize');
+    const maximumJavaHeapSize: number | undefined = workspaceConfig.get('java.maximumHeapSize');
+    const javaArguments: string[] = [];
+
+    if (initialJavaHeapSize != null) javaArguments.push(`-Xms${initialJavaHeapSize}m`);
+    if (maximumJavaHeapSize != null) javaArguments.push(`-Xmx${maximumJavaHeapSize}m`);
+    env['JAVA_OPTS'] = javaArguments.join(' ');
 
     return {command: ltexLsScriptPath, args: [], options: {'env': env}};
   }

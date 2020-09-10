@@ -83,21 +83,6 @@ export default class BugReporter {
     }
 
     const config: any = JSON.parse(JSON.stringify(Code.workspace.getConfiguration('ltex')));
-
-    for (const name in config) {
-      if (!Object.prototype.hasOwnProperty.call(config, name)) continue;
-
-      if ((config[name] != null) &&
-            (Object.prototype.hasOwnProperty.call(config[name], 'dictionary')) &&
-            (Object.prototype.hasOwnProperty.call(config[name], 'disabledRules')) &&
-            (Object.prototype.hasOwnProperty.call(config[name], 'enabledRules')) &&
-            (JSON.stringify(config[name].dictionary) === '[]') &&
-            (JSON.stringify(config[name].disabledRules) === '[]') &&
-            (JSON.stringify(config[name].enabledRules) === '[]')) {
-        delete config[name];
-      }
-    }
-
     let configJson: string = JSON.stringify(config, null, 2);
     configJson = BugReporter.truncateStringAtEnd(configJson, BugReporter._maxNumberOfConfigLines);
     bugReport = bugReport.replace('REPLACE_THIS_WITH_LTEX_CONFIGURATION', configJson);
@@ -107,9 +92,6 @@ export default class BugReporter {
     bugReport = bugReport.replace('REPLACE_THIS_WITH_LTEX_LANGUAGE_SERVER_LOG', serverLog);
 
     let clientLog: string = Logger.clientOutputChannel.getContents();
-    clientLog = clientLog.replace(new RegExp(/"[A-Za-z0-9\-_]+": \{\s*/.source +
-        /"dictionary": \[\],\s*"enabledRules": \[\],\s*/.source +
-        /"disabledRules": \[\]\s*\},?[\r\n]*/.source, 'g'), '');
     clientLog = BugReporter.truncateStringAtStart(
         clientLog, BugReporter._maxNumberOfClientLogLines);
     bugReport = bugReport.replace('REPLACE_THIS_WITH_LTEX_LANGUAGE_CLIENT_LOG', clientLog);

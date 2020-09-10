@@ -8,9 +8,10 @@
 
 # Changelog
 
-## 6.3.1 (upcoming)
+## 6.4.0 (upcoming)
 
 - Fix skipping of YAML front matter (fixes [#104](https://github.com/valentjn/vscode-ltex/issues/104))
+- Remove deprecated settings `ltex.javaHome`, `ltex.performance.initialJavaHeapSize`, `ltex.performance.maximumJavaHeapSize`, `ltex.performance.sentenceCacheSize`, `ltex.*.dictionary`, `ltex.*.enabledRules`, and `ltex.*.disabledRules`
 
 ## 6.3.0 — “The Vowel Extraction” (August 22, 2020)
 

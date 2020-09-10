@@ -98,26 +98,6 @@ def updatePackageJson(ltLanguageShortCodes, ltLanguageNames):
         for languageShortCode, languageName in zip(ltLanguageShortCodes, ltLanguageNames)
       }
 
-  for settingName in list(settings.keys()):
-    if (re.match("^ltex\.languageSettings\.", settingName) or
-          re.match("^ltex\.([^\.]+)\.(dictionary|enabledRules|disabledRules)", settingName)):
-      del settings[settingName]
-
-  for languageShortCode, languageName in zip(ltLanguageShortCodes, ltLanguageNames):
-    for settingSubName in ["dictionary", "enabledRules", "disabledRules"]:
-      metaVariable = ("WORD" if settingSubName == "dictionary" else "RULE")
-      settings["ltex.{}.{}".format(languageShortCode, settingSubName)] = {
-            "type": "array",
-            "scope": "resource",
-            "default": [],
-            "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed. Use "
-                "`\"ltex.{0}\": {{\"{1}\": [\"<{2}1>\", \"<{2}2>\", ...]}}` instead.".format(
-                  settingSubName, languageShortCode, metaVariable),
-            "deprecationMessage": "Deprecated: This setting has been renamed. Use "
-                "'\"ltex.{0}\": {{\"{1}\": [\"<{2}1>\", \"<{2}2>\", ...]}}' instead.".format(
-                  settingSubName, languageShortCode, metaVariable),
-          }
-
   with open(packageJsonPath, "w") as f:
     json.dump(packageJson, f, indent=2, ensure_ascii=False)
     f.write("\n")
