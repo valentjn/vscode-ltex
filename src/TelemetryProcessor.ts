@@ -26,7 +26,51 @@ export default class TelemetryProcessor {
     this._statusBarMessageDisposable = null;
   }
 
-  private static async setConfigurationSetting(settingName: string, settingValue: any,
+  private static getSettingName(settingName: string,
+        resourceConfig: Code.WorkspaceConfiguration, commandName: string): string | null {
+    const configurationTargetString: string | undefined =
+        resourceConfig.get(`configurationTarget.${commandName}`);
+
+    if (configurationTargetString === 'global') {
+      return settingName;
+    } else if ((configurationTargetString === 'workspace') ||
+          (configurationTargetString === 'workspaceFolder')) {
+      return configurationTargetString + settingName.charAt(0).toUpperCase() +
+          settingName.substr(1);
+    } else {
+      Logger.error(i18n('invalidValueForConfigurationTarget', configurationTargetString));
+      return null;
+    }
+  }
+
+  private static cleanUpStringArray(array: string[]): string[] {
+    const negativeSet: Set<string> = new Set();
+    const positiveSet: Set<string> = new Set();
+
+    for (const entry of array) {
+      if (entry.startsWith('-')) {
+        negativeSet.add(entry.substr(1));
+      } else {
+        positiveSet.add(entry);
+      }
+    }
+
+    for (const entry of negativeSet) {
+      if (positiveSet.has(entry)) {
+        negativeSet.delete(entry);
+        positiveSet.delete(entry);
+      }
+    }
+
+    const result: string[] = [];
+    for (const entry of negativeSet) result.push(`-${entry}`);
+    for (const entry of positiveSet) result.push(entry);
+    result.sort((a: string, b: string) => a.localeCompare(b, undefined, {sensitivity: 'base'}));
+
+    return result;
+  }
+
+  private static async setSetting(settingName: string, settingValue: any,
         resourceConfig: Code.WorkspaceConfiguration, commandName: string): Promise<void> {
     const configurationTargetString: string | undefined =
         resourceConfig.get(`configurationTarget.${commandName}`);
@@ -62,38 +106,42 @@ export default class TelemetryProcessor {
         Code.workspace.getConfiguration('ltex', Code.Uri.parse(params.uri));
 
     if (params.command === 'ltex.addToDictionary') {
+      const settingName: string | null = TelemetryProcessor.getSettingName(
+          'dictionary', resourceConfig, 'addToDictionary');
+      if (settingName == null) return;
+
       const dictionarySetting: {[language: string]: string[]} =
-          resourceConfig.get('dictionary', {});
+          resourceConfig.get(settingName, {});
 
       for (const language in params.words) {
         if (!Object.prototype.hasOwnProperty.call(params.words, language)) continue;
         let dictionary: string[] = ((dictionarySetting[language] != null) ?
             dictionarySetting[language] : []);
         dictionary = dictionary.concat(params.words[language]);
-        dictionary.sort((a: string, b: string) =>
-            a.localeCompare(b, undefined, {sensitivity: 'base'}));
-        dictionarySetting[language] = dictionary;
+        dictionarySetting[language] = TelemetryProcessor.cleanUpStringArray(dictionary);
       }
 
-      TelemetryProcessor.setConfigurationSetting(
-          'dictionary', dictionarySetting, resourceConfig, 'addToDictionary');
+      TelemetryProcessor.setSetting(
+          settingName, dictionarySetting, resourceConfig, 'addToDictionary');
 
     } else if (params.command === 'ltex.disableRules') {
+      const settingName: string | null = TelemetryProcessor.getSettingName(
+          'disabledRules', resourceConfig, 'disableRule');
+      if (settingName == null) return;
+
       const disabledRulesSetting: {[language: string]: string[]} =
-          resourceConfig.get('disabledRules', {});
+          resourceConfig.get(settingName, {});
 
       for (const language in params.ruleIds) {
         if (!Object.prototype.hasOwnProperty.call(params.ruleIds, language)) continue;
         let disabledRules: string[] = ((disabledRulesSetting[language] != null) ?
             disabledRulesSetting[language] : []);
         disabledRules = disabledRules.concat(params.ruleIds[language]);
-        disabledRules.sort((a: string, b: string) =>
-            a.localeCompare(b, undefined, {sensitivity: 'base'}));
-        disabledRulesSetting[language] = disabledRules;
+        disabledRulesSetting[language] = TelemetryProcessor.cleanUpStringArray(disabledRules);
       }
 
-      TelemetryProcessor.setConfigurationSetting(
-          'disabledRules', disabledRulesSetting, resourceConfig, 'disableRule');
+      TelemetryProcessor.setSetting(
+          settingName, disabledRulesSetting, resourceConfig, 'disableRule');
 
     } else if (params.command === 'ltex.ignoreRulesInSentence') {
       const ruleIds: string[] = params.ruleIds;
@@ -104,7 +152,7 @@ export default class TelemetryProcessor {
         ignoredRules.push({'rule': ruleIds[i], 'sentence': sentencePatterns[i]});
       }
 
-      TelemetryProcessor.setConfigurationSetting(
+      TelemetryProcessor.setSetting(
           'ignoreRuleInSentence', ignoredRules, resourceConfig, 'ignoreRuleInSentence');
 
     } else {
