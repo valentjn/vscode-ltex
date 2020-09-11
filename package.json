@@ -3727,7 +3727,7 @@
           "type": "object",
           "scope": "resource",
           "default": {
-            "addToDictionary": "global",
+            "addToDictionary": "workspaceFolder",
             "disableRule": "workspaceFolder",
             "ignoreRuleInSentence": "workspaceFolder"
           },
