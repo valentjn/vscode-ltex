@@ -184,7 +184,7 @@
         },
         "ltex.dictionary": {
           "type": "object",
-          "scope": "resource",
+          "scope": "application",
           "default": {},
           "properties": {
             "ar": {
@@ -565,7 +565,7 @@
         },
         "ltex.workspaceDictionary": {
           "type": "object",
-          "scope": "resource",
+          "scope": "window",
           "default": {},
           "properties": {
             "ar": {
@@ -1327,7 +1327,7 @@
         },
         "ltex.disabledRules": {
           "type": "object",
-          "scope": "resource",
+          "scope": "application",
           "default": {},
           "properties": {
             "ar": {
@@ -1704,7 +1704,7 @@
         },
         "ltex.workspaceDisabledRules": {
           "type": "object",
-          "scope": "resource",
+          "scope": "window",
           "default": {},
           "properties": {
             "ar": {
@@ -2458,7 +2458,7 @@
         },
         "ltex.enabledRules": {
           "type": "object",
-          "scope": "resource",
+          "scope": "application",
           "default": {},
           "properties": {
             "ar": {
@@ -2835,7 +2835,7 @@
         },
         "ltex.workspaceEnabledRules": {
           "type": "object",
-          "scope": "resource",
+          "scope": "window",
           "default": {},
           "properties": {
             "ar": {
