@@ -11,6 +11,17 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 7.0.0 — “The Workspace Solution” (September 13, 2020)
+
+- Change scope of [`ltex.dictionary`](settings.html#ltexdictionary), [`ltex.disabledRules`](settings.html#ltexdisabledrules), and [`ltex.enabledRules`](settings.html#ltexenabledrules) to `application`; these are now user-specific settings that can only be configured in user settings
+- Add settings [`ltex.workspaceDictionary`](settings.html#ltexworkspacedictionary), [`ltex.workspaceDisabledRules`](settings.html#ltexworkspacedisabledrules), and [`ltex.workspaceEnabledRules`](settings.html#ltexworkspaceenabledrules) with `window` scope to amend the corresponding user-specific settings; these are workspace-specific settings that should be configured in workspace settings
+- Add settings [`ltex.workspaceFolderDictionary`](settings.html#ltexworkspacefolderdictionary), [`ltex.workspaceFolderDisabledRules`](settings.html#ltexworkspacefolderdisabledrules), and [`ltex.workspaceFolderEnabledRules`](settings.html#ltexworkspacefolderenabledrules) with `resource` scope to amend the corresponding user-specific and workspace-specific settings; these are workspace-folder-specific settings that should be configured in workspace folder settings
+- Change default of [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) for `addToDictionary` to `workspaceFolder`, i.e., by default, words will now be added to the workspace-folder-specific settings instead of the user-specific settings
+- Rename `"global"` value for [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) to `"user"` (`"global"` is still supported, but deprecated)
+- Remove deprecated settings `ltex.javaHome`, `ltex.performance.initialJavaHeapSize`, `ltex.performance.maximumJavaHeapSize`, `ltex.performance.sentenceCacheSize`, `ltex.*.dictionary`, `ltex.*.enabledRules`, and `ltex.*.disabledRules` (deprecation since 5.0.0)
+- Update LanguageTool to 5.0.2 (see [LT 5.0.2 release notes](https://github.com/languagetool-org/languagetool/blob/v5.0.2/languagetool-standalone/CHANGES.md#502-2020-08-28))
+- Fix skipping of YAML front matter (fixes [#104](https://github.com/valentjn/vscode-ltex/issues/104))
+
 ## 6.3.0 — “The Vowel Extraction” (August 22, 2020)
 
 - Add support for `an` article when before a formula starting with a vowel (e.g., `an $n$-dimensional problem`, fixes [#92](https://github.com/valentjn/vscode-ltex/issues/92))
