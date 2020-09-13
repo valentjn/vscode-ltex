@@ -16,6 +16,7 @@
 - Change default of `ltex.configurationTarget` for `addToDictionary` to `workspaceFolder`, i.e., by default, words will now be added to the workspace-folder-specific settings instead of the user-specific settings
 - Remove deprecated settings `ltex.javaHome`, `ltex.performance.initialJavaHeapSize`, `ltex.performance.maximumJavaHeapSize`, `ltex.performance.sentenceCacheSize`, `ltex.*.dictionary`, `ltex.*.enabledRules`, and `ltex.*.disabledRules` (deprecation since 5.0.0)
 - Fix skipping of YAML front matter (fixes [#104](https://github.com/valentjn/vscode-ltex/issues/104))
+- Update LanguageTool to 5.0.2 (see [LT 5.0.2 release notes](https://github.com/languagetool-org/languagetool/blob/v5.0.2/languagetool-standalone/CHANGES.md#502-2020-08-28))
 
 ## 6.3.0 — “The Vowel Extraction” (August 22, 2020)
 
