@@ -11,6 +11,24 @@ redirect_from: "/docs/advanced-features.html"
 sidebar: "sidebar"
 ---
 
+## Workspace-Specific Dictionaries
+
+The settings [`ltex.dictionary`](settings.html#ltexdictionary), [`ltex.disabledRules`](settings.html#ltexdisabledrules), and [`ltex.enabledRules`](settings.html#ltexenabledrules) are not only language-specific (e.g., different dictionaries can be used for different languages), but also workspace-specific. In some projects, you might want other dictionaries and sets of disabled/enabled rules than in other projects.
+
+VS Code has multiple scopes of settings: [user settings](https://code.visualstudio.com/docs/getstarted/settings), [workspace settings](https://code.visualstudio.com/docs/getstarted/settings), and [workspace folder (resource-specific) settings](https://code.visualstudio.com/docs/editor/multi-root-workspaces#_settings). If you set a setting in multiple scopes, the scope with higher precedence shadows the value of the setting in the scope with lower precedence.
+
+Therefore, there are three settings for each of the settings mentioned above, which are explained here for the example of [`ltex.dictionary`](settings.html#ltexdictionary):
+
+- [`ltex.dictionary`](settings.html#ltexdictionary): User-specific setting (scope `application`) to be set in the `settings.json` file of the user
+- [`ltex.workspaceDictionary`](settings.html#ltexworkspacedictionary): Workspace-specific setting (scope `window`) to be set in the `settings.json` file of the workspace (or in the `.code-workspace` file in the case of multi-root workspaces)
+- [`ltex.workspaceFolderDictionary`](settings.html#ltexworkspacefolderdictionary): Workspace-folder-specific setting (scope `resource`) to be set in the `settings.json` file of the workspace folder (or in the `settings.json` file in the case of single workspaces)
+
+If you are one of the many users which are not working with multi-root workspaces, you can use either [`ltex.workspaceDictionary`](settings.html#ltexworkspacedictionary) or [`ltex.workspaceFolderDictionary`](settings.html#ltexworkspacefolderdictionary) (or both) in your workspace's `settings.json`.
+
+When checking text, LTeX implicitly joins the user, workspace, and workspace folder dictionaries to a single dictionary. If you want to remove a word from the dictionary in a scope with higher precedence without removing it altogether, you can include it with a dash (`-`) as prefix. For example, if your user dictionary includes the word `cromulent`, but you want that word to be marked as a spelling error in a specific project, simply add `-cromulent` to the project's workspace settings.
+
+You can specify the target scope for changing settings with quick fixes (e.g., `Add ... to dictionary`) with the [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) setting.
+
 ## Magic Comments
 
 Magic comments are special comments which contents are interpreted by LTeX and which can be used to change some LTeX settings in the middle of the document. The comments have the following form:
