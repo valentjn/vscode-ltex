@@ -8,7 +8,7 @@
 
 # Changelog
 
-## 7.0.0 (upcoming)
+## 7.0.0 — “The Workspace Solution” (September 13, 2020)
 
 - Change scope of `ltex.dictionary`, `ltex.disabledRules`, and `ltex.enabledRules` to `application`; these are now user-specific settings that can only be configured in user settings
 - Add settings `ltex.workspaceDictionary`, `ltex.workspaceDisabledRules`, and `ltex.workspaceEnabledRules` with `window` scope to amend the corresponding user-specific settings; these are workspace-specific settings that should be configured in workspace settings
