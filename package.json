@@ -3743,12 +3743,12 @@
             "addToDictionary": {
               "type": "string",
               "enum": [
-                "global",
+                "user",
                 "workspace",
                 "workspaceFolder"
               ],
               "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.addToDictionary.global.enumDescription%",
+                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.addToDictionary.user.enumDescription%",
                 "%ltex.i18n.configuration.ltex.i18n.configurationTarget.addToDictionary.workspace.enumDescription%",
                 "%ltex.i18n.configuration.ltex.i18n.configurationTarget.addToDictionary.workspaceFolder.enumDescription%"
               ]
@@ -3756,12 +3756,12 @@
             "disableRule": {
               "type": "string",
               "enum": [
-                "global",
+                "user",
                 "workspace",
                 "workspaceFolder"
               ],
               "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.disableRule.global.enumDescription%",
+                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.disableRule.user.enumDescription%",
                 "%ltex.i18n.configuration.ltex.i18n.configurationTarget.disableRule.workspace.enumDescription%",
                 "%ltex.i18n.configuration.ltex.i18n.configurationTarget.disableRule.workspaceFolder.enumDescription%"
               ]
@@ -3769,12 +3769,12 @@
             "ignoreRuleInSentence": {
               "type": "string",
               "enum": [
-                "global",
+                "user",
                 "workspace",
                 "workspaceFolder"
               ],
               "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.ignoreRuleInSentence.global.enumDescription%",
+                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.ignoreRuleInSentence.user.enumDescription%",
                 "%ltex.i18n.configuration.ltex.i18n.configurationTarget.ignoreRuleInSentence.workspace.enumDescription%",
                 "%ltex.i18n.configuration.ltex.i18n.configurationTarget.ignoreRuleInSentence.workspaceFolder.enumDescription%"
               ]

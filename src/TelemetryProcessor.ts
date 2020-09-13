@@ -31,7 +31,8 @@ export default class TelemetryProcessor {
     const configurationTargetString: string | undefined =
         resourceConfig.get(`configurationTarget.${commandName}`);
 
-    if (configurationTargetString === 'global') {
+    // 'global' is deprecated since 7.0.0
+    if ((configurationTargetString === 'user') || (configurationTargetString === 'global')) {
       return settingName;
     } else if ((configurationTargetString === 'workspace') ||
           (configurationTargetString === 'workspaceFolder')) {
@@ -76,7 +77,8 @@ export default class TelemetryProcessor {
         resourceConfig.get(`configurationTarget.${commandName}`);
     let configurationTargets: Code.ConfigurationTarget[];
 
-    if (configurationTargetString === 'global') {
+    // 'global' is deprecated since 7.0.0
+    if ((configurationTargetString === 'user') || (configurationTargetString === 'global')) {
       configurationTargets = [Code.ConfigurationTarget.Global];
     } else if (configurationTargetString === 'workspace') {
       configurationTargets = [Code.ConfigurationTarget.Workspace,
