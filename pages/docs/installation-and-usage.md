@@ -5,8 +5,9 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-title: "Installation & How to Use"
-permalink: "/docs/installation-how-to-use.html"
+title: "Installation and Usage"
+permalink: "/docs/installation-and-usage.html"
+redirect_from: "/docs/installation-how-to-use.html"
 sidebar: "sidebar"
 ---
 
@@ -23,7 +24,7 @@ sidebar: "sidebar"
 - [Open VSX](https://open-vsx.org/extension/valentjn/vscode-ltex)
 - [GitHub](https://github.com/valentjn/ltex-ls/releases) (+ packages for offline installation)
 
-## How to Use
+## How to Install and Use
 
 1. Install the requirements listed above
 2. Install this extension
