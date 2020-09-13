@@ -5,8 +5,9 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-title: "Advanced Features"
-permalink: "/docs/advanced-features.html"
+title: "Advanced Usage"
+permalink: "/docs/advanced-usage.html"
+redirect_from: "/docs/advanced-features.html"
 sidebar: "sidebar"
 ---
 
