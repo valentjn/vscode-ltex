@@ -54,6 +54,12 @@ If you have a technical text with many unknown words, adding them one by one to 
 - Ignore all errors in the selection
 - Disable all LanguageTool rules with matches in the selection
 
+## How can I prevent `\text{...}` in math mode producing false positives?
+
+Many LaTeX authors use `\text` for subscripts and superscripts, e.g., `$h_{\text{up}}$`. In some languages, LTeX might display spelling errors as it thinks `up` is a part of the sentence structure. More specifically, LTeX feeds all text in LaTeX's text mode to LanguageTool after replacing all math mode formulae with placeholders. Since `\text` switches to text mode, its contents will be included in the check.
+
+However, for subscripts and superscripts in LaTeX, `\text` should not be used. The reason is that contents of `\text` will be typeset according to the current text font, which might be bold or italic (e.g., in a standard “proposition” environment), leading to wrong bold or italic subscripts and superscripts. Instead of `\text`, `\mathrm` (or `\mathsf`, if you are using a sans-serif math font) should be used. This will also eliminate the false positive produced by LTeX. Use `\text` only for real text, i.e., only in places where you could semantically close the formula and open another one after the text.
+
 ## What does LTeX stand for?
 
 LTeX is a portmanteau word from LT (LanguageTool) and TeX/LaTeX. TeX itself is an abbreviation of the Greek “τέχνη” (art/craft), while LaTeX is short for “Lamport TeX” after its creator Leslie Lamport. The X is pronounced like the “ch” in “loch”.
