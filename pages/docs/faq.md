@@ -54,7 +54,7 @@ If you have a technical text with many unknown words, adding them one by one to 
 - Ignore all errors in the selection
 - Disable all LanguageTool rules with matches in the selection
 
-## How can I prevent `\text{...}` in math mode producing false positives?
+## How can I prevent `\text{...}` in math mode from producing false positives?
 
 Many LaTeX authors use `\text` for subscripts and superscripts, e.g., `$h_{\text{up}}$`. In some languages, LTeX might display spelling errors as it thinks `up` is a part of the sentence structure. More specifically, LTeX feeds all text in LaTeX's text mode to LanguageTool after replacing all math mode formulae with placeholders. Since `\text` switches to text mode, its contents will be included in the check.
 
