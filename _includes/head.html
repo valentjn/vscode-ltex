@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 }}{% endif %}">
 <meta name="keywords" content="{{page.tags}}{% if page.tags %}, {% endif %} {{page.keywords}}">
-<title>{{ page.title }} | {{ site.site_title }}</title>
+<title>{% if page.redirect.to %}Redirecting...{% else %}{{ page.title }}{% endif %} | {{ site.site_title }}</title>
 <link rel="stylesheet" href="{{ "css/syntax.css" | relative_url }}">
 
 <link rel="stylesheet" type="text/css" href="{{ "css/font-awesome.min.css" | relative_url }}">
@@ -16,6 +16,13 @@
 <!-- most color styles are extracted out to here -->
 <link rel="stylesheet" href="{{ "css/theme-blue.css" | relative_url }}">
 <link rel="stylesheet" href="{{ "css/vscode-customizations.css" | relative_url }}">
+
+{% if page.redirect.to %}
+<link rel="canonical" href="{{ page.redirect.to }}">
+<script>location="{{ page.redirect.to }}"</script>
+<meta http-equiv="refresh" content="0; url={{ page.redirect.to }}">
+<meta name="robots" content="noindex">
+{% endif %}
 
 <script src="{{ "js/jquery.min.js" | relative_url }}"></script>
 

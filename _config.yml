@@ -108,3 +108,5 @@ baseurl: "/vscode-ltex"
 github:
   - "metadata"
 
+plugins:
+  - "jekyll-redirect-from"
