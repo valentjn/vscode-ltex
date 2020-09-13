@@ -34,13 +34,14 @@ jobs:
         # (https://github.com/microsoft/vscode/issues/85601)
         - "export NODE_OPTIONS='--no-force-async-hooks-checks'"
         - "npm run test"
-    - stage: "test"
-      os: "osx"
-      install:
-        - *commonInstall
-        - "pip3 install semver"
-      script:
-        - *testCommonScript
+    # deactivated due to similar phenomenon as described in a8d0fe9f19
+    #- stage: "test"
+    #  os: "osx"
+    #  install:
+    #    - *commonInstall
+    #    - "pip3 install semver"
+    #  script:
+    #    - *testCommonScript
     # deactivated due to https://github.com/microsoft/vscode/issues/77499
     #- stage: "test"
     #  os: "windows"
