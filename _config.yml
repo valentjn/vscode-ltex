@@ -1,61 +1,61 @@
-repository: valentjn/vscode-ltex
+repository: "valentjn/vscode-ltex"
 
-output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
+output: "web"
 
-topnav_title: LT<sub>E</sub>X
 # this appears on the top navigation bar next to the home button
+topnav_title: "LT<sub>E</sub>X"
 
-site_title: LTeX
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
+site_title: "LTeX"
 
-company_name: Your company
 # this appears in the footer
+company_name: "Your company"
 
-github_editme_path: valentjn/vscode-ltex/blob/gh-pages/
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
+github_editme_path: "valentjn/vscode-ltex/blob/gh-pages/"
 
-# gitlab_editme_path: valentjn/vscode-ltex/blob/gh-pages/
 # if you're using GitLab, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
+# gitlab_editme_path: "valentjn/vscode-ltex/blob/gh-pages/"
 
-google_analytics: ""
 # if you have google-analytics ID, put it in. if not, edit this value to blank.
+google_analytics: ""
 
-host: 127.0.0.1
+host: "127.0.0.1"
 # the preview server used. Leave as is.
 
-port: 4000
 # the port where the preview is rendered. You can leave this as is unless you have other Jekyll builds using this same port that might cause conflicts. in that case, use another port such as 4006.
+port: 4000
 
-exclude:
-  - .idea/
-  - .gitignore
-  - vendor
 # these are the files and directories that jekyll will exclude from the build
+exclude:
+  - ".idea/"
+  - ".gitignore"
+  - "vendor"
 
-#feedback_subject_line: Jekyll documentation theme
+#feedback_subject_line: "Jekyll documentation theme"
 
-#feedback_email:
 # used as a contact email for the Feedback link in the top navigation bar
+#feedback_email:
 
+# if you uncomment this line, the Feedback link gets removed
 feedback_disable: true
-# if you uncomment the previous line, the Feedback link gets removed
 
+# if you uncomment this line, it changes the Feedback text
 # feedback_text: "Need help?"
-# if you uncomment the previous line, it changes the Feedback text
 
+# if you uncomment this line, it changes where the feedback link points to
 # feedback_link: "http://helpy.io/"
-# if you uncomment the previous line, it changes where the feedback link points to
 
-highlighter: rouge
 # library used for syntax highlighting
+highlighter: "rouge"
 
-markdown: kramdown
+markdown: "kramdown"
 kramdown:
- input: GFM
+ input: "GFM"
  auto_ids: true
  hard_wrap: false
- syntax_highlighter: rouge
+ syntax_highlighter: "rouge"
 
 # filter used to process markdown. note that kramdown differs from github-flavored markdown in some subtle ways
 
@@ -65,49 +65,46 @@ collections:
 # collections are declared here. this renders the content in _tooltips and processes it, but doesn't output it as actual files in the output unless you change output to true
 
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
       type: "pages"
     values:
       layout: "page"
-      comments: false
       # if you don't want to use Commento.io and just hide comments, change true to false wherever you see the comments property
+      comments: false
       search: false
-      sidebar: sidebar
-      topnav: topnav
-  -
-    scope:
+      sidebar: "sidebar"
+      topnav: "topnav"
+  - scope:
       path: ""
       type: "tooltips"
     values:
       layout: "page"
       search: false
       tooltip: true
-
-  -
-    scope:
+  - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
-      comments: false
       # if you don't want to use Commento.io and just hide comments, change true to false wherever you see the comments property
+      comments: false
       search: false
-      sidebar: sidebar
-      topnav: topnav
+      sidebar: "sidebar"
+      topnav: "topnav"
 
 # these are defaults used for the frontmatter for these file types
 
 sidebars:
-- sidebar
+  - "sidebar"
 
-description: "Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features."
+description: "LTeX – Grammar/Spell Checker for VS Code with LanguageTool and LaTeX Support"
 # the description is used in the feed.xml file
 
 # needed for sitemap.xml file only
 # url: http://idratherbewriting.com
-baseurl: /vscode-ltex
+baseurl: "/vscode-ltex"
 
+github:
+  - "metadata"
 
-github: [metadata]
