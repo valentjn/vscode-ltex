@@ -95,7 +95,7 @@ At the bottom of each page, you'll find an “Edit me” button that takes you d
 
 ## Contribution Guidelines
 
-### Guidelines about Issues
+### Guidelines About Issues
 
 - **Stale issues** are closed seven days after they became stale. An issue becomes stale if:
   - The issue is missing information.
@@ -106,7 +106,7 @@ At the bottom of each page, you'll find an “Edit me” button that takes you d
 - Issues that don't follow the **template** may be closed immediately.
 - Issues may be **locked** if they violate the [Code of Conduct](https://valentjn.github.io/vscode-ltex/docs/code-of-conduct.html).
 
-### Guidelines about Versioning
+### Guidelines About Versioning
 
 - **Semantic versioning** is used for vscode-ltex.
   - For bugfixes, the patch version is increased.
@@ -115,7 +115,7 @@ At the bottom of each page, you'll find an “Edit me” button that takes you d
     - *Explanation:* Breaking changes are changes that may require action from users (e.g., most changes of existing LTeX settings).
 - If a new release of vscode-ltex makes a **new version of ltex-ls** necessary, the version of ltex-ls is set to that of vscode-ltex.
 
-### Guidelines about Fundamental Changes
+### Guidelines About Fundamental Changes
 
 - **Fundamental changes** are announced as an issue, in the documentation, and/or as message boxes in VS Code three months before their implementation.
   - *Explanation:* Fundamental changes are possibly breaking changes that change the foundation of LTeX (e.g., upgrade from Java 8 to Java 11).
