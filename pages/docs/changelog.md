@@ -11,6 +11,18 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 7.1.0 — “The External Accumulation” (September 20, 2020)
+
+- Add support for external dictionary files (fixes [#118](https://github.com/valentjn/vscode-ltex/issues/118))
+- Add support for enabling/disabling LTeX only for specific file types via [`ltex.enabled`](settings.html#ltexenabled) (see [#19](https://github.com/valentjn/vscode-ltex/issues/19))
+- Add support for `acro` commands such as `\DeclareAcronym` and `\ac` (see [#19](https://github.com/valentjn/vscode-ltex/issues/19))
+- Add support for `\addcontentsline` (see [#19](https://github.com/valentjn/vscode-ltex/issues/19))
+- Add support for `\printbibliography` and `\printglossary` without argument
+- Ignore parenthesis arguments of `textblock`s (see [#19](https://github.com/valentjn/vscode-ltex/issues/19))
+- Fix optional argument of heading commands such as `\section` parsed incorrectly (fixes [#123](https://github.com/valentjn/vscode-ltex/issues/123))
+- Include stack traces when logging exceptions
+- Fix some links (bug reporter, offline installation, readme)
+
 ## 7.0.0 — “The Workspace Solution” (September 13, 2020)
 
 - Change scope of [`ltex.dictionary`](settings.html#ltexdictionary), [`ltex.disabledRules`](settings.html#ltexdisabledrules), and [`ltex.enabledRules`](settings.html#ltexenabledrules) to `application`; these are now user-specific settings that can only be configured in user settings
