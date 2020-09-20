@@ -33,6 +33,8 @@ def formatList(json_):
 def formatType(type_):
   if isinstance(type_, str) or (len(type_) == 1):
     return f"`{type_}`"
+  elif len(type_) == 1:
+    return f"`{type_[0]}`"
   elif len(type_) == 2:
     return f"`{type_[0]}` or `{type_[1]}`"
   else:
@@ -64,7 +66,12 @@ def formatFullType(settingJson, packageNlsJson, indent=0):
   if (description is not None) and (indent > 0):
     markdown += f"{formatDescription(description, packageNlsJson)}\n\n{indent * ' '}"
 
-  if "type" not in settingJson:
+  if "oneOf" in settingJson:
+    itemTypes = settingJson["oneOf"]
+    markdown += "One of the following types:\n\n"
+    markdown += "".join(
+        f"{indent * ' '}- {formatFullType(x, packageNlsJson, indent+2)}" for x in itemTypes)
+  elif "type" not in settingJson:
     markdown += formatAsJson(settingJson) + "\n"
   elif settingJson["type"] == "object":
     markdown += "Object with the following properties:\n\n"
@@ -98,7 +105,13 @@ def formatSetting(settingName, settingJson, packageNlsJson):
   markdown = (f"## `{settingName}`\n\n"
       f"{formatDescription(settingJson['markdownDescription'], packageNlsJson)}\n")
 
-  type_ = settingJson["type"]
+  if "type" in settingJson:
+    type_ = settingJson["type"]
+  elif "oneOf" in settingJson:
+    type_ = [x["type"] for x in settingJson["oneOf"]]
+  else:
+    raise ValueError("Missing type")
+
   examples = settingJson.get("examples", [])
   markdown += f"\n*Type:* {formatType(type_)}\n"
 
@@ -115,7 +128,7 @@ def formatSetting(settingName, settingJson, packageNlsJson):
   if "default" in settingJson:
     markdown += f"\n*Default:* {formatAsJson(settingJson['default'])}\n"
 
-  if type_ in ["array", "object"]:
+  if (type_ in ["array", "object"]) or (not isinstance(type_, str)):
     markdown += ("\n*Full type description:* <button class='expandable-button btn btn-default'>"
         "Click to show/hide</button>\n\n<div markdown='1' style='display:none;'>\n\n"
         f"{formatFullType(settingJson, packageNlsJson)}\n</div>\n\n")
