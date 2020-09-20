@@ -8,7 +8,7 @@
 
 # Changelog
 
-## 7.1.1 (upcoming)
+## 7.1.1 — “The Relative Malfunction” (September 20, 2020)
 
 - Fix `NullPointerException` when supplying relative paths to external dictionary files
 - Fix German log messages
