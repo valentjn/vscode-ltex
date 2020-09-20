@@ -66,16 +66,26 @@ async function startLanguageClient(context: Code.ExtensionContext):
       Code.window.setStatusBarMessage(`$(loading~spin) ${i18n('startingLtex')}`, 60000);
   const serverOptions: CodeLanguageClient.ServerOptions = await dependencies.getLtexLsExecutable();
 
+  const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
+  const enabled: any = workspaceConfig.get('enabled');
+  let enabledCodeLanguageIds: string[];
+
+  if ((enabled === true) || (enabled === false)) {
+    enabledCodeLanguageIds = (enabled ? ['markdown', 'latex', 'rsweave'] : []);
+  } else {
+    enabledCodeLanguageIds = enabled;
+  }
+
+  const documentSelector: CodeLanguageClient.DocumentFilter[] = [];
+
+  for (const codeLanguageId of enabledCodeLanguageIds) {
+    documentSelector.push({scheme: 'file', language: codeLanguageId});
+    documentSelector.push({scheme: 'untitled', language: codeLanguageId});
+  }
+
   // Options to control the language client
   const clientOptions: CodeLanguageClient.LanguageClientOptions = {
-        documentSelector: [
-          {scheme: 'file', language: 'markdown'},
-          {scheme: 'untitled', language: 'markdown'},
-          {scheme: 'file', language: 'latex'},
-          {scheme: 'untitled', language: 'latex'},
-          {scheme: 'file', language: 'rsweave'},
-          {scheme: 'untitled', language: 'rsweave'},
-        ],
+        documentSelector: documentSelector,
         synchronize: {
           configurationSection: 'ltex',
         },
@@ -132,8 +142,9 @@ export async function activate(context: Code.ExtensionContext): Promise<Api> {
 
   // Allow to enable languageTool in specific workspaces
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
+  const enabled: any = workspaceConfig.get('enabled');
 
-  if (workspaceConfig.get('enabled')) {
+  if ((enabled === true) || (enabled.length > 0)) {
     try {
       // create the language client
       api.languageClient = await startLanguageClient(context);

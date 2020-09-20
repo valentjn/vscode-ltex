@@ -77,9 +77,19 @@
       "title": "LTeX",
       "properties": {
         "ltex.enabled": {
-          "type": "boolean",
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
           "scope": "window",
-          "default": true,
+          "default": ["markdown", "latex", "rsweave"],
           "markdownDescription": "%ltex.i18n.configuration.ltex.enabled.markdownDescription%",
           "description": "%ltex.i18n.configuration.ltex.enabled.description%"
         },

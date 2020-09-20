@@ -38,4 +38,24 @@ describe('Test extension (end-to-end)', () => {
         'This is an \\textbf{test}.');
     return assertCheckingResult(document);
   });
+
+  it('Test arrays in ltex.enabled', async () => {
+    try {
+      Code.workspace.getConfiguration('ltex').update('enabled', ['markdown'],
+          Code.ConfigurationTarget.Global);
+
+      const markdownDocument: Code.TextDocument = await TestTools.createNewFile('markdown',
+          'This is an *test*.');
+      await assertCheckingResult(markdownDocument);
+
+      const latexDocument: Code.TextDocument = await TestTools.createNewFile('latex',
+          'This is an *test*.');
+      await TestTools.sleep(5000);
+      const diagnostics: Code.Diagnostic[] = Code.languages.getDiagnostics(latexDocument.uri);
+      Assert.strictEqual(diagnostics.length, 0);
+    } finally {
+      Code.workspace.getConfiguration('ltex').update('enabled', undefined,
+          Code.ConfigurationTarget.Global);
+    }
+  });
 });

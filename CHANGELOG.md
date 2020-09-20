@@ -11,6 +11,7 @@
 ## 7.1.0 (upcoming)
 
 - Add support for external dictionary files (fixes [#118](https://github.com/valentjn/vscode-ltex/issues/118))
+- Add support for enabling/disabling LT<sub>E</sub>X only for specific file types via [`ltex.enabled`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabled) (see [#19](https://github.com/valentjn/vscode-ltex/issues/19))
 - Add support for `acro` commands such as `\DeclareAcronym` and `\ac` (see [#19](https://github.com/valentjn/vscode-ltex/issues/19))
 - Add support for `\addcontentsline` (see [#19](https://github.com/valentjn/vscode-ltex/issues/19))
 - Add support for `\printbibliography` and `\printglossary` without argument
