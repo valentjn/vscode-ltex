@@ -8,7 +8,7 @@
 
 # Changelog
 
-## 7.1.0 (upcoming)
+## 7.1.0 — “The External Accumulation” (September 20, 2020)
 
 - Add support for external dictionary files (fixes [#118](https://github.com/valentjn/vscode-ltex/issues/118))
 - Add support for enabling/disabling LT<sub>E</sub>X only for specific file types via [`ltex.enabled`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabled) (see [#19](https://github.com/valentjn/vscode-ltex/issues/19))
