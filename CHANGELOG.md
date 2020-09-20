@@ -10,6 +10,7 @@
 
 ## 7.1.0 (upcoming)
 
+- Add support for external dictionary files (fixes [#118](https://github.com/valentjn/vscode-ltex/issues/118))
 - Fix some links (bug reporter, offline installation, readme)
 
 ## 7.0.0 — “The Workspace Solution” (September 13, 2020)
