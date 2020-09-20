@@ -22,11 +22,11 @@
 
 ## 7.0.0 — “The Workspace Solution” (September 13, 2020)
 
-- Change scope of `ltex.dictionary`, `ltex.disabledRules`, and `ltex.enabledRules` to `application`; these are now user-specific settings that can only be configured in user settings
-- Add settings `ltex.workspaceDictionary`, `ltex.workspaceDisabledRules`, and `ltex.workspaceEnabledRules` with `window` scope to amend the corresponding user-specific settings; these are workspace-specific settings that should be configured in workspace settings
-- Add settings `ltex.workspaceFolderDictionary`, `ltex.workspaceFolderDisabledRules`, and `ltex.workspaceFolderEnabledRules` with `resource` scope to amend the corresponding user-specific and workspace-specific settings; these are workspace-folder-specific settings that should be configured in workspace folder settings
-- Change default of `ltex.configurationTarget` for `addToDictionary` to `workspaceFolder`, i.e., by default, words will now be added to the workspace-folder-specific settings instead of the user-specific settings
-- Rename `"global"` value for `ltex.configurationTarget` to `"user"` (`"global"` is still supported, but deprecated)
+- Change scope of [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary), [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules), and [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules) to `application`; these are now user-specific settings that can only be configured in user settings
+- Add settings [`ltex.workspaceDictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexworkspacedictionary), [`ltex.workspaceDisabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexworkspacedisabledrules), and [`ltex.workspaceEnabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexworkspaceenabledrules) with `window` scope to amend the corresponding user-specific settings; these are workspace-specific settings that should be configured in workspace settings
+- Add settings [`ltex.workspaceFolderDictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexworkspacefolderdictionary), [`ltex.workspaceFolderDisabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexworkspacefolderdisabledrules), and [`ltex.workspaceFolderEnabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexworkspacefolderenabledrules) with `resource` scope to amend the corresponding user-specific and workspace-specific settings; these are workspace-folder-specific settings that should be configured in workspace folder settings
+- Change default of [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget) for `addToDictionary` to `workspaceFolder`, i.e., by default, words will now be added to the workspace-folder-specific settings instead of the user-specific settings
+- Rename `"global"` value for [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget) to `"user"` (`"global"` is still supported, but deprecated)
 - Remove deprecated settings `ltex.javaHome`, `ltex.performance.initialJavaHeapSize`, `ltex.performance.maximumJavaHeapSize`, `ltex.performance.sentenceCacheSize`, `ltex.*.dictionary`, `ltex.*.enabledRules`, and `ltex.*.disabledRules` (deprecation since 5.0.0)
 - Update LanguageTool to 5.0.2 (see [LT 5.0.2 release notes](https://github.com/languagetool-org/languagetool/blob/v5.0.2/languagetool-standalone/CHANGES.md#502-2020-08-28))
 - Fix skipping of YAML front matter (fixes [#104](https://github.com/valentjn/vscode-ltex/issues/104))
@@ -92,7 +92,7 @@
 
 ## 5.0.1 — “The Acceptance Incursion” (June 7, 2020)
 
-- Fix `Value is not accepted` warning when using `ltex.disabledRules` or `ltex.enabledRules` (fixes part of [#44](https://github.com/valentjn/vscode-ltex/issues/44))
+- Fix `Value is not accepted` warning when using [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules) or [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules) (fixes part of [#44](https://github.com/valentjn/vscode-ltex/issues/44))
 - Change badges in readme
 
 ## 5.0.0 — “The Rewrite Materialization” (June 1, 2020)
@@ -101,13 +101,13 @@
 - Download Java distribution on demand if no suitable Java installation has been found (fixes [#5](https://github.com/valentjn/vscode-ltex/issues/5))
 - Adhere to [semantic versioning](https://semver.org/). This means that the version of LT<sub>E</sub>X is not tied to the version of LanguageTool anymore, as the version of LanguageTool is not a semantic version. LT<sub>E</sub>X 5.0.0 uses LanguageTool 4.9.
 - Rename settings:
-  - `ltex.<LANGUAGE>.dictionary` to `ltex.dictionary` (object with `<LANGUAGE>` keys)
-  - `ltex.<LANGUAGE>.disabledRules` to `ltex.disabledRules` (object with `<LANGUAGE>` keys)
-  - `ltex.<LANGUAGE>.enabledRules` to `ltex.enabledRules` (object with `<LANGUAGE>` keys)
-  - `ltex.javaHome` to `ltex.java.path`
-  - `ltex.performance.initialJavaHeapSize` to `ltex.java.initialHeapSize`
-  - `ltex.performance.maximumJavaHeapSize` to `ltex.java.maximumHeapSize`
-  - `ltex.performance.sentenceCacheSize` to `ltex.sentenceCacheSize`
+  - `ltex.<LANGUAGE>.dictionary` to [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary) (object with `<LANGUAGE>` keys)
+  - `ltex.<LANGUAGE>.disabledRules` to [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules) (object with `<LANGUAGE>` keys)
+  - `ltex.<LANGUAGE>.enabledRules` to [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules) (object with `<LANGUAGE>` keys)
+  - `ltex.javaHome` to [`ltex.java.path`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavapath)
+  - `ltex.performance.initialJavaHeapSize` to [`ltex.java.initialHeapSize`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavainitialheapsize)
+  - `ltex.performance.maximumJavaHeapSize` to [`ltex.java.maximumHeapSize`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavamaximumheapsize)
+  - `ltex.performance.sentenceCacheSize` to [`ltex.sentenceCacheSize`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexsentencecachesize)
 - Add support for external LanguageTool HTTP servers (fixes [#36](https://github.com/valentjn/vscode-ltex/issues/36))
 - Add support for magic comments, enables changing the language in the middle of documents (fixes [#21](https://github.com/valentjn/vscode-ltex/issues/21))
 - Check `\footnote` and `\todo` contents separately, preventing “double period” warnings (fixes [#42](https://github.com/valentjn/vscode-ltex/issues/42))
@@ -151,7 +151,7 @@
 ## 4.7.9 — “The Markdown Resonance” (February 29, 2020)
 
 - Update the Markdown parser flexmark-java to 0.60.2; this increases the speed of parsing Markdown
-- Add possibility to ignore Markdown elements or replace them by dummy words via `ltex.markdown.ignore` and `ltex.markdown.dummy` (fixes [#26](https://github.com/valentjn/vscode-ltex/issues/26))
+- Add possibility to ignore Markdown elements or replace them by dummy words via [`ltex.markdown.ignore`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdownignore) and [`ltex.markdown.dummy`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdowndummy) (fixes [#26](https://github.com/valentjn/vscode-ltex/issues/26))
 - Ignore Markdown code blocks by default
 - Replace auto-links and inline Markdown code with dummy words by default
 - Fix match positions were sometimes off by one, especially in Markdown documents
@@ -181,7 +181,7 @@
 ## 4.7.5 — “The Listing Collapse” (October 22, 2019)
 
 - Enable ignoring environments such as `lstlisting` and `verbatim`
-- Add `ltex.environments.ignore` setting for defining own environments to ignore
+- Add [`ltex.environments.ignore`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenvironmentsignore) setting for defining own environments to ignore
 
 ## 4.7.4 — “The Disabling Allocation” (October 15, 2019)
 
@@ -200,13 +200,13 @@
 
 ## 4.7.1 — “The Mother Tongue Factor” (October 2, 2019)
 
-- Add `ltex.additionalRules.motherTongue` setting to enable detection of false friends (fixes [#11](https://github.com/valentjn/vscode-ltex/issues/11))
+- Add [`ltex.additionalRules.motherTongue`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexadditionalrulesmothertongue) setting to enable detection of false friends (fixes [#11](https://github.com/valentjn/vscode-ltex/issues/11))
 - Change defaults for `ltex.additionalRules` settings from `""` to `null`
 
 ## 4.7.0 — “The Multi-Root Observation” (October 1, 2019)
 
 - Update to LanguageTool 4.7 (see [LT 4.7 release notes](https://github.com/languagetool-org/languagetool/blob/v4.7/languagetool-standalone/CHANGES.md#47-2019-09-28))
-- Support multi-root workspaces, all configuration settings except `ltex.enabled` are now resource-specific (fixes [#7](https://github.com/valentjn/vscode-ltex/issues/7))
+- Support multi-root workspaces, all configuration settings except [`ltex.enabled`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabled) are now resource-specific (fixes [#7](https://github.com/valentjn/vscode-ltex/issues/7))
 - Save dictionary settings under full language short code (e.g., `en-US` instead of `en`). If you already have a dictionary under `ltex.en.dictionary` and use `en-US` as language (not `en`), you have to rename the settings name to `ltex.en-US.dictionary` (similarly for other languages).
 - Remove diagnostics when a file is closed
 - Prevent insertion of text in TikZ mode
@@ -246,10 +246,10 @@
 
 ## 4.6.8 — “The Severity Manifestation” (September 7, 2019)
 
-- Add setting `ltex.diagnosticSeverity` to control where and how the diagnostics appear
+- Add setting [`ltex.diagnosticSeverity`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdiagnosticseverity) to control where and how the diagnostics appear
 - Change default severity from `warning` to `info`
 - Add possibility to ignore a LanguageTool rule in a sentence via quick fix
-- Add setting `ltex.configurationTarget` to control which `settings.json` to update when using one of the quick fixes
+- Add setting [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget) to control which `settings.json` to update when using one of the quick fixes
 - More commands like `\PackageWarning` and `\addbibresource` are ignored
 - Add support for `\url` and `\nolinkurl`
 - Add support for more accents (`` \` ``, `\'`, `\^`, `\~`, `\"`, `\=`, `\.`, ...)
