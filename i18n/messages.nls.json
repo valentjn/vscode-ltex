@@ -91,5 +91,5 @@
   "usingJavaFromPathOrJavaHome": "Using Java from PATH or JAVA_HOME (may fail if not installed).",
   "usingLtexLsFrom": "Using ltex-ls from '{0}'.",
   "youMightWantToTryOfflineInstallation": "You might want to try offline installation.",
-  "youMightWantToTryOfflineInstallationSee": "You might want to try offline installation, see ${0}."
+  "youMightWantToTryOfflineInstallationSee": "You might want to try offline installation, see {0}."
 }
