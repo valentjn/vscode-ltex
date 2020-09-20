@@ -291,7 +291,7 @@
 
 - Link badges in readme
 
-## 4.6.0 — “The LTeX Resurgence” (September 1, 2019)
+## 4.6.0 — “The LT<sub>E</sub>X Resurgence” (September 1, 2019)
 
 - Forked abandoned repository, rename to vscode-ltex
 - Update to LanguageTool 4.6 (see [LT 4.6 release notes](https://github.com/languagetool-org/languagetool/blob/v4.6/languagetool-standalone/CHANGES.md#46-2019-06-26))
