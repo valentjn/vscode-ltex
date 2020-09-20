@@ -8,8 +8,14 @@
 
 import os
 import re
+import shutil
 
 import yaml
+
+ltexRepoDirPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+pagesRootDirPath = os.path.abspath(os.path.join(ltexRepoDirPath, "..", "vscode-ltex-gh-pages"))
+
+
 
 def getSlug(markdown):
   return re.sub(r"[^a-z0-9\-]", "", re.sub(r"[ ]", "-", markdown.lower()))
@@ -57,10 +63,10 @@ def processTitle(title):
 
   return title
 
-def main():
+
+
+def updateReadme():
   serverUrl = "https://valentjn.github.io/vscode-ltex"
-  pagesRootDirPath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..",
-      "vscode-ltex-gh-pages"))
   sidebarYamlPath = os.path.join(pagesRootDirPath, "_data", "sidebars", "sidebar.yml")
   with open(sidebarYamlPath, "r") as f: sidebarYaml = yaml.load(f, Loader=yaml.SafeLoader)
 
@@ -87,7 +93,7 @@ def main():
 
   markdown = convertToMarkdown(structure)
 
-  readmePath = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "README.md"))
+  readmePath = os.path.join(ltexRepoDirPath, "README.md")
   with open(readmePath, "r") as f: readme = f.read()
 
   readme = re.sub(r"## Information & Documentation\n\n.*?^( *[^\-\*\n ])",
@@ -95,6 +101,39 @@ def main():
       flags=re.MULTILINE | re.DOTALL)
 
   with open(readmePath, "w") as f: f.write(readme)
+
+
+
+def updateChangelog():
+  changelogPath = os.path.join(pagesRootDirPath, "pages", "docs", "changelog.md")
+  with open(changelogPath, "r") as f: changelog = f.read()
+
+  changelogHeader = """
+<!--
+   - Copyright (C) 2020 Julian Valentin, LTeX Development Community
+   -
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/.
+   -->
+
+# Changelog
+
+""".lstrip()
+  changelog = changelog.replace("LaTeX", "L<sup>A</sup>T<sub>E</sub>X")
+  changelog = changelog.replace("TeX", "T<sub>E</sub>X")
+  changelog = changelog.replace("`LT<sub>E</sub>X", "`LTeX")
+  changelog = changelog.replace("LT<sub>E</sub>X`", "LTeX`")
+  changelog = re.sub(r"\]\((?!http)", "](https://valentjn.github.io/vscode-ltex/docs/", changelog)
+  changelog = re.sub(r"^---.*^---$\n\n", changelogHeader, changelog, flags=re.MULTILINE | re.DOTALL)
+
+  with open(os.path.join(ltexRepoDirPath, "CHANGELOG.md"), "w") as f: f.write(changelog)
+
+
+
+def main():
+  updateReadme()
+  updateChangelog()
 
 
 
