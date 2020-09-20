@@ -12,11 +12,24 @@ sidebar: "sidebar"
 
 ## `ltex.enabled`
 
-Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces. Changes require reloading the Visual Studio Code window to take effect.
+Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces or for specific code language modes (i.e., file types). Either supply a Boolean value stating whether LTeX is enabled for all supported code language modes or disabled for all of them, or supply a list of [code language identifiers](https://code.visualstudio.com/docs/languages/identifiers) for which LTeX should be enabled (note that extensions can define additional code language identifiers). Changes require reloading the Visual Studio Code window to take effect.
 
-*Type:* `boolean`
+*Type:* `boolean` or `array`
 
-*Default:* `true`
+*Default:* `["markdown", "latex", "rsweave"]`
+
+*Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
+
+<div markdown='1' style='display:none;'>
+
+One of the following types:
+
+- Scalar of type `boolean`
+- Array where each entry has the following type:
+
+  - Scalar of type `string`
+
+</div>
 
 ## `ltex.language`
 
@@ -76,7 +89,7 @@ The language (e.g., `"en-US"`) LanguageTool should check against. Use a specific
 
 ## `ltex.dictionary`
 
-User-specific lists of additional words that should not be counted as spelling errors. This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<WORD1>", "<WORD2>", ...], "<LANGUAGE2>": ["<WORD1>", "<WORD2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage). This setting has `application` scope; it can be amended in workspace settings or workspace folder settings via [`ltex.workspaceDictionary`](settings.html#ltexworkspacedictionary) or [`ltex.workspaceFolderDictionary`](settings.html#ltexworkspacefolderdictionary). By default, no additional spelling errors will be ignored.
+User-specific lists of additional words that should not be counted as spelling errors. This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<WORD1>", "<WORD2>", ...], "<LANGUAGE2>": ["<WORD1>", "<WORD2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage). This setting has `application` scope; it can be amended in workspace settings or workspace folder settings via [`ltex.workspaceDictionary`](settings.html#ltexworkspacedictionary) or [`ltex.workspaceFolderDictionary`](settings.html#ltexworkspacefolderdictionary). You can specify external dictionary files containing one word on each line by including the path in this setting with the prefix `:`. By default, no additional spelling errors will be ignored.
 
 *Type:* `object`
 
@@ -320,7 +333,7 @@ Object with the following properties:
 
 ## `ltex.workspaceDictionary`
 
-Workspace-specific lists of additional words that should not be counted as spelling errors. This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<WORD1>", "<WORD2>", ...], "<LANGUAGE2>": ["<WORD1>", "<WORD2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage). This setting has `window` scope; it can be amended in user settings or workspace folder settings via [`ltex.dictionary`](settings.html#ltexdictionary) or [`ltex.workspaceFolderDictionary`](settings.html#ltexworkspacefolderdictionary). This setting amends the lists given in [`ltex.dictionary`](settings.html#ltexdictionary); to remove a word that is listed in [`ltex.dictionary`](settings.html#ltexdictionary), include it in this setting with the prefix `-`. By default, no additional spelling errors will be ignored.
+Workspace-specific lists of additional words that should not be counted as spelling errors. This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<WORD1>", "<WORD2>", ...], "<LANGUAGE2>": ["<WORD1>", "<WORD2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage). This setting has `window` scope; it can be amended in user settings or workspace folder settings via [`ltex.dictionary`](settings.html#ltexdictionary) or [`ltex.workspaceFolderDictionary`](settings.html#ltexworkspacefolderdictionary). This setting amends the lists given in [`ltex.dictionary`](settings.html#ltexdictionary); to remove a word that is listed in [`ltex.dictionary`](settings.html#ltexdictionary), include it in this setting with the prefix `-`. You can specify external dictionary files containing one word on each line by including the path in this setting with the prefix `:`. By default, no additional spelling errors will be ignored.
 
 *Type:* `object`
 
@@ -564,7 +577,7 @@ Object with the following properties:
 
 ## `ltex.workspaceFolderDictionary`
 
-Workspace-folder-specific lists of additional words that should not be counted as spelling errors. This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<WORD1>", "<WORD2>", ...], "<LANGUAGE2>": ["<WORD1>", "<WORD2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage). This setting has `resource` scope; it can be amended in user settings or workspace settings via [`ltex.dictionary`](settings.html#ltexdictionary) or [`ltex.workspaceDictionary`](settings.html#ltexworkspacedictionary). This setting amends the lists given in [`ltex.dictionary`](settings.html#ltexdictionary) and [`ltex.workspaceDictionary`](settings.html#ltexworkspacedictionary); to remove a word that is listed in [`ltex.dictionary`](settings.html#ltexdictionary) or [`ltex.workspaceDictionary`](settings.html#ltexworkspacedictionary), include it in this setting with the prefix `-`. By default, no additional spelling errors will be ignored.
+Workspace-folder-specific lists of additional words that should not be counted as spelling errors. This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<WORD1>", "<WORD2>", ...], "<LANGUAGE2>": ["<WORD1>", "<WORD2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage). This setting has `resource` scope; it can be amended in user settings or workspace settings via [`ltex.dictionary`](settings.html#ltexdictionary) or [`ltex.workspaceDictionary`](settings.html#ltexworkspacedictionary). This setting amends the lists given in [`ltex.dictionary`](settings.html#ltexdictionary) and [`ltex.workspaceDictionary`](settings.html#ltexworkspacedictionary); to remove a word that is listed in [`ltex.dictionary`](settings.html#ltexdictionary) or [`ltex.workspaceDictionary`](settings.html#ltexworkspacedictionary), include it in this setting with the prefix `-`. You can specify external dictionary files containing one word on each line by including the path in this setting with the prefix `:`. By default, no additional spelling errors will be ignored.
 
 *Type:* `object`
 
