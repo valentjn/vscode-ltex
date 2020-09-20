@@ -11,6 +11,11 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 7.1.1 — “The Relative Malfunction” (September 20, 2020)
+
+- Fix `NullPointerException` when supplying relative paths to external dictionary files
+- Fix German log messages
+
 ## 7.1.0 — “The External Accumulation” (September 20, 2020)
 
 - Add support for external dictionary files (fixes [#118](https://github.com/valentjn/vscode-ltex/issues/118))
