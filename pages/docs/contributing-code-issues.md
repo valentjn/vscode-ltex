@@ -33,15 +33,15 @@ If you like LTeX, but are not able to contribute in any of these ways, there are
 5. Set the setting `"ltex.trace.server": "verbose"` in your `settings.json`.
 6. Try to understand the bug by selecting `View` → `Output` → `LTeX Language Server`/`LTeX Language Client`.
 7. Do one of the following:
-   - Reproduce the bug and keep the document for which it occurs open. Execute the command [`LTeX: Report bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-report-bug-in-ltex) inside Visual Studio Code from the Command Palette (`Ctrl+Shift+P`) and click on `Copy report and create issue`. This will copy a prefilled bug report to your clipboard and open the `New issue` page on GitHub in your browser (you may have to confirm that you really want to open the page). Enter a summary of the issue in the title field and paste the bug report from your clipboard into the description field. Before submitting the bug report, check that it doesn't contain any confidential data. OR
-   - Manually [open an issue on GitHub](https://github.com/valentjn/vscode-ltex/issues/new/choose), select the `Bug report` template, and fill in as much info as you can (the [`LTeX: Report bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-report-bug-in-ltex) command would do that for you). This will help us reproduce the issue.
+   - Reproduce the bug and keep the document for which it occurs open. Execute the command [`LTeX: Report bug in LTeX`](commands.html#ltex-report-bug-in-ltex) inside Visual Studio Code from the Command Palette (`Ctrl+Shift+P`) and click on `Copy report and create issue`. This will copy a prefilled bug report to your clipboard and open the `New issue` page on GitHub in your browser (you may have to confirm that you really want to open the page). Enter a summary of the issue in the title field and paste the bug report from your clipboard into the description field. Before submitting the bug report, check that it doesn't contain any confidential data. OR
+   - Manually [open an issue on GitHub](https://github.com/valentjn/vscode-ltex/issues/new/choose), select the `Bug report` template, and fill in as much info as you can (the [`LTeX: Report bug in LTeX`](commands.html#ltex-report-bug-in-ltex) command would do that for you). This will help us reproduce the issue.
 
 **Important:** Please follow the issue template. Issues that don't follow the template or that don't contain the vital information requested in the template (especially minimal example document and settings) may be immediately closed as invalid.
 
 ### Known Issues and Limitations
 
 - The LaTeX parser is not perfect. False positives are sometimes reported as errors. However, it is impossible to fully parse LaTeX without compiling it.
-- Initial checking might take a while (up to two minutes), depending on the length of the document. [This is a limitation of LanguageTool.](https://valentjn.github.io/vscode-ltex/docs/faq.html#why-does-ltex-have-such-a-high-cpu-load)
+- Initial checking might take a while (up to two minutes), depending on the length of the document. [This is a limitation of LanguageTool.](faq.html#why-does-ltex-have-such-a-high-cpu-load)
 
 ## How to Request Features
 
@@ -53,7 +53,7 @@ If you like LTeX, but are not able to contribute in any of these ways, there are
 
 ## How to Contribute Code
 
-[As explained in the FAQ](https://valentjn.github.io/vscode-ltex/docs/faq.html#whats-the-difference-between-vscode-ltex-ltex-ls-and-languagetool), LTeX consists of two components: [vscode-ltex](https://github.com/valentjn/vscode-ltex) and [ltex-ls](https://github.com/valentjn/ltex-ls). vscode-ltex is written in TypeScript and consists mostly of boilerplate code to find, download, and extract ltex-ls and Java. ltex-ls is written in Java and is the actual interface to the LanguageTool backend.
+[As explained in the FAQ](faq.html#whats-the-difference-between-vscode-ltex-ltex-ls-and-languagetool), LTeX consists of two components: [vscode-ltex](https://github.com/valentjn/vscode-ltex) and [ltex-ls](https://github.com/valentjn/ltex-ls). vscode-ltex is written in TypeScript and consists mostly of boilerplate code to find, download, and extract ltex-ls and Java. ltex-ls is written in Java and is the actual interface to the LanguageTool backend.
 
 ### Branches & Pull Requests
 
@@ -104,7 +104,7 @@ At the bottom of each page, you'll find an “Edit me” button that takes you d
 - Issues may only be **reopened** if the reason for closing it doesn't exist anymore.
   - *Examples:* Missing information is provided, bug occurs again due to a regression, etc.
 - Issues that don't follow the **template** may be closed immediately.
-- Issues may be **locked** if they violate the [Code of Conduct](https://valentjn.github.io/vscode-ltex/docs/code-of-conduct.html).
+- Issues may be **locked** if they violate the [Code of Conduct](code-of-conduct.html).
 
 ### Guidelines About Versioning
 

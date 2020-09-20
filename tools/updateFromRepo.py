@@ -198,6 +198,7 @@ def copyMarkdown(srcPath, dstPath, metaData, ltexRepoDirPath, pagesRepoDirPath):
   markdown = metaData + "\n".join(lines[i+1:])
   markdown = markdown.replace("L<sup>A</sup>T<sub>E</sub>X", "LaTeX").replace(
       "T<sub>E</sub>X", "TeX")
+  markdown = markdown.replace("https://valentjn.github.io/vscode-ltex/docs/", "")
   with open(dstPath, "w") as f: f.write(markdown)
   linkSettingsAndCommands(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 

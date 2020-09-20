@@ -30,9 +30,9 @@ toc: false
 
 ## 6.2.0 — “The Command Isotope” (August 7, 2020)
 
-- Add commands [`LTeX: Check current document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-current-document) and [`LTeX: Check all documents in workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-all-documents-in-workspace) (fixes [#84](https://github.com/valentjn/vscode-ltex/issues/84))
-- Add commands [`LTeX: Clear diagnostics in current document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-clear-diagnostics-in-current-document) and [`LTeX: Clear all diagnostics`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-clear-all-diagnostics)
-- Add setting [`ltex.clearDiagnosticsWhenClosingFile`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexcleardiagnosticswhenclosingfile)
+- Add commands [`LTeX: Check current document`](commands.html#ltex-check-current-document) and [`LTeX: Check all documents in workspace`](commands.html#ltex-check-all-documents-in-workspace) (fixes [#84](https://github.com/valentjn/vscode-ltex/issues/84))
+- Add commands [`LTeX: Clear diagnostics in current document`](commands.html#ltex-clear-diagnostics-in-current-document) and [`LTeX: Clear all diagnostics`](commands.html#ltex-clear-all-diagnostics)
+- Add setting [`ltex.clearDiagnosticsWhenClosingFile`](settings.html#ltexcleardiagnosticswhenclosingfile)
 - Skip front matter in Markdown
 - Ignore more LaTeX preamble commands (e.g., `\automark`, `\color`, `\DeclareSIUnit`, `\directlua`, `\setuptoc`)
 - Add support for German babel hyphenation commands `"-`, `""`, `"|`, `"=`, `"~`
@@ -44,8 +44,8 @@ toc: false
 
 ## 6.1.0 — “The babel Momentum” (July 26, 2020)
 
-- Download Java 11 if only Java 8 is installed; LTeX support for Java 8 will end on November 1, 2020 (see [documentation](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html) and [#39](https://github.com/valentjn/vscode-ltex/issues/39))
-- Add support for babel commands (see [documentation](https://valentjn.github.io/vscode-ltex/docs/advanced-features.html#multilingual-latex-documents-with-the-babel-package), fixes [#81](https://github.com/valentjn/vscode-ltex/issues/81))
+- Download Java 11 if only Java 8 is installed; LTeX support for Java 8 will end on November 1, 2020 (see [documentation](deprecation-of-java-8.html) and [#39](https://github.com/valentjn/vscode-ltex/issues/39))
+- Add support for babel commands (see [documentation](advanced-features.html#multilingual-latex-documents-with-the-babel-package), fixes [#81](https://github.com/valentjn/vscode-ltex/issues/81))
 - Fix problems with spaces in paths when using LTeX LS on Windows (fixes [#80](https://github.com/valentjn/vscode-ltex/issues/80))
 - Update bundled AdoptOpenJDK JRE to 11.0.8+10
 - Update some NPM dependencies
@@ -67,7 +67,7 @@ toc: false
 - Add German translations for user interface of LTeX
 - Delay diagnostics at the current caret position (e.g., incomplete word or sentence) until the user has finished typing (fixes [#46](https://github.com/valentjn/vscode-ltex/issues/46))
 - Add `enabled` to magic comments (fixes [#67](https://github.com/valentjn/vscode-ltex/issues/67))
-- Add command [`LTeX: Report bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexreportbug) for reporting LTeX bugs from within VS Code
+- Add command [`LTeX: Report bug in LTeX`](commands.html#ltexreportbug) for reporting LTeX bugs from within VS Code
 - Fix `\todo` couldn't be ignored (fixes [#63](https://github.com/valentjn/vscode-ltex/issues/63))
 - Fix wrong language-dependent settings used for magic comments
 - Fix add to dictionary and disable rule quick fixes using wrong language when used with magic comments
