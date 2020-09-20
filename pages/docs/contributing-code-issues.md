@@ -67,7 +67,6 @@ In order for pull requests to be merged, a number of checks have to pass. This i
   - Successful build (strict mode)
   - No ESLint warnings
   - Successful Mocha end-to-end and unit tests
-  - Everything above is checked for Linux and Mac
 - ltex-ls:
   - Successful build
   - No Checkstyle warnings (we use a slightly modified Google style)
