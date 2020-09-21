@@ -8,6 +8,10 @@
 
 # Changelog
 
+## 7.1.2 (upcoming)
+
+- Fix performance issue with multiple languages in one document via magic comments due to LanguageTool being reinitialized on each keystroke (fixes [#124](https://github.com/valentjn/vscode-ltex/issues/124))
+
 ## 7.1.1 — “The Relative Malfunction” (September 20, 2020)
 
 - Fix `NullPointerException` when supplying relative paths to external dictionary files
