@@ -8,7 +8,7 @@
 
 # Changelog
 
-## 7.1.2 (upcoming)
+## 7.1.2 — “The Magic Configuration” (September 22, 2020)
 
 - Fix performance issue with multiple languages in one document via magic comments due to LanguageTool being reinitialized on each keystroke (fixes [#124](https://github.com/valentjn/vscode-ltex/issues/124))
 
