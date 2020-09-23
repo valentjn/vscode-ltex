@@ -11,13 +11,13 @@ import * as Os from 'os';
 import * as Path from 'path';
 import * as Querystring from 'querystring';
 
-import Dependencies from './Dependencies';
+import DependencyManager from './DependencyManager';
 import {i18n} from './I18n';
 import Logger from './Logger';
 
 export default class BugReporter {
   private _context: Code.ExtensionContext;
-  private _dependencies: Dependencies;
+  private _dependencyManager: DependencyManager;
 
   private static readonly _maxNumberOfDocumentLines: number = 200;
   private static readonly _maxNumberOfConfigLines: number = 1000;
@@ -26,9 +26,9 @@ export default class BugReporter {
   private static readonly _reportBugUrl: string = 'https://github.com/valentjn/vscode-ltex/' +
       'issues/new?assignees=&labels=1-bug%2C+2-unconfirmed&template=bug-report.md&title=&body=';
 
-  public constructor(context: Code.ExtensionContext, dependencies: Dependencies) {
+  public constructor(context: Code.ExtensionContext, dependencyManager: DependencyManager) {
     this._context = context;
-    this._dependencies = dependencies;
+    this._dependencyManager = dependencyManager;
   }
 
   private createReport(): string {
@@ -109,14 +109,14 @@ export default class BugReporter {
           `- vscode-ltex: ${extension.packageJSON.version}`);
     }
 
-    if (this._dependencies != null) {
-      const ltexLsVersion: string | null = this._dependencies.ltexLsVersion;
+    if (this._dependencyManager != null) {
+      const ltexLsVersion: string | null = this._dependencyManager.ltexLsVersion;
 
       if (ltexLsVersion != null) {
         bugReport = bugReport.replace(/^- ltex-ls: .*$/m, `- ltex-ls: ${ltexLsVersion}`);
       }
 
-      const javaVersion: string | null = this._dependencies.javaVersion;
+      const javaVersion: string | null = this._dependencyManager.javaVersion;
 
       if (javaVersion != null) {
         bugReport = bugReport.replace(/^- Java: .*$/m, `- Java: ${javaVersion}`);

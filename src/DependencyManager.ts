@@ -22,7 +22,7 @@ import {i18n} from './I18n';
 import Logger from './Logger';
 import ProgressStack from './ProgressStack';
 
-export default class Dependencies {
+export default class DependencyManager {
   private _context: Code.ExtensionContext;
   private _ltexVersion: string;
   private _ltexLsPath: string | null = null;
@@ -62,7 +62,7 @@ export default class Dependencies {
   }
 
   private static async doJsonRequest(urlStr: string): Promise<any> {
-    const requestOptions: Https.RequestOptions = Dependencies.parseUrl(urlStr);
+    const requestOptions: Https.RequestOptions = DependencyManager.parseUrl(urlStr);
 
     if (Object.prototype.hasOwnProperty.call(process.env, 'LTEX_GITHUB_OAUTH_TOKEN')) {
       if (requestOptions.headers == null) requestOptions.headers = {};
@@ -112,7 +112,7 @@ export default class Dependencies {
     const origTaskName: string = codeProgress.getTaskName();
 
     return new Promise((resolve: () => void, reject: (reason?: any) => void) => {
-      Https.get(Dependencies.parseUrl(urlStr), (response: Http.IncomingMessage) => {
+      Https.get(DependencyManager.parseUrl(urlStr), (response: Http.IncomingMessage) => {
         if ((response.statusCode === 301) || (response.statusCode === 302) ||
               (response.statusCode === 307)) {
           if (response.headers.location == null) {
@@ -122,7 +122,7 @@ export default class Dependencies {
           }
 
           Logger.log(i18n('redirectedTo', response.headers.location));
-          Dependencies.downloadFile(response.headers.location, path, codeProgress)
+          DependencyManager.downloadFile(response.headers.location, path, codeProgress)
               .then(resolve).catch(reject);
           return;
         } else if (response.statusCode !== 200) {
@@ -192,7 +192,7 @@ export default class Dependencies {
 
     codeProgress.startTask(0.8, i18n('downloading', name));
     Logger.log(i18n('downloadingFromTo', name, urlStr, archivePath));
-    await Dependencies.downloadFile(urlStr, archivePath, codeProgress);
+    await DependencyManager.downloadFile(urlStr, archivePath, codeProgress);
     codeProgress.finishTask();
 
     codeProgress.startTask(0.1, i18n('extracting', name));
@@ -279,7 +279,7 @@ export default class Dependencies {
       codeProgress.startTask(0.1, i18n('preparingDownloadOfLtexLs'));
       const jsonUrl: string = 'https://api.github.com/repos/valentjn/ltex-ls/releases';
       Logger.log(i18n('fetchingListOfLtexLsReleases', jsonUrl));
-      const jsonData: any = await Dependencies.doJsonRequest(jsonUrl);
+      const jsonData: any = await DependencyManager.doJsonRequest(jsonUrl);
 
       const ltexLsVersions: string[] = [];
 
@@ -343,12 +343,12 @@ export default class Dependencies {
       }
 
       const javaArchiveName: string = `OpenJDK11U-jre_${arch}_${platform}_hotspot_` +
-          `${Dependencies._javaVersion.replace('+', '_')}.${javaArchiveType}`;
+          `${DependencyManager._javaVersion.replace('+', '_')}.${javaArchiveType}`;
       Logger.log(i18n('guessedAdoptOpenJdkArchiveName', javaArchiveName));
       const javaUrl: string = 'https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/' +
-          `download/jdk-${encodeURIComponent(Dependencies._javaVersion)}/${javaArchiveName}`;
+          `download/jdk-${encodeURIComponent(DependencyManager._javaVersion)}/${javaArchiveName}`;
 
-      await this.installDependency(javaUrl, `Java ${Dependencies._javaVersion}`, codeProgress);
+      await this.installDependency(javaUrl, `Java ${DependencyManager._javaVersion}`, codeProgress);
     });
   }
 
@@ -367,7 +367,7 @@ export default class Dependencies {
   }
 
   private static searchBundledJava(libDirPath: string): string | null {
-    const javaPath: string = Path.join(libDirPath, `jdk-${Dependencies._javaVersion}-jre`);
+    const javaPath: string = Path.join(libDirPath, `jdk-${DependencyManager._javaVersion}-jre`);
 
     if (Fs.existsSync(javaPath)) {
       if (process.platform == 'darwin') {
@@ -394,16 +394,16 @@ export default class Dependencies {
       // try 1: use lib/ (don't download)
       // try 2: download and use lib/
       Logger.log('');
-      this._ltexLsPath = Dependencies.normalizePath(workspaceConfig.get('ltex-ls.path', ''));
+      this._ltexLsPath = DependencyManager.normalizePath(workspaceConfig.get('ltex-ls.path', ''));
 
-      if (Dependencies.isValidPath(this._ltexLsPath)) {
+      if (DependencyManager.isValidPath(this._ltexLsPath)) {
         Logger.log(i18n('ltexLtexLsPathSetTo', this._ltexLsPath));
       } else {
         Logger.log(i18n('ltexLtexLsPathNotSet'));
         Logger.log(i18n('searchingForLtexLsIn', libDirPath));
         this._ltexLsPath = this.searchBundledLtexLs(libDirPath);
 
-        if (Dependencies.isValidPath(this._ltexLsPath)) {
+        if (DependencyManager.isValidPath(this._ltexLsPath)) {
           Logger.log(i18n('ltexLsFoundIn', this._ltexLsPath));
         } else {
           Logger.log(i18n('couldNotFindCompatibleVersionOfLtexLsIn', libDirPath));
@@ -411,7 +411,7 @@ export default class Dependencies {
           await this.installLtexLs();
           this._ltexLsPath = this.searchBundledLtexLs(libDirPath);
 
-          if (Dependencies.isValidPath(this._ltexLsPath)) {
+          if (DependencyManager.isValidPath(this._ltexLsPath)) {
             Logger.log(i18n('ltexLsFoundIn', this._ltexLsPath));
           } else {
             throw Error(i18n('couldNotDownloadOrExtractLtexLs'));
@@ -421,7 +421,7 @@ export default class Dependencies {
     } catch (e) {
       Logger.error(i18n('downloadOrExtractionOfLtexLsFailed'), e);
       Logger.log(i18n('youMightWantToTryOfflineInstallationSee',
-          Dependencies._offlineInstructionsUrl));
+          DependencyManager._offlineInstructionsUrl));
       Logger.showClientOutputChannel();
       return this.showOfflineInstallationInstructions(i18n('couldNotInstallLtexLs'));
     }
@@ -435,17 +435,17 @@ export default class Dependencies {
     for (let i: number = 0; i < 6; i++) {
       try {
         Logger.log('');
-        this._javaPath = Dependencies.normalizePath(workspaceConfig.get('java.path'));
+        this._javaPath = DependencyManager.normalizePath(workspaceConfig.get('java.path'));
 
-        if (Dependencies.isValidPath(this._javaPath)) {
+        if (DependencyManager.isValidPath(this._javaPath)) {
           Logger.log(i18n('ltexJavaPathSetTo', this._javaPath));
         } else if (i % 3 == 0) {
           Logger.log(i18n('ltexJavaPathNotSet'));
         } else {
           Logger.log(i18n('searchingForJavaIn', libDirPath));
-          this._javaPath = Dependencies.searchBundledJava(libDirPath);
+          this._javaPath = DependencyManager.searchBundledJava(libDirPath);
 
-          if (Dependencies.isValidPath(this._javaPath)) {
+          if (DependencyManager.isValidPath(this._javaPath)) {
             Logger.log(i18n('javaFoundIn', this._javaPath));
           } else {
             Logger.log(i18n('couldNotFindJavaIn', libDirPath));
@@ -454,9 +454,9 @@ export default class Dependencies {
               continue;
             } else {
               await this.installJava();
-              this._javaPath = Dependencies.searchBundledJava(libDirPath);
+              this._javaPath = DependencyManager.searchBundledJava(libDirPath);
 
-              if (Dependencies.isValidPath(this._javaPath)) {
+              if (DependencyManager.isValidPath(this._javaPath)) {
                 Logger.log(i18n('javaFoundIn', this._javaPath));
               } else {
                 Logger.log(i18n('downloadOrExtractionOfJavaFailed'));
@@ -467,7 +467,7 @@ export default class Dependencies {
 
         Logger.log(i18n('usingLtexLsFrom', this._ltexLsPath));
 
-        if (Dependencies.isValidPath(this._javaPath)) {
+        if (DependencyManager.isValidPath(this._javaPath)) {
           Logger.log(i18n('usingJavaFrom', this._javaPath));
         } else {
           Logger.log(i18n('usingJavaFromPathOrJavaHome'));
@@ -486,7 +486,7 @@ export default class Dependencies {
 
     Logger.error(i18n('downloadExtractionRunOfJavaFailed'));
     Logger.log(i18n('youMightWantToTryOfflineInstallationSee',
-        Dependencies._offlineInstructionsUrl));
+        DependencyManager._offlineInstructionsUrl));
     return await this.showOfflineInstallationInstructions(i18n('couldNotDownloadExtractRunJava'));
   }
 
@@ -499,7 +499,7 @@ export default class Dependencies {
           resolve(await this.install());
           return;
         } else if (selectedItem == i18n('offlineInstructions')) {
-          Code.env.openExternal(Code.Uri.parse(Dependencies._offlineInstructionsUrl));
+          Code.env.openExternal(Code.Uri.parse(DependencyManager._offlineInstructionsUrl));
         }
 
         resolve(false);
@@ -583,7 +583,7 @@ export default class Dependencies {
   }
 
   public async getLtexLsExecutable(): Promise<CodeLanguageClient.Executable> {
-    if (!Dependencies.isValidPath(this._ltexLsPath)) {
+    if (!DependencyManager.isValidPath(this._ltexLsPath)) {
       return Promise.reject(new Error(i18n('couldNotGetLtexLsExecutable')));
     }
 
@@ -595,10 +595,11 @@ export default class Dependencies {
       }
     }
 
-    if (Dependencies.isValidPath(this._javaPath)) {
+    if (DependencyManager.isValidPath(this._javaPath)) {
       env['JAVA_HOME'] = this._javaPath!;
-    } else if ((env['LTEX_JAVA_HOME'] != null) && Dependencies.isValidPath(env['LTEX_JAVA_HOME'])) {
-      env['JAVA_HOME'] = Dependencies.normalizePath(env['LTEX_JAVA_HOME'])!;
+    } else if ((env['LTEX_JAVA_HOME'] != null) &&
+          DependencyManager.isValidPath(env['LTEX_JAVA_HOME'])) {
+      env['JAVA_HOME'] = DependencyManager.normalizePath(env['LTEX_JAVA_HOME'])!;
     }
 
     const isWindows: boolean = (process.platform === 'win32');

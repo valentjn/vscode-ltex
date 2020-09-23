@@ -10,7 +10,7 @@ import * as CodeLanguageClient from 'vscode-languageclient';
 
 import BugReporter from './BugReporter';
 import CommandHandler from './CommandHandler';
-import Dependencies from './Dependencies';
+import DependencyManager from './DependencyManager';
 import {I18n, i18n} from './I18n';
 import Logger from './Logger';
 import LoggingOutputChannel from './LoggingOutputChannel';
@@ -22,7 +22,7 @@ export class Api {
   public serverOutputChannel: LoggingOutputChannel | null = null;
 }
 
-let dependencies: Dependencies | null = null;
+let dependencyManager: DependencyManager | null = null;
 
 async function languageClientIsReady(disposable: Code.Disposable): Promise<void> {
   disposable.dispose();
@@ -54,17 +54,18 @@ async function languageClientIsReady(disposable: Code.Disposable): Promise<void>
 
 async function startLanguageClient(context: Code.ExtensionContext):
       Promise<CodeLanguageClient.LanguageClient | null> {
-  if (dependencies == null) {
-    Logger.error('Dependencies not initialized!');
+  if (dependencyManager == null) {
+    Logger.error('DependencyManager not initialized!');
     return Promise.resolve(null);
   }
 
-  const success: boolean = await dependencies.install();
+  const success: boolean = await dependencyManager.install();
   if (success !== true) return Promise.resolve(null);
 
   const statusBarMessageDisposable: Code.Disposable =
       Code.window.setStatusBarMessage(`$(loading~spin) ${i18n('startingLtex')}`, 60000);
-  const serverOptions: CodeLanguageClient.ServerOptions = await dependencies.getLtexLsExecutable();
+  const serverOptions: CodeLanguageClient.ServerOptions =
+      await dependencyManager.getLtexLsExecutable();
 
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
   const enabled: any = workspaceConfig.get('enabled');
@@ -135,8 +136,8 @@ export async function activate(context: Code.ExtensionContext): Promise<Api> {
   api.clientOutputChannel = Logger.clientOutputChannel;
   api.serverOutputChannel = Logger.serverOutputChannel;
 
-  dependencies = new Dependencies(context);
-  const bugReporter: BugReporter = new BugReporter(context, dependencies);
+  dependencyManager = new DependencyManager(context);
+  const bugReporter: BugReporter = new BugReporter(context, dependencyManager);
   context.subscriptions.push(Code.commands.registerCommand('ltex.reportBug',
       bugReporter.report.bind(bugReporter)));
 
