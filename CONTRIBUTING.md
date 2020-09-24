@@ -38,7 +38,7 @@ If you like LTeX, but are not able to contribute in any of these ways, there are
 
 ### Known Issues and Limitations
 
-- The LaTeX parser is not perfect. False positives are sometimes reported as errors. However, it is impossible to fully parse LaTeX without compiling it.
+- The LaTeX parser is not perfect. False positives are sometimes reported as errors. However, it is impossible to fully parse LaTeX's output without compiling the source. This follows from the [Turing-completeness of TeX](https://en.wikipedia.org/w/index.php?title=TeX&oldid=979062806#Typesetting_system) and the [halting problem](https://en.wikipedia.org/w/index.php?title=Halting_problem&oldid=979261081).
 - Initial checking might take a while (up to two minutes), depending on the length of the document. [This is a limitation of LanguageTool.](https://valentjn.github.io/vscode-ltex/docs/faq.html#why-does-ltex-have-such-a-high-cpu-load)
 
 ## How to Request Features
