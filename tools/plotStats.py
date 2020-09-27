@@ -10,6 +10,7 @@ import datetime
 import json
 import os
 import subprocess
+import traceback
 
 import bokeh.io
 import bokeh.plotting
@@ -146,8 +147,13 @@ def plotMap():
         transform=cartopy.crs.PlateCarree())
 
   ax.set_facecolor("none")
-  plt.savefig(os.path.join(repoDirPath, "images", "stats", "map.png"),
-      facecolor="none", bbox_inches="tight")
+
+  try:
+    plt.savefig(os.path.join(repoDirPath, "images", "stats", "map.png"),
+        facecolor="none", bbox_inches="tight")
+  except Exception:
+    print("Could not save map, because the following exception occurred:")
+    print(traceback.format_exc())
 
 
 
