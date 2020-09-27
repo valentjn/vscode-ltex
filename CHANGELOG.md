@@ -8,7 +8,7 @@
 
 # Changelog
 
-## 7.2.0 (upcoming)
+## 7.2.0 — “The LanguageTool Acquisition” (September 27, 2020)
 
 - Update LanguageTool to 5.1 (see [LT 5.1 release notes](https://github.com/languagetool-org/languagetool/blob/v5.1/languagetool-standalone/CHANGES.md#51-released-2020-09-25))
 - Add support for HTML entities such as `&auml;` and `&copy;` in Markdown
