@@ -11,6 +11,13 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 7.2.0 — “The LanguageTool Acquisition” (September 27, 2020)
+
+- Update LanguageTool to 5.1 (see [LT 5.1 release notes](https://github.com/languagetool-org/languagetool/blob/v5.1/languagetool-standalone/CHANGES.md#51-released-2020-09-25))
+- Add support for HTML entities such as `&auml;` and `&copy;` in Markdown
+- Fix missing tilde expansion for external dictionary files
+- Improve logging of LTeX LS
+
 ## 7.1.2 — “The Magic Configuration” (September 22, 2020)
 
 - Fix performance issue with multiple languages in one document via magic comments due to LanguageTool being reinitialized on each keystroke (fixes [#124](https://github.com/valentjn/vscode-ltex/issues/124))
