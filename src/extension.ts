@@ -125,6 +125,9 @@ async function startLanguageClient(context: Code.ExtensionContext):
   context.subscriptions.push(languageClientDisposable);
   context.subscriptions.push(statusBarMessageDisposable);
 
+  const commandHandler: CommandHandler = new CommandHandler(languageClient);
+  commandHandler.register(context);
+
   return Promise.resolve(languageClient);
 }
 
@@ -154,11 +157,6 @@ export async function activate(context: Code.ExtensionContext): Promise<Api> {
       Logger.showClientOutputChannel();
       Code.window.showErrorMessage(i18n('couldNotStartLanguageClient'));
     }
-  }
-
-  if (api.languageClient != null) {
-    const commandHandler: CommandHandler = new CommandHandler(api.languageClient);
-    commandHandler.register(context);
   }
 
   return Promise.resolve(api);
