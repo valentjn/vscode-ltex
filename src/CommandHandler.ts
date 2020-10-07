@@ -31,7 +31,7 @@ export default class CommandHandler {
         this.clearAllDiagnostics.bind(this)));
   }
 
-  public async checkDocument(uri: Code.Uri, codeLanguageId?: string,
+  private async checkDocument(uri: Code.Uri, codeLanguageId?: string,
         text?: string): Promise<boolean> {
     const args: any = {uri: uri.toString()};
     if (codeLanguageId != null) args.codeLanguageId = codeLanguageId;
@@ -48,7 +48,7 @@ export default class CommandHandler {
     }
   }
 
-  public async checkCurrentDocument(): Promise<boolean> {
+  private async checkCurrentDocument(): Promise<boolean> {
     const textEditor: Code.TextEditor | undefined = Code.window.activeTextEditor;
 
     if (textEditor == null) {
@@ -60,7 +60,7 @@ export default class CommandHandler {
         textEditor.document.getText());
   }
 
-  public async checkAllDocumentsInWorkspace(): Promise<boolean> {
+  private async checkAllDocumentsInWorkspace(): Promise<boolean> {
     const progressOptions: Code.ProgressOptions = {
           title: 'LTeX',
           location: Code.ProgressLocation.Notification,
@@ -104,7 +104,7 @@ export default class CommandHandler {
     });
   }
 
-  public clearDiagnosticsInCurrentDocument(): void {
+  private clearDiagnosticsInCurrentDocument(): void {
     const diagnostics: Code.DiagnosticCollection | undefined = this._languageClient.diagnostics;
     if (diagnostics == null) return;
     const textEditor: Code.TextEditor | undefined = Code.window.activeTextEditor;
@@ -112,7 +112,7 @@ export default class CommandHandler {
     diagnostics.set(textEditor.document.uri, undefined);
   }
 
-  public clearAllDiagnostics(): void {
+  private clearAllDiagnostics(): void {
     const diagnostics: Code.DiagnosticCollection | undefined = this._languageClient.diagnostics;
     if (diagnostics == null) return;
     diagnostics.clear();
