@@ -14,7 +14,7 @@ import DependencyManager from './DependencyManager';
 import {I18n, i18n} from './I18n';
 import Logger from './Logger';
 import LoggingOutputChannel from './LoggingOutputChannel';
-import TelemetryProcessor from './TelemetryProcessor';
+import ProgressNotificationHandler from './ProgressNotificationHandler';
 
 export class Api {
   public languageClient: CodeLanguageClient.LanguageClient | null = null;
@@ -24,9 +24,16 @@ export class Api {
 
 let dependencyManager: DependencyManager | null = null;
 
-async function languageClientIsReady(disposable: Code.Disposable): Promise<void> {
+async function languageClientIsReady(context: Code.ExtensionContext,
+      languageClient: CodeLanguageClient.LanguageClient,
+      disposable: Code.Disposable): Promise<void> {
   disposable.dispose();
   Code.window.setStatusBarMessage(`$(check) ${i18n('ltexReady')}`, 1000);
+
+  const progressNotificationHandler: ProgressNotificationHandler =
+      new ProgressNotificationHandler(context);
+  languageClient.onNotification('ltex/progress',
+      progressNotificationHandler.process.bind(progressNotificationHandler));
 
   const numberOfLanguageSupportExtensions: number = Code.extensions.all.filter(
       (x: Code.Extension<any>) => x.id.startsWith('valentjn.vscode-ltex-')).length;
@@ -104,14 +111,8 @@ async function startLanguageClient(context: Code.ExtensionContext):
   const languageClient: CodeLanguageClient.LanguageClient = new CodeLanguageClient.LanguageClient(
       'ltex', i18n('ltexLanguageServer'), serverOptions, clientOptions);
 
-  languageClient.onReady().then(languageClientIsReady.bind(null, statusBarMessageDisposable));
-
-  // Hack to enable the server to execute commands that change the client configuration
-  // (e.g., adding words to the dictionary).
-  // The client configuration cannot be directly changed by the server, so we send a
-  // telemetry notification to the client, which then changes the configuration.
-  const telemetryProcessor: TelemetryProcessor = new TelemetryProcessor(context);
-  languageClient.onTelemetry(telemetryProcessor.process, telemetryProcessor);
+  languageClient.onReady().then(languageClientIsReady.bind(
+      null, context, languageClient, statusBarMessageDisposable));
 
   Logger.log(i18n('startingLtexLs'));
   Logger.logExecutable(serverOptions);

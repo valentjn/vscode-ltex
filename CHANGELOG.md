@@ -11,6 +11,7 @@
 ## 7.3.0 (upcoming)
 
 - Add support for `\ell` as well as `\mathcal`, `\mathfrak`, etc. to vowel detection (fixes [#131](https://github.com/valentjn/vscode-ltex/issues/131))
+- Restructure and simplify internal quickfix and command structure, removing the need for pseudo-telemetry notifications
 
 ## 7.2.0 — “The LanguageTool Acquisition” (September 27, 2020)
 
