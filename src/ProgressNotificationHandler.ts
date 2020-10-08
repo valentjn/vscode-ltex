@@ -51,7 +51,7 @@ export default class ProgressNotificationHandler {
     }
   }
 
-  public process(params: any): void {
+  public handle(params: {uri: string, operation: string, progress: number}): void {
     if (params.operation != 'checkDocument') {
       Logger.warn(i18n('unknownOperationInProgressEvent', params.operation, params));
       return;

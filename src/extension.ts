@@ -15,6 +15,7 @@ import {I18n, i18n} from './I18n';
 import Logger from './Logger';
 import LoggingOutputChannel from './LoggingOutputChannel';
 import ProgressNotificationHandler from './ProgressNotificationHandler';
+import WorkspaceConfigurationRequestHandler from './WorkspaceConfigurationRequestHandler';
 
 export class Api {
   public languageClient: CodeLanguageClient.LanguageClient | null = null;
@@ -33,7 +34,10 @@ async function languageClientIsReady(context: Code.ExtensionContext,
   const progressNotificationHandler: ProgressNotificationHandler =
       new ProgressNotificationHandler(context);
   languageClient.onNotification('ltex/progress',
-      progressNotificationHandler.process.bind(progressNotificationHandler));
+      progressNotificationHandler.handle.bind(progressNotificationHandler));
+
+  languageClient.onRequest('ltex/workspaceSpecificConfiguration',
+      WorkspaceConfigurationRequestHandler.handle);
 
   const numberOfLanguageSupportExtensions: number = Code.extensions.all.filter(
       (x: Code.Extension<any>) => x.id.startsWith('valentjn.vscode-ltex-')).length;

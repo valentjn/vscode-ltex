@@ -13,6 +13,7 @@ import BugReporter from './BugReporter';
 import {i18n} from './I18n';
 import Logger from './Logger';
 import ProgressStack from './ProgressStack';
+import WorkspaceConfigurationRequestHandler from './WorkspaceConfigurationRequestHandler';
 
 export default class CommandHandler {
   private _bugReporter: BugReporter;
@@ -194,33 +195,6 @@ export default class CommandHandler {
     return Promise.resolve(true);
   }
 
-  private static cleanUpStringArray(array: string[]): string[] {
-    const negativeSet: Set<string> = new Set();
-    const positiveSet: Set<string> = new Set();
-
-    for (const entry of array) {
-      if (entry.startsWith('-')) {
-        negativeSet.add(entry.substr(1));
-      } else {
-        positiveSet.add(entry);
-      }
-    }
-
-    for (const entry of negativeSet) {
-      if (positiveSet.has(entry)) {
-        negativeSet.delete(entry);
-        positiveSet.delete(entry);
-      }
-    }
-
-    const result: string[] = [];
-    for (const entry of negativeSet) result.push(`-${entry}`);
-    for (const entry of positiveSet) result.push(entry);
-    result.sort((a: string, b: string) => a.localeCompare(b, undefined, {sensitivity: 'base'}));
-
-    return result;
-  }
-
   private static async setSetting(settingName: string, settingValue: any,
         resourceConfig: Code.WorkspaceConfiguration, commandName: string): Promise<void> {
     const configurationTargetString: string | undefined =
@@ -268,7 +242,8 @@ export default class CommandHandler {
       let dictionary: string[] = ((dictionarySetting[language] != null) ?
           dictionarySetting[language] : []);
       dictionary = dictionary.concat(params.words[language]);
-      dictionarySetting[language] = CommandHandler.cleanUpStringArray(dictionary);
+      dictionarySetting[language] =
+          WorkspaceConfigurationRequestHandler.cleanUpWorkspaceSpecificStringArray(dictionary);
     }
 
     CommandHandler.setSetting(
@@ -290,7 +265,8 @@ export default class CommandHandler {
       let disabledRules: string[] = ((disabledRulesSetting[language] != null) ?
           disabledRulesSetting[language] : []);
       disabledRules = disabledRules.concat(params.ruleIds[language]);
-      disabledRulesSetting[language] = CommandHandler.cleanUpStringArray(disabledRules);
+      disabledRulesSetting[language] =
+          WorkspaceConfigurationRequestHandler.cleanUpWorkspaceSpecificStringArray(disabledRules);
     }
 
     CommandHandler.setSetting(

@@ -56,51 +56,50 @@ def updatePackageJson(ltLanguageShortCodes, ltLanguageNames):
       "%ltex.i18n.configuration.ltex.language.{}.enumDescription%".format(x)
       for x in ltLanguageShortCodes]
 
-  createSettingName = (lambda prefix, suffix: "ltex.{}{}".format(
-      prefix, (suffix if prefix == "" else (suffix[0].upper() + suffix[1:]))))
-
-  for prefix in ["", "workspace", "workspaceFolder"]:
-    settings[createSettingName(prefix, "dictionary")]["properties"] = {
-          languageShortCode: {
-            "type": "array",
-            "items": {
-              "type": "string",
-            },
-            "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary."
-              "{}.markdownDescription%".format(languageShortCode),
-            "description": "%ltex.i18n.configuration.ltex.dictionary."
-              "{}.description%".format(languageShortCode),
-          }
-          for languageShortCode, languageName in zip(ltLanguageShortCodes, ltLanguageNames)
+  removeKeyIfPresent(settings["ltex.dictionary"], "propertyNames")
+  settings["ltex.dictionary"]["properties"] = {
+        languageShortCode: {
+          "type": "array",
+          "items": {
+            "type": "string",
+          },
+          "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary."
+            "{}.markdownDescription%".format(languageShortCode),
+          "description": "%ltex.i18n.configuration.ltex.dictionary."
+            "{}.description%".format(languageShortCode),
         }
+        for languageShortCode, languageName in zip(ltLanguageShortCodes, ltLanguageNames)
+      }
 
-    settings[createSettingName(prefix, "disabledRules")]["properties"] = {
-          languageShortCode: {
-            "type": "array",
-            "items": {
-              "type": "string",
-            },
-            "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules."
-              "{}.markdownDescription%".format(languageShortCode),
-            "description": "%ltex.i18n.configuration.ltex.disabledRules."
-              "{}.description%".format(languageShortCode),
-          }
-          for languageShortCode, languageName in zip(ltLanguageShortCodes, ltLanguageNames)
+  removeKeyIfPresent(settings["ltex.disabledRules"], "propertyNames")
+  settings["ltex.disabledRules"]["properties"] = {
+        languageShortCode: {
+          "type": "array",
+          "items": {
+            "type": "string",
+          },
+          "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules."
+            "{}.markdownDescription%".format(languageShortCode),
+          "description": "%ltex.i18n.configuration.ltex.disabledRules."
+            "{}.description%".format(languageShortCode),
         }
+        for languageShortCode, languageName in zip(ltLanguageShortCodes, ltLanguageNames)
+      }
 
-    settings[createSettingName(prefix, "enabledRules")]["properties"] = {
-          languageShortCode: {
-            "type": "array",
-            "items": {
-              "type": "string",
-            },
-            "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules."
-              "{}.markdownDescription%".format(languageShortCode),
-            "description": "%ltex.i18n.configuration.ltex.enabledRules."
-              "{}.description%".format(languageShortCode),
-          }
-          for languageShortCode, languageName in zip(ltLanguageShortCodes, ltLanguageNames)
+  removeKeyIfPresent(settings["ltex.enabledRules"], "propertyNames")
+  settings["ltex.enabledRules"]["properties"] = {
+        languageShortCode: {
+          "type": "array",
+          "items": {
+            "type": "string",
+          },
+          "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules."
+            "{}.markdownDescription%".format(languageShortCode),
+          "description": "%ltex.i18n.configuration.ltex.enabledRules."
+            "{}.description%".format(languageShortCode),
         }
+        for languageShortCode, languageName in zip(ltLanguageShortCodes, ltLanguageNames)
+      }
 
   with open(packageJsonPath, "w") as f:
     json.dump(packageJson, f, indent=2, ensure_ascii=False)
@@ -124,7 +123,7 @@ def updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.language\..+\.", key) is not None:
       continue
 
-    elif key == "ltex.i18n.configuration.ltex.workspaceFolderDictionary.description":
+    elif key == "ltex.i18n.configuration.ltex.dictionary.description":
       newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
@@ -147,11 +146,10 @@ def updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
               f"List of additional '{ltLanguageShortCode}' ({ltLanguageName}) words that should "
               "not be counted as spelling errors.")
 
-    elif re.match(r"^ltex\.i18n\.configuration\.ltex\.workspaceFolderDictionary\..+\.",
-          key) is not None:
+    elif re.match(r"^ltex\.i18n\.configuration\.ltex\.dictionary\..+\.", key) is not None:
       continue
 
-    elif key == "ltex.i18n.configuration.ltex.workspaceFolderDisabledRules.description":
+    elif key == "ltex.i18n.configuration.ltex.disabledRules.description":
       newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
@@ -174,11 +172,10 @@ def updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
               f"List of additional '{ltLanguageShortCode}' ({ltLanguageName}) rules that should "
               "be disabled (if enabled by default by LanguageTool).")
 
-    elif re.match(r"^ltex\.i18n\.configuration\.ltex\.workspaceFolderDisabledRules\..+\.",
-          key) is not None:
+    elif re.match(r"^ltex\.i18n\.configuration\.ltex\.disabledRules\..+\.", key) is not None:
       continue
 
-    elif key == "ltex.i18n.configuration.ltex.workspaceFolderEnabledRules.description":
+    elif key == "ltex.i18n.configuration.ltex.enabledRules.description":
       newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
@@ -201,8 +198,7 @@ def updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
               f"List of additional '{ltLanguageShortCode}' ({ltLanguageName}) rules that should "
               "be enabled (if disabled by default by LanguageTool).")
 
-    elif re.match(r"^ltex\.i18n\.configuration\.ltex\.workspaceFolderEnabledRules\..+\.",
-          key) is not None:
+    elif re.match(r"^ltex\.i18n\.configuration\.ltex\.enabledRules\..+\.", key) is not None:
       continue
 
     else:
