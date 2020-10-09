@@ -9,17 +9,24 @@ import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient';
 import * as Path from 'path';
 
+import BugReporter from './BugReporter';
 import {i18n} from './I18n';
 import Logger from './Logger';
 import ProgressStack from './ProgressStack';
 
 export default class CommandHandler {
-  private _languageClient: CodeLanguageClient.LanguageClient;
+  private _bugReporter: BugReporter;
+  private _languageClient: CodeLanguageClient.LanguageClient | null;
 
   private static readonly _featureRequestUrl: string = 'https://github.com/valentjn/vscode-ltex/' +
       'issues/new?assignees=&labels=1-feature-request&template=feature-request.md&title=';
 
-  public constructor(languageClient: CodeLanguageClient.LanguageClient) {
+  public constructor(bugReporter: BugReporter) {
+    this._bugReporter = bugReporter;
+    this._languageClient = null;
+  }
+
+  public set languageClient(languageClient: CodeLanguageClient.LanguageClient | null) {
     this._languageClient = languageClient;
   }
 
@@ -33,6 +40,8 @@ export default class CommandHandler {
         this.clearDiagnosticsInCurrentDocument.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.clearAllDiagnostics',
         this.clearAllDiagnostics.bind(this)));
+    context.subscriptions.push(Code.commands.registerCommand('ltex.reportBug',
+        this._bugReporter.report.bind(this._bugReporter)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.requestFeature',
         CommandHandler.requestFeature));
 
@@ -46,6 +55,11 @@ export default class CommandHandler {
 
   private async checkDocument(uri: Code.Uri, codeLanguageId?: string,
         text?: string): Promise<boolean> {
+    if (this._languageClient == null) {
+      Code.window.showErrorMessage(i18n('ltexNotInitialized'));
+      return Promise.resolve(false);
+    }
+
     const args: any = {uri: uri.toString()};
     if (codeLanguageId != null) args.codeLanguageId = codeLanguageId;
     if (text != null) args.text = text;
@@ -62,6 +76,11 @@ export default class CommandHandler {
   }
 
   private async checkCurrentDocument(): Promise<boolean> {
+    if (this._languageClient == null) {
+      Code.window.showErrorMessage(i18n('ltexNotInitialized'));
+      return Promise.resolve(false);
+    }
+
     const textEditor: Code.TextEditor | undefined = Code.window.activeTextEditor;
 
     if (textEditor == null) {
@@ -74,6 +93,11 @@ export default class CommandHandler {
   }
 
   private async checkAllDocumentsInWorkspace(): Promise<boolean> {
+    if (this._languageClient == null) {
+      Code.window.showErrorMessage(i18n('ltexNotInitialized'));
+      return Promise.resolve(false);
+    }
+
     const progressOptions: Code.ProgressOptions = {
           title: 'LTeX',
           location: Code.ProgressLocation.Notification,
@@ -117,18 +141,28 @@ export default class CommandHandler {
     });
   }
 
-  private clearDiagnosticsInCurrentDocument(): void {
+  private clearDiagnosticsInCurrentDocument(): Promise<boolean> {
+    if (this._languageClient == null) {
+      Code.window.showErrorMessage(i18n('ltexNotInitialized'));
+      return Promise.resolve(false);
+    }
+
     const diagnostics: Code.DiagnosticCollection | undefined = this._languageClient.diagnostics;
-    if (diagnostics == null) return;
+    if (diagnostics == null) return Promise.resolve(true);
     const textEditor: Code.TextEditor | undefined = Code.window.activeTextEditor;
-    if (textEditor == null) return;
-    diagnostics.set(textEditor.document.uri, undefined);
+    if (textEditor != null) diagnostics.set(textEditor.document.uri, undefined);
+    return Promise.resolve(true);
   }
 
-  private clearAllDiagnostics(): void {
+  private clearAllDiagnostics(): Promise<boolean> {
+    if (this._languageClient == null) {
+      Code.window.showErrorMessage(i18n('ltexNotInitialized'));
+      return Promise.resolve(false);
+    }
+
     const diagnostics: Code.DiagnosticCollection | undefined = this._languageClient.diagnostics;
-    if (diagnostics == null) return;
-    diagnostics.clear();
+    if (diagnostics != null) diagnostics.clear();
+    return Promise.resolve(true);
   }
 
   private static getSettingName(settingName: string,
@@ -149,8 +183,9 @@ export default class CommandHandler {
     }
   }
 
-  private static requestFeature(): void {
+  private static requestFeature(): Promise<boolean> {
     Code.env.openExternal(Code.Uri.parse(CommandHandler._featureRequestUrl));
+    return Promise.resolve(true);
   }
 
   private static cleanUpStringArray(array: string[]): string[] {

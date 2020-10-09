@@ -54,6 +54,7 @@
   "ltexLtexLsPathNotSet": "ltex.ltex-ls.path not set.",
   "ltexLtexLsPathSetTo": "ltex.ltex-ls.path set to '{0}'.",
   "ltexLsFoundIn": "ltex-ls found in '{0}'.",
+  "ltexNotInitialized": "LTeX has not been initialized due to an earlier error.",
   "ltexReady": "LTeX ready",
   "ltexTraceServerSetToVerbose": "ltex.trace.server set to \"verbose\" in your user settings.",
   "moreInfoAboutLtex5x": "More info about LTeX 5.x",

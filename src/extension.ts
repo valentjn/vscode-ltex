@@ -126,9 +126,6 @@ async function startLanguageClient(context: Code.ExtensionContext):
   context.subscriptions.push(languageClientDisposable);
   context.subscriptions.push(statusBarMessageDisposable);
 
-  const commandHandler: CommandHandler = new CommandHandler(languageClient);
-  commandHandler.register(context);
-
   return Promise.resolve(languageClient);
 }
 
@@ -142,8 +139,8 @@ export async function activate(context: Code.ExtensionContext): Promise<Api> {
 
   dependencyManager = new DependencyManager(context);
   const bugReporter: BugReporter = new BugReporter(context, dependencyManager);
-  context.subscriptions.push(Code.commands.registerCommand('ltex.reportBug',
-      bugReporter.report.bind(bugReporter)));
+  const commandHandler: CommandHandler = new CommandHandler(bugReporter);
+  commandHandler.register(context);
 
   // Allow to enable languageTool in specific workspaces
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
@@ -153,6 +150,7 @@ export async function activate(context: Code.ExtensionContext): Promise<Api> {
     try {
       // create the language client
       api.languageClient = await startLanguageClient(context);
+      commandHandler.languageClient = api.languageClient;
     } catch (e) {
       Logger.error(i18n('couldNotStartLanguageClient'), e);
       Logger.showClientOutputChannel();

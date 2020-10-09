@@ -18,6 +18,7 @@
   "ltexIsChecking": "LTeX prüft ...",
   "ltexLanguageClient": "LTeX Language Client",
   "ltexLanguageServer": "LTeX Language Server",
+  "ltexNotInitialized": "LTeX wurde aufgrund eines vorhergehenden Fehlers nicht initialisiert.",
   "ltexReady": "LTeX bereit",
   "ltexTraceServerSetToVerbose": "ltex.trace.server wurde in der Benutzer-Konfiguration auf \"verbose\" gesetzt.",
   "moreInfoAboutLtex5x": "Mehr Infos über LTeX 5.x",
