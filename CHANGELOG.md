@@ -12,6 +12,7 @@
 
 - Add support for `\ell` as well as `\mathcal`, `\mathfrak`, etc. to vowel detection (fixes [#131](https://github.com/valentjn/vscode-ltex/issues/131))
 - Add command [`ltex.requestFeature`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexrequestfeature) to quickly request a new feature in LT<sub>E</sub>X via VS Code
+- Add button to set [`ltex.trace.server`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltextraceserver) to `"verbose"` when reporting a bug
 - Restructure and simplify internal quickfix and command structure, removing the need for pseudo-telemetry notifications
 
 ## 7.2.0 — “The LanguageTool Acquisition” (September 27, 2020)

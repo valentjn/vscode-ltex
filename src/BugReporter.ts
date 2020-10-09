@@ -143,8 +143,13 @@ export default class BugReporter {
     const bugReport: string = this.createReport();
 
     Code.window.showInformationMessage(i18n('thanksForHelpingToImproveLtex'),
-          i18n('copyReportAndCreateIssue')).then(async (selectedItem: string | undefined) => {
-      if (selectedItem == i18n('copyReportAndCreateIssue')) {
+          i18n('setLtexTraceServerToVerbose'), i18n('copyReportAndCreateIssue')).then(
+            async (selectedItem: string | undefined) => {
+      if (selectedItem == i18n('setLtexTraceServerToVerbose')) {
+        const config: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
+        config.update('trace.server', 'verbose', Code.ConfigurationTarget.Global);
+        Code.window.showInformationMessage(i18n('ltexTraceServerSetToVerbose'));
+      } else if (selectedItem == i18n('copyReportAndCreateIssue')) {
         Code.env.clipboard.writeText(bugReport);
         Code.env.openExternal(Code.Uri.parse(BugReporter._bugReportUrl +
             Querystring.escape(i18n('enterSummaryOfIssueInTitleFieldAndReplaceSentence'))));
