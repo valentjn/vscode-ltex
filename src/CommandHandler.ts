@@ -184,7 +184,13 @@ export default class CommandHandler {
   }
 
   private static requestFeature(): Promise<boolean> {
-    Code.env.openExternal(Code.Uri.parse(CommandHandler._featureRequestUrl));
+    Code.window.showInformationMessage(i18n('thanksForRequestingFeature'),
+          i18n('createIssue')).then(async (selectedItem: string | undefined) => {
+      if (selectedItem == i18n('createIssue')) {
+        Code.env.openExternal(Code.Uri.parse(CommandHandler._featureRequestUrl));
+      }
+    });
+
     return Promise.resolve(true);
   }
 

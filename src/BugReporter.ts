@@ -142,7 +142,7 @@ export default class BugReporter {
     Logger.log(i18n('creatingBugReport'));
     const bugReport: string = this.createReport();
 
-    Code.window.showInformationMessage(i18n('thanksForHelpingToImproveLtex'),
+    Code.window.showInformationMessage(i18n('thanksForReportingBug'),
           i18n('setLtexTraceServerToVerbose'), i18n('copyReportAndCreateIssue')).then(
             async (selectedItem: string | undefined) => {
       if (selectedItem == i18n('setLtexTraceServerToVerbose')) {
