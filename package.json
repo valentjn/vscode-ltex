@@ -3765,9 +3765,9 @@
                 "workspaceFolder"
               ],
               "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.addToDictionary.user.enumDescription%",
-                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.addToDictionary.workspace.enumDescription%",
-                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.addToDictionary.workspaceFolder.enumDescription%"
+                "%ltex.i18n.configuration.ltex.configurationTarget.addToDictionary.user.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.addToDictionary.workspace.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.addToDictionary.workspaceFolder.enumDescription%"
               ]
             },
             "disableRule": {
@@ -3778,9 +3778,9 @@
                 "workspaceFolder"
               ],
               "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.disableRule.user.enumDescription%",
-                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.disableRule.workspace.enumDescription%",
-                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.disableRule.workspaceFolder.enumDescription%"
+                "%ltex.i18n.configuration.ltex.configurationTarget.disableRule.user.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.disableRule.workspace.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.disableRule.workspaceFolder.enumDescription%"
               ]
             },
             "ignoreRuleInSentence": {
@@ -3791,14 +3791,14 @@
                 "workspaceFolder"
               ],
               "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.ignoreRuleInSentence.user.enumDescription%",
-                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.ignoreRuleInSentence.workspace.enumDescription%",
-                "%ltex.i18n.configuration.ltex.i18n.configurationTarget.ignoreRuleInSentence.workspaceFolder.enumDescription%"
+                "%ltex.i18n.configuration.ltex.configurationTarget.ignoreRuleInSentence.user.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.ignoreRuleInSentence.workspace.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.ignoreRuleInSentence.workspaceFolder.enumDescription%"
               ]
             }
           },
-          "markdownDescription": "%ltex.i18n.configuration.ltex.i18n.configurationTarget.markdownDescription%",
-          "description": "%ltex.i18n.configuration.ltex.i18n.configurationTarget.description%"
+          "markdownDescription": "%ltex.i18n.configuration.ltex.configurationTarget.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.configurationTarget.description%"
         },
         "ltex.additionalRules.motherTongue": {
           "type": "string",
