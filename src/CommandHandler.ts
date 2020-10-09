@@ -16,6 +16,9 @@ import ProgressStack from './ProgressStack';
 export default class CommandHandler {
   private _languageClient: CodeLanguageClient.LanguageClient;
 
+  private static readonly _featureRequestUrl: string = 'https://github.com/valentjn/vscode-ltex/' +
+      'issues/new?assignees=&labels=1-feature-request&template=feature-request.md&title=';
+
   public constructor(languageClient: CodeLanguageClient.LanguageClient) {
     this._languageClient = languageClient;
   }
@@ -30,6 +33,8 @@ export default class CommandHandler {
         this.clearDiagnosticsInCurrentDocument.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.clearAllDiagnostics',
         this.clearAllDiagnostics.bind(this)));
+    context.subscriptions.push(Code.commands.registerCommand('ltex.requestFeature',
+        CommandHandler.requestFeature));
 
     context.subscriptions.push(Code.commands.registerCommand('ltex.addToDictionary',
         CommandHandler.addToDictionary));
@@ -142,6 +147,10 @@ export default class CommandHandler {
       Logger.error(i18n('invalidValueForConfigurationTarget', configurationTargetString));
       return null;
     }
+  }
+
+  private static requestFeature(): void {
+    Code.env.openExternal(Code.Uri.parse(CommandHandler._featureRequestUrl));
   }
 
   private static cleanUpStringArray(array: string[]): string[] {

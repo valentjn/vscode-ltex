@@ -71,6 +71,11 @@
         "command": "ltex.reportBug",
         "title": "%ltex.i18n.commands.ltex.reportBug.title%",
         "markdownDescription": "%ltex.i18n.commands.ltex.reportBug.markdownDescription%"
+      },
+      {
+        "command": "ltex.requestFeature",
+        "title": "%ltex.i18n.commands.ltex.requestFeature.title%",
+        "markdownDescription": "%ltex.i18n.commands.ltex.requestFeature.markdownDescription%"
       }
     ],
     "configuration": {
