@@ -11,6 +11,15 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 7.3.0 (upcoming)
+
+- Add support for `\ell` as well as `\mathcal`, `\mathfrak`, etc. to vowel detection (fixes [#131](https://github.com/valentjn/vscode-ltex/issues/131))
+- Add setting [`ltex.ltex-ls.logLevel`](settings.html#ltexltex-lsloglevel) to control the verbosity of the server log of LTeX LS
+- Add command [`ltex.requestFeature`](commands.html#ltexrequestfeature) to quickly request a new feature in LTeX via VS Code
+- Add button to set [`ltex.trace.server`](settings.html#ltextraceserver) to `"verbose"` when reporting a bug
+- Fix diagnostics sometimes not lined up with the text with switching back from incremental to full document updates; unfortunately, this disables the delayed publication of diagnostics at the caret position
+- Restructure and simplify internal quickfix and command structure, removing the need for pseudo-telemetry notifications
+
 ## 7.2.0 — “The LanguageTool Acquisition” (September 27, 2020)
 
 - Update LanguageTool to 5.1 (see [LT 5.1 release notes](https://github.com/languagetool-org/languagetool/blob/v5.1/languagetool-standalone/CHANGES.md#51-released-2020-09-25))
