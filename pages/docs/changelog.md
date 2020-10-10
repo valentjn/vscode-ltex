@@ -11,7 +11,7 @@ sidebar: "sidebar"
 toc: false
 ---
 
-## 7.3.0 (upcoming)
+## 7.3.0 — “The Debugging Formulation” (October 10, 2020)
 
 - Add support for `\ell` as well as `\mathcal`, `\mathfrak`, etc. to vowel detection (fixes [#131](https://github.com/valentjn/vscode-ltex/issues/131))
 - Add setting [`ltex.ltex-ls.logLevel`](settings.html#ltexltex-lsloglevel) to control the verbosity of the server log of LTeX LS
