@@ -10,6 +10,7 @@
 ## 7.3.0 (upcoming)
 
 - Add support for `\ell` as well as `\mathcal`, `\mathfrak`, etc. to vowel detection (fixes [#131](https://github.com/valentjn/vscode-ltex/issues/131))
+- Add setting [`ltex.ltex-ls.logLevel`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lsloglevel) to control the verbosity of the server log of LT<sub>E</sub>X LS
 - Add command [`ltex.requestFeature`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexrequestfeature) to quickly request a new feature in LT<sub>E</sub>X via VS Code
 - Add button to set [`ltex.trace.server`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltextraceserver) to `"verbose"` when reporting a bug
 - Fix diagnostics sometimes not lined up with the text with switching back from incremental to full document updates; unfortunately, this disables the delayed publication of diagnostics at the caret position

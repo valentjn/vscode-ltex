@@ -3621,6 +3621,31 @@
             "http://localhost:8081/"
           ]
         },
+        "ltex.ltex-ls.logLevel": {
+          "type": "string",
+          "scope": "window",
+          "default": "fine",
+          "enum": [
+            "severe",
+            "warning",
+            "info",
+            "config",
+            "fine",
+            "finer",
+            "finest"
+          ],
+          "enumDescriptions": [
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.severe.enumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.warning.enumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.info.enumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.config.enumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.fine.enumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.finer.enumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.finest.enumDescription%"
+          ],
+          "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.description%"
+        },
         "ltex.java.path": {
           "type": "string",
           "scope": "window",
