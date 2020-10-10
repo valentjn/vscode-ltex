@@ -2301,6 +2301,24 @@ If set to a non-empty string, LTeX will not use the bundled, built-in version of
 
 *Default:* `""`
 
+## `ltex.ltex-ls.logLevel`
+
+Logging level (verbosity) of the ltex-ls server log, which is accessible via `View` → `Output` → `LTeX Language Server`. The levels in descending order are `"severe"`, `"warning"`, `"info"`, `"config"`, `"fine"`, `"finer"`, and `"finest"`. All messages that have the specified log level or a higher level are logged. ltex-ls does not use all log levels.
+
+*Type:* `string`
+
+*Possible values:*
+
+- `"severe"`: Minimum verbosity. Only log severe errors.
+- `"warning"`: Very low verbosity. Only log severe errors and warnings.
+- `"info"`: Low verbosity. Additionally log startup and shutdown messages.
+- `"config"`: Medium verbosity. Additionally log configuration messages.
+- `"fine"`: Medium to high verbosity (default). Additionally log when LanguageTool is called or LanguageTool has to be reinitialized due to changed settings.
+- `"finer"`: High verbosity. Log additional debugging information such as full texts to be checked.
+- `"finest"`: Maximum verbosity. Log all available debugging information.
+
+*Default:* `"fine"`
+
 ## `ltex.java.path`
 
 If set to an empty string and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. Use the same path as you would use for the `JAVA_HOME` environment variable (it usually contains `bin` and `lib` subdirectories, amongst others). `~` is expanded to the user's home directory. Changes require reloading the Visual Studio Code window to take effect.
