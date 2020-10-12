@@ -8,7 +8,7 @@
 
 # Changelog
 
-## 7.3.1 (upcoming)
+## 7.3.1 — “The Delay Correlation” (October 12, 2020)
 
 - Fix delayed publication of diagnostics by adding workaround to guess the caret position
 - Fix recheck being triggered when generating list of quick fixes; this should improve speed
