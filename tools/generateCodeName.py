@@ -1,3 +1,20 @@
+# Copyright (C) 2020 Julian Valentin, LTeX Development Community
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+import argparse
+import os
+import random
+import re
+
+
+
+toolsDirPath = os.path.dirname(os.path.abspath(__file__))
+ltexPath = os.path.abspath(os.path.join(toolsDirPath, ".."))
+
+suffixes = """
 Acceleration
 Accumulation
 Acquisition
@@ -114,7 +131,7 @@ Revelation
 Reverberation
 Saturation
 Scattering
-﻿Schism﻿﻿﻿﻿﻿﻿
+Schism
 Simulation
 Solution
 Stimulation
@@ -136,3 +153,31 @@ Turbulence
 Valuation
 Verification
 Vortex
+""".strip().splitlines()
+
+
+
+def main():
+  parser = argparse.ArgumentParser(
+      description="Generate a code name for the next release of LTeX")
+  parser.add_argument("topic", metavar="TOPIC", help="Main topic of the release")
+  args = parser.parse_args()
+
+  with open(os.path.join(ltexPath, "CHANGELOG.md"), "r") as f: changelog = f.read()
+  usedSuffixes = re.findall(r"^## .*? \u2014 \u201cThe .* ([A-Za-z]+)\u201d", changelog,
+      flags=re.MULTILINE)
+
+  numberOfUsages = {x : 0 for x in suffixes}
+  for x in usedSuffixes: numberOfUsages[x] += 1
+  suffixes.sort(key=lambda x: numberOfUsages[x])
+  minNumberOfUsages = numberOfUsages[suffixes[0]]
+
+  possibleSuffixes = [x for x in suffixes if numberOfUsages[x] == minNumberOfUsages]
+  suffix = random.choice(possibleSuffixes)
+
+  print(f"The {args.topic} {suffix}")
+
+
+
+if __name__ == "__main__":
+  main()
