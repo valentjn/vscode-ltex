@@ -10,6 +10,8 @@
 
 ## 7.3.1 (upcoming)
 
+- Fix delayed publication of diagnostics by adding workaround to guess the caret position
+- Fix recheck being triggered when generating list of quick fixes; this should improve speed
 - Fix comment in readme
 
 ## 7.3.0 — “The Debugging Formulation” (October 10, 2020)
