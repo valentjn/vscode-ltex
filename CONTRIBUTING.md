@@ -20,7 +20,7 @@ Thank you for considering contributing to LTeX. There are many ways to do so:
 If you like LTeX, but are not able to contribute in any of these ways, there are still some quick and simple alternatives to show your gratitude:
 
 - You can star the [repository on GitHub](https://github.com/valentjn/vscode-ltex).
-- You can write a positive review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex).
+- You can write a positive review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex) or on [Open VSX](https://open-vsx.org/extension/valentjn/vscode-ltex).
 
 ## How to Report Bugs
 
