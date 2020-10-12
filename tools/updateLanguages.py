@@ -212,10 +212,10 @@ def updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
 
 
 def main():
-  parser = argparse.ArgumentParser(description="Fetches all supported language codes from "
+  parser = argparse.ArgumentParser(description="Fetch all supported language codes from "
       "LanguageTool and updates the language-specific parts of package.json accordingly")
   parser.add_argument("--ltex-ls-path", default="lib/ltex-ls-*",
-      help="path to ltex-ls relative from the root directory of LTeX, supports wildcards")
+      help="Path to ltex-ls relative from the root directory of LTeX, supports wildcards")
   args = parser.parse_args()
 
   ltexLsPaths = glob.glob(os.path.join(ltexPath, args.ltex_ls_path))

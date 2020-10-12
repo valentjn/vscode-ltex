@@ -173,14 +173,14 @@ def processArxivTex(lspClient, tex, texPath, arxivId, saveTex):
 
 def main():
   parser = argparse.ArgumentParser(description=
-      "Tests LTeX VS Code extension on randomly chosen arXiv papers.")
+      "Test LTeX VS Code extension on randomly chosen arXiv papers")
   parser.add_argument("--batch-size", type=int, default=10, help=
-      "Number of arXiv papers to check.")
+      "Number of arXiv papers to check")
   parser.add_argument("--port", type=int, default=0, help=
       "Port to use for the communication with the language server. "
       "If omitted, use an arbitrary open port.")
   parser.add_argument("--save-tex", type=str, help=
-      "Save checked LaTeX files in the specified directory.")
+      "Save checked LaTeX files in the specified directory")
   parser.add_argument("--seed", type=int, help=
       "Use a specific seed to generate arXiv IDs. If omitted, use a random seed.")
   args = parser.parse_args()

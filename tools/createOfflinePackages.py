@@ -149,11 +149,11 @@ def createPackage(ltexPlatform=None, ltexArch=None):
 
 
 def main():
-  parser = argparse.ArgumentParser(description="build offline packages of LTeX")
+  parser = argparse.ArgumentParser(description="Build offline packages of LTeX")
   parser.add_argument("--current-system", action="store_true",
-      help="build offline package only for current platform/architecture")
+      help="Build offline package only for current platform/architecture")
   parser.add_argument("--ltex-ls-path", metavar="PATH",
-      help="don't download ltex-ls from GitHub, but use *.tar.gz archive from this path")
+      help="Don't download ltex-ls from GitHub, but use *.tar.gz archive from this path")
   args = parser.parse_args()
 
   if args.current_system:
