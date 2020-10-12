@@ -1,4 +1,5 @@
-<!-- Copyright (C) 2020 Julian Valentin, LTeX Development Community
+<!--
+   - Copyright (C) 2020 Julian Valentin, LTeX Development Community
    -
    - This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -6,6 +7,10 @@
    -->
 
 # Changelog
+
+## 7.3.1 (upcoming)
+
+- Fix comment in readme
 
 ## 7.3.0 — “The Debugging Formulation” (October 10, 2020)
 
