@@ -11,6 +11,12 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 7.3.1 — “The Delay Correlation” (October 12, 2020)
+
+- Fix delayed publication of diagnostics by adding workaround to guess the caret position
+- Fix recheck being triggered when generating list of quick fixes; this should improve speed
+- Fix comment in readme
+
 ## 7.3.0 — “The Debugging Formulation” (October 10, 2020)
 
 - Add support for `\ell` as well as `\mathcal`, `\mathfrak`, etc. to vowel detection (fixes [#131](https://github.com/valentjn/vscode-ltex/issues/131))
