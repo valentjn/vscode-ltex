@@ -10,6 +10,8 @@
 
 ## 8.0.0 (upcoming)
 
+- Upgrade from Java 8 to Java 11 (see [announcement](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html), fixes [#39](https://github.com/valentjn/vscode-ltex/issues/39))
+- Remove dependency on `org.apache.httpcomponents:httpclient` by using the HTTP client that comes with Java 11 when connecting to an HTTP LanguageTool server
 - Add support for `\usepackage[LANGUAGE]{babel}` if in the same file as the text to be checked (fixes [#140](https://github.com/valentjn/vscode-ltex/issues/140))
 - Add support for more BibL<sup>A</sup>T<sub>E</sub>X commands such as `\autocite`, `\citeauthor`, etc. (fixes [#143](https://github.com/valentjn/vscode-ltex/issues/143))
 - Add support for overriding hard-coded command signatures (fixes [valentjn/ltex-ls#27](https://github.com/valentjn/ltex-ls/issues/27))
