@@ -32,6 +32,7 @@ export default class DependencyManager {
 
   private static readonly _offlineInstructionsUrl: string = 'https://valentjn.github.io/' +
       'vscode-ltex/docs/installation-and-usage.html#offline-installation';
+  private static readonly _toBeDownloadedLtexLsVersion: string = '7.3.1';
   private static readonly _toBeDownloadedJavaVersion: string = '11.0.8+10';
 
   public constructor(context: Code.ExtensionContext) {
@@ -59,51 +60,6 @@ export default class DependencyManager {
           path: url.pathname + ((url.query != null) ? `?${url.query}` : ''),
           headers: {'User-Agent': 'vscode-ltex'},
         };
-  }
-
-  private static async doJsonRequest(urlStr: string): Promise<any> {
-    const requestOptions: Https.RequestOptions = DependencyManager.parseUrl(urlStr);
-
-    if (Object.prototype.hasOwnProperty.call(process.env, 'LTEX_GITHUB_OAUTH_TOKEN')) {
-      if (requestOptions.headers == null) requestOptions.headers = {};
-      requestOptions.headers['Authorization'] = `token ${process.env['LTEX_GITHUB_OAUTH_TOKEN']}`;
-    }
-
-    return new Promise((resolve: (value: unknown) => void, reject: (reason: Error) => void) => {
-      Https.get(requestOptions, (response: Http.IncomingMessage) => {
-        const contentType: string | undefined = response.headers['content-type'];
-        let error: Error | null = null;
-
-        if (response.statusCode !== 200) {
-          error = new Error(i18n('requestFailedWithStatusCode', response.statusCode));
-        } else if ((contentType != null) && !/^application\/json/.test(contentType)) {
-          error = new Error(i18n('requestFailedWithContentType', contentType));
-        }
-
-        response.setEncoding('utf8');
-        let rawData: string = '';
-
-        response.on('data', (chunk: any) => {
-          rawData += chunk;
-        });
-
-        response.on('end', () => {
-          if (error == null) {
-            try {
-              const jsonData: any = JSON.parse(rawData);
-              resolve(jsonData);
-            } catch (e) {
-              reject(e);
-            }
-          } else {
-            error.message += ` ${i18n('responseBody', rawData)}`;
-            reject(error);
-          }
-        });
-      }).on('error', (e: Error) => {
-        reject(e);
-      });
-    });
   }
 
   private static async downloadFile(urlStr: string, path: string, codeProgress: ProgressStack):
@@ -276,33 +232,11 @@ export default class DependencyManager {
       const codeProgress: ProgressStack = new ProgressStack(
           i18n('downloadingAndExtractingLtexLs'), progress);
 
-      codeProgress.startTask(0.1, i18n('preparingDownloadOfLtexLs'));
-      const jsonUrl: string = 'https://api.github.com/repos/valentjn/ltex-ls/releases';
-      Logger.log(i18n('fetchingListOfLtexLsReleases', jsonUrl));
-      const jsonData: any = await DependencyManager.doJsonRequest(jsonUrl);
-
-      const ltexLsVersions: string[] = [];
-
-      jsonData.forEach((release: any) => {
-        ltexLsVersions.push(release.tag_name);
-      });
-
-      const ltexLsVersion: string | null = this.getLatestCompatibleLtexLsVersion(ltexLsVersions);
-
-      if (ltexLsVersion == null) {
-        throw Error(i18n('couldNotFindCompatibleVersionOfLtexLsOnGitHub',
-            this._ltexVersion, JSON.stringify(ltexLsVersions)));
-      }
-
-      Logger.log(i18n('latestCompatibleReleaseIsLtexLsVersion', ltexLsVersion));
       const ltexLsUrl: string = 'https://github.com/valentjn/ltex-ls/releases/download/' +
-          `${ltexLsVersion}/ltex-ls-${ltexLsVersion}.tar.gz`;
-
-      codeProgress.finishTask();
-
-      codeProgress.startTask(0.9, i18n('downloadingAndExtractingLtexLsVersion', ltexLsVersion));
-      await this.installDependency(ltexLsUrl, `ltex-ls ${ltexLsVersion}`, codeProgress);
-      codeProgress.finishTask();
+          `${DependencyManager._toBeDownloadedLtexLsVersion}/` +
+          `ltex-ls-${DependencyManager._toBeDownloadedLtexLsVersion}.tar.gz`;
+      await this.installDependency(ltexLsUrl,
+          `ltex-ls ${DependencyManager._toBeDownloadedLtexLsVersion}`, codeProgress);
     });
   }
 
