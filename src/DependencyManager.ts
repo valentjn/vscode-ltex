@@ -32,7 +32,7 @@ export default class DependencyManager {
 
   private static readonly _offlineInstructionsUrl: string = 'https://valentjn.github.io/' +
       'vscode-ltex/docs/installation-and-usage.html#offline-installation';
-  private static readonly _javaVersion: string = '11.0.8+10';
+  private static readonly _toBeDownloadedJavaVersion: string = '11.0.8+10';
 
   public constructor(context: Code.ExtensionContext) {
     this._context = context;
@@ -343,12 +343,14 @@ export default class DependencyManager {
       }
 
       const javaArchiveName: string = `OpenJDK11U-jre_${arch}_${platform}_hotspot_` +
-          `${DependencyManager._javaVersion.replace('+', '_')}.${javaArchiveType}`;
+          `${DependencyManager._toBeDownloadedJavaVersion.replace('+', '_')}.${javaArchiveType}`;
       Logger.log(i18n('guessedAdoptOpenJdkArchiveName', javaArchiveName));
       const javaUrl: string = 'https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/' +
-          `download/jdk-${encodeURIComponent(DependencyManager._javaVersion)}/${javaArchiveName}`;
+          `download/jdk-${encodeURIComponent(DependencyManager._toBeDownloadedJavaVersion)}/` +
+          javaArchiveName;
 
-      await this.installDependency(javaUrl, `Java ${DependencyManager._javaVersion}`, codeProgress);
+      await this.installDependency(javaUrl,
+          `Java ${DependencyManager._toBeDownloadedJavaVersion}`, codeProgress);
     });
   }
 
@@ -367,7 +369,8 @@ export default class DependencyManager {
   }
 
   private static searchBundledJava(libDirPath: string): string | null {
-    const javaPath: string = Path.join(libDirPath, `jdk-${DependencyManager._javaVersion}-jre`);
+    const javaPath: string = Path.join(libDirPath,
+        `jdk-${DependencyManager._toBeDownloadedJavaVersion}-jre`);
 
     if (Fs.existsSync(javaPath)) {
       if (process.platform == 'darwin') {
