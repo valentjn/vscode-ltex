@@ -32,5 +32,6 @@
   "thanksForReportingBug": "Vielen Dank dafür, dass Sie helfen, LTeX zu verbessern. Lesen Sie zunächst die [Anleitung darüber, wie man Bugs meldet](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#how-to-report-bugs). Wenn Sie das Problem auf GitHub erstellen, fügen Sie den Bug-Bericht aus der Zwischenablage in die Beschreibung des Problems ein.",
   "thanksForUpgradingFromLtex4x": "Vielen Dank für die Aktualisierung von LTeX 4.x auf 5.x oder neuer!",
   "tryAgain": "Nochmals versuchen",
+  "verifying": "Verifiziere {0} ...",
   "youMightWantToTryOfflineInstallation": "Versuchen Sie, die Offline-Installationsmethode auszuführen."
 }

@@ -8,6 +8,10 @@
 
 # Changelog
 
+## 8.0.0 (upcoming)
+
+- Add verification for downloaded files (LT<sub>E</sub>X LS and Java)
+
 ## 7.3.1 — “The Delay Correlation” (October 12, 2020)
 
 - Fix delayed publication of diagnostics by adding workaround to guess the caret position

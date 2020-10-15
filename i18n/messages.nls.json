@@ -21,6 +21,7 @@
   "couldNotInstallLtexLs": "Could not install ltex-ls.",
   "couldNotSetConfiguration": "Could not set configuration '{0}'.",
   "couldNotStartLanguageClient": "Could not start the language client!",
+  "couldNotVerifyDownloadedFile": "Could not verify the downloaded file '{0}' due to a mismatch of hash digests: expected '{1}', actual '{2}'. Maybe there was a transmission error during the download, or the hard-coded hash digests have not been updated.",
   "createIssue": "Create issue",
   "creating": "Creating '{0}'...",
   "creatingBugReport": "Creating bug report...",
@@ -89,6 +90,7 @@
   "usingJavaFrom": "Using Java from '{0}'.",
   "usingJavaFromPathOrJavaHome": "Using Java from PATH or JAVA_HOME (may fail if not installed).",
   "usingLtexLsFrom": "Using ltex-ls from '{0}'.",
+  "verifying": "Verifying {0}...",
   "youMightWantToTryOfflineInstallation": "You might want to try offline installation.",
   "youMightWantToTryOfflineInstallationSee": "You might want to try offline installation, see {0}."
 }

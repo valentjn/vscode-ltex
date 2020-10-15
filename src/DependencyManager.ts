@@ -8,6 +8,7 @@
 import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient';
 import * as ChildProcess from 'child_process';
+import * as Crypto from 'crypto';
 import extractZip from 'extract-zip';
 import * as Fs from 'fs';
 import * as Http from 'http';
@@ -32,8 +33,32 @@ export default class DependencyManager {
 
   private static readonly _offlineInstructionsUrl: string = 'https://valentjn.github.io/' +
       'vscode-ltex/docs/installation-and-usage.html#offline-installation';
+
   private static readonly _toBeDownloadedLtexLsVersion: string = '7.3.1';
+  private static readonly _toBeDownloadedLtexLsHashDigest: string =
+      '1be9d9d9d1edcadc0c4610bd3b1a21ba036f62e44bcf0e40d1fbccc0bd803bbe';
+
   private static readonly _toBeDownloadedJavaVersion: string = '11.0.8+10';
+  private static readonly _toBeDownloadedJavaHashDigests: {[fileName: string]: string} = {
+    'OpenJDK11U-jre_aarch64_linux_hotspot_11.0.8_10.tar.gz':
+      '286c869dbaefda9b470ae71d1250fdecf9f06d8da97c0f7df9021d381d749106',
+    'OpenJDK11U-jre_arm_linux_hotspot_11.0.8_10.tar.gz':
+      'ffa627b2d0c6001448bb8f1f24f7c9921dad37e67637f6ed0a9a479e680a3393',
+    'OpenJDK11U-jre_ppc64_aix_hotspot_11.0.8_10.tar.gz':
+      'bf1f839f37bcb5cc56bc45044b0b828432bdfe743dd44350c7f852ced95766e6',
+    'OpenJDK11U-jre_ppc64le_linux_hotspot_11.0.8_10.tar.gz':
+      '89231e1667d7cc4202d1a401497bb287d4eb12281c90c17e2570211cc4e901a3',
+    'OpenJDK11U-jre_s390x_linux_hotspot_11.0.8_10.tar.gz':
+      'dc0e715c17abcb12bedf77c638e58e67d828d3c4bf24a898f0d4b053caaeb25f',
+    'OpenJDK11U-jre_x64_linux_hotspot_11.0.8_10.tar.gz':
+      '98615b1b369509965a612232622d39b5cefe117d6189179cbad4dcef2ee2f4e1',
+    'OpenJDK11U-jre_x64_mac_hotspot_11.0.8_10.tar.gz':
+      'b0cd349e7e428721a3bcfec619e071d25c0397e3e43b7ce22acfd7d834a8ca4b',
+    'OpenJDK11U-jre_x64_windows_hotspot_11.0.8_10.zip':
+      'fefa05395dbccfe072a8b6fbfebecf797ed81e18cb1aa4ed093c653d316b3f56',
+    'OpenJDK11U-jre_x86-32_windows_hotspot_11.0.8_10.zip':
+      '00e0eb7112a4cdbaae663110e4c7af6377d2fa01f69c20222790293b4f427f26',
+  };
 
   public constructor(context: Code.ExtensionContext) {
     this._context = context;
@@ -122,6 +147,28 @@ export default class DependencyManager {
     });
   }
 
+  private static async verifyFile(path: string, hashDigest: string): Promise<void> {
+    return new Promise((resolve: () => void, reject: (reason?: any) => void) => {
+      const hash: Crypto.Hash = Crypto.createHash('sha256');
+      const readStream: Fs.ReadStream = Fs.createReadStream(path);
+
+      readStream.on('data', (d: any) => hash.update(d));
+
+      readStream.on('end', () => {
+        const actualHashDigest: string = hash.digest('hex');
+
+        if (actualHashDigest === hashDigest) {
+          resolve();
+        } else {
+          reject(new Error(i18n('couldNotVerifyDownloadedFile',
+              path, hashDigest, actualHashDigest)));
+        }
+      });
+
+      readStream.on('error', (e: Error) => reject(e));
+    });
+  }
+
   private getLatestCompatibleLtexLsVersion(versions: string[]): string | null {
     let latestVersion: string | null = null;
 
@@ -135,8 +182,8 @@ export default class DependencyManager {
     return latestVersion;
   }
 
-  private async installDependency(urlStr: string, name: string, codeProgress: ProgressStack):
-        Promise<void> {
+  private async installDependency(urlStr: string, hashDigest: string, name: string,
+        codeProgress: ProgressStack): Promise<void> {
     codeProgress.startTask(0.1, i18n('downloading', name));
     const url: Url.UrlWithStringQuery = Url.parse(urlStr);
     if (url.pathname == null) throw new Error(i18n('couldNotGetPathNameFromUrl', urlStr));
@@ -146,9 +193,13 @@ export default class DependencyManager {
     const archivePath: string = Path.join(tmpDirPath, archiveName);
     codeProgress.finishTask();
 
-    codeProgress.startTask(0.8, i18n('downloading', name));
+    codeProgress.startTask(0.7, i18n('downloading', name));
     Logger.log(i18n('downloadingFromTo', name, urlStr, archivePath));
     await DependencyManager.downloadFile(urlStr, archivePath, codeProgress);
+    codeProgress.finishTask();
+
+    codeProgress.startTask(0.1, i18n('verifying', name));
+    await DependencyManager.verifyFile(archivePath, hashDigest);
     codeProgress.finishTask();
 
     codeProgress.startTask(0.1, i18n('extracting', name));
@@ -235,7 +286,7 @@ export default class DependencyManager {
       const ltexLsUrl: string = 'https://github.com/valentjn/ltex-ls/releases/download/' +
           `${DependencyManager._toBeDownloadedLtexLsVersion}/` +
           `ltex-ls-${DependencyManager._toBeDownloadedLtexLsVersion}.tar.gz`;
-      await this.installDependency(ltexLsUrl,
+      await this.installDependency(ltexLsUrl, DependencyManager._toBeDownloadedLtexLsHashDigest,
           `ltex-ls ${DependencyManager._toBeDownloadedLtexLsVersion}`, codeProgress);
     });
   }
@@ -282,8 +333,10 @@ export default class DependencyManager {
       const javaUrl: string = 'https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/' +
           `download/jdk-${encodeURIComponent(DependencyManager._toBeDownloadedJavaVersion)}/` +
           javaArchiveName;
+      const javaHashDigest: string =
+          DependencyManager._toBeDownloadedJavaHashDigests[javaArchiveName];
 
-      await this.installDependency(javaUrl,
+      await this.installDependency(javaUrl, javaHashDigest,
           `Java ${DependencyManager._toBeDownloadedJavaVersion}`, codeProgress);
     });
   }
