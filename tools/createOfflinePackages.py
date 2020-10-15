@@ -29,7 +29,6 @@ import common
 
 
 libDirPath = os.path.join(common.repoDirPath, "lib")
-javaVersion = "11.0.8+10"
 
 # to get proper logs in Travis CI
 oldPrint = print
@@ -102,13 +101,13 @@ def extractLtexLs(ltexLsArchivePath):
 
 
 def removeJava():
-  path = os.path.join(libDirPath, "jdk-{}-jre".format(javaVersion))
+  path = os.path.join(libDirPath, "jdk-{}-jre".format(common.toBeDownloadedJavaVersion))
 
   if os.path.isdir(path):
     print("Removing old Java directory '{}'...".format(path))
     shutil.rmtree(path)
 
-  path = os.path.join(libDirPath, "._jdk-{}-jre".format(javaVersion))
+  path = os.path.join(libDirPath, "._jdk-{}-jre".format(common.toBeDownloadedJavaVersion))
 
   if os.path.isfile(path):
     print("Removing old Java file '{}'...".format(path))
@@ -117,10 +116,10 @@ def removeJava():
 def downloadJava(platform, arch):
   javaArchiveType = ("zip" if platform == "windows" else "tar.gz")
   javaArchiveName = "OpenJDK11U-jre_{}_{}_hotspot_{}.{}".format(
-      arch, platform, javaVersion.replace("+", "_"), javaArchiveType)
+      arch, platform, common.toBeDownloadedJavaVersion.replace("+", "_"), javaArchiveType)
 
-  javaUrl = ("https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/"
-      "jdk-{}/{}").format(urllib.parse.quote_plus(javaVersion), javaArchiveName)
+  javaUrl = ("https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/""jdk-{}/{}"
+      .format(urllib.parse.quote_plus(common.toBeDownloadedJavaVersion), javaArchiveName))
   javaArchivePath = os.path.join(libDirPath, javaArchiveName)
   print("Downloading Java from '{}' to '{}'...".format(javaUrl, javaArchivePath))
   urllib.request.urlretrieve(javaUrl, javaArchivePath)

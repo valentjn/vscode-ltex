@@ -7,5 +7,18 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import os
+import re
 
 repoDirPath = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+
+with open(os.path.join(repoDirPath, "src", "DependencyManager.ts"), "r") as f:
+  dependencyManagerTypescript = f.read()
+
+matches = re.findall(r"_toBeDownloadedJavaVersion: string = '(.*?)';",
+    dependencyManagerTypescript)
+assert len(matches) == 1
+toBeDownloadedJavaVersion = matches[0]
+
+del dependencyManagerTypescript
+del f
+del matches
