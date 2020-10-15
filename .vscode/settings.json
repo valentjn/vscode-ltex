@@ -11,5 +11,8 @@
     "**/*.vsix": true,
   },
   "java.configuration.updateBuildConfiguration": "interactive",
+  "python.analysis.extraPaths": [
+    "tools",
+  ],
   "typescript.tsdk": "./node_modules/typescript/lib",
 }
