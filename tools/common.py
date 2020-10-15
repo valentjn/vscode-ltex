@@ -26,6 +26,11 @@ matches = re.findall(r"_toBeDownloadedJavaVersion: string = '(.*?)';",
 assert len(matches) == 1
 toBeDownloadedJavaVersion = matches[0]
 
+matches = re.findall(r"_toBeDownloadedLtexLsVersion: string = '(.*?)';",
+    dependencyManagerTypescript)
+assert len(matches) == 1
+toBeDownloadedLtexLsVersion = matches[0]
+
 del dependencyManagerTypescript
 del f
 del matches
