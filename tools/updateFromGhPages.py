@@ -8,7 +8,6 @@
 
 import os
 import re
-import shutil
 
 import yaml
 
@@ -24,7 +23,8 @@ def getMarkdownStructure(baseUrl, markdownPath):
   with open(markdownPath, "r") as f: markdown = f.read()
 
   iterator = re.finditer(r"^---$", markdown, flags=re.MULTILINE)
-  for i in range(2): match = next(iterator)
+  match = next(iterator)
+  match = next(iterator)
   metadata = yaml.load(markdown[:match.start()], Loader=yaml.SafeLoader)
   if not metadata.get("toc", True): return []
   markdown = markdown[match.end():]
