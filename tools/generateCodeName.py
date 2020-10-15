@@ -10,11 +10,12 @@ import argparse
 import os
 import random
 import re
+import sys
+
+sys.path.append(os.path.dirname(__file__))
+import common
 
 
-
-toolsDirPath = os.path.dirname(os.path.abspath(__file__))
-ltexPath = os.path.abspath(os.path.join(toolsDirPath, ".."))
 
 suffixes = """
 Acceleration
@@ -165,7 +166,7 @@ def main():
   parser.add_argument("topic", metavar="TOPIC", help="Main topic of the release")
   args = parser.parse_args()
 
-  with open(os.path.join(ltexPath, "CHANGELOG.md"), "r") as f: changelog = f.read()
+  with open(os.path.join(common.repoDirPath, "CHANGELOG.md"), "r") as f: changelog = f.read()
   usedSuffixes = re.findall(r"^## .*? \u2014 \u201cThe .* ([A-Za-z]+)\u201d", changelog,
       flags=re.MULTILINE)
 

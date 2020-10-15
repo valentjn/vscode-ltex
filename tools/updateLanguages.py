@@ -13,11 +13,14 @@ import os
 import re
 import shlex
 import subprocess
+import sys
+
+sys.path.append(os.path.dirname(__file__))
+import common
 
 
 
-toolsDirPath = os.path.dirname(os.path.abspath(__file__))
-ltexPath = os.path.abspath(os.path.join(toolsDirPath, ".."))
+toolsDirPath = os.path.join(common.repoDirPath, "tools")
 
 
 
@@ -44,7 +47,7 @@ def fetchLanguages(toolsDirPath, ltexLsPath):
 
 
 def updatePackageJson(ltLanguageShortCodes, ltLanguageNames):
-  packageJsonPath = os.path.join(ltexPath, "package.json")
+  packageJsonPath = os.path.join(common.repoDirPath, "package.json")
   with open(packageJsonPath, "r") as f: packageJson = json.load(f)
   settings = packageJson["contributes"]["configuration"]["properties"]
 
@@ -104,8 +107,8 @@ def updatePackageJson(ltLanguageShortCodes, ltLanguageNames):
     f.write("\n")
 
 def updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
-  packageNlsJsonPath = (os.path.join(ltexPath, "package.nls.json") if uiLanguage == "en" else
-      os.path.join(ltexPath, "package.nls.{}.json".format(uiLanguage)))
+  packageNlsJsonPath = (os.path.join(common.repoDirPath, "package.nls.json") if uiLanguage == "en" else
+      os.path.join(common.repoDirPath, "package.nls.{}.json".format(uiLanguage)))
   with open(packageNlsJsonPath, "r") as f: oldPackageNlsJson = json.load(f)
 
   newPackageNlsJson = {}
@@ -218,7 +221,7 @@ def main():
       help="Path to ltex-ls relative from the root directory of LTeX, supports wildcards")
   args = parser.parse_args()
 
-  ltexLsPaths = glob.glob(os.path.join(ltexPath, args.ltex_ls_path))
+  ltexLsPaths = glob.glob(os.path.join(common.repoDirPath, args.ltex_ls_path))
   assert len(ltexLsPaths) > 0, "ltex-ls not found"
   assert len(ltexLsPaths) < 2, "multiple ltex-ls found via wildcard"
   ltexLsPath = ltexLsPaths[0]
@@ -235,7 +238,7 @@ def main():
   print("Updating package.nls.json...")
   updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, "en")
 
-  for fileName in sorted(os.listdir(os.path.join(ltexPath))):
+  for fileName in sorted(os.listdir(os.path.join(common.repoDirPath))):
     match = re.match(r"^package\.nls\.([A-Za-z0-9\-_]+)\.json$", fileName)
     if match is None: continue
     uiLanguage = match.group(1)

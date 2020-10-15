@@ -8,11 +8,16 @@
 
 import os
 import re
+import sys
 
 import yaml
 
-ltexRepoDirPath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-pagesRootDirPath = os.path.abspath(os.path.join(ltexRepoDirPath, "..", "vscode-ltex-gh-pages"))
+sys.path.append(os.path.dirname(__file__))
+import common
+
+
+
+pagesDirPath = os.path.abspath(os.path.join(common.repoDirPath, "..", "vscode-ltex-gh-pages"))
 
 
 
@@ -67,7 +72,7 @@ def processTitle(title):
 
 def updateReadme():
   serverUrl = "https://valentjn.github.io/vscode-ltex"
-  sidebarYamlPath = os.path.join(pagesRootDirPath, "_data", "sidebars", "sidebar.yml")
+  sidebarYamlPath = os.path.join(pagesDirPath, "_data", "sidebars", "sidebar.yml")
   with open(sidebarYamlPath, "r") as f: sidebarYaml = yaml.load(f, Loader=yaml.SafeLoader)
 
   structure = []
@@ -78,7 +83,7 @@ def updateReadme():
     for entry in folder["folderitems"]:
       if "url" in entry:
         url = serverUrl + entry["url"]
-        markdownPath = "{}{}.md".format(os.path.join(pagesRootDirPath, "pages"),
+        markdownPath = "{}{}.md".format(os.path.join(pagesDirPath, "pages"),
             os.path.splitext(entry["url"])[0])
         grandChildren = getMarkdownStructure(url, markdownPath)
       else:
@@ -93,7 +98,7 @@ def updateReadme():
 
   markdown = convertToMarkdown(structure)
 
-  readmePath = os.path.join(ltexRepoDirPath, "README.md")
+  readmePath = os.path.join(common.repoDirPath, "README.md")
   with open(readmePath, "r") as f: readme = f.read()
 
   readme = re.sub(r"## Information & Documentation\n\n.*?^( *[^\-\*\n ])",
@@ -105,7 +110,7 @@ def updateReadme():
 
 
 def updateChangelog():
-  changelogPath = os.path.join(pagesRootDirPath, "pages", "docs", "changelog.md")
+  changelogPath = os.path.join(pagesDirPath, "pages", "docs", "changelog.md")
   with open(changelogPath, "r") as f: changelog = f.read()
 
   changelogHeader = """
@@ -127,7 +132,7 @@ def updateChangelog():
   changelog = re.sub(r"\]\((?!http)", "](https://valentjn.github.io/vscode-ltex/docs/", changelog)
   changelog = re.sub(r"^---.*^---$\n\n", changelogHeader, changelog, flags=re.MULTILINE | re.DOTALL)
 
-  with open(os.path.join(ltexRepoDirPath, "CHANGELOG.md"), "w") as f: f.write(changelog)
+  with open(os.path.join(common.repoDirPath, "CHANGELOG.md"), "w") as f: f.write(changelog)
 
 
 

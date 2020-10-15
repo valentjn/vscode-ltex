@@ -23,10 +23,12 @@ import zipfile
 
 import semver
 
+sys.path.append(os.path.dirname(__file__))
+import common
 
 
-ltexRootDirPath = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
-libDirPath = os.path.join(ltexRootDirPath, "lib")
+
+libDirPath = os.path.join(common.repoDirPath, "lib")
 javaVersion = "11.0.8+10"
 
 # to get proper logs in Travis CI
@@ -36,14 +38,14 @@ print = (lambda *args, **kwargs: oldPrint(*args, **kwargs, flush=True))
 
 
 def cleanLibDir():
-  cmd = ["git", "-C", ltexRootDirPath, "clean", "-f", "-x", libDirPath]
+  cmd = ["git", "-C", common.repoDirPath, "clean", "-f", "-x", libDirPath]
   print("Cleaning lib/ by running '{}'...".format(" ".join(shlex.quote(x) for x in cmd)))
   subprocess.run(cmd)
 
 
 
 def getLtexVersion():
-  with open(os.path.join(ltexRootDirPath, "package.json"), "r") as f: packageJson = json.load(f)
+  with open(os.path.join(common.repoDirPath, "package.json"), "r") as f: packageJson = json.load(f)
   return semver.VersionInfo.parse(packageJson["version"])
 
 def getLatestCompatibleLtexLsVersion(versions):
