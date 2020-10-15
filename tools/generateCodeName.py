@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # Copyright (C) 2020 Julian Valentin, LTeX Development Community
 #
 # This Source Code Form is subject to the terms of the Mozilla Public
