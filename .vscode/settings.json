@@ -1,15 +1,15 @@
 {
-	"files.exclude": {
-		".vscode-test": true,
-		"dist": true,
-		"lib": true,
-		"node_modules": true,
-		"out": true,
-		"tmp-*": true,
-		"package-lock.json": true,
-		"**/*.class": true,
-		"**/*.vsix": true,
-	},
-	"java.configuration.updateBuildConfiguration": "interactive",
-	"typescript.tsdk": "./node_modules/typescript/lib",
+  "files.exclude": {
+    ".vscode-test": true,
+    "dist": true,
+    "lib": true,
+    "node_modules": true,
+    "out": true,
+    "package-lock.json": true,
+    "tmp-*": true,
+    "**/*.class": true,
+    "**/*.vsix": true,
+  },
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "typescript.tsdk": "./node_modules/typescript/lib",
 }
