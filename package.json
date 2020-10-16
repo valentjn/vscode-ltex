@@ -3939,7 +3939,7 @@
     "typescript": "4.0.3",
     "vscode-test": "1.4.0",
     "webpack": "4.44.2",
-    "webpack-cli": "3.3.12"
+    "webpack-cli": "4.0.0"
   },
   "dependencies": {
     "extract-zip": "2.0.1",
