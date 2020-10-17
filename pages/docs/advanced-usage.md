@@ -62,11 +62,14 @@ The preferred way of having multiple languages in one LaTeX document is using th
 
 LTeX supports automatically switching its [`ltex.language`](settings.html#ltexlanguage) setting for a number of basic babel commands and environments. These are:
 
+- `\usepackage[LANGUAGE]{babel}`: Switches the language for the rest of the document.
 - `\selectlanguage{LANGUAGE}`: Switches the language for the rest of the document.
 - `\foreignlanguage{LANGUAGE}{TEXT}`: Switches the language for the contents `TEXT` of the last argument.
 - `\begin{otherlanguage}{LANGUAGE}TEXT\end{otherlanguage}`: Switches the language for the contents `TEXT` of the environment.
 
 Here, `LANGUAGE` is one of babel's language names like `english`, `american`, `ngerman`, etc. Refer to the [babel manual](https://ctan.org/pkg/babel) for a list of possible language names. Keep in mind that not all languages supported by LTeX are supported by babel, and vice versa.
+
+For the first point of the list, multiple comma-separated babel package options are allowed instead of just one `LANGUAGE`. If you specify multiple languages in the package options, e.g., `\usepackage[american,ngerman]{babel}` (since your document is multilingual), then babel and LTeX will default to the language that is mentioned last.
 
 In addition, as the commands and environments given above are quite long, LTeX supports the following shortcuts:
 
@@ -83,7 +86,10 @@ In order for babel to recognize the shortcuts, you have to use the `\babeltags` 
 
 As `it` (Italian) and `sl` (Slovene) would lead to `\textit` and `\textsl`, which are already taken by LaTeX, these two language short codes are not supported. In this case, you have to resort to using the language names `italian` and `slovene`.
 
-Finally, note that it's not recommended (nor should it be necessary) to use magic comments and babel commands in the same document.
+Finally, please note the following caveats:
+
+- Similarly to magic comments, LTeX only switches languages for the rest of the file that contains the babel commands. There is no inheritance for files that are included, e.g., via `\input` or `\include`. This is because LTeX is a file-based checker and has no notion of "LaTeX projects" that comprise multiple TeX files. In particular, `\usepackage[LANGUAGE]{babel}` will not switch languages if your preamble is in a different file than your text. In this case, use one of the other supported babel commands.
+- It's not recommended (nor should it be necessary) to use magic comments and babel commands in the same document.
 
 ## Ignoring False Positives with Regular Expressions
 
