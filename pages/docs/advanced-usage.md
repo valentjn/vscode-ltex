@@ -15,17 +15,19 @@ sidebar: "sidebar"
 
 The settings [`ltex.dictionary`](settings.html#ltexdictionary), [`ltex.disabledRules`](settings.html#ltexdisabledrules), and [`ltex.enabledRules`](settings.html#ltexenabledrules) are not only language-specific (e.g., different dictionaries can be used for different languages), but also workspace-specific. In some projects, you might want other dictionaries and sets of disabled/enabled rules than in other projects.
 
-VS Code has multiple scopes of settings: [user settings](https://code.visualstudio.com/docs/getstarted/settings), [workspace settings](https://code.visualstudio.com/docs/getstarted/settings), and [workspace folder (resource-specific) settings](https://code.visualstudio.com/docs/editor/multi-root-workspaces#_settings). If you set a setting in multiple scopes, the scope with higher precedence shadows the value of the setting in the scope with lower precedence.
+VS Code has multiple scopes of settings:
 
-Therefore, there are three settings for each of the settings mentioned above, which are explained here for the example of [`ltex.dictionary`](settings.html#ltexdictionary):
+- [user settings](https://code.visualstudio.com/docs/getstarted/settings) saved in the `settings.json` file of the user,
+- [workspace settings](https://code.visualstudio.com/docs/getstarted/settings) saved in the `.vscode/settings.json` file of the workspace (or in the `.code-workspace` file in the case of multi-root workspaces), and
+- [workspace folder (resource-specific) settings](https://code.visualstudio.com/docs/editor/multi-root-workspaces#_settings) set in the `.vscode/settings.json` file of the workspace folder (or in the `.vscode/settings.json` file of the workspace in the case of single-folder workspaces).
 
-- [`ltex.dictionary`](settings.html#ltexdictionary): User-specific setting (scope `application`) to be set in the `settings.json` file of the user
-- [`ltex.workspaceDictionary`](settings.html#ltexworkspacedictionary): Workspace-specific setting (scope `window`) to be set in the `settings.json` file of the workspace (or in the `.code-workspace` file in the case of multi-root workspaces)
-- [`ltex.workspaceFolderDictionary`](settings.html#ltexworkspacefolderdictionary): Workspace-folder-specific setting (scope `resource`) to be set in the `settings.json` file of the workspace folder (or in the `settings.json` file in the case of single workspaces)
+If you set a setting in multiple scopes, the scope with higher precedence usually shadows the scope with lower precedence. For instance, this would mean it would be impossible to supply additional words for the dictionary in workspace settings to amend the user dictionary, as the workspace dictionary would shadow the user dictionary.
 
-If you are one of the many users which are not working with multi-root workspaces, you can use either [`ltex.workspaceDictionary`](settings.html#ltexworkspacedictionary) or [`ltex.workspaceFolderDictionary`](settings.html#ltexworkspacefolderdictionary) (or both) in your workspace's `settings.json`.
+However, the three settings [`ltex.dictionary`](settings.html#ltexdictionary), [`ltex.disabledRules`](settings.html#ltexdisabledrules), and [`ltex.enabledRules`](settings.html#ltexenabledrules) are specially treated by LTeX. When checking text, LTeX implicitly joins the values of these settings in user, workspace, and workspace folder scope to a single value. Therefore, these three settings are called “workspace-specific settings.”
 
-When checking text, LTeX implicitly joins the user, workspace, and workspace folder dictionaries to a single dictionary. If you want to remove a word from the dictionary in a scope with higher precedence without removing it altogether, you can include it with a dash (`-`) as prefix. For example, if your user dictionary includes the word `cromulent`, but you want that word to be marked as a spelling error in a specific project, simply add `-cromulent` to the project's workspace settings.
+If you want to remove a word or rule from a workspace-specific setting in a scope with higher precedence without removing it altogether, you can include it with a dash (`-`) as prefix. For example, if your user dictionary includes the word `cromulent`, but you want that word to be marked as a spelling error in a specific project, simply add `-cromulent` to the project's workspace settings.
+
+Note that LTeX 7.x split each of the workspace-specific settings into three settings with different names, one for each of the possible scopes (e.g., `ltex.dictionary`, `ltex.workspaceDictionary`, and `ltex.workspaceFolderDictionary`) to circumvent VS Code's shadowing mechanism for settings. However, starting with LTeX 8.0.0, a workaround was introduced that eliminated the need for having these additional settings for the different scopes. If you still have `ltex.workspace*` or `ltex.workspaceFolder*` settings in your workspace or workspace folder settings, you can just rename them (e.g., `ltex.workspaceFolderDictionary` to just `ltex.dictionary`). The old names are still recognized, but deprecated.
 
 You can specify the target scope for changing settings with quick fixes (e.g., `Add ... to dictionary`) with the [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) setting.
 
