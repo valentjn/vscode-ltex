@@ -88,14 +88,14 @@ As `it` (Italian) and `sl` (Slovene) would lead to `\textit` and `\textsl`, whic
 
 Finally, please note the following caveats:
 
-- Similarly to magic comments, LTeX only switches languages for the rest of the file that contains the babel commands. There is no inheritance for files that are included, e.g., via `\input` or `\include`. This is because LTeX is a file-based checker and has no notion of "LaTeX projects" that comprise multiple TeX files. In particular, `\usepackage[LANGUAGE]{babel}` will not switch languages if your preamble is in a different file than your text. In this case, use one of the other supported babel commands.
+- Similarly to magic comments, LTeX only switches languages for the rest of the file that contains the babel commands. There is no inheritance for files that are included, e.g., via `\input` or `\include`. This is because LTeX is a file-based checker and has no notion of “LaTeX projects” that comprise multiple TeX files. In particular, `\usepackage[LANGUAGE]{babel}` will not switch languages if your preamble is in a different file than your text. In this case, use one of the other supported babel commands.
 - It's not recommended (nor should it be necessary) to use magic comments and babel commands in the same document.
 
 ## Ignoring False Positives with Regular Expressions
 
 It's possible to use [`ltex.ignoreRuleInSentence`](settings.html#ltexignoreruleinsentence) to make LTeX ignore false positives based on regular expressions.
 
-The recommended way of using [`ltex.ignoreRuleInSentence`](settings.html#ltexignoreruleinsentence) is via the `Ignore in this sentence` quick fix. This will add a pair consisting of the ID of the LanguageTool rule and the “sentence” to [`ltex.ignoreRuleInSentence`](settings.html#ltexignoreruleinsentence). LanguageTool internally splits every document into “sentences”, based on language-dependent rules (usually punctuation).
+The recommended way of using [`ltex.ignoreRuleInSentence`](settings.html#ltexignoreruleinsentence) is via the `Ignore in this sentence` quick fix. This will add a pair consisting of the ID of the LanguageTool rule and the “sentence” to [`ltex.ignoreRuleInSentence`](settings.html#ltexignoreruleinsentence). LanguageTool internally splits every document into “sentences,” based on language-dependent rules (usually punctuation).
 
 If you want to ignore sentences based on a general pattern, you can add rule/sentence pairs yourself to [`ltex.ignoreRuleInSentence`](settings.html#ltexignoreruleinsentence). The sentence in the pair is a [Java-compatible regular expression](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html).
 
