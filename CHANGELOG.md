@@ -10,6 +10,7 @@
 
 ## 8.0.0 (upcoming)
 
+- Add support for `\usepackage[LANGUAGE]{babel}` if in the same file as the text to be checked (fixes [#140](https://github.com/valentjn/vscode-ltex/issues/140))
 - Add verification for downloaded files (LT<sub>E</sub>X LS and Java)
 
 ## 7.3.1 — “The Delay Correlation” (October 12, 2020)
