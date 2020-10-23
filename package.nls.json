@@ -400,6 +400,8 @@
   "ltex.i18n.configuration.ltex.diagnosticSeverity.hint.enumDescription": "Hint diagnostics are not underlined (only subtly marked) and only appear in the editor, not in minimap, Problems tab, or Explorer.",
   "ltex.i18n.configuration.ltex.clearDiagnosticsWhenClosingFile.markdownDescription": "If set to `true`, diagnostics of a file are cleared when the file is closed.",
   "ltex.i18n.configuration.ltex.clearDiagnosticsWhenClosingFile.description": "If set to 'true', diagnostics of a file are cleared when the file is closed.",
+  "ltex.i18n.configuration.ltex.statusBarItem.markdownDescription": "If set to `true`, an item about the status of LTeX is shown permanently in the status bar.",
+  "ltex.i18n.configuration.ltex.statusBarItem.description": "If set to 'true', an item about the status of LTeX is shown permanently in the status bar.",
   "ltex.i18n.configuration.ltex.trace.server.markdownDescription": "Debug setting to log the communication between language client and server. When reporting issues, set this to `\"verbose\"` and open the `LTeX Language Client` log in `View` → `Output`. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.",
   "ltex.i18n.configuration.ltex.trace.server.description": "Debug setting to log the communication between language client and server. When reporting issues, set this to \"verbose\" and open the 'LTeX Language Client' log in 'View' → 'Output'. Append the relevant part to the GitHub issue. Changes require reloading the Visual Studio Code window to take effect.",
   "ltex.i18n.configuration.ltex.trace.server.off.enumDescription": "Don't log any of the communication between language client and server.",

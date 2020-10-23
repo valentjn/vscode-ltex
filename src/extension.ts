@@ -14,7 +14,7 @@ import DependencyManager from './DependencyManager';
 import {I18n, i18n} from './I18n';
 import Logger from './Logger';
 import LoggingOutputChannel from './LoggingOutputChannel';
-import ProgressNotificationHandler from './ProgressNotificationHandler';
+import StatusBarItemManager from './StatusBarItemManager';
 import WorkspaceConfigurationRequestHandler from './WorkspaceConfigurationRequestHandler';
 
 export class Api {
@@ -25,16 +25,12 @@ export class Api {
 
 let dependencyManager: DependencyManager | null = null;
 
-async function languageClientIsReady(context: Code.ExtensionContext,
+async function languageClientIsReady(
       languageClient: CodeLanguageClient.LanguageClient,
-      disposable: Code.Disposable): Promise<void> {
-  disposable.dispose();
-  Code.window.setStatusBarMessage(`$(check) ${i18n('ltexReady')}`, 1000);
-
-  const progressNotificationHandler: ProgressNotificationHandler =
-      new ProgressNotificationHandler(context);
+      statusBarItemManager: StatusBarItemManager): Promise<void> {
+  statusBarItemManager.setStatusToReady();
   languageClient.onNotification('ltex/progress',
-      progressNotificationHandler.handle.bind(progressNotificationHandler));
+      statusBarItemManager.handleProgressNotification.bind(statusBarItemManager));
 
   languageClient.onRequest('ltex/workspaceSpecificConfiguration',
       WorkspaceConfigurationRequestHandler.handle);
@@ -73,8 +69,8 @@ async function startLanguageClient(context: Code.ExtensionContext):
   const success: boolean = await dependencyManager.install();
   if (success !== true) return Promise.resolve(null);
 
-  const statusBarMessageDisposable: Code.Disposable =
-      Code.window.setStatusBarMessage(`$(loading~spin) ${i18n('startingLtex')}`, 60000);
+  const statusBarItemManager: StatusBarItemManager = new StatusBarItemManager(context);
+
   const serverOptions: CodeLanguageClient.ServerOptions =
       await dependencyManager.getLtexLsExecutable();
 
@@ -116,7 +112,7 @@ async function startLanguageClient(context: Code.ExtensionContext):
       'ltex', i18n('ltexLanguageServer'), serverOptions, clientOptions);
 
   languageClient.onReady().then(languageClientIsReady.bind(
-      null, context, languageClient, statusBarMessageDisposable));
+      null, languageClient, statusBarItemManager));
 
   Logger.log(i18n('startingLtexLs'));
   Logger.logExecutable(serverOptions);
@@ -128,7 +124,6 @@ async function startLanguageClient(context: Code.ExtensionContext):
   // Push the disposable to the context's subscriptions so that the
   // client can be deactivated on extension deactivation
   context.subscriptions.push(languageClientDisposable);
-  context.subscriptions.push(statusBarMessageDisposable);
 
   return Promise.resolve(languageClient);
 }

@@ -1626,6 +1626,13 @@
           "markdownDescription": "%ltex.i18n.configuration.ltex.clearDiagnosticsWhenClosingFile.markdownDescription%",
           "description": "%ltex.i18n.configuration.ltex.clearDiagnosticsWhenClosingFile.description%"
         },
+        "ltex.statusBarItem": {
+          "type": "boolean",
+          "scope": "window",
+          "default": false,
+          "markdownDescription": "%ltex.i18n.configuration.ltex.statusBarItem.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.statusBarItem.description%"
+        },
         "ltex.trace.server": {
           "type": "string",
           "scope": "window",
