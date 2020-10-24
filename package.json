@@ -1403,74 +1403,98 @@
           "markdownDescription": "%ltex.i18n.configuration.ltex.java.maximumHeapSize.markdownDescription%",
           "description": "%ltex.i18n.configuration.ltex.java.maximumHeapSize.description%"
         },
-        "ltex.commands.ignore": {
-          "type": "array",
+        "ltex.latex.commands": {
+          "type": "object",
           "scope": "resource",
           "default": [],
-          "items": {
-            "type": "string"
+          "patternProperties": {
+            "^.*$": {
+              "type": "string",
+              "enum": [
+                "default",
+                "ignore",
+                "dummy",
+                "pluralDummy"
+              ],
+              "enumDescriptions": [
+                "%ltex.i18n.configuration.ltex.latex.commands.default.enumDescription%",
+                "%ltex.i18n.configuration.ltex.latex.commands.ignore.enumDescription%",
+                "%ltex.i18n.configuration.ltex.latex.commands.dummy.enumDescription%",
+                "%ltex.i18n.configuration.ltex.latex.commands.pluralDummy.enumDescription%"
+              ]
+            }
           },
-          "markdownDescription": "%ltex.i18n.configuration.ltex.commands.ignore.markdownDescription%",
-          "description": "%ltex.i18n.configuration.ltex.commands.ignore.description%",
+          "additionalProperties": false,
+          "markdownDescription": "%ltex.i18n.configuration.ltex.latex.commands.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.latex.commands.description%",
           "examples": [
-            "\\ref{}",
-            "\\documentclass[]{}"
+            {
+              "\\ref{}" : "ignore",
+              "\\documentclass[]{}" : "ignore",
+              "\\cite{}" : "dummy",
+              "\\cite[]{}" : "dummy"
+            }
           ]
         },
-        "ltex.commands.dummy": {
-          "type": "array",
+        "ltex.latex.environments": {
+          "type": "object",
           "scope": "resource",
           "default": [],
-          "items": {
-            "type": "string"
+          "patternProperties": {
+            "^.*$": {
+              "type": "string",
+              "enum": [
+                "default",
+                "ignore"
+              ],
+              "enumDescriptions": [
+                "%ltex.i18n.configuration.ltex.latex.environments.default.enumDescription%",
+                "%ltex.i18n.configuration.ltex.latex.environments.ignore.enumDescription%"
+              ]
+            }
           },
-          "markdownDescription": "%ltex.i18n.configuration.ltex.commands.dummy.markdownDescription%",
-          "description": "%ltex.i18n.configuration.ltex.commands.dummy.description%",
+          "additionalProperties": false,
+          "markdownDescription": "%ltex.i18n.configuration.ltex.latex.environments.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.latex.environments.description%",
           "examples": [
-            "\\cite{}",
-            "\\cite[]{}"
+            {
+              "lstlisting" : "ignore",
+              "verbatim" : "ignore"
+            }
           ]
         },
-        "ltex.environments.ignore": {
-          "type": "array",
+        "ltex.markdown.nodes": {
+          "type": "object",
           "scope": "resource",
           "default": [],
-          "items": {
-            "type": "string"
+          "patternProperties": {
+            "^.*$": {
+              "type": "string",
+              "enum": [
+                "default",
+                "ignore",
+                "dummy",
+                "pluralDummy"
+              ],
+              "enumDescriptions": [
+                "%ltex.i18n.configuration.ltex.markdown.nodes.default.enumDescription%",
+                "%ltex.i18n.configuration.ltex.markdown.nodes.ignore.enumDescription%",
+                "%ltex.i18n.configuration.ltex.markdown.nodes.dummy.enumDescription%",
+                "%ltex.i18n.configuration.ltex.markdown.nodes.pluralDummy.enumDescription%"
+              ]
+            }
           },
-          "markdownDescription": "%ltex.i18n.configuration.ltex.environments.ignore.markdownDescription%",
-          "description": "%ltex.i18n.configuration.ltex.environments.ignore.description%",
+          "additionalProperties": false,
+          "markdownDescription": "%ltex.i18n.configuration.ltex.markdown.nodes.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.markdown.nodes.description%",
           "examples": [
-            "lstlisting",
-            "verbatim"
+            {
+              "CodeBlock" : "ignore",
+              "FencedCodeBlock" : "ignore",
+              "AutoLink" : "dummy",
+              "Code" : "dummy"
+            }
           ]
-        },
-        "ltex.markdown.ignore": {
-          "type": "array",
-          "scope": "resource",
-          "default": [
-            "CodeBlock",
-            "FencedCodeBlock",
-            "IndentedCodeBlock"
-          ],
-          "items": {
-            "type": "string"
-          },
-          "markdownDescription": "%ltex.i18n.configuration.ltex.markdown.ignore.markdownDescription%",
-          "description": "%ltex.i18n.configuration.ltex.markdown.ignore.description%"
-        },
-        "ltex.markdown.dummy": {
-          "type": "array",
-          "scope": "resource",
-          "default": [
-            "AutoLink",
-            "Code"
-          ],
-          "items": {
-            "type": "string"
-          },
-          "markdownDescription": "%ltex.i18n.configuration.ltex.markdown.dummy.markdownDescription%",
-          "description": "%ltex.i18n.configuration.ltex.markdown.dummy.description%"
         },
         "ltex.ignoreRuleInSentence": {
           "type": "array",
@@ -1708,6 +1732,53 @@
           "default": {},
           "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.enabledRules`.",
           "description": "Deprecated: This setting has been renamed to 'ltex.enabledRules'."
+        },
+        "ltex.commands.ignore": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.latex.commands`.",
+          "description": "Deprecated: This setting has been renamed to 'ltex.latex.commands'."
+        },
+        "ltex.commands.dummy": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.latex.commands`.",
+          "description": "Deprecated: This setting has been renamed to 'ltex.latex.commands'."
+        },
+        "ltex.environments.ignore": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.latex.environments`.",
+          "description": "Deprecated: This setting has been renamed to 'ltex.latex.environments'."
+        },
+        "ltex.markdown.ignore": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.markdown.nodes`.",
+          "description": "Deprecated: This setting has been renamed to 'ltex.markdown.nodes'."
+        },
+        "ltex.markdown.dummy": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.markdown.nodes`.",
+          "description": "Deprecated: This setting has been renamed to 'ltex.markdown.nodes'."
         }
       }
     }
