@@ -38,7 +38,7 @@
 
 - Add support for `\ell` as well as `\mathcal`, `\mathfrak`, etc. to vowel detection (fixes [#131](https://github.com/valentjn/vscode-ltex/issues/131))
 - Add setting [`ltex.ltex-ls.logLevel`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lsloglevel) to control the verbosity of the server log of LT<sub>E</sub>X LS
-- Add command [`ltex.requestFeature`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexrequestfeature) to quickly request a new feature in LT<sub>E</sub>X via VS Code
+- Add command [`ltex.requestFeature`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-request-feature-for-ltex) to quickly request a new feature in LT<sub>E</sub>X via VS Code
 - Add button to set [`ltex.trace.server`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltextraceserver) to `"verbose"` when reporting a bug
 - Fix diagnostics sometimes not lined up with the text with switching back from incremental to full document updates; unfortunately, this disables the delayed publication of diagnostics at the caret position
 - Restructure and simplify internal quickfix and command structure, removing the need for pseudo-telemetry notifications
@@ -127,7 +127,7 @@
 - Add German translations for user interface of LT<sub>E</sub>X
 - Delay diagnostics at the current caret position (e.g., incomplete word or sentence) until the user has finished typing (fixes [#46](https://github.com/valentjn/vscode-ltex/issues/46))
 - Add `enabled` to magic comments (fixes [#67](https://github.com/valentjn/vscode-ltex/issues/67))
-- Add command [`LTeX: Report bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltexreportbug) for reporting LT<sub>E</sub>X bugs from within VS Code
+- Add command [`LTeX: Report bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-report-bug-in-ltex) for reporting LT<sub>E</sub>X bugs from within VS Code
 - Fix `\todo` couldn't be ignored (fixes [#63](https://github.com/valentjn/vscode-ltex/issues/63))
 - Fix wrong language-dependent settings used for magic comments
 - Fix add to dictionary and disable rule quick fixes using wrong language when used with magic comments
