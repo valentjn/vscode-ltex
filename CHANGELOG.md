@@ -74,8 +74,8 @@
 ## 7.0.0 — “The Workspace Solution” (September 13, 2020)
 
 - Change scope of [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary), [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules), and [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules) to `application`; these are now user-specific settings that can only be configured in user settings
-- Add settings [`ltex.workspaceDictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexworkspacedictionary), [`ltex.workspaceDisabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexworkspacedisabledrules), and [`ltex.workspaceEnabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexworkspaceenabledrules) with `window` scope to amend the corresponding user-specific settings; these are workspace-specific settings that should be configured in workspace settings
-- Add settings [`ltex.workspaceFolderDictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexworkspacefolderdictionary), [`ltex.workspaceFolderDisabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexworkspacefolderdisabledrules), and [`ltex.workspaceFolderEnabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexworkspacefolderenabledrules) with `resource` scope to amend the corresponding user-specific and workspace-specific settings; these are workspace-folder-specific settings that should be configured in workspace folder settings
+- Add settings `ltex.workspaceDictionary`, `ltex.workspaceDisabledRules`, and `ltex.workspaceEnabledRules` with `window` scope to amend the corresponding user-specific settings; these are workspace-specific settings that should be configured in workspace settings
+- Add settings `ltex.workspaceFolderDictionary`, `ltex.workspaceFolderDisabledRules`, and `ltex.workspaceFolderEnabledRules` with `resource` scope to amend the corresponding user-specific and workspace-specific settings; these are workspace-folder-specific settings that should be configured in workspace folder settings
 - Change default of [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget) for `addToDictionary` to `workspaceFolder`, i.e., by default, words will now be added to the workspace-folder-specific settings instead of the user-specific settings
 - Rename `"global"` value for [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget) to `"user"` (`"global"` is still supported, but deprecated)
 - Remove deprecated settings `ltex.javaHome`, `ltex.performance.initialJavaHeapSize`, `ltex.performance.maximumJavaHeapSize`, `ltex.performance.sentenceCacheSize`, `ltex.*.dictionary`, `ltex.*.enabledRules`, and `ltex.*.disabledRules` (deprecation since 5.0.0)
@@ -202,7 +202,7 @@
 ## 4.7.9 — “The Markdown Resonance” (February 29, 2020)
 
 - Update the Markdown parser flexmark-java to 0.60.2; this increases the speed of parsing Markdown
-- Add possibility to ignore Markdown elements or replace them by dummy words via [`ltex.markdown.ignore`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdownignore) and [`ltex.markdown.dummy`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdowndummy) (fixes [#26](https://github.com/valentjn/vscode-ltex/issues/26))
+- Add possibility to ignore Markdown elements or replace them by dummy words via `ltex.markdown.ignore` and `ltex.markdown.dummy` (fixes [#26](https://github.com/valentjn/vscode-ltex/issues/26))
 - Ignore Markdown code blocks by default
 - Replace auto-links and inline Markdown code with dummy words by default
 - Fix match positions were sometimes off by one, especially in Markdown documents
@@ -232,7 +232,7 @@
 ## 4.7.5 — “The Listing Collapse” (October 22, 2019)
 
 - Enable ignoring environments such as `lstlisting` and `verbatim`
-- Add [`ltex.environments.ignore`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenvironmentsignore) setting for defining own environments to ignore
+- Add `ltex.environments.ignore` setting for defining own environments to ignore
 
 ## 4.7.4 — “The Disabling Allocation” (October 15, 2019)
 
