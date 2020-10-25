@@ -1695,43 +1695,43 @@
           "type": "object",
           "scope": "window",
           "default": {},
-          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.dictionary`.",
-          "description": "Deprecated: This setting has been renamed to 'ltex.dictionary'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.dictionary'."
         },
         "ltex.workspaceFolderDictionary": {
           "type": "object",
           "scope": "resource",
           "default": {},
-          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.dictionary`.",
-          "description": "Deprecated: This setting has been renamed to 'ltex.dictionary'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.dictionary`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.dictionary'."
         },
         "ltex.workspaceDisabledRules": {
           "type": "object",
           "scope": "window",
           "default": {},
-          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.disabledRules`.",
-          "description": "Deprecated: This setting has been renamed to 'ltex.disabledRules'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.disabledRules'."
         },
         "ltex.workspaceFolderDisabledRules": {
           "type": "object",
           "scope": "resource",
           "default": {},
-          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.disabledRules`.",
-          "description": "Deprecated: This setting has been renamed to 'ltex.disabledRules'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.disabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.disabledRules'."
         },
         "ltex.workspaceEnabledRules": {
           "type": "object",
           "scope": "window",
           "default": {},
-          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.enabledRules`.",
-          "description": "Deprecated: This setting has been renamed to 'ltex.enabledRules'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.enabledRules'."
         },
         "ltex.workspaceFolderEnabledRules": {
           "type": "object",
           "scope": "resource",
           "default": {},
-          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.enabledRules`.",
-          "description": "Deprecated: This setting has been renamed to 'ltex.enabledRules'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.enabledRules`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.enabledRules'."
         },
         "ltex.commands.ignore": {
           "type": "array",
@@ -1740,8 +1740,8 @@
           "items": {
             "type": "string"
           },
-          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.latex.commands`.",
-          "description": "Deprecated: This setting has been renamed to 'ltex.latex.commands'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.latex.commands`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.latex.commands'."
         },
         "ltex.commands.dummy": {
           "type": "array",
@@ -1750,8 +1750,8 @@
           "items": {
             "type": "string"
           },
-          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.latex.commands`.",
-          "description": "Deprecated: This setting has been renamed to 'ltex.latex.commands'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.latex.commands`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.latex.commands'."
         },
         "ltex.environments.ignore": {
           "type": "array",
@@ -1760,15 +1760,15 @@
           "items": {
             "type": "string"
           },
-          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.latex.environments`.",
-          "description": "Deprecated: This setting has been renamed to 'ltex.latex.environments'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.latex.environments`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.latex.environments'."
         },
         "ltex.markdown.ignore": {
           "type": "array",
           "scope": "resource",
           "default": [],
-          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.markdown.nodes`.",
-          "description": "Deprecated: This setting has been renamed to 'ltex.markdown.nodes'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.markdown.nodes`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.markdown.nodes'."
         },
         "ltex.markdown.dummy": {
           "type": "array",
@@ -1777,8 +1777,8 @@
           "items": {
             "type": "string"
           },
-          "markdownDescription": "**Deprecated:** This setting has been renamed to `ltex.markdown.nodes`.",
-          "description": "Deprecated: This setting has been renamed to 'ltex.markdown.nodes'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.markdown.nodes`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.markdown.nodes'."
         }
       }
     }
