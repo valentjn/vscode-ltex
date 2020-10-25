@@ -25,6 +25,8 @@
 - Add support for more BibL<sup>A</sup>T<sub>E</sub>X commands such as `\autocite`, `\citeauthor`, etc. (fixes [#143](https://github.com/valentjn/vscode-ltex/issues/143))
 - Add support for overriding hard-coded command signatures (fixes [valentjn/ltex-ls#27](https://github.com/valentjn/ltex-ls/issues/27))
 - Add verification for downloaded files (LT<sub>E</sub>X LS and Java)
+- Move handling of external setting files from ltex-ls to vscode-ltex
+- Better resolve relative paths to external setting files, either with respect to the `.vscode` directory of the workspace folder if any, the `.vscode` directory of the workspace if any, or the global storage directory of the extension (fixes [#146](https://github.com/valentjn/vscode-ltex/issues/146))
 - Increase duration before sentences expire in the result cache to 60 minutes
 - Fix many settings changes cleared sentence cache, which led to performance issues, e.g., changing the [`ltex.enabled`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabled) setting via magic comments (see [#134](https://github.com/valentjn/vscode-ltex/issues/134))
 - Remove dependency on `org.apache.httpcomponents:httpclient` by using the HTTP client that comes with Java 11 when connecting to an HTTP LanguageTool server

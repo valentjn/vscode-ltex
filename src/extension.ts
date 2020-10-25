@@ -25,15 +25,17 @@ export class Api {
 
 let dependencyManager: DependencyManager | null = null;
 
-async function languageClientIsReady(
+async function languageClientIsReady(context: Code.ExtensionContext,
       languageClient: CodeLanguageClient.LanguageClient,
       statusBarItemManager: StatusBarItemManager): Promise<void> {
   statusBarItemManager.setStatusToReady();
   languageClient.onNotification('ltex/progress',
       statusBarItemManager.handleProgressNotification.bind(statusBarItemManager));
 
+  const workspaceConfigurationRequestHandler: WorkspaceConfigurationRequestHandler =
+      new WorkspaceConfigurationRequestHandler(context);
   languageClient.onRequest('ltex/workspaceSpecificConfiguration',
-      WorkspaceConfigurationRequestHandler.handle);
+      workspaceConfigurationRequestHandler.handle.bind(workspaceConfigurationRequestHandler));
 
   const numberOfLanguageSupportExtensions: number = Code.extensions.all.filter(
       (x: Code.Extension<any>) => x.id.startsWith('valentjn.vscode-ltex-')).length;
@@ -112,7 +114,7 @@ async function startLanguageClient(context: Code.ExtensionContext):
       'ltex', i18n('ltexLanguageServer'), serverOptions, clientOptions);
 
   languageClient.onReady().then(languageClientIsReady.bind(
-      null, languageClient, statusBarItemManager));
+      null, context, languageClient, statusBarItemManager));
 
   Logger.log(i18n('startingLtexLs'));
   Logger.logExecutable(serverOptions);

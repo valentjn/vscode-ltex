@@ -7,6 +7,8 @@
 
 import * as Code from 'vscode';
 
+import ExternalFileManager from './ExternalFileManager';
+
 type ConfigurationItem = {
   scopeUri: string;
   section: string;
@@ -21,35 +23,45 @@ type ConfigurationResultItem = {
 };
 
 export default class WorkspaceConfigurationRequestHandler {
-  private static mergeSettings(resourceConfig: Code.WorkspaceConfiguration,
-        settingName: string): LanguageSpecificSettingValue {
-    const setting: {
-      key: string;
-      defaultValue?: LanguageSpecificSettingValue;
-      globalValue?: LanguageSpecificSettingValue;
-      workspaceValue?: LanguageSpecificSettingValue;
-      workspaceFolderValue?: LanguageSpecificSettingValue;
-    } | undefined = resourceConfig.inspect(settingName);
+  private _externalFileManager: ExternalFileManager;
 
+  public constructor(context: Code.ExtensionContext) {
+    this._externalFileManager = new ExternalFileManager(context);
+  }
+
+  private mergeSettings(uri: Code.Uri, settingName: string): LanguageSpecificSettingValue {
+    const resourceConfig: Code.WorkspaceConfiguration =
+        Code.workspace.getConfiguration('ltex', uri);
     const result: LanguageSpecificSettingValue = {};
-    if (setting == null) return result;
 
     const settingNameCapitalized: string =
         `${settingName.charAt(0).toUpperCase()}${settingName.substr(1)}`;
 
-    // 'workspace...' and 'workspaceFolder...' are deprecated since 8.0.0
+    const userSettingValue: LanguageSpecificSettingValue =
+        this._externalFileManager.getSettingValue(uri, settingName,
+          Code.ConfigurationTarget.Global);
     WorkspaceConfigurationRequestHandler.mergeLanguageSpecificSettingValue(
-        result, setting.defaultValue);
-    WorkspaceConfigurationRequestHandler.mergeLanguageSpecificSettingValue(
-        result, setting.globalValue);
+        result, userSettingValue);
+
+    // deprecated since 8.0.0
     WorkspaceConfigurationRequestHandler.mergeLanguageSpecificSettingValue(
         result, resourceConfig.get(`workspace${settingNameCapitalized}`));
+
+    const workspaceSettingValue: LanguageSpecificSettingValue =
+        this._externalFileManager.getSettingValue(uri, settingName,
+          Code.ConfigurationTarget.Workspace);
     WorkspaceConfigurationRequestHandler.mergeLanguageSpecificSettingValue(
-        result, setting.workspaceValue);
+        result, workspaceSettingValue);
+
+    // deprecated since 8.0.0
     WorkspaceConfigurationRequestHandler.mergeLanguageSpecificSettingValue(
         result, resourceConfig.get(`workspaceFolder${settingNameCapitalized}`));
+
+    const workspaceFolderSettingValue: LanguageSpecificSettingValue =
+        this._externalFileManager.getSettingValue(uri, settingName,
+          Code.ConfigurationTarget.WorkspaceFolder);
     WorkspaceConfigurationRequestHandler.mergeLanguageSpecificSettingValue(
-        result, setting.workspaceFolderValue);
+        result, workspaceFolderSettingValue);
 
     for (const language in result) {
       if (!Object.prototype.hasOwnProperty.call(result, language)) continue;
@@ -106,20 +118,15 @@ export default class WorkspaceConfigurationRequestHandler {
     return result;
   }
 
-  public static handle(params: {items: ConfigurationItem[]}): ConfigurationResultItem[] {
+  public handle(params: {items: ConfigurationItem[]}): ConfigurationResultItem[] {
     const result: ConfigurationResultItem[] = [];
 
     for (const item of params.items) {
-      const resourceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration(
-          item.section, Code.Uri.parse(item.scopeUri));
-
+      const uri: Code.Uri = Code.Uri.parse(item.scopeUri);
       result.push({
-        dictionary: WorkspaceConfigurationRequestHandler.mergeSettings(
-            resourceConfig, 'dictionary'),
-        disabledRules: WorkspaceConfigurationRequestHandler.mergeSettings(
-            resourceConfig, 'disabledRules'),
-        enabledRules: WorkspaceConfigurationRequestHandler.mergeSettings(
-            resourceConfig, 'enabledRules'),
+        dictionary: this.mergeSettings(uri, 'dictionary'),
+        disabledRules: this.mergeSettings(uri, 'disabledRules'),
+        enabledRules: this.mergeSettings(uri, 'enabledRules'),
       });
     }
 
