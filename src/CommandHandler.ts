@@ -166,24 +166,6 @@ export default class CommandHandler {
     return Promise.resolve(true);
   }
 
-  private static getSettingName(settingName: string,
-        resourceConfig: Code.WorkspaceConfiguration, commandName: string): string | null {
-    const configurationTargetString: string | undefined =
-        resourceConfig.get(`configurationTarget.${commandName}`);
-
-    // 'global' is deprecated since 7.0.0
-    if ((configurationTargetString === 'user') || (configurationTargetString === 'global')) {
-      return settingName;
-    } else if ((configurationTargetString === 'workspace') ||
-          (configurationTargetString === 'workspaceFolder')) {
-      return configurationTargetString + settingName.charAt(0).toUpperCase() +
-          settingName.substr(1);
-    } else {
-      Logger.error(i18n('invalidValueForConfigurationTarget', configurationTargetString));
-      return null;
-    }
-  }
-
   private static requestFeature(): Promise<boolean> {
     Code.window.showInformationMessage(i18n('thanksForRequestingFeature'),
           i18n('createIssue')).then(async (selectedItem: string | undefined) => {
@@ -230,12 +212,7 @@ export default class CommandHandler {
   private static addToDictionary(params: any): void {
     const resourceConfig: Code.WorkspaceConfiguration =
         Code.workspace.getConfiguration('ltex', Code.Uri.parse(params.uri));
-    const settingName: string | null = CommandHandler.getSettingName(
-        'dictionary', resourceConfig, 'addToDictionary');
-    if (settingName == null) return;
-
-    const dictionarySetting: {[language: string]: string[]} =
-        resourceConfig.get(settingName, {});
+    const dictionarySetting: {[language: string]: string[]} = resourceConfig.get('dictionary', {});
 
     for (const language in params.words) {
       if (!Object.prototype.hasOwnProperty.call(params.words, language)) continue;
@@ -246,19 +223,14 @@ export default class CommandHandler {
           WorkspaceConfigurationRequestHandler.cleanUpWorkspaceSpecificStringArray(dictionary);
     }
 
-    CommandHandler.setSetting(
-        settingName, dictionarySetting, resourceConfig, 'addToDictionary');
+    CommandHandler.setSetting('dictionary', dictionarySetting, resourceConfig, 'addToDictionary');
   }
 
   private static disableRules(params: any): void {
     const resourceConfig: Code.WorkspaceConfiguration =
         Code.workspace.getConfiguration('ltex', Code.Uri.parse(params.uri));
-    const settingName: string | null = CommandHandler.getSettingName(
-        'disabledRules', resourceConfig, 'disableRules');
-    if (settingName == null) return;
-
     const disabledRulesSetting: {[language: string]: string[]} =
-        resourceConfig.get(settingName, {});
+        resourceConfig.get('disabledRules', {});
 
     for (const language in params.ruleIds) {
       if (!Object.prototype.hasOwnProperty.call(params.ruleIds, language)) continue;
@@ -269,8 +241,7 @@ export default class CommandHandler {
           WorkspaceConfigurationRequestHandler.cleanUpWorkspaceSpecificStringArray(disabledRules);
     }
 
-    CommandHandler.setSetting(
-        settingName, disabledRulesSetting, resourceConfig, 'disableRule');
+    CommandHandler.setSetting('disabledRules', disabledRulesSetting, resourceConfig, 'disableRule');
   }
 
   private static ignoreRulesInSentence(params: any): void {
