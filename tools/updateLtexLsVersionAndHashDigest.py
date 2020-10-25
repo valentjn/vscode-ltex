@@ -6,6 +6,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
+import argparse
 import hashlib
 import os
 import re
@@ -19,14 +20,15 @@ import common
 
 
 
-def getLatestLtexLsVersion(versions):
+def getLatestLtexLsVersion(versions, allowPrerelease=False):
   latestVersion = None
 
   for version in versions:
     if semver.VersionInfo.isvalid(version):
       version = semver.VersionInfo.parse(version)
 
-      if (version.prerelease is None) and ((latestVersion is None) or (version > latestVersion)):
+      if ((allowPrerelease or (version.prerelease is None)) and
+            ((latestVersion is None) or (version > latestVersion))):
         latestVersion = version
 
   return latestVersion
@@ -34,9 +36,15 @@ def getLatestLtexLsVersion(versions):
 
 
 def main():
+  parser = argparse.ArgumentParser(description="Update version and hash digest of LTeX LS")
+  parser.add_argument("--allow-prerelease", action="store_true",
+      help="Allow prerelease versions")
+  args = parser.parse_args()
+
   print("Retrieving list of releases of LTeX LS...")
   releases = common.requestFromGitHub("https://api.github.com/repos/valentjn/ltex-ls/releases")
-  ltexLsVersion = getLatestLtexLsVersion([x["tag_name"] for x in releases])
+  ltexLsVersion = getLatestLtexLsVersion([x["tag_name"] for x in releases],
+      allowPrerelease=args.allow_prerelease)
   ltexLsVersion = str(ltexLsVersion)
 
   print(f"Downloading LTeX LS {ltexLsVersion}...")
