@@ -46,7 +46,7 @@ def fetchLanguages(toolsDirPath, ltexLsPath):
 
 
 
-def updatePackageJson(ltLanguageShortCodes, ltLanguageNames):
+def updatePackageJson(ltLanguageShortCodes):
   packageJsonPath = os.path.join(common.repoDirPath, "package.json")
   with open(packageJsonPath, "r") as f: packageJson = json.load(f)
   settings = packageJson["contributes"]["configuration"]["properties"]
@@ -59,46 +59,46 @@ def updatePackageJson(ltLanguageShortCodes, ltLanguageNames):
   removeKeyIfPresent(settings["ltex.dictionary"], "propertyNames")
   settings["ltex.dictionary"]["properties"] = {
         languageShortCode: {
-          "type": "array",
-          "items": {
-            "type": "string",
+          "type" : "array",
+          "items" : {
+            "type" : "string",
           },
-          "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary."
+          "markdownDescription" : "%ltex.i18n.configuration.ltex.dictionary."
             "{}.markdownDescription%".format(languageShortCode),
-          "description": "%ltex.i18n.configuration.ltex.dictionary."
+          "description" : "%ltex.i18n.configuration.ltex.dictionary."
             "{}.description%".format(languageShortCode),
         }
-        for languageShortCode, languageName in zip(ltLanguageShortCodes, ltLanguageNames)
+        for languageShortCode in ltLanguageShortCodes
       }
 
   removeKeyIfPresent(settings["ltex.disabledRules"], "propertyNames")
   settings["ltex.disabledRules"]["properties"] = {
         languageShortCode: {
-          "type": "array",
-          "items": {
-            "type": "string",
+          "type" : "array",
+          "items" : {
+            "type" : "string",
           },
-          "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules."
+          "markdownDescription" : "%ltex.i18n.configuration.ltex.disabledRules."
             "{}.markdownDescription%".format(languageShortCode),
-          "description": "%ltex.i18n.configuration.ltex.disabledRules."
+          "description" : "%ltex.i18n.configuration.ltex.disabledRules."
             "{}.description%".format(languageShortCode),
         }
-        for languageShortCode, languageName in zip(ltLanguageShortCodes, ltLanguageNames)
+        for languageShortCode in ltLanguageShortCodes
       }
 
   removeKeyIfPresent(settings["ltex.enabledRules"], "propertyNames")
   settings["ltex.enabledRules"]["properties"] = {
         languageShortCode: {
-          "type": "array",
-          "items": {
-            "type": "string",
+          "type" : "array",
+          "items" : {
+            "type" : "string",
           },
-          "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules."
+          "markdownDescription" : "%ltex.i18n.configuration.ltex.enabledRules."
             "{}.markdownDescription%".format(languageShortCode),
-          "description": "%ltex.i18n.configuration.ltex.enabledRules."
+          "description" : "%ltex.i18n.configuration.ltex.enabledRules."
             "{}.description%".format(languageShortCode),
         }
-        for languageShortCode, languageName in zip(ltLanguageShortCodes, ltLanguageNames)
+        for languageShortCode in ltLanguageShortCodes
       }
 
   with open(packageJsonPath, "w") as f:
@@ -229,7 +229,7 @@ def main():
   print("LanguageTool Languages: {}".format(", ".join(ltLanguageShortCodes)))
 
   print("Updating package.json...")
-  updatePackageJson(ltLanguageShortCodes, ltLanguageNames)
+  updatePackageJson(ltLanguageShortCodes)
 
   print("Updating package.nls.json...")
   updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, "en")
