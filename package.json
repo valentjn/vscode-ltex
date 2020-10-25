@@ -1803,7 +1803,7 @@
     "@types/webpack": "4.41.23",
     "@typescript-eslint/eslint-plugin": "4.0.0",
     "@typescript-eslint/parser": "3.10.1",
-    "eslint": "7.11.0",
+    "eslint": "7.12.0",
     "eslint-config-google": "0.14.0",
     "eslint-plugin-only-warn": "1.0.2",
     "mocha": "8.2.0",
