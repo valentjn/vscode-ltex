@@ -22,6 +22,7 @@ type ExternalFilePath = {
   originalPath: string | null;
   resolvedPath: string;
 };
+
 type SettingAnalysis = {
   settingValue: LanguageSpecificSettingValue | null;
   externalFilePaths: LanguageSpecificExternalFilePaths;
@@ -107,6 +108,15 @@ export default class ExternalFileManager {
         this._contents[settingName][filePath] = contents;
       }
     }
+  }
+
+  public getFirstExternalFilePath(uri: Code.Uri, settingName: string,
+        scope: Code.ConfigurationTarget, language: string): string | null {
+    const externalFilePaths: LanguageSpecificExternalFilePaths = this.analyzeSetting(
+        uri, settingName, scope, language).externalFilePaths;
+    return ((Object.prototype.hasOwnProperty.call(externalFilePaths, language) &&
+        (externalFilePaths[language].length > 0)) ?
+        externalFilePaths[language][0].resolvedPath : null);
   }
 
   private analyzeSetting(uri: Code.Uri, settingName: string,
@@ -280,5 +290,35 @@ export default class ExternalFileManager {
     }
 
     return null;
+  }
+
+  public appendToFile(filePath: string, settingName: string, entries: string[]): void {
+    const externalFileKnown: boolean = Object.prototype.hasOwnProperty.call(
+        this._contents[settingName], filePath);
+    let contents: string;
+
+    if (externalFileKnown) {
+      contents = this._contents[settingName][filePath];
+    } else {
+      this.ensureParentDirExists(filePath);
+      this.ensureFileExists(filePath);
+      contents = Fs.readFileSync(filePath, {encoding: 'utf-8'});
+    }
+
+    if ((contents.match(/[^ \r\n]/) != null) && !contents.endsWith(Os.EOL)) contents += Os.EOL;
+    contents += entries.join(Os.EOL) + Os.EOL;
+
+    if (externalFileKnown) this.ensureParentDirExists(filePath);
+    Fs.writeFileSync(filePath, contents, {encoding: 'utf-8'});
+    if (externalFileKnown) this._contents[settingName][filePath] = contents;
+  }
+
+  private ensureParentDirExists(path: string): void {
+    const parentDirPath: string = Path.dirname(path);
+    if (!Fs.existsSync(parentDirPath)) Fs.mkdirSync(parentDirPath);
+  }
+
+  private ensureFileExists(filePath: string): void {
+    if (!Fs.existsSync(filePath)) Fs.writeFileSync(filePath, '', {encoding: 'utf-8'});
   }
 }

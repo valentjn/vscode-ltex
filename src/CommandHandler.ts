@@ -10,28 +10,30 @@ import * as CodeLanguageClient from 'vscode-languageclient';
 import * as Path from 'path';
 
 import BugReporter from './BugReporter';
+import ExternalFileManager from './ExternalFileManager';
 import {i18n} from './I18n';
 import Logger from './Logger';
 import ProgressStack from './ProgressStack';
 import WorkspaceConfigurationRequestHandler from './WorkspaceConfigurationRequestHandler';
 
+type LanguageSpecificSettingValue = {
+  [language: string]: string[];
+};
+
 export default class CommandHandler {
   private _bugReporter: BugReporter;
   private _languageClient: CodeLanguageClient.LanguageClient | null;
+  private _externalFileManager: ExternalFileManager;
 
   private static readonly _featureRequestUrl: string = 'https://github.com/valentjn/vscode-ltex/' +
       'issues/new?assignees=&labels=1-feature-request&template=feature-request.md&title=';
 
-  public constructor(bugReporter: BugReporter) {
+  public constructor(context: Code.ExtensionContext, externalFileManager: ExternalFileManager,
+        bugReporter: BugReporter) {
     this._bugReporter = bugReporter;
     this._languageClient = null;
-  }
+    this._externalFileManager = externalFileManager;
 
-  public set languageClient(languageClient: CodeLanguageClient.LanguageClient | null) {
-    this._languageClient = languageClient;
-  }
-
-  public register(context: Code.ExtensionContext): void {
     context.subscriptions.push(Code.commands.registerCommand('ltex.checkCurrentDocument',
         this.checkCurrentDocument.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.checkAllDocumentsInWorkspace',
@@ -47,11 +49,15 @@ export default class CommandHandler {
         CommandHandler.requestFeature));
 
     context.subscriptions.push(Code.commands.registerCommand('ltex.addToDictionary',
-        CommandHandler.addToDictionary));
+        this.addToDictionary.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.disableRules',
-        CommandHandler.disableRules));
+        this.disableRules.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.ignoreRulesInSentence',
-        CommandHandler.ignoreRulesInSentence));
+        this.ignoreRulesInSentence.bind(this)));
+  }
+
+  public set languageClient(languageClient: CodeLanguageClient.LanguageClient | null) {
+    this._languageClient = languageClient;
   }
 
   private async checkDocument(uri: Code.Uri, codeLanguageId?: string,
@@ -177,6 +183,119 @@ export default class CommandHandler {
     return Promise.resolve(true);
   }
 
+  private addToDictionary(params: any): void {
+    this.addToLanguageSpecificSetting(Code.Uri.parse(params.uri), 'dictionary', params.words);
+    this.checkCurrentDocument();
+  }
+
+  private disableRules(params: any): void {
+    this.addToLanguageSpecificSetting(Code.Uri.parse(params.uri), 'disabledRules', params.ruleIds);
+    this.checkCurrentDocument();
+  }
+
+  private ignoreRulesInSentence(params: any): void {
+    const resourceConfig: Code.WorkspaceConfiguration =
+        Code.workspace.getConfiguration('ltex', Code.Uri.parse(params.uri));
+    const ruleIds: string[] = params.ruleIds;
+    const sentencePatterns: string[] = params.sentencePatterns;
+    const ignoredRules: any[] = resourceConfig.get('ignoreRuleInSentence', []);
+
+    for (let i: number = 0; i < ruleIds.length; i++) {
+      ignoredRules.push({'rule': ruleIds[i], 'sentence': sentencePatterns[i]});
+    }
+
+    CommandHandler.setSetting(
+        'ignoreRuleInSentence', ignoredRules, resourceConfig, 'ignoreRuleInSentence');
+  }
+
+  private addToLanguageSpecificSetting(uri: Code.Uri, settingName: string,
+        entries: LanguageSpecificSettingValue): void {
+    const resourceConfig: Code.WorkspaceConfiguration =
+        Code.workspace.getConfiguration('ltex.configurationTarget', uri);
+    let scopeString: string | undefined = resourceConfig.get(settingName);
+
+    if (scopeString == null) {
+      if (settingName == 'dictionary') {
+        // 'addToDictionary' is deprecated since 8.0.0
+        scopeString = resourceConfig.get('addToDictionary');
+      } else if (settingName == 'disabledRules') {
+        // 'disableRule' is deprecated since 8.0.0
+        scopeString = resourceConfig.get('disableRule');
+      }
+    }
+
+    let scopes: Code.ConfigurationTarget[];
+
+    if ((scopeString == null) || scopeString.startsWith('workspaceFolder')) {
+      scopes = [Code.ConfigurationTarget.WorkspaceFolder, Code.ConfigurationTarget.Workspace,
+          Code.ConfigurationTarget.Global];
+    } else if (scopeString.startsWith('workspace')) {
+      scopes = [Code.ConfigurationTarget.Workspace, Code.ConfigurationTarget.Global];
+    // 'global' is deprecated since 7.0.0
+    } else if (scopeString.startsWith('user') || scopeString.startsWith('global')) {
+      scopes = [Code.ConfigurationTarget.Global];
+    } else {
+      Logger.error(i18n('invalidValueForConfigurationTarget', scopeString));
+      return;
+    }
+
+    if ((scopeString == null) || scopeString.endsWith('ExternalFile')) {
+      this.addToLanguageSpecificSettingExternalFile(uri, settingName, scopes, entries);
+    } else {
+      this.addToLanguageSpecificSettingInternalSetting(uri, settingName, scopes, entries);
+    }
+  }
+
+  private addToLanguageSpecificSettingExternalFile(uri: Code.Uri, settingName: string,
+        scopes: Code.ConfigurationTarget[], entries: LanguageSpecificSettingValue): void {
+    for (const language in entries) {
+      if (!Object.prototype.hasOwnProperty.call(entries, language)) continue;
+      let settingWritten: boolean = false;
+
+      for (const scope of scopes) {
+        const externalFilePath: string | null = this._externalFileManager.getFirstExternalFilePath(
+            uri, settingName, scope, language);
+
+        if (externalFilePath != null) {
+          this._externalFileManager.appendToFile(externalFilePath, settingName, entries[language]);
+          settingWritten = true;
+          break;
+        }
+      }
+
+      if (!settingWritten) {
+        const languageEntries: LanguageSpecificSettingValue = {};
+        languageEntries[language] = entries[language];
+        this.addToLanguageSpecificSettingInternalSetting(uri, settingName, scopes, languageEntries);
+      }
+    }
+  }
+
+  private async addToLanguageSpecificSettingInternalSetting(uri: Code.Uri, settingName: string,
+        scopes: Code.ConfigurationTarget[], entries: LanguageSpecificSettingValue): Promise<void> {
+    const resourceConfig: Code.WorkspaceConfiguration =
+        Code.workspace.getConfiguration('ltex', uri);
+    const settingValue: {[language: string]: string[]} = resourceConfig.get(settingName, {});
+
+    for (const language in entries) {
+      if (!Object.prototype.hasOwnProperty.call(entries, language)) continue;
+      let languageSettingValue: string[] = ((settingValue[language] != null) ?
+          settingValue[language] : []);
+      languageSettingValue = languageSettingValue.concat(entries[language]);
+      settingValue[language] = WorkspaceConfigurationRequestHandler.
+          cleanUpWorkspaceSpecificStringArray(languageSettingValue);
+    }
+
+    for (let i: number = 0; i < scopes.length; i++) {
+      try {
+        await resourceConfig.update(settingName, settingValue, scopes[i]);
+        return;
+      } catch (e) {
+        if (i == scopes.length - 1) Logger.error(i18n('couldNotSetConfiguration', settingName), e);
+      }
+    }
+  }
+
   private static async setSetting(settingName: string, settingValue: any,
         resourceConfig: Code.WorkspaceConfiguration, commandName: string): Promise<void> {
     const configurationTargetString: string | undefined =
@@ -207,55 +326,5 @@ export default class CommandHandler {
         }
       }
     }
-  }
-
-  private static addToDictionary(params: any): void {
-    const resourceConfig: Code.WorkspaceConfiguration =
-        Code.workspace.getConfiguration('ltex', Code.Uri.parse(params.uri));
-    const dictionarySetting: {[language: string]: string[]} = resourceConfig.get('dictionary', {});
-
-    for (const language in params.words) {
-      if (!Object.prototype.hasOwnProperty.call(params.words, language)) continue;
-      let dictionary: string[] = ((dictionarySetting[language] != null) ?
-          dictionarySetting[language] : []);
-      dictionary = dictionary.concat(params.words[language]);
-      dictionarySetting[language] =
-          WorkspaceConfigurationRequestHandler.cleanUpWorkspaceSpecificStringArray(dictionary);
-    }
-
-    CommandHandler.setSetting('dictionary', dictionarySetting, resourceConfig, 'addToDictionary');
-  }
-
-  private static disableRules(params: any): void {
-    const resourceConfig: Code.WorkspaceConfiguration =
-        Code.workspace.getConfiguration('ltex', Code.Uri.parse(params.uri));
-    const disabledRulesSetting: {[language: string]: string[]} =
-        resourceConfig.get('disabledRules', {});
-
-    for (const language in params.ruleIds) {
-      if (!Object.prototype.hasOwnProperty.call(params.ruleIds, language)) continue;
-      let disabledRules: string[] = ((disabledRulesSetting[language] != null) ?
-          disabledRulesSetting[language] : []);
-      disabledRules = disabledRules.concat(params.ruleIds[language]);
-      disabledRulesSetting[language] =
-          WorkspaceConfigurationRequestHandler.cleanUpWorkspaceSpecificStringArray(disabledRules);
-    }
-
-    CommandHandler.setSetting('disabledRules', disabledRulesSetting, resourceConfig, 'disableRule');
-  }
-
-  private static ignoreRulesInSentence(params: any): void {
-    const resourceConfig: Code.WorkspaceConfiguration =
-        Code.workspace.getConfiguration('ltex', Code.Uri.parse(params.uri));
-    const ruleIds: string[] = params.ruleIds;
-    const sentencePatterns: string[] = params.sentencePatterns;
-    const ignoredRules: any[] = resourceConfig.get('ignoreRuleInSentence', []);
-
-    for (let i: number = 0; i < ruleIds.length; i++) {
-      ignoredRules.push({'rule': ruleIds[i], 'sentence': sentencePatterns[i]});
-    }
-
-    CommandHandler.setSetting(
-        'ignoreRuleInSentence', ignoredRules, resourceConfig, 'ignoreRuleInSentence');
   }
 }

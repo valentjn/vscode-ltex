@@ -25,8 +25,8 @@ type ConfigurationResultItem = {
 export default class WorkspaceConfigurationRequestHandler {
   private _externalFileManager: ExternalFileManager;
 
-  public constructor(context: Code.ExtensionContext) {
-    this._externalFileManager = new ExternalFileManager(context);
+  public constructor(externalFileManager: ExternalFileManager) {
+    this._externalFileManager = externalFileManager;
   }
 
   private mergeSettings(uri: Code.Uri, settingName: string): LanguageSpecificSettingValue {

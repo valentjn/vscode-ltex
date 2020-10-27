@@ -11,6 +11,7 @@ import * as CodeLanguageClient from 'vscode-languageclient';
 import BugReporter from './BugReporter';
 import CommandHandler from './CommandHandler';
 import DependencyManager from './DependencyManager';
+import ExternalFileManager from './ExternalFileManager';
 import {I18n, i18n} from './I18n';
 import Logger from './Logger';
 import LoggingOutputChannel from './LoggingOutputChannel';
@@ -25,15 +26,15 @@ export class Api {
 
 let dependencyManager: DependencyManager | null = null;
 
-async function languageClientIsReady(context: Code.ExtensionContext,
-      languageClient: CodeLanguageClient.LanguageClient,
+async function languageClientIsReady(languageClient: CodeLanguageClient.LanguageClient,
+      externalFileManager: ExternalFileManager,
       statusBarItemManager: StatusBarItemManager): Promise<void> {
   statusBarItemManager.setStatusToReady();
   languageClient.onNotification('ltex/progress',
       statusBarItemManager.handleProgressNotification.bind(statusBarItemManager));
 
   const workspaceConfigurationRequestHandler: WorkspaceConfigurationRequestHandler =
-      new WorkspaceConfigurationRequestHandler(context);
+      new WorkspaceConfigurationRequestHandler(externalFileManager);
   languageClient.onRequest('ltex/workspaceSpecificConfiguration',
       workspaceConfigurationRequestHandler.handle.bind(workspaceConfigurationRequestHandler));
 
@@ -61,8 +62,8 @@ async function languageClientIsReady(context: Code.ExtensionContext,
   }
 }
 
-async function startLanguageClient(context: Code.ExtensionContext):
-      Promise<CodeLanguageClient.LanguageClient | null> {
+async function startLanguageClient(context: Code.ExtensionContext,
+      externalFileManager: ExternalFileManager): Promise<CodeLanguageClient.LanguageClient | null> {
   if (dependencyManager == null) {
     Logger.error('DependencyManager not initialized!');
     return Promise.resolve(null);
@@ -114,7 +115,7 @@ async function startLanguageClient(context: Code.ExtensionContext):
       'ltex', i18n('ltexLanguageServer'), serverOptions, clientOptions);
 
   languageClient.onReady().then(languageClientIsReady.bind(
-      null, context, languageClient, statusBarItemManager));
+      null, languageClient, externalFileManager, statusBarItemManager));
 
   Logger.log(i18n('startingLtexLs'));
   Logger.logExecutable(serverOptions);
@@ -139,9 +140,11 @@ export async function activate(context: Code.ExtensionContext): Promise<Api> {
   api.serverOutputChannel = Logger.serverOutputChannel;
 
   dependencyManager = new DependencyManager(context);
+
+  const externalFileManager: ExternalFileManager = new ExternalFileManager(context);
   const bugReporter: BugReporter = new BugReporter(context, dependencyManager);
-  const commandHandler: CommandHandler = new CommandHandler(bugReporter);
-  commandHandler.register(context);
+  const commandHandler: CommandHandler =
+      new CommandHandler(context, externalFileManager, bugReporter);
 
   // Allow to enable languageTool in specific workspaces
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
@@ -150,7 +153,7 @@ export async function activate(context: Code.ExtensionContext): Promise<Api> {
   if ((enabled === true) || (enabled.length > 0)) {
     try {
       // create the language client
-      api.languageClient = await startLanguageClient(context);
+      api.languageClient = await startLanguageClient(context, externalFileManager);
       commandHandler.languageClient = api.languageClient;
     } catch (e) {
       Logger.error(i18n('couldNotStartLanguageClient'), e);

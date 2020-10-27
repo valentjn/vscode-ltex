@@ -1529,43 +1529,55 @@
           "type": "object",
           "scope": "resource",
           "default": {
-            "addToDictionary": "workspaceFolder",
-            "disableRule": "workspaceFolder",
+            "dictionary": "workspaceFolderExternalFile",
+            "disabledRules": "workspaceFolderExternalFile",
             "ignoreRuleInSentence": "workspaceFolder"
           },
           "propertyNames": {
             "type": "string",
             "enum": [
-              "addToDictionary",
-              "disableRule",
+              "dictionary",
+              "disabledRules",
               "ignoreRuleInSentence"
             ]
           },
           "properties": {
-            "addToDictionary": {
+            "dictionary": {
               "type": "string",
               "enum": [
                 "user",
                 "workspace",
-                "workspaceFolder"
+                "workspaceFolder",
+                "userExternalFile",
+                "workspaceExternalFile",
+                "workspaceFolderExternalFile"
               ],
               "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.configurationTarget.addToDictionary.user.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.addToDictionary.workspace.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.addToDictionary.workspaceFolder.enumDescription%"
+                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.user.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.workspace.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.workspaceFolder.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.userExternalFile.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.workspaceExternalFile.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.workspaceFolderExternalFile.enumDescription%"
               ]
             },
-            "disableRule": {
+            "disabledRules": {
               "type": "string",
               "enum": [
                 "user",
                 "workspace",
-                "workspaceFolder"
+                "workspaceFolder",
+                "userExternalFile",
+                "workspaceExternalFile",
+                "workspaceFolderExternalFile"
               ],
               "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.configurationTarget.disableRule.user.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.disableRule.workspace.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.disableRule.workspaceFolder.enumDescription%"
+                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.user.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.workspace.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.workspaceFolder.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.userExternalFile.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.workspaceExternalFile.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.workspaceFolderExternalFile.enumDescription%"
               ]
             },
             "ignoreRuleInSentence": {
