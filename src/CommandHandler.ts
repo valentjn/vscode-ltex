@@ -197,12 +197,12 @@ export default class CommandHandler {
       return;
     }
 
-    for (const configurationTarget of configurationTargets) {
+    for (let i: number = 0; i < configurationTargets.length; i++) {
       try {
-        await resourceConfig.update(settingName, settingValue, configurationTarget);
+        await resourceConfig.update(settingName, settingValue, configurationTargets[i]);
         return;
       } catch (e) {
-        if (configurationTarget == configurationTargets[configurationTargets.length - 1]) {
+        if (i == configurationTargets.length - 1) {
           Logger.error(i18n('couldNotSetConfiguration', settingName), e);
         }
       }
