@@ -1429,10 +1429,10 @@
           "description": "%ltex.i18n.configuration.ltex.latex.commands.description%",
           "examples": [
             {
-              "\\ref{}" : "ignore",
-              "\\documentclass[]{}" : "ignore",
-              "\\cite{}" : "dummy",
-              "\\cite[]{}" : "dummy"
+              "\\ref{}": "ignore",
+              "\\documentclass[]{}": "ignore",
+              "\\cite{}": "dummy",
+              "\\cite[]{}": "dummy"
             }
           ]
         },
@@ -1458,8 +1458,8 @@
           "description": "%ltex.i18n.configuration.ltex.latex.environments.description%",
           "examples": [
             {
-              "lstlisting" : "ignore",
-              "verbatim" : "ignore"
+              "lstlisting": "ignore",
+              "verbatim": "ignore"
             }
           ]
         },
@@ -1489,10 +1489,10 @@
           "description": "%ltex.i18n.configuration.ltex.markdown.nodes.description%",
           "examples": [
             {
-              "CodeBlock" : "ignore",
-              "FencedCodeBlock" : "ignore",
-              "AutoLink" : "dummy",
-              "Code" : "dummy"
+              "CodeBlock": "ignore",
+              "FencedCodeBlock": "ignore",
+              "AutoLink": "dummy",
+              "Code": "dummy"
             }
           ]
         },
