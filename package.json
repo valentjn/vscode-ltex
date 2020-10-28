@@ -581,7 +581,8 @@
                 "subproblem"
               ],
               "de-DE": [
-                "B-Splines"
+                "B-Splines",
+                ":/path/to/externalFile.txt"
               ]
             }
           ]
@@ -958,7 +959,8 @@
             {
               "en-US": [
                 "EN_QUOTES",
-                "UPPERCASE_SENTENCE_START"
+                "UPPERCASE_SENTENCE_START",
+                ":/path/to/externalFile.txt"
               ]
             }
           ]
@@ -1335,7 +1337,384 @@
             {
               "en-GB": [
                 "PASSIVE_VOICE",
-                "OXFORD_SPELLING_NOUNS"
+                "OXFORD_SPELLING_NOUNS",
+                ":/path/to/externalFile.txt"
+              ]
+            }
+          ]
+        },
+        "ltex.hiddenFalsePositives": {
+          "type": "object",
+          "scope": "application",
+          "default": {},
+          "properties": {
+            "ar": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ar.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ar.description%"
+            },
+            "ast-ES": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ast-ES.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ast-ES.description%"
+            },
+            "be-BY": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.be-BY.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.be-BY.description%"
+            },
+            "br-FR": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.br-FR.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.br-FR.description%"
+            },
+            "ca-ES": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ca-ES.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ca-ES.description%"
+            },
+            "ca-ES-valencia": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ca-ES-valencia.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ca-ES-valencia.description%"
+            },
+            "da-DK": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.da-DK.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.da-DK.description%"
+            },
+            "de": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.de.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.de.description%"
+            },
+            "de-AT": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.de-AT.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.de-AT.description%"
+            },
+            "de-CH": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.de-CH.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.de-CH.description%"
+            },
+            "de-DE": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.de-DE.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.de-DE.description%"
+            },
+            "de-DE-x-simple-language": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.de-DE-x-simple-language.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.de-DE-x-simple-language.description%"
+            },
+            "el-GR": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.el-GR.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.el-GR.description%"
+            },
+            "en": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.en.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.en.description%"
+            },
+            "en-AU": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.en-AU.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.en-AU.description%"
+            },
+            "en-CA": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.en-CA.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.en-CA.description%"
+            },
+            "en-GB": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.en-GB.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.en-GB.description%"
+            },
+            "en-NZ": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.en-NZ.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.en-NZ.description%"
+            },
+            "en-US": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.en-US.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.en-US.description%"
+            },
+            "en-ZA": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.en-ZA.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.en-ZA.description%"
+            },
+            "eo": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.eo.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.eo.description%"
+            },
+            "es": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.es.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.es.description%"
+            },
+            "fa": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.fa.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.fa.description%"
+            },
+            "fr": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.fr.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.fr.description%"
+            },
+            "ga-IE": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ga-IE.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ga-IE.description%"
+            },
+            "gl-ES": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.gl-ES.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.gl-ES.description%"
+            },
+            "it": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.it.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.it.description%"
+            },
+            "ja-JP": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ja-JP.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ja-JP.description%"
+            },
+            "km-KH": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.km-KH.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.km-KH.description%"
+            },
+            "nl": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.nl.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.nl.description%"
+            },
+            "pl-PL": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.pl-PL.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.pl-PL.description%"
+            },
+            "pt": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.pt.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.pt.description%"
+            },
+            "pt-AO": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-AO.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-AO.description%"
+            },
+            "pt-BR": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-BR.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-BR.description%"
+            },
+            "pt-MZ": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-MZ.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-MZ.description%"
+            },
+            "pt-PT": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-PT.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-PT.description%"
+            },
+            "ro-RO": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ro-RO.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ro-RO.description%"
+            },
+            "ru-RU": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ru-RU.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ru-RU.description%"
+            },
+            "sk-SK": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.sk-SK.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.sk-SK.description%"
+            },
+            "sl-SI": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.sl-SI.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.sl-SI.description%"
+            },
+            "sv": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.sv.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.sv.description%"
+            },
+            "ta-IN": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ta-IN.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ta-IN.description%"
+            },
+            "tl-PH": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.tl-PH.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.tl-PH.description%"
+            },
+            "uk-UA": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.uk-UA.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.uk-UA.description%"
+            },
+            "zh-CN": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.zh-CN.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.zh-CN.description%"
+            }
+          },
+          "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.description%",
+          "examples": [
+            {
+              "en-US": [
+                ":/path/to/externalFile.txt"
               ]
             }
           ]
@@ -1496,49 +1875,20 @@
             }
           ]
         },
-        "ltex.ignoreRuleInSentence": {
-          "type": "array",
-          "scope": "resource",
-          "default": [],
-          "items": {
-            "type": "object",
-            "propertyNames": {
-              "type": "string",
-              "enum": [
-                "rule",
-                "sentence"
-              ]
-            },
-            "properties": {
-              "rule": {
-                "type": "string",
-                "markdownDescription": "%ltex.i18n.configuration.ltex.ignoreRuleInSentence.rule.markdownDescription%",
-                "description": "%ltex.i18n.configuration.ltex.ignoreRuleInSentence.rule.description%"
-              },
-              "sentence": {
-                "type": "string",
-                "markdownDescription": "%ltex.i18n.configuration.ltex.ignoreRuleInSentence.sentence.markdownDescription%",
-                "description": "%ltex.i18n.configuration.ltex.ignoreRuleInSentence.sentence.description%"
-              }
-            }
-          },
-          "markdownDescription": "%ltex.i18n.configuration.ltex.ignoreRuleInSentence.markdownDescription%",
-          "description": "%ltex.i18n.configuration.ltex.ignoreRuleInSentence.description%"
-        },
         "ltex.configurationTarget": {
           "type": "object",
           "scope": "resource",
           "default": {
             "dictionary": "workspaceFolderExternalFile",
             "disabledRules": "workspaceFolderExternalFile",
-            "ignoreRuleInSentence": "workspaceFolder"
+            "hiddenFalsePositives": "workspaceFolderExternalFile"
           },
           "propertyNames": {
             "type": "string",
             "enum": [
               "dictionary",
               "disabledRules",
-              "ignoreRuleInSentence"
+              "hiddenFalsePositives"
             ]
           },
           "properties": {
@@ -1580,7 +1930,7 @@
                 "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.workspaceFolderExternalFile.enumDescription%"
               ]
             },
-            "ignoreRuleInSentence": {
+            "hiddenFalsePositives": {
               "type": "string",
               "enum": [
                 "user",
@@ -1588,9 +1938,12 @@
                 "workspaceFolder"
               ],
               "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.configurationTarget.ignoreRuleInSentence.user.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.ignoreRuleInSentence.workspace.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.ignoreRuleInSentence.workspaceFolder.enumDescription%"
+                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.user.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.workspace.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.workspaceFolder.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.userExternalFile.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.workspaceExternalFile.enumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.workspaceFolderExternalFile.enumDescription%"
               ]
             }
           },
@@ -1791,6 +2144,31 @@
           },
           "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.markdown.nodes`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdownnodes).",
           "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.markdown.nodes', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdownnodes."
+        },
+        "ltex.ignoreRuleInSentence": {
+          "type": "array",
+          "scope": "resource",
+          "default": [],
+          "items": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string",
+              "enum": [
+                "rule",
+                "sentence"
+              ]
+            },
+            "properties": {
+              "rule": {
+                "type": "string"
+              },
+              "sentence": {
+                "type": "string"
+              }
+            }
+          },
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.hiddenFalsePositives`.",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.hiddenFalsePositives'."
         }
       }
     }

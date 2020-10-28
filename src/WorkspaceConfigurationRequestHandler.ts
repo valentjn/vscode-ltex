@@ -20,6 +20,7 @@ type ConfigurationResultItem = {
   dictionary: LanguageSpecificSettingValue;
   disabledRules: LanguageSpecificSettingValue;
   enabledRules: LanguageSpecificSettingValue;
+  hiddenFalsePositives: LanguageSpecificSettingValue;
 };
 
 export default class WorkspaceConfigurationRequestHandler {
@@ -127,6 +128,7 @@ export default class WorkspaceConfigurationRequestHandler {
         dictionary: this.mergeSettings(uri, 'dictionary'),
         disabledRules: this.mergeSettings(uri, 'disabledRules'),
         enabledRules: this.mergeSettings(uri, 'enabledRules'),
+        hiddenFalsePositives: this.mergeSettings(uri, 'hiddenFalsePositives'),
       });
     }
 

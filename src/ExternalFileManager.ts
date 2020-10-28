@@ -38,6 +38,7 @@ export default class ExternalFileManager {
     'dictionary',
     'disabledRules',
     'enabledRules',
+    'hiddenFalsePositives',
   ];
 
   public constructor(context: Code.ExtensionContext) {

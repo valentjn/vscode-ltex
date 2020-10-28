@@ -52,8 +52,8 @@ export default class CommandHandler {
         this.addToDictionary.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.disableRules',
         this.disableRules.bind(this)));
-    context.subscriptions.push(Code.commands.registerCommand('ltex.ignoreRulesInSentence',
-        this.ignoreRulesInSentence.bind(this)));
+    context.subscriptions.push(Code.commands.registerCommand('ltex.hideFalsePositives',
+        this.hideFalsePositives.bind(this)));
   }
 
   public set languageClient(languageClient: CodeLanguageClient.LanguageClient | null) {
@@ -193,19 +193,10 @@ export default class CommandHandler {
     this.checkCurrentDocument();
   }
 
-  private ignoreRulesInSentence(params: any): void {
-    const resourceConfig: Code.WorkspaceConfiguration =
-        Code.workspace.getConfiguration('ltex', Code.Uri.parse(params.uri));
-    const ruleIds: string[] = params.ruleIds;
-    const sentencePatterns: string[] = params.sentencePatterns;
-    const ignoredRules: any[] = resourceConfig.get('ignoreRuleInSentence', []);
-
-    for (let i: number = 0; i < ruleIds.length; i++) {
-      ignoredRules.push({'rule': ruleIds[i], 'sentence': sentencePatterns[i]});
-    }
-
-    CommandHandler.setSetting(
-        'ignoreRuleInSentence', ignoredRules, resourceConfig, 'ignoreRuleInSentence');
+  private hideFalsePositives(params: any): void {
+    this.addToLanguageSpecificSetting(Code.Uri.parse(params.uri), 'hiddenFalsePositives',
+        params.falsePositives);
+    this.checkCurrentDocument();
   }
 
   private addToLanguageSpecificSetting(uri: Code.Uri, settingName: string,
@@ -221,6 +212,9 @@ export default class CommandHandler {
       } else if (settingName == 'disabledRules') {
         // 'disableRule' is deprecated since 8.0.0
         scopeString = resourceConfig.get('disableRule');
+      } else if (settingName == 'hiddenFalsePositives') {
+        // 'ignoreRuleInSentence' is deprecated since 8.0.0
+        scopeString = resourceConfig.get('ignoreRuleInSentence');
       }
     }
 
@@ -292,38 +286,6 @@ export default class CommandHandler {
         return;
       } catch (e) {
         if (i == scopes.length - 1) Logger.error(i18n('couldNotSetConfiguration', settingName), e);
-      }
-    }
-  }
-
-  private static async setSetting(settingName: string, settingValue: any,
-        resourceConfig: Code.WorkspaceConfiguration, commandName: string): Promise<void> {
-    const configurationTargetString: string | undefined =
-        resourceConfig.get(`configurationTarget.${commandName}`);
-    let configurationTargets: Code.ConfigurationTarget[];
-
-    // 'global' is deprecated since 7.0.0
-    if ((configurationTargetString === 'user') || (configurationTargetString === 'global')) {
-      configurationTargets = [Code.ConfigurationTarget.Global];
-    } else if (configurationTargetString === 'workspace') {
-      configurationTargets = [Code.ConfigurationTarget.Workspace,
-          Code.ConfigurationTarget.Global];
-    } else if (configurationTargetString === 'workspaceFolder') {
-      configurationTargets = [Code.ConfigurationTarget.WorkspaceFolder,
-          Code.ConfigurationTarget.Workspace, Code.ConfigurationTarget.Global];
-    } else {
-      Logger.error(i18n('invalidValueForConfigurationTarget', configurationTargetString));
-      return;
-    }
-
-    for (let i: number = 0; i < configurationTargets.length; i++) {
-      try {
-        await resourceConfig.update(settingName, settingValue, configurationTargets[i]);
-        return;
-      } catch (e) {
-        if (i == configurationTargets.length - 1) {
-          Logger.error(i18n('couldNotSetConfiguration', settingName), e);
-        }
       }
     }
   }

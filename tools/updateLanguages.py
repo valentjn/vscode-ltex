@@ -101,6 +101,21 @@ def updatePackageJson(ltLanguageShortCodes):
         for languageShortCode in ltLanguageShortCodes
       }
 
+  removeKeyIfPresent(settings["ltex.hiddenFalsePositives"], "propertyNames")
+  settings["ltex.hiddenFalsePositives"]["properties"] = {
+        languageShortCode: {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+          },
+          "markdownDescription" : "%ltex.i18n.configuration.ltex.hiddenFalsePositives."
+            "{}.markdownDescription%".format(languageShortCode),
+          "description" : "%ltex.i18n.configuration.ltex.hiddenFalsePositives."
+            "{}.description%".format(languageShortCode),
+        }
+        for languageShortCode in ltLanguageShortCodes
+      }
+
   with open(packageJsonPath, "w") as f:
     json.dump(packageJson, f, indent=2, ensure_ascii=False)
     f.write("\n")
@@ -175,30 +190,26 @@ def updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.disabledRules\..+\.", key) is not None:
       continue
 
-    elif key == "ltex.i18n.configuration.ltex.enabledRules.description":
+    elif key == "ltex.i18n.configuration.ltex.hiddenFalsePositives.description":
       newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
-        prefix = f"ltex.i18n.configuration.ltex.enabledRules.{ltLanguageShortCode}"
+        prefix = f"ltex.i18n.configuration.ltex.hiddenFalsePositives.{ltLanguageShortCode}"
 
         if uiLanguage == "de":
           newPackageNlsJson[f"{prefix}.markdownDescription"] = (
-              "Liste von zusätzlichen Regeln der Sprache "
-              f"`{ltLanguageShortCode}` ({ltLanguageName}), die aktiviert werden sollen "
-              "(falls standardmäßig durch LanguageTool deaktiviert).")
+              "Liste von falschen Fehlern der Sprache "
+              f"`{ltLanguageShortCode}` ({ltLanguageName}), die verborgen werden sollen .")
           newPackageNlsJson[f"{prefix}.description"] = (
-              "Liste von zusätzlichen Regeln der Sprache "
-              f"'{ltLanguageShortCode}' ({ltLanguageName}), die aktiviert werden sollen "
-              "(falls standardmäßig durch LanguageTool deaktiviert).")
+              "Liste von falschen Fehlern der Sprache "
+              f"'{ltLanguageShortCode}' ({ltLanguageName}), die verborgen werden sollen.")
         else:
           newPackageNlsJson[f"{prefix}.markdownDescription"] = (
-              f"List of additional `{ltLanguageShortCode}` ({ltLanguageName}) rules that should "
-              "be enabled (if disabled by default by LanguageTool).")
+              f"List of `{ltLanguageShortCode}` ({ltLanguageName}) false-positive diagnostics to hide.")
           newPackageNlsJson[f"{prefix}.description"] = (
-              f"List of additional '{ltLanguageShortCode}' ({ltLanguageName}) rules that should "
-              "be enabled (if disabled by default by LanguageTool).")
+              f"List of '{ltLanguageShortCode}' ({ltLanguageName}) false-positive diagnostics to hide.")
 
-    elif re.match(r"^ltex\.i18n\.configuration\.ltex\.enabledRules\..+\.", key) is not None:
+    elif re.match(r"^ltex\.i18n\.configuration\.ltex\.hiddenFalsePositives\..+\.", key) is not None:
       continue
 
     else:
@@ -213,7 +224,7 @@ def updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
 def main():
   parser = argparse.ArgumentParser(description="Fetch all supported language codes from "
       "LanguageTool and updates the language-specific parts of package.json accordingly")
-  parser.add_argument("--ltex-ls-path", default="lib/ltex-ls-*",
+  parser.add_argument("--ltex-ls-path", default="../ltex-ls/ltexls-core/target/appassembler",
       help="Path to ltex-ls relative from the root directory of LTeX, supports wildcards")
   args = parser.parse_args()
 
