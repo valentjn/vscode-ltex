@@ -1707,43 +1707,43 @@
           "type": "object",
           "scope": "window",
           "default": {},
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.dictionary`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.dictionary'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary).",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.dictionary', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary."
         },
         "ltex.workspaceFolderDictionary": {
           "type": "object",
           "scope": "resource",
           "default": {},
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.dictionary`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.dictionary'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary).",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.dictionary', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary."
         },
         "ltex.workspaceDisabledRules": {
           "type": "object",
           "scope": "window",
           "default": {},
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.disabledRules`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.disabledRules'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules).",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.disabledRules', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules."
         },
         "ltex.workspaceFolderDisabledRules": {
           "type": "object",
           "scope": "resource",
           "default": {},
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.disabledRules`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.disabledRules'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules).",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.disabledRules', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules."
         },
         "ltex.workspaceEnabledRules": {
           "type": "object",
           "scope": "window",
           "default": {},
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.enabledRules`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.enabledRules'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules).",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.enabledRules', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules."
         },
         "ltex.workspaceFolderEnabledRules": {
           "type": "object",
           "scope": "resource",
           "default": {},
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.enabledRules`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.enabledRules'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules).",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.enabledRules', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules."
         },
         "ltex.commands.ignore": {
           "type": "array",
@@ -1752,8 +1752,8 @@
           "items": {
             "type": "string"
           },
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.latex.commands`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.latex.commands'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.latex.commands`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexcommands).",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.latex.commands', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexcommands."
         },
         "ltex.commands.dummy": {
           "type": "array",
@@ -1762,8 +1762,8 @@
           "items": {
             "type": "string"
           },
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.latex.commands`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.latex.commands'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.latex.commands`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexcommands).",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.latex.commands', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexcommands."
         },
         "ltex.environments.ignore": {
           "type": "array",
@@ -1772,15 +1772,15 @@
           "items": {
             "type": "string"
           },
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.latex.environments`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.latex.environments'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.latex.environments`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexenvironments).",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.latex.environments', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexenvironments."
         },
         "ltex.markdown.ignore": {
           "type": "array",
           "scope": "resource",
           "default": [],
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.markdown.nodes`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.markdown.nodes'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.markdown.nodes`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdownnodes).",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.markdown.nodes', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdownnodes."
         },
         "ltex.markdown.dummy": {
           "type": "array",
@@ -1789,8 +1789,8 @@
           "items": {
             "type": "string"
           },
-          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to `ltex.markdown.nodes`.",
-          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.markdown.nodes'."
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.markdown.nodes`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdownnodes).",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.markdown.nodes', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdownnodes."
         }
       }
     }
