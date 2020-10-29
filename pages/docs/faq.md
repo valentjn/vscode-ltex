@@ -32,7 +32,7 @@ The language support extension were only necessary for LTeX 4.x. Starting with L
 
 [As explained above](faq.html#whats-the-difference-between-vscode-ltex-ltex-ls-and-languagetool), ltex-ls is a necessary component of LTeX. Due to file size restrictions of the Visual Studio Marketplace, it is not possible to include ltex-ls in the extension itself. You can [install ltex-ls](installation-and-usage.html#second-alternative-download-ltex-lsjava-manually) locally on your computer by setting [`ltex.ltex-ls.path`](settings.html#ltexltex-lspath). However, this is not recommended as automatic updates of LTeX might break compatibility with ltex-ls.
 
-If LTeX keeps downloading Java after every update, then you don't have a compatible version of Java installed on your computer. You can prevent LTeX from doing this by [installing Java](installation-and-usage.html#second-alternative-download-ltex-lsjava-manually). Note that since LTeX 6.1.0, LTeX will download Java 11 if only Java 8 was found on the system, as [support for Java 8 is deprecated](deprecation-of-java-8.html). Usually, it is not necessary to set [`ltex.java.path`](settings.html#ltexjavapath) after the installation of Java, but you can use this setting if LTeX still doesn't find Java.
+If LTeX keeps downloading Java after every update, then you don't have a compatible version of Java installed on your computer. You can prevent LTeX from doing this by [installing Java](installation-and-usage.html#second-alternative-download-ltex-lsjava-manually). Usually, it is not necessary to set [`ltex.java.path`](settings.html#ltexjavapath) after the installation of Java, but you can use this setting if LTeX still doesn't find Java.
 
 ## Why does LTeX have such a high CPU load?
 

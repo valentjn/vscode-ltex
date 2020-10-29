@@ -51,14 +51,14 @@ Download the offline version of LTeX at the [Releases page on GitHub](https://gi
 
 Download [ltex-ls](https://github.com/valentjn/ltex-ls/releases) and/or a Java distribution (for instance [AdoptOpenJDK](https://adoptopenjdk.net/)) individually and set [`ltex.ltex-ls.path`](settings.html#ltexltex-lspath) and/or [`ltex.java.path`](settings.html#ltexjavapath) to the respective locations. Note that the versions of ltex-ls and/or Java have to satisfy the following requirements:
 
-- The version of ltex-ls must be lower than or equal to the version of LTeX itself (i.e., the vscode-ltex extension). Most of the time you want to choose the newest version of ltex-ls that satisfies this requirement (let's call it version X). This is exactly what LTeX does when using the automatic installation, even when newer versions of ltex-ls are available, as LTeX has only been tested with version X of ltex-ls. An older or a newer ltex-ls version than version X might work, or it might not.
+- The version of ltex-ls should be lower than or equal to the version of LTeX itself (i.e., the vscode-ltex extension). Most of the time you want to choose the newest version of ltex-ls that satisfies this requirement (let's call it version X). The version that LTeX automatically downloads is hard-coded into vscode-ltex, and it's guaranteed that it's always version X. An older or a newer ltex-ls version than version X might work, or it might not.
 
   For this reason, this approach is not recommended as automatically updated versions of LTeX (by Visual Studio Code) might not be compatible anymore with your manually downloaded version of ltex-ls. If you choose this approach, remember to update ltex-ls if LTeX doesn't work anymore.
 
     *Example:* If your version of LTeX is 5.0.3 and the available versions of ltex-ls are 5.0.0, 5.0.1, and 5.0.4, then choose ltex-ls 5.0.1, since that's the newest version lower than or equal to 5.0.3. An even better option is instead upgrading your version of LTeX, as there's likely a newer one that uses ltex-ls 5.0.4.
-- The version of Java must be at least 11. Java 8 is still supported, but [its support is deprecated and will be removed at November 1, 2020](deprecation-of-java-8.html). Some Java distributions offer a JRE (Java Runtime Environment) and a JDK (Java Development Kit); in this case, the JRE is sufficient.
+- The version of Java must be at least 11. Some Java distributions offer a JRE (Java Runtime Environment) and a JDK (Java Development Kit); in this case, the JRE is sufficient.
 
-If you download Java, you can also decide to install it system-wide. In this case, LTeX should be able to detect its location without having to set [`ltex.java.path`](settings.html#ltexjavapath). If not, you can still set [`ltex.java.path`](settings.html#ltexjavapath) to the location of your system-wide installation.
+If you download Java, you can also decide to install it system-wide. In this case, LTeX should be able to automatically detect its location. If not, you can still set [`ltex.java.path`](settings.html#ltexjavapath) to the location of your system-wide installation.
 
 Reload the Visual Studio Code window after installing ltex-ls and/or Java.
 
