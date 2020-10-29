@@ -36,6 +36,53 @@ Note that LTeX 7.x split each of the workspace-specific settings into three sett
 
 You can specify the target scope for changing settings with quick fixes (e.g., `Add to dictionary`) with the [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) setting.
 
+## External Setting Files
+
+Some of LTeX's settings support settings in external files. These settings are:
+
+- [`ltex.dictionary`](settings.html#ltexdictionary)
+- [`ltex.disabledRules`](settings.html#ltexdisabledrules)
+- [`ltex.enabledRules`](settings.html#ltexenabledrules)
+- [`ltex.hiddenFalsePositives`](settings.html#ltexhiddenfalsepositives)
+
+These settings contain lists (e.g., lists of words in the case of [`ltex.dictionary`](settings.html#ltexdictionary)), which may be partly or fully put in external files. To do so, there are two options:
+
+- Explicitly specify an external file
+- Use one of LTeX's implicit defaults for external files
+
+To use the first option and explicitly specify an external file, add the path to the external file with a colon (`:`) as prefix to the list (e.g., `:/path/to/externalFile.txt`). Each line of the file will be implicitly inserted as an entry into the value of the setting at the position where you specify the external file. External files must be in UTF-8 encoding.
+
+A leading tilde (`~`) in the path is resolved with the home directory of the user. Relative paths are resolved relative to the `.vscode` directory in which you specify the external file, except for user settings, in which the path is resolved to the global storage path of the LTeX extension (this path is printed when using the [`LTeX: Show status information`](commands.html#ltex-show-status-information) command). If in doubt, use absolute paths instead.
+
+The other option is using one of LTeX's implicit defaults for external files. The following files are automatically read, if existing:
+
+- `LTEX_GLOBAL_STORAGE_PATH/ltex.SETTING.LANGUAGE.txt`, where `LTEX_GLOBAL_STORAGE_PATH` is the global storage path of the LTeX extension
+- `WORKSPACE/.vscode/ltex.SETTING.LANGUAGE.txt`, where `WORKSPACE` is the root directory of the opened workspace, if any
+- `WORKSPACE_FOLDER/.vscode/ltex.SETTING.LANGUAGE.txt`, where `WORKSPACE_FOLDER` is the directory of the opened workspace folder, if any
+
+`SETTING` is the name of the setting, and `LANGUAGE` is the language code (like in [`ltex.language`](settings.html#ltexlanguage)), for example `ltex.dictionary.en-US.txt`. You can use the [`LTeX: Show status information`](commands.html#ltex-show-status-information) command to see the paths to these three directories.
+
+Since LTeX 8.0.0, it's possible to have the quick fixes (e.g., `Add to dictionary`) directly write to external setting files. For this, the [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) setting needs to have a value that ends with `ExternalFile`. Note that LTeX 8.0.0 changed the default value of this setting to `workspaceFolderExternalFile` for all quick fixes, so this feature is enabled by default.
+
+When executing a quick fix and the configuration target ends with `ExternalFile`, LTeX will do the following: First, retrieve the list of the setting corresponding to the quick fix and to the language of the text in which the quick fix was executed. Then, pick the first entry that explicitly specifies an external file (i.e., the first entry starting with `:`). If there is no such entry, the implicit default path (see above) is used. The resulting external file is then appended with the entry to be added by the quick fix. If the file doesn't exist, it will be created, along with all necessary parent directories, if any are missing.
+
+The scope in which this procedure is applied is determined by the [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) setting, and by the relevant workspaces or workspace folders.
+
+*Example:* [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) is by default `workspaceFolderExternalFile` for `dictionary`. Therefore, when clicking `Add to dictionary` in an `en-US` document, LTeX will by default do the following:
+
+1. If the document belongs to an open workspace folder:
+   1. Retrieve the `en-US` part of the value of [`ltex.dictionary`](settings.html#ltexdictionary) that is set in the workspace folder settings.
+   2. Pick the first external file in that list. If there is none, choose `WORKSPACE_FOLDER/ltex.dictionary.en-US.txt` (create the file if necessary).
+   3. Append the file by the new word.
+2. Otherwise, if the document belongs to an open workspace:
+   1. Retrieve the `en-US` part of the value of [`ltex.dictionary`](settings.html#ltexdictionary) that is set in the workspace settings.
+   2. Pick the first external file in that list. If there is none, choose `WORKSPACE/ltex.dictionary.en-US.txt` (create the file if necessary).
+   3. Append the file by the new word.
+3. Otherwise:
+   1. Retrieve the `en-US` part of the value of [`ltex.dictionary`](settings.html#ltexdictionary) that is set in the user settings.
+   2. Pick the first external file in that list. If there is none, choose `LTEX_GLOBAL_STORAGE_PATH/ltex.dictionary.en-US.txt` (create the file if necessary).
+   3. Append the file by the new word.
+
 ## Magic Comments
 
 Magic comments are special comments which contents are interpreted by LTeX and which can be used to change some LTeX settings in the middle of the document. The comments have the following form:
