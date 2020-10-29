@@ -18,20 +18,24 @@ def replaceSettingsCommandsMatch(
       markdownPath, pagesDirPath, markdown, settingNames, commandNames, match):
   i = markdown.rfind("\n", 0, match.start())
   contextBefore = markdown[i+1:match.start()]
-  key = match.group(1)
-  if re.search(r"^#+\s*", contextBefore) or (contextBefore[-1] == "["):
-    return match.group(0)
+  if re.search(r"^#+\s*", contextBefore): return match.group(0)
+  text = (match.group(1) if match.group(1) is not None else match.group(2))
+
+  if text in commandNames.values():
+    key = next(x for x, y in commandNames.items() if y == text)
+  else:
+    key = text
 
   if key in settingNames:
     url = "{}#{}".format(os.path.relpath(os.path.join(pagesDirPath, "docs", "settings.html"),
         os.path.dirname(markdownPath)), getSlug(key))
-    return f"[`{key}`]({url})"
+    return f"[`{text}`]({url})"
   elif key in commandNames:
     url = "{}#{}".format(os.path.relpath(os.path.join(pagesDirPath, "docs", "commands.html"),
-        os.path.dirname(markdownPath)), getSlug(commandNames[key]))
-    return f"[`{key}`]({url})"
+        os.path.dirname(markdownPath)), getSlug(key))
+    return f"[`{text}`]({url})"
   else:
-    return match.group(0)
+    return f"`{text}`"
 
 def getSlug(markdown):
   return re.sub(r"[^a-z0-9\-]", "", re.sub(r"[ ]", "-", markdown.lower()))
@@ -60,7 +64,7 @@ def linkSettingsAndCommands(markdownPath, pagesDirPath, ltexRepoDirPath):
       for x in commandsJson if "markdownDescription" in x}
 
   with open(markdownPath, "r") as f: markdown = f.read()
-  markdown = re.sub(r"`((?:ltex\.[^`]+)|(?:LTeX: [^`]+))`",
+  markdown = re.sub(r"`(ltex\.[^`]+|LTeX: [^`]+)`|\[`(ltex\.[^`]+|LTeX: [^`]+)`\]\([^\)]*?\)",
       functools.partial(replaceSettingsCommandsMatch, markdownPath, pagesDirPath, markdown,
         settingNames, commandNames), markdown)
   with open(markdownPath, "w") as f: f.write(markdown)
