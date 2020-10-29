@@ -16,6 +16,7 @@ Thank you for considering contributing to LTeX. There are many ways to do so:
 - You can [request features](#how-to-request-features) to make LTeX more powerful.
 - You can [contribute code](#how-to-contribute-code) to accelerate the pace of LTeX's development.
 - You can [edit the documentation](#documentation) to make LTeX easier to use.
+- You can [translate strings](#internationalization-i18n) into your mother tongue to make LTeX more accessible.
 
 If you like LTeX, but are not able to contribute in any of these ways, there are still some quick and simple alternatives to show your gratitude:
 
@@ -89,6 +90,23 @@ In addition, there is the possibility to work on the [documentation](https://val
 Analogously to the actual extension, there are two branches, which are stored in the [repository of vscode-ltex](https://github.com/valentjn/vscode-ltex): `gh-pages-develop` and `gh-pages-release`. Improvements go to `gh-pages-develop`, while `gh-pages-release` reflects the documentation for the latest release. Pushes to `gh-pages-release` will trigger Travis CI: It will hard-reset the actual `gh-pages` branch used for generating the site to `gh-pages-release`, and add a commit for updating the usage statistics on the homepage. To keep the statistics up-to-date, a cron job triggers this process once a day.
 
 At the bottom of each page, you'll find an “Edit me” button that takes you directly to the corresponding Markdown document in the GitHub repo.
+
+### Internationalization (I18n)
+
+The user interface of LTeX is currently available in the following languages:
+
+- English
+- German
+
+You're welcome to help extend this list. To do so, only fluent proficiency (CEFR C1-level) in the target language is required, no programming skills. The following three files contain all English strings of LTeX:
+
+- [`vscode-ltex/package.nls.json`](https://github.com/valentjn/vscode-ltex/blob/develop/package.nls.json), e.g., German: [`vscode-ltex/package.nls.de.json`](https://github.com/valentjn/vscode-ltex/blob/develop/package.nls.de.json)
+- [`vscode-ltex/i18n/messages.nls.json`](https://github.com/valentjn/vscode-ltex/blob/develop/i18n/messages.nls.de.json), e.g., German: [`vscode-ltex/i18n/messages.nls.de.json`](https://github.com/valentjn/vscode-ltex/blob/develop/i18n/messages.nls.de.json)
+- [`ltex-ls/ltexls-core/src/main/resources/MessagesBundle.properties`](https://github.com/valentjn/ltex-ls/blob/develop/ltexls-core/src/main/resources/MessagesBundle.properties), e.g., German: [`ltex-ls/ltexls-core/src/main/resources/MessagesBundle_de.properties`](https://github.com/valentjn/ltex-ls/blob/develop/ltexls-core/src/main/resources/MessagesBundle_de.properties)
+
+You can translate LTeX into your language as follows: First, duplicate each of the German language files, replacing `de` with the [ISO 639-1 language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) of your language. Then, for each of the strings in the newly created files, look up the English original of the entry in the corresponding English file, and replace the German translation with the translation into your language.
+
+Of course, it's also possible to duplicate the English language files instead, but you only need to translate the strings that are shown in the user interface (the other ones are for logging, debugging, etc.). The German language files already provide the correct subset of strings.
 
 ## Contribution Guidelines
 
