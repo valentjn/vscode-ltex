@@ -74,10 +74,18 @@ def formatFullType(settingJson, packageNlsJson, indent=0):
   elif "type" not in settingJson:
     markdown += formatAsJson(settingJson) + "\n"
   elif settingJson["type"] == "object":
-    markdown += "Object with the following properties:\n\n"
-    markdown += "".join(
-        f"{indent * ' '}- {formatAsJson(x)}: {formatFullType(y, packageNlsJson, indent+2)}"
-        for x, y in settingJson["properties"].items())
+    if "patternProperties" in settingJson:
+      assert len(settingJson["patternProperties"]) == 1
+      assert "^.*$" in settingJson["patternProperties"]
+      propertyType = settingJson["patternProperties"]["^.*$"]
+      markdown += ("Object with arbitrary property names, where the value of each property has "
+          "the following type:\n\n")
+      markdown += f"{indent * ' '}- {formatFullType(propertyType, packageNlsJson, indent+2)}"
+    else:
+      markdown += "Object with the following properties:\n\n"
+      markdown += "".join(
+          f"{indent * ' '}- {formatAsJson(x)}: {formatFullType(y, packageNlsJson, indent+2)}"
+          for x, y in settingJson["properties"].items())
   elif settingJson["type"] == "array":
     itemTypes = settingJson["items"]
 
