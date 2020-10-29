@@ -17,7 +17,9 @@ Thank you for considering contributing to LTeX. There are many ways to do so:
 - You can [report bugs](#how-to-report-bugs) to help make LTeX better.
 - You can [request features](#how-to-request-features) to make LTeX more powerful.
 - You can [contribute code](#how-to-contribute-code) to accelerate the pace of LTeX's development.
+- You can [test pre-release versions](#pre-releases) to help find bugs before they affect thousands of users.
 - You can [edit the documentation](#documentation) to make LTeX easier to use.
+- You can [translate strings](#internationalization-i18n) into your mother tongue to make LTeX more accessible.
 
 If you like LTeX, but are not able to contribute in any of these ways, there are still some quick and simple alternatives to show your gratitude:
 
@@ -80,9 +82,25 @@ Look at `.travis.yml` in the root directory of the respective project to learn h
 
 ### Versioning
 
-LTeX uses [semantic versioning](https://semver.org/) since version 5.0.0. The versions of vscode-ltex and ltex-ls are tied together: vscode-ltex automatically downloads the newest version of ltex-ls which has a version smaller or equal version than itself (`max {ltex-ls-version | ltex-ls-version <= vscode-ltex-version}`). This means that when a new version of ltex-ls is released, a new version of vscode-ltex has to be released as well, using the same version number (but not vice versa).
+LTeX uses [semantic versioning](https://semver.org/) since version 5.0.0. The versions of vscode-ltex and ltex-ls are tied together. vscode-ltex automatically downloads ltex-ls on the first start, and the version of ltex-ls is hard-coded into vscode-ltex. This means that when a new version of ltex-ls is released, a new version of vscode-ltex has to be released as well, using the same version number (but not vice versa).
 
 This ensures that each version of vscode-ltex always uses the same version of ltex-ls, making downgrades possible, and that we don't have to worry about upgrading mechanisms, since Visual Studio Code will do that for us.
+
+### Pre-Releases
+
+You can help find bugs before they affect thousands of LTeX users by testing pre-releases.
+
+The availability of pre-releases varies. Pre-releases are only available if a pre-release tag (a tag with the name of a version number with a dash in it, e.g., `8.0.0-alpha.3`) has been pushed to the vscode-ltex or the ltex-ls repositories. Pre-releases are only available for a limited time, they will be deleted once the regular release has been taken place.
+
+You can check whether pre-releases are available by checking the top of the GitHub Releases pages of [vscode-ltex](https://github.com/valentjn/vscode-ltex/releases) and [ltex-ls](https://github.com/valentjn/ltex-ls/releases). Pre-releases will always be displayed above the latest release.
+
+Of course, pre-releases are not for productive work, they even may be harmful and mess up your settings, etc. Therefore, it's best to use a clean installation/profile of VS Code. You can do that by starting VS Code via `code --extensions-dir /tmp/code-extensions --user-data-dir /tmp/code-user`. If you do use your existing installation, you can downgrade again by removing the extension and reinstalling it from the Marketplace. Close VS Code after removing the extension if LTeX does not behave normally.
+
+If you want to test a pre-release of vscode-ltex, [download the `*.vsix` file from GitHub Releases](https://github.com/valentjn/vscode-ltex/releases), install it in VS Code via `Extensions: Install from VSIX...` on the Command Palette, and reload the window. Both the online and offline versions should work, as they either download or contain the corresponding pre-release version of ltex-ls, so there is no need to download ltex-ls yourself.
+
+Sometimes, only a pre-release (especially when there are no major changes) of ltex-ls is available. In this case, you can test the pre-release of ltex-ls by [downloading the ltex-ls archive](https://github.com/valentjn/ltex-ls/releases), extracting it, and pointing [`ltex.ltex-ls.path`](settings.html#ltexltex-lspath) to the extracted directory.
+
+Be sure to check the list of current changes in the [changelog on the develop branch](https://github.com/valentjn/vscode-ltex/blob/develop/CHANGELOG.md) to know what to look for when testing.
 
 ### Documentation
 
@@ -91,6 +109,23 @@ In addition, there is the possibility to work on the [documentation](https://val
 Analogously to the actual extension, there are two branches, which are stored in the [repository of vscode-ltex](https://github.com/valentjn/vscode-ltex): `gh-pages-develop` and `gh-pages-release`. Improvements go to `gh-pages-develop`, while `gh-pages-release` reflects the documentation for the latest release. Pushes to `gh-pages-release` will trigger Travis CI: It will hard-reset the actual `gh-pages` branch used for generating the site to `gh-pages-release`, and add a commit for updating the usage statistics on the homepage. To keep the statistics up-to-date, a cron job triggers this process once a day.
 
 At the bottom of each page, you'll find an “Edit me” button that takes you directly to the corresponding Markdown document in the GitHub repo.
+
+### Internationalization (I18n)
+
+The user interface of LTeX is currently available in the following languages:
+
+- English
+- German
+
+You're welcome to help extend this list. To do so, only fluent proficiency (CEFR C1-level) in the target language is required, no programming skills. The following three files contain all English strings of LTeX:
+
+- [`vscode-ltex/package.nls.json`](https://github.com/valentjn/vscode-ltex/blob/develop/package.nls.json), e.g., German: [`vscode-ltex/package.nls.de.json`](https://github.com/valentjn/vscode-ltex/blob/develop/package.nls.de.json)
+- [`vscode-ltex/i18n/messages.nls.json`](https://github.com/valentjn/vscode-ltex/blob/develop/i18n/messages.nls.de.json), e.g., German: [`vscode-ltex/i18n/messages.nls.de.json`](https://github.com/valentjn/vscode-ltex/blob/develop/i18n/messages.nls.de.json)
+- [`ltex-ls/ltexls-core/src/main/resources/MessagesBundle.properties`](https://github.com/valentjn/ltex-ls/blob/develop/ltexls-core/src/main/resources/MessagesBundle.properties), e.g., German: [`ltex-ls/ltexls-core/src/main/resources/MessagesBundle_de.properties`](https://github.com/valentjn/ltex-ls/blob/develop/ltexls-core/src/main/resources/MessagesBundle_de.properties)
+
+You can translate LTeX into your language as follows: First, duplicate each of the German language files, replacing `de` with the [ISO 639-1 language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) of your language. Then, for each of the strings in the newly created files, look up the English original of the entry in the corresponding English file, and replace the German translation with the translation into your language.
+
+Of course, it's also possible to duplicate the English language files instead, but you only need to translate the strings that are shown in the user interface (the other ones are for logging, debugging, etc.). The German language files already provide the correct subset of strings.
 
 ## Contribution Guidelines
 
