@@ -11,6 +11,36 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 8.0.0 (upcoming)
+
+- Upgrade from Java 8 to Java 11 (see [announcement](deprecation-of-java-8.html), fixes [#39](https://github.com/valentjn/vscode-ltex/issues/39))
+- Add workaround to eliminate the need for workspace-specific setting names; [`ltex.dictionary`](settings.html#ltexdictionary), [`ltex.disabledRules`](settings.html#ltexdisabledrules), and [`ltex.enabledRules`](settings.html#ltexenabledrules) can now be used in multiple setting scopes (user settings, workspace settings, and workspace folder settings) at the same time without overriding each other; instead, the settings of the different scopes will be properly merged
+- Rename settings:
+  - `ltex.workspaceDictionary`, `ltex.workspaceFolderDictionary` → [`ltex.dictionary`](settings.html#ltexdictionary)
+  - `ltex.workspaceDisabledRules`, `ltex.workspaceFolderDisabledRules` → [`ltex.disabledRules`](settings.html#ltexdisabledrules)
+  - `ltex.workspaceEnabledRules`, `ltex.workspaceFolderEnabledRules` → [`ltex.enabledRules`](settings.html#ltexenabledrules)
+  - `ltex.ignoreInRuleSentence` → [`ltex.hiddenFalsePositives`](settings.html#ltexhiddenfalsepositives)
+  - `ltex.commands.ignore`, `ltex.commands.dummy` → [`ltex.latex.commands`](settings.html#ltexlatexcommands)
+  - `ltex.environments.ignore` → [`ltex.latex.environments`](settings.html#ltexlatexenvironments)
+  - `ltex.markdown.ignore`, `ltex.markdown.dummy` → [`ltex.markdown.nodes`](settings.html#ltexmarkdownnodes)
+- Rename object keys of [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget):
+  - `addToDictionary` → `dictionary`
+  - `disableRule` → `disabledRules`
+  - `ignoreRuleInSentence` → `hiddenFalsePositives`
+- Add `userExternalFile`, `workspaceExternalFile`, and `workspaceFolderExternalFile` enumeration values to [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget), which enables saving settings to external files (fixes [#144](https://github.com/valentjn/vscode-ltex/issues/144) and [#145](https://github.com/valentjn/vscode-ltex/issues/145))
+- Change default of [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) for `dictionary`, `disabledRules`, and `hiddenFalsePositives` to `workspaceFolderExternalFile`
+- Add [`ltex.statusBarItem`](settings.html#ltexstatusbaritem) to permanently display LTeX's status in the status bar (fixes [#141](https://github.com/valentjn/vscode-ltex/issues/141))
+- Add [`ltex.checkFrequency`](settings.html#ltexcheckfrequency) to control when LTeX checks documents (fixes [#142](https://github.com/valentjn/vscode-ltex/issues/142))
+- Add support for `\usepackage[LANGUAGE]{babel}` if in the same file as the text to be checked (fixes [#140](https://github.com/valentjn/vscode-ltex/issues/140))
+- Add support for more BibLaTeX commands such as `\autocite`, `\citeauthor`, etc. (fixes [#143](https://github.com/valentjn/vscode-ltex/issues/143))
+- Add support for overriding hard-coded command signatures (fixes [valentjn/ltex-ls#27](https://github.com/valentjn/ltex-ls/issues/27))
+- Add verification for downloaded files (LTeX LS and Java)
+- Move handling of external setting files from ltex-ls to vscode-ltex
+- Better resolve relative paths to external setting files, either with respect to the `.vscode` directory of the workspace folder if any, the `.vscode` directory of the workspace if any, or the global storage directory of the extension (fixes [#146](https://github.com/valentjn/vscode-ltex/issues/146))
+- Increase duration before sentences expire in the result cache to 60 minutes
+- Fix many settings changes cleared sentence cache, which led to performance issues, e.g., changing the [`ltex.enabled`](settings.html#ltexenabled) setting via magic comments (see [#134](https://github.com/valentjn/vscode-ltex/issues/134))
+- Remove dependency on `org.apache.httpcomponents:httpclient` by using the HTTP client that comes with Java 11 when connecting to an HTTP LanguageTool server
+
 ## 7.3.1 — “The Delay Correlation” (October 12, 2020)
 
 - Fix delayed publication of diagnostics by adding workaround to guess the caret position
