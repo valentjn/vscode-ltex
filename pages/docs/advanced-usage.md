@@ -11,25 +11,30 @@ redirect_from: "/docs/advanced-features.html"
 sidebar: "sidebar"
 ---
 
-## Workspace-Specific Dictionaries
+## Multi-Scope Settings
 
-The settings [`ltex.dictionary`](settings.html#ltexdictionary), [`ltex.disabledRules`](settings.html#ltexdisabledrules), and [`ltex.enabledRules`](settings.html#ltexenabledrules) are not only language-specific (e.g., different dictionaries can be used for different languages), but also workspace-specific. In some projects, you might want other dictionaries and sets of disabled/enabled rules than in other projects.
+Some of LTeX's settings are *multi-scope settings.* These settings are:
 
-VS Code has multiple scopes of settings:
+- [`ltex.dictionary`](settings.html#ltexdictionary)
+- [`ltex.disabledRules`](settings.html#ltexdisabledrules)
+- [`ltex.enabledRules`](settings.html#ltexenabledrules)
+- [`ltex.hiddenFalsePositives`](settings.html#ltexhiddenfalsepositives)
 
-- [user settings](https://code.visualstudio.com/docs/getstarted/settings) saved in the `settings.json` file of the user,
-- [workspace settings](https://code.visualstudio.com/docs/getstarted/settings) saved in the `.vscode/settings.json` file of the workspace (or in the `.code-workspace` file in the case of multi-root workspaces), and
-- [workspace folder (resource-specific) settings](https://code.visualstudio.com/docs/editor/multi-root-workspaces#_settings) set in the `.vscode/settings.json` file of the workspace folder (or in the `.vscode/settings.json` file of the workspace in the case of single-folder workspaces).
+To explain what multi-scope settings do, let us recap that VS Code has multiple scopes of settings:
 
-If you set a setting in multiple scopes, the scope with higher precedence usually shadows the scope with lower precedence. For instance, this would mean it would be impossible to supply additional words for the dictionary in workspace settings to amend the user dictionary, as the workspace dictionary would shadow the user dictionary.
+- [User settings](https://code.visualstudio.com/docs/getstarted/settings) saved in the `settings.json` file of the user
+- [Workspace settings](https://code.visualstudio.com/docs/getstarted/settings) saved in the `.vscode/settings.json` file of the workspace (or in the `*.code-workspace` file in the case of multi-root workspaces)
+- [Workspace folder (resource-specific) settings](https://code.visualstudio.com/docs/editor/multi-root-workspaces#_settings) set in the `.vscode/settings.json` file of the workspace folder (or in the `.vscode/settings.json` file of the workspace in the case of single-folder workspaces)
 
-However, the three settings [`ltex.dictionary`](settings.html#ltexdictionary), [`ltex.disabledRules`](settings.html#ltexdisabledrules), and [`ltex.enabledRules`](settings.html#ltexenabledrules) are specially treated by LTeX. When checking text, LTeX implicitly joins the values of these settings in user, workspace, and workspace folder scope to a single value. Therefore, these three settings are called “workspace-specific settings.”
+If you set a setting in multiple scopes at the same time, the scope with higher precedence usually shadows the scope with lower precedence. For instance, it would be impossible to supply additional words for the dictionary in workspace settings to amend the user dictionary, as the workspace dictionary would shadow the user dictionary.
 
-If you want to remove a word or rule from a workspace-specific setting in a scope with higher precedence without removing it altogether, you can include it with a dash (`-`) as prefix. For example, if your user dictionary includes the word `cromulent`, but you want that word to be marked as a spelling error in a specific project, simply add `-cromulent` to the project's workspace settings.
+However, multi-scope settings are specially treated by LTeX. When checking text, LTeX implicitly joins the lists of these settings in user, workspace, and workspace folder scopes (in that order) to a single list. This means if your user dictionary contains just `cromulent` and your workspace dictionary contains just `B-spline`, then the dictionary used by LTeX will consist of `cromulent` *and* `B-spline` (i.e., not just `B-spline`).
 
-Note that LTeX 7.x split each of the workspace-specific settings into three settings with different names, one for each of the possible scopes (e.g., `ltex.dictionary`, `ltex.workspaceDictionary`, and `ltex.workspaceFolderDictionary`) to circumvent VS Code's shadowing mechanism for settings. However, starting with LTeX 8.0.0, a workaround was introduced that eliminated the need for having these additional settings for the different scopes. If you still have `ltex.workspace*` or `ltex.workspaceFolder*` settings in your workspace or workspace folder settings, you can just rename them (e.g., `ltex.workspaceFolderDictionary` to just `ltex.dictionary`). The old names are still recognized, but deprecated.
+If you want to remove an entry from a workspace-specific setting in a scope with higher precedence without removing it altogether, you can include it with a dash (`-`) as prefix. For example, if your user dictionary includes the word `cromulent`, but you want that word to be marked as a spelling error in a specific project, simply add `-cromulent` to [`ltex.dictionary`](settings.html#ltexdictionary) in the project's workspace settings.
 
-You can specify the target scope for changing settings with quick fixes (e.g., `Add ... to dictionary`) with the [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) setting.
+Note that LTeX 7.x split each of the workspace-specific settings into three settings with different names, one for each of the possible scopes (e.g., `ltex.dictionary`, `ltex.workspaceDictionary`, and `ltex.workspaceFolderDictionary`) to circumvent VS Code's shadowing mechanism for settings. However, starting with LTeX 8.0.0, a workaround was introduced that eliminated the need for having these additional settings for the different scopes. If you still have `ltex.workspace*` or `ltex.workspaceFolder*` settings in your workspace or workspace folder settings, you can just rename them (e.g., `ltex.workspaceFolderDictionary` to just `ltex.dictionary`). The old names should still be recognized, but they are deprecated.
+
+You can specify the target scope for changing settings with quick fixes (e.g., `Add to dictionary`) with the [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) setting.
 
 ## Magic Comments
 
