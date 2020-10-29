@@ -145,15 +145,17 @@ Finally, please note the following caveats:
 - Similarly to magic comments, LTeX only switches languages for the rest of the file that contains the babel commands. There is no inheritance for files that are included, e.g., via `\input` or `\include`. This is because LTeX is a file-based checker and has no notion of “LaTeX projects” that comprise multiple TeX files. In particular, `\usepackage[LANGUAGE]{babel}` will not switch languages if your preamble is in a different file than your text. In this case, use one of the other supported babel commands.
 - It's not recommended (nor should it be necessary) to use magic comments and babel commands in the same document.
 
-## Ignoring False Positives with Regular Expressions
+## Hiding False Positives with Regular Expressions
 
-It's possible to use [`ltex.ignoreRuleInSentence`](settings.html#ltexignoreruleinsentence) to make LTeX ignore false positives based on regular expressions.
+It's possible to use [`ltex.hiddenFalsePositives`](settings.html#ltexhiddenfalsepositives) to make LTeX hide false positives based on regular expressions.
 
-The recommended way of using [`ltex.ignoreRuleInSentence`](settings.html#ltexignoreruleinsentence) is via the `Ignore in this sentence` quick fix. This will add a pair consisting of the ID of the LanguageTool rule and the “sentence” to [`ltex.ignoreRuleInSentence`](settings.html#ltexignoreruleinsentence). LanguageTool internally splits every document into “sentences,” based on language-dependent rules (usually punctuation).
+The recommended way of using [`ltex.hiddenFalsePositives`](settings.html#ltexhiddenfalsepositives) is via the `Hide false positive` quick fix. This will add a JSON string containing the ID of the LanguageTool rule and the “sentence” to [`ltex.hiddenFalsePositives`](settings.html#ltexhiddenfalsepositives). LanguageTool internally splits every document into “sentences,” based on language-dependent rules (usually punctuation).
 
-If you want to ignore sentences based on a general pattern, you can add rule/sentence pairs yourself to [`ltex.ignoreRuleInSentence`](settings.html#ltexignoreruleinsentence). The sentence in the pair is a [Java-compatible regular expression](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html).
+If you want to hide sentences based on a general pattern, you can add JSON strings with rule/sentence pairs yourself to [`ltex.hiddenFalsePositives`](settings.html#ltexhiddenfalsepositives). The format of the JSON string is documented in the description of the setting.
 
-Note that the checking whether a match returned by LanguageTool is a false positive according to [`ltex.ignoreRuleInSentence`](settings.html#ltexignoreruleinsentence) happens after the document has been split into sentences. Therefore, it's not possible to have regular expressions that span multiple sentences.
+The sentence in the JSON string is a [Java-compatible regular expression](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/regex/Pattern.html). Note that you have to replace all backslashes (`\`) in the regular expression with four backslashes (`\\\\`) as the JSON string will be parsed twice, once by VS Code for reading `settings.json` and once by LTeX to parse the JSON string itself.
+
+Finally, remember that checking whether a match returned by LanguageTool is a false positive according to [`ltex.hiddenFalsePositives`](settings.html#ltexhiddenfalsepositives) happens after the document has been split into sentences. Therefore, it's not possible to have regular expressions that span multiple sentences.
 
 ## LanguageTool HTTP Servers
 
