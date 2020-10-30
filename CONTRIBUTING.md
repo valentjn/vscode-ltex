@@ -80,7 +80,7 @@ Look at `.travis.yml` in the root directory of the respective project to learn h
 
 ### Versioning
 
-LT<sub>E</sub>X uses [semantic versioning](https://semver.org/) since version 5.0.0. The versions of vscode-ltex and ltex-ls are tied together: vscode-ltex automatically downloads the newest version of ltex-ls which has a version smaller or equal version than itself (`max {ltex-ls-version | ltex-ls-version <= vscode-ltex-version}`). This means that when a new version of ltex-ls is released, a new version of vscode-ltex has to be released as well, using the same version number (but not vice versa).
+LT<sub>E</sub>X uses [semantic versioning](https://semver.org/) since version 5.0.0. The versions of vscode-ltex and ltex-ls are tied together. vscode-ltex automatically downloads ltex-ls on the first start, and the version of ltex-ls is hard-coded into vscode-ltex. This means that when a new version of ltex-ls is released, a new version of vscode-ltex has to be released as well, using the same version number (but not vice versa).
 
 This ensures that each version of vscode-ltex always uses the same version of ltex-ls, making downgrades possible, and that we don't have to worry about upgrading mechanisms, since Visual Studio Code will do that for us.
 
