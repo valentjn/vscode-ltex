@@ -15,7 +15,7 @@ Thank you for considering contributing to LTeX. There are many ways to do so:
 - You can [report bugs](#how-to-report-bugs) to help make LTeX better.
 - You can [request features](#how-to-request-features) to make LTeX more powerful.
 - You can [contribute code](#how-to-contribute-code) to accelerate the pace of LTeX's development.
-- You can [test pre-release versions](#test-pre-releases) to help find bugs before they affect thousands of users.
+- You can [test pre-release versions](#pre-releases) to help find bugs before they affect thousands of users.
 - You can [edit the documentation](#documentation) to make LTeX easier to use.
 - You can [translate strings](#internationalization-i18n) into your mother tongue to make LTeX more accessible.
 
@@ -84,7 +84,7 @@ LT<sub>E</sub>X uses [semantic versioning](https://semver.org/) since version 5.
 
 This ensures that each version of vscode-ltex always uses the same version of ltex-ls, making downgrades possible, and that we don't have to worry about upgrading mechanisms, since Visual Studio Code will do that for us.
 
-### Test Pre-Releases
+### Pre-Releases
 
 You can help find bugs before they affect thousands of LTeX users by testing pre-releases.
 
