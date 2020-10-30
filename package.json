@@ -1719,69 +1719,6 @@
             }
           ]
         },
-        "ltex.ltex-ls.path": {
-          "type": "string",
-          "scope": "window",
-          "default": "",
-          "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.path.markdownDescription%",
-          "description": "%ltex.i18n.configuration.ltex.ltex-ls.path.description%"
-        },
-        "ltex.ltex-ls.languageToolHttpServerUri": {
-          "type": "string",
-          "scope": "window",
-          "default": "",
-          "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.languageToolHttpServerUri.markdownDescription%",
-          "description": "%ltex.i18n.configuration.ltex.ltex-ls.languageToolHttpServerUri.description%",
-          "examples": [
-            "http://localhost:8081/"
-          ]
-        },
-        "ltex.ltex-ls.logLevel": {
-          "type": "string",
-          "scope": "window",
-          "default": "fine",
-          "enum": [
-            "severe",
-            "warning",
-            "info",
-            "config",
-            "fine",
-            "finer",
-            "finest"
-          ],
-          "enumDescriptions": [
-            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.severe.enumDescription%",
-            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.warning.enumDescription%",
-            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.info.enumDescription%",
-            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.config.enumDescription%",
-            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.fine.enumDescription%",
-            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.finer.enumDescription%",
-            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.finest.enumDescription%"
-          ],
-          "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.markdownDescription%",
-          "description": "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.description%"
-        },
-        "ltex.java.path": {
-          "type": "string",
-          "scope": "window",
-          "default": "",
-          "markdownDescription": "%ltex.i18n.configuration.ltex.java.path.markdownDescription%",
-          "description": "%ltex.i18n.configuration.ltex.java.path.description%"
-        },
-        "ltex.java.initialHeapSize": {
-          "type": "integer",
-          "scope": "window",
-          "default": 64,
-          "markdownDescription": "%ltex.i18n.configuration.ltex.java.initialHeapSize.markdownDescription%",
-          "description": "%ltex.i18n.configuration.ltex.java.initialHeapSize.description%"
-        },
-        "ltex.java.maximumHeapSize": {
-          "type": "integer",
-          "scope": "window",
-          "default": 512,
-          "markdownDescription": "%ltex.i18n.configuration.ltex.java.maximumHeapSize.markdownDescription%",
-          "description": "%ltex.i18n.configuration.ltex.java.maximumHeapSize.description%"
-        },
         "ltex.latex.commands": {
           "type": "object",
           "scope": "resource",
@@ -1981,6 +1918,69 @@
           "default": "",
           "markdownDescription": "%ltex.i18n.configuration.ltex.additionalRules.word2VecModel.markdownDescription%",
           "description": "%ltex.i18n.configuration.ltex.additionalRules.word2VecModel.description%"
+        },
+        "ltex.ltex-ls.path": {
+          "type": "string",
+          "scope": "window",
+          "default": "",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.path.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.ltex-ls.path.description%"
+        },
+        "ltex.ltex-ls.languageToolHttpServerUri": {
+          "type": "string",
+          "scope": "window",
+          "default": "",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.languageToolHttpServerUri.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.ltex-ls.languageToolHttpServerUri.description%",
+          "examples": [
+            "http://localhost:8081/"
+          ]
+        },
+        "ltex.ltex-ls.logLevel": {
+          "type": "string",
+          "scope": "window",
+          "default": "fine",
+          "enum": [
+            "severe",
+            "warning",
+            "info",
+            "config",
+            "fine",
+            "finer",
+            "finest"
+          ],
+          "enumDescriptions": [
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.severe.enumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.warning.enumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.info.enumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.config.enumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.fine.enumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.finer.enumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.finest.enumDescription%"
+          ],
+          "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.description%"
+        },
+        "ltex.java.path": {
+          "type": "string",
+          "scope": "window",
+          "default": "",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.java.path.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.java.path.description%"
+        },
+        "ltex.java.initialHeapSize": {
+          "type": "integer",
+          "scope": "window",
+          "default": 64,
+          "markdownDescription": "%ltex.i18n.configuration.ltex.java.initialHeapSize.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.java.initialHeapSize.description%"
+        },
+        "ltex.java.maximumHeapSize": {
+          "type": "integer",
+          "scope": "window",
+          "default": 512,
+          "markdownDescription": "%ltex.i18n.configuration.ltex.java.maximumHeapSize.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.java.maximumHeapSize.description%"
         },
         "ltex.sentenceCacheSize": {
           "type": "integer",
