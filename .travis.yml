@@ -14,7 +14,7 @@ stages:
   - "deploy"
 install: &commonInstall
   - "npm install"
-  - "npm install -g vsce@1.79.3 ovsx@0.1.0-next.bcce4bc"
+  - "npm install -g vsce@1.81.1 ovsx@0.1.0-next.bcce4bc"
 script: &commonScript
   - "vsce package"
 jobs:
