@@ -185,36 +185,19 @@ export default class ExternalFileManager {
 
     switch (scope) {
       case Code.ConfigurationTarget.Global: {
-        defaultDirPath = Path.resolve(this._context.globalStoragePath);
+        defaultDirPath = this.getUserSettingsDirPath();
         settingValue = ((settingValuePerScope != null) ?
             settingValuePerScope.globalValue : null);
         break;
       }
       case Code.ConfigurationTarget.Workspace: {
-        if (Code.workspace.workspaceFolders != null) {
-          const defaultDirUri: Code.Uri = Code.workspace.workspaceFolders[0].uri;
-
-          if (defaultDirUri.scheme == 'file') {
-            defaultDirPath = Path.resolve(defaultDirUri.fsPath, '.vscode');
-          }
-        }
-
+        defaultDirPath = this.getWorkspaceSettingsDirPath();
         settingValue = ((settingValuePerScope != null) ?
             settingValuePerScope.workspaceValue : null);
         break;
       }
       case Code.ConfigurationTarget.WorkspaceFolder: {
-        const workspaceFolder: Code.WorkspaceFolder | undefined =
-            Code.workspace.getWorkspaceFolder(uri);
-
-        if (workspaceFolder != null) {
-          const defaultDirUri: Code.Uri = workspaceFolder.uri;
-
-          if (defaultDirUri.scheme == 'file') {
-            defaultDirPath = Path.resolve(defaultDirUri.fsPath, '.vscode');
-          }
-        }
-
+        defaultDirPath = this.getWorkspaceFolderSettingsDirPath(uri);
         settingValue = ((settingValuePerScope != null) ?
             settingValuePerScope.workspaceFolderValue : null);
         break;
@@ -258,6 +241,26 @@ export default class ExternalFileManager {
 
     if (settingValue == null) settingValue = null;
     return {settingValue: settingValue, externalFiles: externalFiles};
+  }
+
+  public getUserSettingsDirPath(): string {
+    return Path.resolve(this._context.globalStoragePath);
+  }
+
+  public getWorkspaceSettingsDirPath(): string | null {
+    if (Code.workspace.workspaceFolders == null) return null;
+    const workspaceDirUri: Code.Uri = Code.workspace.workspaceFolders[0].uri;
+    if (workspaceDirUri.scheme != 'file') return null;
+    return Path.resolve(workspaceDirUri.fsPath, '.vscode');
+  }
+
+  public getWorkspaceFolderSettingsDirPath(uri: Code.Uri): string | null {
+    const workspaceFolder: Code.WorkspaceFolder | undefined =
+        Code.workspace.getWorkspaceFolder(uri);
+    if (workspaceFolder == null) return null;
+    const workspaceFolderDirUri: Code.Uri = workspaceFolder.uri;
+    if (workspaceFolderDirUri.scheme != 'file') return null;
+    return Path.resolve(workspaceFolderDirUri.fsPath, '.vscode');
   }
 
   private static normalizePath(path: string): string {
