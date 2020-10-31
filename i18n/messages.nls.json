@@ -12,7 +12,6 @@
   "couldNotDeleteLeavingTemporaryDirectoryOnDisk": "Could not delete '{0}', leaving temporary directory on disk.",
   "couldNotDeleteLeavingTemporaryFileOnDisk": "Could not delete '{0}', leaving temporary file on disk.",
   "couldNotDownloadExtractRunJava": "Could not download/extract/run Java, please see the output panel 'LTeX Language Client' for details.",
-  "couldNotDownloadOrExtractJava11": "Could not download or extract Java 11, but a working installation of Java {0} (version {1}) has been found on your system. Running LTeX with Java versions prior to 11 is deprecated. [In the future, LTeX will require Java 11 or newer.](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html) Please upgrade to Java 11 or newer as soon as possible.",
   "couldNotDownloadOrExtractLtexLs": "Could not download or extract ltex-ls.",
   "couldNotFindCompatibleVersionOfLtexLsIn": "Could not find a compatible version of ltex-ls in '{0}'.",
   "couldNotFindCompatibleVersionOfLtexLsOnGitHub": "Could not find a compatible version of ltex-ls on GitHub. LTeX version is '{0}', available ltex-ls versions are '{1}'.",
