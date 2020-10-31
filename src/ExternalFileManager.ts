@@ -14,18 +14,18 @@ type LanguageSpecificSettingValue = {
   [language: string]: string[];
 };
 
-type LanguageSpecificExternalFilePaths = {
-  [language: string]: ExternalFilePath[];
+type LanguageSpecificExternalFiles = {
+  [language: string]: ExternalFile[];
 };
 
-type ExternalFilePath = {
+type ExternalFile = {
   originalPath: string | null;
   resolvedPath: string;
 };
 
 type SettingAnalysis = {
   settingValue: LanguageSpecificSettingValue | null;
-  externalFilePaths: LanguageSpecificExternalFilePaths;
+  externalFiles: LanguageSpecificExternalFiles;
 };
 
 export default class ExternalFileManager {
@@ -72,14 +72,14 @@ export default class ExternalFileManager {
     }
 
     const settingAnalysis: SettingAnalysis = this.analyzeSetting(uri, settingName, scope);
-    const externalFilePaths: LanguageSpecificExternalFilePaths = settingAnalysis.externalFilePaths;
+    const externalFiles: LanguageSpecificExternalFiles = settingAnalysis.externalFiles;
     const newExternalFilePaths: Set<string> = new Set();
 
-    for (const language in externalFilePaths) {
-      if (!Object.prototype.hasOwnProperty.call(externalFilePaths, language)) continue;
+    for (const language in externalFiles) {
+      if (!Object.prototype.hasOwnProperty.call(externalFiles, language)) continue;
 
-      for (const externalFilePath of externalFilePaths[language]) {
-        newExternalFilePaths.add(externalFilePath.resolvedPath);
+      for (const externalFile of externalFiles[language]) {
+        newExternalFilePaths.add(externalFile.resolvedPath);
       }
     }
 
@@ -113,11 +113,11 @@ export default class ExternalFileManager {
 
   public getFirstExternalFilePath(uri: Code.Uri, settingName: string,
         scope: Code.ConfigurationTarget, language: string): string | null {
-    const externalFilePaths: LanguageSpecificExternalFilePaths = this.analyzeSetting(
-        uri, settingName, scope, language).externalFilePaths;
-    return ((Object.prototype.hasOwnProperty.call(externalFilePaths, language) &&
-        (externalFilePaths[language].length > 0)) ?
-        externalFilePaths[language][0].resolvedPath : null);
+    const externalFiles: LanguageSpecificExternalFiles = this.analyzeSetting(
+        uri, settingName, scope, language).externalFiles;
+    return ((Object.prototype.hasOwnProperty.call(externalFiles, language) &&
+        (externalFiles[language].length > 0)) ?
+        externalFiles[language][0].resolvedPath : null);
   }
 
   private analyzeSetting(uri: Code.Uri, settingName: string,
@@ -170,10 +170,10 @@ export default class ExternalFileManager {
     }
 
     const languages: string[] = ((language != null) ? [language] : this._languages);
-    const filePaths: LanguageSpecificExternalFilePaths = {};
+    const externalFiles: LanguageSpecificExternalFiles = {};
 
     for (const curLanguage of languages) {
-      filePaths[curLanguage] = [];
+      externalFiles[curLanguage] = [];
 
       if ((settingValue != null) &&
             Object.prototype.hasOwnProperty.call(settingValue, curLanguage)) {
@@ -186,19 +186,19 @@ export default class ExternalFileManager {
             filePath = Path.resolve(defaultDirPath, filePath);
           }
 
-          filePaths[curLanguage].push({originalPath: originalFilePath, resolvedPath: filePath});
+          externalFiles[curLanguage].push({originalPath: originalFilePath, resolvedPath: filePath});
         }
       }
 
       if (defaultDirPath != null) {
         const curLanguageSuffix: string = curLanguage.replace(/[^A-Za-z0-9\-_]/, '');
-        filePaths[curLanguage].push({originalPath: '', resolvedPath:
+        externalFiles[curLanguage].push({originalPath: '', resolvedPath:
             Path.join(defaultDirPath, `ltex.${settingName}.${curLanguageSuffix}.txt`)});
       }
     }
 
     if (settingValue == null) settingValue = null;
-    return {settingValue: settingValue, externalFilePaths: filePaths};
+    return {settingValue: settingValue, externalFiles: externalFiles};
   }
 
   private static normalizePath(path: string): string {
@@ -238,17 +238,17 @@ export default class ExternalFileManager {
     this.updateWatchers(uri, settingName, scope);
 
     const settingAnalysis: SettingAnalysis = this.analyzeSetting(uri, settingName, scope);
-    const externalFilePaths: LanguageSpecificExternalFilePaths = settingAnalysis.externalFilePaths;
+    const externalFiles: LanguageSpecificExternalFiles = settingAnalysis.externalFiles;
     const settingValue: LanguageSpecificSettingValue = ((settingAnalysis.settingValue != null) ?
         settingAnalysis.settingValue : {});
     const result: LanguageSpecificSettingValue = {};
 
-    for (const language in externalFilePaths) {
-      if (!Object.prototype.hasOwnProperty.call(externalFilePaths, language)) continue;
+    for (const language in externalFiles) {
+      if (!Object.prototype.hasOwnProperty.call(externalFiles, language)) continue;
       result[language] = [];
 
-      for (const externalFilePath of externalFilePaths[language]) {
-        this.loadFileAndPushToArray(externalFilePath.resolvedPath, settingName, result[language]);
+      for (const externalFile of externalFiles[language]) {
+        this.loadFileAndPushToArray(externalFile.resolvedPath, settingName, result[language]);
       }
     }
 
@@ -258,9 +258,9 @@ export default class ExternalFileManager {
 
       for (const entry of settingValue[language]) {
         if (entry.startsWith(':') &&
-              Object.prototype.hasOwnProperty.call(settingAnalysis.externalFilePaths, language)) {
+              Object.prototype.hasOwnProperty.call(settingAnalysis.externalFiles, language)) {
           const filePath: string | null = ExternalFileManager.getResolvedPath(
-              settingAnalysis.externalFilePaths[language], entry.substr(1));
+              settingAnalysis.externalFiles[language], entry.substr(1));
 
           if (filePath != null) {
             this.loadFileAndPushToArray(filePath, settingName, result[language]);
@@ -284,10 +284,10 @@ export default class ExternalFileManager {
     }
   }
 
-  private static getResolvedPath(externalFilePaths: ExternalFilePath[],
-        originalFilePath: string): string | null {
-    for (const externalFilePath of externalFilePaths) {
-      if (externalFilePath.originalPath == originalFilePath) return externalFilePath.resolvedPath;
+  private static getResolvedPath(filePathInfos: ExternalFile[], originalFilePath: string):
+        string | null {
+    for (const filePathInfo of filePathInfos) {
+      if (filePathInfo.originalPath == originalFilePath) return filePathInfo.resolvedPath;
     }
 
     return null;
