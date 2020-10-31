@@ -7,6 +7,8 @@
   "ltex.i18n.commands.ltex.clearDiagnosticsInCurrentDocument.markdownDescription": "Clears all LTeX diagnostics in the active document.\n\nThe active document is the one whose editor currently has focus, or, if none has focus, the one which was changed most recently.",
   "ltex.i18n.commands.ltex.clearAllDiagnostics.title": "LTeX: Clear all diagnostics",
   "ltex.i18n.commands.ltex.clearAllDiagnostics.markdownDescription": "Clears all LTeX diagnostics.",
+  "ltex.i18n.commands.ltex.showStatusInformation.title": "LTeX: Show status information",
+  "ltex.i18n.commands.ltex.showStatusInformation.markdownDescription": "Shows information about the current status of LTeX in the `LTeX Language Client` output panel.\n\nInformation about ltex-ls is only included if ltex-ls is running and not checking a document.",
   "ltex.i18n.commands.ltex.reportBug.title": "LTeX: Report bug in LTeX",
   "ltex.i18n.commands.ltex.reportBug.markdownDescription": "Shows a message box with a link to instructions on how to report bugs in LTeX and a button to copy a bug report.\n\nWhen clicking the button, LTeX will copy a pre-filled bug report to the clipboard, which can then be pasted into the GitHub issue.",
   "ltex.i18n.commands.ltex.requestFeature.title": "LTeX: Request feature for LTeX",

@@ -133,6 +133,21 @@ export default class ExternalFileManager {
     }
   }
 
+  public getAllWatchedExternalFiles(): string[] {
+    const filePaths: string[] = [];
+
+    for (const settingName of ExternalFileManager._settingNames) {
+      const watchers: {[filePath: string]: Fs.FSWatcher} = this._watchers[settingName];
+
+      for (const filePath in watchers) {
+        if (!Object.prototype.hasOwnProperty.call(watchers, filePath)) continue;
+        filePaths.push(filePath);
+      }
+    }
+
+    return filePaths;
+  }
+
   public getFirstExternalFilePath(uri: Code.Uri, settingName: string,
         scope: Code.ConfigurationTarget, language: string): string | null {
     const externalFiles: LanguageSpecificExternalFiles = this.analyzeSetting(

@@ -16,6 +16,7 @@ import {I18n, i18n} from './I18n';
 import Logger from './Logger';
 import LoggingOutputChannel from './LoggingOutputChannel';
 import StatusBarItemManager from './StatusBarItemManager';
+import StatusPrinter from './StatusPrinter';
 import WorkspaceConfigurationRequestHandler from './WorkspaceConfigurationRequestHandler';
 
 export class Api {
@@ -63,7 +64,8 @@ async function languageClientIsReady(languageClient: CodeLanguageClient.Language
 }
 
 async function startLanguageClient(context: Code.ExtensionContext,
-      externalFileManager: ExternalFileManager): Promise<CodeLanguageClient.LanguageClient | null> {
+      externalFileManager: ExternalFileManager, statusPrinter: StatusPrinter):
+      Promise<CodeLanguageClient.LanguageClient | null> {
   if (dependencyManager == null) {
     Logger.error('DependencyManager not initialized!');
     return Promise.resolve(null);
@@ -116,6 +118,7 @@ async function startLanguageClient(context: Code.ExtensionContext,
 
   languageClient.onReady().then(languageClientIsReady.bind(
       null, languageClient, externalFileManager, statusBarItemManager));
+  statusPrinter.languageClient = languageClient;
 
   Logger.log(i18n('startingLtexLs'));
   Logger.logExecutable(serverOptions);
@@ -142,18 +145,18 @@ export async function activate(context: Code.ExtensionContext): Promise<Api> {
   dependencyManager = new DependencyManager(context);
 
   const externalFileManager: ExternalFileManager = new ExternalFileManager(context);
-  const bugReporter: BugReporter = new BugReporter(context, dependencyManager);
-  const commandHandler: CommandHandler =
-      new CommandHandler(context, externalFileManager, bugReporter);
+  const statusPrinter: StatusPrinter = new StatusPrinter(
+      context, dependencyManager, externalFileManager);
+  const bugReporter: BugReporter = new BugReporter(context, dependencyManager, statusPrinter);
+  const commandHandler: CommandHandler = new CommandHandler(
+      context, externalFileManager, statusPrinter, bugReporter);
 
-  // Allow to enable languageTool in specific workspaces
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
   const enabled: any = workspaceConfig.get('enabled');
 
   if ((enabled === true) || (enabled.length > 0)) {
     try {
-      // create the language client
-      api.languageClient = await startLanguageClient(context, externalFileManager);
+      api.languageClient = await startLanguageClient(context, externalFileManager, statusPrinter);
       commandHandler.languageClient = api.languageClient;
     } catch (e) {
       Logger.error(i18n('couldNotStartLanguageClient'), e);

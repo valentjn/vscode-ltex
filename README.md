@@ -116,6 +116,7 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
     - [`LTeX: Check all documents in workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-all-documents-in-workspace)
     - [`LTeX: Clear diagnostics in current document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-clear-diagnostics-in-current-document)
     - [`LTeX: Clear all diagnostics`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-clear-all-diagnostics)
+    - [`LTeX: Show status information`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-show-status-information)
     - [`LTeX: Report bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-report-bug-in-ltex)
     - [`LTeX: Request feature for LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-request-feature-for-ltex)
   - [FAQ](https://valentjn.github.io/vscode-ltex/docs/faq.html)

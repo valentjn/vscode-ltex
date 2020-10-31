@@ -14,10 +14,12 @@ import * as Querystring from 'querystring';
 import DependencyManager from './DependencyManager';
 import {i18n} from './I18n';
 import Logger from './Logger';
+import StatusPrinter from './StatusPrinter';
 
 export default class BugReporter {
   private _context: Code.ExtensionContext;
   private _dependencyManager: DependencyManager;
+  private _statusPrinter: StatusPrinter;
 
   private static readonly _maxNumberOfDocumentLines: number = 200;
   private static readonly _maxNumberOfConfigLines: number = 1000;
@@ -26,12 +28,16 @@ export default class BugReporter {
   private static readonly _bugReportUrl: string = 'https://github.com/valentjn/vscode-ltex/' +
       'issues/new?assignees=&labels=1-bug%2C+2-unconfirmed&template=bug-report.md&title=&body=';
 
-  public constructor(context: Code.ExtensionContext, dependencyManager: DependencyManager) {
+  public constructor(context: Code.ExtensionContext, dependencyManager: DependencyManager,
+        statusInformationPrinter: StatusPrinter) {
     this._context = context;
     this._dependencyManager = dependencyManager;
+    this._statusPrinter = statusInformationPrinter;
   }
 
   private createReport(): string {
+    this._statusPrinter.print();
+
     const templatePath: string = Path.resolve(
         this._context.extensionPath, '.github', 'ISSUE_TEMPLATE', 'bug-report.md');
     let bugReport: string = Fs.readFileSync(templatePath, {encoding: 'utf-8'});

@@ -14,6 +14,7 @@ import ExternalFileManager from './ExternalFileManager';
 import {i18n} from './I18n';
 import Logger from './Logger';
 import ProgressStack from './ProgressStack';
+import StatusPrinter from './StatusPrinter';
 import WorkspaceConfigurationRequestHandler from './WorkspaceConfigurationRequestHandler';
 
 type LanguageSpecificSettingValue = {
@@ -21,6 +22,7 @@ type LanguageSpecificSettingValue = {
 };
 
 export default class CommandHandler {
+  private _statusPrinter: StatusPrinter;
   private _bugReporter: BugReporter;
   private _languageClient: CodeLanguageClient.LanguageClient | null;
   private _externalFileManager: ExternalFileManager;
@@ -29,7 +31,8 @@ export default class CommandHandler {
       'issues/new?assignees=&labels=1-feature-request&template=feature-request.md&title=';
 
   public constructor(context: Code.ExtensionContext, externalFileManager: ExternalFileManager,
-        bugReporter: BugReporter) {
+        statusInformationPrinter: StatusPrinter, bugReporter: BugReporter) {
+    this._statusPrinter = statusInformationPrinter;
     this._bugReporter = bugReporter;
     this._languageClient = null;
     this._externalFileManager = externalFileManager;
@@ -43,6 +46,8 @@ export default class CommandHandler {
         this.clearDiagnosticsInCurrentDocument.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.clearAllDiagnostics',
         this.clearAllDiagnostics.bind(this)));
+    context.subscriptions.push(Code.commands.registerCommand('ltex.showStatusInformation',
+        this.showStatusInformation.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.reportBug',
         this._bugReporter.report.bind(this._bugReporter)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.requestFeature',
@@ -169,6 +174,12 @@ export default class CommandHandler {
 
     const diagnostics: Code.DiagnosticCollection | undefined = this._languageClient.diagnostics;
     if (diagnostics != null) diagnostics.clear();
+    return Promise.resolve(true);
+  }
+
+  private async showStatusInformation(): Promise<boolean> {
+    await this._statusPrinter.print();
+    Logger.showClientOutputChannel();
     return Promise.resolve(true);
   }
 

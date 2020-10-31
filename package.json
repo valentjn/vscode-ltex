@@ -70,6 +70,11 @@
         "markdownDescription": "%ltex.i18n.commands.ltex.clearAllDiagnostics.markdownDescription%"
       },
       {
+        "command": "ltex.showStatusInformation",
+        "title": "%ltex.i18n.commands.ltex.showStatusInformation.title%",
+        "markdownDescription": "%ltex.i18n.commands.ltex.showStatusInformation.markdownDescription%"
+      },
+      {
         "command": "ltex.reportBug",
         "title": "%ltex.i18n.commands.ltex.reportBug.title%",
         "markdownDescription": "%ltex.i18n.commands.ltex.reportBug.markdownDescription%"
