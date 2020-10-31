@@ -19,7 +19,7 @@
   "couldNotFindJavaIn": "Could not find bundled Java in '{0}'.",
   "couldNotFinishTask": "Could not finish task, task stack already empty.",
   "couldNotGetLtexLsExecutable": "Could not get ltex-ls executable, has to be installed first.",
-  "couldNotGetLtexVersion": "Could not get LTeX version.",
+  "couldNotGetVscodeLtexVersion": "Could not get vscode-ltex version.",
   "couldNotGetPathNameFromUrl": "Could not get path name from URL '{0}'.",
   "couldNotInstallLtexLs": "Could not install ltex-ls, please see the output panel 'LTeX Language Client' for details.",
   "couldNotReadExternalSettingFile": "Could not read external setting file '{0}'.",

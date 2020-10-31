@@ -25,7 +25,7 @@ import ProgressStack from './ProgressStack';
 
 export default class DependencyManager {
   private _context: Code.ExtensionContext;
-  private _ltexVersion: string;
+  private _vscodeLtexVersion: string;
   private _ltexLsPath: string | null = null;
   private _javaPath: string | null = null;
   private _ltexLsVersion: string | null = null;
@@ -62,10 +62,10 @@ export default class DependencyManager {
 
   public constructor(context: Code.ExtensionContext) {
     this._context = context;
-    const ltexExtension: Code.Extension<any> | undefined =
+    const vscodeLtexExtension: Code.Extension<any> | undefined =
         Code.extensions.getExtension('valentjn.vscode-ltex');
-    if (ltexExtension == null) throw new Error(i18n('couldNotGetLtexVersion'));
-    this._ltexVersion = ltexExtension.packageJSON.version;
+    if (vscodeLtexExtension == null) throw new Error(i18n('couldNotGetVscodeLtexVersion'));
+    this._vscodeLtexVersion = vscodeLtexExtension.packageJSON.version;
   }
 
   private static isValidPath(path: string | null): boolean {
@@ -173,7 +173,7 @@ export default class DependencyManager {
     let latestVersion: string | null = null;
 
     versions.forEach((version: string) => {
-      if (SemVer.valid(version) && SemVer.lte(version, this._ltexVersion) &&
+      if (SemVer.valid(version) && SemVer.lte(version, this._vscodeLtexVersion) &&
             ((latestVersion == null) || SemVer.gt(version, latestVersion))) {
         latestVersion = version;
       }
@@ -600,6 +600,10 @@ export default class DependencyManager {
     env['JAVA_OPTS'] = javaArguments.join(' ');
 
     return {command: ltexLsScriptPath, args: [], options: {'env': env}};
+  }
+
+  public get vscodeLtexVersion(): string {
+    return this._vscodeLtexVersion;
   }
 
   public get ltexLsVersion(): string | null {
