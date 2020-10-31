@@ -64,7 +64,7 @@
   "redirectedTo": "Redirected to '{0}'...",
   "removeLanguageSupportExtension": "You should remove the LTeX language support extension now. It is not needed anymore.",
   "removeLanguageSupportExtensions": "You should remove the LTeX language support extensions now. They are not needed anymore.",
-  "requestFailedWithContentType": "Request failed with content type {0}.",
+  "requestFailedWithContentType": "Request failed with content type '{0}'.",
   "requestFailedWithStatusCode": "Request failed with status code {0}.",
   "responseBody": "Response body: {0}.",
   "reviewSummaryOfImportantMajorChanges": "Review a summary of important major changes.",
