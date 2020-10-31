@@ -472,6 +472,7 @@ export default class DependencyManager {
     Logger.error(i18n('downloadExtractionRunOfJavaFailed'));
     Logger.log(i18n('youMightWantToTryOfflineInstallationSee',
         DependencyManager._offlineInstructionsUrl));
+    Logger.showClientOutputChannel();
     return await this.showOfflineInstallationInstructions(i18n('couldNotDownloadExtractRunJava'));
   }
 
@@ -547,8 +548,16 @@ export default class DependencyManager {
       this._javaVersion = javaVersion;
       return true;
     } else {
-      Logger.log(i18n('testFailed'));
-      Logger.log(i18n('exitCodeOfLtexLs', childProcess.status));
+      Logger.error(i18n('testFailed'), childProcess.error);
+
+      if ((childProcess.status != null) && (childProcess.status != 0)) {
+        Logger.log(i18n('ltexLsTerminatedWithNonZeroExitCode', childProcess.status));
+      } else if (childProcess.signal != null) {
+        Logger.log(i18n('ltexLsTerminatedDueToSignal', childProcess.signal));
+      } else {
+        Logger.log(i18n('ltexLsDidNotPrintExpectVersionInformation'));
+      }
+
       Logger.log(i18n('stdoutOfLtexLs'));
       Logger.log(childProcess.stdout);
       Logger.log(i18n('stderrOfLtexLs'));
