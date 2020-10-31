@@ -10,6 +10,9 @@ import * as Fs from 'fs';
 import * as Os from 'os';
 import * as Path from 'path';
 
+import {i18n} from './I18n';
+import Logger from './Logger';
+
 type LanguageSpecificSettingValue = {
   [language: string]: string[];
 };
@@ -21,6 +24,7 @@ type LanguageSpecificExternalFiles = {
 type ExternalFile = {
   originalPath: string | null;
   resolvedPath: string;
+  explicit: boolean;
 };
 
 type SettingAnalysis = {
@@ -73,13 +77,17 @@ export default class ExternalFileManager {
 
     const settingAnalysis: SettingAnalysis = this.analyzeSetting(uri, settingName, scope);
     const externalFiles: LanguageSpecificExternalFiles = settingAnalysis.externalFiles;
+    const newExternalFiles: Set<ExternalFile> = new Set();
     const newExternalFilePaths: Set<string> = new Set();
 
     for (const language in externalFiles) {
       if (!Object.prototype.hasOwnProperty.call(externalFiles, language)) continue;
 
       for (const externalFile of externalFiles[language]) {
-        newExternalFilePaths.add(externalFile.resolvedPath);
+        if (!newExternalFilePaths.has(externalFile.resolvedPath)) {
+          newExternalFiles.add(externalFile);
+          newExternalFilePaths.add(externalFile.resolvedPath);
+        }
       }
     }
 
@@ -91,7 +99,9 @@ export default class ExternalFileManager {
       }
     }
 
-    for (const filePath of newExternalFilePaths) {
+    for (const externalFile of newExternalFiles) {
+      const filePath: string = externalFile.resolvedPath;
+
       if (!oldExternalFilePaths.has(filePath)) {
         let watcher: Fs.FSWatcher | null = null;
         let contents: string | null = null;
@@ -99,12 +109,17 @@ export default class ExternalFileManager {
         try {
           watcher = Fs.watch(filePath, this.onFileWatcherEvent.bind(this));
           contents = Fs.readFileSync(filePath, {encoding: 'utf-8'});
-        } catch {
+        } catch (e) {
+          if (externalFile.explicit) {
+            Logger.warn(i18n('couldNotReadExternalSettingFile', filePath), e);
+          }
+
           watcher = null;
           contents = null;
+          continue;
         }
 
-        if ((watcher == null) || (contents == null)) continue;
+        Logger.log(i18n('startedWatchingExternalSettingFile', filePath));
         this._watchers[settingName][filePath] = watcher;
         this._contents[settingName][filePath] = contents;
       }
@@ -186,14 +201,21 @@ export default class ExternalFileManager {
             filePath = Path.resolve(defaultDirPath, filePath);
           }
 
-          externalFiles[curLanguage].push({originalPath: originalFilePath, resolvedPath: filePath});
+          externalFiles[curLanguage].push({
+            originalPath: originalFilePath,
+            resolvedPath: filePath,
+            explicit: true,
+          });
         }
       }
 
       if (defaultDirPath != null) {
         const curLanguageSuffix: string = curLanguage.replace(/[^A-Za-z0-9\-_]/, '');
-        externalFiles[curLanguage].push({originalPath: '', resolvedPath:
-            Path.join(defaultDirPath, `ltex.${settingName}.${curLanguageSuffix}.txt`)});
+        externalFiles[curLanguage].push({
+          originalPath: '',
+          resolvedPath: Path.join(defaultDirPath, `ltex.${settingName}.${curLanguageSuffix}.txt`),
+          explicit: false,
+        });
       }
     }
 
@@ -209,6 +231,8 @@ export default class ExternalFileManager {
 
   private onFileWatcherEvent(eventType: string, filePath: string): void {
     if (!Fs.existsSync(filePath)) {
+      Logger.log(i18n('stoppedWatchingExternalSettingFileDueToDeletion', filePath));
+
       for (const settingName of ExternalFileManager._settingNames) {
         if (!Object.prototype.hasOwnProperty.call(this._contents[settingName], filePath)) {
           continue;
@@ -222,9 +246,12 @@ export default class ExternalFileManager {
 
       try {
         contents = Fs.readFileSync(filePath, {encoding: 'utf-8'});
-      } catch {
+      } catch (e) {
+        Logger.warn(i18n('couldNotReadExternalSettingFile', filePath), e);
         return;
       }
+
+      Logger.log(i18n('updatedExternalSettingFile', filePath));
 
       for (const settingName of ExternalFileManager._settingNames) {
         if (!Object.prototype.hasOwnProperty.call(this._contents[settingName], filePath)) continue;
@@ -303,23 +330,55 @@ export default class ExternalFileManager {
     } else {
       this.ensureParentDirExists(filePath);
       this.ensureFileExists(filePath);
-      contents = Fs.readFileSync(filePath, {encoding: 'utf-8'});
+
+      try {
+        contents = Fs.readFileSync(filePath, {encoding: 'utf-8'});
+      } catch (e) {
+        Logger.error(i18n('couldNotReadExternalSettingFile', filePath), e);
+        return;
+      }
+
+      Logger.log(i18n('readExternalSettingFile', filePath));
     }
 
     if ((contents.match(/[^ \r\n]/) != null) && !contents.endsWith(Os.EOL)) contents += Os.EOL;
     contents += entries.join(Os.EOL) + Os.EOL;
 
     if (externalFileKnown) this.ensureParentDirExists(filePath);
-    Fs.writeFileSync(filePath, contents, {encoding: 'utf-8'});
+
+    try {
+      Fs.writeFileSync(filePath, contents, {encoding: 'utf-8'});
+    } catch (e) {
+      Logger.error(i18n('couldNotAppendNewEntriesToExternalSettingFile', filePath), e);
+      return;
+    }
+
+    Logger.log(i18n('appendedNewEntriesToExternalSettingFile', filePath));
     if (externalFileKnown) this._contents[settingName][filePath] = contents;
   }
 
-  private ensureParentDirExists(path: string): void {
-    const parentDirPath: string = Path.dirname(path);
-    if (!Fs.existsSync(parentDirPath)) Fs.mkdirSync(parentDirPath);
+  private ensureParentDirExists(filePath: string): void {
+    const parentDirPath: string = Path.dirname(filePath);
+
+    if (!Fs.existsSync(parentDirPath)) {
+      try {
+        Fs.mkdirSync(parentDirPath);
+        Logger.log(i18n('createdDirectoryForExternalSettingFile', parentDirPath, filePath));
+      } catch (e) {
+        Logger.warn(i18n('couldNotCreateDirectoryForExternalSettingFile',
+            parentDirPath, filePath), e);
+      }
+    }
   }
 
   private ensureFileExists(filePath: string): void {
-    if (!Fs.existsSync(filePath)) Fs.writeFileSync(filePath, '', {encoding: 'utf-8'});
+    if (!Fs.existsSync(filePath)) {
+      try {
+        Fs.writeFileSync(filePath, '', {encoding: 'utf-8'});
+        Logger.log(i18n('createdExternalSettingFile', filePath));
+      } catch (e) {
+        Logger.warn(i18n('couldNotCreateExternalSettingFile', filePath), e);
+      }
+    }
   }
 }
