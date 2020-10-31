@@ -32,6 +32,14 @@ type SettingAnalysis = {
   externalFiles: LanguageSpecificExternalFiles;
 };
 
+type SettingValuePerScope = {
+  key: string;
+  defaultValue?: LanguageSpecificSettingValue;
+  globalValue?: LanguageSpecificSettingValue;
+  workspaceValue?: LanguageSpecificSettingValue;
+  workspaceFolderValue?: LanguageSpecificSettingValue;
+};
+
 export default class ExternalFileManager {
   private _context: Code.ExtensionContext;
   private _languages: string[];
@@ -65,8 +73,7 @@ export default class ExternalFileManager {
     return languages;
   }
 
-  private updateWatchers(uri: Code.Uri, settingName: string, scope: Code.ConfigurationTarget):
-        void {
+  public updateWatchers(uri: Code.Uri, settingName: string): void {
     const oldExternalFilePaths: Set<string> = new Set();
     const watchers: {[filePath: string]: Fs.FSWatcher} = this._watchers[settingName];
 
@@ -75,8 +82,8 @@ export default class ExternalFileManager {
       oldExternalFilePaths.add(filePath);
     }
 
-    const settingAnalysis: SettingAnalysis = this.analyzeSetting(uri, settingName, scope);
-    const externalFiles: LanguageSpecificExternalFiles = settingAnalysis.externalFiles;
+    const externalFiles: LanguageSpecificExternalFiles = this.getExternalFilesFromSetting(
+        uri, settingName);
     const newExternalFiles: Set<ExternalFile> = new Set();
     const newExternalFilePaths: Set<string> = new Set();
 
@@ -135,24 +142,52 @@ export default class ExternalFileManager {
         externalFiles[language][0].resolvedPath : null);
   }
 
-  private analyzeSetting(uri: Code.Uri, settingName: string,
-        scope: Code.ConfigurationTarget, language: string | null = null): SettingAnalysis {
+  private getExternalFilesFromSetting(uri: Code.Uri, settingName: string,
+        language: string | null = null): LanguageSpecificExternalFiles {
     const resourceConfig: Code.WorkspaceConfiguration =
         Code.workspace.getConfiguration('ltex', uri);
-    const setting: {
-      key: string;
-      defaultValue?: LanguageSpecificSettingValue;
-      globalValue?: LanguageSpecificSettingValue;
-      workspaceValue?: LanguageSpecificSettingValue;
-      workspaceFolderValue?: LanguageSpecificSettingValue;
-    } | undefined = resourceConfig.inspect(settingName);
+    const settingValuePerScope: SettingValuePerScope | undefined =
+        resourceConfig.inspect(settingName);
+    const externalFiles: LanguageSpecificExternalFiles = {};
+
+    for (const scope of [Code.ConfigurationTarget.Global, Code.ConfigurationTarget.Workspace,
+          Code.ConfigurationTarget.WorkspaceFolder]) {
+      const settingAnalysis: SettingAnalysis = this.analyzeSetting(
+          uri, settingName, scope, language, settingValuePerScope);
+      const scopeExternalFiles: LanguageSpecificExternalFiles = settingAnalysis.externalFiles;
+
+      for (const curLanguage in scopeExternalFiles) {
+        if (!Object.prototype.hasOwnProperty.call(scopeExternalFiles, curLanguage)) continue;
+        if (!Object.prototype.hasOwnProperty.call(externalFiles, curLanguage)) {
+          externalFiles[curLanguage] = [];
+        }
+
+        for (const externalFile of scopeExternalFiles[curLanguage]) {
+          externalFiles[curLanguage].push(externalFile);
+        }
+      }
+    }
+
+    return externalFiles;
+  }
+
+  private analyzeSetting(uri: Code.Uri, settingName: string,
+        scope: Code.ConfigurationTarget, language: string | null = null,
+        settingValuePerScope: SettingValuePerScope | undefined = undefined): SettingAnalysis {
+    if (settingValuePerScope == null) {
+      const resourceConfig: Code.WorkspaceConfiguration =
+          Code.workspace.getConfiguration('ltex', uri);
+      settingValuePerScope = resourceConfig.inspect(settingName);
+    }
+
     let defaultDirPath: string | null = null;
     let settingValue: LanguageSpecificSettingValue | undefined | null = null;
 
     switch (scope) {
       case Code.ConfigurationTarget.Global: {
         defaultDirPath = Path.resolve(this._context.globalStoragePath);
-        settingValue = ((setting != null) ? setting.globalValue : null);
+        settingValue = ((settingValuePerScope != null) ?
+            settingValuePerScope.globalValue : null);
         break;
       }
       case Code.ConfigurationTarget.Workspace: {
@@ -164,7 +199,8 @@ export default class ExternalFileManager {
           }
         }
 
-        settingValue = ((setting != null) ? setting.workspaceValue : null);
+        settingValue = ((settingValuePerScope != null) ?
+            settingValuePerScope.workspaceValue : null);
         break;
       }
       case Code.ConfigurationTarget.WorkspaceFolder: {
@@ -179,7 +215,8 @@ export default class ExternalFileManager {
           }
         }
 
-        settingValue = ((setting != null) ? setting.workspaceFolderValue : null);
+        settingValue = ((settingValuePerScope != null) ?
+            settingValuePerScope.workspaceFolderValue : null);
         break;
       }
     }
@@ -262,8 +299,6 @@ export default class ExternalFileManager {
 
   public getSettingValue(uri: Code.Uri, settingName: string, scope: Code.ConfigurationTarget):
         LanguageSpecificSettingValue {
-    this.updateWatchers(uri, settingName, scope);
-
     const settingAnalysis: SettingAnalysis = this.analyzeSetting(uri, settingName, scope);
     const externalFiles: LanguageSpecificExternalFiles = settingAnalysis.externalFiles;
     const settingValue: LanguageSpecificSettingValue = ((settingAnalysis.settingValue != null) ?

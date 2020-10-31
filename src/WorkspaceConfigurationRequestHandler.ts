@@ -35,6 +35,9 @@ export default class WorkspaceConfigurationRequestHandler {
         Code.workspace.getConfiguration('ltex', uri);
     const result: LanguageSpecificSettingValue = {};
 
+    this._externalFileManager.updateWatchers(uri, settingName);
+
+    // deprecated since 8.0.0
     const settingNameCapitalized: string =
         `${settingName.charAt(0).toUpperCase()}${settingName.substr(1)}`;
 
