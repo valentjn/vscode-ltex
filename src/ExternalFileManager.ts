@@ -265,8 +265,9 @@ export default class ExternalFileManager {
   }
 
   public getWorkspaceSettingsDirPath(): string | null {
-    if (Code.workspace.workspaceFolders == null) return null;
-    const workspaceDirUri: Code.Uri = Code.workspace.workspaceFolders[0].uri;
+    const workspaceFolders: Code.WorkspaceFolder[] | undefined = Code.workspace.workspaceFolders;
+    if ((workspaceFolders == null) || (workspaceFolders.length == 0)) return null;
+    const workspaceDirUri: Code.Uri = workspaceFolders[0].uri;
     if (workspaceDirUri.scheme != 'file') return null;
     return Path.resolve(workspaceDirUri.fsPath, '.vscode');
   }
