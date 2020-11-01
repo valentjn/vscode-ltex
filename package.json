@@ -1877,7 +1877,10 @@
               "enum": [
                 "user",
                 "workspace",
-                "workspaceFolder"
+                "workspaceFolder",
+                "userExternalFile",
+                "workspaceExternalFile",
+                "workspaceFolderExternalFile"
               ],
               "enumDescriptions": [
                 "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.user.enumDescription%",
