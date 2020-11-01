@@ -11,7 +11,7 @@ sidebar: "sidebar"
 toc: false
 ---
 
-## 8.0.0 (upcoming)
+## 8.0.0 — “The Setting Transformation” (November 1, 2020)
 
 - Upgrade from Java 8 to Java 11 (see [announcement](deprecation-of-java-8.html), fixes [#39](https://github.com/valentjn/vscode-ltex/issues/39))
 - Add workaround to eliminate the need for workspace-specific setting names; [`ltex.dictionary`](settings.html#ltexdictionary), [`ltex.disabledRules`](settings.html#ltexdisabledrules), and [`ltex.enabledRules`](settings.html#ltexenabledrules) can now be used in multiple setting scopes (user settings, workspace settings, and workspace folder settings) at the same time without overriding each other; instead, the settings of the different scopes will be properly merged (see [documentation](advanced-features.html#multi-scope-settings))
