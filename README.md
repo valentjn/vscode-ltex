@@ -79,7 +79,7 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
       - [Second Alternative: Download ltex-ls/Java Manually](https://valentjn.github.io/vscode-ltex/docs/installation-and-usage.html#second-alternative-download-ltex-lsjava-manually)
   - [Advanced Usage](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html)
     - [Multi-Scope Settings](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#multi-scope-settings)
-    - [Putting Settings in External Files](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#putting-settings-in-external-files)
+    - [External Setting Files](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#external-setting-files)
     - [Magic Comments](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#magic-comments)
     - [Multilingual L<sup>A</sup>T<sub>E</sub>X Documents with the babel Package](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#multilingual-latex-documents-with-the-babel-package)
     - [Hiding False Positives with Regular Expressions](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#hiding-false-positives-with-regular-expressions)
