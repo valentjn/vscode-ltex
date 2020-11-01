@@ -1397,7 +1397,7 @@ One of `"edit"`, `"save"`, and `"manual"`.
 
 - `"edit"`: Documents are checked when they are opened or edited (on every keystroke), or when the settings change.
 - `"save"`: Documents are checked when they are opened or saved, or when the settings change.
-- `"manual"`: Documents are not checked automatically, except when the settings change. Use commands such as 'ltex.checkCurrentDocument' to manually trigger checks.
+- `"manual"`: Documents are not checked automatically, except when the settings change. Use commands such as 'LTeX: Check current document' to manually trigger checks.
 
 *Default:* `"edit"`
 
