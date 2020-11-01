@@ -72,11 +72,11 @@ The scope in which this procedure is applied is determined by the [`ltex.configu
 
 1. If the document belongs to an open workspace folder:
    1. Retrieve the `en-US` part of the value of [`ltex.dictionary`](settings.html#ltexdictionary) that is set in the workspace folder settings.
-   2. Pick the first external file in that list. If there is none, choose `WORKSPACE_FOLDER/ltex.dictionary.en-US.txt` (create the file if necessary).
+   2. Pick the first external file in that list. If there is none, choose `WORKSPACE_FOLDER/.vscode/ltex.dictionary.en-US.txt` (create the file if necessary).
    3. Append the file by the new word.
 2. Otherwise, if the document belongs to an open workspace:
    1. Retrieve the `en-US` part of the value of [`ltex.dictionary`](settings.html#ltexdictionary) that is set in the workspace settings.
-   2. Pick the first external file in that list. If there is none, choose `WORKSPACE/ltex.dictionary.en-US.txt` (create the file if necessary).
+   2. Pick the first external file in that list. If there is none, choose `WORKSPACE/.vscode/ltex.dictionary.en-US.txt` (create the file if necessary).
    3. Append the file by the new word.
 3. Otherwise:
    1. Retrieve the `en-US` part of the value of [`ltex.dictionary`](settings.html#ltexdictionary) that is set in the user settings.
