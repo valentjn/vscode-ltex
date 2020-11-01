@@ -308,7 +308,7 @@ export default class ExternalFileManager {
         return;
       }
 
-      Logger.log(i18n('updatedExternalSettingFile', filePath));
+      Logger.log(i18n('externalSettingFileChangedReReading', filePath));
 
       for (const settingName of ExternalFileManager._settingNames) {
         if (!Object.prototype.hasOwnProperty.call(this._contents[settingName], filePath)) continue;
