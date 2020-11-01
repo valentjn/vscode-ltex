@@ -97,9 +97,9 @@ Lists of additional words that should not be counted as spelling errors.
 
 This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<WORD1>", "<WORD2>", ...], "<LANGUAGE2>": ["<WORD1>", "<WORD2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage).
 
-This setting supports external files. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#putting-settings-in-external-files)
-
 This setting is a multi-scope setting. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#multi-scope-settings)
+
+This setting supports external files. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#external-setting-files)
 
 By default, no additional spelling errors will be ignored.
 
@@ -349,9 +349,9 @@ Lists of rules that should be disabled (if enabled by default by LanguageTool).
 
 This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<RULE1>", "<RULE2>", ...], "<LANGUAGE2>": ["<RULE1>", "<RULE2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage) and `<RULE>` the ID of the LanguageTool rule.
 
-This setting supports external files. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#putting-settings-in-external-files)
-
 This setting is a multi-scope setting. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#multi-scope-settings)
+
+This setting supports external files. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#external-setting-files)
 
 By default, no additional rules will be disabled.
 
@@ -601,9 +601,9 @@ Lists of rules that should be enabled (if disabled by default by LanguageTool).
 
 This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<RULE1>", "<RULE2>", ...], "<LANGUAGE2>": ["<RULE1>", "<RULE2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage) and `<RULE>` the ID of the LanguageTool rule.
 
-This setting supports external files. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#putting-settings-in-external-files)
-
 This setting is a multi-scope setting. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#multi-scope-settings)
+
+This setting supports external files. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#external-setting-files)
 
 By default, no additional rules will be enabled.
 
@@ -857,9 +857,9 @@ Although it is possible to manually edit this setting, the intended way is the `
 
 The JSON string currently has the form `{"rule": "<RULE>", "sentence": "<SENTENCE>"}`, where `<RULE>` is the identifier of the LanguageTool rule and `<SENTENCE>` is a Java-compatible regular expression. All occurrences of the given rule are hidden in sentences (as determined by the LanguageTool tokenizer) that match the regular expression.
 
-This setting supports external files. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#putting-settings-in-external-files)
-
 This setting is a multi-scope setting. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#multi-scope-settings)
+
+This setting supports external files. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#external-setting-files)
 
 If this list is very large, performance may suffer.
 
@@ -1103,6 +1103,177 @@ Object with the following properties:
 
 </div>
 
+## `ltex.latex.commands`
+
+List of LaTeX commands to be handled by the LaTeX parser, listed together with empty arguments (e.g., `"\\ref{}"`, `"\\documentclass[]{}"`).
+
+This setting is an object with the commands as keys and corresponding actions as values.
+
+Don't forget to escape the initial backslash by replacing it with two backslashes.
+
+Many common commands are already handled by default, even if you set this setting to an empty object.
+
+*Type:* `object`
+
+*Example:* `{"\\ref{}": "ignore", "\\documentclass[]{}": "ignore", "\\cite{}": "dummy", "\\cite[]{}": "dummy"}`
+
+*Default:* `{}`
+
+*Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
+
+<div markdown='1' style='display:none;'>
+
+Object with arbitrary property names, where the value of each property has the following type:
+
+- One of the following values:
+
+  - `"default"`: The command is treated like unknown commands are treated by default: The command name itself is ignored, but the arguments are not ignored.
+  - `"ignore"`: The whole command together with its arguments is ignored.
+  - `"dummy"`: The whole command together with its arguments is replaced with a dummy word (i.e., 'Dummy0', 'Dummy1', etc.). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
+  - `"pluralDummy"`: The whole command together with its arguments is replaced with a plural dummy word (i.e., 'Dummies0', 'Dummies1', etc.). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
+
+</div>
+
+## `ltex.latex.environments`
+
+List of names of LaTeX environments to be handled by the LaTeX parser.
+
+This setting is an object with the environment names as keys and corresponding actions as values.
+
+Some environments are already ignored by default, even if you set this setting to an empty object.
+
+*Type:* `object`
+
+*Example:* `{"lstlisting": "ignore", "verbatim": "ignore"}`
+
+*Default:* `{}`
+
+*Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
+
+<div markdown='1' style='display:none;'>
+
+Object with arbitrary property names, where the value of each property has the following type:
+
+- One of the following values:
+
+  - `"default"`: The environment is treated like unknown environments are treated by default: The '\begin' and '\end' commands are ignored, but the contents of the environment are not ignored.
+  - `"ignore"`: The whole environment together with its contents are ignored.
+
+</div>
+
+## `ltex.markdown.nodes`
+
+List of Markdown node types to be handled by the Markdown parser.
+
+This setting is an object with the node types as keys and corresponding actions as values.
+
+The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type `Text`. The possible node types are listed in the [documentation of flexmark-java](https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.62.2/com/vladsch/flexmark/ast/package-summary.html).
+
+Some common node types are already handled by default, even if you set this setting to an empty object.
+
+*Type:* `object`
+
+*Example:* `{"CodeBlock": "ignore", "FencedCodeBlock": "ignore", "AutoLink": "dummy", "Code": "dummy"}`
+
+*Default:* `{}`
+
+*Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
+
+<div markdown='1' style='display:none;'>
+
+Object with arbitrary property names, where the value of each property has the following type:
+
+- One of the following values:
+
+  - `"default"`: The node is not treated specially.
+  - `"ignore"`: The whole node together with its 'Text' leaves is ignored.
+  - `"dummy"`: The whole node together with its 'Text' leaves is replaced with a dummy word (i.e., 'Dummy0', 'Dummy1', etc.). LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
+  - `"pluralDummy"`: The whole node together with its 'Text' leaves is replaced with a plural dummy word (i.e., 'Dummies0', 'Dummies1', etc.). LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
+
+</div>
+
+## `ltex.configurationTarget`
+
+Controls which `settings.json` to update when using one of the quick fixes.
+
+`"user"` always updates the user configuration. `"workspace"` updates the workspace configuration if currently in a workspace, otherwise the user configuration. `"workspaceFolder"` updates the workspace folder configuration if currently in a workspace folder, otherwise the workspace configuration if currently in a workspace, otherwise the user configuration.
+
+*Type:* `object`
+
+*Default:* `{"dictionary": "workspaceFolderExternalFile", "disabledRules": "workspaceFolderExternalFile", "hiddenFalsePositives": "workspaceFolderExternalFile"}`
+
+*Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
+
+<div markdown='1' style='display:none;'>
+
+Object with the following properties:
+
+- `"dictionary"`: One of the following values:
+
+  - `"user"`: When adding a word to the dictionary, always update the user configuration.
+  - `"workspace"`: When adding a word to the dictionary, update the workspace configuration if currently in a workspace, otherwise update the user configuration.
+  - `"workspaceFolder"`: When adding a word to the dictionary, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.
+  - `"userExternalFile"`: When adding a word to the dictionary, always update the first external dictionary file listed in the user configuration.
+  - `"workspaceExternalFile"`: When adding a word to the dictionary, update the first external dictionary file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
+  - `"workspaceFolderExternalFile"`: When adding a word to the dictionary, update the first external dictionary file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
+- `"disabledRules"`: One of the following values:
+
+  - `"user"`: When disabling a rule, always update the user configuration.
+  - `"workspace"`: When disabling a rule, update the workspace configuration if currently in a workspace, otherwise update the user configuration.
+  - `"workspaceFolder"`: When disabling a rule, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.
+  - `"userExternalFile"`: When disabling a rule, always update the first external dictionary file listed in the user configuration.
+  - `"workspaceExternalFile"`: When disabling a rule, update the first external dictionary file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
+  - `"workspaceFolderExternalFile"`: When disabling a rule, update the first external dictionary file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
+- `"hiddenFalsePositives"`: One of the following values:
+
+  - `"user"`: When hiding a false positive, always update the user configuration.
+  - `"workspace"`: When hiding a false positive, update the workspace configuration if currently in a workspace, otherwise update the user configuration.
+  - `"workspaceFolder"`: When hiding a false positive, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.
+  - `"userExternalFile"`: When hiding a false positive, always update the first external dictionary file listed in the user configuration.
+  - `"workspaceExternalFile"`: When hiding a false positive, update the first external dictionary file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
+  - `"workspaceFolderExternalFile"`: When hiding a false positive, update the first external dictionary file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
+
+</div>
+
+## `ltex.additionalRules.motherTongue`
+
+Optional mother tongue of the user (e.g., `"de-DE"`).
+
+If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see [`ltex.additionalRules.languageModel`](settings.html#ltexadditionalruleslanguagemodel)).
+
+*Type:* `string`
+
+*Examples:*
+
+- `"en-US"`
+- `"de-DE"`
+
+*Default:* `""`
+
+## `ltex.additionalRules.languageModel`
+
+Optional path to a directory with rules of a language model with *n*-gram occurrence counts.
+
+*Type:* `string`
+
+*Default:* `""`
+
+## `ltex.additionalRules.neuralNetworkModel`
+
+Optional path to a directory with rules of a pretrained neural network model.
+
+*Type:* `string`
+
+*Default:* `""`
+
+## `ltex.additionalRules.word2VecModel`
+
+Optional path to a directory with rules of a word2vec language model.
+
+*Type:* `string`
+
+*Default:* `""`
+
 ## `ltex.ltex-ls.path`
 
 If set to an empty string, LTeX automatically downloads the [latest compatible release of ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself.
@@ -1184,168 +1355,6 @@ Changes require reloading the Visual Studio Code window to take effect.
 *Type:* `integer`
 
 *Default:* `512`
-
-## `ltex.latex.commands`
-
-List of LaTeX commands to be handled by the LaTeX parser, listed together with empty arguments (e.g., `"\\ref{}"`, `"\\documentclass[]{}"`).
-
-Don't forget to escape the initial backslash by replacing it with two backslashes.
-
-Many common commands are already handled by default, even if you set this setting to an empty object.
-
-*Type:* `object`
-
-*Example:* `{"\\ref{}": "ignore", "\\documentclass[]{}": "ignore", "\\cite{}": "dummy", "\\cite[]{}": "dummy"}`
-
-*Default:* `[]`
-
-*Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
-
-<div markdown='1' style='display:none;'>
-
-Object with arbitrary property names, where the value of each property has the following type:
-
-- One of the following values:
-
-  - `"default"`: The command is treated like unknown commands are treated by default: The command name itself is ignored, but the arguments are not ignored.
-  - `"ignore"`: The whole command together with its arguments is ignored.
-  - `"dummy"`: The whole command together with its arguments is replaced with a dummy word (i.e., 'Dummy0', 'Dummy1', etc.). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
-  - `"pluralDummy"`: The whole command together with its arguments is replaced with a plural dummy word (i.e., 'Dummies0', 'Dummies1', etc.). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
-
-</div>
-
-## `ltex.latex.environments`
-
-List of names of LaTeX environments to be handled by the LaTeX parser.
-
-Some environments are already ignored by default, even if you set this setting to an empty object.
-
-*Type:* `object`
-
-*Example:* `{"lstlisting": "ignore", "verbatim": "ignore"}`
-
-*Default:* `[]`
-
-*Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
-
-<div markdown='1' style='display:none;'>
-
-Object with arbitrary property names, where the value of each property has the following type:
-
-- One of the following values:
-
-  - `"default"`: The environment is treated like unknown environments are treated by default: The '\begin' and '\end' commands are ignored, but the contents of the environment is not ignored.
-  - `"ignore"`: The whole environment together with its contents is ignored.
-
-</div>
-
-## `ltex.markdown.nodes`
-
-List of Markdown node types to be handled by the Markdown parser.
-
-The Markdown parser constructs an AST (abstract syntax tree) for the Markdown document, in which all leaves have node type `Text`. The possible node types are listed in the [documentation of flexmark-java](https://javadoc.io/static/com.vladsch.flexmark/flexmark/0.62.2/com/vladsch/flexmark/ast/package-summary.html).
-
-Some common node types are already handled by default, even if you set this setting to an empty object.
-
-*Type:* `object`
-
-*Example:* `{"CodeBlock": "ignore", "FencedCodeBlock": "ignore", "AutoLink": "dummy", "Code": "dummy"}`
-
-*Default:* `[]`
-
-*Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
-
-<div markdown='1' style='display:none;'>
-
-Object with arbitrary property names, where the value of each property has the following type:
-
-- One of the following values:
-
-  - `"default"`: The node is not treated specially.
-  - `"ignore"`: The whole node together with its 'Text' leaves is ignored.
-  - `"dummy"`: The whole node together with its 'Text' leaves is replaced with a dummy word (i.e., 'Dummy0', 'Dummy1', etc.). LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
-  - `"pluralDummy"`: The whole node together with its 'Text' leaves is replaced with a plural dummy word (i.e., 'Dummies0', 'Dummies1', etc.). LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
-
-</div>
-
-## `ltex.configurationTarget`
-
-Controls which `settings.json` to update when using one of the quick fixes.
-
-`"user"` always updates the user configuration. `"workspace"` updates the workspace configuration if currently in a workspace, otherwise the user configuration. `"workspaceFolder"` updates the workspace folder configuration if currently in a workspace folder, otherwise the workspace configuration if currently in a workspace, otherwise the user configuration.
-
-*Type:* `object`
-
-*Default:* `{"dictionary": "workspaceFolderExternalFile", "disabledRules": "workspaceFolderExternalFile", "hiddenFalsePositives": "workspaceFolderExternalFile"}`
-
-*Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
-
-<div markdown='1' style='display:none;'>
-
-Object with the following properties:
-
-- `"dictionary"`: One of the following values:
-
-  - `"user"`: When adding a word to the dictionary, always update the user configuration.
-  - `"workspace"`: When adding a word to the dictionary, update the workspace configuration if currently in a workspace, otherwise update the user configuration.
-  - `"workspaceFolder"`: When adding a word to the dictionary, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.
-  - `"userExternalFile"`: When adding a word to the dictionary, always update the first external dictionary file listed in the user configuration.
-  - `"workspaceExternalFile"`: When adding a word to the dictionary, update the first external dictionary file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
-  - `"workspaceFolderExternalFile"`: When adding a word to the dictionary, update the first external dictionary file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
-- `"disabledRules"`: One of the following values:
-
-  - `"user"`: When disabling a rule, always update the user configuration.
-  - `"workspace"`: When disabling a rule, update the workspace configuration if currently in a workspace, otherwise update the user configuration.
-  - `"workspaceFolder"`: When disabling a rule, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.
-  - `"userExternalFile"`: When disabling a rule, always update the first external dictionary file listed in the user configuration.
-  - `"workspaceExternalFile"`: When disabling a rule, update the first external dictionary file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
-  - `"workspaceFolderExternalFile"`: When disabling a rule, update the first external dictionary file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
-- `"hiddenFalsePositives"`: One of the following values:
-
-  - `"user"`: When hiding a false positive, always update the user configuration.
-  - `"workspace"`: When hiding a false positive, update the workspace configuration if currently in a workspace, otherwise update the user configuration.
-  - `"workspaceFolder"`: When hiding a false positive, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.
-
-</div>
-
-## `ltex.additionalRules.motherTongue`
-
-Optional mother tongue of the user (e.g., `"de-DE"`).
-
-If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see [`ltex.additionalRules.languageModel`](settings.html#ltexadditionalruleslanguagemodel)).
-
-*Type:* `string`
-
-*Examples:*
-
-- `"en-US"`
-- `"de-DE"`
-
-*Default:* `""`
-
-## `ltex.additionalRules.languageModel`
-
-Optional path to a directory with rules of a language model with *n*-gram occurrence counts.
-
-*Type:* `string`
-
-*Default:* `""`
-
-## `ltex.additionalRules.neuralNetworkModel`
-
-Optional path to a directory with rules of a pretrained neural network model.
-
-*Type:* `string`
-
-*Default:* `""`
-
-## `ltex.additionalRules.word2VecModel`
-
-Optional path to a directory with rules of a word2vec language model.
-
-*Type:* `string`
-
-*Default:* `""`
 
 ## `ltex.sentenceCacheSize`
 
