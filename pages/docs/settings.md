@@ -97,9 +97,9 @@ Lists of additional words that should not be counted as spelling errors.
 
 This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<WORD1>", "<WORD2>", ...], "<LANGUAGE2>": ["<WORD1>", "<WORD2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage).
 
-This setting is a multi-scope setting. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#multi-scope-settings)
+This setting is a multi-scope setting. [See the documentation for details.](advanced-usage.html#multi-scope-settings)
 
-This setting supports external files. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#external-setting-files)
+This setting supports external files. [See the documentation for details.](advanced-usage.html#external-setting-files)
 
 By default, no additional spelling errors will be ignored.
 
@@ -349,9 +349,9 @@ Lists of rules that should be disabled (if enabled by default by LanguageTool).
 
 This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<RULE1>", "<RULE2>", ...], "<LANGUAGE2>": ["<RULE1>", "<RULE2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage) and `<RULE>` the ID of the LanguageTool rule.
 
-This setting is a multi-scope setting. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#multi-scope-settings)
+This setting is a multi-scope setting. [See the documentation for details.](advanced-usage.html#multi-scope-settings)
 
-This setting supports external files. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#external-setting-files)
+This setting supports external files. [See the documentation for details.](advanced-usage.html#external-setting-files)
 
 By default, no additional rules will be disabled.
 
@@ -601,9 +601,9 @@ Lists of rules that should be enabled (if disabled by default by LanguageTool).
 
 This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<RULE1>", "<RULE2>", ...], "<LANGUAGE2>": ["<RULE1>", "<RULE2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage) and `<RULE>` the ID of the LanguageTool rule.
 
-This setting is a multi-scope setting. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#multi-scope-settings)
+This setting is a multi-scope setting. [See the documentation for details.](advanced-usage.html#multi-scope-settings)
 
-This setting supports external files. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#external-setting-files)
+This setting supports external files. [See the documentation for details.](advanced-usage.html#external-setting-files)
 
 By default, no additional rules will be enabled.
 
@@ -857,9 +857,9 @@ Although it is possible to manually edit this setting, the intended way is the `
 
 The JSON string currently has the form `{"rule": "<RULE>", "sentence": "<SENTENCE>"}`, where `<RULE>` is the identifier of the LanguageTool rule and `<SENTENCE>` is a Java-compatible regular expression. All occurrences of the given rule are hidden in sentences (as determined by the LanguageTool tokenizer) that match the regular expression.
 
-This setting is a multi-scope setting. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#multi-scope-settings)
+This setting is a multi-scope setting. [See the documentation for details.](advanced-usage.html#multi-scope-settings)
 
-This setting supports external files. [See the documentation for details.](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#external-setting-files)
+This setting supports external files. [See the documentation for details.](advanced-usage.html#external-setting-files)
 
 If this list is very large, performance may suffer.
 
@@ -1194,9 +1194,7 @@ Object with arbitrary property names, where the value of each property has the f
 
 ## `ltex.configurationTarget`
 
-Controls which `settings.json` to update when using one of the quick fixes.
-
-`"user"` always updates the user configuration. `"workspace"` updates the workspace configuration if currently in a workspace, otherwise the user configuration. `"workspaceFolder"` updates the workspace folder configuration if currently in a workspace folder, otherwise the workspace configuration if currently in a workspace, otherwise the user configuration.
+Controls which `settings.json` or external setting file ([see documentation](advanced-usage.html#external-setting-files)) to update when using one of the quick fixes.
 
 *Type:* `object`
 
@@ -1213,25 +1211,25 @@ Object with the following properties:
   - `"user"`: When adding a word to the dictionary, always update the user configuration.
   - `"workspace"`: When adding a word to the dictionary, update the workspace configuration if currently in a workspace, otherwise update the user configuration.
   - `"workspaceFolder"`: When adding a word to the dictionary, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.
-  - `"userExternalFile"`: When adding a word to the dictionary, always update the first external dictionary file listed in the user configuration.
-  - `"workspaceExternalFile"`: When adding a word to the dictionary, update the first external dictionary file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
-  - `"workspaceFolderExternalFile"`: When adding a word to the dictionary, update the first external dictionary file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
+  - `"userExternalFile"`: When adding a word to the dictionary, always update the first external setting file listed in the user configuration.
+  - `"workspaceExternalFile"`: When adding a word to the dictionary, update the first external setting file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
+  - `"workspaceFolderExternalFile"`: When adding a word to the dictionary, update the first external setting file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
 - `"disabledRules"`: One of the following values:
 
   - `"user"`: When disabling a rule, always update the user configuration.
   - `"workspace"`: When disabling a rule, update the workspace configuration if currently in a workspace, otherwise update the user configuration.
   - `"workspaceFolder"`: When disabling a rule, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.
-  - `"userExternalFile"`: When disabling a rule, always update the first external dictionary file listed in the user configuration.
-  - `"workspaceExternalFile"`: When disabling a rule, update the first external dictionary file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
-  - `"workspaceFolderExternalFile"`: When disabling a rule, update the first external dictionary file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
+  - `"userExternalFile"`: When disabling a rule, always update the first external setting file listed in the user configuration.
+  - `"workspaceExternalFile"`: When disabling a rule, update the first external setting file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
+  - `"workspaceFolderExternalFile"`: When disabling a rule, update the first external setting file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
 - `"hiddenFalsePositives"`: One of the following values:
 
   - `"user"`: When hiding a false positive, always update the user configuration.
   - `"workspace"`: When hiding a false positive, update the workspace configuration if currently in a workspace, otherwise update the user configuration.
   - `"workspaceFolder"`: When hiding a false positive, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.
-  - `"userExternalFile"`: When hiding a false positive, always update the first external dictionary file listed in the user configuration.
-  - `"workspaceExternalFile"`: When hiding a false positive, update the first external dictionary file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
-  - `"workspaceFolderExternalFile"`: When hiding a false positive, update the first external dictionary file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
+  - `"userExternalFile"`: When hiding a false positive, always update the first external setting file listed in the user configuration.
+  - `"workspaceExternalFile"`: When hiding a false positive, update the first external setting file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
+  - `"workspaceFolderExternalFile"`: When hiding a false positive, update the first external setting file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.
 
 </div>
 
