@@ -167,6 +167,7 @@ sidebar: "sidebar"
 """.format(licenseHeader)
   markdown += "\n".join(x for x in settingsMarkdown if x is not None)
   markdown = re.sub("\n\n+", "\n\n", markdown)
+  markdown = markdown.replace("https://valentjn.github.io/vscode-ltex/docs/", "")
 
   dstPath = os.path.join(pagesRepoDirPath, "pages", "docs", "settings.md")
   with open(dstPath, "w") as f: f.write(markdown)
@@ -192,6 +193,7 @@ To run a command, open the Command Palette (`Ctrl+Shift+P`) and start typing the
 """.format(licenseHeader)
   markdown += "\n".join(x for x in commandsMarkdown if x is not None)
   markdown = re.sub("\n\n+", "\n\n", markdown)
+  markdown = markdown.replace("https://valentjn.github.io/vscode-ltex/docs/", "")
 
   dstPath = os.path.join(pagesRepoDirPath, "pages", "docs", "commands.md")
   with open(dstPath, "w") as f: f.write(markdown)
