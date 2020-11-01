@@ -114,7 +114,9 @@ export default class ExternalFileManager {
         let contents: string | null = null;
 
         try {
-          watcher = Fs.watch(filePath, this.onFileWatcherEvent.bind(this));
+          // on Windows, the watcher event only receives the filename (not the full path)
+          // => supply file path ourselves
+          watcher = Fs.watch(filePath, this.onFileWatcherEvent.bind(this, filePath));
           contents = Fs.readFileSync(filePath, {encoding: 'utf-8'});
         } catch (e) {
           if (externalFile.explicit) {
@@ -284,7 +286,7 @@ export default class ExternalFileManager {
     return path;
   }
 
-  private onFileWatcherEvent(eventType: string, filePath: string): void {
+  private onFileWatcherEvent(filePath: string, eventType: string, _: string): void {
     if (!Fs.existsSync(filePath)) {
       Logger.log(i18n('stoppedWatchingExternalSettingFileDueToDeletion', filePath));
 
