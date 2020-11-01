@@ -1727,7 +1727,7 @@
         "ltex.latex.commands": {
           "type": "object",
           "scope": "resource",
-          "default": [],
+          "default": {},
           "patternProperties": {
             "^.*$": {
               "type": "string",
@@ -1760,7 +1760,7 @@
         "ltex.latex.environments": {
           "type": "object",
           "scope": "resource",
-          "default": [],
+          "default": {},
           "patternProperties": {
             "^.*$": {
               "type": "string",
@@ -1787,7 +1787,7 @@
         "ltex.markdown.nodes": {
           "type": "object",
           "scope": "resource",
-          "default": [],
+          "default": {},
           "patternProperties": {
             "^.*$": {
               "type": "string",
