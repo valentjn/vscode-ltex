@@ -38,6 +38,12 @@ The active document is the one whose editor currently has focus, or, if none has
 
 Clears all LTeX diagnostics.
 
+## `LTeX: Show status information`
+
+Shows information about the current status of LTeX in the `LTeX Language Client` output panel.
+
+Information about ltex-ls is only included if ltex-ls is running and not checking a document.
+
 ## `LTeX: Report bug in LTeX`
 
 Shows a message box with a link to instructions on how to report bugs in LTeX and a button to copy a bug report.
