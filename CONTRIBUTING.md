@@ -88,9 +88,9 @@ This ensures that each version of vscode-ltex always uses the same version of lt
 
 You can help find bugs before they affect thousands of LTeX users by testing pre-releases.
 
-The availability of pre-releases varies. Pre-releases are only available if a pre-release tag (a tag with the name of a version number with a dash in it, e.g., `8.0.0-alpha.3`) has been pushed to the vscode-ltex or the ltex-ls repositories. Pre-releases are only available for a limited time, they will be deleted once the regular release has been taken place.
+The availability of pre-releases varies. Pre-releases are only available if a pre-release tag (a tag with the name of a version number with a dash in it, e.g., `8.0.0-alpha.3`) has been pushed to the repositories of vscode-ltex or ltex-ls. Pre-releases are only available for a limited time; they will be deleted once the regular release has been taken place.
 
-You can check whether pre-releases are available by checking the top of the GitHub Releases pages of [vscode-ltex](https://github.com/valentjn/vscode-ltex/releases) and [ltex-ls](https://github.com/valentjn/ltex-ls/releases). Pre-releases will always be displayed above the latest release.
+You can check whether pre-releases are available by checking the top of the GitHub Releases pages of [vscode-ltex](https://github.com/valentjn/vscode-ltex/releases) and [ltex-ls](https://github.com/valentjn/ltex-ls/releases). If any pre-releases are available, they will always be displayed above the latest release.
 
 Of course, pre-releases are not for productive work, they even may be harmful and mess up your settings, etc. Therefore, it's best to use a clean installation/profile of VS Code. You can do that by starting VS Code via `code --extensions-dir /tmp/code-extensions --user-data-dir /tmp/code-user`. If you do use your existing installation, you can downgrade again by removing the extension and reinstalling it from the Marketplace. Close VS Code after removing the extension if LTeX does not behave normally.
 
