@@ -102,11 +102,20 @@ Be sure to check the list of current changes in the [changelog on the develop br
 
 ### Documentation
 
-In addition, there is the possibility to work on the [documentation](https://valentjn.github.io/vscode-ltex). It's using GitHub Pages, Jekyll, and Markdown, and a bunch of Python scripts copies information over from the main repository (settings, changelog, etc.).
+In addition, there is the possibility to work on the [documentation](https://valentjn.github.io/vscode-ltex). It's using GitHub Pages, Jekyll, and Markdown, and a bunch of Python scripts copies information over from the main repository.
 
 Analogously to the actual extension, there are two branches, which are stored in the [repository of vscode-ltex](https://github.com/valentjn/vscode-ltex): `gh-pages-develop` and `gh-pages-release`. Improvements go to `gh-pages-develop`, while `gh-pages-release` reflects the documentation for the latest release. Pushes to `gh-pages-release` will trigger Travis CI: It will hard-reset the actual `gh-pages` branch used for generating the site to `gh-pages-release`, and add a commit for updating the usage statistics on the homepage. To keep the statistics up-to-date, a cron job triggers this process once a day.
 
-At the bottom of each page, you'll find an “Edit me” button that takes you directly to the corresponding Markdown document in the GitHub repo.
+At the bottom of each page, you'll find an “Edit me” button that takes you directly to the corresponding Markdown document in the GitHub repo. However, note that some pages are automatically generated. Changes in the Markdown documents linked by the “Edit me” buttons on these pages would be overwritten by the Python scripts. Therefore, if you want to edit one of these pages, please edit the source(s) instead:
+
+| Page | Sources |
+| ---- | ------- |
+| [Settings](https://valentjn.github.io/vscode-ltex/docs/settings.html) | [package.json](https://github.com/valentjn/vscode-ltex/blob/develop/package.json), [package.nls.json](https://github.com/valentjn/vscode-ltex/blob/develop/package.nls.json) |
+| [Commands](https://valentjn.github.io/vscode-ltex/docs/commands.html) | [package.json](https://github.com/valentjn/vscode-ltex/blob/develop/package.json), [package.nls.json](https://github.com/valentjn/vscode-ltex/blob/develop/package.nls.json) |
+| [Changelog](https://valentjn.github.io/vscode-ltex/docs/changelog.html) | [CHANGELOG.md](https://github.com/valentjn/vscode-ltex/blob/develop/CHANGELOG.md) |
+| [Contributing Code/Issues](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html) | [CONTRIBUTING.md](https://github.com/valentjn/vscode-ltex/blob/develop/CONTRIBUTING.md) |
+| [Code of Conduct](https://valentjn.github.io/vscode-ltex/docs/code-of-conduct.html) | [CODE_OF_CONDUCT.md](https://github.com/valentjn/vscode-ltex/blob/develop/CODE_OF_CONDUCT.md) |
+| [Acknowledgments](https://valentjn.github.io/vscode-ltex/docs/acknowledgments.html) | [ACKNOWLEDGMENTS.md](https://github.com/valentjn/vscode-ltex/blob/develop/ACKNOWLEDGMENTS.md) |
 
 ### Internationalization (I18n)
 
