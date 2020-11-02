@@ -38,26 +38,26 @@ export default class DependencyManager {
   private static readonly _toBeDownloadedLtexLsHashDigest: string =
       'aa1c9e09a163e6fa15f41f69bdedfb593f46d67a8662bbb3b30b180089b35755';
 
-  private static readonly _toBeDownloadedJavaVersion: string = '11.0.8+10';
+  private static readonly _toBeDownloadedJavaVersion: string = '11.0.9+11';
   private static readonly _toBeDownloadedJavaHashDigests: {[fileName: string]: string} = {
-    'OpenJDK11U-jre_aarch64_linux_hotspot_11.0.8_10.tar.gz':
-      '286c869dbaefda9b470ae71d1250fdecf9f06d8da97c0f7df9021d381d749106',
-    'OpenJDK11U-jre_arm_linux_hotspot_11.0.8_10.tar.gz':
-      'ffa627b2d0c6001448bb8f1f24f7c9921dad37e67637f6ed0a9a479e680a3393',
-    'OpenJDK11U-jre_ppc64_aix_hotspot_11.0.8_10.tar.gz':
-      'bf1f839f37bcb5cc56bc45044b0b828432bdfe743dd44350c7f852ced95766e6',
-    'OpenJDK11U-jre_ppc64le_linux_hotspot_11.0.8_10.tar.gz':
-      '89231e1667d7cc4202d1a401497bb287d4eb12281c90c17e2570211cc4e901a3',
-    'OpenJDK11U-jre_s390x_linux_hotspot_11.0.8_10.tar.gz':
-      'dc0e715c17abcb12bedf77c638e58e67d828d3c4bf24a898f0d4b053caaeb25f',
-    'OpenJDK11U-jre_x64_linux_hotspot_11.0.8_10.tar.gz':
-      '98615b1b369509965a612232622d39b5cefe117d6189179cbad4dcef2ee2f4e1',
-    'OpenJDK11U-jre_x64_mac_hotspot_11.0.8_10.tar.gz':
-      'b0cd349e7e428721a3bcfec619e071d25c0397e3e43b7ce22acfd7d834a8ca4b',
-    'OpenJDK11U-jre_x64_windows_hotspot_11.0.8_10.zip':
-      'fefa05395dbccfe072a8b6fbfebecf797ed81e18cb1aa4ed093c653d316b3f56',
-    'OpenJDK11U-jre_x86-32_windows_hotspot_11.0.8_10.zip':
-      '00e0eb7112a4cdbaae663110e4c7af6377d2fa01f69c20222790293b4f427f26',
+    'OpenJDK11U-jre_aarch64_linux_hotspot_11.0.9_11.tar.gz':
+      '69de813552b33859dc28034de69d5c3cedc13480cba4e9b2a29a5752ad8cbbaa',
+    'OpenJDK11U-jre_arm_linux_hotspot_11.0.9_11.tar.gz':
+      '8e52de3c7a24edb74e423631fa90a09f7af3193aa9e6e4837b337192669530b0',
+    'OpenJDK11U-jre_ppc64_aix_hotspot_11.0.9_11.tar.gz':
+      'b57ade07a0d591db113094d80a13a6b3a046dfe27ea73dcd4c804e4beef61b64',
+    'OpenJDK11U-jre_ppc64le_linux_hotspot_11.0.9_11.tar.gz':
+      '0af961d70523d95e4b42cc74646653294e8d9eb51e9e7538f8e8c4b61a4d1ac5',
+    'OpenJDK11U-jre_s390x_linux_hotspot_11.0.9_11.tar.gz':
+      'aab4b30307da51cdbcd266a35bf21e7cd2c981fc472441bec7a7b316c45fc86c',
+    'OpenJDK11U-jre_x64_linux_hotspot_11.0.9_11.tar.gz':
+      '57e0e54850487e68f9f99f3678f9a829568e33baa662f4b3a926645b258a3d1c',
+    'OpenJDK11U-jre_x64_mac_hotspot_11.0.9_11.tar.gz':
+      'd750ee42014cf84611c6602edce3641ad271d005b271e0cf91998dad2d41ff88',
+    'OpenJDK11U-jre_x64_windows_hotspot_11.0.9_11.zip':
+      'a78c74cf895e46e66beb215b2b5871698ac9872a2c28facf76f9c12849d562cf',
+    'OpenJDK11U-jre_x86-32_windows_hotspot_11.0.9_11.zip':
+      '29614c7df6fac8cb2613b5e5d98bc055bafd77ff587fd21dd3cde4d12b9e2938',
   };
 
   public constructor(context: Code.ExtensionContext) {

@@ -8,6 +8,10 @@
 
 # Changelog
 
+## 8.0.1 (upcoming)
+
+- Update bundled AdoptOpenJDK JRE to 11.0.9+11
+
 ## 8.0.0 — “The Setting Transformation” (November 1, 2020)
 
 - Upgrade from Java 8 to Java 11 (see [announcement](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html), fixes [#39](https://github.com/valentjn/vscode-ltex/issues/39))
