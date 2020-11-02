@@ -13,10 +13,10 @@ site_title: "LTeX"
 company_name: "Your company"
 
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
-github_editme_path: "valentjn/vscode-ltex/blob/gh-pages/"
+github_editme_path: "valentjn/vscode-ltex/blob/gh-pages-develop/"
 
 # if you're using GitLab, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
-# gitlab_editme_path: "valentjn/vscode-ltex/blob/gh-pages/"
+# gitlab_editme_path: "valentjn/vscode-ltex/blob/gh-pages-develop/"
 
 # if you have google-analytics ID, put it in. if not, edit this value to blank.
 google_analytics: ""
