@@ -8,8 +8,9 @@
 
 # Changelog
 
-## 8.0.1 (upcoming)
+## 8.1.0 (upcoming)
 
+- Prepend messages of possible spelling mistakes with the unknown word (fixes [#161](https://github.com/valentjn/vscode-ltex/issues/161))
 - Update bundled AdoptOpenJDK JRE to 11.0.9+11
 
 ## 8.0.0 — “The Setting Transformation” (November 1, 2020)
