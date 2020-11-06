@@ -1976,6 +1976,13 @@
           "markdownDescription": "%ltex.i18n.configuration.ltex.java.path.markdownDescription%",
           "description": "%ltex.i18n.configuration.ltex.java.path.description%"
         },
+        "ltex.java.forceTrySystemWide": {
+          "type": "boolean",
+          "scope": "window",
+          "default": false,
+          "markdownDescription": "%ltex.i18n.configuration.ltex.java.forceTrySystemWide.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.java.forceTrySystemWide.description%"
+        },
         "ltex.java.initialHeapSize": {
           "type": "integer",
           "scope": "window",

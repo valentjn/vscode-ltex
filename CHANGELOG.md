@@ -12,6 +12,7 @@
 
 - Prepend messages of possible spelling mistakes with the respective unknown words (fixes [#161](https://github.com/valentjn/vscode-ltex/issues/161))
 - Update bundled AdoptOpenJDK JRE to 11.0.9+11
+- Avoid misleading popup prompting to install Java on Mac, use [`ltex.java.forceTrySystemWide`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavaforcetrysystemwide) to force trying a system-wide Java installation (fixes [#162](https://github.com/valentjn/vscode-ltex/issues/162))
 
 ## 8.0.0 — “The Setting Transformation” (November 1, 2020)
 

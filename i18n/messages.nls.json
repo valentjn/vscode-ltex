@@ -93,6 +93,7 @@
   "searchingForLtexLsIn": "Searching for ltex-ls in '{0}'...",
   "separationLine": "----------------------------------------",
   "setLtexTraceServerToVerbose": "Set ltex.trace.server to \"verbose\"",
+  "skippingTryingSystemWideJava": "Skipping trying to use a system-wide Java installation as the platform is Mac and ltex.java.forceTrySystemWide is set to false (otherwise, Mac might show a popup prompting to install Java if it's not installed).",
   "startedWatchingExternalSettingFile": "Started watching external setting file '{0}'.",
   "startingLtex": "Starting LTeX...",
   "startingLtexLs": "Starting ltex-ls...",

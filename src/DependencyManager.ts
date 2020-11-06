@@ -416,6 +416,8 @@ export default class DependencyManager {
       return this.showOfflineInstallationInstructions(i18n('couldNotInstallLtexLs'));
     }
 
+    const forceTrySystemWideJava: boolean = workspaceConfig.get('java.forceTrySystemWide', false);
+
     // try 0: use ltex.java.path
     // try 1: use lib/ (don't download)
     // try 2: download and use lib/
@@ -427,6 +429,14 @@ export default class DependencyManager {
         if (DependencyManager.isValidPath(this._javaPath)) {
           Logger.log(i18n('ltexJavaPathSetTo', this._javaPath));
         } else if (i == 0) {
+          // On Mac, running the java command if Java is not installed will result in a popup
+          // prompting to install Java. Therefore, skip trying the system-wide Java on Mac
+          // by default (except when ltex.java.forceTrySystemWide is set to true).
+          if ((process.platform == 'darwin') && !forceTrySystemWideJava) {
+            Logger.log(i18n('skippingTryingSystemWideJava'));
+            continue;
+          }
+
           Logger.log(i18n('ltexJavaPathNotSet'));
         } else {
           Logger.log(i18n('searchingForJavaIn', libDirPath));
