@@ -2204,7 +2204,7 @@
     "eslint": "7.12.1",
     "eslint-config-google": "0.14.0",
     "eslint-plugin-only-warn": "1.0.2",
-    "mocha": "8.2.0",
+    "mocha": "8.2.1",
     "rimraf": "3.0.2",
     "ts-loader": "8.0.9",
     "typescript": "4.0.5",
