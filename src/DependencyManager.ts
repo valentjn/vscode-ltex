@@ -426,7 +426,7 @@ export default class DependencyManager {
 
         if (DependencyManager.isValidPath(this._javaPath)) {
           Logger.log(i18n('ltexJavaPathSetTo', this._javaPath));
-        } else if (i % 3 == 0) {
+        } else if (i == 0) {
           Logger.log(i18n('ltexJavaPathNotSet'));
         } else {
           Logger.log(i18n('searchingForJavaIn', libDirPath));
@@ -437,7 +437,7 @@ export default class DependencyManager {
           } else {
             Logger.log(i18n('couldNotFindJavaIn', libDirPath));
 
-            if (i % 3 <= 1) {
+            if (i <= 1) {
               continue;
             } else {
               await this.installJava();
