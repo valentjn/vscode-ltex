@@ -2213,7 +2213,7 @@
     "eslint-plugin-only-warn": "1.0.2",
     "mocha": "8.2.1",
     "rimraf": "3.0.2",
-    "ts-loader": "8.0.9",
+    "ts-loader": "8.0.11",
     "typescript": "4.0.5",
     "vscode-test": "1.4.1",
     "webpack": "5.4.0",
