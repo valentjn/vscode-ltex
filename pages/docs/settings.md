@@ -1330,6 +1330,18 @@ Changes require reloading the Visual Studio Code window to take effect.
 
 *Default:* `""`
 
+## `ltex.java.forceTrySystemWide`
+
+If set to `true`, always try to use a system-wide Java installation before trying to use an automatically downloaded Java distribution.
+
+This is the default behavior on all platforms except Mac (i.e., this setting has no effect on these platforms). On Mac, trying to use a system-wide Java installation might result in a popup prompting to install Java if it's not installed. Therefore, LTeX does not use a system-wide Java installation on Mac by default.
+
+Changes require reloading the Visual Studio Code window to take effect.
+
+*Type:* `boolean`
+
+*Default:* `false`
+
 ## `ltex.java.initialHeapSize`
 
 Initial size of the Java heap memory in megabytes (corresponds to Java's `-Xms` option, must be a positive integer).
