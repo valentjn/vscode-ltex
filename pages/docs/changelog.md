@@ -11,7 +11,7 @@ sidebar: "sidebar"
 toc: false
 ---
 
-## 8.1.0 (upcoming)
+## 8.1.0 — “The Prepending Annihilation” (November 15, 2020)
 
 - Prepend messages of possible spelling mistakes with the respective unknown words (fixes [#161](https://github.com/valentjn/vscode-ltex/issues/161))
 - Add support for optional arguments of `\newtheorem`
