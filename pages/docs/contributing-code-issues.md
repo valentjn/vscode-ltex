@@ -90,9 +90,9 @@ This ensures that each version of vscode-ltex always uses the same version of lt
 
 You can help find bugs before they affect thousands of LTeX users by testing pre-releases.
 
-The availability of pre-releases varies. Pre-releases are only available if a pre-release tag (a tag with the name of a version number with a dash in it, e.g., `8.0.0-alpha.3`) has been pushed to the vscode-ltex or the ltex-ls repositories. Pre-releases are only available for a limited time, they will be deleted once the regular release has been taken place.
+The availability of pre-releases varies. Pre-releases are only available if a pre-release tag (a tag with the name of a version number with a dash in it, e.g., `8.0.0-alpha.3`) has been pushed to the repositories of vscode-ltex or ltex-ls. Pre-releases are only available for a limited time; they will be deleted once the regular release has been taken place.
 
-You can check whether pre-releases are available by checking the top of the GitHub Releases pages of [vscode-ltex](https://github.com/valentjn/vscode-ltex/releases) and [ltex-ls](https://github.com/valentjn/ltex-ls/releases). Pre-releases will always be displayed above the latest release.
+You can check whether pre-releases are available by checking the top of the GitHub Releases pages of [vscode-ltex](https://github.com/valentjn/vscode-ltex/releases) and [ltex-ls](https://github.com/valentjn/ltex-ls/releases). If any pre-releases are available, they will always be displayed above the latest release.
 
 Of course, pre-releases are not for productive work, they even may be harmful and mess up your settings, etc. Therefore, it's best to use a clean installation/profile of VS Code. You can do that by starting VS Code via `code --extensions-dir /tmp/code-extensions --user-data-dir /tmp/code-user`. If you do use your existing installation, you can downgrade again by removing the extension and reinstalling it from the Marketplace. Close VS Code after removing the extension if LTeX does not behave normally.
 
@@ -104,11 +104,20 @@ Be sure to check the list of current changes in the [changelog on the develop br
 
 ### Documentation
 
-In addition, there is the possibility to work on the [documentation](https://valentjn.github.io/vscode-ltex). It's using GitHub Pages, Jekyll, and Markdown, and a bunch of Python scripts copies information over from the main repository (settings, changelog, etc.).
+In addition, there is the possibility to work on the [documentation](https://valentjn.github.io/vscode-ltex). It's using GitHub Pages, Jekyll, and Markdown, and a bunch of Python scripts copies information over from the main repository.
 
 Analogously to the actual extension, there are two branches, which are stored in the [repository of vscode-ltex](https://github.com/valentjn/vscode-ltex): `gh-pages-develop` and `gh-pages-release`. Improvements go to `gh-pages-develop`, while `gh-pages-release` reflects the documentation for the latest release. Pushes to `gh-pages-release` will trigger Travis CI: It will hard-reset the actual `gh-pages` branch used for generating the site to `gh-pages-release`, and add a commit for updating the usage statistics on the homepage. To keep the statistics up-to-date, a cron job triggers this process once a day.
 
-At the bottom of each page, you'll find an “Edit me” button that takes you directly to the corresponding Markdown document in the GitHub repo.
+At the bottom of each page, you'll find an “Edit me” button that takes you directly to the corresponding Markdown document in the GitHub repo. However, note that some pages are automatically generated. Changes in the Markdown documents linked by the “Edit me” buttons on these pages would be overwritten by the Python scripts. Therefore, if you want to edit one of these pages, please edit the source(s) instead:
+
+| Page | Sources |
+| ---- | ------- |
+| [Settings](settings.html) | [package.json](https://github.com/valentjn/vscode-ltex/blob/develop/package.json), [package.nls.json](https://github.com/valentjn/vscode-ltex/blob/develop/package.nls.json) |
+| [Commands](commands.html) | [package.json](https://github.com/valentjn/vscode-ltex/blob/develop/package.json), [package.nls.json](https://github.com/valentjn/vscode-ltex/blob/develop/package.nls.json) |
+| [Changelog](changelog.html) | [CHANGELOG.md](https://github.com/valentjn/vscode-ltex/blob/develop/CHANGELOG.md) |
+| [Contributing Code/Issues](contributing-code-issues.html) | [CONTRIBUTING.md](https://github.com/valentjn/vscode-ltex/blob/develop/CONTRIBUTING.md) |
+| [Code of Conduct](code-of-conduct.html) | [CODE_OF_CONDUCT.md](https://github.com/valentjn/vscode-ltex/blob/develop/CODE_OF_CONDUCT.md) |
+| [Acknowledgments](acknowledgments.html) | [ACKNOWLEDGMENTS.md](https://github.com/valentjn/vscode-ltex/blob/develop/ACKNOWLEDGMENTS.md) |
 
 ### Internationalization (I18n)
 
