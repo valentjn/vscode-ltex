@@ -128,7 +128,13 @@ async function runTestIteration(testIteration: number): Promise<void> {
 
     if (exitCode != 0) throw new Error(`Test returned exit code ${exitCode}.`);
   } finally {
-    if (tmpDirPath != null) Rimraf.sync(tmpDirPath);
+    if (tmpDirPath != null) {
+      try {
+        Rimraf.sync(tmpDirPath);
+      } catch {
+        console.log(`Could not delete temporary directory '${tmpDirPath}', leaving on disk.`);
+      }
+    }
   }
 
   return Promise.resolve();
@@ -136,19 +142,22 @@ async function runTestIteration(testIteration: number): Promise<void> {
 
 async function main(): Promise<void> {
   let fastMode: boolean = false;
+  let onlyTestIteration: number | null = null;
 
-  for (const arg of process.argv) {
-    if (arg == '--fast') fastMode = true;
+  for (let i: number = 0; i < process.argv.length; i++) {
+    const arg: string = process.argv[i];
+
+    if (arg == '--fast') {
+      fastMode = true;
+    } else if ((arg == '--iteration') && (i < process.argv.length - 1)) {
+      onlyTestIteration = parseInt(process.argv[i + 1]);
+      i++;
+    }
   }
 
   ltexDirPath = Path.resolve(__dirname, '..', '..');
-  let codeVersion: string = 'stable';
+  const codeVersion: string = 'stable';
   let codePlatform: string | undefined;
-
-  if (process.platform == 'win32') {
-    codeVersion = '1.35.1';
-    codePlatform = 'win32-x64-archive';
-  }
 
   console.log('Downloading and installing VS Code...');
   vscodeExecutablePath = await CodeTest.downloadAndUnzipVSCode(codeVersion, codePlatform);
@@ -158,6 +167,7 @@ async function main(): Promise<void> {
 
   for (let testIteration: number = 0; testIteration < 4; testIteration++) {
     if (fastMode && (testIteration != 1)) continue;
+    if ((onlyTestIteration != null) && (testIteration != onlyTestIteration)) continue;
     await runTestIteration(testIteration);
   }
 

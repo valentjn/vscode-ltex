@@ -61,22 +61,25 @@ Both repositories currently have two main branches: `develop` and `release`. The
 
 ### Code Checks
 
-In order for pull requests to be merged, a number of checks have to pass. This is automatically enforced by GitHub and Travis CI. The necessary checks depend on the project you contribute to:
+In order for pull requests to be merged, a number of checks have to pass. This is enforced by GitHub, and the checks are automatically performed by a GitHub Actions workflow. The necessary checks depend on the project you contribute to:
 
-- vscode-ltex:
+- vscode-ltex (see [`vscode-ltex-ci.yml`](https://github.com/valentjn/vscode-ltex/blob/develop/.github/workflows/vscode-ltex-ci.yml)):
   - Successful build (strict mode)
   - No ESLint warnings
   - Successful Mocha end-to-end and unit tests
-- ltex-ls:
+  - Everything above is checked for Linux, Mac, and Windows
+  - No CodeQL warnings
+- ltex-ls (see [`ltex-ls-ci.yml`](https://github.com/valentjn/ltex-ls/blob/develop/.github/workflows/ltex-ls-ci.yml)):
   - Successful build
   - No Checkstyle warnings (we use a slightly modified Google style)
   - No SpotBugs warnings
   - No Checker Framework warnings
   - Successful JUnit unit tests
   - Everything above is checked for Linux, Mac, and Windows
-  - Code coverage of at least 90% (checked by Coveralls)
+  - Code coverage of at least 90% (coverage reports are uploaded to [Coveralls](https://coveralls.io/github/valentjn/ltex-ls))
+  - No CodeQL warnings
 
-Look at `.travis.yml` in the root directory of the respective project to learn how to execute the checks locally on your machine.
+Look at the `*.yml` definition of the respective GitHub Actions workflow to learn how to execute the checks locally on your machine.
 
 ### Versioning
 

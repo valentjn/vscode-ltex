@@ -10,6 +10,7 @@ import argparse
 import json
 import os
 import platform
+import re
 import shlex
 import shutil
 import subprocess
@@ -127,9 +128,10 @@ def createPackage(ltexPlatform=None, ltexArch=None):
   else:
     packageName = f"vscode-ltex-{ltexVersion}-offline-{ltexPlatform}-{ltexArch}.vsix"
 
-  cmd = ["vsce", "package", "-o", packageName]
-  print("Creating package by running '{}'...".format(" ".join(shlex.quote(x) for x in cmd)))
-  subprocess.run(cmd)
+  assert re.match(r"^[\-\.0-9A-Z_a-z]+$", packageName) is not None
+  cmd = f"vsce package -o \"{packageName}\""
+  print(f"Creating package by running '{cmd}'...")
+  subprocess.run(cmd, shell=True)
 
 
 
@@ -148,6 +150,7 @@ def main():
           "Windows" : "windows",
         }[platform.system()]
     ltexArch = {
+          "AMD64" : "x64",
           "x86_64" : "x64",
         }[platform.machine()]
     ltexPlatformArchs = [(ltexPlatform, ltexArch)]

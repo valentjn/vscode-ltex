@@ -1,0 +1,224 @@
+# Copyright (C) 2020 Julian Valentin, LTeX Development Community
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+name: "vscode-ltex CI"
+
+on:
+  push:
+    branches:
+      - "develop"
+      - "release"
+    tags:
+      - "*"
+  pull_request:
+    branches:
+      - "develop"
+
+jobs:
+  build:
+    name: "vscode-ltex CI - Build Job"
+    runs-on: "${{ matrix.os }}"
+
+    strategy:
+      matrix:
+        os:
+          - "ubuntu-20.04"
+          - "macos-11.0"
+          - "windows-2019"
+
+    steps:
+      - name: "Checkout Repository"
+        uses: "actions/checkout@v2"
+        with:
+          fetch-depth: "2"
+
+      - name: "Checkout Head of PR Instead of Merge Commit"
+        run: "git checkout HEAD^2"
+        if: "${{ github.event_name == 'pull_request' }}"
+
+      - name: "Set up Node.js"
+        uses: "actions/setup-node@v1"
+        with:
+          node-version: "12.14.1"
+
+      - name: "Install Node.js Dependencies"
+        run: "npm install && npm install -g vsce@1.81.1 ovsx@0.1.0-next.980e5cf"
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.0"
+
+      - name: "Install Python Dependencies"
+        run: "python -m pip install --upgrade pip && pip install semver==2.13.0"
+
+      - name: "Start X Virtual Frame Buffer"
+        if: "${{ startsWith(matrix.os, 'ubuntu-') }}"
+        run: "echo \"DISPLAY=:99.0\" >> $GITHUB_ENV && Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &"
+
+      - name: "Build Package with vsce"
+        run: "vsce package"
+
+      - name: "Run ESLint"
+        run: "npm run lint"
+
+      - name: "Run Mocha Tests (Linux/Mac)"
+        if: "${{ !startsWith(matrix.os, 'windows-') }}"
+        env:
+          # to suppress "async hook stack has become corrupted" errors
+          # (https://github.com/microsoft/vscode/issues/85601)
+          NODE_OPTIONS: "--no-force-async-hooks-checks"
+        run: "npm run test"
+
+      - name: "Run Mocha Tests (Windows)"
+        if: "${{ startsWith(matrix.os, 'windows-') }}"
+        env:
+          # to suppress "async hook stack has become corrupted" errors
+          # (https://github.com/microsoft/vscode/issues/85601)
+          NODE_OPTIONS: "--no-force-async-hooks-checks"
+        # otherwise, git clean fails to remove lib/ with "Invalid argument" errors
+        run: "npm run test -- --fast"
+
+  analyze_codeql:
+    name: "vscode-ltex CI - CodeQL Job"
+    runs-on: "ubuntu-20.04"
+
+    steps:
+      - name: "Checkout Repository"
+        uses: "actions/checkout@v2"
+        with:
+          fetch-depth: "2"
+
+      - name: "Checkout Head of PR Instead of Merge Commit"
+        run: "git checkout HEAD^2"
+        if: "${{ github.event_name == 'pull_request' }}"
+
+      - name: "Install Python 2 pip (Workaround github/codeql-action#316)"
+        run: "curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py && python2 get-pip.py"
+
+      - name: "Initialize CodeQL"
+        uses: "github/codeql-action/init@v1"
+        with:
+          languages: javascript, python
+
+      - name: "Autobuild"
+        uses: "github/codeql-action/autobuild@v1"
+
+      - name: "Perform CodeQL Analysis"
+        uses: "github/codeql-action/analyze@v1"
+
+  deploy:
+    name: "vscode-ltex CI - Deploy Job"
+    needs:
+      - "build"
+      - "analyze_codeql"
+    if: "${{ startsWith(github.ref, 'refs/tags/') }}"
+    runs-on: "ubuntu-20.04"
+
+    steps:
+      - name: "Checkout Repository"
+        uses: "actions/checkout@v2"
+        with:
+          fetch-depth: "2"
+
+      - name: "Checkout Head of PR Instead of Merge Commit"
+        run: "git checkout HEAD^2"
+        if: "${{ github.event_name == 'pull_request' }}"
+
+      - name: "Set up Node.js"
+        uses: "actions/setup-node@v1"
+        with:
+          node-version: "12.14.1"
+
+      - name: "Install Node.js Dependencies"
+        run: "npm install && npm install -g vsce@1.81.1 ovsx@0.1.0-next.980e5cf"
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.0"
+
+      - name: "Install Python Dependencies"
+        run: "python -m pip install --upgrade pip && pip install semver==2.13.0"
+
+      - name: "Build Package with vsce"
+        run: "vsce package"
+
+      - name: "Build Offline Packages"
+        run: "python tools/createOfflinePackages.py"
+
+      - name: "Set VSCODE_LTEX_VERSION"
+        run: "echo \"VSCODE_LTEX_VERSION=$(python -c \"import json; print(json.load(open('package.json', 'r'))['version'], end='')\")\" >> $GITHUB_ENV"
+
+      - name: "Check VSCODE_LTEX_VERSION"
+        run: "if [[ -z \"$VSCODE_LTEX_VERSION\" ]]; then echo 'Error: VSCODE_LTEX_VERSION not set!'; (exit 1); fi; echo \"VSCODE_LTEX_VERSION set to '$VSCODE_LTEX_VERSION'\""
+
+      - name: "Set VSCODE_LTEX_IS_PRERELEASE"
+        run: "if [[ -z \"$VSCODE_LTEX_VERSION\" ]]; then echo 'Error: VSCODE_LTEX_VERSION not set!'; (exit 1); fi; echo \"VSCODE_LTEX_IS_PRERELEASE=$(python -c \"import semver; print('true' if semver.VersionInfo.parse('$VSCODE_LTEX_VERSION').prerelease is not None else 'false', end='')\")\" >> $GITHUB_ENV"
+
+      - name: "Check VSCODE_LTEX_IS_PRERELEASE"
+        run: "if [[ -z \"$VSCODE_LTEX_IS_PRERELEASE\" ]]; then echo 'Error: VSCODE_LTEX_IS_PRERELEASE not set!'; (exit 1); fi; echo \"VSCODE_LTEX_IS_PRERELEASE set to '$VSCODE_LTEX_IS_PRERELEASE'\""
+
+      - name: "Create GitHub Release"
+        id: "create_github_release"
+        uses: "actions/create-release@v1"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          tag_name: "${{ github.ref }}"
+          prerelease: "${{ env.VSCODE_LTEX_IS_PRERELEASE }}"
+
+      - name: "Upload Package to GitHub Release"
+        uses: "actions/upload-release-asset@v1"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          asset_content_type: "application/octet-stream"
+          asset_name: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}.vsix"
+          asset_path: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}.vsix"
+          upload_url: "${{ steps.create_github_release.outputs.upload_url }}"
+
+      - name: "Upload Linux Offline Package to GitHub Release"
+        uses: "actions/upload-release-asset@v1"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          asset_content_type: "application/octet-stream"
+          asset_name: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-linux-x64.vsix"
+          asset_path: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-linux-x64.vsix"
+          upload_url: "${{ steps.create_github_release.outputs.upload_url }}"
+
+      - name: "Upload Mac Offline Package to GitHub Release"
+        uses: "actions/upload-release-asset@v1"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          asset_content_type: "application/octet-stream"
+          asset_name: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-mac-x64.vsix"
+          asset_path: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-mac-x64.vsix"
+          upload_url: "${{ steps.create_github_release.outputs.upload_url }}"
+
+      - name: "Upload Windows Offline Package to GitHub Release"
+        uses: "actions/upload-release-asset@v1"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          asset_content_type: "application/octet-stream"
+          asset_name: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-windows-x64.vsix"
+          asset_path: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-windows-x64.vsix"
+          upload_url: "${{ steps.create_github_release.outputs.upload_url }}"
+
+      - name: "Publish Package on VS Marketplace"
+        if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
+        env:
+          VSCODE_LTEX_VSCE_TOKEN: "${{ secrets.VSCODE_LTEX_VSCE_TOKEN }}"
+        run: "vsce publish -p \"$VSCODE_LTEX_VSCE_TOKEN\""
+
+      - name: "Publish Package on Open VSX"
+        if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
+        env:
+          VSCODE_LTEX_OVSX_TOKEN: "${{ secrets.VSCODE_LTEX_OVSX_TOKEN }}"
+        run: "ovsx publish -p \"$VSCODE_LTEX_OVSX_TOKEN\""

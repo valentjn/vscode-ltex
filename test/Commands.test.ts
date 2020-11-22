@@ -25,13 +25,13 @@ describe('Test commands', () => {
   it('Test ltex.clearDiagnosticsInCurrentDocument and ltex.checkCurrentDocument', async () => {
     const document: Code.TextDocument = await TestTools.createNewFile('latex',
         'This is an \\textbf{test}.');
-    await TestTools.sleep(5000);
+    await TestTools.sleep(10000);
     Assert.strictEqual(Code.languages.getDiagnostics(document.uri).length, 1);
     await Code.commands.executeCommand('ltex.clearDiagnosticsInCurrentDocument');
     await TestTools.sleep(1000);
     Assert.strictEqual(Code.languages.getDiagnostics(document.uri).length, 0);
     await Code.commands.executeCommand('ltex.checkCurrentDocument');
-    await TestTools.sleep(5000);
+    await TestTools.sleep(10000);
     Assert.strictEqual(Code.languages.getDiagnostics(document.uri).length, 1);
   });
 
@@ -40,7 +40,7 @@ describe('Test commands', () => {
         'This is an \\textbf{test}.');
     const document2: Code.TextDocument = await TestTools.createNewFile('latex',
         'This is an \\textbf{test}.');
-    await TestTools.sleep(5000);
+    await TestTools.sleep(10000);
 
     Assert.strictEqual(Code.languages.getDiagnostics(document1.uri).length, 1);
     Assert.strictEqual(Code.languages.getDiagnostics(document2.uri).length, 1);
@@ -52,7 +52,7 @@ describe('Test commands', () => {
     Assert.strictEqual(Code.languages.getDiagnostics(document2.uri).length, 1);
 
     await Code.commands.executeCommand('ltex.checkCurrentDocument');
-    await TestTools.sleep(5000);
+    await TestTools.sleep(10000);
 
     Assert.strictEqual(Code.languages.getDiagnostics(document1.uri).length, 1);
     Assert.strictEqual(Code.languages.getDiagnostics(document2.uri).length, 1);
