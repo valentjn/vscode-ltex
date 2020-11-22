@@ -1,5 +1,9 @@
 {
   "files.exclude": {
+    "**/*.class": true,
+    "**/*.vsix": true,
+    "**/__pycache__": true,
+    ".git": true,
     ".vscode-test": true,
     "dist": true,
     "lib": true,
@@ -7,8 +11,6 @@
     "out": true,
     "package-lock.json": true,
     "tmp-*": true,
-    "**/*.class": true,
-    "**/*.vsix": true,
   },
   "java.configuration.updateBuildConfiguration": "interactive",
   "python.analysis.extraPaths": [
