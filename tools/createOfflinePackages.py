@@ -61,16 +61,16 @@ def getLatestCompatibleLtexLsVersion(versions):
 
 def downloadLtexLs():
   releasesUrl = "https://api.github.com/repos/valentjn/ltex-ls/releases"
-  print("Fetching list of ltex-ls releases from '{}'...".format(releasesUrl))
+  print(f"Fetching list of ltex-ls releases from '{releasesUrl}'...")
   releases = common.requestFromGitHub(releasesUrl)
 
   ltexLsVersion = getLatestCompatibleLtexLsVersion([x["tag_name"] for x in releases])
-  print("Latest compatible release is 'ltex-ls-{}'.".format(ltexLsVersion))
+  print(f"Latest compatible release is 'ltex-ls-{ltexLsVersion}'.")
 
   ltexLsUrl = ("https://github.com/valentjn/ltex-ls/releases/download/"
-      "{0}/ltex-ls-{0}.tar.gz").format(ltexLsVersion)
-  ltexLsArchivePath = os.path.join(libDirPath, "ltex-ls-{}.tar.gz".format(ltexLsVersion))
-  print("Downloading ltex-ls from '{}' to '{}'...".format(ltexLsUrl, ltexLsArchivePath))
+      f"{ltexLsVersion}/ltex-ls-{ltexLsVersion}.tar.gz")
+  ltexLsArchivePath = os.path.join(libDirPath, f"ltex-ls-{ltexLsVersion}.tar.gz")
+  print(f"Downloading ltex-ls from '{ltexLsUrl}' to '{ltexLsArchivePath}'...")
   urllib.request.urlretrieve(ltexLsUrl, ltexLsArchivePath)
 
   extractLtexLs(ltexLsArchivePath)
@@ -85,27 +85,27 @@ def extractLtexLs(ltexLsArchivePath):
 
 
 def removeJava():
-  path = os.path.join(libDirPath, "jdk-{}-jre".format(common.toBeDownloadedJavaVersion))
+  path = os.path.join(libDirPath, f"jdk-{common.toBeDownloadedJavaVersion}-jre")
 
   if os.path.isdir(path):
-    print("Removing old Java directory '{}'...".format(path))
+    print(f"Removing old Java directory '{path}'...")
     shutil.rmtree(path)
 
-  path = os.path.join(libDirPath, "._jdk-{}-jre".format(common.toBeDownloadedJavaVersion))
+  path = os.path.join(libDirPath, f"._jdk-{common.toBeDownloadedJavaVersion}-jre")
 
   if os.path.isfile(path):
-    print("Removing old Java file '{}'...".format(path))
+    print(f"Removing old Java file '{path}'...")
     os.remove(path)
 
 def downloadJava(platform, arch):
   javaArchiveType = ("zip" if platform == "windows" else "tar.gz")
-  javaArchiveName = "OpenJDK11U-jre_{}_{}_hotspot_{}.{}".format(
-      arch, platform, common.toBeDownloadedJavaVersion.replace("+", "_"), javaArchiveType)
+  javaArchiveName = (f"OpenJDK11U-jre_{arch}_{platform}_hotspot_"
+      f"{common.toBeDownloadedJavaVersion.replace('+', '_')}.{javaArchiveType}")
 
-  javaUrl = ("https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/""jdk-{}/{}"
-      .format(urllib.parse.quote_plus(common.toBeDownloadedJavaVersion), javaArchiveName))
+  javaUrl = ("https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/"
+      f"jdk-{urllib.parse.quote_plus(common.toBeDownloadedJavaVersion)}/{javaArchiveName}")
   javaArchivePath = os.path.join(libDirPath, javaArchiveName)
-  print("Downloading Java from '{}' to '{}'...".format(javaUrl, javaArchivePath))
+  print(f"Downloading Java from '{javaUrl}' to '{javaArchivePath}'...")
   urllib.request.urlretrieve(javaUrl, javaArchivePath)
   print("Extracting Java archive...")
 
@@ -123,9 +123,9 @@ def createPackage(ltexPlatform=None, ltexArch=None):
   ltexVersion = getLtexVersion()
 
   if ltexPlatform is None:
-    packageName = "vscode-ltex-{}.vsix".format(ltexVersion)
+    packageName = f"vscode-ltex-{ltexVersion}.vsix"
   else:
-    packageName = "vscode-ltex-{}-offline-{}-{}.vsix".format(ltexVersion, ltexPlatform, ltexArch)
+    packageName = f"vscode-ltex-{ltexVersion}-offline-{ltexPlatform}-{ltexArch}.vsix"
 
   cmd = ["vsce", "package", "-o", packageName]
   print("Creating package by running '{}'...".format(" ".join(shlex.quote(x) for x in cmd)))
@@ -159,7 +159,7 @@ def main():
 
   for ltexPlatform, ltexArch in ltexPlatformArchs:
     print("")
-    print("Processing platform '{}' and architecture '{}'...".format(ltexPlatform, ltexArch))
+    print(f"Processing platform '{ltexPlatform}' and architecture '{ltexArch}'...")
 
     if ltexLsArchivePath is None:
       downloadLtexLs()
