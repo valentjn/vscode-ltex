@@ -1,0 +1,61 @@
+# Copyright (C) 2020 Julian Valentin, LTeX Development Community
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+name: "Update gh-pages"
+
+on:
+  push:
+    branches:
+      - "gh-pages-release"
+  schedule:
+    - cron: "30 18 * * *"
+
+jobs:
+  build:
+    name: "Update gh-pages Job"
+    runs-on: "ubuntu-20.04"
+
+    steps:
+      - name: "Checkout Repository"
+        uses: "actions/checkout@v2"
+        with:
+          ref: "gh-pages-release"
+
+      - name: "Set up Python"
+        uses: "actions/setup-python@v2"
+        with:
+          python-version: "3.9.0"
+
+      - name: "Install Python Dependencies"
+        # Cartopy from Ubuntu packages fails due to missing images, and build Shapely from
+        # source due to assertion error (https://stackoverflow.com/a/60126085)
+        run: "sudo apt-get -y install libgeos-dev libproj-dev && python -m pip install --upgrade pip && pip install numpy==1.19.4 && pip install bokeh==2.2.3 cartopy==0.18.0 matplotlib==3.3.3 pyyaml==5.3.1 scipy==1.5.4 wheel==0.35.1 && pip uninstall -y shapely && pip install --no-binary shapely shapely==1.7.1"
+
+      - name: "Set up Ruby"
+        uses: "ruby/setup-ruby@v1"
+        with:
+          ruby-version: "2.7.2"
+
+      - name: "Install Ruby Dependencies"
+        run: "bundle install --jobs=2"
+
+      - name: "Set Git Identity"
+        run: "git config user.name github-actions && git config user.email github-actions@github.com"
+
+      - name: "Rebase gh-pages"
+        run: "git remote set-branches --add origin gh-pages && git fetch origin gh-pages:gh-pages && git checkout gh-pages && git reset --hard gh-pages-release"
+
+      - name: "Fetch Stats"
+        run: "wget -O _data/stats/stats.json https://github.com/valentjn/vscode-ltex-stats/raw/stats/data/stats.json && wget -O _data/stats/map.json https://github.com/valentjn/vscode-ltex-stats/raw/stats/data/map.json"
+
+      - name: "Plot Stats"
+        run: "python tools/plotStats.py"
+
+      - name: "Build with Jekyll"
+        run: "bundle exec jekyll build"
+
+      - name: "Push Plotted Stats"
+        run: "python tools/pushPlottedStats.py"

@@ -63,22 +63,25 @@ Both repositories currently have two main branches: `develop` and `release`. The
 
 ### Code Checks
 
-In order for pull requests to be merged, a number of checks have to pass. This is automatically enforced by GitHub and Travis CI. The necessary checks depend on the project you contribute to:
+In order for pull requests to be merged, a number of checks have to pass. This is enforced by GitHub, and the checks are automatically performed by a GitHub Actions workflow. The necessary checks depend on the project you contribute to:
 
-- vscode-ltex:
+- vscode-ltex (see [`vscode-ltex-ci.yml`](https://github.com/valentjn/vscode-ltex/blob/develop/.github/workflows/vscode-ltex-ci.yml)):
   - Successful build (strict mode)
   - No ESLint warnings
   - Successful Mocha end-to-end and unit tests
-- ltex-ls:
+  - Everything above is checked for Linux, Mac, and Windows
+  - No CodeQL warnings
+- ltex-ls (see [`ltex-ls-ci.yml`](https://github.com/valentjn/ltex-ls/blob/develop/.github/workflows/ltex-ls-ci.yml)):
   - Successful build
   - No Checkstyle warnings (we use a slightly modified Google style)
   - No SpotBugs warnings
   - No Checker Framework warnings
   - Successful JUnit unit tests
   - Everything above is checked for Linux, Mac, and Windows
-  - Code coverage of at least 90% (checked by Coveralls)
+  - Code coverage of at least 90% (coverage reports are uploaded to [Coveralls](https://coveralls.io/github/valentjn/ltex-ls))
+  - No CodeQL warnings
 
-Look at `.travis.yml` in the root directory of the respective project to learn how to execute the checks locally on your machine.
+Look at the `*.yml` definition of the respective GitHub Actions workflow to learn how to execute the checks locally on your machine.
 
 ### Versioning
 
@@ -106,7 +109,7 @@ Be sure to check the list of current changes in the [changelog on the develop br
 
 In addition, there is the possibility to work on the [documentation](https://valentjn.github.io/vscode-ltex). It's using GitHub Pages, Jekyll, and Markdown, and a bunch of Python scripts copies information over from the main repository.
 
-Analogously to the actual extension, there are two branches, which are stored in the [repository of vscode-ltex](https://github.com/valentjn/vscode-ltex): `gh-pages-develop` and `gh-pages-release`. Improvements go to `gh-pages-develop`, while `gh-pages-release` reflects the documentation for the latest release. Pushes to `gh-pages-release` will trigger Travis CI: It will hard-reset the actual `gh-pages` branch used for generating the site to `gh-pages-release`, and add a commit for updating the usage statistics on the homepage. To keep the statistics up-to-date, a cron job triggers this process once a day.
+Analogously to the actual extension, there are two branches, which are stored in the [repository of vscode-ltex](https://github.com/valentjn/vscode-ltex): `gh-pages-develop` and `gh-pages-release`. Improvements go to `gh-pages-develop`, while `gh-pages-release` reflects the documentation for the latest release. Pushes to `gh-pages-release` will trigger a GitHub Actions workflow: It will hard-reset the actual `gh-pages` branch used for generating the site to `gh-pages-release`, and add a commit for updating the usage statistics on the homepage. To keep the statistics up-to-date, a cron job triggers this process once a day.
 
 At the bottom of each page, you'll find an “Edit me” button that takes you directly to the corresponding Markdown document in the GitHub repo. However, note that some pages are automatically generated. Changes in the Markdown documents linked by the “Edit me” buttons on these pages would be overwritten by the Python scripts. Therefore, if you want to edit one of these pages, please edit the source(s) instead:
 

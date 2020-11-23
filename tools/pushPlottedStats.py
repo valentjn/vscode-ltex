@@ -39,7 +39,6 @@ def main():
   run(commitCmd)
   run(["git", "status"])
 
-  run(["git", "remote", "set-url", "origin", "git@github.com:valentjn/vscode-ltex"])
   run(["git", "push", "-f", "origin", "gh-pages"])
 
 

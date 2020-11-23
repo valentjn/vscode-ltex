@@ -1,0 +1,42 @@
+# Copyright (C) 2020 Julian Valentin, LTeX Development Community
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+name: "gh-pages CI"
+
+on:
+  push:
+    branches:
+      - "gh-pages-develop"
+      - "gh-pages-release"
+  pull_request:
+    branches:
+      - "gh-pages-develop"
+
+jobs:
+  build:
+    name: "gh-pages CI - Build Job"
+    runs-on: "ubuntu-20.04"
+
+    steps:
+      - name: "Checkout Repository"
+        uses: "actions/checkout@v2"
+        with:
+          fetch-depth: 2
+
+      - name: "Checkout Head of PR Instead of Merge Commit"
+        run: "git checkout HEAD^2"
+        if: "${{ github.event_name == 'pull_request' }}"
+
+      - name: "Set up Ruby"
+        uses: "ruby/setup-ruby@v1"
+        with:
+          ruby-version: "2.7.2"
+
+      - name: "Install Ruby Dependencies"
+        run: "bundle install --jobs=2"
+
+      - name: "Build with Jekyll"
+        run: "bundle exec jekyll build"
