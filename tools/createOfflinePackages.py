@@ -30,7 +30,7 @@ import common
 
 libDirPath = os.path.join(common.repoDirPath, "lib")
 
-# to get proper logs in Travis CI
+# to get proper logs with CI services
 oldPrint = print
 print = (lambda *args, **kwargs: oldPrint(*args, **kwargs, flush=True))
 
