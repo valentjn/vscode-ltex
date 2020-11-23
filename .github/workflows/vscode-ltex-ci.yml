@@ -48,7 +48,7 @@ jobs:
         run: "npm install && npm install -g vsce@1.81.1 ovsx@0.1.0-next.980e5cf"
 
       - name: "Set up Python"
-        uses: actions/setup-python@v2
+        uses: "actions/setup-python@v2"
         with:
           python-version: "3.9.0"
 
@@ -90,7 +90,7 @@ jobs:
       - name: "Checkout Repository"
         uses: "actions/checkout@v2"
         with:
-          fetch-depth: "2"
+          fetch-depth: 2
 
       - name: "Checkout Head of PR Instead of Merge Commit"
         run: "git checkout HEAD^2"
@@ -102,7 +102,7 @@ jobs:
       - name: "Initialize CodeQL"
         uses: "github/codeql-action/init@v1"
         with:
-          languages: javascript, python
+          languages: "javascript,python"
 
       - name: "Autobuild"
         uses: "github/codeql-action/autobuild@v1"
@@ -137,7 +137,7 @@ jobs:
         run: "npm install && npm install -g vsce@1.81.1 ovsx@0.1.0-next.980e5cf"
 
       - name: "Set up Python"
-        uses: actions/setup-python@v2
+        uses: "actions/setup-python@v2"
         with:
           python-version: "3.9.0"
 
