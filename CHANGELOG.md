@@ -8,7 +8,7 @@
 
 # Changelog
 
-## 8.1.1 (upcoming)
+## 8.1.1 — “The Action Postulate” (November 24, 2020)
 
 - Migrate from Travis CI to GitHub Actions
 
