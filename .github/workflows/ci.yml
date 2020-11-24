@@ -4,7 +4,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-name: "vscode-ltex CI"
+name: "CI"
 
 on:
   push:
@@ -20,7 +20,7 @@ on:
 
 jobs:
   build:
-    name: "vscode-ltex CI - Build Job"
+    name: "CI - Build Job"
     runs-on: "${{ matrix.os }}"
 
     strategy:
@@ -84,7 +84,7 @@ jobs:
         run: "npm run test -- --fast"
 
   analyze_codeql:
-    name: "vscode-ltex CI - CodeQL Job"
+    name: "CI - CodeQL Job"
     runs-on: "ubuntu-20.04"
 
     steps:
@@ -112,7 +112,7 @@ jobs:
         uses: "github/codeql-action/analyze@v1"
 
   deploy:
-    name: "vscode-ltex CI - Deploy Job"
+    name: "CI - Deploy Job"
     needs:
       - "build"
       - "analyze_codeql"
