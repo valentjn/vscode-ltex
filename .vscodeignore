@@ -4,7 +4,6 @@
 .gitmodules
 .markdownlint.json
 .mocharc.json
-.travis.yml
 .webpack.config.js
 tsconfig.json
 *.vsix
@@ -13,7 +12,6 @@ tsconfig.json
 .vscode/
 .vscode-test/
 img/
-misc/
 node_modules/
 out/
 src/
