@@ -69,6 +69,7 @@ jobs:
       - name: "Run Mocha Tests (Linux/Mac)"
         if: "${{ !startsWith(matrix.os, 'windows-') }}"
         env:
+          LTEX_GITHUB_OAUTH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           # to suppress "async hook stack has become corrupted" errors
           # (https://github.com/microsoft/vscode/issues/85601)
           NODE_OPTIONS: "--no-force-async-hooks-checks"
@@ -77,6 +78,7 @@ jobs:
       - name: "Run Mocha Tests (Windows)"
         if: "${{ startsWith(matrix.os, 'windows-') }}"
         env:
+          LTEX_GITHUB_OAUTH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           # to suppress "async hook stack has become corrupted" errors
           # (https://github.com/microsoft/vscode/issues/85601)
           NODE_OPTIONS: "--no-force-async-hooks-checks"
@@ -149,6 +151,8 @@ jobs:
         run: "vsce package"
 
       - name: "Build Offline Packages"
+        env:
+          LTEX_GITHUB_OAUTH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         run: "python tools/createOfflinePackages.py"
 
       - name: "Set VSCODE_LTEX_VERSION"
