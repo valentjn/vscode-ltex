@@ -10,8 +10,6 @@ on:
   push:
     branches:
       - "gh-pages-release"
-  schedule:
-    - cron: "30 18 * * *"
   workflow_dispatch:
 
 jobs:
