@@ -1,0 +1,22 @@
+# Copyright (C) 2020 Julian Valentin, LTeX Development Community
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+name: "Trigger Update gh-pages"
+
+on:
+  schedule:
+    - cron: "30 18 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: "Trigger Update gh-pages Job"
+    runs-on: "ubuntu-20.04"
+
+    steps:
+      # necessary as only workflows on the default branch are triggered via schedules
+      - name: "Create workflow_dispatch Event"
+        run: "curl -u 'valentjn:${{ secrets.VSCODE_LTEX_REPOSITORY_DISPATCH_TOKEN }}' -X POST -H 'Accept: application/vnd.github.v3+json' https://api.github.com/repos/valentjn/vscode-ltex/actions/workflows/update-gh-pages.yml/dispatches -d '{\"ref\":\"gh-pages-develop\"}'"
