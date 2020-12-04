@@ -26,7 +26,7 @@ Triggers a check of all Markdown and LaTeX documents in the workspace.
 
 This does a file search for `*.md` and `*.tex` files in all folders of the workspace (i.e., untitled and unsaved documents are not checked). The type of the documents is recognized by their file extension.
 
-The documents must be in UTF-8 encoding. Does not work if no folders are opened in the workspace.
+The documents must be in UTF-8 encoding. This does not work if no folders are opened in the workspace.
 
 ## `LTeX: Clear diagnostics in current document`
 
