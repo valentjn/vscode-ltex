@@ -19,7 +19,7 @@ toc: false
 
 - Prepend messages of possible spelling mistakes with the respective unknown words (fixes [#161](https://github.com/valentjn/vscode-ltex/issues/161))
 - Add support for optional arguments of `\newtheorem`
-- Fix wrong position of diagnostics when using a recognized L<sup>A</sup>T<sub>A</sub>X command with a non-recognized set of arguments due to an infinite loop (fixes [#167](https://github.com/valentjn/vscode-ltex/issues/167))
+- Fix wrong position of diagnostics when using a recognized LaTeX command with a non-recognized set of arguments due to an infinite loop (fixes [#167](https://github.com/valentjn/vscode-ltex/issues/167))
 - Avoid misleading popup prompting to install Java on Mac, use [`ltex.java.forceTrySystemWide`](settings.html#ltexjavaforcetrysystemwide) to force trying a system-wide Java installation (fixes [#162](https://github.com/valentjn/vscode-ltex/issues/162))
 - Update bundled AdoptOpenJDK JRE to 11.0.9+11
 - Update LSP4J to 0.10.0
