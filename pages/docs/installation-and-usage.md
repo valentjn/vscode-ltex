@@ -30,7 +30,7 @@ sidebar: "sidebar"
 2. Install this extension
 3. Reload the VS Code window if necessary
 4. Open a LaTeX or a Markdown document, or open a new file and change the language mode to `LaTeX` or `Markdown` (open the Command Palette and select `Change Language Mode`)
-5. Wait until [ltex-ls](faq.html#whats-the-difference-between-vscode-ltex-ltex-ls-and-languagetool) and Java have been found; if necessary, LT<sub>E</sub>X downloads both for you. Alternatively, you can choose [offline installation](#offline-installation).
+5. Wait until [ltex-ls](faq.html#whats-the-difference-between-vscode-ltex-ltex-ls-and-languagetool) and Java have been found; if necessary, LTeX downloads both for you. Alternatively, you can choose [offline installation](#offline-installation).
 6. Grammar/spelling errors will be displayed! (if there are any)
 
 ## Offline Installation
