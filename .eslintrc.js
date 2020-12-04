@@ -73,8 +73,8 @@ module.exports = {
     "no-constant-condition": [
       "warn",
       {
-        "checkLoops": false
-      }
+        "checkLoops": false,
+      },
     ],
     "no-unused-vars": [
       "off",
@@ -82,12 +82,12 @@ module.exports = {
     "padded-blocks": [
       "off",
     ],
-    "require-jsdoc": [
-      "off",
-    ],
     "quotes": [
       "warn",
       "single",
+    ],
+    "require-jsdoc": [
+      "off",
     ],
     "semi": [
       "warn",
