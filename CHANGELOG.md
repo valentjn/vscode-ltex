@@ -8,6 +8,10 @@
 
 # Changelog
 
+## 8.1.2 (upcoming)
+
+- Only check file types for which LT<sub>E</sub>X has been enabled when running [`LTeX: Check all documents in workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-all-documents-in-workspace)
+
 ## 8.1.1 — “The Action Postulate” (November 24, 2020)
 
 - Migrate from Travis CI to GitHub Actions

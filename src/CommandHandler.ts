@@ -124,8 +124,13 @@ export default class CommandHandler {
 
       codeProgress.startTask(0.1, i18n('findingAllDocumentsInWorkspace'));
       if (token.isCancellationRequested) return Promise.resolve(true);
+
+      const fileExtensions: string[] = CommandHandler.getEnabledFileExtensions();
+      if (fileExtensions.length == 0) return Promise.resolve(true);
+      const fileExtensionWildcard: string = fileExtensions.join(',');
+
       const uris: Code.Uri[] = await Code.workspace.findFiles(
-          '**/*.{md,tex}', undefined, undefined, token);
+          `**/*.{${fileExtensionWildcard}}`, undefined, undefined, token);
       uris.sort((lhs: Code.Uri, rhs: Code.Uri) => lhs.fsPath.localeCompare(rhs.fsPath));
       codeProgress.finishTask();
 
@@ -151,6 +156,36 @@ export default class CommandHandler {
         return Promise.resolve(false);
       }
     });
+  }
+
+  private static getEnabledFileExtensions(): string[] {
+    const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
+    const enabled: any = workspaceConfig.get('enabled');
+    let enabledCodeLanguageIds: string[];
+
+    if ((enabled === true) || (enabled === false)) {
+      enabledCodeLanguageIds = (enabled ? ['markdown', 'latex', 'rsweave'] : []);
+    } else {
+      enabledCodeLanguageIds = enabled;
+    }
+
+    const enabledFileExtensions: Set<string> = new Set();
+
+    for (const codeLanguageId of enabledCodeLanguageIds) {
+      switch (codeLanguageId) {
+        case 'markdown': {
+          enabledFileExtensions.add('md');
+          break;
+        }
+        case 'latex':
+        case 'rsweave': {
+          enabledFileExtensions.add('tex');
+          break;
+        }
+      }
+    }
+
+    return Array.from(enabledFileExtensions).sort();
   }
 
   private clearDiagnosticsInCurrentDocument(): Promise<boolean> {
