@@ -101,7 +101,7 @@ If you want to test a pre-release of vscode-ltex, [download the `*.vsix` file fr
 
 Sometimes, only a pre-release (especially when there are no major changes) of ltex-ls is available. In this case, you can test the pre-release of ltex-ls by [downloading the ltex-ls archive](https://github.com/valentjn/ltex-ls/releases), extracting it, and pointing [`ltex.ltex-ls.path`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lspath) to the extracted directory.
 
-Be sure to check the list of current changes in the [changelog on the develop branch](https://github.com/valentjn/vscode-ltex/blob/develop/CHANGELOG.md) to know what to look for when testing.
+Be sure to check the list of current changes in the [changelog on the `develop` branch](https://github.com/valentjn/vscode-ltex/blob/develop/CHANGELOG.md) to know what to look for when testing.
 
 ### Documentation
 
