@@ -79,6 +79,17 @@ module.exports = {
     "no-unused-vars": [
       "off",
     ],
+    "operator-linebreak": [
+      "warn",
+      "before",
+      {
+        "overrides": {
+          "=": "after",
+          "+=": "after",
+          "-=": "after",
+        },
+      },
+    ],
     "padded-blocks": [
       "off",
     ],

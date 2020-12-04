@@ -45,10 +45,10 @@ export default class Logger {
     Logger.log('  Arguments: ' + JSON.stringify(executable.args));
 
     if (executable.options != null) {
-      Logger.log('  env[\'JAVA_HOME\']: ' +
-          JSON.stringify(executable.options.env['JAVA_HOME']));
-      Logger.log('  env[\'JAVA_OPTS\']: ' +
-          JSON.stringify(executable.options.env['JAVA_OPTS']));
+      Logger.log('  env[\'JAVA_HOME\']: '
+          + JSON.stringify(executable.options.env['JAVA_HOME']));
+      Logger.log('  env[\'JAVA_OPTS\']: '
+          + JSON.stringify(executable.options.env['JAVA_OPTS']));
     }
   }
 

@@ -27,8 +27,8 @@ export default class CommandHandler {
   private _languageClient: CodeLanguageClient.LanguageClient | null;
   private _externalFileManager: ExternalFileManager;
 
-  private static readonly _featureRequestUrl: string = 'https://github.com/valentjn/vscode-ltex/' +
-      'issues/new?assignees=&labels=1-feature-request&template=feature-request.md&title=';
+  private static readonly _featureRequestUrl: string = 'https://github.com/valentjn/vscode-ltex/'
+      + 'issues/new?assignees=&labels=1-feature-request&template=feature-request.md&title=';
 
   public constructor(context: Code.ExtensionContext, externalFileManager: ExternalFileManager,
         statusInformationPrinter: StatusPrinter, bugReporter: BugReporter) {
@@ -145,9 +145,9 @@ export default class CommandHandler {
       if (n > 0) {
         return Promise.resolve(true);
       } else {
-        Code.window.showErrorMessage((Code.workspace.workspaceFolders == null) ?
-            i18n('couldNotCheckDocumentsAsNoFoldersWereOpened') :
-            i18n('couldNotCheckDocumentsAsNoDocumentsWereFound'));
+        Code.window.showErrorMessage((Code.workspace.workspaceFolders == null)
+            ? i18n('couldNotCheckDocumentsAsNoFoldersWereOpened')
+            : i18n('couldNotCheckDocumentsAsNoDocumentsWereFound'));
         return Promise.resolve(false);
       }
     });
@@ -284,8 +284,8 @@ export default class CommandHandler {
 
     for (const language in entries) {
       if (!Object.prototype.hasOwnProperty.call(entries, language)) continue;
-      let languageSettingValue: string[] = ((settingValue[language] != null) ?
-          settingValue[language] : []);
+      let languageSettingValue: string[] = ((settingValue[language] != null)
+          ? settingValue[language] : []);
       languageSettingValue = languageSettingValue.concat(entries[language]);
       settingValue[language] = WorkspaceConfigurationRequestHandler.
           cleanUpWorkspaceSpecificStringArray(languageSettingValue);

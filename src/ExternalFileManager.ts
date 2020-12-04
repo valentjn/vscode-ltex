@@ -154,9 +154,9 @@ export default class ExternalFileManager {
         scope: Code.ConfigurationTarget, language: string): string | null {
     const externalFiles: LanguageSpecificExternalFiles = this.analyzeSetting(
         uri, settingName, scope, language).externalFiles;
-    return ((Object.prototype.hasOwnProperty.call(externalFiles, language) &&
-        (externalFiles[language].length > 0)) ?
-        externalFiles[language][0].resolvedPath : null);
+    return ((Object.prototype.hasOwnProperty.call(externalFiles, language)
+          && (externalFiles[language].length > 0))
+        ? externalFiles[language][0].resolvedPath : null);
   }
 
   private getExternalFilesFromSetting(uri: Code.Uri, settingName: string,
@@ -203,20 +203,20 @@ export default class ExternalFileManager {
     switch (scope) {
       case Code.ConfigurationTarget.Global: {
         defaultDirPath = this.getUserSettingsDirPath();
-        settingValue = ((settingValuePerScope != null) ?
-            settingValuePerScope.globalValue : null);
+        settingValue = ((settingValuePerScope != null)
+            ? settingValuePerScope.globalValue : null);
         break;
       }
       case Code.ConfigurationTarget.Workspace: {
         defaultDirPath = this.getWorkspaceSettingsDirPath();
-        settingValue = ((settingValuePerScope != null) ?
-            settingValuePerScope.workspaceValue : null);
+        settingValue = ((settingValuePerScope != null)
+            ? settingValuePerScope.workspaceValue : null);
         break;
       }
       case Code.ConfigurationTarget.WorkspaceFolder: {
         defaultDirPath = this.getWorkspaceFolderSettingsDirPath(uri);
-        settingValue = ((settingValuePerScope != null) ?
-            settingValuePerScope.workspaceFolderValue : null);
+        settingValue = ((settingValuePerScope != null)
+            ? settingValuePerScope.workspaceFolderValue : null);
         break;
       }
     }
@@ -227,8 +227,8 @@ export default class ExternalFileManager {
     for (const curLanguage of languages) {
       externalFiles[curLanguage] = [];
 
-      if ((settingValue != null) &&
-            Object.prototype.hasOwnProperty.call(settingValue, curLanguage)) {
+      if ((settingValue != null)
+            && Object.prototype.hasOwnProperty.call(settingValue, curLanguage)) {
         for (const entry of settingValue[curLanguage]) {
           if (!entry.startsWith(':')) continue;
           const originalFilePath: string = entry.substr(1);
@@ -322,8 +322,8 @@ export default class ExternalFileManager {
         LanguageSpecificSettingValue {
     const settingAnalysis: SettingAnalysis = this.analyzeSetting(uri, settingName, scope);
     const externalFiles: LanguageSpecificExternalFiles = settingAnalysis.externalFiles;
-    const settingValue: LanguageSpecificSettingValue = ((settingAnalysis.settingValue != null) ?
-        settingAnalysis.settingValue : {});
+    const settingValue: LanguageSpecificSettingValue = ((settingAnalysis.settingValue != null)
+        ? settingAnalysis.settingValue : {});
     const result: LanguageSpecificSettingValue = {};
 
     for (const language in externalFiles) {
@@ -340,8 +340,8 @@ export default class ExternalFileManager {
       if (!Object.prototype.hasOwnProperty.call(result, language)) result[language] = [];
 
       for (const entry of settingValue[language]) {
-        if (entry.startsWith(':') &&
-              Object.prototype.hasOwnProperty.call(settingAnalysis.externalFiles, language)) {
+        if (entry.startsWith(':')
+              && Object.prototype.hasOwnProperty.call(settingAnalysis.externalFiles, language)) {
           const filePath: string | null = ExternalFileManager.getResolvedPath(
               settingAnalysis.externalFiles[language], entry.substr(1));
 

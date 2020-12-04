@@ -31,8 +31,8 @@ export default class DependencyManager {
   private _ltexLsVersion: string | null = null;
   private _javaVersion: string | null = null;
 
-  private static readonly _offlineInstructionsUrl: string = 'https://valentjn.github.io/' +
-      'vscode-ltex/docs/installation-and-usage.html#offline-installation';
+  private static readonly _offlineInstructionsUrl: string = 'https://valentjn.github.io/'
+      + 'vscode-ltex/docs/installation-and-usage.html#offline-installation';
 
   private static readonly _toBeDownloadedLtexLsVersion: string = '8.1.1';
   private static readonly _toBeDownloadedLtexLsHashDigest: string =
@@ -94,8 +94,8 @@ export default class DependencyManager {
 
     return new Promise((resolve: () => void, reject: (reason?: any) => void) => {
       Https.get(DependencyManager.parseUrl(urlStr), (response: Http.IncomingMessage) => {
-        if ((response.statusCode === 301) || (response.statusCode === 302) ||
-              (response.statusCode === 307)) {
+        if ((response.statusCode === 301) || (response.statusCode === 302)
+              || (response.statusCode === 307)) {
           if (response.headers.location == null) {
             reject(new Error(i18n('receivedRedirectionStatusCodeWithoutLocationHeader',
                 response.statusCode)));
@@ -112,13 +112,13 @@ export default class DependencyManager {
           return;
         }
 
-        const totalBytes: number = ((response.headers['content-length'] != null) ?
-            parseInt(response.headers['content-length']) : 0);
+        const totalBytes: number = ((response.headers['content-length'] != null)
+            ? parseInt(response.headers['content-length']) : 0);
         const totalMb: number = Math.round(totalBytes / 1e6);
         let downloadedBytes: number = 0;
         let lastTaskNameUpdate: number = Date.now();
-        codeProgress.updateTask(0, ((totalBytes > 0) ?
-            `${origTaskName}  0MB/${totalMb}MB` : origTaskName));
+        codeProgress.updateTask(0, ((totalBytes > 0)
+            ? `${origTaskName}  0MB/${totalMb}MB` : origTaskName));
 
         response.pipe(file);
 
@@ -173,8 +173,8 @@ export default class DependencyManager {
     let latestVersion: string | null = null;
 
     versions.forEach((version: string) => {
-      if (SemVer.valid(version) && SemVer.lte(version, this._vscodeLtexVersion) &&
-            ((latestVersion == null) || SemVer.gt(version, latestVersion))) {
+      if (SemVer.valid(version) && SemVer.lte(version, this._vscodeLtexVersion)
+            && ((latestVersion == null) || SemVer.gt(version, latestVersion))) {
         latestVersion = version;
       }
     });
@@ -283,9 +283,9 @@ export default class DependencyManager {
       const codeProgress: ProgressStack = new ProgressStack(
           i18n('downloadingAndExtractingLtexLs'), progress);
 
-      const ltexLsUrl: string = 'https://github.com/valentjn/ltex-ls/releases/download/' +
-          `${DependencyManager._toBeDownloadedLtexLsVersion}/` +
-          `ltex-ls-${DependencyManager._toBeDownloadedLtexLsVersion}.tar.gz`;
+      const ltexLsUrl: string = 'https://github.com/valentjn/ltex-ls/releases/download/'
+          + `${DependencyManager._toBeDownloadedLtexLsVersion}/`
+          + `ltex-ls-${DependencyManager._toBeDownloadedLtexLsVersion}.tar.gz`;
       await this.installDependency(ltexLsUrl, DependencyManager._toBeDownloadedLtexLsHashDigest,
           `ltex-ls ${DependencyManager._toBeDownloadedLtexLsVersion}`, codeProgress);
     });
@@ -327,12 +327,12 @@ export default class DependencyManager {
         arch = 's390x';
       }
 
-      const javaArchiveName: string = `OpenJDK11U-jre_${arch}_${platform}_hotspot_` +
-          `${DependencyManager._toBeDownloadedJavaVersion.replace('+', '_')}.${javaArchiveType}`;
+      const javaArchiveName: string = `OpenJDK11U-jre_${arch}_${platform}_hotspot_`
+          + `${DependencyManager._toBeDownloadedJavaVersion.replace('+', '_')}.${javaArchiveType}`;
       Logger.log(i18n('guessedAdoptOpenJdkArchiveName', javaArchiveName));
-      const javaUrl: string = 'https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/' +
-          `download/jdk-${encodeURIComponent(DependencyManager._toBeDownloadedJavaVersion)}/` +
-          javaArchiveName;
+      const javaUrl: string = 'https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/'
+          + `download/jdk-${encodeURIComponent(DependencyManager._toBeDownloadedJavaVersion)}/`
+          + javaArchiveName;
       const javaHashDigest: string =
           DependencyManager._toBeDownloadedJavaHashDigests[javaArchiveName];
 
@@ -591,8 +591,8 @@ export default class DependencyManager {
 
     if (DependencyManager.isValidPath(this._javaPath)) {
       env['JAVA_HOME'] = this._javaPath!;
-    } else if ((env['LTEX_JAVA_HOME'] != null) &&
-          DependencyManager.isValidPath(env['LTEX_JAVA_HOME'])) {
+    } else if ((env['LTEX_JAVA_HOME'] != null)
+          && DependencyManager.isValidPath(env['LTEX_JAVA_HOME'])) {
       env['JAVA_HOME'] = DependencyManager.normalizePath(env['LTEX_JAVA_HOME'])!;
     }
 

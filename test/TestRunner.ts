@@ -44,9 +44,9 @@ async function runTestIteration(testIteration: number): Promise<void> {
       'git', gitCleanArgs, {encoding: 'utf-8', timeout: 10000});
 
   if (childProcess.status != 0) {
-    throw new Error(`Could not clean '${ltexLibDirPath}'. ` +
-        `Exit code: ${childProcess.status}. stdout: '${childProcess.stdout}'. ` +
-        `stderr: '${childProcess.stderr}'.`);
+    throw new Error(`Could not clean '${ltexLibDirPath}'. `
+        + `Exit code: ${childProcess.status}. stdout: '${childProcess.stdout}'. `
+        + `stderr: '${childProcess.stderr}'.`);
   }
 
   try {
@@ -81,8 +81,8 @@ async function runTestIteration(testIteration: number): Promise<void> {
       const mockJavaPath: string = Path.join(mockJavaDirPath, 'java');
       console.log(`Creating mock Java executable '${mockJavaPath}'...`);
       Fs.writeFileSync(mockJavaPath, '\n', {mode: 0o777});
-      process.env['PATH'] = ((process.env['PATH'] != null) ?
-          `${mockJavaDirPath}${Path.delimiter}${process.env['PATH']}` : mockJavaDirPath);
+      process.env['PATH'] = ((process.env['PATH'] != null)
+          ? `${mockJavaDirPath}${Path.delimiter}${process.env['PATH']}` : mockJavaDirPath);
       process.env['JAVA_HOME'] = '/nonExistentDirectory';
       process.env['LTEX_JAVA_HOME'] = '/nonExistentDirectory';
     } else {

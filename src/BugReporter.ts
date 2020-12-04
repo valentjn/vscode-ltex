@@ -25,8 +25,8 @@ export default class BugReporter {
   private static readonly _maxNumberOfConfigLines: number = 1000;
   private static readonly _maxNumberOfServerLogLines: number = 100;
   private static readonly _maxNumberOfClientLogLines: number = 1000;
-  private static readonly _bugReportUrl: string = 'https://github.com/valentjn/vscode-ltex/' +
-      'issues/new?assignees=&labels=1-bug%2C+2-unconfirmed&template=bug-report.md&title=&body=';
+  private static readonly _bugReportUrl: string = 'https://github.com/valentjn/vscode-ltex/'
+      + 'issues/new?assignees=&labels=1-bug%2C+2-unconfirmed&template=bug-report.md&title=&body=';
 
   public constructor(context: Code.ExtensionContext, dependencyManager: DependencyManager,
         statusInformationPrinter: StatusPrinter) {
@@ -134,14 +134,14 @@ export default class BugReporter {
 
   private static truncateStringAtStart(str: string, maxNumberOfLines: number): string {
     const lines: string[] = str.split('\n');
-    return ((lines.length > maxNumberOfLines) ?
-        ('[... truncated]\n' + lines.slice(-maxNumberOfLines).join('\n')) : str);
+    return ((lines.length > maxNumberOfLines)
+        ? ('[... truncated]\n' + lines.slice(-maxNumberOfLines).join('\n')) : str);
   }
 
   private static truncateStringAtEnd(str: string, maxNumberOfLines: number): string {
     const lines: string[] = str.split('\n');
-    return ((lines.length > maxNumberOfLines) ?
-        (lines.slice(0, maxNumberOfLines).join('\n') + '\n[... truncated]') : str);
+    return ((lines.length > maxNumberOfLines)
+        ? (lines.slice(0, maxNumberOfLines).join('\n') + '\n[... truncated]') : str);
   }
 
   public report(): void {
@@ -157,8 +157,8 @@ export default class BugReporter {
         Code.window.showInformationMessage(i18n('ltexTraceServerSetToVerbose'));
       } else if (selectedItem == i18n('copyReportAndCreateIssue')) {
         Code.env.clipboard.writeText(bugReport);
-        Code.env.openExternal(Code.Uri.parse(BugReporter._bugReportUrl +
-            Querystring.escape(i18n('enterSummaryOfIssueInTitleFieldAndReplaceSentence'))));
+        Code.env.openExternal(Code.Uri.parse(BugReporter._bugReportUrl
+            + Querystring.escape(i18n('enterSummaryOfIssueInTitleFieldAndReplaceSentence'))));
       }
     });
   }
