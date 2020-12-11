@@ -2200,7 +2200,7 @@
   },
   "devDependencies": {
     "@types/mocha": "8.0.4",
-    "@types/node": "14.14.10",
+    "@types/node": "14.14.12",
     "@types/rimraf": "3.0.0",
     "@types/semver": "7.3.4",
     "@types/tar": "4.0.4",
