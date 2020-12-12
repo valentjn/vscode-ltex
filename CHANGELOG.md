@@ -200,7 +200,7 @@
 
 - Download LT<sub>E</sub>X LS on demand with all languages already included; this removes the need for language support extensions (fixes [#6](https://github.com/valentjn/vscode-ltex/issues/6))
 - Download Java distribution on demand if no suitable Java installation has been found (fixes [#5](https://github.com/valentjn/vscode-ltex/issues/5))
-- Adhere to [semantic versioning](https://semver.org/). This means that the version of LT<sub>E</sub>X is not tied to the version of LanguageTool anymore, as the version of LanguageTool is not a semantic version. LT<sub>E</sub>X 5.0.0 uses LanguageTool 4.9.
+- Adhere to [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html). This means that the version of LT<sub>E</sub>X is not tied to the version of LanguageTool anymore, as the version of LanguageTool is not a semantic version. LT<sub>E</sub>X 5.0.0 uses LanguageTool 4.9.
 - Rename settings:
   - `ltex.<LANGUAGE>.dictionary` to [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary) (object with `<LANGUAGE>` keys)
   - `ltex.<LANGUAGE>.disabledRules` to [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules) (object with `<LANGUAGE>` keys)
@@ -269,7 +269,7 @@
 
 - Add support for R Sweave `.rnw` files (fixes [#22](https://github.com/valentjn/vscode-ltex/issues/22))
 - Enable fixing multiple diagnostics at once (fixes [#23](https://github.com/valentjn/vscode-ltex/issues/23))
-- Add `ltex.javaHome` setting to control the `JAVA_HOME` environment variable (PR [#24](https://github.com/valentjn/vscode-ltex/issues/24) by mpolitze)
+- Add `ltex.javaHome` setting to control the `JAVA_HOME` environment variable (PR [#24](https://github.com/valentjn/vscode-ltex/issues/24) by `mpolitze`)
 - Add support for `\euro` (fixes [#25](https://github.com/valentjn/vscode-ltex/issues/25))
 - Minor changes in readme
 - Update LT<sub>E</sub>X LS to 4.7.8
