@@ -13,7 +13,7 @@ import ExternalFileManager from './ExternalFileManager';
 import {i18n} from './I18n';
 import Logger from './Logger';
 
-type LtexServerStatusParams = {
+type LtexServerStatusResult = {
   processId: number | null;
   wallClockDuration: number | null;
   cpuDuration: number | null;
@@ -43,7 +43,7 @@ export default class StatusPrinter {
   }
 
   public async print(): Promise<void> {
-    let ltexLsStatus: LtexServerStatusParams = {
+    let ltexLsStatus: LtexServerStatusResult = {
       processId: null,
       wallClockDuration: null,
       cpuDuration: null,
@@ -54,9 +54,9 @@ export default class StatusPrinter {
 
     if (this._languageClient != null) {
       try {
-        const promises: Promise<LtexServerStatusParams>[] = [
+        const promises: Promise<LtexServerStatusResult>[] = [
           this._languageClient.sendRequest('ltex/serverStatus'),
-          new Promise((_resolve: (value: LtexServerStatusParams) => void,
+          new Promise((_resolve: (value: LtexServerStatusResult) => void,
                 reject: (reason?: any) => void) => {
             setTimeout(() => reject(new Error()), StatusPrinter._ltexLsStatusTimeout);
           }),
