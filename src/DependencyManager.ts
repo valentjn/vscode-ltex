@@ -169,12 +169,11 @@ export default class DependencyManager {
     });
   }
 
-  private getLatestCompatibleLtexLsVersion(versions: string[]): string | null {
+  private getLatestLtexLsVersion(versions: string[]): string | null {
     let latestVersion: string | null = null;
 
     versions.forEach((version: string) => {
-      if (SemVer.valid(version) && SemVer.lte(version, this._vscodeLtexVersion)
-            && ((latestVersion == null) || SemVer.gt(version, latestVersion))) {
+      if (SemVer.valid(version) && ((latestVersion == null) || SemVer.gt(version, latestVersion))) {
         latestVersion = version;
       }
     });
@@ -351,7 +350,7 @@ export default class DependencyManager {
       }
     });
 
-    const ltexLsVersion: string | null = this.getLatestCompatibleLtexLsVersion(ltexLsVersions);
+    const ltexLsVersion: string | null = this.getLatestLtexLsVersion(ltexLsVersions);
     return ((ltexLsVersion != null) ? Path.join(libDirPath, `ltex-ls-${ltexLsVersion}`) : null);
   }
 
@@ -396,7 +395,7 @@ export default class DependencyManager {
         if (DependencyManager.isValidPath(this._ltexLsPath)) {
           Logger.log(i18n('ltexLsFoundIn', this._ltexLsPath));
         } else {
-          Logger.log(i18n('couldNotFindCompatibleVersionOfLtexLsIn', libDirPath));
+          Logger.log(i18n('couldNotFindVersionOfLtexLsIn', libDirPath));
           Logger.log(i18n('initiatingDownloadOfLtexLs'));
           await this.installLtexLs();
           this._ltexLsPath = this.searchBundledLtexLs(libDirPath);

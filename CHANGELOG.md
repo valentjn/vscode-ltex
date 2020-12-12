@@ -8,13 +8,16 @@
 
 # Changelog
 
-## 8.1.2 (upcoming)
+## 8.2.0 (upcoming)
 
+- Make versioning of LT<sub>E</sub>X LS independent of vscode-ltex; see the changelog of vscode-ltex to find out which version of LT<sub>E</sub>X LS a particular version of vscode-ltex uses
 - Only check file types for which LT<sub>E</sub>X has been enabled when running [`LTeX: Check all documents in workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-all-documents-in-workspace)
+- Update LT<sub>E</sub>X LS to 9.0.0
 
 ## 8.1.1 — “The Action Postulate” (November 24, 2020)
 
 - Migrate from Travis CI to GitHub Actions
+- Update LT<sub>E</sub>X LS to 8.1.1
 
 ## 8.1.0 — “The Prepending Annihilation” (November 15, 2020)
 
@@ -24,6 +27,7 @@
 - Avoid misleading popup prompting to install Java on Mac, use [`ltex.java.forceTrySystemWide`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavaforcetrysystemwide) to force trying a system-wide Java installation (fixes [#162](https://github.com/valentjn/vscode-ltex/issues/162))
 - Update bundled AdoptOpenJDK JRE to 11.0.9+11
 - Update LSP4J to 0.10.0
+- Update LT<sub>E</sub>X LS to 8.1.0
 
 ## 8.0.0 — “The Setting Transformation” (November 1, 2020)
 
@@ -58,12 +62,14 @@
 - Increase duration before sentences expire in the result cache to 60 minutes
 - Fix many settings changes cleared sentence cache, which led to performance issues, e.g., changing the [`ltex.enabled`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabled) setting via magic comments (see [#134](https://github.com/valentjn/vscode-ltex/issues/134))
 - Remove dependency on `org.apache.httpcomponents:httpclient` by using the HTTP client that comes with Java 11 when connecting to an HTTP LanguageTool server
+- Update LT<sub>E</sub>X LS to 8.0.0
 
 ## 7.3.1 — “The Delay Correlation” (October 12, 2020)
 
 - Fix delayed publication of diagnostics by adding workaround to guess the caret position
 - Fix recheck being triggered when generating list of quick fixes; this should improve speed
 - Fix comment in readme
+- Update LT<sub>E</sub>X LS to 7.3.1
 
 ## 7.3.0 — “The Debugging Formulation” (October 10, 2020)
 
@@ -73,6 +79,7 @@
 - Add button to set [`ltex.trace.server`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltextraceserver) to `"verbose"` when reporting a bug
 - Fix diagnostics sometimes not lined up with the text with switching back from incremental to full document updates; unfortunately, this disables the delayed publication of diagnostics at the caret position
 - Restructure and simplify internal quickfix and command structure, removing the need for pseudo-telemetry notifications
+- Update LT<sub>E</sub>X LS to 7.3.0
 
 ## 7.2.0 — “The LanguageTool Acquisition” (September 27, 2020)
 
@@ -80,15 +87,18 @@
 - Add support for HTML entities such as `&auml;` and `&copy;` in Markdown
 - Fix missing tilde expansion for external dictionary files
 - Improve logging of LT<sub>E</sub>X LS
+- Update LT<sub>E</sub>X LS to 7.2.0
 
 ## 7.1.2 — “The Magic Configuration” (September 22, 2020)
 
 - Fix performance issue with multiple languages in one document via magic comments due to LanguageTool being reinitialized on each keystroke (fixes [#124](https://github.com/valentjn/vscode-ltex/issues/124))
+- Update LT<sub>E</sub>X LS to 7.1.2
 
 ## 7.1.1 — “The Relative Malfunction” (September 20, 2020)
 
 - Fix `NullPointerException` when supplying relative paths to external dictionary files
 - Fix German log messages
+- Update LT<sub>E</sub>X LS to 7.1.1
 
 ## 7.1.0 — “The External Accumulation” (September 20, 2020)
 
@@ -101,6 +111,7 @@
 - Fix optional argument of heading commands such as `\section` parsed incorrectly (fixes [#123](https://github.com/valentjn/vscode-ltex/issues/123))
 - Include stack traces when logging exceptions
 - Fix some links (bug reporter, offline installation, readme)
+- Update LT<sub>E</sub>X LS to 7.1.0
 
 ## 7.0.0 — “The Workspace Solution” (September 13, 2020)
 
@@ -112,12 +123,14 @@
 - Remove deprecated settings `ltex.javaHome`, `ltex.performance.initialJavaHeapSize`, `ltex.performance.maximumJavaHeapSize`, `ltex.performance.sentenceCacheSize`, `ltex.*.dictionary`, `ltex.*.enabledRules`, and `ltex.*.disabledRules` (deprecation since 5.0.0)
 - Update LanguageTool to 5.0.2 (see [LT 5.0.2 release notes](https://github.com/languagetool-org/languagetool/blob/v5.0.2/languagetool-standalone/CHANGES.md#502-2020-08-28))
 - Fix skipping of YAML front matter (fixes [#104](https://github.com/valentjn/vscode-ltex/issues/104))
+- Update LT<sub>E</sub>X LS to 7.0.0
 
 ## 6.3.0 — “The Vowel Extraction” (August 22, 2020)
 
 - Add support for `an` article when before a formula starting with a vowel (e.g., `an $n$-dimensional problem`, fixes [#92](https://github.com/valentjn/vscode-ltex/issues/92))
 - Add support for `~/` and `~\` in settings (fixes [#99](https://github.com/valentjn/vscode-ltex/issues/99))
 - Fix links to documentation in various places (readme, changelog, error messages, etc.)
+- Update LT<sub>E</sub>X LS to 6.3.0
 
 ## 6.2.0 — “The Command Isotope” (August 7, 2020)
 
@@ -128,10 +141,12 @@
 - Ignore more L<sup>A</sup>T<sub>E</sub>X preamble commands (e.g., `\automark`, `\color`, `\DeclareSIUnit`, `\directlua`, `\setuptoc`)
 - Add support for German babel hyphenation commands `"-`, `""`, `"|`, `"=`, `"~`
 - Use non-breaking space for `~`
+- Update LT<sub>E</sub>X LS to 6.2.0
 
 ## 6.1.1 — “The Space Saturation” (July 26, 2020)
 
 - Fix another problem with spaces in paths when using LT<sub>E</sub>X LS on Windows (fixes [#80](https://github.com/valentjn/vscode-ltex/issues/80))
+- Update LT<sub>E</sub>X LS to 6.1.1
 
 ## 6.1.0 — “The babel Momentum” (July 26, 2020)
 
@@ -140,16 +155,19 @@
 - Fix problems with spaces in paths when using LT<sub>E</sub>X LS on Windows (fixes [#80](https://github.com/valentjn/vscode-ltex/issues/80))
 - Update bundled AdoptOpenJDK JRE to 11.0.8+10
 - Update some NPM dependencies
+- Update LT<sub>E</sub>X LS to 6.1.0
 
 ## 6.0.2 — “The Startup Congruence” (July 11, 2020)
 
 - Make Windows startup script of LT<sub>E</sub>X LS (`ltex-ls.bat`) honor `JAVA_HOME` (fixes [#75](https://github.com/valentjn/vscode-ltex/issues/75))
 - Relicense vscode-ltex under the Mozilla Public License Version 2.0
 - Update some NPM dependencies
+- Update LT<sub>E</sub>X LS to 6.0.2
 
 ## 6.0.1 — “The Freeze Paradox” (July 2, 2020)
 
 - Fix freezes when checking German text by working around [languagetool-org/languagetool#3181](https://github.com/languagetool-org/languagetool/issues/3181) introduced by LanguageTool 5.0 (fixes [#68](https://github.com/valentjn/vscode-ltex/issues/68))
+- Update LT<sub>E</sub>X LS to 6.0.1
 
 ## 6.0.0 — “The Internationalization Proposition” (June 28, 2020)
 
@@ -167,6 +185,7 @@
 - Migrate LT<sub>E</sub>X LS from Gradle to Maven
 - Update NPM dependencies
 - Update Maven dependencies
+- Update LT<sub>E</sub>X LS to 6.0.0
 
 ## 5.0.2 — “The Disabling Submergence” (June 18, 2020)
 
@@ -179,7 +198,7 @@
 
 ## 5.0.0 — “The Rewrite Materialization” (June 1, 2020)
 
-- Download LT<sub>E</sub>X Language Server on demand with all languages already included; this removes the need for language support extensions (fixes [#6](https://github.com/valentjn/vscode-ltex/issues/6))
+- Download LT<sub>E</sub>X LS on demand with all languages already included; this removes the need for language support extensions (fixes [#6](https://github.com/valentjn/vscode-ltex/issues/6))
 - Download Java distribution on demand if no suitable Java installation has been found (fixes [#5](https://github.com/valentjn/vscode-ltex/issues/5))
 - Adhere to [semantic versioning](https://semver.org/). This means that the version of LT<sub>E</sub>X is not tied to the version of LanguageTool anymore, as the version of LanguageTool is not a semantic version. LT<sub>E</sub>X 5.0.0 uses LanguageTool 4.9.
 - Rename settings:
@@ -198,22 +217,26 @@
 - Remove `null` types and default values from settings, use empty string/array/object instead (fixes [#41](https://github.com/valentjn/vscode-ltex/issues/41))
 - Use proper server/client model for language server/client
 - Make documentation more extensive, put it on own [website](https://valentjn.github.io/vscode-ltex/)
+- Update LT<sub>E</sub>X LS to 5.0.0
 
 ## 4.9.3 — “The Java Collapse” (May 7, 2020)
 
 - Revert back to Java 8
 - Remove support for external LanguageTool HTTP servers
+- Update LT<sub>E</sub>X LS to 4.9.3
 
 ## 4.9.2 — “The Server Renormalization” (May 6, 2020)
 
 - Update required version of Java (now 11 or newer)
 - Add support for external LanguageTool HTTP servers (fixes [#36](https://github.com/valentjn/vscode-ltex/issues/36))
 - Add support for `\autoref`, `\pageref`, `\autopageref` (fixes [#37](https://github.com/valentjn/vscode-ltex/issues/37))
+- Update LT<sub>E</sub>X LS to 4.9.2
 
 ## 4.9.1 — “The Sentence Cache Acceleration” (May 1, 2020)
 
 - Fix sentence cache was invalidated when a single ignore sentence rule was present (fixes [#29](https://github.com/valentjn/vscode-ltex/issues/29))
 - Use thin non-breaking space for `\,` (fixes [#35](https://github.com/valentjn/vscode-ltex/issues/35))
+- Update LT<sub>E</sub>X LS to 4.9.1
 
 ## 4.9.0 — “The Update Alternative” (March 28, 2020)
 
@@ -223,12 +246,14 @@
 - Update required version of VS Code (now 1.39 or newer)
 - Reduce file size of extension (omitting unneeded dependencies)
 - Add usage instructions to readme
+- Update LT<sub>E</sub>X LS to 4.9.0
 
 ## 4.7.10 — “The French Capacitance” (March 12, 2020)
 
 - Fix spelling errors for French dummies (fixes [#27](https://github.com/valentjn/vscode-ltex/issues/27))
 - Fix `\dots` in math mode being interpreted as `...`
 - Minor changes in readme, changelog, and package.json
+- Update LT<sub>E</sub>X LS to 4.7.10
 
 ## 4.7.9 — “The Markdown Resonance” (February 29, 2020)
 
@@ -238,6 +263,7 @@
 - Replace auto-links and inline Markdown code with dummy words by default
 - Fix match positions were sometimes off by one, especially in Markdown documents
 - Rewrite `MarkdownAnnotatedTextBuilder`
+- Update LT<sub>E</sub>X LS to 4.7.9
 
 ## 4.7.8 — “The Multi-Diagnostic Equivalency” (February 16, 2020)
 
@@ -246,10 +272,12 @@
 - Add `ltex.javaHome` setting to control the `JAVA_HOME` environment variable (PR [#24](https://github.com/valentjn/vscode-ltex/issues/24) by mpolitze)
 - Add support for `\euro` (fixes [#25](https://github.com/valentjn/vscode-ltex/issues/25))
 - Minor changes in readme
+- Update LT<sub>E</sub>X LS to 4.7.8
 
 ## 4.7.7 — “The Preview Perturbation” (November 23, 2019)
 
 - Remove preview status from extension
+- Update LT<sub>E</sub>X LS to 4.7.7
 
 ## 4.7.6 — “The Java Thermalization” (November 10, 2019)
 
@@ -259,11 +287,13 @@
 - Change default sentence cache size from 10000 to 2000 sentences
 - Rename logs, enable logging of client messages even if no folder is open
 - Add more examples to readme
+- Update LT<sub>E</sub>X LS to 4.7.6
 
 ## 4.7.5 — “The Listing Collapse” (October 22, 2019)
 
 - Enable ignoring environments such as `lstlisting` and `verbatim`
 - Add `ltex.environments.ignore` setting for defining own environments to ignore
+- Update LT<sub>E</sub>X LS to 4.7.5
 
 ## 4.7.4 — “The Disabling Allocation” (October 15, 2019)
 
@@ -271,19 +301,23 @@
 - Add `disable rule` quick fix
 - Fix a bug where the `codeAction` request gets stuck in infinite loop
 - Fix another `NullPointerException` for word2vec
+- Update LT<sub>E</sub>X LS to 4.7.4
 
 ## 4.7.3 — “The word2vec Erosion” (October 7, 2019)
 
 - Fix null pointer error for word2vec quick fixes (fixes [#12](https://github.com/valentjn/vscode-ltex/issues/12))
+- Update LT<sub>E</sub>X LS to 4.7.3
 
 ## 4.7.2 — “The Message Dissection” (October 2, 2019)
 
 - Add missing error message if legacy false friends could not be loaded
+- Update LT<sub>E</sub>X LS to 4.7.2
 
 ## 4.7.1 — “The Mother Tongue Factor” (October 2, 2019)
 
 - Add [`ltex.additionalRules.motherTongue`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexadditionalrulesmothertongue) setting to enable detection of false friends (fixes [#11](https://github.com/valentjn/vscode-ltex/issues/11))
 - Change defaults for `ltex.additionalRules` settings from `""` to `null`
+- Update LT<sub>E</sub>X LS to 4.7.1
 
 ## 4.7.0 — “The Multi-Root Observation” (October 1, 2019)
 
@@ -293,11 +327,13 @@
 - Remove diagnostics when a file is closed
 - Prevent insertion of text in TikZ mode
 - Add support for more commands such as `\newenvironment`, `\newgeometry`, and `\pagenumbering`
+- Update LT<sub>E</sub>X LS to 4.7.0
 
 ## 4.6.13 — “The Remote Permeability” (September 26, 2019)
 
 - Fix language extensions not installable on remote machines (fixes [#8](https://github.com/valentjn/vscode-ltex/issues/8))
-- Fix language server not reinitialized after a language extension has been installed (which was missing during initialization)
+- Fix LT<sub>E</sub>X LS not reinitialized after a language extension has been installed (which was missing during initialization)
+- Update LT<sub>E</sub>X LS to 4.6.13
 
 ## 4.6.12 — “The Interpolation Entanglement” (September 25, 2019)
 
@@ -306,6 +342,7 @@
 - Increase robustness in case locale or settings are not provided
 - Ignore all brace and bracket arguments after `\begin{environment}` (`tabular`, `array`, etc.)
 - Add support for some more commands and environments such as `\pagestyle` and `eqnarray`
+- Update LT<sub>E</sub>X LS to 4.6.12
 
 ## 4.6.11 — “The Infinite Loop Contraction” (September 23, 2019)
 
@@ -316,15 +353,18 @@
 - Add support for `\email`, `\href`, and `\verb|...|`
 - Add support for more citation commands (`\citep`, `\citet`, etc.)
 - Add support for float/theorem definition commands and starred sectioning commands
+- Update LT<sub>E</sub>X LS to 4.6.11
 
 ## 4.6.10 — “The Plaintext Decay” (September 18, 2019)
 
 - Don't check plaintext files (fixes [#4](https://github.com/valentjn/vscode-ltex/issues/4))
 - Fix `NullPointerException` if LanguageTool has not been initialized (fixes [ltex-ls#1](https://github.com/valentjn/ltex-ls/issues/1))
+- Update LT<sub>E</sub>X LS to 4.6.10
 
 ## 4.6.9 — “The Bundle Valuation” (September 8, 2019)
 
 - Bundle Node.js modules to decrease number of files in the extension (this means a slight performance gain)
+- Update LT<sub>E</sub>X LS to 4.6.9
 
 ## 4.6.8 — “The Severity Manifestation” (September 7, 2019)
 
@@ -337,6 +377,7 @@
 - Add support for more accents (`` \` ``, `\'`, `\^`, `\~`, `\"`, `\=`, `\.`, ...)
 - Command names can now include `@` (this assumes that users don't write something like `\example@gmail.com` with a command `\example`, otherwise replace with `\example{}@gmail.com`)
 - Ignore alignment argument of tabular environment
+- Update LT<sub>E</sub>X LS to 4.6.8
 
 ## 4.6.7 — “The Model Combustion” (September 2, 2019)
 
