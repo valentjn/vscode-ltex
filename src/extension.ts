@@ -31,7 +31,7 @@ async function languageClientIsReady(languageClient: CodeLanguageClient.Language
       externalFileManager: ExternalFileManager,
       statusBarItemManager: StatusBarItemManager): Promise<void> {
   statusBarItemManager.setStatusToReady();
-  languageClient.onNotification('ltex/progress',
+  languageClient.onNotification('$/progress',
       statusBarItemManager.handleProgressNotification.bind(statusBarItemManager));
 
   const workspaceConfigurationRequestHandler: WorkspaceConfigurationRequestHandler =

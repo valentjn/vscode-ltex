@@ -6,6 +6,7 @@
  */
 
 import * as Code from 'vscode';
+import * as CodeLanguageClient from 'vscode-languageclient';
 
 import {i18n} from './I18n';
 import Logger from './Logger';
@@ -16,10 +17,15 @@ enum Status {
   checking,
 }
 
+interface ProgressParams<T> {
+  token: CodeLanguageClient.ProgressToken;
+  value: T;
+}
+
 export default class StatusBarItemManager {
   private _statusBarItem: Code.StatusBarItem;
   private _progressMap: {
-        [name: string]: {
+        [token: string]: {
           progress: number;
           startTime: number;
         };
@@ -60,11 +66,11 @@ export default class StatusBarItemManager {
       return;
     }
 
-    const uris: string[] = StatusBarItemManager.getKeys(this._progressMap);
+    const tokens: string[] = StatusBarItemManager.getKeys(this._progressMap);
     const now: number = Date.now();
 
-    for (const uri of uris) {
-      if (now - this._progressMap[uri].startTime >= StatusBarItemManager.checkingStatusDelay) {
+    for (const token of tokens) {
+      if (now - this._progressMap[token].startTime >= StatusBarItemManager.checkingStatusDelay) {
         this._status = Status.checking;
         this._statusBarItem.text = this._checkingStatusText;
         this._statusBarItem.show();
@@ -114,21 +120,36 @@ export default class StatusBarItemManager {
     setTimeout(this.update.bind(this), StatusBarItemManager.readyStatusDuration);
   }
 
-  public handleProgressNotification(params: {uri: string, operation: string,
-        progress: number}): void {
-    if (params.operation != 'checkDocument') {
-      Logger.warn(i18n('unknownOperationInProgressEvent', params.operation, params));
+  public handleProgressNotification(
+        params: ProgressParams<CodeLanguageClient.WorkDoneProgressBegin |
+          CodeLanguageClient.WorkDoneProgressReport |
+          CodeLanguageClient.WorkDoneProgressEnd>): void {
+    let token: {
+      uri: string,
+      operation: string,
+      counter: number,
+    };
+
+    try {
+      token = JSON.parse(params.token.toString());
+    } catch (e) {
+      Logger.warn(i18n('couldNotParseTokenInProgressNotification', params.token, params));
       return;
     }
 
-    if (params.progress == 1) {
-      if (Object.prototype.hasOwnProperty.call(this._progressMap, params.uri)) {
-        delete this._progressMap[params.uri];
+    if (token.operation != 'checkDocument') {
+      Logger.warn(i18n('unknownOperationInProgressNotification', token.operation, params));
+      return;
+    }
+
+    if (params.value.kind == 'begin') {
+      this._progressMap[params.token] = {progress: 0, startTime: Date.now()};
+      setTimeout(this.update.bind(this), StatusBarItemManager.checkingStatusDelay + 100);
+    } else if (params.value.kind == 'end') {
+      if (Object.prototype.hasOwnProperty.call(this._progressMap, params.token)) {
+        delete this._progressMap[params.token];
         this.update();
       }
-    } else {
-      this._progressMap[params.uri] = {progress: params.progress, startTime: Date.now()};
-      setTimeout(this.update.bind(this), StatusBarItemManager.checkingStatusDelay + 100);
     }
   }
 }
