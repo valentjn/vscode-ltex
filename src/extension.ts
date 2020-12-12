@@ -107,6 +107,9 @@ async function startLanguageClient(context: Code.ExtensionContext,
         // See https://github.com/microsoft/language-server-protocol/issues/754.
         initializationOptions: {
           locale: Code.env.language,
+          customCapabilities: {
+            workspaceSpecificConfiguration: true,
+          },
         },
         revealOutputChannelOn: CodeLanguageClient.RevealOutputChannelOn.Never,
         traceOutputChannel: Logger.clientOutputChannel,
