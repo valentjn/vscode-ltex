@@ -88,7 +88,7 @@
   "requestFailedWithStatusCode": "Request failed with status code {0}.",
   "responseBody": "Response body: {0}.",
   "reviewSummaryOfImportantMajorChanges": "Review a summary of important major changes.",
-  "searchingForDirectory": "`Searching for a directory in '{0}'...",
+  "searchingForDirectory": "Searching for a directory in '{0}'...",
   "searchingForJavaIn": "Searching for Java in '{0}'...",
   "searchingForLtexLsIn": "Searching for ltex-ls in '{0}'...",
   "separationLine": "----------------------------------------",
