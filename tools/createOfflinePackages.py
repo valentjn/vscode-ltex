@@ -47,31 +47,18 @@ def getLtexVersion():
   with open(os.path.join(common.repoDirPath, "package.json"), "r") as f: packageJson = json.load(f)
   return semver.VersionInfo.parse(packageJson["version"])
 
-def getLatestCompatibleLtexLsVersion(versions):
-  ltexVersion = getLtexVersion()
-  latestVersion = None
 
-  for version in versions:
-    if semver.VersionInfo.isvalid(version):
-      version = semver.VersionInfo.parse(version)
-
-      if (version <= ltexVersion) and ((latestVersion is None) or (version > latestVersion)):
-        latestVersion = version
-
-  return latestVersion
 
 def downloadLtexLs():
-  releasesUrl = "https://api.github.com/repos/valentjn/ltex-ls/releases"
-  print(f"Fetching list of ltex-ls releases from '{releasesUrl}'...")
-  releases = common.requestFromGitHub(releasesUrl)
-
-  ltexLsVersion = getLatestCompatibleLtexLsVersion([x["tag_name"] for x in releases])
-  print(f"Latest compatible release is 'ltex-ls-{ltexLsVersion}'.")
+  dependencyManagerFilePath = os.path.join(common.repoDirPath, "src", "DependencyManager.ts")
+  with open(dependencyManagerFilePath, "r") as f: dependencyManagerTypescript = f.read()
+  ltexLsVersion = re.search(r"(?:_toBeDownloadedLtexLsVersion: string = ')(.*?)(?:';\n)",
+      dependencyManagerTypescript).group(1)
 
   ltexLsUrl = ("https://github.com/valentjn/ltex-ls/releases/download/"
       f"{ltexLsVersion}/ltex-ls-{ltexLsVersion}.tar.gz")
   ltexLsArchivePath = os.path.join(libDirPath, f"ltex-ls-{ltexLsVersion}.tar.gz")
-  print(f"Downloading ltex-ls from '{ltexLsUrl}' to '{ltexLsArchivePath}'...")
+  print(f"Downloading ltex-ls {ltexLsVersion} from '{ltexLsUrl}' to '{ltexLsArchivePath}'...")
   urllib.request.urlretrieve(ltexLsUrl, ltexLsArchivePath)
 
   extractLtexLs(ltexLsArchivePath)
