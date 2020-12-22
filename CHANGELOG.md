@@ -8,6 +8,10 @@
 
 # Changelog
 
+## Upcoming Fundamental Changes
+
+- New versions of LT<sub>E</sub>X released on or after April 3, 2021, will require VS Code 1.52.0 or later
+
 ## 8.2.0 (upcoming)
 
 - Make versioning of LT<sub>E</sub>X LS independent of vscode-ltex; see the changelog of vscode-ltex to find out which version of LT<sub>E</sub>X LS a particular version of vscode-ltex uses
