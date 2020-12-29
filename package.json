@@ -1350,7 +1350,7 @@
         },
         "ltex.hiddenFalsePositives": {
           "type": "object",
-          "scope": "application",
+          "scope": "resource",
           "default": {},
           "properties": {
             "ar": {
