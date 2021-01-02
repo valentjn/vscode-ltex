@@ -12,7 +12,7 @@
 
 - New versions of LT<sub>E</sub>X released on or after April 3, 2021, will require VS Code 1.52.0 or later
 
-## 8.2.0 (upcoming)
+## 8.2.0 — “The Separation Displacement” (January 3, 2021)
 
 - Make versioning of LT<sub>E</sub>X LS independent of vscode-ltex; see the changelog of vscode-ltex to find out which version of LT<sub>E</sub>X LS a particular version of vscode-ltex uses
 - Update LanguageTool to 5.2 (see [LT 5.2 release notes](https://github.com/languagetool-org/languagetool/blob/v5.2/languagetool-standalone/CHANGES.md#52-released-2020-12-29))
