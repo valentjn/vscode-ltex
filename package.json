@@ -144,6 +144,7 @@
             "ja-JP",
             "km-KH",
             "nl",
+            "nl-BE",
             "pl-PL",
             "pt",
             "pt-AO",
@@ -191,6 +192,7 @@
             "%ltex.i18n.configuration.ltex.language.ja-JP.enumDescription%",
             "%ltex.i18n.configuration.ltex.language.km-KH.enumDescription%",
             "%ltex.i18n.configuration.ltex.language.nl.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.nl-BE.enumDescription%",
             "%ltex.i18n.configuration.ltex.language.pl-PL.enumDescription%",
             "%ltex.i18n.configuration.ltex.language.pt.enumDescription%",
             "%ltex.i18n.configuration.ltex.language.pt-AO.enumDescription%",
@@ -454,6 +456,14 @@
               },
               "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.nl.markdownDescription%",
               "description": "%ltex.i18n.configuration.ltex.dictionary.nl.description%"
+            },
+            "nl-BE": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.nl-BE.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.dictionary.nl-BE.description%"
             },
             "pl-PL": {
               "type": "array",
@@ -837,6 +847,14 @@
               "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.nl.markdownDescription%",
               "description": "%ltex.i18n.configuration.ltex.disabledRules.nl.description%"
             },
+            "nl-BE": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.nl-BE.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.disabledRules.nl-BE.description%"
+            },
             "pl-PL": {
               "type": "array",
               "items": {
@@ -1215,6 +1233,14 @@
               "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.nl.markdownDescription%",
               "description": "%ltex.i18n.configuration.ltex.enabledRules.nl.description%"
             },
+            "nl-BE": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.nl-BE.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.enabledRules.nl-BE.description%"
+            },
             "pl-PL": {
               "type": "array",
               "items": {
@@ -1592,6 +1618,14 @@
               },
               "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.nl.markdownDescription%",
               "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.nl.description%"
+            },
+            "nl-BE": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.nl-BE.markdownDescription%",
+              "description": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.nl-BE.description%"
             },
             "pl-PL": {
               "type": "array",
