@@ -12,7 +12,7 @@ labels:
   - name: "3-stale"
     labeled:
       issue:
-        body: "Hi! Per the [contribution guidelines](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#guidelines-about-issues), this issue is automatically closed because it has been stale for seven days. The most common reason for an issue to become stale is missing information from its submitter (see one of the previous comments). If the missing information is provided, the issue will be reopened again. Thank you!"
+        body: "Hi! Per the [contribution guidelines](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#guidelines-about-issues), this issue is automatically closed because it has been stale for too long. The most common reason for an issue to become stale is missing information from its submitter (see one of the previous comments). If the missing information is provided, the issue will be reopened again. Thank you!"
         action: "close"
     unlabeled:
       issue:
