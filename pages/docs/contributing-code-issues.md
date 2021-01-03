@@ -85,7 +85,7 @@ Look at the `*.yml` definition of the respective GitHub Actions workflow to lear
 
 ### Versioning
 
-LTeX uses [semantic versioning](https://semver.org/) since version 5.0.0. The versions of vscode-ltex and ltex-ls are tied together. vscode-ltex automatically downloads ltex-ls on the first start, and the version of ltex-ls is hard-coded into vscode-ltex. This means that when a new version of ltex-ls is released, a new version of vscode-ltex has to be released as well, using the same version number (but not vice versa).
+vscode-ltex uses [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) since vscode-ltex 5.0.0. The versions of vscode-ltex and ltex-ls used to be tied together, but ltex-ls uses Semantic Versioning 2.0.0 independently of vscode-ltex since vscode-ltex 8.2.0 and ltex-ls 9.0.0. vscode-ltex automatically downloads ltex-ls on the first start, and the version of ltex-ls is hard-coded into vscode-ltex. This means that when a new version of ltex-ls is released, a new version of vscode-ltex has to be released as well, but not vice versa.
 
 This ensures that each version of vscode-ltex always uses the same version of ltex-ls, making downgrades possible, and that we don't have to worry about upgrading mechanisms, since Visual Studio Code will do that for us.
 
@@ -154,12 +154,11 @@ Of course, it's also possible to duplicate the English language files instead, b
 
 ### Guidelines About Versioning
 
-- **Semantic versioning** is used for vscode-ltex.
+- **Semantic versioning** is used for vscode-ltex and ltex-ls. The two versions are independent of each other.
   - For bugfixes, the patch version is increased.
   - For new features, the minor version is increased.
   - For breaking changes, the major version is increased.
     - *Explanation:* Breaking changes are changes that may require action from users (e.g., most changes of existing LTeX settings).
-- If a new release of vscode-ltex makes a **new version of ltex-ls** necessary, the version of ltex-ls is set to that of vscode-ltex.
 
 ### Guidelines About Fundamental Changes
 
