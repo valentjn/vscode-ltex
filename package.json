@@ -1929,6 +1929,13 @@
           "markdownDescription": "%ltex.i18n.configuration.ltex.configurationTarget.markdownDescription%",
           "description": "%ltex.i18n.configuration.ltex.configurationTarget.description%"
         },
+        "ltex.additionalRules.enablePickyRules": {
+          "type": "boolean",
+          "scope": "resource",
+          "default": false,
+          "markdownDescription": "%ltex.i18n.configuration.ltex.additionalRules.enablePickyRules.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.additionalRules.enablePickyRules.description%"
+        },
         "ltex.additionalRules.motherTongue": {
           "type": "string",
           "scope": "resource",

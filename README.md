@@ -95,6 +95,7 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
     - [`ltex.latex.environments`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexenvironments)
     - [`ltex.markdown.nodes`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdownnodes)
     - [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget)
+    - [`ltex.additionalRules.enablePickyRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexadditionalrulesenablepickyrules)
     - [`ltex.additionalRules.motherTongue`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexadditionalrulesmothertongue)
     - [`ltex.additionalRules.languageModel`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexadditionalruleslanguagemodel)
     - [`ltex.additionalRules.neuralNetworkModel`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexadditionalrulesneuralnetworkmodel)
