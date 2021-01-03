@@ -73,6 +73,7 @@ The language (e.g., `"en-US"`) LanguageTool should check against. Use a specific
 - `"ja-JP"`: Japanese
 - `"km-KH"`: Khmer
 - `"nl"`: Dutch
+- `"nl-BE"`: Dutch (Belgium)
 - `"pl-PL"`: Polish
 - `"pt"`: Portuguese
 - `"pt-AO"`: Portuguese (Angola preAO)
@@ -261,6 +262,11 @@ Object with the following properties:
 
   - Scalar of type `string`
 - `"nl"`: List of additional `nl` (Dutch) words that should not be counted as spelling errors.
+
+  Array where each entry has the following type:
+
+  - Scalar of type `string`
+- `"nl-BE"`: List of additional `nl-BE` (Dutch (Belgium)) words that should not be counted as spelling errors.
 
   Array where each entry has the following type:
 
@@ -517,6 +523,11 @@ Object with the following properties:
   Array where each entry has the following type:
 
   - Scalar of type `string`
+- `"nl-BE"`: List of additional `nl-BE` (Dutch (Belgium)) rules that should be disabled (if enabled by default by LanguageTool).
+
+  Array where each entry has the following type:
+
+  - Scalar of type `string`
 - `"pl-PL"`: List of additional `pl-PL` (Polish) rules that should be disabled (if enabled by default by LanguageTool).
 
   Array where each entry has the following type:
@@ -769,6 +780,11 @@ Object with the following properties:
   Array where each entry has the following type:
 
   - Scalar of type `string`
+- `"nl-BE"`: List of additional `nl-BE` (Dutch (Belgium)) rules that should be enabled (if disabled by default by LanguageTool).
+
+  Array where each entry has the following type:
+
+  - Scalar of type `string`
 - `"pl-PL"`: List of additional `pl-PL` (Polish) rules that should be enabled (if disabled by default by LanguageTool).
 
   Array where each entry has the following type:
@@ -855,7 +871,7 @@ This setting is language-specific, so use an object of the format `{"<LANGUAGE1>
 
 Although it is possible to manually edit this setting, the intended way is the `Hide false positive` quick fix.
 
-The JSON string currently has the form `{"rule": "<RULE>", "sentence": "<SENTENCE>"}`, where `<RULE>` is the identifier of the LanguageTool rule and `<SENTENCE>` is a Java-compatible regular expression. All occurrences of the given rule are hidden in sentences (as determined by the LanguageTool tokenizer) that match the regular expression.
+The JSON string currently has the form `{"rule": "<RULE>", "sentence": "<SENTENCE>"}`, where `<RULE>` is the identifier of the LanguageTool rule and `<SENTENCE>` is a Java-compatible regular expression. All occurrences of the given rule are hidden in sentences (as determined by the LanguageTool tokenizer) that match the regular expression. [See the documentation for details.](advanced-usage.html#hiding-false-positives-with-regular-expressions)
 
 This setting is a multi-scope setting. [See the documentation for details.](advanced-usage.html#multi-scope-settings)
 
@@ -1025,6 +1041,11 @@ Object with the following properties:
   Array where each entry has the following type:
 
   - Scalar of type `string`
+- `"nl-BE"`: List of `nl-BE` (Dutch (Belgium)) false-positive diagnostics to hide.
+
+  Array where each entry has the following type:
+
+  - Scalar of type `string`
 - `"pl-PL"`: List of `pl-PL` (Polish) false-positive diagnostics to hide.
 
   Array where each entry has the following type:
@@ -1157,7 +1178,7 @@ Object with arbitrary property names, where the value of each property has the f
 - One of the following values:
 
   - `"default"`: The environment is treated like unknown environments are treated by default: The '\begin' and '\end' commands are ignored, but the contents of the environment are not ignored.
-  - `"ignore"`: The whole environment together with its contents are ignored.
+  - `"ignore"`: The whole environment together with its contents is ignored.
 
 </div>
 
@@ -1233,11 +1254,19 @@ Object with the following properties:
 
 </div>
 
+## `ltex.additionalRules.enablePickyRules`
+
+Enable LanguageTool rules that are marked as picky and that are disabled by default, e.g., rules about passive voice, sentence length, etc.
+
+*Type:* `boolean`
+
+*Default:* `false`
+
 ## `ltex.additionalRules.motherTongue`
 
 Optional mother tongue of the user (e.g., `"de-DE"`).
 
-If set, additional rules will be checked to detect false friends. False friend detection improves if a language model is supplied (see [`ltex.additionalRules.languageModel`](settings.html#ltexadditionalruleslanguagemodel)).
+If set, additional rules will be checked to detect false friends. Picky rules may need to be enabled in order to see an effect (see [`ltex.additionalRules.enablePickyRules`](settings.html#ltexadditionalrulesenablepickyrules)). False friend detection improves if a language model is supplied (see [`ltex.additionalRules.languageModel`](settings.html#ltexadditionalruleslanguagemodel)).
 
 *Type:* `string`
 
@@ -1274,7 +1303,7 @@ Optional path to a directory with rules of a word2vec language model.
 
 ## `ltex.ltex-ls.path`
 
-If set to an empty string, LTeX automatically downloads the [latest compatible release of ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself.
+If set to an empty string, LTeX automatically downloads [ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself.
 
 Use the path to the root directory of ltex-ls (it contains `bin` and `lib` subdirectories).
 
