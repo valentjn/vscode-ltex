@@ -190,6 +190,32 @@ def updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.disabledRules\..+\.", key) is not None:
       continue
 
+    elif key == "ltex.i18n.configuration.ltex.enabledRules.description":
+      newPackageNlsJson[key] = value
+
+      for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
+        prefix = f"ltex.i18n.configuration.ltex.enabledRules.{ltLanguageShortCode}"
+
+        if uiLanguage == "de":
+          newPackageNlsJson[f"{prefix}.markdownDescription"] = (
+              "Liste von zusätzlichen Regeln der Sprache "
+              f"`{ltLanguageShortCode}` ({ltLanguageName}), die aktiviert werden sollen "
+              "(falls standardmäßig durch LanguageTool deaktiviert).")
+          newPackageNlsJson[f"{prefix}.description"] = (
+              "Liste von zusätzlichen Regeln der Sprache "
+              f"'{ltLanguageShortCode}' ({ltLanguageName}), die aktiviert werden sollen "
+              "(falls standardmäßig durch LanguageTool deaktiviert).")
+        else:
+          newPackageNlsJson[f"{prefix}.markdownDescription"] = (
+              f"List of additional `{ltLanguageShortCode}` ({ltLanguageName}) rules that should "
+              "be enabled (if disabled by default by LanguageTool).")
+          newPackageNlsJson[f"{prefix}.description"] = (
+              f"List of additional '{ltLanguageShortCode}' ({ltLanguageName}) rules that should "
+              "be enabled (if disabled by default by LanguageTool).")
+
+    elif re.match(r"^ltex\.i18n\.configuration\.ltex\.enabledRules\..+\.", key) is not None:
+      continue
+
     elif key == "ltex.i18n.configuration.ltex.hiddenFalsePositives.description":
       newPackageNlsJson[key] = value
 
