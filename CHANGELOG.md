@@ -13,6 +13,7 @@
 - Make versioning of LT<sub>E</sub>X LS independent of vscode-ltex; see the changelog of vscode-ltex to find out which version of LT<sub>E</sub>X LS a particular version of vscode-ltex uses
 - Only check file types for which LT<sub>E</sub>X has been enabled when running [`LTeX: Check all documents in workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-all-documents-in-workspace) (fixes [#183](https://github.com/valentjn/vscode-ltex/issues/183))
 - Fix scope of [`ltex.hiddenFalsePositives`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexhiddenfalsepositives) (was application-scoped, is now resource-scoped)
+- Replace `\dots` with Unicode ellipsis `…` instead of three dots `...` to fix some false positives
 - Update LT<sub>E</sub>X LS to 9.0.0
 
 ## 8.1.1 — “The Action Postulate” (November 24, 2020)
