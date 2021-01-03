@@ -153,9 +153,14 @@ The recommended way of using [`ltex.hiddenFalsePositives`](settings.html#ltexhid
 
 If you want to hide sentences based on a general pattern, you can add JSON strings with rule/sentence pairs yourself to [`ltex.hiddenFalsePositives`](settings.html#ltexhiddenfalsepositives). The format of the JSON string is documented in the description of the setting.
 
-The sentence in the JSON string is a [Java-compatible regular expression](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/regex/Pattern.html). Note that you have to replace all backslashes (`\`) in the regular expression with four backslashes (`\\\\`) as the JSON string will be parsed twice, once by VS Code for reading `settings.json` and once by LTeX to parse the JSON string itself.
+The sentence in the JSON string is a [Java-compatible regular expression](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/regex/Pattern.html). Note that you have to replace all backslashes `\` in the regular expression with four backslashes `\\\\` as the JSON string will be parsed twice, once by VS Code for reading `settings.json` and once by LTeX to parse the JSON string itself.
 
-Finally, remember that checking whether a match returned by LanguageTool is a false positive according to [`ltex.hiddenFalsePositives`](settings.html#ltexhiddenfalsepositives) happens after the document has been split into sentences. Therefore, it's not possible to have regular expressions that span multiple sentences.
+In addition, note that if you wanted to match a literal backslash `\` in your regular expression, without the JSON escaping, you would have to use two backslashes `\\` due to the regular expression parser. Therefore, together with the JSON escaping, you actually have to use eight backslashes `\\\\\\\\` in total in your `settings.json` if you want to match a literal backslash. (In contrast, four backslashes are used, for instance, if you want to match the newline character `\n` as the backslash in there is not a literal backslash.)
+
+Hiding false positives with [`ltex.hiddenFalsePositives`](settings.html#ltexhiddenfalsepositives) has the following caveats:
+
+- Checking whether a match returned by LanguageTool is a false positive happens after the document has been converted from LaTeX, Markdown, etc. to plain text by LTeX. LanguageTool only returns the plain text sentence, but not the corresponding sentence in the original code. Therefore, the regular expression is matched against the plain text, not the original code. For instance, it's not possible to have a regular expression that matches all sentences that contain a specific LaTeX command.
+- Checking whether a match returned by LanguageTool is a false positive happens after the document has been split into sentences. Therefore, it's not possible to have regular expressions that span multiple sentences.
 
 ## LanguageTool HTTP Servers
 
