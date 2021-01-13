@@ -15,6 +15,13 @@ toc: false
 
 - New versions of LTeX released on or after April 3, 2021, will require VS Code 1.52.0 or later
 
+## 8.2.1 — “The Accent Ramification” (January 13, 2021)
+
+- Ignore `\pgfmathsetmacro`, `\setmainfont`, and `\theoremstyle`
+- Fix accent commands such as `\O` in math mode resulting in diagnostics (fixes [#216](https://github.com/valentjn/vscode-ltex/issues/216))
+- Update issue labels when reporting bugs or requesting features
+- Update LTeX LS to 9.0.1
+
 ## 8.2.0 — “The Separation Displacement” (January 3, 2021)
 
 - Make versioning of LTeX LS independent of vscode-ltex; see the changelog of vscode-ltex to find out which version of LTeX LS a particular version of vscode-ltex uses
