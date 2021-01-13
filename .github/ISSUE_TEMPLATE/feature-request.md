@@ -2,7 +2,7 @@
 name: "Feature request"
 about: "Suggest an idea for this project. See https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#how-to-request-features to learn how to request features."
 title: ""
-labels: "1-feature-request"
+labels: "1-feature-request ✨"
 assignees: ""
 ---
 

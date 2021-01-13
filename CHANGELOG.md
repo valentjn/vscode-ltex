@@ -16,6 +16,7 @@
 
 - Ignore `\pgfmathsetmacro`, `\setmainfont`, and `\theoremstyle`
 - Fix accent commands such as `\O` in math mode resulting in diagnostics (fixes [#216](https://github.com/valentjn/vscode-ltex/issues/216))
+- Update issue labels when reporting bugs or requesting features
 
 ## 8.2.0 — “The Separation Displacement” (January 3, 2021)
 

@@ -28,7 +28,8 @@ export default class CommandHandler {
   private _externalFileManager: ExternalFileManager;
 
   private static readonly _featureRequestUrl: string = 'https://github.com/valentjn/vscode-ltex/'
-      + 'issues/new?assignees=&labels=1-feature-request&template=feature-request.md&title=';
+      + 'issues/new?assignees=&labels=1-feature-request%20%E2%9C%A8&'
+      + 'template=feature-request.md&title=';
 
   public constructor(context: Code.ExtensionContext, externalFileManager: ExternalFileManager,
         statusInformationPrinter: StatusPrinter, bugReporter: BugReporter) {

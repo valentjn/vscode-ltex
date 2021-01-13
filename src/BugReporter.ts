@@ -26,7 +26,8 @@ export default class BugReporter {
   private static readonly _maxNumberOfServerLogLines: number = 100;
   private static readonly _maxNumberOfClientLogLines: number = 1000;
   private static readonly _bugReportUrl: string = 'https://github.com/valentjn/vscode-ltex/'
-      + 'issues/new?assignees=&labels=1-bug%2C+2-unconfirmed&template=bug-report.md&title=&body=';
+      + 'issues/new?assignees=&labels=1-bug%20%F0%9F%90%9B%2C+2-unconfirmed&'
+      + 'template=bug-report.md&title=&body=';
 
   public constructor(context: Code.ExtensionContext, dependencyManager: DependencyManager,
         statusInformationPrinter: StatusPrinter) {
