@@ -12,6 +12,17 @@
 
 - New versions of LT<sub>E</sub>X released on or after April 3, 2021, will require VS Code 1.52.0 or later
 
+## 8.3.0 (upcoming)
+
+- Add support for [GitLab Flavored Markdown](https://gitlab.com/gitlab-org/gitlab/blob/master/doc/user/markdown.md), especially inline math (e.g., ``$`E = mc^2`$``)
+- Add support for Markdown tables as in [GitHub Flavored Markdown](https://github.github.com/gfm/#tables-extension-)
+- Enable `Add to dictionary` quick fix for Slovak rule IDs `MUZSKY_ROD_NEZIV_A`, `ZENSKY_ROD_A`, and `STREDNY_ROD_A` (fixes [#221](https://github.com/valentjn/vscode-ltex/issues/221))
+- Remove superfluous spaces in messages of diagnostics
+- Fix handling of `\r\n` (Windows) line terminators in Markdown
+- Use Flexmark's YAML Front Matter extension to ignore YAML front matter in Markdown instead of own handling
+- Print Flexmark AST of Markdown documents to log when [`ltex.ltex-ls.logLevel`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lsloglevel) is `"finest"`
+- Update LT<sub>E</sub>X LS to 9.1.0
+
 ## 8.2.1 — “The Accent Ramification” (January 13, 2021)
 
 - Ignore `\pgfmathsetmacro`, `\setmainfont`, and `\theoremstyle`
