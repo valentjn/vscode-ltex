@@ -39,8 +39,9 @@
     "Other"
   ],
   "activationEvents": [
-    "onLanguage:markdown",
+    "onLanguage:bibtex",
     "onLanguage:latex",
+    "onLanguage:markdown",
     "onLanguage:rsweave"
   ],
   "extensionKind": [
@@ -102,8 +103,9 @@
           ],
           "scope": "window",
           "default": [
-            "markdown",
+            "bibtex",
             "latex",
+            "markdown",
             "rsweave"
           ],
           "markdownDescription": "%ltex.i18n.configuration.ltex.enabled.markdownDescription%",
@@ -1755,6 +1757,25 @@
               "en-US": [
                 ":/path/to/externalFile.txt"
               ]
+            }
+          ]
+        },
+        "ltex.bibtex.fields": {
+          "type": "object",
+          "scope": "resource",
+          "default": {},
+          "patternProperties": {
+            "^.*$": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false,
+          "markdownDescription": "%ltex.i18n.configuration.ltex.bibtex.fields.markdownDescription%",
+          "description": "%ltex.i18n.configuration.ltex.bibtex.fields.description%",
+          "examples": [
+            {
+              "maintitle": false,
+              "see-also": true
             }
           ]
         },

@@ -60,12 +60,10 @@ export default class BugReporter {
       let codeLanguage: string;
 
       switch (document.languageId) {
-        case 'latex': {
-          codeLanguage = 'latex';
-          break;
-        }
+        case 'bibtex':
+        case 'latex':
         case 'markdown': {
-          codeLanguage = 'markdown';
+          codeLanguage = document.languageId;
           break;
         }
         default: {
