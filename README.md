@@ -8,8 +8,8 @@
 
 # LT<sub>E</sub>X Extension for VS Code: Grammar/Spell Checker with LanguageTool and L<sup>A</sup>T<sub>E</sub>X Support
 
-[![latest release](https://badgen.net/badge/-/release/585858?label=)![version number](https://badgen.net/vs-marketplace/v/valentjn.vscode-ltex?label=)![release date](https://badgen.net/github/last-commit/valentjn/vscode-ltex/release?label=)][marketplace]&nbsp;
-[![installs](https://badgen.net/vs-marketplace/i/valentjn.vscode-ltex)][marketplace]&nbsp;
+[![latest release](https://badgen.net/badge/-/release/585858?label=)![version number](https://badgen.net/vs-marketplace/v/valentjn.vscode-ltex?label=)![release date](https://badgen.net/github/last-commit/valentjn/vscode-ltex/release?label=)][website]&nbsp;
+[![installs](https://badgen.net/vs-marketplace/i/valentjn.vscode-ltex)][website]&nbsp;
 [![rating](https://badgen.net/vs-marketplace/rating/valentjn.vscode-ltex)][marketplace]
 
 [![vscode-ltex](https://badgen.net/github/license/valentjn/vscode-ltex?label=vscode-ltex)](https://github.com/valentjn/vscode-ltex)&nbsp;
@@ -31,6 +31,8 @@ The difference to regular spell checkers is that LT<sub>E</sub>X not only detect
 
 A classic use case of LT<sub>E</sub>X is checking scientific L<sup>A</sup>T<sub>E</sub>X papers in VS Code, but why not check your next blog post, book chapter, or long e-mail before you send it to someone else?
 
+[Find more information and documentation about LT<sub>E</sub>X on the official website.][website]
+
 LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageTool for Visual Studio Code extension](https://github.com/adamvoss/vscode-languagetool) by Adam Voss<sup>†</sup>.
 
 ## Features
@@ -45,7 +47,7 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
 - **User dictionaries**
 - **Multilingual support** with babel commands or magic comments
 - Possibility to use **external LanguageTool servers**
-- **Extensive [documentation](https://valentjn.github.io/vscode-ltex/)**
+- **Extensive [documentation][website]**
 
 ## Requirements
 
@@ -57,7 +59,7 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
 ## How to Use
 
 1. Install the requirements listed above
-2. Install this extension
+2. Install this extension (see [download options](https://valentjn.github.io/vscode-ltex/docs/installation-and-usage.html#how-to-install-and-use))
 3. Reload the VS Code window if necessary
 4. Open a L<sup>A</sup>T<sub>E</sub>X or a Markdown document, or open a new file and change the language mode to `LaTeX` or `Markdown` (open the Command Palette and select `Change Language Mode`)
 5. Wait until [ltex-ls](https://valentjn.github.io/vscode-ltex/docs/faq.html#whats-the-difference-between-vscode-ltex-ltex-ls-and-languagetool) and Java have been found; if necessary, LT<sub>E</sub>X downloads both for you. Alternatively, you can choose [offline installation](https://valentjn.github.io/vscode-ltex/docs/installation-and-usage.html#offline-installation).
@@ -168,3 +170,4 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
     - [ltex-ls](https://valentjn.github.io/vscode-ltex/docs/acknowledgments.html#ltex-ls)
 
 [marketplace]: https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex
+[website]: https://valentjn.github.io/vscode-ltex/
