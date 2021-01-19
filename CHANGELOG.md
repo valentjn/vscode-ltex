@@ -20,6 +20,7 @@
 - Add support for Markdown tables as in [GitHub Flavored Markdown](https://github.github.com/gfm/#tables-extension-)
 - Enable `Add to dictionary` quick fix for Slovak rule IDs `MUZSKY_ROD_NEZIV_A`, `ZENSKY_ROD_A`, and `STREDNY_ROD_A` (fixes [#221](https://github.com/valentjn/vscode-ltex/issues/221))
 - Remove superfluous spaces in messages of diagnostics
+- Fix LT<sub>E</sub>X LS not starting if Java version string does not contain a minor version (e.g., `"16"`, see [#224](https://github.com/valentjn/vscode-ltex/issues/224))
 - Fix handling of `\r\n` (Windows) line terminators in Markdown
 - Use Flexmark's YAML Front Matter extension to ignore YAML front matter in Markdown instead of own handling
 - Print Flexmark AST of Markdown documents to log when [`ltex.ltex-ls.logLevel`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lsloglevel) is `"finest"`

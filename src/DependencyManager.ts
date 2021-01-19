@@ -534,7 +534,7 @@ export default class DependencyManager {
         }
 
         if (Object.prototype.hasOwnProperty.call(versionInfo, 'java')) {
-          const match: RegExpMatchArray | null = versionInfo['java'].match(/(\d+)\.(\d+)/);
+          const match: RegExpMatchArray | null = versionInfo['java'].match(/(\d+)(?:\.(\d+))?/);
 
           if ((match != null) && (match.length >= 3)) {
             javaVersion = versionInfo['java'];
