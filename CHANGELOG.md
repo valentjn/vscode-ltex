@@ -23,6 +23,7 @@
 - Fix LT<sub>E</sub>X LS not starting if Java version string does not contain a minor version (e.g., `"16"`, see [#224](https://github.com/valentjn/vscode-ltex/issues/224))
 - Fix handling of `\r\n` (Windows) line terminators in Markdown
 - Use Flexmark's YAML Front Matter extension to ignore YAML front matter in Markdown instead of own handling
+- Fix documentation on the number of backslashes for [`ltex.latex.commands`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexcommands) (fixes [#232](https://github.com/valentjn/vscode-ltex/issues/232))
 - Print Flexmark AST of Markdown documents to log when [`ltex.ltex-ls.logLevel`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lsloglevel) is `"finest"`
 - Update LT<sub>E</sub>X LS to 9.1.0
 
