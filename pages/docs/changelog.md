@@ -15,6 +15,22 @@ toc: false
 
 - New versions of LTeX released on or after April 3, 2021, will require VS Code 1.52.0 or later
 
+## 8.3.0 (upcoming)
+
+- Add support for BibTeX files (language code `bibtex`, fixes [#211](https://github.com/valentjn/vscode-ltex/issues/211))
+- Add setting [`ltex.bibtex.fields`](settings.html#ltexbibtexfields) to control which BibTeX fields should be checked
+- Add support for [GitLab Flavored Markdown](https://gitlab.com/gitlab-org/gitlab/blob/master/doc/user/markdown.md), especially inline math (e.g., ``$`E = mc^2`$``, see [#210](https://github.com/valentjn/vscode-ltex/issues/210))
+- Add support for Markdown tables as in [GitHub Flavored Markdown](https://github.github.com/gfm/#tables-extension-) (fixes [#218](https://github.com/valentjn/vscode-ltex/issues/218))
+- Add support for more commands of the `glossaries` LaTeX package
+- Enable `Add to dictionary` quick fix for Slovak rule IDs `MUZSKY_ROD_NEZIV_A`, `ZENSKY_ROD_A`, and `STREDNY_ROD_A` (fixes [#221](https://github.com/valentjn/vscode-ltex/issues/221))
+- Remove superfluous spaces in messages of diagnostics
+- Fix LTeX LS not starting if Java version string does not contain a minor version (e.g., `"16"`, see [#224](https://github.com/valentjn/vscode-ltex/issues/224))
+- Fix handling of `\r\n` (Windows) line terminators in Markdown
+- Use Flexmark's YAML Front Matter extension to ignore YAML front matter in Markdown instead of own handling
+- Fix documentation on the number of backslashes for [`ltex.latex.commands`](settings.html#ltexlatexcommands) (fixes [#232](https://github.com/valentjn/vscode-ltex/issues/232))
+- Print Flexmark AST of Markdown documents to log when [`ltex.ltex-ls.logLevel`](settings.html#ltexltex-lsloglevel) is `"finest"`
+- Update LTeX LS to 9.1.0
+
 ## 8.2.1 — “The Accent Ramification” (January 13, 2021)
 
 - Ignore `\pgfmathsetmacro`, `\setmainfont`, and `\theoremstyle`
