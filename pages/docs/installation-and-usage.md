@@ -20,7 +20,8 @@ sidebar: "sidebar"
 
 ## Download Providers
 
-- [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex) (VS Code will download from here)
+- Download from within VS Code: Open the *Extensions* panel and type `ltex`
+- [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex) (VS Code uses this for downloading)
 - [Open VSX](https://open-vsx.org/extension/valentjn/vscode-ltex)
 - [GitHub](https://github.com/valentjn/vscode-ltex/releases) (+ packages for offline installation)
 
