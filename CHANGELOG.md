@@ -12,7 +12,7 @@
 
 - New versions of LT<sub>E</sub>X released on or after April 3, 2021, will require VS Code 1.52.0 or later
 
-## 8.3.0 (upcoming)
+## 8.3.0 — “The BibT<sub>E</sub>X Experimentation” (January 24, 2021)
 
 - Add support for BibT<sub>E</sub>X files (language code `bibtex`, fixes [#211](https://github.com/valentjn/vscode-ltex/issues/211))
 - Add setting [`ltex.bibtex.fields`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexbibtexfields) to control which BibT<sub>E</sub>X fields should be checked
