@@ -15,7 +15,7 @@ toc: false
 
 - New versions of LTeX released on or after April 3, 2021, will require VS Code 1.52.0 or later
 
-## 8.3.0 (upcoming)
+## 8.3.0 — “The BibTeX Experimentation” (January 24, 2021)
 
 - Add support for BibTeX files (language code `bibtex`, fixes [#211](https://github.com/valentjn/vscode-ltex/issues/211))
 - Add setting [`ltex.bibtex.fields`](settings.html#ltexbibtexfields) to control which BibTeX fields should be checked
