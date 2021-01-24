@@ -50,7 +50,7 @@ LTeX is a successor (since it's a fork) of the abandoned [LanguageTool for Visua
 - **User dictionaries**
 - **Multilingual support** with babel commands or magic comments
 - Possibility to use **external LanguageTool servers**
-- **Extensive [documentation](https://valentjn.github.io/vscode-ltex/)**
+- **Extensive documentation**
 
 <div style="margin-bottom:30px;"></div>
 
