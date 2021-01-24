@@ -20,7 +20,7 @@ Changes require reloading the Visual Studio Code window to take effect.
 
 *Type:* `boolean` or `array`
 
-*Default:* `["markdown", "latex", "rsweave"]`
+*Default:* `["bibtex", "latex", "markdown", "rsweave"]`
 
 *Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
 
@@ -1124,13 +1124,37 @@ Object with the following properties:
 
 </div>
 
+## `ltex.bibtex.fields`
+
+List of BibTeX fields whose values are to be checked in BibTeX files.
+
+This setting is an object with the field names as keys (not restricted to classical BibTeX fields) and Booleans as values, where `true` means that the field value should be checked and `false` means that the field value should be ignored.
+
+Some common fields are already ignored, even if you set this setting to an empty object.
+
+*Type:* `object`
+
+*Example:* `{"maintitle": false, "see-also": true}`
+
+*Default:* `{}`
+
+*Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
+
+<div markdown='1' style='display:none;'>
+
+Object with arbitrary property names, where the value of each property has the following type:
+
+- Scalar of type `boolean`
+
+</div>
+
 ## `ltex.latex.commands`
 
 List of LaTeX commands to be handled by the LaTeX parser, listed together with empty arguments (e.g., `"\\ref{}"`, `"\\documentclass[]{}"`).
 
 This setting is an object with the commands as keys and corresponding actions as values.
 
-Don't forget to escape the initial backslash by replacing it with two backslashes.
+If you edit the `settings.json` file directly, don't forget to escape the initial backslash by replacing it with two backslashes. If you use the VS Code Settings panel, only type one backslash.
 
 Many common commands are already handled by default, even if you set this setting to an empty object.
 
