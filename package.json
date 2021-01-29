@@ -2,7 +2,7 @@
   "name": "vscode-ltex",
   "displayName": "LTeX",
   "version": "8.3.0",
-  "description": "Grammar/spell checker with LanguageTool and LaTeX support",
+  "description": "Grammar/spell checker with LanguageTool and LaTeX/Markdown support",
   "icon": "img/logo-ltex.png",
   "author": "Julian Valentin",
   "publisher": "valentjn",

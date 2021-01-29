@@ -6,7 +6,7 @@
    - file, You can obtain one at https://mozilla.org/MPL/2.0/.
    -->
 
-# LT<sub>E</sub>X Extension for VS Code: Grammar/Spell Checker with LanguageTool and L<sup>A</sup>T<sub>E</sub>X Support
+# LT<sub>E</sub>X Extension for VS Code: Grammar/Spell Checker with LanguageTool and L<sup>A</sup>T<sub>E</sub>X/Markdown Support
 
 [![latest release](https://badgen.net/badge/-/release/585858?label=)![version number](https://badgen.net/vs-marketplace/v/valentjn.vscode-ltex?label=)![release date](https://badgen.net/github/last-commit/valentjn/vscode-ltex/release?label=)][website]&nbsp;
 [![installs](https://badgen.net/vs-marketplace/i/valentjn.vscode-ltex)][website]&nbsp;
