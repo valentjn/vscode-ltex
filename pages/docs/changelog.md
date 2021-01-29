@@ -15,6 +15,18 @@ toc: false
 
 - New versions of LTeX released on or after April 3, 2021, will require VS Code 1.52.0 or later
 
+## 8.4.0 (upcoming)
+
+- Add support for Pandoc-style inline math (`$...$`) and display math (`$$...$$` with `$$` being at the beginning/end of a Markdown block) to Markdown parser (fixes [#210](https://github.com/valentjn/vscode-ltex/issues/210))
+- Fix false positives for words added by `Add to dictionary` for Slovak rule IDs `MUZSKY_ROD_NEZIV_A`, `ZENSKY_ROD_A`, and `STREDNY_ROD_A` (fixes [#221](https://github.com/valentjn/vscode-ltex/issues/221))
+- Fix BibTeX field `seealso` not ignored, ignore `category` and `parent` (see [#211](https://github.com/valentjn/vscode-ltex/issues/211))
+- Disable `UPPERCASE_SENTENCE_START` in BibTeX files (see [#211](https://github.com/valentjn/vscode-ltex/issues/211))
+- Move rule ID to the end of diagnostic messages as VS Code truncates the messages if the Problems panel is narrow (fixes [#233](https://github.com/valentjn/vscode-ltex/issues/233))
+- Fix regression that messages of possible spelling mistakes are not prepended with the respective unknown words (see [#161](https://github.com/valentjn/vscode-ltex/issues/161))
+- Fix crash when using `\begin` or `\end` without an argument (fixes [#236](https://github.com/valentjn/vscode-ltex/issues/236))
+- Use Title Case for titles of commands
+- Update LTeX LS to 9.2.0
+
 ## 8.3.0 — “The BibTeX Experimentation” (January 24, 2021)
 
 - Add support for BibTeX files (language code `bibtex`, fixes [#211](https://github.com/valentjn/vscode-ltex/issues/211))
@@ -43,7 +55,7 @@ toc: false
 - Make versioning of LTeX LS independent of vscode-ltex; see the changelog of vscode-ltex to find out which version of LTeX LS a particular version of vscode-ltex uses
 - Update LanguageTool to 5.2 (see [LT 5.2 release notes](https://github.com/languagetool-org/languagetool/blob/v5.2/languagetool-standalone/CHANGES.md#52-released-2020-12-29))
 - Add [`ltex.additionalRules.enablePickyRules`](settings.html#ltexadditionalrulesenablepickyrules) to still be able to detect false friends after the update of LanguageTool (default: `false`)
-- Only check file types for which LTeX has been enabled when running [`LTeX: Check all documents in workspace`](commands.html#ltex-check-all-documents-in-workspace) (fixes [#183](https://github.com/valentjn/vscode-ltex/issues/183))
+- Only check file types for which LTeX has been enabled when running [`LTeX: Check All Documents in Workspace`](commands.html#ltex-check-all-documents-in-workspace) (fixes [#183](https://github.com/valentjn/vscode-ltex/issues/183))
 - Fix scope of [`ltex.hiddenFalsePositives`](settings.html#ltexhiddenfalsepositives) (was application-scoped, is now resource-scoped)
 - Replace `\dots` with Unicode ellipsis `…` instead of three dots `...` to fix some false positives
 - Update LTeX LS to 9.0.0
@@ -84,7 +96,7 @@ toc: false
 - Change default of [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) for `dictionary`, `disabledRules`, and `hiddenFalsePositives` to `workspaceFolderExternalFile`
 - Add [`ltex.statusBarItem`](settings.html#ltexstatusbaritem) to permanently display LTeX's status in the status bar (fixes [#141](https://github.com/valentjn/vscode-ltex/issues/141))
 - Add [`ltex.checkFrequency`](settings.html#ltexcheckfrequency) to control when LTeX checks documents (fixes [#142](https://github.com/valentjn/vscode-ltex/issues/142))
-- Add [`LTeX: Show status information`](commands.html#ltex-show-status-information) command to show information about the status of LTeX
+- Add [`LTeX: Show Status Information`](commands.html#ltex-show-status-information) command to show information about the status of LTeX
 - Add support for `\usepackage[LANGUAGE]{babel}` if in the same file as the text to be checked (fixes [#140](https://github.com/valentjn/vscode-ltex/issues/140))
 - Add support for more BibLaTeX commands such as `\autocite`, `\citeauthor`, etc. (fixes [#143](https://github.com/valentjn/vscode-ltex/issues/143))
 - Add support for overriding hard-coded command signatures (fixes [valentjn/ltex-ls#27](https://github.com/valentjn/ltex-ls/issues/27))
@@ -168,8 +180,8 @@ toc: false
 
 ## 6.2.0 — “The Command Isotope” (August 7, 2020)
 
-- Add commands [`LTeX: Check current document`](commands.html#ltex-check-current-document) and [`LTeX: Check all documents in workspace`](commands.html#ltex-check-all-documents-in-workspace) (fixes [#84](https://github.com/valentjn/vscode-ltex/issues/84))
-- Add commands [`LTeX: Clear diagnostics in current document`](commands.html#ltex-clear-diagnostics-in-current-document) and [`LTeX: Clear all diagnostics`](commands.html#ltex-clear-all-diagnostics)
+- Add commands [`LTeX: Check Current Document`](commands.html#ltex-check-current-document) and [`LTeX: Check All Documents in Workspace`](commands.html#ltex-check-all-documents-in-workspace) (fixes [#84](https://github.com/valentjn/vscode-ltex/issues/84))
+- Add commands [`LTeX: Clear Diagnostics in Current Document`](commands.html#ltex-clear-diagnostics-in-current-document) and [`LTeX: Clear All Diagnostics`](commands.html#ltex-clear-all-diagnostics)
 - Add setting [`ltex.clearDiagnosticsWhenClosingFile`](settings.html#ltexcleardiagnosticswhenclosingfile)
 - Skip front matter in Markdown
 - Ignore more LaTeX preamble commands (e.g., `\automark`, `\color`, `\DeclareSIUnit`, `\directlua`, `\setuptoc`)
@@ -210,7 +222,7 @@ toc: false
 - Add German translations for user interface of LTeX
 - Delay diagnostics at the current caret position (e.g., incomplete word or sentence) until the user has finished typing (fixes [#46](https://github.com/valentjn/vscode-ltex/issues/46))
 - Add `enabled` to magic comments (fixes [#67](https://github.com/valentjn/vscode-ltex/issues/67))
-- Add command [`LTeX: Report bug in LTeX`](commands.html#ltex-report-bug-in-ltex) for reporting LTeX bugs from within VS Code
+- Add command [`LTeX: Report Bug in LTeX`](commands.html#ltex-report-bug-in-ltex) for reporting LTeX bugs from within VS Code
 - Fix `\todo` couldn't be ignored (fixes [#63](https://github.com/valentjn/vscode-ltex/issues/63))
 - Fix wrong language-dependent settings used for magic comments
 - Fix add to dictionary and disable rule quick fixes using wrong language when used with magic comments
