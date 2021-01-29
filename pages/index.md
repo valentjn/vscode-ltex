@@ -5,7 +5,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-title: "LTeX – Grammar/Spell Checker for VS Code with LanguageTool and LaTeX Support"
+title: "LTeX – Grammar/Spell Checker for VS Code with LanguageTool and LaTeX/Markdown Support"
 permalink: "/index.html"
 sidebar: "sidebar"
 toc: false
