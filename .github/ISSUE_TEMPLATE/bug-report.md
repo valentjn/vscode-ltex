@@ -1,5 +1,5 @@
 ---
-name: "Bug report"
+name: "Bug Report"
 about: "Create a report to help us improve (fill in as many details as you can). See https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#how-to-report-bugs to learn how to report bugs."
 title: ""
 labels: "1-bug 🐛, 2-unconfirmed"
