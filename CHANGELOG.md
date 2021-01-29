@@ -12,6 +12,10 @@
 
 - New versions of LT<sub>E</sub>X released on or after April 3, 2021, will require VS Code 1.52.0 or later
 
+## 8.4.1 (upcoming)
+
+- Update bundled AdoptOpenJDK JRE to 11.0.10+9
+
 ## 8.4.0 — “The Math Optimization” (January 29, 2021)
 
 - Add support for Pandoc-style inline math (`$...$`) and display math (`$$...$$` with `$$` being at the beginning/end of a Markdown block) to Markdown parser (fixes [#210](https://github.com/valentjn/vscode-ltex/issues/210))
