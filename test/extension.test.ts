@@ -16,7 +16,7 @@ describe('Test extension (end-to-end)', () => {
     await TestTools.sleep(5000);
     const diagnostics: Code.Diagnostic[] = Code.languages.getDiagnostics(document.uri);
     Assert.strictEqual(diagnostics.length, 1);
-    Assert.strictEqual(diagnostics[0].source, 'LTeX - EN_A_VS_AN');
+    Assert.strictEqual(diagnostics[0].source, 'LTeX');
   }
 
   before(async () => {

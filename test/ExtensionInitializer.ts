@@ -67,7 +67,7 @@ export default class ExtensionInitializer {
     for (let i: number = 0; i < 120; i++) {
       const diagnostics: Code.Diagnostic[] = Code.languages.getDiagnostics(document.uri);
 
-      if ((diagnostics.length == 1) && (diagnostics[0].source == 'LTeX - EN_A_VS_AN')) {
+      if ((diagnostics.length == 1) && (diagnostics[0].source == 'LTeX')) {
         ltexReady = true;
         break;
       }
