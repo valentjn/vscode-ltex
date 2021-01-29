@@ -127,7 +127,7 @@ export default class StatusBarItemManager {
     let token: {
       uri: string,
       operation: string,
-      counter: number,
+      uuid: string,
     };
 
     try {
