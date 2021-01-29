@@ -39,7 +39,7 @@ jobs:
           node-version: "12.14.1"
 
       - name: "Install Node.js Dependencies"
-        run: "npm install && npm install -g vsce@1.84.0 ovsx@0.1.0-next.a9154dc"
+        run: "npm install && npm install -g vsce@1.84.0 ovsx@0.1.0-next.72b2e9d"
 
       - name: "Set up Python"
         uses: "actions/setup-python@v2"
@@ -115,7 +115,7 @@ jobs:
           node-version: "12.14.1"
 
       - name: "Install Node.js Dependencies"
-        run: "npm install && npm install -g vsce@1.84.0 ovsx@0.1.0-next.a9154dc"
+        run: "npm install && npm install -g vsce@1.84.0 ovsx@0.1.0-next.72b2e9d"
 
       - name: "Set up Python"
         uses: "actions/setup-python@v2"
