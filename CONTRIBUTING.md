@@ -33,7 +33,7 @@ If you like LTeX, but are not able to contribute in any of these ways, there are
 5. Set the setting `"ltex.trace.server": "verbose"` in your `settings.json`.
 6. Try to understand the bug by selecting `View` → `Output` → `LTeX Language Server`/`LTeX Language Client`.
 7. Do one of the following:
-   - Reproduce the bug and keep the document for which it occurs open. Execute the command [`LTeX: Report Bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-report-bug-in-ltex) inside Visual Studio Code from the Command Palette (`Ctrl+Shift+P`) and click on `Copy report and create issue`. This will copy a prefilled bug report to your clipboard and open the `New issue` page on GitHub in your browser (you may have to confirm that you really want to open the page). Enter a summary of the issue in the title field and paste the bug report from your clipboard into the description field. Before submitting the bug report, check that it doesn't contain any confidential data. OR
+   - Reproduce the bug and keep the document for which it occurs open. Execute the command [`LTeX: Report Bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-report-bug-in-ltex) inside VS Code from the Command Palette (`Ctrl+Shift+P`) and click on `Copy report and create issue`. This will copy a prefilled bug report to your clipboard and open the `New Issue` page on GitHub in your browser (you may have to confirm that you really want to open the page). Enter a summary of the issue in the title field and paste the bug report from your clipboard into the description field. Before submitting the bug report, check that it doesn't contain any confidential data. OR
    - Manually [open an issue on GitHub](https://github.com/valentjn/vscode-ltex/issues/new/choose), select the `Bug Report` template, and fill in as much info as you can (the [`LTeX: Report Bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-report-bug-in-ltex) command would do that for you). This will help us reproduce the issue.
 
 **Important:** Please follow the issue template. Issues that don't follow the template or that don't contain the vital information requested in the template (especially minimal example document and settings) may be immediately closed as invalid.
@@ -47,7 +47,10 @@ If you like LTeX, but are not able to contribute in any of these ways, there are
 
 1. Make sure that your feature is actually about LT<sub>E</sub>X (not about LanguageTool, for example).
 2. Make sure that your feature is not in the [list of all open and closed GitHub issues](https://github.com/valentjn/vscode-ltex/issues?q=is%3Aissue).
-3. Select the `Feature Request` template when [opening an issue on GitHub](https://github.com/valentjn/vscode-ltex/issues/new/choose) and fill in as much info as you can. Using actual real-world examples that explain why you and many other users would benefit from the feature increases the request's chances of being implemented.
+3. Do one of the following:
+   - Execute the command [`LTeX: Request Feature for LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-request-feature-for-ltex) inside VS Code from the Command Palette (`Ctrl+Shift+P`) and click on `Create issue`. This will open the `New Issue` page on GitHub in your browser (you may have to confirm that you really want to open the page). OR
+   - Manually [open an issue on GitHub](https://github.com/valentjn/vscode-ltex/issues/new/choose) and select the `Feature Request` template.
+4. Enter a summary of the feature in the title field and fill out the template in the description field. Fill in as much info as you can. Using actual real-world examples that explain why you and many other users would benefit from the feature increases the request's chances of being implemented.
 
 **Important:** Please follow the issue template. Issues that don't follow the template or that don't contain vital information requested in the template may be immediately closed as invalid.
 
@@ -85,7 +88,7 @@ Look at the `*.yml` definition of the respective GitHub Actions workflow to lear
 
 vscode-ltex uses [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) since vscode-ltex 5.0.0. The versions of vscode-ltex and ltex-ls used to be tied together, but ltex-ls uses Semantic Versioning 2.0.0 independently of vscode-ltex since vscode-ltex 8.2.0 and ltex-ls 9.0.0. vscode-ltex automatically downloads ltex-ls on the first start, and the version of ltex-ls is hard-coded into vscode-ltex. This means that when a new version of ltex-ls is released, a new version of vscode-ltex has to be released as well, but not vice versa.
 
-This ensures that each version of vscode-ltex always uses the same version of ltex-ls, making downgrades possible, and that we don't have to worry about upgrading mechanisms, since Visual Studio Code will do that for us.
+This ensures that each version of vscode-ltex always uses the same version of ltex-ls, making downgrades possible, and that we don't have to worry about upgrading mechanisms, since VS Code will do that for us.
 
 ### Pre-Releases
 
