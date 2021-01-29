@@ -15,7 +15,7 @@ toc: false
 
 - New versions of LTeX released on or after April 3, 2021, will require VS Code 1.52.0 or later
 
-## 8.4.0 (upcoming)
+## 8.4.0 — “The Math Optimization” (January 29, 2021)
 
 - Add support for Pandoc-style inline math (`$...$`) and display math (`$$...$$` with `$$` being at the beginning/end of a Markdown block) to Markdown parser (fixes [#210](https://github.com/valentjn/vscode-ltex/issues/210))
 - Fix false positives for words added by `Add to dictionary` for Slovak rule IDs `MUZSKY_ROD_NEZIV_A`, `ZENSKY_ROD_A`, and `STREDNY_ROD_A` (fixes [#221](https://github.com/valentjn/vscode-ltex/issues/221))
