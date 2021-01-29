@@ -12,6 +12,17 @@
 
 - New versions of LT<sub>E</sub>X released on or after April 3, 2021, will require VS Code 1.52.0 or later
 
+## 8.4.0 (upcoming)
+
+- Add support for Pandoc-style inline math (`$...$`) and display math (`$$...$$` with `$$` being at the beginning/end of a Markdown block) to Markdown parser (fixes [#210](https://github.com/valentjn/vscode-ltex/issues/210))
+- Fix false positives for words added by `Add to dictionary` for Slovak rule IDs `MUZSKY_ROD_NEZIV_A`, `ZENSKY_ROD_A`, and `STREDNY_ROD_A` (fixes [#221](https://github.com/valentjn/vscode-ltex/issues/221))
+- Fix BibT<sub>E</sub>X field `seealso` not ignored, ignore `category` and `parent` (see [#211](https://github.com/valentjn/vscode-ltex/issues/211))
+- Disable `UPPERCASE_SENTENCE_START` in BibT<sub>E</sub>X files (see [#211](https://github.com/valentjn/vscode-ltex/issues/211))
+- Move rule ID to the end of diagnostic messages as VS Code truncates the messages if the Problems panel is narrow (fixes [#233](https://github.com/valentjn/vscode-ltex/issues/233))
+- Fix regression that messages of possible spelling mistakes are not prepended with the respective unknown words (see [#161](https://github.com/valentjn/vscode-ltex/issues/161))
+- Fix crash when using `\begin` or `\end` without an argument (fixes [#236](https://github.com/valentjn/vscode-ltex/issues/236))
+- Update LT<sub>E</sub>X LS to 9.2.0
+
 ## 8.3.0 — “The BibT<sub>E</sub>X Experimentation” (January 24, 2021)
 
 - Add support for BibT<sub>E</sub>X files (language code `bibtex`, fixes [#211](https://github.com/valentjn/vscode-ltex/issues/211))
