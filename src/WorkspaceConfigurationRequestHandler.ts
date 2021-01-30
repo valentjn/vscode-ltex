@@ -37,29 +37,17 @@ export default class WorkspaceConfigurationRequestHandler {
 
     this._externalFileManager.updateWatchers(uri, settingName);
 
-    // deprecated since 8.0.0
-    const settingNameCapitalized: string =
-        `${settingName.charAt(0).toUpperCase()}${settingName.substr(1)}`;
-
     const userSettingValue: LanguageSpecificSettingValue =
         this._externalFileManager.getSettingValue(uri, settingName,
           Code.ConfigurationTarget.Global);
     WorkspaceConfigurationRequestHandler.mergeLanguageSpecificSettingValue(
         result, userSettingValue);
 
-    // deprecated since 8.0.0
-    WorkspaceConfigurationRequestHandler.mergeLanguageSpecificSettingValue(
-        result, resourceConfig.get(`workspace${settingNameCapitalized}`));
-
     const workspaceSettingValue: LanguageSpecificSettingValue =
         this._externalFileManager.getSettingValue(uri, settingName,
           Code.ConfigurationTarget.Workspace);
     WorkspaceConfigurationRequestHandler.mergeLanguageSpecificSettingValue(
         result, workspaceSettingValue);
-
-    // deprecated since 8.0.0
-    WorkspaceConfigurationRequestHandler.mergeLanguageSpecificSettingValue(
-        result, resourceConfig.get(`workspaceFolder${settingNameCapitalized}`));
 
     const workspaceFolderSettingValue: LanguageSpecificSettingValue =
         this._externalFileManager.getSettingValue(uri, settingName,

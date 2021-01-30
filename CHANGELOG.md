@@ -12,9 +12,12 @@
 
 - New versions of LT<sub>E</sub>X released on or after April 3, 2021, will require VS Code 1.52.0 or later
 
-## 8.4.1 (upcoming)
+## 9.0.0 (upcoming)
 
+- Remove support for settings that are deprecated since 8.0.0: `ltex.workspaceDictionary`, `ltex.workspaceFolderDictionary`, `ltex.workspaceDisabledRules`, `ltex.workspaceFolderDisabledRules`, `ltex.workspaceEnabledRules`, `ltex.workspaceFolderEnabledRules`, `ltex.ignoreInRuleSentence`, `ltex.commands.ignore`, `ltex.commands.dummy`, `ltex.environments.ignore`, `ltex.markdown.ignore`, and `ltex.markdown.dummy`
+- Remove support for values for [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget) that deprecated since 7.0.0 or 8.0.0: `"global"` (deprecated since 7.0.0), `"addToDictionary"`, `"disableRule"`, and `"ignoreRuleInSentence"`
 - Update bundled AdoptOpenJDK JRE to 11.0.10+9
+- Update LT<sub>E</sub>X LS to 10.0.0
 
 ## 8.4.0 — “The Math Optimization” (January 29, 2021)
 

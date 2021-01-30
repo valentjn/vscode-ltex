@@ -255,20 +255,6 @@ export default class CommandHandler {
     const resourceConfig: Code.WorkspaceConfiguration =
         Code.workspace.getConfiguration('ltex.configurationTarget', uri);
     let scopeString: string | undefined = resourceConfig.get(settingName);
-
-    if (scopeString == null) {
-      if (settingName == 'dictionary') {
-        // 'addToDictionary' is deprecated since 8.0.0
-        scopeString = resourceConfig.get('addToDictionary');
-      } else if (settingName == 'disabledRules') {
-        // 'disableRule' is deprecated since 8.0.0
-        scopeString = resourceConfig.get('disableRule');
-      } else if (settingName == 'hiddenFalsePositives') {
-        // 'ignoreRuleInSentence' is deprecated since 8.0.0
-        scopeString = resourceConfig.get('ignoreRuleInSentence');
-      }
-    }
-
     let scopes: Code.ConfigurationTarget[];
 
     if ((scopeString == null) || scopeString.startsWith('workspaceFolder')) {
@@ -276,8 +262,7 @@ export default class CommandHandler {
           Code.ConfigurationTarget.Global];
     } else if (scopeString.startsWith('workspace')) {
       scopes = [Code.ConfigurationTarget.Workspace, Code.ConfigurationTarget.Global];
-    // 'global' is deprecated since 7.0.0
-    } else if (scopeString.startsWith('user') || scopeString.startsWith('global')) {
+    } else if (scopeString.startsWith('user')) {
       scopes = [Code.ConfigurationTarget.Global];
     } else {
       Logger.error(i18n('invalidValueForConfigurationTarget', scopeString));
