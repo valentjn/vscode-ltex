@@ -38,6 +38,19 @@ If LTeX keeps downloading Java after every update, then you don't have a compati
 
 LanguageTool is not only a simple spell checker that just looks up some words in a dictionary. It is a powerful grammar checker that [checks thousands of grammar rules](https://community.languagetool.org/rule/list?lang=en) at once. This means that checking a document for the first time, either after activating the LTeX extension or after opening a document to be checked, may take a while. The exact duration depends on the length of the document and the power of the computer, but it is usually around 30 seconds and may be up to two minutes. After this initial check, edits are checked very quickly due to the feature of sentence caching (see [`ltex.sentenceCacheSize`](settings.html#ltexsentencecachesize)), and should not cause any significant CPU load.
 
+## Where does LTeX save its settings (e.g., dictionary, false positives)?
+
+Most settings are saved in the `settings.json` files of VS Code (press `Ctrl+,` to open them).
+
+Some settings, such as when you add a word to the dictionary or when you hide a false positive, are saved by default to [external setting files](advanced-usage.html#external-setting-files). The locations depend on your system, but they usually look as follows:
+
+- Linux:
+  - If no workspace is open: `/home/USERNAME/.config/Code/User/globalStorage/valentjn.vscode-ltex`
+  - If a workspace is open: `/PATH_TO_WORKSPACE/.vscode`
+- Windows:
+  - If no workspace is open: `C:\Users\USERNAME\AppData\Roaming\Code\User\globalStorage\valentjn.vscode-ltex`
+  - If a workspace is open: `C:\PATH_TO_WORKSPACE\.vscode`
+
 ## How can I check multiple languages at once?
 
 This depends on whether the multiple languages only occur in different files (i.e., every file is written in a single language), or whether multiple languages occur in one file.
