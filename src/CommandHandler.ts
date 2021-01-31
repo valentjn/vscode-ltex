@@ -254,7 +254,7 @@ export default class CommandHandler {
         entries: LanguageSpecificSettingValue): void {
     const resourceConfig: Code.WorkspaceConfiguration =
         Code.workspace.getConfiguration('ltex.configurationTarget', uri);
-    let scopeString: string | undefined = resourceConfig.get(settingName);
+    const scopeString: string | undefined = resourceConfig.get(settingName);
     let scopes: Code.ConfigurationTarget[];
 
     if ((scopeString == null) || scopeString.startsWith('workspaceFolder')) {

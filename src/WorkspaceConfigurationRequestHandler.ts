@@ -31,8 +31,6 @@ export default class WorkspaceConfigurationRequestHandler {
   }
 
   private mergeSettings(uri: Code.Uri, settingName: string): LanguageSpecificSettingValue {
-    const resourceConfig: Code.WorkspaceConfiguration =
-        Code.workspace.getConfiguration('ltex', uri);
     const result: LanguageSpecificSettingValue = {};
 
     this._externalFileManager.updateWatchers(uri, settingName);
