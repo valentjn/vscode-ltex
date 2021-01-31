@@ -88,13 +88,7 @@ The scope in which this procedure is applied is determined by the [`ltex.configu
 Magic comments are special comments which contents are interpreted by LTeX and which can be used to change some LTeX settings in the middle of the document. The comments have the following form:
 
 - LaTeX: `% LTeX: SETTINGS` on its own line (can be surrounded by whitespace)
-- Markdown: `[comment]: <> "LTeX: SETTINGS"` on its own line (can be surrounded by whitespace). Markdown doesn't really support comments, [but there are some possibilities to workaround this.](https://stackoverflow.com/a/32190021) The recommended way is as follows:
-
-  ```plaintext
-  (empty line)
-  [comment]: <> "LTeX: SETTINGS"
-  (empty line)
-  ```
+- Markdown: `<!-- LTeX: SETTINGS -->` or `[comment]: <> "LTeX: SETTINGS"` on its own line (can be surrounded by whitespace)
 
 Magic comments are case-insensitive (except for the setting values), and the spaces in the magic comment line can be any amount of whitespace, even no amount at all.
 
