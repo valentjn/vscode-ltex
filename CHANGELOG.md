@@ -17,7 +17,10 @@
 - Remove support for settings that are deprecated since 8.0.0: `ltex.workspaceDictionary`, `ltex.workspaceFolderDictionary`, `ltex.workspaceDisabledRules`, `ltex.workspaceFolderDisabledRules`, `ltex.workspaceEnabledRules`, `ltex.workspaceFolderEnabledRules`, `ltex.ignoreInRuleSentence`, `ltex.commands.ignore`, `ltex.commands.dummy`, `ltex.environments.ignore`, `ltex.markdown.ignore`, and `ltex.markdown.dummy`
 - Remove support for values for [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget) that deprecated since 7.0.0 or 8.0.0: `"global"` (deprecated since 7.0.0), `"addToDictionary"`, `"disableRule"`, and `"ignoreRuleInSentence"`
 - Add support for magic comments inside HTML comments in Markdown (`<!-- ltex: SETTINGS -->`)
+- Check documents even if their code language is not supported (when being manually checked)
 - Fix removing items in settings with a hyphen prefix sometimes not working
+- Fix manually checking BibT<sub>E</sub>X documents not working
+- Fix words in dictionary containing markup not recognized
 - Update bundled AdoptOpenJDK JRE to 11.0.10+9
 - Update LT<sub>E</sub>X LS to 10.0.0
 
