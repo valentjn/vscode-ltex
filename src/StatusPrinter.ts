@@ -13,14 +13,19 @@ import ExternalFileManager from './ExternalFileManager';
 import {i18n} from './I18n';
 import Logger from './Logger';
 
-type LtexServerStatusResult = {
+interface ServerCommandResult {
+  success: boolean;
+  errorMessage?: string;
+}
+
+interface GetServerStatusCommandResult extends ServerCommandResult {
   processId: number | null;
   wallClockDuration: number | null;
   cpuDuration: number | null;
   cpuUsage: number | null;
   usedMemory: number | null;
   totalMemory: number | null;
-};
+}
 
 export default class StatusPrinter {
   private _context: Code.ExtensionContext;
@@ -43,7 +48,8 @@ export default class StatusPrinter {
   }
 
   public async print(): Promise<void> {
-    let ltexLsStatus: LtexServerStatusResult = {
+    let ltexLsStatus: GetServerStatusCommandResult = {
+      success: false,
       processId: null,
       wallClockDuration: null,
       cpuDuration: null,
@@ -54,15 +60,8 @@ export default class StatusPrinter {
 
     if (this._languageClient != null) {
       try {
-        const promises: Promise<LtexServerStatusResult>[] = [
-          this._languageClient.sendRequest('ltex/serverStatus'),
-          new Promise((_resolve: (value: LtexServerStatusResult) => void,
-                reject: (reason?: any) => void) => {
-            setTimeout(() => reject(new Error()), StatusPrinter._ltexLsStatusTimeout);
-          }),
-        ];
-
-        ltexLsStatus = await Promise.race(promises).catch((_reason?: any) => ltexLsStatus);
+        ltexLsStatus = await this._languageClient.sendRequest('workspace/executeCommand',
+            {command: 'ltex.getServerStatus', arguments: []});
       } catch {
         // ignore errors
       }

@@ -21,6 +21,11 @@ type LanguageSpecificSettingValue = {
   [language: string]: string[];
 };
 
+interface ServerCommandResult {
+  success: boolean;
+  errorMessage?: string;
+}
+
 export default class CommandHandler {
   private _statusPrinter: StatusPrinter;
   private _bugReporter: BugReporter;
@@ -77,8 +82,9 @@ export default class CommandHandler {
     if (codeLanguageId != null) args.codeLanguageId = codeLanguageId;
     if (text != null) args.text = text;
 
-    const result: any = await this._languageClient.sendRequest('workspace/executeCommand',
-        {command: 'ltex.checkDocument', arguments: [args]});
+    const result: ServerCommandResult =
+        await this._languageClient.sendRequest('workspace/executeCommand',
+          {command: 'ltex.checkDocument', arguments: [args]});
 
     if (result.success) {
       return Promise.resolve(true);
