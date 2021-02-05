@@ -205,10 +205,13 @@ export default class CommandHandler {
       return Promise.resolve(false);
     }
 
-    const diagnostics: Code.DiagnosticCollection | undefined = this._languageClient.diagnostics;
-    if (diagnostics == null) return Promise.resolve(true);
+    const diagnosticCollection: Code.DiagnosticCollection | undefined =
+        this._languageClient.diagnostics;
+    if (diagnosticCollection == null) return Promise.resolve(true);
+
     const textEditor: Code.TextEditor | undefined = Code.window.activeTextEditor;
-    if (textEditor != null) diagnostics.set(textEditor.document.uri, undefined);
+    if (textEditor != null) diagnosticCollection.set(textEditor.document.uri, undefined);
+
     return Promise.resolve(true);
   }
 
@@ -218,8 +221,10 @@ export default class CommandHandler {
       return Promise.resolve(false);
     }
 
-    const diagnostics: Code.DiagnosticCollection | undefined = this._languageClient.diagnostics;
-    if (diagnostics != null) diagnostics.clear();
+    const diagnosticCollection: Code.DiagnosticCollection | undefined =
+        this._languageClient.diagnostics;
+    if (diagnosticCollection != null) diagnosticCollection.clear();
+
     return Promise.resolve(true);
   }
 
