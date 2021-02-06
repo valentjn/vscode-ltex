@@ -129,6 +129,7 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
     - [What happened to the Language Support Extensions?](https://valentjn.github.io/vscode-ltex/docs/faq.html#what-happened-to-the-language-support-extensions)
     - [How can I prevent LT<sub>E</sub>X from redownloading ltex-ls and Java after every update?](https://valentjn.github.io/vscode-ltex/docs/faq.html#how-can-i-prevent-ltex-from-redownloading-ltex-ls-and-java-after-every-update)
     - [Why does LT<sub>E</sub>X have such a high CPU load?](https://valentjn.github.io/vscode-ltex/docs/faq.html#why-does-ltex-have-such-a-high-cpu-load)
+    - [Where does LT<sub>E</sub>X save its settings (e.g., dictionary, false positives)?](https://valentjn.github.io/vscode-ltex/docs/faq.html#where-does-ltex-save-its-settings-eg-dictionary-false-positives)
     - [How can I check multiple languages at once?](https://valentjn.github.io/vscode-ltex/docs/faq.html#how-can-i-check-multiple-languages-at-once)
     - [How can I fix multiple spelling errors at the same time?](https://valentjn.github.io/vscode-ltex/docs/faq.html#how-can-i-fix-multiple-spelling-errors-at-the-same-time)
     - [How can I prevent `\text{...}` in math mode from producing false positives?](https://valentjn.github.io/vscode-ltex/docs/faq.html#how-can-i-prevent-text-in-math-mode-from-producing-false-positives)
