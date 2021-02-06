@@ -53,42 +53,42 @@
       {
         "command": "ltex.checkSelection",
         "title": "%ltex.i18n.commands.ltex.checkSelection.title%",
-        "markdownDescription": "%ltex.i18n.commands.ltex.checkSelection.markdownDescription%"
+        "category": "LTeX"
       },
       {
         "command": "ltex.checkCurrentDocument",
         "title": "%ltex.i18n.commands.ltex.checkCurrentDocument.title%",
-        "markdownDescription": "%ltex.i18n.commands.ltex.checkCurrentDocument.markdownDescription%"
+        "category": "LTeX"
       },
       {
         "command": "ltex.checkAllDocumentsInWorkspace",
         "title": "%ltex.i18n.commands.ltex.checkAllDocumentsInWorkspace.title%",
-        "markdownDescription": "%ltex.i18n.commands.ltex.checkAllDocumentsInWorkspace.markdownDescription%"
+        "category": "LTeX"
       },
       {
         "command": "ltex.clearDiagnosticsInCurrentDocument",
         "title": "%ltex.i18n.commands.ltex.clearDiagnosticsInCurrentDocument.title%",
-        "markdownDescription": "%ltex.i18n.commands.ltex.clearDiagnosticsInCurrentDocument.markdownDescription%"
+        "category": "LTeX"
       },
       {
         "command": "ltex.clearAllDiagnostics",
         "title": "%ltex.i18n.commands.ltex.clearAllDiagnostics.title%",
-        "markdownDescription": "%ltex.i18n.commands.ltex.clearAllDiagnostics.markdownDescription%"
+        "category": "LTeX"
       },
       {
         "command": "ltex.showStatusInformation",
         "title": "%ltex.i18n.commands.ltex.showStatusInformation.title%",
-        "markdownDescription": "%ltex.i18n.commands.ltex.showStatusInformation.markdownDescription%"
+        "category": "LTeX"
       },
       {
         "command": "ltex.reportBug",
         "title": "%ltex.i18n.commands.ltex.reportBug.title%",
-        "markdownDescription": "%ltex.i18n.commands.ltex.reportBug.markdownDescription%"
+        "category": "LTeX"
       },
       {
         "command": "ltex.requestFeature",
         "title": "%ltex.i18n.commands.ltex.requestFeature.title%",
-        "markdownDescription": "%ltex.i18n.commands.ltex.requestFeature.markdownDescription%"
+        "category": "LTeX"
       }
     ],
     "configuration": {
