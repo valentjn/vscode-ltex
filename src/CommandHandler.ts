@@ -19,7 +19,14 @@ import WorkspaceConfigurationRequestHandler from './WorkspaceConfigurationReques
 
 type LanguageSpecificSettingValue = {
   [language: string]: string[];
-};
+}
+
+interface CheckDocumentCommandParams {
+  uri: string;
+  codeLanguageId?: string;
+  text?: string;
+  range?: Code.Range;
+}
 
 interface ServerCommandResult {
   success: boolean;
@@ -47,6 +54,8 @@ export default class CommandHandler {
         this.checkCurrentDocument.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.checkAllDocumentsInWorkspace',
         this.checkAllDocumentsInWorkspace.bind(this)));
+    context.subscriptions.push(Code.commands.registerCommand('ltex.checkSelection',
+        this.checkSelection.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand(
         'ltex.clearDiagnosticsInCurrentDocument',
         this.clearDiagnosticsInCurrentDocument.bind(this)));
@@ -72,19 +81,22 @@ export default class CommandHandler {
   }
 
   private async checkDocument(uri: Code.Uri, codeLanguageId?: string,
-        text?: string): Promise<boolean> {
+        text?: string, range?: Code.Range): Promise<boolean> {
     if (this._languageClient == null) {
       Code.window.showErrorMessage(i18n('ltexNotInitialized'));
       return Promise.resolve(false);
     }
 
-    const args: any = {uri: uri.toString()};
-    if (codeLanguageId != null) args.codeLanguageId = codeLanguageId;
-    if (text != null) args.text = text;
+    const params: CheckDocumentCommandParams = {
+          uri: uri.toString(),
+          codeLanguageId: codeLanguageId,
+          text: text,
+          range: range,
+        };
 
     const result: ServerCommandResult =
         await this._languageClient.sendRequest('workspace/executeCommand',
-          {command: 'ltex.checkDocument', arguments: [args]});
+          {command: 'ltex.checkDocument', arguments: [params]});
 
     if (result.success) {
       return Promise.resolve(true);
@@ -197,6 +209,23 @@ export default class CommandHandler {
     }
 
     return Array.from(enabledFileExtensions).sort();
+  }
+
+  private async checkSelection(): Promise<boolean> {
+    if (this._languageClient == null) {
+      Code.window.showErrorMessage(i18n('ltexNotInitialized'));
+      return Promise.resolve(false);
+    }
+
+    const textEditor: Code.TextEditor | undefined = Code.window.activeTextEditor;
+
+    if (textEditor == null) {
+      Code.window.showErrorMessage(i18n('noEditorOpenToCheckDocument'));
+      return Promise.resolve(false);
+    }
+
+    return this.checkDocument(textEditor.document.uri, textEditor.document.languageId,
+        textEditor.document.getText(), textEditor.selection);
   }
 
   private clearDiagnosticsInCurrentDocument(): Promise<boolean> {

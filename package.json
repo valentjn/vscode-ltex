@@ -51,6 +51,11 @@
   "contributes": {
     "commands": [
       {
+        "command": "ltex.checkSelection",
+        "title": "%ltex.i18n.commands.ltex.checkSelection.title%",
+        "markdownDescription": "%ltex.i18n.commands.ltex.checkSelection.markdownDescription%"
+      },
+      {
         "command": "ltex.checkCurrentDocument",
         "title": "%ltex.i18n.commands.ltex.checkCurrentDocument.title%",
         "markdownDescription": "%ltex.i18n.commands.ltex.checkCurrentDocument.markdownDescription%"

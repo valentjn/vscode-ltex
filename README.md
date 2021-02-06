@@ -117,6 +117,7 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
     - [`ltex.statusBarItem`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexstatusbaritem)
     - [`ltex.trace.server`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltextraceserver)
   - [Commands](https://valentjn.github.io/vscode-ltex/docs/commands.html)
+    - [`LTeX: Check Selection`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-selection)
     - [`LTeX: Check Current Document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-current-document)
     - [`LTeX: Check All Documents in Workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-all-documents-in-workspace)
     - [`LTeX: Clear Diagnostics in Current Document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-clear-diagnostics-in-current-document)
