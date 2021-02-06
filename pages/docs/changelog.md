@@ -15,6 +15,19 @@ toc: false
 
 - New versions of LTeX released on or after April 3, 2021, will require VS Code 1.52.0 or later
 
+## 9.0.0 (upcoming)
+
+- Remove support for settings that are deprecated since 8.0.0: `ltex.workspaceDictionary`, `ltex.workspaceFolderDictionary`, `ltex.workspaceDisabledRules`, `ltex.workspaceFolderDisabledRules`, `ltex.workspaceEnabledRules`, `ltex.workspaceFolderEnabledRules`, `ltex.ignoreInRuleSentence`, `ltex.commands.ignore`, `ltex.commands.dummy`, `ltex.environments.ignore`, `ltex.markdown.ignore`, and `ltex.markdown.dummy`
+- Remove support for values for [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) that deprecated since 7.0.0 or 8.0.0: `"global"` (deprecated since 7.0.0), `"addToDictionary"`, `"disableRule"`, and `"ignoreRuleInSentence"`
+- Add support for magic comments inside HTML comments in Markdown (`<!-- ltex: SETTINGS -->`)
+- Add [`LTeX: Check Selection`](commands.html#ltex-check-selection) to check text in documents with unsupported code languages
+- Check documents even if their code language is not supported (when being manually checked)
+- Fix removing items in settings with a hyphen prefix sometimes not working
+- Fix manually checking BibTeX documents not working
+- Fix words in dictionary containing markup not recognized
+- Update bundled AdoptOpenJDK JRE to 11.0.10+9
+- Update LTeX LS to 10.0.0
+
 ## 8.4.0 — “The Math Optimization” (January 29, 2021)
 
 - Add support for Pandoc-style inline math (`$...$`) and display math (`$$...$$` with `$$` being at the beginning/end of a Markdown block) to Markdown parser (fixes [#210](https://github.com/valentjn/vscode-ltex/issues/210))
