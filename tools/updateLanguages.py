@@ -134,7 +134,7 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.language\..+\.", key) is not None:
       continue
 
-    elif key == "ltex.i18n.configuration.ltex.dictionary.markdownDescription":
+    elif key == "ltex.i18n.configuration.ltex.dictionary.fullMarkdownDescription":
       newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
@@ -153,7 +153,7 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.dictionary\..+\.", key) is not None:
       continue
 
-    elif key == "ltex.i18n.configuration.ltex.disabledRules.markdownDescription":
+    elif key == "ltex.i18n.configuration.ltex.disabledRules.fullMarkdownDescription":
       newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
@@ -172,7 +172,7 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.disabledRules\..+\.", key) is not None:
       continue
 
-    elif key == "ltex.i18n.configuration.ltex.enabledRules.markdownDescription":
+    elif key == "ltex.i18n.configuration.ltex.enabledRules.fullMarkdownDescription":
       newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
@@ -191,7 +191,7 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.enabledRules\..+\.", key) is not None:
       continue
 
-    elif key == "ltex.i18n.configuration.ltex.hiddenFalsePositives.markdownDescription":
+    elif key == "ltex.i18n.configuration.ltex.hiddenFalsePositives.fullMarkdownDescription":
       newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
