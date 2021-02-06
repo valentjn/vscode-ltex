@@ -1150,7 +1150,7 @@ Object with arbitrary property names, where the value of each property has the f
 
 ## `ltex.latex.commands`
 
-List of LaTeX commands to be handled by the LaTeX parser, listed together with empty arguments (e.g., `"\\ref{}"`, `"\\documentclass[]{}"`).
+List of LaTeX commands to be handled by the LaTeX parser, listed together with empty arguments (e.g., `"\ref{}"`, `"\documentclass[]{}"`).
 
 This setting is an object with the commands as keys and corresponding actions as values.
 
@@ -1174,8 +1174,8 @@ Object with arbitrary property names, where the value of each property has the f
 
   - `"default"`: The command is treated like unknown commands are treated by default: The command name itself is ignored, but the arguments are not ignored.
   - `"ignore"`: The whole command together with its arguments is ignored.
-  - `"dummy"`: The whole command together with its arguments is replaced with a dummy word (i.e., 'Dummy0', 'Dummy1', etc.). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
-  - `"pluralDummy"`: The whole command together with its arguments is replaced with a plural dummy word (i.e., 'Dummies0', 'Dummies1', etc.). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
+  - `"dummy"`: The whole command together with its arguments is replaced with a dummy word (i.e., `Dummy0`, `Dummy1`, etc.). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
+  - `"pluralDummy"`: The whole command together with its arguments is replaced with a plural dummy word (i.e., `Dummies0`, `Dummies1`, etc.). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
 
 </div>
 
@@ -1201,7 +1201,7 @@ Object with arbitrary property names, where the value of each property has the f
 
 - One of the following values:
 
-  - `"default"`: The environment is treated like unknown environments are treated by default: The '\begin' and '\end' commands are ignored, but the contents of the environment are not ignored.
+  - `"default"`: The environment is treated like unknown environments are treated by default: The `\begin` and `\end` commands are ignored, but the contents of the environment are not ignored.
   - `"ignore"`: The whole environment together with its contents is ignored.
 
 </div>
@@ -1231,9 +1231,9 @@ Object with arbitrary property names, where the value of each property has the f
 - One of the following values:
 
   - `"default"`: The node is not treated specially.
-  - `"ignore"`: The whole node together with its 'Text' leaves is ignored.
-  - `"dummy"`: The whole node together with its 'Text' leaves is replaced with a dummy word (i.e., 'Dummy0', 'Dummy1', etc.). LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
-  - `"pluralDummy"`: The whole node together with its 'Text' leaves is replaced with a plural dummy word (i.e., 'Dummies0', 'Dummies1', etc.). LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
+  - `"ignore"`: The whole node together with its `Text` leaves is ignored.
+  - `"dummy"`: The whole node together with its `Text` leaves is replaced with a dummy word (i.e., `Dummy0`, `Dummy1`, etc.). LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
+  - `"pluralDummy"`: The whole node together with its `Text` leaves is replaced with a plural dummy word (i.e., `Dummies0`, `Dummies1`, etc.). LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
 
 </div>
 
@@ -1351,7 +1351,7 @@ Note that in this mode, the settings [`ltex.dictionary`](settings.html#ltexdicti
 
 ## `ltex.ltex-ls.logLevel`
 
-Logging level (verbosity) of the ltex-ls server log, which is accessible via `View` → `Output` → `LTeX Language Server`.
+Logging level (verbosity) of the ltex-ls server log, which is accessible via `View` › `Output` › `LTeX Language Server`.
 
 The levels in descending order are `"severe"`, `"warning"`, `"info"`, `"config"`, `"fine"`, `"finer"`, and `"finest"`. All messages that have the specified log level or a higher level are logged.
 
@@ -1462,7 +1462,7 @@ One of `"edit"`, `"save"`, and `"manual"`.
 
 - `"edit"`: Documents are checked when they are opened or edited (on every keystroke), or when the settings change.
 - `"save"`: Documents are checked when they are opened or saved, or when the settings change.
-- `"manual"`: Documents are not checked automatically, except when the settings change. Use commands such as 'LTeX: Check Current Document' to manually trigger checks.
+- `"manual"`: Documents are not checked automatically, except when the settings change. Use commands such as `Check Current Document` to manually trigger checks.
 
 *Default:* `"edit"`
 
@@ -1486,7 +1486,7 @@ If set to `true`, an item about the status of LTeX is shown permanently in the s
 
 Debug setting to log the communication between language client and server.
 
-When reporting issues, set this to `"verbose"` and open the `LTeX Language Client` log in `View` → `Output`. Append the relevant part to the GitHub issue.
+When reporting issues, set this to `"verbose"` and open the `LTeX Language Client` log in `View` › `Output`. Append the relevant part to the GitHub issue.
 
 Changes require reloading the Visual Studio Code window to take effect.
 
