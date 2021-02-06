@@ -9,8 +9,8 @@
 import datetime
 import json
 import os
-import subprocess
 import traceback
+from typing import Any, Callable, Optional
 
 import bokeh.io
 import bokeh.plotting
@@ -31,7 +31,7 @@ else:
 
 
 
-def writeToSummaryYaml(key, value):
+def writeToSummaryYaml(key: str, value: Any) -> None:
   yamlPath = os.path.join(repoDirPath, "_data", "stats", "summary.yml")
 
   if os.path.exists(yamlPath):
@@ -45,32 +45,28 @@ def writeToSummaryYaml(key, value):
 
 
 
-def parseDate(s):
+def parseDate(s: str) -> datetime.datetime:
   return datetime.datetime.combine(fromisoformat(s), datetime.datetime.min.time())
 
-def convertDateToString(date):
+def convertDateToString(date: datetime.datetime) -> str:
   return date.date().isoformat()
 
-def plotStats():
+def plotStats() -> None:
   statsPath = os.path.join(repoDirPath, "_data", "stats", "stats.json")
   with open(statsPath, "r") as f: stats = json.load(f)
 
-  getUpdateCount = (lambda s: int(stats["statistics"][convertDateToString(s)]["uc"]))
+  getUpdateCount: Callable[[str], int] = (
+      lambda s: int(stats["statistics"][convertDateToString(s)]["uc"]))
   statDates = [parseDate(x) for x in stats["statistics"]]
   releaseDates = []
   updateCounts = []
-  lastUpdateCount = None
 
-  for version, releaseDate in stats["versions"].items():
+  for releaseDate in stats["versions"].values():
     releaseDate = parseDate(releaseDate)
     releaseDates.append(releaseDate)
     feasibleDates = [x for x in statDates if x < releaseDate]
-
-    if len(feasibleDates) > 0:
-      updateCount = getUpdateCount(max(feasibleDates))
-    else:
-      updateCount = None
-
+    updateCount: Optional[int] = None
+    if len(feasibleDates) > 0: updateCount = getUpdateCount(max(feasibleDates))
     updateCounts.append(updateCount)
 
   updateCounts.append(getUpdateCount(max(statDates)))
@@ -118,7 +114,8 @@ def plotStats():
       (numberOfHalfStars * "<i class=\"fa fa-star-half-o\" aria-hidden=\"true\"></i>") +
       (numberOfEmptyStars * "<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"))
 
-  numberOfUsers = (max(deltaUpdateCounts[-5:]) if len(deltaUpdateCounts) > 0 else 0)
+  numberOfUsers = (max([x for x in deltaUpdateCounts[-5:] if x is not None])
+      if len(deltaUpdateCounts) > 0 else 0)
   writeToSummaryYaml("users", numberOfUsers)
   writeToSummaryYaml("installs", lastStatEntry["i"])
   writeToSummaryYaml("averageRating", averageRatingHtml)
@@ -126,7 +123,7 @@ def plotStats():
 
 
 
-def plotMap():
+def plotMap() -> None:
   mapPath = os.path.join(repoDirPath, "_data", "stats", "map.json")
   with open(mapPath, "r") as f: map_ = json.load(f)
 
@@ -157,7 +154,7 @@ def plotMap():
 
 
 
-def main():
+def main() -> None:
   plotStats()
   plotMap()
 

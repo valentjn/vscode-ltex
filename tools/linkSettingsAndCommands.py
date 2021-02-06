@@ -11,11 +11,12 @@ import functools
 import json
 import os
 import re
+from typing import Dict, Sequence
 
 
 
-def replaceSettingsCommandsMatch(
-      markdownPath, pagesDirPath, markdown, settingNames, commandNames, match):
+def replaceSettingsCommandsMatch(markdownPath: str, pagesDirPath: str, markdown: str,
+      settingNames: Sequence[str], commandNames: Dict[str, str], match: re.Match[str]) -> str:
   i = markdown.rfind("\n", 0, match.start())
   contextBefore = markdown[i+1:match.start()]
   if re.search(r"^#+\s*", contextBefore): return match.group(0)
@@ -37,19 +38,19 @@ def replaceSettingsCommandsMatch(
   else:
     return f"`{text}`"
 
-def getSlug(markdown):
+def getSlug(markdown: str) -> str:
   return re.sub(r"[^a-z0-9\-]", "", re.sub(r"[ ]", "-", markdown.lower()))
 
-def replaceNlsKey(packageNlsJson, match):
+def replaceNlsKey(packageNlsJson: Dict[str, str], match: re.Match[str]) -> str:
   key = match.group(1)
   if key not in packageNlsJson: raise RuntimeError("unknown NLS key '{}'".format(key))
   return packageNlsJson[key]
 
-def formatTitle(description, packageNlsJson):
+def formatTitle(description: str, packageNlsJson: Dict[str, str]) -> str:
   return re.sub(r"%([A-Za-z0-9\-_\.]+)%", functools.partial(replaceNlsKey, packageNlsJson),
       description)
 
-def linkSettingsAndCommands(markdownPath, pagesDirPath, ltexRepoDirPath):
+def linkSettingsAndCommands(markdownPath: str, pagesDirPath: str, ltexRepoDirPath: str) -> None:
   packageJsonPath = os.path.join(ltexRepoDirPath, "package.json")
   with open(packageJsonPath, "r") as f: packageJson = json.load(f)
 
@@ -71,7 +72,7 @@ def linkSettingsAndCommands(markdownPath, pagesDirPath, ltexRepoDirPath):
 
 
 
-def main():
+def main() -> None:
   parser = argparse.ArgumentParser(description="link settings in all pages")
   parser.add_argument("--ltex-repo",
       default=os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "vscode-ltex")),

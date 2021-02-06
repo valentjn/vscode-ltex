@@ -12,6 +12,7 @@ import json
 import os
 import re
 import sys
+from typing import Any, Callable, Dict, Optional, Sequence
 
 sys.path.append(os.path.dirname(__file__))
 from linkSettingsAndCommands import linkSettingsAndCommands
@@ -27,10 +28,10 @@ licenseHeader = """
 """
 
 
-def formatList(json_):
+def formatList(json_: Sequence[Any]) -> str:
   return "\n".join(f"- {formatAsJson(x)}" for x in json_)
 
-def formatType(type_):
+def formatType(type_: str) -> str:
   if isinstance(type_, str) or (len(type_) == 1):
     return f"`{type_}`"
   elif len(type_) == 1:
@@ -40,26 +41,28 @@ def formatType(type_):
   else:
     return ", ".join(f"`{x}`" for x in type_[:-2]) + f", `{type_[-2]}` or `{type_[-1]}`"
 
-def formatEnum(enumNames, enumDescriptions, packageNlsJson, indent=0):
-  formatEnumEntries = (lambda x, y: formatAsJson(x) +
+def formatEnum(enumNames: Sequence[str], enumDescriptions: Sequence[str],
+      packageNlsJson: Dict[str, str], indent: int = 0) -> str:
+  formatEnumEntries: Callable[[str, str], str] = (lambda x, y: formatAsJson(x) +
       (f": {formatDescription(y, packageNlsJson)}" if y is not None else ""))
   markdown = "\n".join(f"- {formatEnumEntries(x, y)}" for x, y in zip(enumNames, enumDescriptions))
   markdown += "\n"
   return markdown
 
-def formatAsJson(json_):
+def formatAsJson(json_: Any) -> str:
   return f"`{json.dumps(json_)}`"
 
-def replaceNlsKey(packageNlsJson, match):
+def replaceNlsKey(packageNlsJson: Dict[str, str], match: re.Match[str]) -> Any:
   key = match.group(1)
   if key not in packageNlsJson: raise RuntimeError("unknown NLS key '{}'".format(key))
   return packageNlsJson[key]
 
-def formatDescription(description, packageNlsJson):
+def formatDescription(description: str, packageNlsJson: Dict[str, str]) -> str:
   return re.sub(r"%([A-Za-z0-9\-_\.]+)%", functools.partial(replaceNlsKey, packageNlsJson),
       description)
 
-def formatFullType(settingJson, packageNlsJson, indent=0):
+def formatFullType(settingJson: Dict[str, Any], packageNlsJson: Dict[str, str],
+      indent: int = 0) -> str:
   markdown = ""
   description = settingJson.get("markdownDescription", None)
 
@@ -108,7 +111,8 @@ def formatFullType(settingJson, packageNlsJson, indent=0):
 
   return markdown
 
-def formatSetting(settingName, settingJson, packageNlsJson):
+def formatSetting(settingName: str, settingJson: Dict[str, Any],
+      packageNlsJson: Dict[str, str]) -> Optional[str]:
   if "markdownDescription" not in settingJson: return None
   markdown = (f"## `{settingName}`\n\n"
       f"{formatDescription(settingJson['markdownDescription'], packageNlsJson)}\n")
@@ -143,13 +147,13 @@ def formatSetting(settingName, settingJson, packageNlsJson):
 
   return markdown
 
-def formatCommand(commandJson, packageNlsJson):
+def formatCommand(commandJson: Dict[str, Any], packageNlsJson: Dict[str, str]) -> Optional[str]:
   if "markdownDescription" not in commandJson: return None
   markdown = (f"## `{formatDescription(commandJson['title'], packageNlsJson)}`\n\n"
       f"{formatDescription(commandJson['markdownDescription'], packageNlsJson)}\n")
   return markdown
 
-def updateSettings(ltexRepoDirPath, pagesRepoDirPath):
+def updateSettings(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
   packageJsonPath = os.path.join(ltexRepoDirPath, "package.json")
   with open(packageJsonPath, "r") as f: packageJson = json.load(f)
 
@@ -173,7 +177,7 @@ sidebar: "sidebar"
   with open(dstPath, "w") as f: f.write(markdown)
   linkSettingsAndCommands(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 
-def updateCommands(ltexRepoDirPath, pagesRepoDirPath):
+def updateCommands(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
   packageJsonPath = os.path.join(ltexRepoDirPath, "package.json")
   with open(packageJsonPath, "r") as f: packageJson = json.load(f)
 
@@ -201,7 +205,8 @@ To run a command, open the Command Palette (`Ctrl+Shift+P`) and start typing the
 
 
 
-def copyMarkdown(srcPath, dstPath, metaData, ltexRepoDirPath, pagesRepoDirPath):
+def copyMarkdown(srcPath: str, dstPath: str, metaData: str, ltexRepoDirPath: str,
+      pagesRepoDirPath: str) -> None:
   with open(srcPath, "r") as f: markdown = f.read()
   lines = markdown.split("\n")
   i = next(i for i, line in enumerate(lines) if line.startswith("#"))
@@ -212,7 +217,7 @@ def copyMarkdown(srcPath, dstPath, metaData, ltexRepoDirPath, pagesRepoDirPath):
   with open(dstPath, "w") as f: f.write(markdown)
   linkSettingsAndCommands(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 
-def updateChangelog(ltexRepoDirPath, pagesRepoDirPath):
+def updateChangelog(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
   copyMarkdown(os.path.join(ltexRepoDirPath, "CHANGELOG.md"),
       os.path.join(pagesRepoDirPath, "pages", "docs", "changelog.md"), """---{}
 title: "Changelog"
@@ -222,7 +227,7 @@ toc: false
 ---
 """.format(licenseHeader), ltexRepoDirPath, pagesRepoDirPath)
 
-def updateContributing(ltexRepoDirPath, pagesRepoDirPath):
+def updateContributing(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
   copyMarkdown(os.path.join(ltexRepoDirPath, "CONTRIBUTING.md"),
       os.path.join(pagesRepoDirPath, "pages", "docs", "contributing-code-issues.md"), """---{}
 title: "Contributing Code/Issues"
@@ -231,7 +236,7 @@ sidebar: "sidebar"
 ---
 """.format(licenseHeader), ltexRepoDirPath, pagesRepoDirPath)
 
-def updateCodeOfConduct(ltexRepoDirPath, pagesRepoDirPath):
+def updateCodeOfConduct(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
   copyMarkdown(os.path.join(ltexRepoDirPath, "CODE_OF_CONDUCT.md"),
       os.path.join(pagesRepoDirPath, "pages", "docs", "code-of-conduct.md"), """---
 title: "Code of Conduct"
@@ -240,7 +245,7 @@ sidebar: "sidebar"
 ---
 """, ltexRepoDirPath, pagesRepoDirPath)
 
-def updateAcknowledgments(ltexRepoDirPath, pagesRepoDirPath):
+def updateAcknowledgments(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
   copyMarkdown(os.path.join(ltexRepoDirPath, "ACKNOWLEDGMENTS.md"),
       os.path.join(pagesRepoDirPath, "pages", "docs", "acknowledgments.md"), """---{}
 title: "Acknowledgments"
@@ -251,7 +256,7 @@ sidebar: "sidebar"
 
 
 
-def main():
+def main() -> None:
   parser = argparse.ArgumentParser(description="update Markdown according to main repo")
   parser.add_argument("--ltex-repo",
       default=os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "vscode-ltex")),

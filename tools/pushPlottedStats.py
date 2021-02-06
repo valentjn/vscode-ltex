@@ -8,19 +8,20 @@
 
 import shlex
 import subprocess
+from typing import Any, Callable, Dict, Sequence
 
 oldPrint = print
-print = (lambda *args, **kwargs: oldPrint(*args, **kwargs, flush=True))
+print: Callable[[str], None] = (lambda *args, **kwargs: oldPrint(*args, **kwargs, flush=True))
 
 
 
-def run(cmd, **kwargs):
+def run(cmd: Sequence[str], **kwargs: Any) -> subprocess.CompletedProcess[bytes]:
   print(" ".join(shlex.quote(x) for x in cmd))
   return subprocess.run(cmd, **kwargs)
 
 
 
-def main():
+def main() -> None:
   run(["git", "status"])
   run(["git", "add", "_data/stats/*.yml", "_includes/stats/", "images/stats/"])
   run(["git", "status"])
