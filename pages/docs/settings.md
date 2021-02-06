@@ -10,6 +10,8 @@ permalink: "/docs/settings.html"
 sidebar: "sidebar"
 ---
 
+Change language of this page: [English](settings.html), [German](settings-de.html)
+
 ## `ltex.enabled`
 
 Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces or for specific code language modes (i.e., file types).

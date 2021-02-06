@@ -10,7 +10,9 @@ permalink: "/docs/commands.html"
 sidebar: "sidebar"
 ---
 
-To run a command, open the Command Palette (`Ctrl+Shift+P`) and start typing the name of the command. The commands can only be run after the extension has been activated, i.e., after at least one Markdown or LaTeX file has been opened in the current workspace.
+Change language of this page: [English](commands.html), [German](commands-de.html)
+
+To run a command, open the Command Palette (`Ctrl+Shift+P`) and start typing the name of the command. The commands can only be run after the extension has been activated, i.e., after at least one LaTeX or Markdown file has been opened in the current workspace.
 
 ## `LTeX: Check Selection`
 

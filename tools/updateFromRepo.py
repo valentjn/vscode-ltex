@@ -12,7 +12,7 @@ import json
 import os
 import re
 import sys
-from typing import Any, Callable, Dict, Optional, Sequence
+from typing import Any, Callable, Dict, Optional, Sequence, Tuple
 
 sys.path.append(os.path.dirname(__file__))
 from linkSettingsAndCommands import linkSettingsAndCommands
@@ -27,21 +27,75 @@ licenseHeader = """
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 """
 
+i18nStrings = {
+      "en" : {
+        "arrayWhereEachEntryHasTheFollowingType" : "Array where each entry has the following type",
+        "arrayWithTheFollowingEntries" : "Array with the following entries",
+        "clickToShowHide" : "Click to show/hide",
+        "commandIntroduction" : "To run a command, open the Command Palette (`Ctrl+Shift+P`) and "
+          "start typing the name of the command. The commands can only be run after the extension "
+          "has been activated, i.e., after at least one LaTeX or Markdown file has been opened in "
+          "the current workspace.",
+        "default" : "Default",
+        "example" : "Example",
+        "examples" : "Examples",
+        "fullTypeDescription" : "Full type description",
+        "objectWithArbitraryPropertyNames" : "Object with arbitrary property names, "
+          "where the value of each property has the following type",
+        "objectWithTheFollowingProperties" : "Object with the following properties",
+        "oneOfTheFollowingTypes" : "One of the following types",
+        "oneOfTheFollowingValues" : "One of the following values",
+        "oneType" : "`{}`",
+        "possibleValues" : "Possible values",
+        "scalarOfType" : "Scalar of type {}",
+        "threePlusTypesSuffix" : ", `{}`, or `{}`",
+        "twoTypes" : "`{}` or `{}`",
+        "type" : "Type",
+      },
+      "de" : {
+        "arrayWhereEachEntryHasTheFollowingType" : "Array, bei dem jeder Eintrag folgenden Typ hat",
+        "arrayWithTheFollowingEntries" : "Array mit folgenden Einträgen",
+        "clickToShowHide" : "Klick zum Zeigen/Verbergen",
+        "commandIntroduction" : "Um einen Befehl auszuführen, öffnen Sie die Befehlspalette "
+          "(`Ctrl+Shift+P`) und beginnen Sie mit der Eingabe des Befehlsnamens. Die Befehle "
+          "können nur dann ausgeführt werden, nachdem die Erweiterung aktiviert worden ist, das "
+          "heißt, nachdem mindestens eine LaTeX- oder Markdown-Datei im aktuellen Arbeitsbereich "
+          "geöffnet worden ist.",
+        "default" : "Voreinstellung",
+        "example" : "Beispiel",
+        "examples" : "Beispiele",
+        "fullTypeDescription" : "Vollständige Beschreibung des Typs",
+        "objectWithArbitraryPropertyNames" : "Objekt mit beliebigen Eigenschaftsnamen, "
+          "wobei die Werte jeder Eigenschaft folgenden Typ hat",
+        "objectWithTheFollowingProperties" : "Objekt mit folgenden Eigenschaften",
+        "oneOfTheFollowingTypes" : "Einer der folgenden Typen",
+        "oneOfTheFollowingValues" : "Einer der folgenden Werte",
+        "oneType" : "`{}`",
+        "possibleValues" : "Mögliche Werte",
+        "scalarOfType" : "Skalar vom Typ {}",
+        "threePlusTypesSuffix" : ", `{}` oder `{}`",
+        "twoTypes" : "`{}` oder `{}`",
+        "type" : "Typ",
+      },
+    }
+
+
 
 def formatList(json_: Sequence[Any]) -> str:
   return "\n".join(f"- {formatAsJson(x)}" for x in json_)
 
 
 
-def formatType(type_: str) -> str:
+def formatType(type_: str, packageNlsJson: Dict[str, str]) -> str:
   if isinstance(type_, str) or (len(type_) == 1):
-    return f"`{type_}`"
+    return packageNlsJson["oneType"].format(type_)
   elif len(type_) == 1:
-    return f"`{type_[0]}`"
+    return packageNlsJson["oneType"].format(type_[0])
   elif len(type_) == 2:
-    return f"`{type_[0]}` or `{type_[1]}`"
+    return packageNlsJson["twoTypes"].format(type_[0], type_[1])
   else:
-    return ", ".join(f"`{x}`" for x in type_[:-2]) + f", `{type_[-2]}` or `{type_[-1]}`"
+    return (", ".join(packageNlsJson["oneType"].format(x) for x in type_[:-2]) +
+        packageNlsJson["threePlusTypesSuffix"].format(type_[-2], type_[-1]))
 
 
 
@@ -89,7 +143,7 @@ def formatFullType(settingJson: Dict[str, Any], packageNlsJson: Dict[str, str],
 
   if "oneOf" in settingJson:
     itemTypes = settingJson["oneOf"]
-    markdown += "One of the following types:\n\n"
+    markdown += f"{packageNlsJson['oneOfTheFollowingTypes']}:\n\n"
     markdown += "".join(
         f"{indent * ' '}- {formatFullType(x, packageNlsJson, indent+2)}" for x in itemTypes)
   elif "type" not in settingJson:
@@ -99,11 +153,10 @@ def formatFullType(settingJson: Dict[str, Any], packageNlsJson: Dict[str, str],
       assert len(settingJson["patternProperties"]) == 1
       assert "^.*$" in settingJson["patternProperties"]
       propertyType = settingJson["patternProperties"]["^.*$"]
-      markdown += ("Object with arbitrary property names, where the value of each property has "
-          "the following type:\n\n")
+      markdown += f"{packageNlsJson['objectWithArbitraryPropertyNames']}:\n\n"
       markdown += f"{indent * ' '}- {formatFullType(propertyType, packageNlsJson, indent+2)}"
     else:
-      markdown += "Object with the following properties:\n\n"
+      markdown += f"{packageNlsJson['objectWithTheFollowingProperties']}:\n\n"
       markdown += "".join(
           f"{indent * ' '}- {formatAsJson(x)}: {formatFullType(y, packageNlsJson, indent+2)}"
           for x, y in settingJson["properties"].items())
@@ -111,22 +164,23 @@ def formatFullType(settingJson: Dict[str, Any], packageNlsJson: Dict[str, str],
     itemTypes = settingJson["items"]
 
     if isinstance(itemTypes, dict):
-      markdown += "Array where each entry has the following type:\n\n"
+      markdown += f"{packageNlsJson['arrayWhereEachEntryHasTheFollowingType']}:\n\n"
       markdown += f"{indent * ' '}- {formatFullType(itemTypes, packageNlsJson, indent+2)}"
     else:
-      markdown += "Array with the following entries:\n\n"
+      markdown += f"{packageNlsJson['arrayWithTheFollowingEntries']}:\n\n"
       markdown += "".join(
           f"{indent * ' '}- {formatFullType(x, packageNlsJson, indent+2)}" for x in itemTypes)
   elif "enum" in settingJson:
     enumNames = settingJson["enum"]
     enumDescriptions = (settingJson["markdownEnumDescriptions"]
         if "markdownEnumDescriptions" in settingJson else settingJson["enumDescriptions"])
-    markdown += "One of the following values:\n\n"
+    markdown += f"{packageNlsJson['oneOfTheFollowingValues']}:\n\n"
     markdown += "".join(
         f"{indent * ' '}- {formatAsJson(x)}: {formatDescription(y, packageNlsJson)}\n"
         for x, y in zip(enumNames, enumDescriptions))
   else:
-    markdown += f"Scalar of type {formatType(settingJson['type'])}\n"
+    markdown += "{}\n".format(packageNlsJson["scalarOfType"].format(
+        formatType(settingJson['type'], packageNlsJson)))
 
   return markdown
 
@@ -146,26 +200,27 @@ def formatSetting(settingName: str, settingJson: Dict[str, Any],
     raise ValueError("Missing type")
 
   examples = settingJson.get("examples", [])
-  markdown += f"\n*Type:* {formatType(type_)}\n"
+  markdown += f"\n*{packageNlsJson['type']}:* {formatType(type_, packageNlsJson)}\n"
 
   if "enum" in settingJson:
     enum = settingJson["enum"]
     enumDescriptions = (settingJson["markdownEnumDescriptions"]
         if "markdownEnumDescriptions" in settingJson else
         settingJson.get("enumDescriptions", len(enum) * [None]))
-    markdown += f"\n*Possible values:*\n\n{formatEnum(enum, enumDescriptions, packageNlsJson)}\n"
+    markdown += f"\n*{packageNlsJson['possibleValues']}:*\n\n{formatEnum(enum, enumDescriptions, packageNlsJson)}\n"
 
   if len(examples) == 1:
-    markdown += f"\n*Example:* {formatAsJson(examples[0])}\n"
+    markdown += f"\n*{packageNlsJson['example']}:* {formatAsJson(examples[0])}\n"
   elif len(examples) >= 2:
-    markdown += f"\n*Examples:*\n\n{formatList(examples)}\n"
+    markdown += f"\n*{packageNlsJson['examples']}:*\n\n{formatList(examples)}\n"
 
   if "default" in settingJson:
-    markdown += f"\n*Default:* {formatAsJson(settingJson['default'])}\n"
+    markdown += f"\n*{packageNlsJson['default']}:* {formatAsJson(settingJson['default'])}\n"
 
   if (type_ in ["array", "object"]) or (not isinstance(type_, str)):
-    markdown += ("\n*Full type description:* <button class='expandable-button btn btn-default'>"
-        "Click to show/hide</button>\n\n<div markdown='1' style='display:none;'>\n\n"
+    markdown += (f"\n*{packageNlsJson['fullTypeDescription']}:* "
+        f"<button class='expandable-button btn btn-default'>{packageNlsJson['clickToShowHide']}"
+        "</button>\n\n<div markdown='1' style='display:none;'>\n\n"
         f"{formatFullType(settingJson, packageNlsJson)}\n</div>\n\n")
 
   return markdown
@@ -180,29 +235,57 @@ def formatCommand(commandJson: Dict[str, Any], packageNlsJson: Dict[str, str]) -
 
 
 
+def getNlsLanguages(ltexRepoDirPath: str) -> Sequence[Tuple[str, str, str]]:
+  languages = []
+  languageNames = {
+        "en" : "English",
+        "de" : "German",
+      }
+
+  for fileName in os.listdir(ltexRepoDirPath):
+    if (match := re.match(r"^package\.nls(?:\.([^\.]+))?\.json$", fileName)) is not None:
+      languageCode = (match.group(1) if match.group(1) is not None else "en")
+      packageNlsJsonPath = os.path.join(ltexRepoDirPath, fileName)
+      languages.append((languageCode, languageNames[languageCode], packageNlsJsonPath))
+
+  languages.sort(key=lambda x: (x[0] if x[0] != "en" else ""))
+
+  return languages
+
+
+
 def updateSettings(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
   packageJsonPath = os.path.join(ltexRepoDirPath, "package.json")
   with open(packageJsonPath, "r") as f: packageJson = json.load(f)
 
-  packageNlsJsonPath = os.path.join(ltexRepoDirPath, "package.nls.json")
-  with open(packageNlsJsonPath, "r") as f: packageNlsJson = json.load(f)
+  nlsLanguages = getNlsLanguages(ltexRepoDirPath)
+  languageLinks = ", ".join((f"[{languageName}](settings-{languageCode}.html)"
+        if languageCode != "en" else "[English](settings.html)")
+      for languageCode, languageName, _ in nlsLanguages)
 
-  settingsJson = packageJson["contributes"]["configuration"]["properties"]
-  settingsMarkdown = [formatSetting(x, y, packageNlsJson) for x, y in settingsJson.items()]
-  markdown = """---{}
+  for languageCode, _, packageNlsJsonPath in nlsLanguages:
+    with open(packageNlsJsonPath, "r") as f: packageNlsJson = json.load(f)
+    packageNlsJson.update(i18nStrings[languageCode])
+
+    settingsJson = packageJson["contributes"]["configuration"]["properties"]
+    settingsMarkdown = [formatSetting(x, y, packageNlsJson) for x, y in settingsJson.items()]
+    markdown = """---{}
 title: "Settings"
 permalink: "/docs/settings.html"
 sidebar: "sidebar"
 ---
 
-""".format(licenseHeader)
-  markdown += "\n".join(x for x in settingsMarkdown if x is not None)
-  markdown = re.sub("\n\n+", "\n\n", markdown)
-  markdown = markdown.replace("https://valentjn.github.io/vscode-ltex/docs/", "")
+Change language of this page: {}
 
-  dstPath = os.path.join(pagesRepoDirPath, "pages", "docs", "settings.md")
-  with open(dstPath, "w") as f: f.write(markdown)
-  linkSettingsAndCommands(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
+""".format(licenseHeader, languageLinks)
+    markdown += "\n".join(x for x in settingsMarkdown if x is not None)
+    markdown = re.sub("\n\n+", "\n\n", markdown)
+    markdown = markdown.replace("https://valentjn.github.io/vscode-ltex/docs/", "")
+
+    dstPath = os.path.join(pagesRepoDirPath, "pages", "docs",
+        (f"settings-{languageCode}.md" if languageCode != "en" else "settings.md"))
+    with open(dstPath, "w") as f: f.write(markdown)
+    linkSettingsAndCommands(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 
 
 
@@ -210,27 +293,36 @@ def updateCommands(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
   packageJsonPath = os.path.join(ltexRepoDirPath, "package.json")
   with open(packageJsonPath, "r") as f: packageJson = json.load(f)
 
-  packageNlsJsonPath = os.path.join(ltexRepoDirPath, "package.nls.json")
-  with open(packageNlsJsonPath, "r") as f: packageNlsJson = json.load(f)
+  nlsLanguages = getNlsLanguages(ltexRepoDirPath)
+  languageLinks = ", ".join((f"[{languageName}](commands-{languageCode}.html)"
+        if languageCode != "en" else "[English](commands.html)")
+      for languageCode, languageName, _ in nlsLanguages)
 
-  commandsJson = packageJson["contributes"]["commands"]
-  commandsMarkdown = [formatCommand(x, packageNlsJson) for x in commandsJson]
-  markdown = """---{}
+  for languageCode, _, packageNlsJsonPath in nlsLanguages:
+    with open(packageNlsJsonPath, "r") as f: packageNlsJson = json.load(f)
+    packageNlsJson.update(i18nStrings[languageCode])
+
+    commandsJson = packageJson["contributes"]["commands"]
+    commandsMarkdown = [formatCommand(x, packageNlsJson) for x in commandsJson]
+    markdown = """---{}
 title: "Commands"
 permalink: "/docs/commands.html"
 sidebar: "sidebar"
 ---
 
-To run a command, open the Command Palette (`Ctrl+Shift+P`) and start typing the name of the command. The commands can only be run after the extension has been activated, i.e., after at least one Markdown or LaTeX file has been opened in the current workspace.
+Change language of this page: {}
 
-""".format(licenseHeader)
-  markdown += "\n".join(x for x in commandsMarkdown if x is not None)
-  markdown = re.sub("\n\n+", "\n\n", markdown)
-  markdown = markdown.replace("https://valentjn.github.io/vscode-ltex/docs/", "")
+{}
 
-  dstPath = os.path.join(pagesRepoDirPath, "pages", "docs", "commands.md")
-  with open(dstPath, "w") as f: f.write(markdown)
-  linkSettingsAndCommands(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
+""".format(licenseHeader, languageLinks, packageNlsJson["commandIntroduction"])
+    markdown += "\n".join(x for x in commandsMarkdown if x is not None)
+    markdown = re.sub("\n\n+", "\n\n", markdown)
+    markdown = markdown.replace("https://valentjn.github.io/vscode-ltex/docs/", "")
+
+    dstPath = os.path.join(pagesRepoDirPath, "pages", "docs",
+        (f"commands-{languageCode}.md" if languageCode != "en" else "commands.md"))
+    with open(dstPath, "w") as f: f.write(markdown)
+    linkSettingsAndCommands(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 
 
 
