@@ -12,13 +12,21 @@ sidebar: "sidebar"
 
 To run a command, open the Command Palette (`Ctrl+Shift+P`) and start typing the name of the command. The commands can only be run after the extension has been activated, i.e., after at least one Markdown or LaTeX file has been opened in the current workspace.
 
-## `LTeX: Check Current Document`
+## `LTeX: Check Selection`
 
-Triggers a re-check of the active document.
+Triggers a check of the primary selection of the active document, and clears all LTeX diagnostics of the active document outside the primary selection.
 
 The active document is the one whose editor currently has focus, or, if none has focus, the one which was changed most recently.
 
-It is usually not necessary to run this command as LTeX automatically checks documents when being opened or changed.
+It is usually not necessary to run this command as LTeX automatically checks supported documents when being opened or changed.
+
+## `LTeX: Check Current Document`
+
+Triggers a check of the active document.
+
+The active document is the one whose editor currently has focus, or, if none has focus, the one which was changed most recently.
+
+It is usually not necessary to run this command as LTeX automatically checks supported documents when being opened or changed.
 
 ## `LTeX: Check All Documents in Workspace`
 
