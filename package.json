@@ -167,53 +167,53 @@
             "uk-UA",
             "zh-CN"
           ],
-          "enumDescriptions": [
-            "%ltex.i18n.configuration.ltex.language.ar.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.ast-ES.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.be-BY.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.br-FR.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.ca-ES.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.ca-ES-valencia.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.da-DK.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.de.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.de-AT.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.de-CH.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.de-DE.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.de-DE-x-simple-language.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.el-GR.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.en.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.en-AU.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.en-CA.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.en-GB.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.en-NZ.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.en-US.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.en-ZA.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.eo.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.es.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.fa.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.fr.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.ga-IE.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.gl-ES.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.it.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.ja-JP.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.km-KH.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.nl.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.nl-BE.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.pl-PL.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.pt.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.pt-AO.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.pt-BR.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.pt-MZ.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.pt-PT.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.ro-RO.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.ru-RU.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.sk-SK.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.sl-SI.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.sv.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.ta-IN.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.tl-PH.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.uk-UA.enumDescription%",
-            "%ltex.i18n.configuration.ltex.language.zh-CN.enumDescription%"
+          "markdownEnumDescriptions": [
+            "%ltex.i18n.configuration.ltex.language.ar.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ast-ES.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.be-BY.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.br-FR.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ca-ES.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ca-ES-valencia.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.da-DK.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.de.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.de-AT.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.de-CH.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.de-DE.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.de-DE-x-simple-language.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.el-GR.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.en.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.en-AU.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.en-CA.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.en-GB.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.en-NZ.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.en-US.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.en-ZA.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.eo.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.es.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.fa.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.fr.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ga-IE.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.gl-ES.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.it.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ja-JP.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.km-KH.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.nl.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.nl-BE.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.pl-PL.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.pt.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.pt-AO.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.pt-BR.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.pt-MZ.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.pt-PT.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ro-RO.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ru-RU.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.sk-SK.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.sl-SI.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.sv.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.ta-IN.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.tl-PH.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.uk-UA.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.zh-CN.markdownEnumDescription%"
           ],
           "markdownDescription": "%ltex.i18n.configuration.ltex.language.markdownDescription%"
         },
@@ -1606,11 +1606,11 @@
                 "dummy",
                 "pluralDummy"
               ],
-              "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.latex.commands.default.enumDescription%",
-                "%ltex.i18n.configuration.ltex.latex.commands.ignore.enumDescription%",
-                "%ltex.i18n.configuration.ltex.latex.commands.dummy.enumDescription%",
-                "%ltex.i18n.configuration.ltex.latex.commands.pluralDummy.enumDescription%"
+              "markdownEnumDescriptions": [
+                "%ltex.i18n.configuration.ltex.latex.commands.default.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.latex.commands.ignore.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.latex.commands.dummy.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.latex.commands.pluralDummy.markdownEnumDescription%"
               ]
             }
           },
@@ -1636,9 +1636,9 @@
                 "default",
                 "ignore"
               ],
-              "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.latex.environments.default.enumDescription%",
-                "%ltex.i18n.configuration.ltex.latex.environments.ignore.enumDescription%"
+              "markdownEnumDescriptions": [
+                "%ltex.i18n.configuration.ltex.latex.environments.default.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.latex.environments.ignore.markdownEnumDescription%"
               ]
             }
           },
@@ -1664,11 +1664,11 @@
                 "dummy",
                 "pluralDummy"
               ],
-              "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.markdown.nodes.default.enumDescription%",
-                "%ltex.i18n.configuration.ltex.markdown.nodes.ignore.enumDescription%",
-                "%ltex.i18n.configuration.ltex.markdown.nodes.dummy.enumDescription%",
-                "%ltex.i18n.configuration.ltex.markdown.nodes.pluralDummy.enumDescription%"
+              "markdownEnumDescriptions": [
+                "%ltex.i18n.configuration.ltex.markdown.nodes.default.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.markdown.nodes.ignore.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.markdown.nodes.dummy.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.markdown.nodes.pluralDummy.markdownEnumDescription%"
               ]
             }
           },
@@ -1710,13 +1710,13 @@
                 "workspaceExternalFile",
                 "workspaceFolderExternalFile"
               ],
-              "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.user.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.workspace.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.workspaceFolder.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.userExternalFile.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.workspaceExternalFile.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.workspaceFolderExternalFile.enumDescription%"
+              "markdownEnumDescriptions": [
+                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.user.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.workspace.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.workspaceFolder.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.userExternalFile.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.workspaceExternalFile.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.dictionary.workspaceFolderExternalFile.markdownEnumDescription%"
               ]
             },
             "disabledRules": {
@@ -1729,13 +1729,13 @@
                 "workspaceExternalFile",
                 "workspaceFolderExternalFile"
               ],
-              "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.user.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.workspace.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.workspaceFolder.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.userExternalFile.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.workspaceExternalFile.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.workspaceFolderExternalFile.enumDescription%"
+              "markdownEnumDescriptions": [
+                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.user.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.workspace.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.workspaceFolder.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.userExternalFile.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.workspaceExternalFile.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.disabledRules.workspaceFolderExternalFile.markdownEnumDescription%"
               ]
             },
             "hiddenFalsePositives": {
@@ -1748,13 +1748,13 @@
                 "workspaceExternalFile",
                 "workspaceFolderExternalFile"
               ],
-              "enumDescriptions": [
-                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.user.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.workspace.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.workspaceFolder.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.userExternalFile.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.workspaceExternalFile.enumDescription%",
-                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.workspaceFolderExternalFile.enumDescription%"
+              "markdownEnumDescriptions": [
+                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.user.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.workspace.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.workspaceFolder.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.userExternalFile.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.workspaceExternalFile.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.workspaceFolderExternalFile.markdownEnumDescription%"
               ]
             }
           },
@@ -1822,14 +1822,14 @@
             "finer",
             "finest"
           ],
-          "enumDescriptions": [
-            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.severe.enumDescription%",
-            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.warning.enumDescription%",
-            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.info.enumDescription%",
-            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.config.enumDescription%",
-            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.fine.enumDescription%",
-            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.finer.enumDescription%",
-            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.finest.enumDescription%"
+          "markdownEnumDescriptions": [
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.severe.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.warning.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.info.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.config.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.fine.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.finer.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.finest.markdownEnumDescription%"
           ],
           "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.logLevel.markdownDescription%"
         },
@@ -1873,11 +1873,11 @@
             "information",
             "hint"
           ],
-          "enumDescriptions": [
-            "%ltex.i18n.configuration.ltex.diagnosticSeverity.error.enumDescription%",
-            "%ltex.i18n.configuration.ltex.diagnosticSeverity.warning.enumDescription%",
-            "%ltex.i18n.configuration.ltex.diagnosticSeverity.information.enumDescription%",
-            "%ltex.i18n.configuration.ltex.diagnosticSeverity.hint.enumDescription%"
+          "markdownEnumDescriptions": [
+            "%ltex.i18n.configuration.ltex.diagnosticSeverity.error.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.diagnosticSeverity.warning.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.diagnosticSeverity.information.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.diagnosticSeverity.hint.markdownEnumDescription%"
           ],
           "markdownDescription": "%ltex.i18n.configuration.ltex.diagnosticSeverity.markdownDescription%"
         },
@@ -1890,10 +1890,10 @@
             "save",
             "manual"
           ],
-          "enumDescriptions": [
-            "%ltex.i18n.configuration.ltex.checkFrequency.edit.enumDescription%",
-            "%ltex.i18n.configuration.ltex.checkFrequency.save.enumDescription%",
-            "%ltex.i18n.configuration.ltex.checkFrequency.manual.enumDescription%"
+          "markdownEnumDescriptions": [
+            "%ltex.i18n.configuration.ltex.checkFrequency.edit.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.checkFrequency.save.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.checkFrequency.manual.markdownEnumDescription%"
           ],
           "markdownDescription": "%ltex.i18n.configuration.ltex.checkFrequency.markdownDescription%"
         },
@@ -1918,10 +1918,10 @@
             "messages",
             "verbose"
           ],
-          "enumDescriptions": [
-            "%ltex.i18n.configuration.ltex.trace.server.off.enumDescription%",
-            "%ltex.i18n.configuration.ltex.trace.server.messages.enumDescription%",
-            "%ltex.i18n.configuration.ltex.trace.server.verbose.enumDescription%"
+          "markdownEnumDescriptions": [
+            "%ltex.i18n.configuration.ltex.trace.server.off.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.trace.server.messages.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.trace.server.verbose.markdownEnumDescription%"
           ],
           "markdownDescription": "%ltex.i18n.configuration.ltex.trace.server.markdownDescription%"
         }

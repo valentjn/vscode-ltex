@@ -53,8 +53,8 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
   settings = packageJson["contributes"]["configuration"]["properties"]
 
   settings["ltex.language"]["enum"] = ltLanguageShortCodes
-  settings["ltex.language"]["enumDescriptions"] = [
-      "%ltex.i18n.configuration.ltex.language.{}.enumDescription%".format(x)
+  settings["ltex.language"]["markdownEnumDescriptions"] = [
+      "%ltex.i18n.configuration.ltex.language.{}.markdownEnumDescription%".format(x)
       for x in ltLanguageShortCodes]
 
   removeKeyIfPresent(settings["ltex.dictionary"], "propertyNames")
@@ -129,7 +129,7 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
         prefix = f"ltex.i18n.configuration.ltex.language.{ltLanguageShortCode}"
-        newPackageNlsJson[f"{prefix}.enumDescription"] = ltLanguageName
+        newPackageNlsJson[f"{prefix}.markdownEnumDescription"] = ltLanguageName
 
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.language\..+\.", key) is not None:
       continue
