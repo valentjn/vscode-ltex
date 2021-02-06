@@ -14,6 +14,7 @@ import re
 import shlex
 import subprocess
 import sys
+from typing import Any, Dict, Sequence, Tuple
 
 sys.path.append(os.path.dirname(__file__))
 import common
@@ -24,16 +25,16 @@ toolsDirPath = os.path.join(common.repoDirPath, "tools")
 
 
 
-def removeKeyIfPresent(d, key):
+def removeKeyIfPresent(d: Dict[str, Any], key: str) -> None:
   if key in d: del d[key]
 
 
 
-def run(cmd, **kwargs):
+def run(cmd: Sequence[str], **kwargs: Any) -> subprocess.CompletedProcess[bytes]:
   print("Running {}...".format(" ".join(shlex.quote(x) for x in cmd)))
   return subprocess.run(cmd, stdout=subprocess.PIPE, cwd=toolsDirPath)
 
-def fetchLanguages(toolsDirPath, ltexLsPath):
+def fetchLanguages(toolsDirPath: str, ltexLsPath: str) -> Tuple[Sequence[str], Sequence[str]]:
   classPath = os.pathsep.join([toolsDirPath, os.path.join(ltexLsPath, "lib", "*")])
   run(["javac", "-cp", classPath, "LanguageToolLanguageLister.java"])
   process = run(["java", "-cp", classPath, "LanguageToolLanguageLister"])
@@ -46,7 +47,7 @@ def fetchLanguages(toolsDirPath, ltexLsPath):
 
 
 
-def updatePackageJson(ltLanguageShortCodes):
+def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
   packageJsonPath = os.path.join(common.repoDirPath, "package.json")
   with open(packageJsonPath, "r") as f: packageJson = json.load(f)
   settings = packageJson["contributes"]["configuration"]["properties"]
@@ -120,7 +121,10 @@ def updatePackageJson(ltLanguageShortCodes):
     json.dump(packageJson, f, indent=2, ensure_ascii=False)
     f.write("\n")
 
-def updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
+
+
+def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: Sequence[str],
+      uiLanguage: str) -> None:
   packageNlsJsonPath = (os.path.join(common.repoDirPath, "package.nls.json") if uiLanguage == "en" else
       os.path.join(common.repoDirPath, "package.nls.{}.json".format(uiLanguage)))
   with open(packageNlsJsonPath, "r") as f: oldPackageNlsJson = json.load(f)
@@ -247,7 +251,7 @@ def updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage):
 
 
 
-def main():
+def main() -> None:
   parser = argparse.ArgumentParser(description="Fetch all supported language codes from "
       "LanguageTool and updates the language-specific parts of package.json accordingly")
   parser.add_argument("--ltex-ls-path", default="../ltex-ls/ltexls-core/target/appassembler",
