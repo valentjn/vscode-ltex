@@ -66,8 +66,6 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
           },
           "markdownDescription" : "%ltex.i18n.configuration.ltex.dictionary."
             "{}.markdownDescription%".format(languageShortCode),
-          "description" : "%ltex.i18n.configuration.ltex.dictionary."
-            "{}.description%".format(languageShortCode),
         }
         for languageShortCode in ltLanguageShortCodes
       }
@@ -81,8 +79,6 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
           },
           "markdownDescription" : "%ltex.i18n.configuration.ltex.disabledRules."
             "{}.markdownDescription%".format(languageShortCode),
-          "description" : "%ltex.i18n.configuration.ltex.disabledRules."
-            "{}.description%".format(languageShortCode),
         }
         for languageShortCode in ltLanguageShortCodes
       }
@@ -96,8 +92,6 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
           },
           "markdownDescription" : "%ltex.i18n.configuration.ltex.enabledRules."
             "{}.markdownDescription%".format(languageShortCode),
-          "description" : "%ltex.i18n.configuration.ltex.enabledRules."
-            "{}.description%".format(languageShortCode),
         }
         for languageShortCode in ltLanguageShortCodes
       }
@@ -111,8 +105,6 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
           },
           "markdownDescription" : "%ltex.i18n.configuration.ltex.hiddenFalsePositives."
             "{}.markdownDescription%".format(languageShortCode),
-          "description" : "%ltex.i18n.configuration.ltex.hiddenFalsePositives."
-            "{}.description%".format(languageShortCode),
         }
         for languageShortCode in ltLanguageShortCodes
       }
@@ -132,7 +124,7 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
   newPackageNlsJson = {}
 
   for key, value in oldPackageNlsJson.items():
-    if key == "ltex.i18n.configuration.ltex.language.description":
+    if key == "ltex.i18n.configuration.ltex.language.markdownDescription":
       newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
@@ -142,7 +134,7 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.language\..+\.", key) is not None:
       continue
 
-    elif key == "ltex.i18n.configuration.ltex.dictionary.description":
+    elif key == "ltex.i18n.configuration.ltex.dictionary.markdownDescription":
       newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
@@ -153,22 +145,15 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
               "Liste von zusätzlichen Wörtern der Sprache "
               f"`{ltLanguageShortCode}` ({ltLanguageName}), die nicht als Schreibfehler "
               "gewertet werden sollen.")
-          newPackageNlsJson[f"{prefix}.description"] = (
-              "Liste von zusätzlichen Wörtern der Sprache "
-              f"'{ltLanguageShortCode}' ({ltLanguageName}), die nicht als Schreibfehler "
-              "gewertet werden sollen.")
         else:
           newPackageNlsJson[f"{prefix}.markdownDescription"] = (
               f"List of additional `{ltLanguageShortCode}` ({ltLanguageName}) words that should "
-              "not be counted as spelling errors.")
-          newPackageNlsJson[f"{prefix}.description"] = (
-              f"List of additional '{ltLanguageShortCode}' ({ltLanguageName}) words that should "
               "not be counted as spelling errors.")
 
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.dictionary\..+\.", key) is not None:
       continue
 
-    elif key == "ltex.i18n.configuration.ltex.disabledRules.description":
+    elif key == "ltex.i18n.configuration.ltex.disabledRules.markdownDescription":
       newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
@@ -179,22 +164,15 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
               "Liste von zusätzlichen Regeln der Sprache "
               f"`{ltLanguageShortCode}` ({ltLanguageName}), die deaktiviert werden sollen "
               "(falls standardmäßig durch LanguageTool aktiviert).")
-          newPackageNlsJson[f"{prefix}.description"] = (
-              "Liste von zusätzlichen Regeln der Sprache "
-              f"'{ltLanguageShortCode}' ({ltLanguageName}), die deaktiviert werden sollen "
-              "(falls standardmäßig durch LanguageTool aktiviert).")
         else:
           newPackageNlsJson[f"{prefix}.markdownDescription"] = (
               f"List of additional `{ltLanguageShortCode}` ({ltLanguageName}) rules that should "
-              "be disabled (if enabled by default by LanguageTool).")
-          newPackageNlsJson[f"{prefix}.description"] = (
-              f"List of additional '{ltLanguageShortCode}' ({ltLanguageName}) rules that should "
               "be disabled (if enabled by default by LanguageTool).")
 
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.disabledRules\..+\.", key) is not None:
       continue
 
-    elif key == "ltex.i18n.configuration.ltex.enabledRules.description":
+    elif key == "ltex.i18n.configuration.ltex.enabledRules.markdownDescription":
       newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
@@ -205,22 +183,15 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
               "Liste von zusätzlichen Regeln der Sprache "
               f"`{ltLanguageShortCode}` ({ltLanguageName}), die aktiviert werden sollen "
               "(falls standardmäßig durch LanguageTool deaktiviert).")
-          newPackageNlsJson[f"{prefix}.description"] = (
-              "Liste von zusätzlichen Regeln der Sprache "
-              f"'{ltLanguageShortCode}' ({ltLanguageName}), die aktiviert werden sollen "
-              "(falls standardmäßig durch LanguageTool deaktiviert).")
         else:
           newPackageNlsJson[f"{prefix}.markdownDescription"] = (
               f"List of additional `{ltLanguageShortCode}` ({ltLanguageName}) rules that should "
-              "be enabled (if disabled by default by LanguageTool).")
-          newPackageNlsJson[f"{prefix}.description"] = (
-              f"List of additional '{ltLanguageShortCode}' ({ltLanguageName}) rules that should "
               "be enabled (if disabled by default by LanguageTool).")
 
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.enabledRules\..+\.", key) is not None:
       continue
 
-    elif key == "ltex.i18n.configuration.ltex.hiddenFalsePositives.description":
+    elif key == "ltex.i18n.configuration.ltex.hiddenFalsePositives.markdownDescription":
       newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
@@ -230,14 +201,9 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
           newPackageNlsJson[f"{prefix}.markdownDescription"] = (
               "Liste von falschen Fehlern der Sprache "
               f"`{ltLanguageShortCode}` ({ltLanguageName}), die verborgen werden sollen .")
-          newPackageNlsJson[f"{prefix}.description"] = (
-              "Liste von falschen Fehlern der Sprache "
-              f"'{ltLanguageShortCode}' ({ltLanguageName}), die verborgen werden sollen.")
         else:
           newPackageNlsJson[f"{prefix}.markdownDescription"] = (
               f"List of `{ltLanguageShortCode}` ({ltLanguageName}) false-positive diagnostics to hide.")
-          newPackageNlsJson[f"{prefix}.description"] = (
-              f"List of '{ltLanguageShortCode}' ({ltLanguageName}) false-positive diagnostics to hide.")
 
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.hiddenFalsePositives\..+\.", key) is not None:
       continue
