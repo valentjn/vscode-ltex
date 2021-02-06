@@ -49,48 +49,6 @@
   ],
   "main": "./dist/extension",
   "contributes": {
-    "commands": [
-      {
-        "command": "ltex.checkSelection",
-        "title": "%ltex.i18n.commands.ltex.checkSelection.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.checkCurrentDocument",
-        "title": "%ltex.i18n.commands.ltex.checkCurrentDocument.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.checkAllDocumentsInWorkspace",
-        "title": "%ltex.i18n.commands.ltex.checkAllDocumentsInWorkspace.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.clearDiagnosticsInCurrentDocument",
-        "title": "%ltex.i18n.commands.ltex.clearDiagnosticsInCurrentDocument.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.clearAllDiagnostics",
-        "title": "%ltex.i18n.commands.ltex.clearAllDiagnostics.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.showStatusInformation",
-        "title": "%ltex.i18n.commands.ltex.showStatusInformation.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.reportBug",
-        "title": "%ltex.i18n.commands.ltex.reportBug.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.requestFeature",
-        "title": "%ltex.i18n.commands.ltex.requestFeature.title%",
-        "category": "LTeX"
-      }
-    ],
     "configuration": {
       "title": "LTeX",
       "properties": {
@@ -1926,7 +1884,49 @@
           "markdownDescription": "%ltex.i18n.configuration.ltex.trace.server.markdownDescription%"
         }
       }
-    }
+    },
+    "commands": [
+      {
+        "command": "ltex.checkSelection",
+        "title": "%ltex.i18n.commands.ltex.checkSelection.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.checkCurrentDocument",
+        "title": "%ltex.i18n.commands.ltex.checkCurrentDocument.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.checkAllDocumentsInWorkspace",
+        "title": "%ltex.i18n.commands.ltex.checkAllDocumentsInWorkspace.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.clearDiagnosticsInCurrentDocument",
+        "title": "%ltex.i18n.commands.ltex.clearDiagnosticsInCurrentDocument.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.clearAllDiagnostics",
+        "title": "%ltex.i18n.commands.ltex.clearAllDiagnostics.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.showStatusInformation",
+        "title": "%ltex.i18n.commands.ltex.showStatusInformation.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.reportBug",
+        "title": "%ltex.i18n.commands.ltex.reportBug.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.requestFeature",
+        "title": "%ltex.i18n.commands.ltex.requestFeature.title%",
+        "category": "LTeX"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production",
