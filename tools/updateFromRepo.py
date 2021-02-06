@@ -31,6 +31,8 @@ licenseHeader = """
 def formatList(json_: Sequence[Any]) -> str:
   return "\n".join(f"- {formatAsJson(x)}" for x in json_)
 
+
+
 def formatType(type_: str) -> str:
   if isinstance(type_, str) or (len(type_) == 1):
     return f"`{type_}`"
@@ -41,6 +43,8 @@ def formatType(type_: str) -> str:
   else:
     return ", ".join(f"`{x}`" for x in type_[:-2]) + f", `{type_[-2]}` or `{type_[-1]}`"
 
+
+
 def formatEnum(enumNames: Sequence[str], enumDescriptions: Sequence[str],
       packageNlsJson: Dict[str, str], indent: int = 0) -> str:
   formatEnumEntries: Callable[[str, str], str] = (lambda x, y: formatAsJson(x) +
@@ -49,17 +53,31 @@ def formatEnum(enumNames: Sequence[str], enumDescriptions: Sequence[str],
   markdown += "\n"
   return markdown
 
+
+
 def formatAsJson(json_: Any) -> str:
   return f"`{json.dumps(json_)}`"
 
+
+
 def replaceNlsKey(packageNlsJson: Dict[str, str], match: re.Match[str]) -> Any:
   key = match.group(1)
-  if key not in packageNlsJson: raise RuntimeError("unknown NLS key '{}'".format(key))
-  return packageNlsJson[key]
+
+  keys = [key]
+  if key.endswith(".markdownDescription"): keys.insert(0, f"{key[:-20]}.fullMarkdownDescription")
+
+  for curKey in keys:
+    if curKey in packageNlsJson: return packageNlsJson[curKey]
+
+  raise RuntimeError("unknown NLS key '{}'".format(key))
+
+
 
 def formatDescription(description: str, packageNlsJson: Dict[str, str]) -> str:
   return re.sub(r"%([A-Za-z0-9\-_\.]+)%", functools.partial(replaceNlsKey, packageNlsJson),
       description)
+
+
 
 def formatFullType(settingJson: Dict[str, Any], packageNlsJson: Dict[str, str],
       indent: int = 0) -> str:
@@ -101,7 +119,8 @@ def formatFullType(settingJson: Dict[str, Any], packageNlsJson: Dict[str, str],
           f"{indent * ' '}- {formatFullType(x, packageNlsJson, indent+2)}" for x in itemTypes)
   elif "enum" in settingJson:
     enumNames = settingJson["enum"]
-    enumDescriptions = settingJson["enumDescriptions"]
+    enumDescriptions = (settingJson["markdownEnumDescriptions"]
+        if "markdownEnumDescriptions" in settingJson else settingJson["enumDescriptions"])
     markdown += "One of the following values:\n\n"
     markdown += "".join(
         f"{indent * ' '}- {formatAsJson(x)}: {formatDescription(y, packageNlsJson)}\n"
@@ -110,6 +129,8 @@ def formatFullType(settingJson: Dict[str, Any], packageNlsJson: Dict[str, str],
     markdown += f"Scalar of type {formatType(settingJson['type'])}\n"
 
   return markdown
+
+
 
 def formatSetting(settingName: str, settingJson: Dict[str, Any],
       packageNlsJson: Dict[str, str]) -> Optional[str]:
@@ -129,7 +150,9 @@ def formatSetting(settingName: str, settingJson: Dict[str, Any],
 
   if "enum" in settingJson:
     enum = settingJson["enum"]
-    enumDescriptions = settingJson.get("enumDescriptions", len(enum) * [None])
+    enumDescriptions = (settingJson["markdownEnumDescriptions"]
+        if "markdownEnumDescriptions" in settingJson else
+        settingJson.get("enumDescriptions", len(enum) * [None]))
     markdown += f"\n*Possible values:*\n\n{formatEnum(enum, enumDescriptions, packageNlsJson)}\n"
 
   if len(examples) == 1:
@@ -147,11 +170,15 @@ def formatSetting(settingName: str, settingJson: Dict[str, Any],
 
   return markdown
 
+
+
 def formatCommand(commandJson: Dict[str, Any], packageNlsJson: Dict[str, str]) -> Optional[str]:
-  if "markdownDescription" not in commandJson: return None
-  markdown = (f"## `{formatDescription(commandJson['title'], packageNlsJson)}`\n\n"
-      f"{formatDescription(commandJson['markdownDescription'], packageNlsJson)}\n")
+  description = f"%ltex.i18n.commands.{commandJson['command']}.fullMarkdownDescription%"
+  markdown = (f"## `LTeX: {formatDescription(commandJson['title'], packageNlsJson)}`\n\n"
+      f"{formatDescription(description, packageNlsJson)}\n")
   return markdown
+
+
 
 def updateSettings(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
   packageJsonPath = os.path.join(ltexRepoDirPath, "package.json")
@@ -176,6 +203,8 @@ sidebar: "sidebar"
   dstPath = os.path.join(pagesRepoDirPath, "pages", "docs", "settings.md")
   with open(dstPath, "w") as f: f.write(markdown)
   linkSettingsAndCommands(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
+
+
 
 def updateCommands(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
   packageJsonPath = os.path.join(ltexRepoDirPath, "package.json")
@@ -217,6 +246,8 @@ def copyMarkdown(srcPath: str, dstPath: str, metaData: str, ltexRepoDirPath: str
   with open(dstPath, "w") as f: f.write(markdown)
   linkSettingsAndCommands(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 
+
+
 def updateChangelog(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
   copyMarkdown(os.path.join(ltexRepoDirPath, "CHANGELOG.md"),
       os.path.join(pagesRepoDirPath, "pages", "docs", "changelog.md"), """---{}
@@ -227,6 +258,8 @@ toc: false
 ---
 """.format(licenseHeader), ltexRepoDirPath, pagesRepoDirPath)
 
+
+
 def updateContributing(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
   copyMarkdown(os.path.join(ltexRepoDirPath, "CONTRIBUTING.md"),
       os.path.join(pagesRepoDirPath, "pages", "docs", "contributing-code-issues.md"), """---{}
@@ -236,6 +269,8 @@ sidebar: "sidebar"
 ---
 """.format(licenseHeader), ltexRepoDirPath, pagesRepoDirPath)
 
+
+
 def updateCodeOfConduct(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
   copyMarkdown(os.path.join(ltexRepoDirPath, "CODE_OF_CONDUCT.md"),
       os.path.join(pagesRepoDirPath, "pages", "docs", "code-of-conduct.md"), """---
@@ -244,6 +279,8 @@ permalink: "/docs/code-of-conduct.html"
 sidebar: "sidebar"
 ---
 """, ltexRepoDirPath, pagesRepoDirPath)
+
+
 
 def updateAcknowledgments(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
   copyMarkdown(os.path.join(ltexRepoDirPath, "ACKNOWLEDGMENTS.md"),

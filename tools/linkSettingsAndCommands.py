@@ -61,8 +61,8 @@ def linkSettingsAndCommands(markdownPath: str, pagesDirPath: str, ltexRepoDirPat
   settingNames = [x for x in settingsJson.keys() if "markdownDescription" in settingsJson[x]]
 
   commandsJson = packageJson["contributes"]["commands"]
-  commandNames = {formatTitle(x["title"], packageNlsJson) : x["command"]
-      for x in commandsJson if "markdownDescription" in x}
+  commandNames = {"{}: {}".format(x["category"], formatTitle(x["title"], packageNlsJson)) :
+      x["command"] for x in commandsJson}
 
   with open(markdownPath, "r") as f: markdown = f.read()
   markdown = re.sub(r"`(ltex\.[^`]+|LTeX: [^`]+)`|\[`(ltex\.[^`]+|LTeX: [^`]+)`\]\([^\)]*?\)",
