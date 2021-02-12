@@ -6,7 +6,7 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 title: "Commands"
-permalink: "/docs/commands.html"
+permalink: "/docs/commands-de.html"
 sidebar: "sidebar"
 ---
 

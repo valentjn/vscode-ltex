@@ -264,6 +264,8 @@ def updateSettings(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
       for languageCode, languageName, _ in nlsLanguages)
 
   for languageCode, _, packageNlsJsonPath in nlsLanguages:
+    pageNameSuffix = (f"-{languageCode}" if languageCode != "en" else "")
+
     with open(packageNlsJsonPath, "r") as f: packageNlsJson = json.load(f)
     packageNlsJson.update(i18nStrings[languageCode])
 
@@ -271,19 +273,18 @@ def updateSettings(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
     settingsMarkdown = [formatSetting(x, y, packageNlsJson) for x, y in settingsJson.items()]
     markdown = """---{}
 title: "Settings"
-permalink: "/docs/settings.html"
+permalink: "/docs/settings{}.html"
 sidebar: "sidebar"
 ---
 
 Change language of this page: {}
 
-""".format(licenseHeader, languageLinks)
+""".format(licenseHeader, pageNameSuffix, languageLinks)
     markdown += "\n".join(x for x in settingsMarkdown if x is not None)
     markdown = re.sub("\n\n+", "\n\n", markdown)
     markdown = markdown.replace("https://valentjn.github.io/vscode-ltex/docs/", "")
 
-    dstPath = os.path.join(pagesRepoDirPath, "pages", "docs",
-        (f"settings-{languageCode}.md" if languageCode != "en" else "settings.md"))
+    dstPath = os.path.join(pagesRepoDirPath, "pages", "docs", f"settings{pageNameSuffix}.md")
     with open(dstPath, "w") as f: f.write(markdown)
     linkSettingsAndCommands(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 
@@ -299,6 +300,8 @@ def updateCommands(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
       for languageCode, languageName, _ in nlsLanguages)
 
   for languageCode, _, packageNlsJsonPath in nlsLanguages:
+    pageNameSuffix = (f"-{languageCode}" if languageCode != "en" else "")
+
     with open(packageNlsJsonPath, "r") as f: packageNlsJson = json.load(f)
     packageNlsJson.update(i18nStrings[languageCode])
 
@@ -306,7 +309,7 @@ def updateCommands(ltexRepoDirPath: str, pagesRepoDirPath: str) -> None:
     commandsMarkdown = [formatCommand(x, packageNlsJson) for x in commandsJson]
     markdown = """---{}
 title: "Commands"
-permalink: "/docs/commands.html"
+permalink: "/docs/commands{}.html"
 sidebar: "sidebar"
 ---
 
@@ -314,13 +317,12 @@ Change language of this page: {}
 
 {}
 
-""".format(licenseHeader, languageLinks, packageNlsJson["commandIntroduction"])
+""".format(licenseHeader, pageNameSuffix, languageLinks, packageNlsJson["commandIntroduction"])
     markdown += "\n".join(x for x in commandsMarkdown if x is not None)
     markdown = re.sub("\n\n+", "\n\n", markdown)
     markdown = markdown.replace("https://valentjn.github.io/vscode-ltex/docs/", "")
 
-    dstPath = os.path.join(pagesRepoDirPath, "pages", "docs",
-        (f"commands-{languageCode}.md" if languageCode != "en" else "commands.md"))
+    dstPath = os.path.join(pagesRepoDirPath, "pages", "docs", f"commands{pageNameSuffix}.md")
     with open(dstPath, "w") as f: f.write(markdown)
     linkSettingsAndCommands(dstPath, os.path.join(pagesRepoDirPath, "pages"), ltexRepoDirPath)
 

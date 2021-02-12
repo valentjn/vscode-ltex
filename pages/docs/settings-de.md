@@ -6,7 +6,7 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 title: "Settings"
-permalink: "/docs/settings.html"
+permalink: "/docs/settings-de.html"
 sidebar: "sidebar"
 ---
 
