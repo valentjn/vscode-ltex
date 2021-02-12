@@ -109,7 +109,7 @@
 - Add [`LTeX: Show Status Information`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-show-status-information) command to show information about the status of LT<sub>E</sub>X
 - Add support for `\usepackage[LANGUAGE]{babel}` if in the same file as the text to be checked (fixes [#140](https://github.com/valentjn/vscode-ltex/issues/140))
 - Add support for more BibL<sup>A</sup>T<sub>E</sub>X commands such as `\autocite`, `\citeauthor`, etc. (fixes [#143](https://github.com/valentjn/vscode-ltex/issues/143))
-- Add support for overriding hard-coded command signatures (fixes [valentjn/ltex-ls#27](https://github.com/valentjn/ltex-ls/issues/27))
+- Add support for overriding hard-coded command signatures (fixes [ltex-ls#27](https://github.com/valentjn/ltex-ls/issues/27))
 - Add verification for downloaded files (LT<sub>E</sub>X LS and Java)
 - Move handling of external setting files from ltex-ls to vscode-ltex
 - Better resolve relative paths to external setting files, either with respect to the `.vscode` directory of the workspace folder if any, the `.vscode` directory of the workspace if any, or the global storage directory of the extension (see [documentation](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#external-setting-files), fixes [#146](https://github.com/valentjn/vscode-ltex/issues/146))
@@ -277,7 +277,7 @@
 
 ## 4.9.3 — “The Java Collapse” (May 7, 2020)
 
-- Revert back to Java 8
+- Revert to Java 8
 - Remove support for external LanguageTool HTTP servers
 - Update LT<sub>E</sub>X LS to 4.9.3
 
@@ -298,7 +298,7 @@
 
 - Update to LanguageTool 4.9 (see [LT 4.9 release notes](https://github.com/languagetool-org/languagetool/blob/v4.9/languagetool-standalone/CHANGES.md#49-2020-03-24))
 - Update other Java dependencies
-- Update npm dependencies
+- Update NPM dependencies
 - Update required version of VS Code (now 1.39 or newer)
 - Reduce file size of extension (omitting unneeded dependencies)
 - Add usage instructions to readme
@@ -308,12 +308,12 @@
 
 - Fix spelling errors for French dummies (fixes [#27](https://github.com/valentjn/vscode-ltex/issues/27))
 - Fix `\dots` in math mode being interpreted as `...`
-- Minor changes in readme, changelog, and package.json
+- Minor changes in readme, changelog, and `package.json`
 - Update LT<sub>E</sub>X LS to 4.7.10
 
 ## 4.7.9 — “The Markdown Resonance” (February 29, 2020)
 
-- Update the Markdown parser flexmark-java to 0.60.2; this increases the speed of parsing Markdown
+- Update Markdown parser Flexmark to 0.60.2; this increases the speed of parsing Markdown
 - Add possibility to ignore Markdown elements or replace them by dummy words via `ltex.markdown.ignore` and `ltex.markdown.dummy` (fixes [#26](https://github.com/valentjn/vscode-ltex/issues/26))
 - Ignore Markdown code blocks by default
 - Replace auto-links and inline Markdown code with dummy words by default
@@ -354,7 +354,7 @@
 ## 4.7.4 — “The Disabling Allocation” (October 15, 2019)
 
 - Add `disabledRules` and `enabledRules` settings (requires update of language extensions)
-- Add `disable rule` quick fix
+- Add `disable rule` quickfix
 - Fix a bug where the `codeAction` request gets stuck in infinite loop
 - Fix another `NullPointerException` for word2vec
 - Update LT<sub>E</sub>X LS to 4.7.4
@@ -381,7 +381,7 @@
 - Support multi-root workspaces, all configuration settings except [`ltex.enabled`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabled) are now resource-specific (fixes [#7](https://github.com/valentjn/vscode-ltex/issues/7))
 - Save dictionary settings under full language short code (e.g., `en-US` instead of `en`). If you already have a dictionary under `ltex.en.dictionary` and use `en-US` as language (not `en`), you have to rename the settings name to `ltex.en-US.dictionary` (similarly for other languages).
 - Remove diagnostics when a file is closed
-- Prevent insertion of text in TikZ mode
+- Prevent insertion of text in Ti*k*Z mode
 - Add support for more commands such as `\newenvironment`, `\newgeometry`, and `\pagenumbering`
 - Update LT<sub>E</sub>X LS to 4.7.0
 
@@ -450,7 +450,7 @@
 
 ## 4.6.5 — “The Consistency Integration” (September 2, 2019)
 
-- Make readme and package.json consistent
+- Make readme and `package.json` consistent
 - Fix second arguments of `\(re)newcommand` not ignored
 
 ## 4.6.4 — “The Umlaut Expansion” (September 1, 2019)
@@ -460,7 +460,7 @@
 
 ## 4.6.3 — “The Version Interruption” (September 1, 2019)
 
-- Fix deployed *.vsix needed Java 11, not 8
+- Fix deployed `*.vsix` needed Java 11, not 8
 
 ## 4.6.2 — “The vsce Minimization” (September 1, 2019)
 
@@ -485,13 +485,13 @@
 
 ## 0.0.4 (June 22, 2017)
 
-- Add configuration to make extension opt-in by workspace thanks to [Faustino Aguilar](https://github.com/faustinoaq) ([PR #5](https://github.com/adamvoss/vscode-languagetool/pull/5)) (workaround for [Microsoft/vscode#15611](https://github.com/Microsoft/vscode/issues/15611))
-- Language-support extensions are now detected through the Visual Studio Code API rather than file-path assumptions.  This is better practice and makes development of the extension easier.
+- Add configuration to make extension opt-in by workspace thanks to [Faustino Aguilar](https://github.com/faustinoaq) ([PR #5](https://github.com/adamvoss/vscode-languagetool/pull/5), workaround for [Microsoft/vscode#15611](https://github.com/Microsoft/vscode/issues/15611))
+- Language-support extensions are now detected through the Visual Studio Code API rather than file-path assumptions
 
 ## 0.0.3 (June 14, 2017)
 
 - Fix checking of files when no folder was open
-- Prevent virtual files, including those from the git scm provider, from being checked (fixes [#2](https://github.com/adamvoss/vscode-languagetool/issues/2))
+- Prevent virtual files (including those from Git) from being checked (fixes [#2](https://github.com/adamvoss/vscode-languagetool/issues/2))
 
 ## 0.0.2 (June 12, 2017)
 
