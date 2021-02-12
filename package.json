@@ -2164,7 +2164,7 @@
     "ts-loader": "8.0.15",
     "typescript": "4.1.5",
     "vscode-test": "1.5.0",
-    "webpack": "5.20.2",
+    "webpack": "5.21.2",
     "webpack-cli": "4.5.0"
   },
   "dependencies": {
