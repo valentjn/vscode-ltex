@@ -1187,7 +1187,7 @@ List of names of LaTeX environments to be handled by the LaTeX parser.
 
 This setting is an object with the environment names as keys and corresponding actions as values.
 
-Some environments are already ignored by default, even if you set this setting to an empty object.
+Some environments are already handled by default, even if you set this setting to an empty object.
 
 *Type:* `object`
 
@@ -1203,8 +1203,8 @@ Object with arbitrary property names, where the value of each property has the f
 
 - One of the following values:
 
-  - `"default"`: The environment is treated like unknown environments are treated by default: The `\begin` and `\end` commands are ignored, but the contents of the environment are not ignored.
-  - `"ignore"`: The whole environment together with its contents is ignored.
+  - `"default"`: The environment is treated like unknown environments are treated by default: The arguments of the environment are ignored, but the contents of the environment are not ignored.
+  - `"ignore"`: The whole environment together with its arguments and contents is ignored.
 
 </div>
 

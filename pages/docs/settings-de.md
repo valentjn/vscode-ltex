@@ -1203,8 +1203,8 @@ Objekt mit beliebigen Eigenschaftsnamen, wobei die Werte jeder Eigenschaft folge
 
 - Einer der folgenden Werte:
 
-  - `"default"`: Die Umgebung wird so behandelt, wie unbekannte Umgebungen standardmäßig behandelt werden: Die `\begin`- und `\end`-Befehle werden ignoriert, aber der Inhalt der Umgebung wird nicht ignoriert.
-  - `"ignore"`: Die ganze Umgebung zusammen mit ihrem Inhalt wird ignoriert.
+  - `"default"`: Die Umgebung wird so behandelt, wie unbekannte Umgebungen standardmäßig behandelt werden: Die Argumente der Umgebung werden ignoriert, aber der Inhalt der Umgebung wird nicht ignoriert.
+  - `"ignore"`: Die ganze Umgebung zusammen mit ihren Argumenten und ihrem Inhalt wird ignoriert.
 
 </div>
 
