@@ -2159,7 +2159,7 @@
     "eslint": "7.19.0",
     "eslint-config-google": "0.14.0",
     "eslint-plugin-only-warn": "1.0.2",
-    "mocha": "8.2.1",
+    "mocha": "8.3.0",
     "rimraf": "3.0.2",
     "ts-loader": "8.0.17",
     "typescript": "4.1.5",
