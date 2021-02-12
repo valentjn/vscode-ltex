@@ -15,11 +15,13 @@
 ## 9.0.0 (upcoming)
 
 - Remove support for settings that are deprecated since 8.0.0: `ltex.workspaceDictionary`, `ltex.workspaceFolderDictionary`, `ltex.workspaceDisabledRules`, `ltex.workspaceFolderDisabledRules`, `ltex.workspaceEnabledRules`, `ltex.workspaceFolderEnabledRules`, `ltex.ignoreInRuleSentence`, `ltex.commands.ignore`, `ltex.commands.dummy`, `ltex.environments.ignore`, `ltex.markdown.ignore`, and `ltex.markdown.dummy`
-- Remove support for values for [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget) that deprecated since 7.0.0 or 8.0.0: `"global"` (deprecated since 7.0.0), `"addToDictionary"`, `"disableRule"`, and `"ignoreRuleInSentence"`
+- Remove support for values for [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget) that are deprecated since 7.0.0 or 8.0.0: `"global"` (deprecated since 7.0.0), `"addToDictionary"`, `"disableRule"`, and `"ignoreRuleInSentence"`
 - Add support for magic comments inside HTML comments in Markdown (`<!-- ltex: SETTINGS -->`)
+- Check frame title in argument of L<sup>A</sup>T<sub>E</sub>X Beamer frames (fixes [#239](https://github.com/valentjn/vscode-ltex/issues/239))
 - Add [`LTeX: Check Selection`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-selection) to check text in documents with unsupported code languages
-- Check documents even if their code language is not supported (when being manually checked)
+- Fix comment sign before babel commands not recognized (see [#245](https://github.com/valentjn/vscode-ltex/discussions/245))
 - Fix removing items in settings with a hyphen prefix sometimes not working
+- Fix space not added between two arguments of L<sup>A</sup>T<sub>E</sub>X commands
 - Fix manually checking BibT<sub>E</sub>X documents not working
 - Fix words in dictionary containing markup not recognized
 - Update bundled AdoptOpenJDK JRE to 11.0.10+9
