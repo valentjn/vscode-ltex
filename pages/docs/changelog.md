@@ -139,7 +139,7 @@ toc: false
 - Add command [`ltex.requestFeature`](commands.html#ltex-request-feature-for-ltex) to quickly request a new feature in LTeX via VS Code
 - Add button to set [`ltex.trace.server`](settings.html#ltextraceserver) to `"verbose"` when reporting a bug
 - Fix diagnostics sometimes not lined up with the text with switching back from incremental to full document updates; unfortunately, this disables the delayed publication of diagnostics at the caret position
-- Restructure and simplify internal quickfix and command structure, removing the need for pseudo-telemetry notifications
+- Restructure and simplify internal quick fix and command structure, removing the need for pseudo-telemetry notifications
 - Update LTeX LS to 7.3.0
 
 ## 7.2.0 — “The LanguageTool Acquisition” (September 27, 2020)
@@ -359,7 +359,7 @@ toc: false
 ## 4.7.4 — “The Disabling Allocation” (October 15, 2019)
 
 - Add `disabledRules` and `enabledRules` settings (requires update of language extensions)
-- Add `disable rule` quickfix
+- Add `disable rule` quick fix
 - Fix a bug where the `codeAction` request gets stuck in infinite loop
 - Fix another `NullPointerException` for word2vec
 - Update LTeX LS to 4.7.4
