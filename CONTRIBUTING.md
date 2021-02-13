@@ -116,12 +116,12 @@ At the bottom of each page, you'll find an “Edit me” button that takes you d
 
 | Page | Sources |
 | ---- | ------- |
-| [Settings](https://valentjn.github.io/vscode-ltex/docs/settings.html) | [package.json](https://github.com/valentjn/vscode-ltex/blob/develop/package.json), [package.nls.json](https://github.com/valentjn/vscode-ltex/blob/develop/package.nls.json) |
-| [Commands](https://valentjn.github.io/vscode-ltex/docs/commands.html) | [package.json](https://github.com/valentjn/vscode-ltex/blob/develop/package.json), [package.nls.json](https://github.com/valentjn/vscode-ltex/blob/develop/package.nls.json) |
-| [Changelog](https://valentjn.github.io/vscode-ltex/docs/changelog.html) | [CHANGELOG.md](https://github.com/valentjn/vscode-ltex/blob/develop/CHANGELOG.md) |
-| [Contributing Code/Issues](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html) | [CONTRIBUTING.md](https://github.com/valentjn/vscode-ltex/blob/develop/CONTRIBUTING.md) |
-| [Code of Conduct](https://valentjn.github.io/vscode-ltex/docs/code-of-conduct.html) | [CODE_OF_CONDUCT.md](https://github.com/valentjn/vscode-ltex/blob/develop/CODE_OF_CONDUCT.md) |
-| [Acknowledgments](https://valentjn.github.io/vscode-ltex/docs/acknowledgments.html) | [ACKNOWLEDGMENTS.md](https://github.com/valentjn/vscode-ltex/blob/develop/ACKNOWLEDGMENTS.md) |
+| [Settings](https://valentjn.github.io/vscode-ltex/docs/settings.html) | [`package.json`](https://github.com/valentjn/vscode-ltex/blob/develop/package.json), [`package.nls.json`](https://github.com/valentjn/vscode-ltex/blob/develop/package.nls.json) |
+| [Commands](https://valentjn.github.io/vscode-ltex/docs/commands.html) | [`package.json`](https://github.com/valentjn/vscode-ltex/blob/develop/package.json), [`package.nls.json`](https://github.com/valentjn/vscode-ltex/blob/develop/package.nls.json) |
+| [Changelog](https://valentjn.github.io/vscode-ltex/docs/changelog.html) | [`CHANGELOG.md`](https://github.com/valentjn/vscode-ltex/blob/develop/CHANGELOG.md) |
+| [Contributing Code/Issues](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html) | [`CONTRIBUTING.md`](https://github.com/valentjn/vscode-ltex/blob/develop/CONTRIBUTING.md) |
+| [Code of Conduct](https://valentjn.github.io/vscode-ltex/docs/code-of-conduct.html) | [`CODE_OF_CONDUCT.md`](https://github.com/valentjn/vscode-ltex/blob/develop/CODE_OF_CONDUCT.md) |
+| [Acknowledgments](https://valentjn.github.io/vscode-ltex/docs/acknowledgments.html) | [`ACKNOWLEDGMENTS.md`](https://github.com/valentjn/vscode-ltex/blob/develop/ACKNOWLEDGMENTS.md) |
 
 ### Internationalization (I18n)
 
@@ -156,7 +156,7 @@ Of course, it's also possible to duplicate the English language files instead, b
 ### Guidelines About Versioning
 
 - **Semantic versioning** is used for vscode-ltex and ltex-ls. The two versions are independent of each other.
-  - For bugfixes, the patch version is increased.
+  - For bug fixes, the patch version is increased.
   - For new features, the minor version is increased.
   - For breaking changes, the major version is increased.
     - *Explanation:* Breaking changes are changes that may require action from users (e.g., most changes of existing LTeX settings).
