@@ -98,7 +98,7 @@ Die Sprache (z. B. `"en-US"`), mit der LanguageTool auf Fehler suchen soll. Benu
 
 Listen von zusätzlichen Wörtern, die nicht als Schreibfehler gewertet werden sollen.
 
-Diese Einstellung ist sprachabhängig. Benutzen Sie daher ein Objekt der Form `{"<SPRACHE1>": ["<WORT1>", "<WORT2>", ...], "<SPRACHE2>": ["<WORT1>", "<WORT2>", ...], ...}`, wobei `<SPRACHE>` den Sprachcode in [`ltex.language`](settings.html#ltexlanguage) bezeichnet.
+Diese Einstellung ist sprachabhängig. Benutzen Sie daher ein Objekt der Form `{"<SPRACHE1>": ["<WORT1>", "<WORT2>", ...], "<SPRACHE2>": ["<WORT1>", "<WORT2>", ...], ...}`, wobei `<SPRACHE>` den Sprachcode in [`ltex.language`](settings-de.html#ltexlanguage) bezeichnet.
 
 Diese Einstellung ist eine Multi-Scope-Einstellung. [Siehe die Dokumentation für Details.](advanced-usage.html#multi-scope-settings)
 
@@ -355,7 +355,7 @@ Objekt mit folgenden Eigenschaften:
 
 Listen von zusätzlichen Regeln, die deaktiviert werden sollen (falls standardmäßig durch LanguageTool aktiviert).
 
-Diese Einstellung ist sprachabhängig. Benutzen Sie daher ein Objekt der Form `{"<SPRACHE1>": ["<REGEL1>", "<REGEL2>", ...], "<SPRACHE2>": ["<REGEL1>", "<REGEL2>", ...], ...}`, wobei `<SPRACHE>` den Sprachcode in [`ltex.language`](settings.html#ltexlanguage) und `<REGEL>` die ID der LanguageTool-Regel bezeichnet.
+Diese Einstellung ist sprachabhängig. Benutzen Sie daher ein Objekt der Form `{"<SPRACHE1>": ["<REGEL1>", "<REGEL2>", ...], "<SPRACHE2>": ["<REGEL1>", "<REGEL2>", ...], ...}`, wobei `<SPRACHE>` den Sprachcode in [`ltex.language`](settings-de.html#ltexlanguage) und `<REGEL>` die ID der LanguageTool-Regel bezeichnet.
 
 Diese Einstellung ist eine Multi-Scope-Einstellung. [Siehe die Dokumentation für Details.](advanced-usage.html#multi-scope-settings)
 
@@ -612,7 +612,7 @@ Objekt mit folgenden Eigenschaften:
 
 Listen von zusätzlichen Regeln, die aktiviert werden sollen (falls standardmäßig durch LanguageTool deaktiviert).
 
-Diese Einstellung ist sprachabhängig. Benutzen Sie daher ein Objekt der Form `{"<SPRACHE1>": ["<REGEL1>", "<REGEL2>", ...], "<SPRACHE2>": ["<REGEL1>", "<REGEL2>", ...], ...}`, wobei `<SPRACHE>` den Sprachcode in [`ltex.language`](settings.html#ltexlanguage) und `<REGEL>` die ID der LanguageTool-Regel bezeichnet.
+Diese Einstellung ist sprachabhängig. Benutzen Sie daher ein Objekt der Form `{"<SPRACHE1>": ["<REGEL1>", "<REGEL2>", ...], "<SPRACHE2>": ["<REGEL1>", "<REGEL2>", ...], ...}`, wobei `<SPRACHE>` den Sprachcode in [`ltex.language`](settings-de.html#ltexlanguage) und `<REGEL>` die ID der LanguageTool-Regel bezeichnet.
 
 Diese Einstellung ist eine Multi-Scope-Einstellung. [Siehe die Dokumentation für Details.](advanced-usage.html#multi-scope-settings)
 
@@ -869,7 +869,7 @@ Objekt mit folgenden Eigenschaften:
 
 Listen von falschen Fehlern, die verborgen werden sollen (indem alle Fehler einer bestimmten Regel in einem bestimmten Satz verborgen werden).
 
-Diese Einstellung ist sprachabhängig. Benutzen Sie daher ein Objekt der Form `{"<SPRACHE1>": ["<JSON1>", "<JSON2>", ...], "<SPRACHE2>": ["<JSON1>", "<JSON2>", ...], ...}`, wobei `<SPRACHE>` den Sprachcode in [`ltex.language`](settings.html#ltexlanguage) bezeichnet und `<JSON>` eine JSON-Zeichenfolge ist, die Informationen über die Regel und den Satz enthält.
+Diese Einstellung ist sprachabhängig. Benutzen Sie daher ein Objekt der Form `{"<SPRACHE1>": ["<JSON1>", "<JSON2>", ...], "<SPRACHE2>": ["<JSON1>", "<JSON2>", ...], ...}`, wobei `<SPRACHE>` den Sprachcode in [`ltex.language`](settings-de.html#ltexlanguage) bezeichnet und `<JSON>` eine JSON-Zeichenfolge ist, die Informationen über die Regel und den Satz enthält.
 
 Obwohl es möglich ist, diese Einstellung manuell zu ändern, ist der bevorzugte Weg, Einträge zu dieser Einstellung hinzuzufügen, die schnelle Problembehebung `Falschen Fehler verbergen`.
 
@@ -1241,7 +1241,7 @@ Objekt mit beliebigen Eigenschaftsnamen, wobei die Werte jeder Eigenschaft folge
 
 ## `ltex.configurationTarget`
 
-Steuert, welche `settings.json` oder externe Einstellungsdatei ([siehe die Dokumentation]advanced-usage.html#external-setting-files)) geändert wird, wenn eine der schnellen Problembehebungen verwendet wird.
+Steuert, welche `settings.json` oder externe Einstellungsdatei ([siehe die Dokumentation](advanced-usage.html#external-setting-files)) geändert wird, wenn eine der schnellen Problembehebungen verwendet wird.
 
 *Typ:* `object`
 
@@ -1292,7 +1292,7 @@ Aktiviere LanguageTool-Regeln, die als pedantisch ("picky") markiert und standar
 
 Optionale Muttersprache des Benutzers (z. B. `"de-DE"`).
 
-Falls diese Einstellung gesetzt ist, werden zusätzliche Regeln verwendet, um falsche Freunde zu erkennen. Es kann sein, dass pedantische Regeln aktiviert werden müssen, damit diese Einstellung eine Auswirkung hat (siehe [`ltex.additionalRules.enablePickyRules`](settings.html#ltexadditionalrulesenablepickyrules)). Die Erkennung von falschen Freunden verbessert sich, falls ein Sprachmodell bereitgestellt wird (siehe [`ltex.additionalRules.languageModel`](settings.html#ltexadditionalruleslanguagemodel)).
+Falls diese Einstellung gesetzt ist, werden zusätzliche Regeln verwendet, um falsche Freunde zu erkennen. Es kann sein, dass pedantische Regeln aktiviert werden müssen, damit diese Einstellung eine Auswirkung hat (siehe [`ltex.additionalRules.enablePickyRules`](settings-de.html#ltexadditionalrulesenablepickyrules)). Die Erkennung von falschen Freunden verbessert sich, falls ein Sprachmodell bereitgestellt wird (siehe [`ltex.additionalRules.languageModel`](settings-de.html#ltexadditionalruleslanguagemodel)).
 
 *Typ:* `string`
 
@@ -1343,7 +1343,7 @@ Nach Änderungen muss das Fenster von Visual Studio Code erneut geladen werden.
 
 Falls dies auf eine nicht-leere Zeichenfolge gesetzt ist, dann verwendet LTeX nicht die eingebaute Version von LanguageTool. Stattdessen verbindet sich LTeX zu einem externen [LanguageTool-HTTP-Server](http://wiki.languagetool.org/http-server). Setzen Sie diese Einstellung auf die Haupt-URI des Servers und hängen Sie kein `v2/check` oder Ähnliches an.
 
-Beachten Sie, dass in diesem Modus die Einstellungen [`ltex.dictionary`](settings.html#ltexdictionary), [`ltex.additionalRules.languageModel`](settings.html#ltexadditionalruleslanguagemodel), [`ltex.additionalRules.neuralNetworkModel`](settings.html#ltexadditionalrulesneuralnetworkmodel) und [`ltex.additionalRules.word2VecModel`](settings.html#ltexadditionalrulesword2vecmodel) ignoriert werden und dass die schnelle Problembehebung `Zum Wörterbuch hinzufügen` nicht erscheint.
+Beachten Sie, dass in diesem Modus die Einstellungen [`ltex.dictionary`](settings-de.html#ltexdictionary), [`ltex.additionalRules.languageModel`](settings-de.html#ltexadditionalruleslanguagemodel), [`ltex.additionalRules.neuralNetworkModel`](settings-de.html#ltexadditionalrulesneuralnetworkmodel) und [`ltex.additionalRules.word2VecModel`](settings-de.html#ltexadditionalrulesword2vecmodel) ignoriert werden und dass die schnelle Problembehebung `Zum Wörterbuch hinzufügen` nicht erscheint.
 
 *Typ:* `string`
 
