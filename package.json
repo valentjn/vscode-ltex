@@ -1953,7 +1953,7 @@
     "eslint-plugin-only-warn": "1.0.2",
     "mocha": "8.3.2",
     "rimraf": "3.0.2",
-    "ts-loader": "8.0.18",
+    "ts-loader": "8.1.0",
     "typescript": "4.2.3",
     "vscode-test": "1.5.1",
     "webpack": "5.30.0",
