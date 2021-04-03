@@ -11,6 +11,10 @@
 ## 10.0.0 (upcoming)
 
 - Update required version of VS Code (now 1.52.0 or newer)
+- Update LanguageTool to 5.3 (see [LT 5.3 release notes](https://github.com/languagetool-org/languagetool/blob/v5.3/languagetool-standalone/CHANGES.md#53-2021-03-29))
+- Add `FR_SPELLING_RULE` as a rule for unknown words ([PR ltex-ls#47](https://github.com/valentjn/ltex-ls/pull/47) by [Nicolas Sicard (@biozic)](https://github.com/biozic))
+- Update LSP4J to 0.12.0
+- Update LT<sub>E</sub>X LS to 11.0.0
 
 ## 9.0.0 — “The HTML Evaporation” (February 12, 2021)
 
@@ -327,7 +331,7 @@
 
 - Add support for R Sweave `.rnw` files (fixes [#22](https://github.com/valentjn/vscode-ltex/issues/22))
 - Enable fixing multiple diagnostics at once (fixes [#23](https://github.com/valentjn/vscode-ltex/issues/23))
-- Add `ltex.javaHome` setting to control the `JAVA_HOME` environment variable (PR [#24](https://github.com/valentjn/vscode-ltex/issues/24) by `mpolitze`)
+- Add `ltex.javaHome` setting to control the `JAVA_HOME` environment variable (PR [#24](https://github.com/valentjn/vscode-ltex/issues/24) by [@mpolitze](https://github.com/mpolitze))
 - Add support for `\euro` (fixes [#25](https://github.com/valentjn/vscode-ltex/issues/25))
 - Minor changes in readme
 - Update LT<sub>E</sub>X LS to 4.7.8
