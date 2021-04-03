@@ -8,9 +8,9 @@
 
 # Changelog
 
-## Upcoming Fundamental Changes
+## 10.0.0 (upcoming)
 
-- New versions of LT<sub>E</sub>X released on or after April 3, 2021, will require VS Code 1.52.0 or later
+- Update required version of VS Code (now 1.52.0 or newer)
 
 ## 9.0.0 — “The HTML Evaporation” (February 12, 2021)
 
@@ -301,7 +301,7 @@
 - Update to LanguageTool 4.9 (see [LT 4.9 release notes](https://github.com/languagetool-org/languagetool/blob/v4.9/languagetool-standalone/CHANGES.md#49-2020-03-24))
 - Update other Java dependencies
 - Update NPM dependencies
-- Update required version of VS Code (now 1.39 or newer)
+- Update required version of VS Code (now 1.39.0 or newer)
 - Reduce file size of extension (omitting unneeded dependencies)
 - Add usage instructions to readme
 - Update LT<sub>E</sub>X LS to 4.9.0
