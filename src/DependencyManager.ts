@@ -62,6 +62,7 @@ export default class DependencyManager {
 
   public constructor(context: Code.ExtensionContext) {
     this._context = context;
+    // deprecated: replace with context.extension starting with VS Code 1.55.0
     const vscodeLtexExtension: Code.Extension<any> | undefined =
         Code.extensions.getExtension('valentjn.vscode-ltex');
     if (vscodeLtexExtension == null) throw new Error(i18n('couldNotGetVscodeLtexVersion'));

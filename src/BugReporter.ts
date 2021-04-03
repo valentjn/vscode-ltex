@@ -106,6 +106,7 @@ export default class BugReporter {
 
     bugReport = bugReport.replace(/^- VS Code: .*$/m, `- VS Code: ${Code.version}`);
 
+    // deprecated: replace with self._context.extension starting with VS Code 1.55.0
     const extension: Code.Extension<any> | undefined =
         Code.extensions.getExtension('valentjn.vscode-ltex');
 
