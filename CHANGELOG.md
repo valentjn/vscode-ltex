@@ -13,6 +13,7 @@
 - Update required version of VS Code (now 1.52.0 or newer)
 - Update LanguageTool to 5.3 (see [LT 5.3 release notes](https://github.com/languagetool-org/languagetool/blob/v5.3/languagetool-standalone/CHANGES.md#53-2021-03-29))
 - Add `FR_SPELLING_RULE` as a rule for unknown words ([PR ltex-ls#47](https://github.com/valentjn/ltex-ls/pull/47) by [Nicolas Sicard (@biozic)](https://github.com/biozic))
+- Change type of [`ltex.additionalRules.motherTongue`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexadditionalrulesmothertongue) to `enum` to clarify possible values (fixes [#260](https://github.com/valentjn/vscode-ltex/issues/260))
 - Update LSP4J to 0.12.0
 - Update LT<sub>E</sub>X LS to 11.0.0
 

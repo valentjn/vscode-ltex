@@ -47,10 +47,11 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
   with open(packageJsonPath, "r") as f: packageJson = json.load(f)
   settings = packageJson["contributes"]["configuration"]["properties"]
 
-  settings["ltex.language"]["enum"] = ltLanguageShortCodes
-  settings["ltex.language"]["markdownEnumDescriptions"] = [
-      f"%ltex.i18n.configuration.ltex.language.{x}.markdownEnumDescription%"
-      for x in ltLanguageShortCodes]
+  for settingName in ["ltex.language", "ltex.additionalRules.motherTongue"]:
+    settings[settingName]["enum"] = ltLanguageShortCodes
+    settings[settingName]["markdownEnumDescriptions"] = [
+        f"%ltex.i18n.configuration.{settingName}.{x}.markdownEnumDescription%"
+        for x in ltLanguageShortCodes]
 
   for settingName in ["ltex.dictionary", "ltex.disabledRules", "ltex.enabledRules",
         "ltex.hiddenFalsePositives"]:
@@ -162,6 +163,17 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
               f"List of `{ltLanguageShortCode}` ({ltLanguageName}) false-positive diagnostics to hide.")
 
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.hiddenFalsePositives\..+\.", key) is not None:
+      continue
+
+    elif key == "ltex.i18n.configuration.ltex.additionalRules.motherTongue.markdownDescription":
+      newPackageNlsJson[key] = value
+
+      for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
+        prefix = f"ltex.i18n.configuration.ltex.additionalRules.motherTongue.{ltLanguageShortCode}"
+        newPackageNlsJson[f"{prefix}.markdownEnumDescription"] = ltLanguageName
+
+    elif re.match(r"^ltex\.i18n\.configuration\.ltex\.additionalRules.motherTongue\..+\.",
+          key) is not None:
       continue
 
     else:
