@@ -49,56 +49,22 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
 
   settings["ltex.language"]["enum"] = ltLanguageShortCodes
   settings["ltex.language"]["markdownEnumDescriptions"] = [
-      "%ltex.i18n.configuration.ltex.language.{}.markdownEnumDescription%".format(x)
+      f"%ltex.i18n.configuration.ltex.language.{x}.markdownEnumDescription%"
       for x in ltLanguageShortCodes]
 
-  settings["ltex.dictionary"]["properties"] = {
-        languageShortCode: {
-          "type" : "array",
-          "items" : {
-            "type" : "string",
-          },
-          "markdownDescription" : "%ltex.i18n.configuration.ltex.dictionary."
-            "{}.markdownDescription%".format(languageShortCode),
+  for settingName in ["ltex.dictionary", "ltex.disabledRules", "ltex.enabledRules",
+        "ltex.hiddenFalsePositives"]:
+    settings[settingName]["properties"] = {
+          languageShortCode: {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+            },
+            "markdownDescription" : f"%ltex.i18n.configuration.{settingName}."
+              f"{languageShortCode}.markdownDescription%",
+          }
+          for languageShortCode in ltLanguageShortCodes
         }
-        for languageShortCode in ltLanguageShortCodes
-      }
-
-  settings["ltex.disabledRules"]["properties"] = {
-        languageShortCode: {
-          "type" : "array",
-          "items" : {
-            "type" : "string",
-          },
-          "markdownDescription" : "%ltex.i18n.configuration.ltex.disabledRules."
-            "{}.markdownDescription%".format(languageShortCode),
-        }
-        for languageShortCode in ltLanguageShortCodes
-      }
-
-  settings["ltex.enabledRules"]["properties"] = {
-        languageShortCode: {
-          "type" : "array",
-          "items" : {
-            "type" : "string",
-          },
-          "markdownDescription" : "%ltex.i18n.configuration.ltex.enabledRules."
-            "{}.markdownDescription%".format(languageShortCode),
-        }
-        for languageShortCode in ltLanguageShortCodes
-      }
-
-  settings["ltex.hiddenFalsePositives"]["properties"] = {
-        languageShortCode: {
-          "type" : "array",
-          "items" : {
-            "type" : "string",
-          },
-          "markdownDescription" : "%ltex.i18n.configuration.ltex.hiddenFalsePositives."
-            "{}.markdownDescription%".format(languageShortCode),
-        }
-        for languageShortCode in ltLanguageShortCodes
-      }
 
   with open(packageJsonPath, "w") as f:
     json.dump(packageJson, f, indent=2, ensure_ascii=False)
@@ -108,8 +74,7 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
 
 def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: Sequence[str],
       uiLanguage: str) -> None:
-  packageNlsJsonPath = (os.path.join(common.repoDirPath, "package.nls.json") if uiLanguage == "en" else
-      os.path.join(common.repoDirPath, "package.nls.{}.json".format(uiLanguage)))
+  packageNlsJsonPath = (os.path.join(common.repoDirPath, "package.nls.json") if uiLanguage == "en" else os.path.join(common.repoDirPath, f"package.nls.{uiLanguage}.json"))
   with open(packageNlsJsonPath, "r") as f: oldPackageNlsJson = json.load(f)
 
   newPackageNlsJson = {}
@@ -219,12 +184,12 @@ def main() -> None:
   assert len(ltexLsPaths) > 0, "ltex-ls not found"
   assert len(ltexLsPaths) < 2, "multiple ltex-ls found via wildcard"
   ltexLsPath = ltexLsPaths[0]
-  print("Using ltex-ls from {}".format(ltexLsPath))
+  print(f"Using ltex-ls from {ltexLsPath}")
 
   print("Fetching languages from LanguageTool...")
   ltLanguageShortCodes, ltLanguageNames = fetchLanguages(toolsDirPath, ltexLsPath)
   assert len(ltLanguageShortCodes) > 0, "No languages found."
-  print("LanguageTool Languages: {}".format(", ".join(ltLanguageShortCodes)))
+  print("LanguageTool languages: {}".format(", ".join(ltLanguageShortCodes)))
 
   print("Updating package.json...")
   updatePackageJson(ltLanguageShortCodes)
@@ -236,7 +201,7 @@ def main() -> None:
     match = re.match(r"^package\.nls\.([A-Za-z0-9\-_]+)\.json$", fileName)
     if match is None: continue
     uiLanguage = match.group(1)
-    print("Updating package.nls.{}.json...".format(uiLanguage))
+    print(f"Updating package.nls.{uiLanguage}.json...")
     updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, uiLanguage)
 
 
