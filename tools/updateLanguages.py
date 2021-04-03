@@ -25,11 +25,6 @@ toolsDirPath = os.path.join(common.repoDirPath, "tools")
 
 
 
-def removeKeyIfPresent(d: Dict[str, Any], key: str) -> None:
-  if key in d: del d[key]
-
-
-
 def run(cmd: Sequence[str], **kwargs: Any) -> subprocess.CompletedProcess[bytes]:
   print("Running {}...".format(" ".join(shlex.quote(x) for x in cmd)))
   return subprocess.run(cmd, stdout=subprocess.PIPE, cwd=toolsDirPath)
@@ -57,7 +52,6 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
       "%ltex.i18n.configuration.ltex.language.{}.markdownEnumDescription%".format(x)
       for x in ltLanguageShortCodes]
 
-  removeKeyIfPresent(settings["ltex.dictionary"], "propertyNames")
   settings["ltex.dictionary"]["properties"] = {
         languageShortCode: {
           "type" : "array",
@@ -70,7 +64,6 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
         for languageShortCode in ltLanguageShortCodes
       }
 
-  removeKeyIfPresent(settings["ltex.disabledRules"], "propertyNames")
   settings["ltex.disabledRules"]["properties"] = {
         languageShortCode: {
           "type" : "array",
@@ -83,7 +76,6 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
         for languageShortCode in ltLanguageShortCodes
       }
 
-  removeKeyIfPresent(settings["ltex.enabledRules"], "propertyNames")
   settings["ltex.enabledRules"]["properties"] = {
         languageShortCode: {
           "type" : "array",
@@ -96,7 +88,6 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
         for languageShortCode in ltLanguageShortCodes
       }
 
-  removeKeyIfPresent(settings["ltex.hiddenFalsePositives"], "propertyNames")
   settings["ltex.hiddenFalsePositives"]["properties"] = {
         languageShortCode: {
           "type" : "array",
