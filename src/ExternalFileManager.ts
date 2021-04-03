@@ -265,7 +265,8 @@ export default class ExternalFileManager {
   }
 
   public getWorkspaceSettingsDirPath(): string | null {
-    const workspaceFolders: Code.WorkspaceFolder[] | undefined = Code.workspace.workspaceFolders;
+    const workspaceFolders: readonly Code.WorkspaceFolder[] | undefined =
+        Code.workspace.workspaceFolders;
     if ((workspaceFolders == null) || (workspaceFolders.length == 0)) return null;
     const workspaceDirUri: Code.Uri = workspaceFolders[0].uri;
     if (workspaceDirUri.scheme != 'file') return null;

@@ -6,7 +6,7 @@
  */
 
 import * as Code from 'vscode';
-import * as CodeLanguageClient from 'vscode-languageclient';
+import * as CodeLanguageClient from 'vscode-languageclient/node';
 
 import DependencyManager from './DependencyManager';
 import ExternalFileManager from './ExternalFileManager';

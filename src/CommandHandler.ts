@@ -6,7 +6,7 @@
  */
 
 import * as Code from 'vscode';
-import * as CodeLanguageClient from 'vscode-languageclient';
+import * as CodeLanguageClient from 'vscode-languageclient/node';
 import * as Path from 'path';
 
 import BugReporter from './BugReporter';

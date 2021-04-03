@@ -6,7 +6,7 @@
  */
 
 import * as Code from 'vscode';
-import * as CodeLanguageClient from 'vscode-languageclient';
+import * as CodeLanguageClient from 'vscode-languageclient/node';
 import * as ChildProcess from 'child_process';
 import * as Crypto from 'crypto';
 import extractZip from 'extract-zip';
