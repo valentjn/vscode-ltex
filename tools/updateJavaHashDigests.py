@@ -10,13 +10,15 @@ import os
 import re
 import urllib.parse
 import sys
+from typing import Dict
 
 sys.path.append(os.path.dirname(__file__))
 import common
 
 
 
-def getDownloadUrlsOfGitHubReleases(organizationName, repositoryName, tagName):
+def getDownloadUrlsOfGitHubReleases(organizationName: str, repositoryName: str,
+      tagName: str) -> Dict[str, str]:
   apiUrl = (f"https://api.github.com/repos/{urllib.parse.quote_plus(organizationName)}/"
       f"{urllib.parse.quote_plus(repositoryName)}/releases/tags/{urllib.parse.quote_plus(tagName)}")
   response = common.requestFromGitHub(apiUrl)
@@ -24,7 +26,7 @@ def getDownloadUrlsOfGitHubReleases(organizationName, repositoryName, tagName):
 
 
 
-def main():
+def main() -> None:
   print(f"Retrieving list of assets for tag 'jdk-{common.toBeDownloadedJavaVersion}'...")
   downloadUrls = getDownloadUrlsOfGitHubReleases("AdoptOpenJDK", "openjdk11-binaries",
       f"jdk-{common.toBeDownloadedJavaVersion}")
@@ -37,9 +39,10 @@ def main():
     print(f"Retrieving hash digest for '{assetFileName}'...")
     response = common.requestFromGitHub(
         f"{downloadUrls[assetFileName]}.sha256.txt", decodeAsJson=False).decode().strip()
-    match = re.match(r"^([A-Fa-f0-9]{64}) +(.*)$", response)
-    hashDigest = match.group(1)
-    assert match.group(2) == assetFileName
+    regexMatch = re.match(r"^([A-Fa-f0-9]{64}) +(.*)$", response)
+    assert regexMatch is not None
+    hashDigest = regexMatch.group(1)
+    assert regexMatch.group(2) == assetFileName
     print(f"Hash digest is '{hashDigest}'.")
     hashDigests.append(hashDigest)
 

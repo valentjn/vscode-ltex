@@ -9,6 +9,7 @@
 import os
 import re
 import sys
+from typing import Any
 
 import yaml
 
@@ -21,10 +22,10 @@ pagesDirPath = os.path.abspath(os.path.join(common.repoDirPath, "..", "vscode-lt
 
 
 
-def getSlug(markdown):
+def getSlug(markdown: str) -> str:
   return re.sub(r"[^a-z0-9\-]", "", re.sub(r"[ ]", "-", markdown.lower()))
 
-def getMarkdownStructure(baseUrl, markdownPath):
+def getMarkdownStructure(baseUrl: str, markdownPath: str) -> Any:
   with open(markdownPath, "r") as f: markdown = f.read()
 
   iterator = re.finditer(r"^---$", markdown, flags=re.MULTILINE)
@@ -35,7 +36,7 @@ def getMarkdownStructure(baseUrl, markdownPath):
   markdown = markdown[match.end():]
 
   matches = re.findall(r"^(#+) (.*)$", markdown, flags=re.MULTILINE)
-  structure = []
+  structure: Any = []
 
   for match in matches:
     level = len(match[0]) - 2
@@ -47,7 +48,7 @@ def getMarkdownStructure(baseUrl, markdownPath):
 
   return structure
 
-def convertToMarkdown(structure, indent=0):
+def convertToMarkdown(structure: Any, indent: int = 0) -> str:
   markdown = ""
 
   for entry in structure:
@@ -58,7 +59,7 @@ def convertToMarkdown(structure, indent=0):
 
   return markdown
 
-def processTitle(title):
+def processTitle(title: str) -> str:
   title = title.replace("LaTeX", "L<sup>A</sup>T<sub>E</sub>X").replace("TeX", "T<sub>E</sub>X")
   prevTitle = None
 
@@ -70,7 +71,7 @@ def processTitle(title):
 
 
 
-def updateReadme():
+def updateReadme() -> None:
   serverUrl = "https://valentjn.github.io/vscode-ltex"
   sidebarYamlPath = os.path.join(pagesDirPath, "_data", "sidebars", "sidebar.yml")
   with open(sidebarYamlPath, "r") as f: sidebarYaml = yaml.load(f, Loader=yaml.SafeLoader)
@@ -109,7 +110,7 @@ def updateReadme():
 
 
 
-def updateChangelog():
+def updateChangelog() -> None:
   changelogPath = os.path.join(pagesDirPath, "pages", "docs", "changelog.md")
   with open(changelogPath, "r") as f: changelog = f.read()
 
@@ -136,7 +137,7 @@ def updateChangelog():
 
 
 
-def main():
+def main() -> None:
   updateReadme()
   updateChangelog()
 

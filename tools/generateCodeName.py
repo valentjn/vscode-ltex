@@ -160,7 +160,7 @@ Vortex
 
 
 
-def main():
+def main() -> None:
   parser = argparse.ArgumentParser(
       description="Generate a code name for the next release of LTeX")
   parser.add_argument("topic", metavar="TOPIC", help="Main topic of the release")

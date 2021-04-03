@@ -11,6 +11,7 @@ import os
 import re
 import sys
 import traceback
+from typing import Any
 import urllib.parse
 import urllib.request
 
@@ -37,7 +38,7 @@ del matches
 
 
 
-def requestFromGitHub(url, decodeAsJson=True):
+def requestFromGitHub(url: str, decodeAsJson: bool = True) -> Any:
   headers = {}
 
   if "LTEX_GITHUB_OAUTH_TOKEN" in os.environ:
@@ -52,7 +53,7 @@ def requestFromGitHub(url, decodeAsJson=True):
     with urllib.request.urlopen(apiRequest) as f: response = f.read()
   except urllib.error.HTTPError as e:
     traceback.print_exc()
-    print("Response body: \"{}\"".format(e.read()))
+    print("Response body: \"{!r}\"".format(e.read()))
     sys.exit(1)
 
   if decodeAsJson: response = json.loads(response)

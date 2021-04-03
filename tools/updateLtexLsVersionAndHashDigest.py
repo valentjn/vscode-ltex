@@ -11,6 +11,7 @@ import hashlib
 import os
 import re
 import sys
+from typing import Iterable
 import urllib.parse
 
 import semver
@@ -20,12 +21,13 @@ import common
 
 
 
-def getLatestLtexLsVersion(versions, allowPrerelease=False):
+def getLatestLtexLsVersion(versions: Iterable[str],
+      allowPrerelease: bool = False) -> semver.VersionInfo:
   latestVersion = None
 
-  for version in versions:
-    if semver.VersionInfo.isvalid(version):
-      version = semver.VersionInfo.parse(version)
+  for versionString in versions:
+    if semver.VersionInfo.isvalid(versionString):
+      version = semver.VersionInfo.parse(versionString)
 
       if ((allowPrerelease or (version.prerelease is None)) and
             ((latestVersion is None) or (version > latestVersion))):
@@ -35,7 +37,7 @@ def getLatestLtexLsVersion(versions, allowPrerelease=False):
 
 
 
-def main():
+def main() -> None:
   parser = argparse.ArgumentParser(description="Update version and hash digest of LTeX LS")
   parser.add_argument("--allow-prerelease", action="store_true",
       help="Allow prerelease versions")

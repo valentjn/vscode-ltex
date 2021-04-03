@@ -20,12 +20,13 @@ import sys
 import tarfile
 import tempfile
 import time
+from typing import Any, Dict, IO, Optional, Tuple
 import urllib.request
 
 
 
 class LSPClient(object):
-  def __init__(self, conn, stdout, stderr):
+  def __init__(self, conn: socket.socket, stdout: IO[bytes], stderr: IO[bytes]) -> None:
     self.conn = conn
     self.stdout = stdout
     self.stderr = stderr
@@ -35,15 +36,16 @@ class LSPClient(object):
     self.documentCounter = 0
 
   @staticmethod
-  def wrap_message(body):
-    body = body.encode()
-    header = "Content-Length: {}\r\n".format(len(body)).encode()
-    return header + b"\r\n" + body
+  def wrap_message(body: str) -> bytes:
+    encodedBody = body.encode()
+    header = "Content-Length: {}\r\n".format(len(encodedBody)).encode()
+    return header + b"\r\n" + encodedBody
 
-  def read_response(self):
+  def read_response(self) -> Any:
     header = b""
     while not header.endswith(b"\r\n\r\n"): header += self.conn.recv(1)
-    headers = dict([x.split(": ") for x in header.decode()[:-4].split("\r\n")])
+    headers: Dict[str, str] = dict([(x.split(": ")[0], x.split(": ")[1])
+        for x in header.decode()[:-4].split("\r\n")])
     lengthBody = int(headers["Content-Length"])
 
     body = b""
@@ -52,7 +54,7 @@ class LSPClient(object):
 
     return response
 
-  def listen_for_response(self, requestId):
+  def listen_for_response(self, requestId: int) -> Any:
     response = {"id" : None}
 
     while response["id"] != requestId:
@@ -62,7 +64,7 @@ class LSPClient(object):
 
     return response
 
-  def listen_for_notification(self, uri=None):
+  def listen_for_notification(self, uri: Optional[str] = None) -> Any:
     while True:
       response = self.read_response()
 
@@ -71,21 +73,21 @@ class LSPClient(object):
 
     return response
 
-  def process_response(self, response):
+  def process_response(self, response: Any) -> None:
     print("Received response: {}".format(response))
 
-  def process_notification(self, notification):
+  def process_notification(self, notification: Any) -> None:
     print("Received notification: {}".format(notification))
 
   @staticmethod
-  def indent_output(output):
+  def indent_output(output: str) -> str:
     if len(output) == 0: return ""
     indentation = 4 * " "
     indentedOutput = indentation + output.replace("\n", "\n" + indentation)
     if output.endswith("\n"): indentedOutput = indentedOutput[:-len(indentation)]
     return indentedOutput
 
-  def print_output(self):
+  def print_output(self) -> Tuple[str, str]:
     self.stdout.seek(self.stdoutPosition)
     stdoutOutput = self.stdout.read().decode()
     print(LSPClient.indent_output(stdoutOutput), end="")
@@ -100,7 +102,8 @@ class LSPClient(object):
 
     return stdoutOutput, stderrOutput
 
-  def send_request(self, method, params, verbose=True, failOnStderrOutput=True):
+  def send_request(self, method: str, params: Any, verbose: bool = True,
+        failOnStderrOutput: bool = True) -> Any:
     self.print_output()
     self.requestCounter += 1
     requestId = self.requestCounter
@@ -122,7 +125,7 @@ class LSPClient(object):
 
     return response
 
-  def send_notification(self, method, params, verbose=True):
+  def send_notification(self, method: str, params: Any, verbose: bool = True) -> None:
     self.print_output()
 
     body = json.dumps({"jsonrpc" : "2.0", "method" : method, "params" : params})
@@ -130,7 +133,8 @@ class LSPClient(object):
     if verbose: print("Sending notification: {}".format(body))
     self.conn.send(lspNotification)
 
-  def validate_document(self, text, verbose=False, failOnStderrOutput=True, path=None):
+  def validate_document(self, text: str, verbose: bool = False, failOnStderrOutput: bool = True,
+        path: Optional[str] = None) -> None:
     self.print_output()
     self.documentCounter += 1
     uri = "foo://{}".format(self.documentCounter)
@@ -159,7 +163,8 @@ class LSPClient(object):
 
 
 
-def processArxivTex(lspClient, tex, texPath, arxivId, saveTex):
+def processArxivTex(lspClient: LSPClient, tex: str, texPath: str, arxivId: str,
+      saveTex: Optional[str]) -> None:
   if saveTex is not None:
     saveTexPath = os.path.join(saveTex, (
         "{}.tex".format(arxivId) if os.path.basename(texPath) == arxivId else
@@ -171,7 +176,7 @@ def processArxivTex(lspClient, tex, texPath, arxivId, saveTex):
 
 
 
-def main():
+def main() -> None:
   parser = argparse.ArgumentParser(description=
       "Test LTeX VS Code extension on randomly chosen arXiv papers")
   parser.add_argument("--batch-size", type=int, default=10, help=
@@ -276,7 +281,7 @@ def main():
                 texPath = os.path.join(root, file_)
 
                 try:
-                  with open(texPath, "r") as f: tex = f.read()
+                  with open(texPath, "r") as texFile: tex = texFile.read()
                 except UnicodeDecodeError:
                   print("Skipping LaTeX file {} due to Unicode decode error.".format(texPath))
                   continue

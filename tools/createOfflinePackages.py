@@ -16,6 +16,7 @@ import shutil
 import subprocess
 import sys
 import tarfile
+from typing import Callable, Optional
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -32,28 +33,31 @@ libDirPath = os.path.join(common.repoDirPath, "lib")
 
 # to get proper logs with CI services
 oldPrint = print
-print = (lambda *args, **kwargs: oldPrint(*args, **kwargs, flush=True))
+print: Callable[..., None] = (lambda *args, **kwargs: oldPrint(*args, **kwargs, flush=True))
 
 
 
-def cleanLibDir():
+def cleanLibDir() -> None:
   cmd = ["git", "-C", common.repoDirPath, "clean", "-f", "-x", libDirPath]
   print("Cleaning lib/ by running '{}'...".format(" ".join(shlex.quote(x) for x in cmd)))
   subprocess.run(cmd)
 
 
 
-def getLtexVersion():
+def getLtexVersion() -> semver.VersionInfo:
   with open(os.path.join(common.repoDirPath, "package.json"), "r") as f: packageJson = json.load(f)
   return semver.VersionInfo.parse(packageJson["version"])
 
 
 
-def downloadLtexLs():
+def downloadLtexLs() -> None:
   dependencyManagerFilePath = os.path.join(common.repoDirPath, "src", "DependencyManager.ts")
   with open(dependencyManagerFilePath, "r") as f: dependencyManagerTypescript = f.read()
-  ltexLsVersion = re.search(r"(?:_toBeDownloadedLtexLsVersion: string = ')(.*?)(?:';\n)",
-      dependencyManagerTypescript).group(1)
+  regexMatch = re.search(r"(?:_toBeDownloadedLtexLsVersion: string = ')(.*?)(?:';\n)",
+      dependencyManagerTypescript)
+  assert regexMatch is not None, \
+      f"Could not find _toBeDownloadedLtexLsVersion in '{dependencyManagerFilePath}."
+  ltexLsVersion = regexMatch.group(1)
 
   ltexLsUrl = ("https://github.com/valentjn/ltex-ls/releases/download/"
       f"{ltexLsVersion}/ltex-ls-{ltexLsVersion}.tar.gz")
@@ -66,13 +70,13 @@ def downloadLtexLs():
   print("Removing ltex-ls archive...")
   os.remove(ltexLsArchivePath)
 
-def extractLtexLs(ltexLsArchivePath):
+def extractLtexLs(ltexLsArchivePath: str) -> None:
   print("Extracting ltex-ls archive...")
   with tarfile.open(ltexLsArchivePath, "r:gz") as f: f.extractall(path=libDirPath)
 
 
 
-def removeJava():
+def removeJava() -> None:
   path = os.path.join(libDirPath, f"jdk-{common.toBeDownloadedJavaVersion}-jre")
 
   if os.path.isdir(path):
@@ -85,7 +89,7 @@ def removeJava():
     print(f"Removing old Java file '{path}'...")
     os.remove(path)
 
-def downloadJava(platform, arch):
+def downloadJava(platform: str, arch: str) -> None:
   javaArchiveType = ("zip" if platform == "windows" else "tar.gz")
   javaArchiveName = (f"OpenJDK11U-jre_{arch}_{platform}_hotspot_"
       f"{common.toBeDownloadedJavaVersion.replace('+', '_')}.{javaArchiveType}")
@@ -98,16 +102,16 @@ def downloadJava(platform, arch):
   print("Extracting Java archive...")
 
   if javaArchiveType == "zip":
-    with zipfile.ZipFile(javaArchivePath, "r") as f: f.extractall(path=libDirPath)
+    with zipfile.ZipFile(javaArchivePath, "r") as zipFile: zipFile.extractall(path=libDirPath)
   else:
-    with tarfile.open(javaArchivePath, "r:gz") as f: f.extractall(path=libDirPath)
+    with tarfile.open(javaArchivePath, "r:gz") as tarFile: tarFile.extractall(path=libDirPath)
 
   print("Removing Java archive...")
   os.remove(javaArchivePath)
 
 
 
-def createPackage(ltexPlatform=None, ltexArch=None):
+def createPackage(ltexPlatform: Optional[str] = None, ltexArch: Optional[str] = None) -> None:
   ltexVersion = getLtexVersion()
 
   if ltexPlatform is None:
@@ -122,7 +126,7 @@ def createPackage(ltexPlatform=None, ltexArch=None):
 
 
 
-def main():
+def main() -> None:
   parser = argparse.ArgumentParser(description="Build offline packages of LTeX")
   parser.add_argument("--current-system", action="store_true",
       help="Build offline package only for current platform/architecture")
