@@ -21,7 +21,9 @@ toc: false
 <a href="https://github.com/valentjn/vscode-ltex/issues" class="no-external">![open issues](https://badgen.net/github/open-issues/valentjn/vscode-ltex?label=open/closed%20issues&color=blue)</a>&nbsp;<a href="https://github.com/valentjn/vscode-ltex/issues" class="no-external">![closed issues](https://badgen.net/github/closed-issues/valentjn/vscode-ltex?label=)</a><br/>
 <a href="https://github.com/valentjn/ltex-ls" class="no-external">![ltex-ls](https://badgen.net/github/license/valentjn/ltex-ls?label=ltex-ls)</a>&nbsp;
 <a href="https://github.com/valentjn/ltex-ls/actions?query=workflow%3A%22CI%22+branch%3Arelease" class="no-external">![CI status](https://github.com/valentjn/ltex-ls/workflows/CI/badge.svg?branch=release)</a>&nbsp;
-<a href="https://coveralls.io/github/valentjn/ltex-ls" class="no-external">![coverage](https://badgen.net/coveralls/c/github/valentjn/ltex-ls/release)</a>
+<a href="https://coveralls.io/github/valentjn/ltex-ls" class="no-external">![coverage](https://badgen.net/coveralls/c/github/valentjn/ltex-ls/release)</a>&nbsp;
+<a href="https://github.com/valentjn/ltex-ls" class="no-external">![stars](https://badgen.net/github/stars/valentjn/ltex-ls)</a>&nbsp;
+<a href="https://github.com/valentjn/ltex-ls/issues" class="no-external">![open issues](https://badgen.net/github/open-issues/valentjn/ltex-ls?label=open/closed%20issues&color=blue)</a>&nbsp;<a href="https://github.com/valentjn/ltex-ls/issues" class="no-external">![closed issues](https://badgen.net/github/closed-issues/valentjn/ltex-ls?label=)</a>
 
 **LTeX** provides offline grammar checking of various markup languages in Visual Studio Code using [LanguageTool&nbsp;(LT)](https://languagetool.org/). LTeX currently supports LaTeX and Markdown documents.
 
