@@ -138,9 +138,13 @@ def plotMap() -> None:
   for child in ax.get_children():
     if isinstance(child, mpl.image.AxesImage): child.set_alpha(0.5)
 
-  for stargazer in map_["stargazers"].values():
-    if stargazer is None: continue
-    ax.plot(stargazer["lon"], stargazer["lat"], ".", color="#8888ff", mec="#5555ff", ms=14,
+  stargazers = sorted(list(set((stargazer["lon"], stargazer["lat"])
+      for repoName in ["vscode-ltex", "ltex-ls"]
+      for stargazer in map_["stargazers"][repoName].values()
+      if stargazer is not None)))
+
+  for stargazer in stargazers:
+    ax.plot(stargazer[0], stargazer[1], ".", color="#8888ff", mec="#5555ff", ms=14,
         transform=cartopy.crs.PlateCarree())
 
   ax.set_facecolor("none")
