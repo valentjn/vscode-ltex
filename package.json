@@ -1738,6 +1738,7 @@
           "scope": "resource",
           "default": "",
           "enum": [
+            "",
             "ar",
             "ast-ES",
             "be-BY",
@@ -1786,6 +1787,7 @@
             "zh-CN"
           ],
           "markdownEnumDescriptions": [
+            "%ltex.i18n.configuration.ltex.additionalRules.motherTongue.emptyString.markdownEnumDescription%",
             "%ltex.i18n.configuration.ltex.additionalRules.motherTongue.ar.markdownEnumDescription%",
             "%ltex.i18n.configuration.ltex.additionalRules.motherTongue.ast-ES.markdownEnumDescription%",
             "%ltex.i18n.configuration.ltex.additionalRules.motherTongue.be-BY.markdownEnumDescription%",

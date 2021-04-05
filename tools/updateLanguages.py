@@ -48,10 +48,16 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
   settings = packageJson["contributes"]["configuration"]["properties"]
 
   for settingName in ["ltex.language", "ltex.additionalRules.motherTongue"]:
-    settings[settingName]["enum"] = ltLanguageShortCodes
+    curLtLanguageShortCodes = list(ltLanguageShortCodes)
+
+    if settingName == "ltex.additionalRules.motherTongue":
+      curLtLanguageShortCodes.insert(0, "")
+
+    settings[settingName]["enum"] = curLtLanguageShortCodes
     settings[settingName]["markdownEnumDescriptions"] = [
-        f"%ltex.i18n.configuration.{settingName}.{x}.markdownEnumDescription%"
-        for x in ltLanguageShortCodes]
+        f"%ltex.i18n.configuration.{settingName}.{x if len(x) > 0 else 'emptyString'}."
+        "markdownEnumDescription%"
+        for x in curLtLanguageShortCodes]
 
   for settingName in ["ltex.dictionary", "ltex.disabledRules", "ltex.enabledRules",
         "ltex.hiddenFalsePositives"]:
@@ -167,6 +173,13 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
 
     elif key == "ltex.i18n.configuration.ltex.additionalRules.motherTongue.markdownDescription":
       newPackageNlsJson[key] = value
+
+      prefix = f"ltex.i18n.configuration.ltex.additionalRules.motherTongue.emptyString"
+
+      if uiLanguage == "de":
+        newPackageNlsJson[f"{prefix}.markdownEnumDescription"] = "Keine Muttersprache"
+      else:
+        newPackageNlsJson[f"{prefix}.markdownEnumDescription"] = "No mother tongue"
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
         prefix = f"ltex.i18n.configuration.ltex.additionalRules.motherTongue.{ltLanguageShortCode}"

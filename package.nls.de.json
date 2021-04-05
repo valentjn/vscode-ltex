@@ -279,6 +279,7 @@
   "ltex.i18n.configuration.ltex.configurationTarget.hiddenFalsePositives.workspaceFolderExternalFile.markdownEnumDescription": "Wenn ein falscher Fehler verborgen wird, verändere die erste externe Einstellungsdatei in der Arbeitsbereichsordner-Konfiguration, falls gerade ein Arbeitsbereichsordner geöffnet ist, ansonsten die analoge Datei in der Arbeitsbereich-Konfiguration, falls gerade ein Arbeitsbereich geöffnet ist, ansonsten die analoge Datei in der Benutzer-Konfiguration.",
   "ltex.i18n.configuration.ltex.additionalRules.enablePickyRules.markdownDescription": "Aktiviere LanguageTool-Regeln, die als pedantisch (\"picky\") markiert und standardmäßig deaktiviert sind, z. B. Regeln bzgl. Passiv, Satzlänge etc.",
   "ltex.i18n.configuration.ltex.additionalRules.motherTongue.markdownDescription": "Optionale Muttersprache des Benutzers (z. B. `\"de-DE\"`). [Weitere Informationen ...](https://valentjn.github.io/vscode-ltex/docs/settings-de.html#ltexadditionalrulesmothertongue)",
+  "ltex.i18n.configuration.ltex.additionalRules.motherTongue.emptyString.markdownEnumDescription": "Keine Muttersprache",
   "ltex.i18n.configuration.ltex.additionalRules.motherTongue.ar.markdownEnumDescription": "Arabic",
   "ltex.i18n.configuration.ltex.additionalRules.motherTongue.ast-ES.markdownEnumDescription": "Asturian",
   "ltex.i18n.configuration.ltex.additionalRules.motherTongue.be-BY.markdownEnumDescription": "Belarusian",
