@@ -98,10 +98,23 @@ export default class CommandHandler {
           text: text,
           range: range,
         };
+    let result: ServerCommandResult = {
+          success: false,
+        };
 
-    const result: ServerCommandResult =
-        await this._languageClient.sendRequest('workspace/executeCommand',
+    try {
+      await Promise.race([
+        this._languageClient.onReady(),
+        new Promise((_resolve: (value: any) => void, reject: (e: Error) => void) => {
+          setTimeout(() => reject(new Error(i18n('ltexNotInitialized'))), 30000);
+        }),
+      ]);
+      result = await this._languageClient.sendRequest('workspace/executeCommand',
           {command: 'ltex.checkDocument', arguments: [params]});
+    } catch (e) {
+      result.success = false;
+      result.errorMessage = e.message;
+    }
 
     if (result.success) {
       return Promise.resolve(true);
