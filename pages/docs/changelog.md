@@ -11,9 +11,20 @@ sidebar: "sidebar"
 toc: false
 ---
 
-## Upcoming Fundamental Changes
+## 10.0.0 (upcoming)
 
-- New versions of LTeX released on or after April 3, 2021, will require VS Code 1.52.0 or later
+- Update required version of VS Code (now 1.52.0 or newer)
+- Update LanguageTool to 5.3 (see [LT 5.3 release notes](https://github.com/languagetool-org/languagetool/blob/v5.3/languagetool-standalone/CHANGES.md#53-2021-03-29))
+- Add [`ltex.activateExtension`](commands.html#ltex-activate-extension) command to activate the extension in case it has not been activated before
+- Automatically activate extension if one of the [LTeX commands](commands.html) is executed
+- Enhance support of accents in LaTeX by using Unicode combining diacritical marks, normalized via [Unicode Normalization Form C](https://www.unicode.org/reports/tr15/tr15-50.html#Normalization_Forms_Table) (fixes [#269](https://github.com/valentjn/vscode-ltex/issues/269))
+- Add support for many accents in LaTeX: double acute (e.g., `\H{O}`, &#x0150;), line below (e.g., `\b{h}`, &#x1e96;), dot below (e.g., `\d{A}`, &#x1ea0;), ogonek (e.g., `\k{A}`, &#x0104;), breve (e.g., `\u{A}`, &#x0102;), and caron (e.g., `\v{C}`, &#x010c;) ([PR ltex-ls#57](https://github.com/valentjn/ltex-ls/pull/57) by [@ed359](https://github.com/ed359), fixes [ltex-ls#56](https://github.com/valentjn/ltex-ls/issues/56))
+- Add support for special characters in LaTeX: `\L` (&#x0141;), `\SS` (&#x1e9e;), `\i` (&#x0131;), `\j` (&#x0237;), `\l` (&#x0142;) ([PR ltex-ls#57](https://github.com/valentjn/ltex-ls/pull/57) by [@ed359](https://github.com/ed359), fixes [ltex-ls#56](https://github.com/valentjn/ltex-ls/issues/56))
+- Add `FR_SPELLING_RULE` as a rule for unknown words ([PR ltex-ls#47](https://github.com/valentjn/ltex-ls/pull/47) by [Nicolas Sicard (@biozic)](https://github.com/biozic))
+- Use LaTeX parser for documents with code language ID `tex` ([PR ltex-ls#54](https://github.com/valentjn/ltex-ls/pull/54) by [Lucas Alber (@LDAP)](https://github.com/LDAP), fixes [ltex-ls#53](https://github.com/valentjn/ltex-ls/issues/53))
+- Change type of [`ltex.additionalRules.motherTongue`](settings.html#ltexadditionalrulesmothertongue) to `enum` to clarify possible values (fixes [#260](https://github.com/valentjn/vscode-ltex/issues/260))
+- Update LSP4J to 0.12.0
+- Update LTeX LS to 11.0.0
 
 ## 9.0.0 — “The HTML Evaporation” (February 12, 2021)
 
@@ -304,7 +315,7 @@ toc: false
 - Update to LanguageTool 4.9 (see [LT 4.9 release notes](https://github.com/languagetool-org/languagetool/blob/v4.9/languagetool-standalone/CHANGES.md#49-2020-03-24))
 - Update other Java dependencies
 - Update NPM dependencies
-- Update required version of VS Code (now 1.39 or newer)
+- Update required version of VS Code (now 1.39.0 or newer)
 - Reduce file size of extension (omitting unneeded dependencies)
 - Add usage instructions to readme
 - Update LTeX LS to 4.9.0
@@ -330,7 +341,7 @@ toc: false
 
 - Add support for R Sweave `.rnw` files (fixes [#22](https://github.com/valentjn/vscode-ltex/issues/22))
 - Enable fixing multiple diagnostics at once (fixes [#23](https://github.com/valentjn/vscode-ltex/issues/23))
-- Add `ltex.javaHome` setting to control the `JAVA_HOME` environment variable (PR [#24](https://github.com/valentjn/vscode-ltex/issues/24) by `mpolitze`)
+- Add `ltex.javaHome` setting to control the `JAVA_HOME` environment variable (PR [#24](https://github.com/valentjn/vscode-ltex/issues/24) by [@mpolitze](https://github.com/mpolitze))
 - Add support for `\euro` (fixes [#25](https://github.com/valentjn/vscode-ltex/issues/25))
 - Minor changes in readme
 - Update LTeX LS to 4.7.8
@@ -490,13 +501,13 @@ toc: false
 
 ## 0.0.4 (June 22, 2017)
 
-- Add configuration to make extension opt-in by workspace thanks to [Faustino Aguilar](https://github.com/faustinoaq) ([PR #5](https://github.com/adamvoss/vscode-languagetool/pull/5), workaround for [Microsoft/vscode#15611](https://github.com/Microsoft/vscode/issues/15611))
+- Add configuration to make extension opt-in by workspace thanks to [Faustino Aguilar](https://github.com/faustinoaq) ([PR vscode-languagetool#5](https://github.com/adamvoss/vscode-languagetool/pull/5), workaround for [microsoft/vscode#15611](https://github.com/Microsoft/vscode/issues/15611))
 - Language-support extensions are now detected through the Visual Studio Code API rather than file-path assumptions
 
 ## 0.0.3 (June 14, 2017)
 
 - Fix checking of files when no folder was open
-- Prevent virtual files (including those from Git) from being checked (fixes [#2](https://github.com/adamvoss/vscode-languagetool/issues/2))
+- Prevent virtual files (including those from Git) from being checked (fixes [vscode-languagetool#2](https://github.com/adamvoss/vscode-languagetool/issues/2))
 
 ## 0.0.2 (June 12, 2017)
 
