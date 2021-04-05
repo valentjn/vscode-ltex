@@ -362,7 +362,7 @@
   "ltex.i18n.configuration.ltex.checkFrequency.fullMarkdownDescription": "Controls when documents should be checked.\n\nOne of `\"edit\"`, `\"save\"`, and `\"manual\"`.",
   "ltex.i18n.configuration.ltex.checkFrequency.edit.markdownEnumDescription": "Documents are checked when they are opened or edited (on every keystroke), or when the settings change.",
   "ltex.i18n.configuration.ltex.checkFrequency.save.markdownEnumDescription": "Documents are checked when they are opened or saved, or when the settings change.",
-  "ltex.i18n.configuration.ltex.checkFrequency.manual.markdownEnumDescription": "Documents are not checked automatically, except when the settings change. Use commands such as `Check Current Document` to manually trigger checks.",
+  "ltex.i18n.configuration.ltex.checkFrequency.manual.markdownEnumDescription": "Documents are not checked automatically, except when the settings change. Use commands such as [`LTeX: Check Current Document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-current-document) to manually trigger checks.",
   "ltex.i18n.configuration.ltex.clearDiagnosticsWhenClosingFile.markdownDescription": "If set to `true`, diagnostics of a file are cleared when the file is closed.",
   "ltex.i18n.configuration.ltex.statusBarItem.markdownDescription": "If set to `true`, an item about the status of LTeX is shown permanently in the status bar.",
   "ltex.i18n.configuration.ltex.trace.server.markdownDescription": "Debug setting to log the communication between language client and server. [More info...](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltextraceserver)",
