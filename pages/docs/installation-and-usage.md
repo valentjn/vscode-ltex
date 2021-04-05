@@ -14,7 +14,7 @@ sidebar: "sidebar"
 ## Requirements
 
 - 64-bit operating system
-- [VS Code 1.39.0 or newer](https://code.visualstudio.com/) (note: new versions of LTeX released on or after April 3, 2021, will require VS Code 1.52.0 or later)
+- [VS Code 1.52.0 or later](https://code.visualstudio.com/) (note: new versions of LTeX released on or after April 3, 2021, will require VS Code 1.52.0 or later)
 - Optional:
   - If you want to check LaTeX documents: [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
