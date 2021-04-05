@@ -56,6 +56,6 @@ LTeX is a successor (since it's a fork) of the abandoned [LanguageTool for Visua
 
 <div style="margin-bottom:30px;"></div>
 
-## Facts & Figures
+## Thousands of People Around the World Use LTeX
 
 {% include stats/summary.html %}
