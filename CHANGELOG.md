@@ -309,7 +309,7 @@
 
 ## 4.9.0 — “The Update Alternative” (March 28, 2020)
 
-- Update to LanguageTool 4.9 (see [LT 4.9 release notes](https://github.com/languagetool-org/languagetool/blob/v4.9/languagetool-standalone/CHANGES.md#49-2020-03-24))
+- Update LanguageTool to 4.9 (see [LT 4.9 release notes](https://github.com/languagetool-org/languagetool/blob/v4.9/languagetool-standalone/CHANGES.md#49-2020-03-24))
 - Update other Java dependencies
 - Update NPM dependencies
 - Update required version of VS Code (now 1.39.0 or newer)
@@ -390,7 +390,7 @@
 
 ## 4.7.0 — “The Multi-Root Observation” (October 1, 2019)
 
-- Update to LanguageTool 4.7 (see [LT 4.7 release notes](https://github.com/languagetool-org/languagetool/blob/v4.7/languagetool-standalone/CHANGES.md#47-2019-09-28))
+- Update LanguageTool to 4.7 (see [LT 4.7 release notes](https://github.com/languagetool-org/languagetool/blob/v4.7/languagetool-standalone/CHANGES.md#47-2019-09-28))
 - Support multi-root workspaces, all configuration settings except [`ltex.enabled`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabled) are now resource-specific (fixes [#7](https://github.com/valentjn/vscode-ltex/issues/7))
 - Save dictionary settings under full language short code (e.g., `en-US` instead of `en`). If you already have a dictionary under `ltex.en.dictionary` and use `en-US` as language (not `en`), you have to rename the settings name to `ltex.en-US.dictionary` (similarly for other languages).
 - Remove diagnostics when a file is closed
@@ -486,13 +486,13 @@
 ## 4.6.0 — “The LT<sub>E</sub>X Resurgence” (September 1, 2019)
 
 - Forked abandoned repository, rename to vscode-ltex
-- Update to LanguageTool 4.6 (see [LT 4.6 release notes](https://github.com/languagetool-org/languagetool/blob/v4.6/languagetool-standalone/CHANGES.md#46-2019-06-26))
+- Update LanguageTool to 4.6 (see [LT 4.6 release notes](https://github.com/languagetool-org/languagetool/blob/v4.6/languagetool-standalone/CHANGES.md#46-2019-06-26))
 - Update other dependencies (vscode, vscode-languageclient, LSP, JUnit, Gradle)
 - Implement simple L<sup>A</sup>T<sub>E</sub>X parser
 
 ## 3.8.0 (July 8, 2017)
 
-- Update to LanguageTool 3.8 (see [LT 3.8 release notes](https://github.com/languagetool-org/languagetool/blob/v3.8/languagetool-standalone/CHANGES.md#38-2017-06-27))
+- Update LanguageTool to 3.8 (see [LT 3.8 release notes](https://github.com/languagetool-org/languagetool/blob/v3.8/languagetool-standalone/CHANGES.md#38-2017-06-27))
 - Update versioning to reflect LanguageTool versioning
 - Remove preview flag since no blocker issues have been reported
 
