@@ -52,7 +52,7 @@ Download the offline version of LTeX at the [Releases page on GitHub](https://gi
 
 Download [ltex-ls](https://github.com/valentjn/ltex-ls/releases) and/or a Java distribution (for instance [AdoptOpenJDK](https://adoptopenjdk.net/)) individually and set [`ltex.ltex-ls.path`](settings.html#ltexltex-lspath) and/or [`ltex.java.path`](settings.html#ltexjavapath) to the respective locations. Note that the versions of ltex-ls and/or Java have to satisfy the following requirements:
 
-- Each version of LTeX has been tested with exactly one version of ltex-ls, which is the version which LTeX automatically downloads. If you download ltex-ls manually, be sure to use this version of ltex-ls. An older or a newer version of ltex-ls might work, or it might not.
+- Each version of LTeX has been tested with exactly one version of ltex-ls, which is the version that LTeX automatically downloads. If you download ltex-ls manually, be sure to use this version of ltex-ls. An older or a newer version of ltex-ls might work, or it might not.
 
   For this reason, this approach is not recommended as automatically updated versions of LTeX (by Visual Studio Code) might not be compatible anymore with your manually downloaded version of ltex-ls. If you choose this approach, remember to update ltex-ls if LTeX doesn't work anymore.
 
