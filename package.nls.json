@@ -370,6 +370,8 @@
   "ltex.i18n.configuration.ltex.trace.server.off.markdownEnumDescription": "Don't log any of the communication between language client and server.",
   "ltex.i18n.configuration.ltex.trace.server.messages.markdownEnumDescription": "Log the type of requests and responses between language client and server.",
   "ltex.i18n.configuration.ltex.trace.server.verbose.markdownEnumDescription": "Log the type and contents of requests and responses between language client and server.",
+  "ltex.i18n.commands.ltex.activateExtension.title": "Activate Extension",
+  "ltex.i18n.commands.ltex.activateExtension.fullMarkdownDescription": "Activates the extension; does nothing if the extension is already activated.\n\nThe extension is automatically activated when files with supported code language modes (= default value of [`ltex.enabled`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabled)) are opened in the editor. Use this command if you want to use LTeX on files with unsupported code language modes.",
   "ltex.i18n.commands.ltex.checkSelection.title": "Check Selection",
   "ltex.i18n.commands.ltex.checkSelection.fullMarkdownDescription": "Triggers a check of the primary selection of the active document, and clears all LTeX diagnostics of the active document outside the primary selection.\n\nThe active document is the one whose editor currently has focus, or, if none has focus, the one which was changed most recently.\n\nIt is usually not necessary to run this command as LTeX automatically checks supported documents when being opened or changed.",
   "ltex.i18n.commands.ltex.checkCurrentDocument.title": "Check Current Document",

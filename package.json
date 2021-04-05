@@ -39,6 +39,7 @@
     "Other"
   ],
   "activationEvents": [
+    "onCommand:ltex.activateExtension",
     "onLanguage:bibtex",
     "onLanguage:latex",
     "onLanguage:markdown",
@@ -1978,6 +1979,11 @@
       }
     },
     "commands": [
+      {
+        "command": "ltex.activateExtension",
+        "title": "%ltex.i18n.commands.ltex.activateExtension.title%",
+        "category": "LTeX"
+      },
       {
         "command": "ltex.checkSelection",
         "title": "%ltex.i18n.commands.ltex.checkSelection.title%",

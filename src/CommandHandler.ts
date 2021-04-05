@@ -50,6 +50,8 @@ export default class CommandHandler {
     this._languageClient = null;
     this._externalFileManager = externalFileManager;
 
+    context.subscriptions.push(Code.commands.registerCommand('ltex.activateExtension',
+        this.activateExtension.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.checkSelection',
         this.checkSelection.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.checkCurrentDocument',
@@ -78,6 +80,9 @@ export default class CommandHandler {
 
   public set languageClient(languageClient: CodeLanguageClient.LanguageClient | null) {
     this._languageClient = languageClient;
+  }
+
+  private activateExtension(): void {
   }
 
   private async checkDocument(uri: Code.Uri, codeLanguageId?: string,
