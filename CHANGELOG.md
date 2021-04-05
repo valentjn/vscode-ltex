@@ -8,7 +8,7 @@
 
 # Changelog
 
-## 10.0.0 (upcoming)
+## 10.0.0 — “The Unicode Simulation” (April 5, 2021)
 
 - Update required version of VS Code (now 1.52.0 or newer)
 - Update LanguageTool to 5.3 (see [LT 5.3 release notes](https://github.com/languagetool-org/languagetool/blob/v5.3/languagetool-standalone/CHANGES.md#53-2021-03-29))
