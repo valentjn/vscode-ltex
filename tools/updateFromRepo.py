@@ -33,9 +33,7 @@ i18nStrings = {
         "arrayWithTheFollowingEntries" : "Array with the following entries",
         "clickToShowHide" : "Click to show/hide",
         "commandIntroduction" : "To run a command, open the Command Palette (`Ctrl+Shift+P`) and "
-          "start typing the name of the command. The commands can only be run after the extension "
-          "has been activated, i.e., after at least one LaTeX or Markdown file has been opened in "
-          "the current workspace.",
+          "start typing the name of the command.",
         "default" : "Default",
         "example" : "Example",
         "examples" : "Examples",
@@ -57,10 +55,7 @@ i18nStrings = {
         "arrayWithTheFollowingEntries" : "Array mit folgenden Einträgen",
         "clickToShowHide" : "Klick zum Zeigen/Verbergen",
         "commandIntroduction" : "Um einen Befehl auszuführen, öffnen Sie die Befehlspalette "
-          "(`Ctrl+Shift+P`) und beginnen Sie mit der Eingabe des Befehlsnamens. Die Befehle "
-          "können nur dann ausgeführt werden, nachdem die Erweiterung aktiviert worden ist, das "
-          "heißt, nachdem mindestens eine LaTeX- oder Markdown-Datei im aktuellen Arbeitsbereich "
-          "geöffnet worden ist.",
+          "(`Ctrl+Shift+P`) und beginnen Sie mit der Eingabe des Befehlsnamens.",
         "default" : "Voreinstellung",
         "example" : "Beispiel",
         "examples" : "Beispiele",
