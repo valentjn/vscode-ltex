@@ -1302,6 +1302,7 @@ Falls diese Einstellung gesetzt ist, werden zusätzliche Regeln verwendet, um fa
 
 *Mögliche Werte:*
 
+- `""`: Keine Muttersprache
 - `"ar"`: Arabic
 - `"ast-ES"`: Asturian
 - `"be-BY"`: Belarusian

@@ -1302,6 +1302,7 @@ If set, additional rules will be checked to detect false friends. Picky rules ma
 
 *Possible values:*
 
+- `""`: No mother tongue
 - `"ar"`: Arabic
 - `"ast-ES"`: Asturian
 - `"be-BY"`: Belarusian
