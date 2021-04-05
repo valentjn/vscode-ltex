@@ -12,7 +12,13 @@ sidebar: "sidebar"
 
 Change language of this page: [English](commands.html), [German](commands-de.html)
 
-To run a command, open the Command Palette (`Ctrl+Shift+P`) and start typing the name of the command. The commands can only be run after the extension has been activated, i.e., after at least one LaTeX or Markdown file has been opened in the current workspace.
+To run a command, open the Command Palette (`Ctrl+Shift+P`) and start typing the name of the command.
+
+## `LTeX: Activate Extension`
+
+Activates the extension; does nothing if the extension is already activated.
+
+The extension is automatically activated when files with supported code language modes (= default value of [`ltex.enabled`](settings.html#ltexenabled)) are opened in the editor. Use this command if you want to use LTeX on files with unsupported code language modes.
 
 ## `LTeX: Check Selection`
 

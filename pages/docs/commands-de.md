@@ -12,7 +12,13 @@ sidebar: "sidebar"
 
 Change language of this page: [English](commands.html), [German](commands-de.html)
 
-Um einen Befehl auszuführen, öffnen Sie die Befehlspalette (`Ctrl+Shift+P`) und beginnen Sie mit der Eingabe des Befehlsnamens. Die Befehle können nur dann ausgeführt werden, nachdem die Erweiterung aktiviert worden ist, das heißt, nachdem mindestens eine LaTeX- oder Markdown-Datei im aktuellen Arbeitsbereich geöffnet worden ist.
+Um einen Befehl auszuführen, öffnen Sie die Befehlspalette (`Ctrl+Shift+P`) und beginnen Sie mit der Eingabe des Befehlsnamens.
+
+## `LTeX: Aktiviere Erweiterung`
+
+Aktiviert die Erweiterung; macht nichts, falls die Erweiterung bereits aktiviert ist.
+
+Die Erweiterung wird automatisch aktiviert, wenn Dateien mit unterstützten Code-Sprachmodi (= Voreinstellung von [`ltex.enabled`](settings-de.html#ltexenabled)) im Editor geöffnet werden. Benutzen Sie diesen Befehl, wenn Sie LTeX für Dateien mit nicht unterstützten Code-Sprachmodi benutzen möchten.
 
 ## `LTeX: Prüfe Auswahl`
 
