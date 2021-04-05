@@ -133,7 +133,7 @@ def plotMap() -> None:
   ax.set_global()
   ax.stock_img()
   ax.coastlines(alpha=0.3)
-  ax.outline_patch.set_edgecolor("#0000004c")
+  ax.spines["geo"].set_edgecolor("#0000004c")
 
   for child in ax.get_children():
     if isinstance(child, mpl.image.AxesImage): child.set_alpha(0.5)
