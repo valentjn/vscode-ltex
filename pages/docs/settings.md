@@ -14,9 +14,13 @@ Change language of this page: [English](settings.html), [German](settings-de.htm
 
 ## `ltex.enabled`
 
-Controls whether the extension is enabled. Allows to disable LanguageTool on specific workspaces or for specific code language modes (i.e., file types).
+Controls whether the extension is enabled. Allows disabling LanguageTool on specific workspaces or for specific code language modes (i.e., file types).
 
 Either supply a Boolean value stating whether LTeX is enabled for all supported code language modes or disabled for all of them, or supply a list of [code language identifiers](https://code.visualstudio.com/docs/languages/identifiers) for which LTeX should be enabled (note that extensions can define additional code language identifiers).
+
+All supported code language modes are listed in the default value of this setting. If you add an unsupported code language mode (i.e., a code language mode that is not listed in the default value), LTeX will check corresponding files as plain text without any parsing.
+
+The activation events are unaffected by this setting. This means that the extension will be activated whenever a file with a supported code language mode is opened. For unsupported code language modes, you may need to activate the extension explicitly by executing the [`LTeX: Activate Extension`](commands.html#ltex-activate-extension) command.
 
 Changes require reloading the Visual Studio Code window to take effect.
 
@@ -1177,7 +1181,7 @@ Object with arbitrary property names, where the value of each property has the f
   - `"default"`: The command is treated like unknown commands are treated by default: The command name itself is ignored, but the arguments are not ignored.
   - `"ignore"`: The whole command together with its arguments is ignored.
   - `"dummy"`: The whole command together with its arguments is replaced with a dummy word (i.e., `Dummy0`, `Dummy1`, etc.). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
-  - `"pluralDummy"`: The whole command together with its arguments is replaced with a plural dummy word (i.e., `Dummies0`, `Dummies1`, etc.). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
+  - `"pluralDummy"`: The whole command together with its arguments is replaced with a plural dummy word (i.e., `Dummies`). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
 
 </div>
 
@@ -1235,7 +1239,7 @@ Object with arbitrary property names, where the value of each property has the f
   - `"default"`: The node is not treated specially.
   - `"ignore"`: The whole node together with its `Text` leaves is ignored.
   - `"dummy"`: The whole node together with its `Text` leaves is replaced with a dummy word (i.e., `Dummy0`, `Dummy1`, etc.). LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
-  - `"pluralDummy"`: The whole node together with its `Text` leaves is replaced with a plural dummy word (i.e., `Dummies0`, `Dummies1`, etc.). LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
+  - `"pluralDummy"`: The whole node together with its `Text` leaves is replaced with a plural dummy word (i.e., `Dummies`). LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.
 
 </div>
 
@@ -1296,10 +1300,54 @@ If set, additional rules will be checked to detect false friends. Picky rules ma
 
 *Type:* `string`
 
-*Examples:*
+*Possible values:*
 
-- `"en-US"`
-- `"de-DE"`
+- `"ar"`: Arabic
+- `"ast-ES"`: Asturian
+- `"be-BY"`: Belarusian
+- `"br-FR"`: Breton
+- `"ca-ES"`: Catalan
+- `"ca-ES-valencia"`: Catalan (Valencian)
+- `"da-DK"`: Danish
+- `"de"`: German
+- `"de-AT"`: German (Austria)
+- `"de-CH"`: German (Swiss)
+- `"de-DE"`: German (Germany)
+- `"de-DE-x-simple-language"`: Simple German
+- `"el-GR"`: Greek
+- `"en"`: English
+- `"en-AU"`: English (Australian)
+- `"en-CA"`: English (Canadian)
+- `"en-GB"`: English (GB)
+- `"en-NZ"`: English (New Zealand)
+- `"en-US"`: English (US)
+- `"en-ZA"`: English (South African)
+- `"eo"`: Esperanto
+- `"es"`: Spanish
+- `"fa"`: Persian
+- `"fr"`: French
+- `"ga-IE"`: Irish
+- `"gl-ES"`: Galician
+- `"it"`: Italian
+- `"ja-JP"`: Japanese
+- `"km-KH"`: Khmer
+- `"nl"`: Dutch
+- `"nl-BE"`: Dutch (Belgium)
+- `"pl-PL"`: Polish
+- `"pt"`: Portuguese
+- `"pt-AO"`: Portuguese (Angola preAO)
+- `"pt-BR"`: Portuguese (Brazil)
+- `"pt-MZ"`: Portuguese (Moçambique preAO)
+- `"pt-PT"`: Portuguese (Portugal)
+- `"ro-RO"`: Romanian
+- `"ru-RU"`: Russian
+- `"sk-SK"`: Slovak
+- `"sl-SI"`: Slovenian
+- `"sv"`: Swedish
+- `"ta-IN"`: Tamil
+- `"tl-PH"`: Tagalog
+- `"uk-UA"`: Ukrainian
+- `"zh-CN"`: Chinese
 
 *Default:* `""`
 
@@ -1464,7 +1512,7 @@ One of `"edit"`, `"save"`, and `"manual"`.
 
 - `"edit"`: Documents are checked when they are opened or edited (on every keystroke), or when the settings change.
 - `"save"`: Documents are checked when they are opened or saved, or when the settings change.
-- `"manual"`: Documents are not checked automatically, except when the settings change. Use commands such as `Check Current Document` to manually trigger checks.
+- `"manual"`: Documents are not checked automatically, except when the settings change. Use commands such as [`LTeX: Check Current Document`](commands.html#ltex-check-current-document) to manually trigger checks.
 
 *Default:* `"edit"`
 

@@ -16,7 +16,11 @@ Change language of this page: [English](settings.html), [German](settings-de.htm
 
 Steuert, ob die Erweiterung aktiviert ist. Erlaubt die Deaktivierung von LanguageTool für bestimmte Arbeitsbereiche oder für bestimmte Code-Sprachmodi (d. h. Dateitypen).
 
-Sie können entweder einen Boolean-Wert angeben, der bestimmt, ob LTeX für alle Code-Sprachmodi aktiviert oder für alle Sprachmodi deaktiviert ist, oder eine Liste von [Code-Sprachbezeichnern](https://code.visualstudio.com/docs/languages/identifiers), für die LTeX aktiviert werden soll (beachten Sie, dass Erweiterungen zusätzliche Code-Sprachbezeichner definieren können).
+Sie können entweder einen Boolean-Wert angeben, der bestimmt, ob LTeX für alle unterstützten Code-Sprachmodi aktiviert oder für alle Sprachmodi deaktiviert wird, oder eine Liste von [Code-Sprachbezeichnern](https://code.visualstudio.com/docs/languages/identifiers), für die LTeX aktiviert werden soll (beachten Sie, dass Erweiterungen zusätzliche Code-Sprachbezeichner definieren können).
+
+Alle unterstützten Code-Sprachmodi sind in der Voreinstellung dieser Einstellung aufgelistet. Wenn Sie einen nicht-unterstützten Code-Sprachmodus hinzufügen (also einen Code-Sprachmodus, der nicht in der Voreinstellung enthalten ist), dann wird LTeX entsprechende Dateien als reinen Text ohne Parsen überprüfen.
+
+Die Aktivierungsereignisse werden von dieser Einstellung nicht berührt. Das heißt, dass die Erweiterung aktiviert wird, sobald eine Datei mit einem unterstützten Code-Sprachmodus geöffnet wird. Falls Sie Dateien mit nicht-unterstützten Codi-Sprachmodi überprüfen wollen, müssen Sie eventuell die Erweiterung explizit mithilfe des Befehls [`LTeX: Aktiviere Erweiterung`](commands-de.html#ltex-aktiviere-erweiterung) aktivieren.
 
 Nach Änderungen muss das Fenster von Visual Studio Code erneut geladen werden.
 
@@ -1177,7 +1181,7 @@ Objekt mit beliebigen Eigenschaftsnamen, wobei die Werte jeder Eigenschaft folge
   - `"default"`: Der Befehl wird so behandelt, wie unbekannte Befehle standardmäßig behandelt werden: Der Befehlsname an sich wird ignoriert, aber die Befehlsargumente werden nicht ignoriert.
   - `"ignore"`: Der ganze Befehl zusammen mit seinen Argumenten wird ignoriert.
   - `"dummy"`: Der ganze Befehl zusammen mit seinen Argumenten wird durch ein Dummy-Wort ersetzt (d. h. `Dummy0`, `Dummy1` usw.). LTeX nutzt diesen Mechanismus intern für Gleichungen, Literaturverweise, Referenzen und ähnliche Konstrukte, die Teil der Satzstruktur sind und für die LanguageTool einen Fehler anzeigen würde, wenn man sie einfach im überprüften Text weglassen würde.
-  - `"pluralDummy"`: Der ganze Befehl zusammen mit seinen Argumenten wird durch ein Plural-Dummy-Wort ersetzt (d. h. `Dummies0`, `Dummies1` usw.). LTeX nutzt diesen Mechanismus intern für Gleichungen, Literaturverweise, Referenzen und ähnliche Konstrukte, die Teil der Satzstruktur sind und für die LanguageTool einen Fehler anzeigen würde, wenn man sie einfach im überprüften Text weglassen würde.
+  - `"pluralDummy"`: Der ganze Befehl zusammen mit seinen Argumenten wird durch ein Plural-Dummy-Wort ersetzt (d. h. `Dummies`). LTeX nutzt diesen Mechanismus intern für Gleichungen, Literaturverweise, Referenzen und ähnliche Konstrukte, die Teil der Satzstruktur sind und für die LanguageTool einen Fehler anzeigen würde, wenn man sie einfach im überprüften Text weglassen würde.
 
 </div>
 
@@ -1235,7 +1239,7 @@ Objekt mit beliebigen Eigenschaftsnamen, wobei die Werte jeder Eigenschaft folge
   - `"default"`: Der Knoten wird nicht gesondert behandelt.
   - `"ignore"`: Der ganze Knoten zusammen mit seinen `Text`-Blättern wird ignoriert.
   - `"dummy"`: Der ganze Knoten zusammen mit seinen `Text`-Blättern wird durch ein Dummy-Wort ersetzt (d. h. `Dummy0`, `Dummy1` usw.). LTeX nutzt diesen Mechanismus intern für Gleichungen, Literaturverweise, Referenzen und ähnliche Konstrukte, die Teil der Satzstruktur sind und für die LanguageTool einen Fehler anzeigen würde, wenn man sie einfach im überprüften Text weglassen würde.
-  - `"pluralDummy"`: Der ganze Knoten zusammen mit seinen `Text`-Blättern wird durch ein Plural-Dummy-Wort ersetzt (d. h. `Dummies0`, `Dummies1` usw.). LTeX nutzt diesen Mechanismus intern für Gleichungen, Literaturverweise, Referenzen und ähnliche Konstrukte, die Teil der Satzstruktur sind und für die LanguageTool einen Fehler anzeigen würde, wenn man sie einfach im überprüften Text weglassen würde.
+  - `"pluralDummy"`: Der ganze Knoten zusammen mit seinen `Text`-Blättern wird durch ein Plural-Dummy-Wort ersetzt (d. h. `Dummies`). LTeX nutzt diesen Mechanismus intern für Gleichungen, Literaturverweise, Referenzen und ähnliche Konstrukte, die Teil der Satzstruktur sind und für die LanguageTool einen Fehler anzeigen würde, wenn man sie einfach im überprüften Text weglassen würde.
 
 </div>
 
@@ -1296,10 +1300,54 @@ Falls diese Einstellung gesetzt ist, werden zusätzliche Regeln verwendet, um fa
 
 *Typ:* `string`
 
-*Beispiele:*
+*Mögliche Werte:*
 
-- `"en-US"`
-- `"de-DE"`
+- `"ar"`: Arabic
+- `"ast-ES"`: Asturian
+- `"be-BY"`: Belarusian
+- `"br-FR"`: Breton
+- `"ca-ES"`: Catalan
+- `"ca-ES-valencia"`: Catalan (Valencian)
+- `"da-DK"`: Danish
+- `"de"`: German
+- `"de-AT"`: German (Austria)
+- `"de-CH"`: German (Swiss)
+- `"de-DE"`: German (Germany)
+- `"de-DE-x-simple-language"`: Simple German
+- `"el-GR"`: Greek
+- `"en"`: English
+- `"en-AU"`: English (Australian)
+- `"en-CA"`: English (Canadian)
+- `"en-GB"`: English (GB)
+- `"en-NZ"`: English (New Zealand)
+- `"en-US"`: English (US)
+- `"en-ZA"`: English (South African)
+- `"eo"`: Esperanto
+- `"es"`: Spanish
+- `"fa"`: Persian
+- `"fr"`: French
+- `"ga-IE"`: Irish
+- `"gl-ES"`: Galician
+- `"it"`: Italian
+- `"ja-JP"`: Japanese
+- `"km-KH"`: Khmer
+- `"nl"`: Dutch
+- `"nl-BE"`: Dutch (Belgium)
+- `"pl-PL"`: Polish
+- `"pt"`: Portuguese
+- `"pt-AO"`: Portuguese (Angola preAO)
+- `"pt-BR"`: Portuguese (Brazil)
+- `"pt-MZ"`: Portuguese (Moçambique preAO)
+- `"pt-PT"`: Portuguese (Portugal)
+- `"ro-RO"`: Romanian
+- `"ru-RU"`: Russian
+- `"sk-SK"`: Slovak
+- `"sl-SI"`: Slovenian
+- `"sv"`: Swedish
+- `"ta-IN"`: Tamil
+- `"tl-PH"`: Tagalog
+- `"uk-UA"`: Ukrainian
+- `"zh-CN"`: Chinese
 
 *Voreinstellung:* `""`
 
@@ -1462,7 +1510,7 @@ Steuert, wann Dokumente überprüft werden sollen. Eines von `"edit"`, `"save"` 
 
 - `"edit"`: Dokumente werden überprüft, wenn sie geöffnet oder bearbeitet werden (bei jedem Tastendruck), oder wenn sich die Einstellungen ändern.
 - `"save"`: Dokumente werden überprüft, wenn sie geöffnet oder gespeichert werden, oder wenn sich die Einstellungen ändern.
-- `"manual"`: Dokumente werden nicht automatisch überprüft, außer wenn sich die Einstellungen ändern. Verwenden Sie Befehle wie `Check Current Document`, um manuell Überprüfungen zu veranlassen.
+- `"manual"`: Dokumente werden nicht automatisch überprüft, außer wenn sich die Einstellungen ändern. Verwenden Sie Befehle wie [`LTeX: Prüfe aktuelles Dokument`](commands-de.html#ltex-prfe-aktuelles-dokument), um manuell Überprüfungen zu veranlassen.
 
 *Voreinstellung:* `"edit"`
 
