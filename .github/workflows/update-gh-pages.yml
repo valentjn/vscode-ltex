@@ -47,8 +47,11 @@ jobs:
       - name: "Rebase gh-pages"
         run: "git remote set-branches --add origin gh-pages && git fetch origin gh-pages:gh-pages && git checkout gh-pages && git reset --hard gh-pages-release"
 
-      - name: "Fetch Stats"
-        run: "wget -O _data/stats/stats.json https://github.com/valentjn/vscode-ltex-stats/raw/stats/data/stats.json && wget -O _data/stats/map.json https://github.com/valentjn/vscode-ltex-stats/raw/stats/data/map.json"
+      - name: "Fetch stats.json"
+        run: "curl -u 'valentjn:${{ secrets.VSCODE_LTEX_FETCH_PRIVATE_STATS_REPO_TOKEN }}' -H 'Accept: application/vnd.github.v3.raw' -o _data/stats/stats.json https://api.github.com/repos/valentjn/vscode-ltex-stats/contents/data/stats.json?ref=stats"
+
+      - name: "Fetch map.json"
+        run: "curl -u 'valentjn:${{ secrets.VSCODE_LTEX_FETCH_PRIVATE_STATS_REPO_TOKEN }}' -H 'Accept: application/vnd.github.v3.raw' -o _data/stats/map.json https://api.github.com/repos/valentjn/vscode-ltex-stats/contents/data/map.json?ref=stats"
 
       - name: "Plot Stats"
         run: "python tools/plotStats.py"
