@@ -11,6 +11,7 @@ import * as Path from 'path';
 
 import BugReporter from './BugReporter';
 import ExternalFileManager from './ExternalFileManager';
+import * as Extension from './extension';
 import {i18n} from './I18n';
 import Logger from './Logger';
 import ProgressStack from './ProgressStack';
@@ -34,6 +35,7 @@ interface ServerCommandResult {
 }
 
 export default class CommandHandler {
+  private _context: Code.ExtensionContext;
   private _statusPrinter: StatusPrinter;
   private _bugReporter: BugReporter;
   private _languageClient: CodeLanguageClient.LanguageClient | null;
@@ -45,6 +47,7 @@ export default class CommandHandler {
 
   public constructor(context: Code.ExtensionContext, externalFileManager: ExternalFileManager,
         statusInformationPrinter: StatusPrinter, bugReporter: BugReporter) {
+    this._context = context;
     this._statusPrinter = statusInformationPrinter;
     this._bugReporter = bugReporter;
     this._languageClient = null;
@@ -65,6 +68,8 @@ export default class CommandHandler {
         this.clearAllDiagnostics.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.showStatusInformation',
         this.showStatusInformation.bind(this)));
+    context.subscriptions.push(Code.commands.registerCommand('ltex.resetAndRestart',
+        this.resetAndRestart.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.reportBug',
         this._bugReporter.report.bind(this._bugReporter)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.requestFeature',
@@ -279,6 +284,14 @@ export default class CommandHandler {
     await this._statusPrinter.print();
     Logger.showClientOutputChannel();
     return Promise.resolve(true);
+  }
+
+  private async resetAndRestart(): Promise<void> {
+    for (const disposable of this._context.subscriptions) {
+      await disposable.dispose();
+    }
+
+    await Extension.activate(this._context);
   }
 
   private static requestFeature(): Promise<boolean> {

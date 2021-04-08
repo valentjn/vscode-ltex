@@ -384,6 +384,8 @@
   "ltex.i18n.commands.ltex.clearAllDiagnostics.fullMarkdownDescription": "Löscht alle durch LTeX gemeldeten Schreibfehler.",
   "ltex.i18n.commands.ltex.showStatusInformation.title": "Statusinformationen zeigen",
   "ltex.i18n.commands.ltex.showStatusInformation.fullMarkdownDescription": "Zeigt Informationen über den aktuellen Status von LTeX im Protokoll `LTeX Language Client`.\n\nInformationen über ltex-ls werden nur angezeigt, wenn ltex-ls gerade läuft und nicht ein Dokument überprüft.",
+  "ltex.i18n.commands.ltex.resetAndRestart.title": "Zurücksetzen und neu starten",
+  "ltex.i18n.commands.ltex.resetAndRestart.fullMarkdownDescription": "Setzt den aktuellen Zustand der Erweiterung zurück und startet LTeX LS neu.\n\nDies ist äquivalent dazu, das Fenster von VS Code neuzuladen und die Erweiterung zu aktivieren. Benutzen Sie diesen Befehl, falls sich LTeX nicht wie erwartet verhält.",
   "ltex.i18n.commands.ltex.reportBug.title": "Bug in LTeX melden",
   "ltex.i18n.commands.ltex.reportBug.fullMarkdownDescription": "Zeigt eine Meldung an, die einen Link zu Anweisungen über wie man Bugs in LTeX meldet und einen Knopf zum Kopieren eines Bug-Berichts enthält.\n\nWenn der Knopf gedrückt wird, dann kopiert LTeX einen vorausgefüllten Bug-Bericht in die Zwischenablage, die anschließend in das GitHub-Problem eingefügt werden kann.",
   "ltex.i18n.commands.ltex.requestFeature.title": "Feature in LTeX wünschen",

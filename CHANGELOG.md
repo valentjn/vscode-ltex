@@ -10,6 +10,7 @@
 
 ## 10.1.0 (upcoming)
 
+- Add [`LTeX: Reset and Restart`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-reset-and-restart) command to reset the extension and restart LT<sub>E</sub>X LS (equivalent to reloading the VS Code window)
 - Fix inconsistent titles of German commands
 
 ## 10.0.0 — “The Unicode Simulation” (April 5, 2021)

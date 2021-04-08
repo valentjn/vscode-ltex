@@ -46,6 +46,7 @@
     "onCommand:ltex.clearDiagnosticsInCurrentDocument",
     "onCommand:ltex.clearAllDiagnostics",
     "onCommand:ltex.showStatusInformation",
+    "onCommand:ltex.resetAndRestart",
     "onCommand:ltex.reportBug",
     "onCommand:ltex.requestFeature",
     "onLanguage:bibtex",
@@ -2022,6 +2023,11 @@
       {
         "command": "ltex.showStatusInformation",
         "title": "%ltex.i18n.commands.ltex.showStatusInformation.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.resetAndRestart",
+        "title": "%ltex.i18n.commands.ltex.resetAndRestart.title%",
         "category": "LTeX"
       },
       {
