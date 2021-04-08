@@ -8,6 +8,10 @@
 
 # Changelog
 
+## 10.1.0 (upcoming)
+
+- Fix inconsistent titles of German commands
+
 ## 10.0.0 — “The Unicode Simulation” (April 5, 2021)
 
 - Update required version of VS Code (now 1.52.0 or newer)
