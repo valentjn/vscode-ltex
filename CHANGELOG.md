@@ -12,7 +12,7 @@
 
 - Update required version of VS Code (now 1.52.0 or newer)
 - Update LanguageTool to 5.3 (see [LT 5.3 release notes](https://github.com/languagetool-org/languagetool/blob/v5.3/languagetool-standalone/CHANGES.md#53-2021-03-29))
-- Add [`ltex.activateExtension`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-activate-extension) command to activate the extension in case it has not been activated before
+- Add [`LTeX: Activate Extension`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-activate-extension) to activate the extension in case it has not been activated before
 - Automatically activate extension if one of the [LT<sub>E</sub>X commands](https://valentjn.github.io/vscode-ltex/docs/commands.html) is executed
 - Enhance support of accents in L<sup>A</sup>T<sub>E</sub>X by using Unicode combining diacritical marks, normalized via [Unicode Normalization Form C](https://www.unicode.org/reports/tr15/tr15-50.html#Normalization_Forms_Table) (fixes [#269](https://github.com/valentjn/vscode-ltex/issues/269))
 - Add support for many accents in L<sup>A</sup>T<sub>E</sub>X: double acute (e.g., `\H{O}`, &#x0150;), line below (e.g., `\b{h}`, &#x1e96;), dot below (e.g., `\d{A}`, &#x1ea0;), ogonek (e.g., `\k{A}`, &#x0104;), breve (e.g., `\u{A}`, &#x0102;), and caron (e.g., `\v{C}`, &#x010c;) ([PR ltex-ls#57](https://github.com/valentjn/ltex-ls/pull/57) by [@ed359](https://github.com/ed359), fixes [ltex-ls#56](https://github.com/valentjn/ltex-ls/issues/56))
