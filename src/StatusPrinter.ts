@@ -61,7 +61,7 @@ export default class StatusPrinter {
     if (this._languageClient != null) {
       try {
         ltexLsStatus = await this._languageClient.sendRequest('workspace/executeCommand',
-            {command: 'ltex.getServerStatus', arguments: []});
+            {command: '_ltex.getServerStatus', arguments: []});
       } catch {
         // ignore errors
       }

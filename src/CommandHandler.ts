@@ -75,11 +75,11 @@ export default class CommandHandler {
     context.subscriptions.push(Code.commands.registerCommand('ltex.requestFeature',
         CommandHandler.requestFeature));
 
-    context.subscriptions.push(Code.commands.registerCommand('ltex.addToDictionary',
+    context.subscriptions.push(Code.commands.registerCommand('_ltex.addToDictionary',
         this.addToDictionary.bind(this)));
-    context.subscriptions.push(Code.commands.registerCommand('ltex.disableRules',
+    context.subscriptions.push(Code.commands.registerCommand('_ltex.disableRules',
         this.disableRules.bind(this)));
-    context.subscriptions.push(Code.commands.registerCommand('ltex.hideFalsePositives',
+    context.subscriptions.push(Code.commands.registerCommand('_ltex.hideFalsePositives',
         this.hideFalsePositives.bind(this)));
   }
 
@@ -115,7 +115,7 @@ export default class CommandHandler {
         }),
       ]);
       result = await this._languageClient.sendRequest('workspace/executeCommand',
-          {command: 'ltex.checkDocument', arguments: [params]});
+          {command: '_ltex.checkDocument', arguments: [params]});
     } catch (e) {
       result.success = false;
       result.errorMessage = e.message;
