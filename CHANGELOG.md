@@ -13,6 +13,7 @@
 - Add [`LTeX: Reset and Restart`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-reset-and-restart) command to reset the extension and restart LT<sub>E</sub>X LS (equivalent to reloading the VS Code window)
 - Fix inconsistent titles of German commands
 - Hide internal commands in table of keyboard shortcuts to prevent confusion (see [#282](https://github.com/valentjn/vscode-ltex/issues/282))
+- Engineering: A running instance of LT<sub>E</sub>X LS, if it has been started with `--server-type=tcpSocket`, will be chosen over starting a new instance; this enables simultaneous debugging of vscode-ltex and ltex-ls
 - Update LT<sub>E</sub>X LS to 12.0.0
 
 ## 10.0.0 — “The Unicode Simulation” (April 5, 2021)

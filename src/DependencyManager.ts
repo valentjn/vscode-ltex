@@ -13,6 +13,7 @@ import extractZip from 'extract-zip';
 import * as Fs from 'fs';
 import * as Http from 'http';
 import * as Https from 'https';
+import * as Net from 'net';
 import * as Os from 'os';
 import * as Path from 'path';
 import * as SemVer from 'semver';
@@ -610,6 +611,38 @@ export default class DependencyManager {
     env['JAVA_OPTS'] = javaArguments.join(' ');
 
     return {command: ltexLsScriptPath, args: [], options: {'env': env}};
+  }
+
+  public static getDebugServerOptions(): CodeLanguageClient.ServerOptions | null {
+    const executableOptions: ChildProcess.SpawnSyncOptionsWithStringEncoding = {
+          encoding: 'utf-8',
+          timeout: 10000,
+        };
+    const childProcess: ChildProcess.SpawnSyncReturns<string> = ((process.platform == 'win32')
+        ? ChildProcess.spawnSync('wmic', ['process', 'list', 'FULL'], executableOptions)
+        : ChildProcess.spawnSync('ps', ['-A', '-o', 'args'], executableOptions));
+    if (childProcess.status != 0) return null;
+    const output: string = childProcess.stdout;
+
+    const matchPos: number = output.search(
+        /LtexLanguageServerLauncher.*--server-type(?: +|=)tcpSocket/);
+    if (matchPos == -1) return null;
+    const startPos: number = output.lastIndexOf('\n', matchPos);
+    const endPos: number = output.indexOf('\n', matchPos);
+    const line: string = output.substring(((startPos != -1) ? startPos : 0),
+        ((endPos != -1) ? endPos : output.length));
+
+    const match: RegExpMatchArray | null = line.match(/--port(?: +|=)([0-9]+)/);
+    if (match == null) return null;
+    const port: number = parseInt(match[1]);
+    if (port == 0) return null;
+
+    const socket: Net.Socket = new Net.Socket();
+    socket.connect(port, 'localhost');
+
+    return () => {
+      return Promise.resolve({writer: socket, reader: socket});
+    };
   }
 
   public get vscodeLtexVersion(): string {

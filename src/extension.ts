@@ -66,18 +66,24 @@ async function languageClientIsReady(languageClient: CodeLanguageClient.Language
 async function startLanguageClient(context: Code.ExtensionContext,
       externalFileManager: ExternalFileManager, statusPrinter: StatusPrinter):
       Promise<CodeLanguageClient.LanguageClient | null> {
-  if (dependencyManager == null) {
-    Logger.error('DependencyManager not initialized!');
-    return Promise.resolve(null);
+  let serverOptions: CodeLanguageClient.ServerOptions | null = null;
+
+  if (context.extensionMode == Code.ExtensionMode.Development) {
+    serverOptions = DependencyManager.getDebugServerOptions();
   }
 
-  const success: boolean = await dependencyManager.install();
-  if (success !== true) return Promise.resolve(null);
+  if (serverOptions == null) {
+    if (dependencyManager == null) {
+      Logger.error('DependencyManager not initialized!');
+      return Promise.resolve(null);
+    }
+
+    const success: boolean = await dependencyManager.install();
+    if (success !== true) return Promise.resolve(null);
+    serverOptions = await dependencyManager.getLtexLsExecutable();
+  }
 
   const statusBarItemManager: StatusBarItemManager = new StatusBarItemManager(context);
-
-  const serverOptions: CodeLanguageClient.ServerOptions =
-      await dependencyManager.getLtexLsExecutable();
 
   const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
   const enabled: any = workspaceConfig.get('enabled');
@@ -123,9 +129,11 @@ async function startLanguageClient(context: Code.ExtensionContext,
       null, languageClient, externalFileManager, statusBarItemManager));
   statusPrinter.languageClient = languageClient;
 
-  Logger.log(i18n('startingLtexLs'));
-  Logger.logExecutable(serverOptions);
-  Logger.log('');
+  if ('command' in serverOptions) {
+    Logger.log(i18n('startingLtexLs'));
+    Logger.logExecutable(serverOptions);
+    Logger.log('');
+  }
 
   languageClient.info(i18n('startingLtexLs'));
   const languageClientDisposable: Code.Disposable = languageClient.start();
