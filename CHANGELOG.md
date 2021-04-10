@@ -12,6 +12,7 @@
 
 - Add basic support for reStructuredText (fixes [#32](https://github.com/valentjn/vscode-ltex/issues/32))
 - Add [`LTeX: Reset and Restart`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-reset-and-restart) command to reset the extension and restart LT<sub>E</sub>X LS (equivalent to reloading the VS Code window)
+- Fix `.Rnw` not recognized for R Sweave documents when running [`LTeX: Check All Documents in Workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-all-documents-in-workspace)
 - Fix inconsistent titles of German commands
 - Hide internal commands in table of keyboard shortcuts to prevent confusion (see [#282](https://github.com/valentjn/vscode-ltex/issues/282))
 - Engineering: A running instance of LT<sub>E</sub>X LS, if it has been started with `--server-type=tcpSocket`, will be chosen over starting a new instance; this enables simultaneous debugging of vscode-ltex and ltex-ls

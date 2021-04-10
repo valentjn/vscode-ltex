@@ -237,8 +237,7 @@ export default class CommandHandler {
           enabledFileExtensions.add('bib');
           break;
         }
-        case 'latex':
-        case 'rsweave': {
+        case 'latex': {
           enabledFileExtensions.add('tex');
           break;
         }
@@ -248,6 +247,12 @@ export default class CommandHandler {
         }
         case 'restructuredtext': {
           enabledFileExtensions.add('rst');
+          break;
+        }
+        case 'rsweave': {
+          enabledFileExtensions.add('Rnw');
+          enabledFileExtensions.add('rnw');
+          enabledFileExtensions.add('tex');
           break;
         }
       }
