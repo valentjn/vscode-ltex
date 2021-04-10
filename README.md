@@ -6,7 +6,7 @@
    - file, You can obtain one at https://mozilla.org/MPL/2.0/.
    -->
 
-# LT<sub>E</sub>X Extension for VS Code: Grammar/Spell Checker with LanguageTool and L<sup>A</sup>T<sub>E</sub>X/Markdown Support
+# LT<sub>E</sub>X Extension for VS Code: Grammar/Spell Checker Using LanguageTool with Support for L<sup>A</sup>T<sub>E</sub>X, Markdown, and Others
 
 [![latest release](https://badgen.net/badge/-/release/585858?label=)![version number](https://badgen.net/vs-marketplace/v/valentjn.vscode-ltex?label=)![release date](https://badgen.net/github/last-commit/valentjn/vscode-ltex/release?label=)][website]&nbsp;
 [![installs](https://badgen.net/vs-marketplace/i/valentjn.vscode-ltex)][website]&nbsp;
@@ -41,9 +41,10 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
 
 ![Grammar/Spell Checker for VS Code with LanguageTool and LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/release/img/banner-ltex.png)
 
-- Checks **L<sup>A</sup>T<sub>E</sub>X** and **Markdown** documents
+- **Supported markup languages:** L<sup>A</sup>T<sub>E</sub>X, Markdown, reStructuredText, R Sweave
 - Comes with **everything included,** no need to install Java or LanguageTool
-- Supports **over 20 languages**
+- **Offline checking:** Does not upload anything to the internet
+- Supports **over 20 languages:** English, French, German, Dutch, Chinese, Russian, etc.
 - **Issue highlighting** with hover description
 - **Replacement suggestions** via quick fixes
 - **User dictionaries**

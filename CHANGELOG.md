@@ -10,6 +10,7 @@
 
 ## 10.1.0 (upcoming)
 
+- Add basic support for reStructuredText (fixes [#32](https://github.com/valentjn/vscode-ltex/issues/32))
 - Add [`LTeX: Reset and Restart`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-reset-and-restart) command to reset the extension and restart LT<sub>E</sub>X LS (equivalent to reloading the VS Code window)
 - Fix inconsistent titles of German commands
 - Hide internal commands in table of keyboard shortcuts to prevent confusion (see [#282](https://github.com/valentjn/vscode-ltex/issues/282))

@@ -2,7 +2,7 @@
   "name": "vscode-ltex",
   "displayName": "LTeX",
   "version": "10.0.0",
-  "description": "Grammar/spell checker with LanguageTool and LaTeX/Markdown support",
+  "description": "Grammar/spell checker using LanguageTool with support for LaTeX, Markdown, and others",
   "icon": "img/logo-ltex.png",
   "author": "Julian Valentin",
   "publisher": "valentjn",
@@ -52,6 +52,7 @@
     "onLanguage:bibtex",
     "onLanguage:latex",
     "onLanguage:markdown",
+    "onLanguage:restructuredtext",
     "onLanguage:rsweave"
   ],
   "extensionKind": [
@@ -79,6 +80,7 @@
             "bibtex",
             "latex",
             "markdown",
+            "restructuredtext",
             "rsweave"
           ],
           "markdownDescription": "%ltex.i18n.configuration.ltex.enabled.markdownDescription%"
