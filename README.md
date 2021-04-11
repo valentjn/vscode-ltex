@@ -41,7 +41,7 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
 
 ![Grammar/Spell Checker for VS Code with LanguageTool and LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/release/img/banner-ltex.png)
 
-- **Supported markup languages:** L<sup>A</sup>T<sub>E</sub>X, Markdown, reStructuredText, R Sweave
+- **Supported markup languages:** BibT<sub>E</sub>X, L<sup>A</sup>T<sub>E</sub>X, Markdown, reStructuredText, R Sweave
 - Comes with **everything included,** no need to install Java or LanguageTool
 - **Offline checking:** Does not upload anything to the internet
 - Supports **over 20 languages:** English, French, German, Dutch, Chinese, Russian, etc.
