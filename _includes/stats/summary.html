@@ -2,14 +2,17 @@
 
 <p class="world-map">
   <img src="{{ "images/stats/map.png" | relative_url }}"/>
-  <span class="world-map-text-1" style="position:absolute; left:5%; top:50%; transform:rotate(5deg);">
+  <span class="world-map-text-1">
     {{statsSummary.averageRating}} ({{statsSummary.numberOfRatings}})<br/>
     average rating
   </span>
   <span class="world-map-text-2">
-    {{statsSummary.installs}} downloads
+    {{statsSummary.stars}} GitHub stars
   </span>
   <span class="world-map-text-3">
+    {{statsSummary.installs}} downloads
+  </span>
+  <span class="world-map-text-4">
     {{statsSummary.users}} active users<br/>
     from around the world
   </span>
@@ -18,13 +21,13 @@
 <p class="world-map-sources">
   Sources:
   <a href="https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex">
-    Usage estimated from install/update counts from Marketplace data
+    Number of active users estimated from update counts from Marketplace data
   </a>,
   <a href="https://github.com/valentjn/vscode-ltex/stargazers">
-    map shows locations of GitHub stargazers
+    map shows public locations of GitHub stargazers
   </a>,
   <a href="https://osm.org/copyright">
-    location data &copy; OpenStreetMap contributors, ODbL 1.0
+    location data &copy;&nbsp;OpenStreetMap contributors, ODbL 1.0
   </a>,
   <a href="https://www.naturalearthdata.com/">
     world map made with Natural Earth (public domain)

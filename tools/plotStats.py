@@ -52,6 +52,13 @@ def convertDateToString(date: datetime.datetime) -> str:
   return date.date().isoformat()
 
 def plotStats() -> None:
+  mapPath = os.path.join(repoDirPath, "_data", "stats", "map.json")
+  with open(mapPath, "r") as f: map_ = json.load(f)
+
+  numberOfGitHubStars = sum([len(map_["stargazers"][repoName])
+      for repoName in ["vscode-ltex", "ltex-ls"]])
+  print(numberOfGitHubStars)
+
   statsPath = os.path.join(repoDirPath, "_data", "stats", "stats.json")
   with open(statsPath, "r") as f: stats = json.load(f)
 
@@ -116,6 +123,7 @@ def plotStats() -> None:
 
   numberOfUsers = (max([x for x in deltaUpdateCounts[-5:] if x is not None])
       if len(deltaUpdateCounts) > 0 else 0)
+  writeToSummaryYaml("stars", numberOfGitHubStars)
   writeToSummaryYaml("users", numberOfUsers)
   writeToSummaryYaml("installs", lastStatEntry["i"])
   writeToSummaryYaml("averageRating", averageRatingHtml)

@@ -94,21 +94,27 @@ only screen and (min-device-width:900px) {
 }
 .world-map-text-1 {
   position:absolute;
-  left:5%;
-  top:50%;
+  left:4%;
+  top:40%;
   transform:rotate(5deg);
 }
 .world-map-text-2 {
   position:absolute;
-  left:20%;
-  bottom:10%;
-  transform:rotate(-5deg);
+  left:7.5%;
+  bottom:27%;
+  transform:rotate(-3deg);
 }
 .world-map-text-3 {
   position:absolute;
-  right:20%;
+  left:25%;
   bottom:10%;
-  transform:rotate(3deg);
+  transform:rotate(5deg);
+}
+.world-map-text-4 {
+  position:absolute;
+  right:20%;
+  bottom:13%;
+  transform:rotate(-3deg);
 }
 .world-map-sources {
   font-size:80%;
