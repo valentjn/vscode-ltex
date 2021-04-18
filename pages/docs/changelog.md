@@ -11,11 +11,22 @@ sidebar: "sidebar"
 toc: false
 ---
 
+## 10.1.0 (upcoming)
+
+- Add support for Org (fixes [#277](https://github.com/valentjn/vscode-ltex/issues/277))
+- Add basic support for reStructuredText (fixes [#32](https://github.com/valentjn/vscode-ltex/issues/32))
+- Add [`LTeX: Reset and Restart`](commands.html#ltex-reset-and-restart) command to reset the extension and restart LTeX LS (equivalent to reloading the VS Code window)
+- Fix `.Rnw` not recognized for R Sweave documents when running [`LTeX: Check All Documents in Workspace`](commands.html#ltex-check-all-documents-in-workspace)
+- Fix inconsistent titles of German commands
+- Hide internal commands in table of keyboard shortcuts to prevent confusion (see [#282](https://github.com/valentjn/vscode-ltex/issues/282))
+- Engineering: A running instance of LTeX LS, if it has been started with `--server-type=tcpSocket`, will be chosen over starting a new instance; this enables simultaneous debugging of vscode-ltex and ltex-ls
+- Update LTeX LS to 12.0.0
+
 ## 10.0.0 — “The Unicode Simulation” (April 5, 2021)
 
 - Update required version of VS Code (now 1.52.0 or newer)
 - Update LanguageTool to 5.3 (see [LT 5.3 release notes](https://github.com/languagetool-org/languagetool/blob/v5.3/languagetool-standalone/CHANGES.md#53-2021-03-29))
-- Add [`ltex.activateExtension`](commands.html#ltex-activate-extension) command to activate the extension in case it has not been activated before
+- Add [`LTeX: Activate Extension`](commands.html#ltex-activate-extension) to activate the extension in case it has not been activated before
 - Automatically activate extension if one of the [LTeX commands](commands.html) is executed
 - Enhance support of accents in LaTeX by using Unicode combining diacritical marks, normalized via [Unicode Normalization Form C](https://www.unicode.org/reports/tr15/tr15-50.html#Normalization_Forms_Table) (fixes [#269](https://github.com/valentjn/vscode-ltex/issues/269))
 - Add support for many accents in LaTeX: double acute (e.g., `\H{O}`, &#x0150;), line below (e.g., `\b{h}`, &#x1e96;), dot below (e.g., `\d{A}`, &#x1ea0;), ogonek (e.g., `\k{A}`, &#x0104;), breve (e.g., `\u{A}`, &#x0102;), and caron (e.g., `\v{C}`, &#x010c;) ([PR ltex-ls#57](https://github.com/valentjn/ltex-ls/pull/57) by [@ed359](https://github.com/ed359), fixes [ltex-ls#56](https://github.com/valentjn/ltex-ls/issues/56))
