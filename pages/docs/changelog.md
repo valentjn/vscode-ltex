@@ -11,7 +11,7 @@ sidebar: "sidebar"
 toc: false
 ---
 
-## 10.1.0 (upcoming)
+## 10.1.0 — “The Org Summation” (April 18, 2021)
 
 - Add support for Org (fixes [#277](https://github.com/valentjn/vscode-ltex/issues/277))
 - Add basic support for reStructuredText (fixes [#32](https://github.com/valentjn/vscode-ltex/issues/32))
