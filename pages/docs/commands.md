@@ -40,7 +40,7 @@ It is usually not necessary to run this command as LTeX automatically checks sup
 
 Triggers a check of all Markdown and LaTeX documents in the workspace.
 
-This does a file search for `*.bib`, `*.tex`, and `*.md` files in all folders of the workspace, depending on for which file types LTeX has been enabled (see [`ltex.enabled`](settings.html#ltexenabled)). Untitled and unsaved documents are not checked. The types of the documents are recognized by their file extensions.
+This does a file search for `*.bib`, `*.md`, `*.org`, `*.Rnw`, `*.rst`, and `*.tex` files in all folders of the workspace, depending on for which file types LTeX has been enabled (see [`ltex.enabled`](settings.html#ltexenabled)). Untitled and unsaved documents are not checked. The types of the documents are recognized by their file extensions.
 
 The documents must be in UTF-8 encoding. This does not work if no folders are opened in the workspace.
 
@@ -59,6 +59,12 @@ Clears all LTeX diagnostics.
 Shows information about the current status of LTeX in the `LTeX Language Client` output panel.
 
 Information about ltex-ls is only included if ltex-ls is running and not checking a document.
+
+## `LTeX: Reset and Restart`
+
+Resets the current state of the extension and restarts LTeX LS.
+
+This is equivalent to reloading the VS Code window and activating the extension. Use this command if LTeX does not behave as expected.
 
 ## `LTeX: Report Bug in LTeX`
 

@@ -20,7 +20,7 @@ Aktiviert die Erweiterung; macht nichts, falls die Erweiterung bereits aktiviert
 
 Die Erweiterung wird automatisch aktiviert, wenn Dateien mit unterstützten Code-Sprachmodi (= Voreinstellung von [`ltex.enabled`](settings-de.html#ltexenabled)) im Editor geöffnet werden. Benutzen Sie diesen Befehl, wenn Sie LTeX für Dateien mit nicht unterstützten Code-Sprachmodi benutzen möchten.
 
-## `LTeX: Prüfe Auswahl`
+## `LTeX: Auswahl prüfen`
 
 Löst eine Prüfung der primären Auswahl des aktiven Dokuments aus und löscht alle durch LTeX gemeldeten Schreibfehler im aktiven Dokument außerhalb der primären Auswahl.
 
@@ -28,7 +28,7 @@ Das aktive Dokument ist dasjenige, dessen Editor momentan den Fokus besitzt, ode
 
 Es ist normalerweise nicht nötig, diesen Befehl auszuführen, da LTeX alle unterstützten Dokumente prüft, wenn sie geöffnet oder geändert werden.
 
-## `LTeX: Prüfe aktuelles Dokument`
+## `LTeX: Aktuelles Dokument prüfen`
 
 Löst eine Prüfung des aktiven Dokuments aus.
 
@@ -36,11 +36,11 @@ Das aktive Dokument ist dasjenige, dessen Editor momentan den Fokus besitzt, ode
 
 Es ist normalerweise nicht nötig, diesen Befehl auszuführen, da LTeX alle unterstützten Dokumente prüft, wenn sie geöffnet oder geändert werden.
 
-## `LTeX: Prüfe alle Dokumente im Arbeitsbereich`
+## `LTeX: Alle Dokumente im Arbeitsbereich prüfen`
 
 Löst eine Prüfung aller Markdown- und LaTeX-Dokumente im Arbeitsbereich aus.
 
-Dies führt eine Dateisuche nach `*.bib`-, `*.tex`- und `*.md`-Dateien in allen Ordnern des Arbeitsbereiches durch, je nachdem, für welche Dateitypen LTeX aktiviert wurde (siehe [`ltex.enabled`](settings-de.html#ltexenabled)). Unbenannte und ungespeicherte Dokumente werden nicht überprüft. Die Dokumenttypen werden anhand der Dateinamen-Erweiterungen erkannt.
+Dies führt eine Dateisuche nach `*.bib`-, `*.md`-, `*.org`-, `*.Rnw`-, `*.rst`- und `*.tex`-Dateien in allen Ordnern des Arbeitsbereiches durch, je nachdem, für welche Dateitypen LTeX aktiviert wurde (siehe [`ltex.enabled`](settings-de.html#ltexenabled)). Unbenannte und ungespeicherte Dokumente werden nicht überprüft. Die Dokumenttypen werden anhand der Dateinamen-Erweiterungen erkannt.
 
 Die Dokumente müssen in der UTF-8-Kodierung vorliegen. Dies funktioniert nicht, falls keine Ordner im Arbeitsbereich geöffnet sind.
 
@@ -54,11 +54,17 @@ Das aktive Dokument ist dasjenige, dessen Editor momentan den Fokus besitzt, ode
 
 Löscht alle durch LTeX gemeldeten Schreibfehler.
 
-## `LTeX: Zeige Statusinformationen`
+## `LTeX: Statusinformationen zeigen`
 
 Zeigt Informationen über den aktuellen Status von LTeX im Protokoll `LTeX Language Client`.
 
 Informationen über ltex-ls werden nur angezeigt, wenn ltex-ls gerade läuft und nicht ein Dokument überprüft.
+
+## `LTeX: Zurücksetzen und neu starten`
+
+Setzt den aktuellen Zustand der Erweiterung zurück und startet LTeX LS neu.
+
+Dies ist äquivalent dazu, das Fenster von VS Code neuzuladen und die Erweiterung zu aktivieren. Benutzen Sie diesen Befehl, falls sich LTeX nicht wie erwartet verhält.
 
 ## `LTeX: Bug in LTeX melden`
 
