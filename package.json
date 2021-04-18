@@ -52,6 +52,7 @@
     "onLanguage:bibtex",
     "onLanguage:latex",
     "onLanguage:markdown",
+    "onLanguage:org",
     "onLanguage:restructuredtext",
     "onLanguage:rsweave"
   ],
@@ -80,6 +81,7 @@
             "bibtex",
             "latex",
             "markdown",
+            "org",
             "restructuredtext",
             "rsweave"
           ],

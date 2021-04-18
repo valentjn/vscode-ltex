@@ -224,7 +224,7 @@ export default class CommandHandler {
 
     if ((enabled === true) || (enabled === false)) {
       enabledCodeLanguageIds = (enabled
-          ? ['bibtex', 'latex', 'markdown', 'restructuredtext', 'rsweave'] : []);
+          ? ['bibtex', 'latex', 'markdown', 'org', 'restructuredtext', 'rsweave'] : []);
     } else {
       enabledCodeLanguageIds = enabled;
     }
@@ -243,6 +243,10 @@ export default class CommandHandler {
         }
         case 'markdown': {
           enabledFileExtensions.add('md');
+          break;
+        }
+        case 'org': {
+          enabledFileExtensions.add('org');
           break;
         }
         case 'restructuredtext': {

@@ -10,6 +10,7 @@
 
 ## 10.1.0 (upcoming)
 
+- Add support for Org (fixes [#277](https://github.com/valentjn/vscode-ltex/issues/277))
 - Add basic support for reStructuredText (fixes [#32](https://github.com/valentjn/vscode-ltex/issues/32))
 - Add [`LTeX: Reset and Restart`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-reset-and-restart) command to reset the extension and restart LT<sub>E</sub>X LS (equivalent to reloading the VS Code window)
 - Fix `.Rnw` not recognized for R Sweave documents when running [`LTeX: Check All Documents in Workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-all-documents-in-workspace)
