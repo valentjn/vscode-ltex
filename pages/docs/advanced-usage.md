@@ -83,12 +83,16 @@ The scope in which this procedure is applied is determined by the [`ltex.configu
 
 ## Magic Comments
 
-Magic comments are special comments which contents are interpreted by LTeX and which can be used to change some LTeX settings in the middle of the document. The comments have the following form:
+Magic comments are special comments which contents are interpreted by LTeX and which can be used to change some LTeX settings in the middle of the document. The accepted syntax depends on the language and is shown in the following list. Except when otherwise noted, magic comments have to be on their own line, and they can be surrounded by whitespace.
 
-- LaTeX: `% LTeX: SETTINGS` on its own line (can be surrounded by whitespace)
-- Markdown: One of the following on its own line (can be surrounded by whitespace):
+- BibTeX: Same as LaTeX
+- LaTeX: `% LTeX: SETTINGS`
+- Markdown: One of the following:
   - `<!-- LTeX: SETTINGS -->`
   - `[comment]: <> "LTeX: SETTINGS"`
+- Org: `# LTeX: SETTINGS`
+- reStructuredText: `.. LTeX: SETTINGS`
+- R Sweave: Same as LaTeX
 
 Magic comments are case-insensitive (except for the setting values), and the spaces in the magic comment line can be any amount of whitespace, even no amount at all.
 
