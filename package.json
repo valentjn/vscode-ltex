@@ -2072,7 +2072,7 @@
     "ts-loader": "8.1.0",
     "typescript": "4.2.4",
     "vscode-test": "1.5.2",
-    "webpack": "5.31.2",
+    "webpack": "5.33.2",
     "webpack-cli": "4.6.0"
   },
   "dependencies": {
