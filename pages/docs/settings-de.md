@@ -26,7 +26,7 @@ Nach Änderungen muss das Fenster von Visual Studio Code erneut geladen werden.
 
 *Typ:* `boolean` oder `array`
 
-*Voreinstellung:* `["bibtex", "latex", "markdown", "rsweave"]`
+*Voreinstellung:* `["bibtex", "latex", "markdown", "org", "restructuredtext", "rsweave"]`
 
 *Vollständige Beschreibung des Typs:* <button class='expandable-button btn btn-default'>Klick zum Zeigen/Verbergen</button>
 
@@ -1511,7 +1511,7 @@ Steuert, wann Dokumente überprüft werden sollen. Eines von `"edit"`, `"save"` 
 
 - `"edit"`: Dokumente werden überprüft, wenn sie geöffnet oder bearbeitet werden (bei jedem Tastendruck), oder wenn sich die Einstellungen ändern.
 - `"save"`: Dokumente werden überprüft, wenn sie geöffnet oder gespeichert werden, oder wenn sich die Einstellungen ändern.
-- `"manual"`: Dokumente werden nicht automatisch überprüft, außer wenn sich die Einstellungen ändern. Verwenden Sie Befehle wie [`LTeX: Prüfe aktuelles Dokument`](commands-de.html#ltex-prfe-aktuelles-dokument), um manuell Überprüfungen zu veranlassen.
+- `"manual"`: Dokumente werden nicht automatisch überprüft, außer wenn sich die Einstellungen ändern. Verwenden Sie Befehle wie [`LTeX: Aktuelles Dokument prüfen`](commands-de.html#ltex-aktuelles-dokument-prfen), um manuell Überprüfungen zu veranlassen.
 
 *Voreinstellung:* `"edit"`
 

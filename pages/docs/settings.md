@@ -26,7 +26,7 @@ Changes require reloading the Visual Studio Code window to take effect.
 
 *Type:* `boolean` or `array`
 
-*Default:* `["bibtex", "latex", "markdown", "rsweave"]`
+*Default:* `["bibtex", "latex", "markdown", "org", "restructuredtext", "rsweave"]`
 
 *Full type description:* <button class='expandable-button btn btn-default'>Click to show/hide</button>
 
