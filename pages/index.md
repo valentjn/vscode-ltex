@@ -44,9 +44,10 @@ LTeX is a successor (since it's a fork) of the abandoned [LanguageTool for Visua
 
 ![Grammar/Spell Checker for VS Code with LanguageTool and LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/release/img/banner-ltex.png)
 
-- Checks **LaTeX** and **Markdown** documents
+- **Supported markup languages:** BibT<sub>E</sub>X, L<sup>A</sup>T<sub>E</sub>X, Markdown, Org, reStructuredText, R Sweave
 - Comes with **everything included,** no need to install Java or LanguageTool
-- Supports **over 20 languages**
+- **Offline checking:** Does not upload anything to the internet
+- Supports **over 20 languages:** English, French, German, Dutch, Chinese, Russian, etc.
 - **Issue highlighting** with hover description
 - **Replacement suggestions** via quick fixes
 - **User dictionaries**
