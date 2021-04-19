@@ -12,6 +12,7 @@ toc: false
 
 <script src="js/bokeh-2.0.2.min.js"></script>
 
+{% include stats/stars.html %}
 {% include stats/users.html %}
 {% include stats/install.html %}
 {% include stats/updateCount.html %}

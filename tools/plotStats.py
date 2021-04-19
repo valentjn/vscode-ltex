@@ -55,10 +55,6 @@ def plotStats() -> None:
   mapPath = os.path.join(repoDirPath, "_data", "stats", "map.json")
   with open(mapPath, "r") as f: map_ = json.load(f)
 
-  numberOfGitHubStars = sum([len(map_["stargazers"][repoName])
-      for repoName in ["vscode-ltex", "ltex-ls"]])
-  print(numberOfGitHubStars)
-
   statsPath = os.path.join(repoDirPath, "_data", "stats", "stats.json")
   with open(statsPath, "r") as f: stats = json.load(f)
 
@@ -71,7 +67,8 @@ def plotStats() -> None:
   for releaseDate in stats["versions"].values():
     releaseDate = parseDate(releaseDate)
     releaseDates.append(releaseDate)
-    feasibleDates = [x for x in statDates if x < releaseDate]
+    feasibleDates = [x for x in statDates
+        if (x < releaseDate) and ("uc" in stats["statistics"][convertDateToString(x)])]
     updateCount: Optional[int] = None
     if len(feasibleDates) > 0: updateCount = getUpdateCount(max(feasibleDates))
     updateCounts.append(updateCount)
@@ -85,6 +82,7 @@ def plotStats() -> None:
   deltaUpdateCounts = [x for i, x in enumerate(deltaUpdateCounts) if keep[i]]
 
   names = [
+        (["s1", "s2"], "stars"),
         ("u", "users"),
         ("i", "install"),
         ("uc", "updateCount"),
@@ -101,8 +99,23 @@ def plotStats() -> None:
       dates = releaseDates
       values = deltaUpdateCounts
     else:
-      statsSubset = [(parseDate(x), y[name[0]])
-          for x, y in stats["statistics"].items() if name[0] in y]
+      shortNames = name[0]
+      if isinstance(shortNames, str): shortNames = [shortNames]
+      statsSubset = []
+
+      for x, y in stats["statistics"].items():
+        value = 0
+
+        for shortName in shortNames:
+          if shortName not in y:
+            value = None
+            break
+
+          value += y[shortName]
+
+        if value is None: continue
+        statsSubset.append((parseDate(x), value))
+
       dates, values = list(zip(*statsSubset))
 
     figure.line(dates, values)
@@ -112,18 +125,22 @@ def plotStats() -> None:
     with open(htmlPath, "w") as f: f.write(html)
 
   lastStatEntry = list(stats["statistics"].values())[-1]
+
   averageRating = lastStatEntry["ar"]
   averageRating = round(2 * averageRating) / 2
-  numberOfFullStars = int(averageRating)
-  numberOfHalfStars = int(2 * (averageRating - numberOfFullStars))
-  numberOfEmptyStars = 5 - numberOfFullStars - numberOfHalfStars
-  averageRatingHtml = ((numberOfFullStars * "<i class=\"fa fa-star\" aria-hidden=\"true\"></i>") +
-      (numberOfHalfStars * "<i class=\"fa fa-star-half-o\" aria-hidden=\"true\"></i>") +
-      (numberOfEmptyStars * "<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"))
+  numberOfFullRatingStars = int(averageRating)
+  numberOfHalfRatingStars = int(2 * (averageRating - numberOfFullRatingStars))
+  numberOfEmptyRatingStars = 5 - numberOfFullRatingStars - numberOfHalfRatingStars
+  averageRatingHtml = (
+      (numberOfFullRatingStars * "<i class=\"fa fa-star\" aria-hidden=\"true\"></i>") +
+      (numberOfHalfRatingStars * "<i class=\"fa fa-star-half-o\" aria-hidden=\"true\"></i>") +
+      (numberOfEmptyRatingStars * "<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"))
 
+  numberOfStars = lastStatEntry["s1"] + lastStatEntry["s2"]
   numberOfUsers = (max([x for x in deltaUpdateCounts[-5:] if x is not None])
       if len(deltaUpdateCounts) > 0 else 0)
-  writeToSummaryYaml("stars", numberOfGitHubStars)
+
+  writeToSummaryYaml("stars", numberOfStars)
   writeToSummaryYaml("users", numberOfUsers)
   writeToSummaryYaml("installs", lastStatEntry["i"])
   writeToSummaryYaml("averageRating", averageRatingHtml)
