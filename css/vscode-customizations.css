@@ -26,10 +26,6 @@ li.sidebarTitle { font-weight:bold; }
 .nav ul li a { padding-left:30px; }
 
 /* table of contents */
-div#toc {
-  float:right;
-  margin-left:20px;
-}
 div#toc ul {
   min-width:200px;
   max-width:400px;
