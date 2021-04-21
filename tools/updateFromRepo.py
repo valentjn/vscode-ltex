@@ -32,7 +32,9 @@ i18nStrings = {
         "arrayWhereEachEntryHasTheFollowingType" : "Array where each entry has the following type",
         "arrayWithTheFollowingEntries" : "Array with the following entries",
         "clickToShowHide" : "Click to show/hide",
-        "commandIntroduction" : "To run a command, open the Command Palette (`Ctrl+Shift+P`) and "
+        "commandIntroduction" : "This page is specific to vscode-ltex. It does not apply "
+          "if you use a different LTeX plugin for an editor other than VS Code.\n\n"
+          "To run a command, open the Command Palette (`Ctrl+Shift+P`) and "
           "start typing the name of the command.",
         "default" : "Default",
         "example" : "Example",
@@ -54,7 +56,9 @@ i18nStrings = {
         "arrayWhereEachEntryHasTheFollowingType" : "Array, bei dem jeder Eintrag folgenden Typ hat",
         "arrayWithTheFollowingEntries" : "Array mit folgenden Einträgen",
         "clickToShowHide" : "Klick zum Zeigen/Verbergen",
-        "commandIntroduction" : "Um einen Befehl auszuführen, öffnen Sie die Befehlspalette "
+        "commandIntroduction" : "Diese Seite gilt nur für vscode-ltex. Sie gilt nicht, falls Sie "
+          "ein anderes LTeX-Plugin für einen anderen Editor als VS Code verwenden.\n\n"
+          "Um einen Befehl auszuführen, öffnen Sie die Befehlspalette "
           "(`Ctrl+Shift+P`) und beginnen Sie mit der Eingabe des Befehlsnamens.",
         "default" : "Voreinstellung",
         "example" : "Beispiel",
@@ -345,6 +349,8 @@ permalink: "/docs/changelog.html"
 sidebar: "sidebar"
 toc: false
 ---
+
+This is the changelog of vscode-ltex. If you use a different LTeX plugin for an editor other than VS Code, check the [changelog of LTeX LS](https://github.com/valentjn/ltex-ls/blob/release/CHANGELOG.md) (look up which version of LTeX LS your LTeX plugin uses).
 """.format(licenseHeader), ltexRepoDirPath, pagesRepoDirPath)
 
 

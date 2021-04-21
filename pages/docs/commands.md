@@ -12,6 +12,8 @@ sidebar: "sidebar"
 
 Change language of this page: [English](commands.html), [German](commands-de.html)
 
+This page is specific to vscode-ltex. It does not apply if you use a different LTeX plugin for an editor other than VS Code.
+
 To run a command, open the Command Palette (`Ctrl+Shift+P`) and start typing the name of the command.
 
 ## `LTeX: Activate Extension`

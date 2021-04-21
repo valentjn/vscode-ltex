@@ -12,6 +12,8 @@ sidebar: "sidebar"
 
 Change language of this page: [English](commands.html), [German](commands-de.html)
 
+Diese Seite gilt nur für vscode-ltex. Sie gilt nicht, falls Sie ein anderes LTeX-Plugin für einen anderen Editor als VS Code verwenden.
+
 Um einen Befehl auszuführen, öffnen Sie die Befehlspalette (`Ctrl+Shift+P`) und beginnen Sie mit der Eingabe des Befehlsnamens.
 
 ## `LTeX: Aktiviere Erweiterung`

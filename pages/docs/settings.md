@@ -20,9 +20,13 @@ Either supply a Boolean value stating whether LTeX is enabled for all supported 
 
 All supported code language modes are listed in the default value of this setting. If you add an unsupported code language mode (i.e., a code language mode that is not listed in the default value), LTeX will check corresponding files as plain text without any parsing.
 
+<!-- ltex-client-specific-begin -->
+
 The activation events are unaffected by this setting. This means that the extension will be activated whenever a file with a supported code language mode is opened. For unsupported code language modes, you may need to activate the extension explicitly by executing the [`LTeX: Activate Extension`](commands.html#ltex-activate-extension) command.
 
 Changes require reloading the Visual Studio Code window to take effect.
+
+<!-- ltex-client-specific-end -->
 
 *Type:* `boolean` or `array`
 
@@ -104,9 +108,13 @@ Lists of additional words that should not be counted as spelling errors.
 
 This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<WORD1>", "<WORD2>", ...], "<LANGUAGE2>": ["<WORD1>", "<WORD2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage).
 
+<!-- ltex-client-specific-begin -->
+
 This setting is a multi-scope setting. [See the documentation for details.](advanced-usage.html#multi-scope-settings)
 
 This setting supports external files. [See the documentation for details.](advanced-usage.html#external-setting-files)
+
+<!-- ltex-client-specific-end -->
 
 By default, no additional spelling errors will be ignored.
 
@@ -361,9 +369,13 @@ Lists of rules that should be disabled (if enabled by default by LanguageTool).
 
 This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<RULE1>", "<RULE2>", ...], "<LANGUAGE2>": ["<RULE1>", "<RULE2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage) and `<RULE>` the ID of the LanguageTool rule.
 
+<!-- ltex-client-specific-begin -->
+
 This setting is a multi-scope setting. [See the documentation for details.](advanced-usage.html#multi-scope-settings)
 
 This setting supports external files. [See the documentation for details.](advanced-usage.html#external-setting-files)
+
+<!-- ltex-client-specific-end -->
 
 By default, no additional rules will be disabled.
 
@@ -618,9 +630,13 @@ Lists of rules that should be enabled (if disabled by default by LanguageTool).
 
 This setting is language-specific, so use an object of the format `{"<LANGUAGE1>": ["<RULE1>", "<RULE2>", ...], "<LANGUAGE2>": ["<RULE1>", "<RULE2>", ...], ...}`, where `<LANGUAGE>` denotes the language code in [`ltex.language`](settings.html#ltexlanguage) and `<RULE>` the ID of the LanguageTool rule.
 
+<!-- ltex-client-specific-begin -->
+
 This setting is a multi-scope setting. [See the documentation for details.](advanced-usage.html#multi-scope-settings)
 
 This setting supports external files. [See the documentation for details.](advanced-usage.html#external-setting-files)
+
+<!-- ltex-client-specific-end -->
 
 By default, no additional rules will be enabled.
 
@@ -879,9 +895,13 @@ Although it is possible to manually edit this setting, the intended way is the `
 
 The JSON string currently has the form `{"rule": "<RULE>", "sentence": "<SENTENCE>"}`, where `<RULE>` is the identifier of the LanguageTool rule and `<SENTENCE>` is a Java-compatible regular expression. All occurrences of the given rule are hidden in sentences (as determined by the LanguageTool tokenizer) that match the regular expression. [See the documentation for details.](advanced-usage.html#hiding-false-positives-with-regular-expressions)
 
+<!-- ltex-client-specific-begin -->
+
 This setting is a multi-scope setting. [See the documentation for details.](advanced-usage.html#multi-scope-settings)
 
 This setting supports external files. [See the documentation for details.](advanced-usage.html#external-setting-files)
+
+<!-- ltex-client-specific-end -->
 
 If this list is very large, performance may suffer.
 
@@ -1160,7 +1180,11 @@ List of LaTeX commands to be handled by the LaTeX parser, listed together with e
 
 This setting is an object with the commands as keys and corresponding actions as values.
 
+<!-- ltex-client-specific-begin -->
+
 If you edit the `settings.json` file directly, don't forget to escape the initial backslash by replacing it with two backslashes. If you use the VS Code Settings panel, only type one backslash.
+
+<!-- ltex-client-specific-end -->
 
 Many common commands are already handled by default, even if you set this setting to an empty object.
 
@@ -1245,7 +1269,11 @@ Object with arbitrary property names, where the value of each property has the f
 
 ## `ltex.configurationTarget`
 
+<!-- ltex-client-specific-begin -->
+
 Controls which `settings.json` or external setting file ([see documentation](advanced-usage.html#external-setting-files)) to update when using one of the quick fixes.
+
+<!-- ltex-client-specific-end -->
 
 *Type:* `object`
 
@@ -1378,11 +1406,15 @@ Optional path to a directory with rules of a word2vec language model.
 
 ## `ltex.ltex-ls.path`
 
+<!-- ltex-client-specific-begin -->
+
 If set to an empty string, LTeX automatically downloads [ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself.
 
 Use the path to the root directory of ltex-ls (it contains `bin` and `lib` subdirectories).
 
 Changes require reloading the Visual Studio Code window to take effect.
+
+<!-- ltex-client-specific-end -->
 
 *Type:* `string`
 
@@ -1424,11 +1456,15 @@ ltex-ls does not use all log levels.
 
 ## `ltex.java.path`
 
+<!-- ltex-client-specific-begin -->
+
 If set to an empty string and LTeX could not find Java on your computer, LTeX automatically downloads a Java distribution ([AdoptOpenJDK](https://adoptopenjdk.net/)), stores it in the folder of the extension, and uses it to run ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead.
 
 Use the same path as you would use for the `JAVA_HOME` environment variable (it usually contains `bin` and `lib` subdirectories, amongst others).
 
 Changes require reloading the Visual Studio Code window to take effect.
+
+<!-- ltex-client-specific-end -->
 
 *Type:* `string`
 
@@ -1436,11 +1472,15 @@ Changes require reloading the Visual Studio Code window to take effect.
 
 ## `ltex.java.forceTrySystemWide`
 
+<!-- ltex-client-specific-begin -->
+
 If set to `true`, always try to use a system-wide Java installation before trying to use an automatically downloaded Java distribution.
 
 This is the default behavior on all platforms except Mac (i.e., this setting has no effect on these platforms). On Mac, trying to use a system-wide Java installation might result in a popup prompting to install Java if it's not installed. Therefore, LTeX does not use a system-wide Java installation on Mac by default.
 
 Changes require reloading the Visual Studio Code window to take effect.
+
+<!-- ltex-client-specific-end -->
 
 *Type:* `boolean`
 
@@ -1448,11 +1488,15 @@ Changes require reloading the Visual Studio Code window to take effect.
 
 ## `ltex.java.initialHeapSize`
 
+<!-- ltex-client-specific-begin -->
+
 Initial size of the Java heap memory in megabytes (corresponds to Java's `-Xms` option, must be a positive integer).
 
 Decreasing this might decrease RAM usage of the Java process.
 
 Changes require reloading the Visual Studio Code window to take effect.
+
+<!-- ltex-client-specific-end -->
 
 *Type:* `integer`
 
@@ -1460,11 +1504,15 @@ Changes require reloading the Visual Studio Code window to take effect.
 
 ## `ltex.java.maximumHeapSize`
 
+<!-- ltex-client-specific-begin -->
+
 Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` option, must be a positive integer).
 
 Decreasing this might decrease RAM usage of the Java process. If you set this too small, the Java process may exceed the heap size, in which case an `OutOfMemoryError` is thrown.
 
 Changes require reloading the Visual Studio Code window to take effect.
+
+<!-- ltex-client-specific-end -->
 
 *Type:* `integer`
 
@@ -1527,7 +1575,11 @@ If set to `true`, diagnostics of a file are cleared when the file is closed.
 
 ## `ltex.statusBarItem`
 
+<!-- ltex-client-specific-begin -->
+
 If set to `true`, an item about the status of LTeX is shown permanently in the status bar.
+
+<!-- ltex-client-specific-end -->
 
 *Type:* `boolean`
 
@@ -1535,11 +1587,15 @@ If set to `true`, an item about the status of LTeX is shown permanently in the s
 
 ## `ltex.trace.server`
 
+<!-- ltex-client-specific-begin -->
+
 Debug setting to log the communication between language client and server.
 
 When reporting issues, set this to `"verbose"` and open the `LTeX Language Client` log in `View` › `Output`. Append the relevant part to the GitHub issue.
 
 Changes require reloading the Visual Studio Code window to take effect.
+
+<!-- ltex-client-specific-end -->
 
 *Type:* `string`
 

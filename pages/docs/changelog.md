@@ -11,6 +11,8 @@ sidebar: "sidebar"
 toc: false
 ---
 
+This is the changelog of vscode-ltex. If you use a different LTeX plugin for an editor other than VS Code, check the [changelog of LTeX LS](https://github.com/valentjn/ltex-ls/blob/release/CHANGELOG.md) (look up which version of LTeX LS your LTeX plugin uses).
+
 ## 10.1.0 — “The Org Summation” (April 18, 2021)
 
 - Add support for Org (fixes [#277](https://github.com/valentjn/vscode-ltex/issues/277))

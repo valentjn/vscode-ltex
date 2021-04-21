@@ -13,6 +13,8 @@ sidebar: "sidebar"
 
 ## Multi-Scope Settings
 
+<!-- ltex-client-specific-begin -->
+
 Some of LTeX's settings are *multi-scope settings.* These settings are:
 
 - [`ltex.dictionary`](settings.html#ltexdictionary)
@@ -34,7 +36,11 @@ If you want to remove an entry from a workspace-specific setting in a scope with
 
 You can specify the target scope for changing settings with quick fixes (e.g., `Add to dictionary`) with the [`ltex.configurationTarget`](settings.html#ltexconfigurationtarget) setting.
 
+<!-- ltex-client-specific-end -->
+
 ## External Setting Files
+
+<!-- ltex-client-specific-begin -->
 
 *See also [“Where does LTeX save its settings (e.g., dictionary, false positives)?”](faq.html#where-does-ltex-save-its-settings-eg-dictionary-false-positives) in the FAQ.*
 
@@ -80,6 +86,8 @@ The scope in which this procedure is applied is determined by the [`ltex.configu
    1. Retrieve the `en-US` part of the value of [`ltex.dictionary`](settings.html#ltexdictionary) that is set in the user settings.
    2. Pick the first external file in that list. If there is none, choose `LTEX_GLOBAL_STORAGE_PATH/ltex.dictionary.en-US.txt` (create the file if necessary).
    3. Append the file by the new word.
+
+<!-- ltex-client-specific-end -->
 
 ## Magic Comments
 

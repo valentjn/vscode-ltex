@@ -30,15 +30,21 @@ The language support extension were only necessary for LTeX 4.x. Starting with L
 
 ## How can I prevent LTeX from redownloading ltex-ls and Java after every update?
 
+<!-- ltex-client-specific-begin -->
+
 [As explained above](faq.html#whats-the-difference-between-vscode-ltex-ltex-ls-and-languagetool), ltex-ls is a necessary component of LTeX. Due to file size restrictions of the Visual Studio Marketplace, it is not possible to include ltex-ls in the extension itself. You can [install ltex-ls](installation-and-usage.html#second-alternative-download-ltex-lsjava-manually) locally on your computer by setting [`ltex.ltex-ls.path`](settings.html#ltexltex-lspath). However, this is not recommended as automatic updates of LTeX might break compatibility with ltex-ls.
 
 If LTeX keeps downloading Java after every update, then you don't have a compatible version of Java installed on your computer. You can prevent LTeX from doing this by [installing Java](installation-and-usage.html#second-alternative-download-ltex-lsjava-manually). Usually, it is not necessary to set [`ltex.java.path`](settings.html#ltexjavapath) after the installation of Java, but you can use this setting if LTeX still doesn't find Java.
+
+<!-- ltex-client-specific-end -->
 
 ## Why does LTeX have such a high CPU load?
 
 LanguageTool is not only a simple spell checker that just looks up some words in a dictionary. It is a powerful grammar checker that [checks thousands of grammar rules](https://community.languagetool.org/rule/list?lang=en) at once. This means that checking a document for the first time, either after activating the LTeX extension or after opening a document to be checked, may take a while. The exact duration depends on the length of the document and the power of the computer, but it is usually around 30 seconds and may be up to two minutes. After this initial check, edits are checked very quickly due to the feature of sentence caching (see [`ltex.sentenceCacheSize`](settings.html#ltexsentencecachesize)), and should not cause any significant CPU load.
 
 ## Where does LTeX save its settings (e.g., dictionary, false positives)?
+
+<!-- ltex-client-specific-begin -->
 
 Most settings are saved in the `settings.json` files of VS Code (press `Ctrl+,` to open them).
 
@@ -50,6 +56,8 @@ Some settings, such as when you add a word to the dictionary or when you hide a 
 - Windows:
   - If no workspace is open: `C:\Users\USERNAME\AppData\Roaming\Code\User\globalStorage\valentjn.vscode-ltex`
   - If a workspace is open: `C:\PATH_TO_WORKSPACE\.vscode`
+
+<!-- ltex-client-specific-end -->
 
 ## How can I check multiple languages at once?
 

@@ -20,9 +20,13 @@ Sie können entweder einen Boolean-Wert angeben, der bestimmt, ob LTeX für alle
 
 Alle unterstützten Code-Sprachmodi sind in der Voreinstellung dieser Einstellung aufgelistet. Wenn Sie einen nicht-unterstützten Code-Sprachmodus hinzufügen (also einen Code-Sprachmodus, der nicht in der Voreinstellung enthalten ist), dann wird LTeX entsprechende Dateien als reinen Text ohne Parsen überprüfen.
 
+<!-- ltex-client-specific-de-begin -->
+
 Die Aktivierungsereignisse werden von dieser Einstellung nicht berührt. Das heißt, dass die Erweiterung aktiviert wird, sobald eine Datei mit einem unterstützten Code-Sprachmodus geöffnet wird. Falls Sie Dateien mit nicht-unterstützten Codi-Sprachmodi überprüfen wollen, müssen Sie eventuell die Erweiterung explizit mithilfe des Befehls [`LTeX: Aktiviere Erweiterung`](commands-de.html#ltex-aktiviere-erweiterung) aktivieren.
 
 Nach Änderungen muss das Fenster von Visual Studio Code erneut geladen werden.
+
+<!-- ltex-client-specific-end -->
 
 *Typ:* `boolean` oder `array`
 
@@ -104,9 +108,13 @@ Listen von zusätzlichen Wörtern, die nicht als Schreibfehler gewertet werden s
 
 Diese Einstellung ist sprachabhängig. Benutzen Sie daher ein Objekt der Form `{"<SPRACHE1>": ["<WORT1>", "<WORT2>", ...], "<SPRACHE2>": ["<WORT1>", "<WORT2>", ...], ...}`, wobei `<SPRACHE>` den Sprachcode in [`ltex.language`](settings-de.html#ltexlanguage) bezeichnet.
 
+<!-- ltex-client-specific-de-begin -->
+
 Diese Einstellung ist eine Multi-Scope-Einstellung. [Siehe die Dokumentation für Details.](advanced-usage.html#multi-scope-settings)
 
 Diese Einstellung unterstützt externe Dateien. [Siehe die Dokumentation für Details.](advanced-usage.html#external-setting-files)
+
+<!-- ltex-client-specific-end -->
 
 Standardmäßig werden keine zusätzlichen Schreibfehler ignoriert.
 
@@ -361,9 +369,13 @@ Listen von zusätzlichen Regeln, die deaktiviert werden sollen (falls standardm�
 
 Diese Einstellung ist sprachabhängig. Benutzen Sie daher ein Objekt der Form `{"<SPRACHE1>": ["<REGEL1>", "<REGEL2>", ...], "<SPRACHE2>": ["<REGEL1>", "<REGEL2>", ...], ...}`, wobei `<SPRACHE>` den Sprachcode in [`ltex.language`](settings-de.html#ltexlanguage) und `<REGEL>` die ID der LanguageTool-Regel bezeichnet.
 
+<!-- ltex-client-specific-de-begin -->
+
 Diese Einstellung ist eine Multi-Scope-Einstellung. [Siehe die Dokumentation für Details.](advanced-usage.html#multi-scope-settings)
 
 Diese Einstellung unterstützt externe Dateien. [Siehe die Dokumentation für Details.](advanced-usage.html#external-setting-files)
+
+<!-- ltex-client-specific-end -->
 
 Standardmäßig werden keine zusätzlichen Regeln deaktiviert.
 
@@ -618,9 +630,13 @@ Listen von zusätzlichen Regeln, die aktiviert werden sollen (falls standardmä�
 
 Diese Einstellung ist sprachabhängig. Benutzen Sie daher ein Objekt der Form `{"<SPRACHE1>": ["<REGEL1>", "<REGEL2>", ...], "<SPRACHE2>": ["<REGEL1>", "<REGEL2>", ...], ...}`, wobei `<SPRACHE>` den Sprachcode in [`ltex.language`](settings-de.html#ltexlanguage) und `<REGEL>` die ID der LanguageTool-Regel bezeichnet.
 
+<!-- ltex-client-specific-de-begin -->
+
 Diese Einstellung ist eine Multi-Scope-Einstellung. [Siehe die Dokumentation für Details.](advanced-usage.html#multi-scope-settings)
 
 Diese Einstellung unterstützt externe Dateien. [Siehe die Dokumentation für Details.](advanced-usage.html#external-setting-files)
+
+<!-- ltex-client-specific-end -->
 
 Standardmäßig werden keine zusätzlichen Regeln aktiviert.
 
@@ -879,9 +895,13 @@ Obwohl es möglich ist, diese Einstellung manuell zu ändern, ist der bevorzugte
 
 Die JSON-Zeichenfolge hat momentan die Form `{"rule": "<REGEL>", "sentence": "<SATZ>"}`, wobei `<REGEL>` die ID der LanguageTool-Regel und `<SATZ>` einen Java-kompatiblen regulären Ausdruck bezeichnet. Alle Vorkommen der gegebenen Regel werden in allen Sätzen (die durch den LanguageTool-Tokenizer bestimmt werden) verborgen, die zum regulären Ausdruck passen. [Siehe die Dokumentation für Details.](advanced-usage.html#hiding-false-positives-with-regular-expressions)
 
+<!-- ltex-client-specific-de-begin -->
+
 Diese Einstellung ist eine Multi-Scope-Einstellung. [Siehe die Dokumentation für Details.](advanced-usage.html#multi-scope-settings)
 
 Diese Einstellung unterstützt externe Dateien. [Siehe die Dokumentation für Details.](advanced-usage.html#external-setting-files)
+
+<!-- ltex-client-specific-end -->
 
 Die Leistung kann darunter leiden, falls diese Liste sehr lang ist.
 
@@ -1160,7 +1180,11 @@ Liste von LaTeX-Befehlen, die vom LaTeX-Parser gesondert behandelt werden sollen
 
 Diese Einstellung ist ein Objekt mit den Befehlen als Schlüssel und zugehörigen Aktionen als Werte.
 
+<!-- ltex-client-specific-de-begin -->
+
 Falls Sie die `settings.json`-Datei direkt bearbeiten, beachten Sie, dass Sie den Backslash am Anfang durch Ersetzung mit zwei Backslashs escapen müssen. Falls Sie das Einstellungspanel von VS Code benutzen, geben Sie nur ein Backslash ein.
+
+<!-- ltex-client-specific-end -->
 
 Viele gebräuchliche Befehle werden standardmäßig bereits gesondert behandelt, selbst, wenn Sie diese Einstellung auf ein leeres Objekt setzen.
 
@@ -1245,7 +1269,11 @@ Objekt mit beliebigen Eigenschaftsnamen, wobei die Werte jeder Eigenschaft folge
 
 ## `ltex.configurationTarget`
 
+<!-- ltex-client-specific-de-begin -->
+
 Steuert, welche `settings.json` oder externe Einstellungsdatei ([siehe die Dokumentation](advanced-usage.html#external-setting-files)) geändert wird, wenn eine der schnellen Problembehebungen verwendet wird.
+
+<!-- ltex-client-specific-end -->
 
 *Typ:* `object`
 
@@ -1378,11 +1406,15 @@ Optionaler Pfad zu einem Verzeichnis mit Regeln eines word2vec-Sprachmodells.
 
 ## `ltex.ltex-ls.path`
 
+<!-- ltex-client-specific-de-begin -->
+
 Falls dies auf eine leere Zeichenfolge gesetzt ist, dann lädt LTeX automatisch [ltex-ls von GitHub](https://github.com/valentjn/ltex-ls/releases) herunter, speichert es im Erweiterungsordner, und benutzt es für die Textüberprüfung. Sie können diese Einstellung auf den Ort eines ltex-ls-Release setzen, das Sie selbst heruntergeladen haben.
 
 Benutzen Sie dafür den Pfad zum Hauptverzeichnis von ltex-ls (dieses enthält die Unterverzeichnisse `bin` und `lib`).
 
 Nach Änderungen muss das Fenster von Visual Studio Code erneut geladen werden.
+
+<!-- ltex-client-specific-end -->
 
 *Typ:* `string`
 
@@ -1424,11 +1456,15 @@ ltex-ls benutzt nicht alle Protokollierungslevel.
 
 ## `ltex.java.path`
 
+<!-- ltex-client-specific-de-begin -->
+
 Falls dies auf eine leere Zeichenfolge gesetzt ist und LTeX auf Ihrem Rechner kein Java finden kann, dann lädt LTeX automatisch eine Java-Distribution herunter ([AdoptOpenJDK](https://adoptopenjdk.net/)), speichert sie im Erweiterungsordner und benutzt sie, um ltex-ls zu starten. Sie können diese Einstellung auf den Ort einer bereits bestehenden Java-Installation setzen, um stattdessen diese Java-Installation zu benutzen.
 
 Benutzen Sie denselben Pfad, den Sie für die Umgebungsvariable `JAVA_HOME` benutzen würden (dieser enthält üblicherweise neben anderen die Unterverzeichnisse `bin` und `lib`).
 
 Nach Änderungen muss das Fenster von Visual Studio Code erneut geladen werden.
+
+<!-- ltex-client-specific-end -->
 
 *Typ:* `string`
 
@@ -1436,11 +1472,15 @@ Nach Änderungen muss das Fenster von Visual Studio Code erneut geladen werden.
 
 ## `ltex.java.forceTrySystemWide`
 
+<!-- ltex-client-specific-de-begin -->
+
 Falls dies auf `true` gesetzt ist, dann versucht LTeX immer zunächst eine systemweite Java-Installation zu benutzen, bevor LTeX versucht, eine automatisch heruntergeladene Java-Distribution zu benutzen.
 
 Dies ist das Standardverhalten auf allen Plattformen außer Mac (d. h., diese Einstellung hat keine Auswirkung auf diesen Plattformen). Auf Mac-Systemen kann der Versuch, eine systemweite Java-Installation zu benutzen, obwohl Java nicht installiert ist, ein Popup-Dialog verursachen, der dazu auffordert, Java zu installieren. Daher benutzt LTeX standardmäßig keine systemweite Java-Installation auf Mac-Systemen.
 
 Nach Änderungen muss das Fenster von Visual Studio Code erneut geladen werden.
+
+<!-- ltex-client-specific-end -->
 
 *Typ:* `boolean`
 
@@ -1448,11 +1488,15 @@ Nach Änderungen muss das Fenster von Visual Studio Code erneut geladen werden.
 
 ## `ltex.java.initialHeapSize`
 
+<!-- ltex-client-specific-de-begin -->
+
 Anfängliche Größe des Java-Heap-Speichers in Megabytes (korrespondiert zur Java-Option `-Xms`, muss eine positive Ganzzahl sein).
 
 Eine Verkleinerung kann dazu führen, dass der Java-Prozess weniger RAM-Speicher benötigt.
 
 Nach Änderungen muss das Fenster von Visual Studio Code erneut geladen werden.
+
+<!-- ltex-client-specific-end -->
 
 *Typ:* `integer`
 
@@ -1460,11 +1504,15 @@ Nach Änderungen muss das Fenster von Visual Studio Code erneut geladen werden.
 
 ## `ltex.java.maximumHeapSize`
 
+<!-- ltex-client-specific-de-begin -->
+
 Maximale Größe des Java-Heap-Speichers in Megabytes (korrespondiert zur Java-Option `-Xmx`, muss eine positive Ganzzahl sein).
 
 Eine Verkleinerung kann dazu führen, dass der Java-Prozess weniger RAM-Speicher benötigt. Wenn Sie diese Einstellung zu klein setzen, kann dies dazu führen, dass der Java-Prozess die Heap-Größe überschreitet, sodass der Fehler `OutOfMemoryError` angezeigt wird.
 
 Nach Änderungen muss das Fenster von Visual Studio Code erneut geladen werden.
+
+<!-- ltex-client-specific-end -->
 
 *Typ:* `integer`
 
@@ -1525,7 +1573,11 @@ Falls dies auf `true` gesetzt ist, dann werden von LTeX gemeldete Schreibfehler 
 
 ## `ltex.statusBarItem`
 
+<!-- ltex-client-specific-de-begin -->
+
 Falls dies auf `true` gesetzt ist, dann wird ein Eintrag über den Status von LTeX ständig in der Statusleiste angezeigt.
+
+<!-- ltex-client-specific-end -->
 
 *Typ:* `boolean`
 
@@ -1533,11 +1585,15 @@ Falls dies auf `true` gesetzt ist, dann wird ein Eintrag über den Status von LT
 
 ## `ltex.trace.server`
 
+<!-- ltex-client-specific-de-begin -->
+
 Debugging-Einstellung, um die Kommunikation zwischen Language Client und Language Server zu protokollieren.
 
 Wenn Sie einen Bug melden, setzen Sie diese Einstellung auf `"verbose"` und öffnen Sie das Protokoll `LTeX Language Client` unter `Anzeigen` › `Ausgabe`. Hängen Sie den relevanten Teil an das GitHub-Problem an.
 
 Nach Änderungen muss das Fenster von Visual Studio Code erneut geladen werden.
+
+<!-- ltex-client-specific-end -->
 
 *Typ:* `string`
 

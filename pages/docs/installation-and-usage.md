@@ -11,6 +11,8 @@ redirect_from: "/docs/installation-how-to-use.html"
 sidebar: "sidebar"
 ---
 
+This page is specific to vscode-ltex. It does not apply if you use a different LTeX plugin for an editor other than VS Code.
+
 ## Requirements
 
 - 64-bit operating system
