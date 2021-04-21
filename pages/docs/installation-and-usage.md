@@ -17,6 +17,8 @@ sidebar: "sidebar"
 - [VS Code 1.52.0 or later](https://code.visualstudio.com/)
 - Optional:
   - If you want to check LaTeX documents: [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
+  - If you want to check Org documents: [Org Mode Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=tootone.org-mode)
+  - If you want to check reStructuredText documents: [reStructuredText Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=lextudio.restructuredtext)
 
 ## Download Providers
 
