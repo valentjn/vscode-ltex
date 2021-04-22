@@ -57,7 +57,7 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
 - 64-bit operating system
 - [VS Code 1.52.0 or newer](https://code.visualstudio.com/)
 - Optional:
-  - If you want to check L<sup>A</sup>T<sub>E</sub>X documents: [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
+  - If you want to check documents written in a markup language that VS Code does not support out-of-the-box (e.g., L<sup>A</sup>T<sub>E</sub>X), install an extension that provides support for that language (e.g., [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)) in addition to this extension.
 
 ## How to Use
 
