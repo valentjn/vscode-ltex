@@ -92,10 +92,9 @@ export default class StatusBarItemManager {
 
     if ((visible != null) && visible) {
       this._statusBarItem.show();
-      return;
+    } else {
+      this._statusBarItem.hide();
     }
-
-    this._statusBarItem.hide();
   }
 
   private static getKeys(obj: any): string[] {
