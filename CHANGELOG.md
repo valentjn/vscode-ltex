@@ -8,6 +8,13 @@
 
 # Changelog
 
+## 10.2.0 (upcoming)
+
+- Show `Use ...` quick fixes before other quick fixes (fixes [#297](https://github.com/valentjn/vscode-ltex/issues/297))
+- Limit number of `Use ...` quick fixes to 5 (see [#297](https://github.com/valentjn/vscode-ltex/issues/297))
+- Fix almost infinite loops when checking very long documents (fixes [#253](https://github.com/valentjn/vscode-ltex/issues/253))
+- Update LT<sub>E</sub>X LS to 12.1.0
+
 ## 10.1.0 — “The Org Summation” (April 18, 2021)
 
 - Add support for Org (fixes [#277](https://github.com/valentjn/vscode-ltex/issues/277))
