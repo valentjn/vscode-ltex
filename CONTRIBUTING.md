@@ -150,6 +150,7 @@ Of course, it's also possible to duplicate the English language files instead, b
 - **Discussions** may happen on any issue regardless of its state. Discussions don't prolong the lifetime of stale issues, and they must be about the original issue, otherwise a new issue must be opened.
 - Issues may only be **reopened** if the reason for closing it doesn't exist anymore.
   - *Examples:* Missing information is provided, bug occurs again due to a regression, etc.
+- Issue comments that do not contribute to the discussion (e.g., “I'm affected, too” on confirmed bug reports) may be hidden. Instead, reactions (e.g., thumbs-up) should be used to upvote issues.
 - Issues that don't follow the **template** may be closed immediately.
 - Issues may be **locked** if they violate the [Code of Conduct](https://valentjn.github.io/vscode-ltex/docs/code-of-conduct.html).
 
