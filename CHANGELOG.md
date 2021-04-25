@@ -53,7 +53,7 @@
 - Fix space not added between two arguments of L<sup>A</sup>T<sub>E</sub>X commands
 - Fix manually checking BibT<sub>E</sub>X documents not working
 - Fix words in dictionary containing markup not recognized
-- Update bundled AdoptOpenJDK JRE to 11.0.10+9
+- Update bundled AdoptOpenJDK JRE to 11.0.10+9 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8258701?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.10%20ORDER%20BY%20created%20DESC))
 - Update LT<sub>E</sub>X LS to 10.0.0
 
 ## 8.4.0 — “The Math Optimization” (January 29, 2021)
@@ -112,7 +112,7 @@
 - Add support for optional arguments of `\newtheorem`
 - Fix wrong position of diagnostics when using a recognized L<sup>A</sup>T<sub>E</sub>X command with a non-recognized set of arguments due to an infinite loop (fixes [#167](https://github.com/valentjn/vscode-ltex/issues/167))
 - Avoid misleading popup prompting to install Java on Mac, use [`ltex.java.forceTrySystemWide`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavaforcetrysystemwide) to force trying a system-wide Java installation (fixes [#162](https://github.com/valentjn/vscode-ltex/issues/162))
-- Update bundled AdoptOpenJDK JRE to 11.0.9+11
+- Update bundled AdoptOpenJDK JRE to 11.0.9+11 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8253813?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.9%20ORDER%20BY%20created%20DESC))
 - Update LSP4J to 0.10.0
 - Update LT<sub>E</sub>X LS to 8.1.0
 
@@ -240,7 +240,7 @@
 - Download Java 11 if only Java 8 is installed; LT<sub>E</sub>X support for Java 8 will end on November 1, 2020 (see [documentation](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html) and [#39](https://github.com/valentjn/vscode-ltex/issues/39))
 - Add support for babel commands (see [documentation](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#multilingual-latex-documents-with-the-babel-package), fixes [#81](https://github.com/valentjn/vscode-ltex/issues/81))
 - Fix problems with spaces in paths when using LT<sub>E</sub>X LS on Windows (fixes [#80](https://github.com/valentjn/vscode-ltex/issues/80))
-- Update bundled AdoptOpenJDK JRE to 11.0.8+10
+- Update bundled AdoptOpenJDK JRE to 11.0.8+10 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8253009?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.8%20ORDER%20BY%20created%20DESC))
 - Update some NPM dependencies
 - Update LT<sub>E</sub>X LS to 6.1.0
 
