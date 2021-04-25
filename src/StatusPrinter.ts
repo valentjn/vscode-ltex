@@ -25,6 +25,8 @@ interface GetServerStatusCommandResult extends ServerCommandResult {
   cpuUsage: number | null;
   usedMemory: number | null;
   totalMemory: number | null;
+  isChecking: boolean | null;
+  documentUriBeingChecked: string | null;
 }
 
 export default class StatusPrinter {
@@ -56,6 +58,8 @@ export default class StatusPrinter {
       cpuUsage: null,
       usedMemory: null,
       totalMemory: null,
+      isChecking: null,
+      documentUriBeingChecked: null,
     };
 
     if (this._languageClient != null) {
@@ -100,6 +104,10 @@ export default class StatusPrinter {
     Logger.log(i18n('cpuUsage', StatusPrinter.formatFraction(ltexLsStatus.cpuUsage)));
     Logger.log(i18n('totalMemory', StatusPrinter.formatMemory(ltexLsStatus.totalMemory)));
     Logger.log(i18n('usedMemory', StatusPrinter.formatMemory(ltexLsStatus.usedMemory)));
+    Logger.log(i18n('isBusyChecking',
+        StatusPrinter.formatBoolean(ltexLsStatus.isChecking)));
+    Logger.log(i18n('documentUriBeingChecked',
+        StatusPrinter.formatString(ltexLsStatus.documentUriBeingChecked)));
 
     const watchedExternalFiles: string[] = this._externalFileManager.getAllWatchedExternalFiles();
 
@@ -120,6 +128,10 @@ export default class StatusPrinter {
 
   private static formatString(str: string | null): string {
     return ((str != null) ? str : i18n('na'));
+  }
+
+  private static formatBoolean(x: boolean | null): string {
+    return ((x != null) ? (x ? i18n('true') : i18n('false')) : i18n('na'));
   }
 
   private static formatNumber(x: number | null): string {
