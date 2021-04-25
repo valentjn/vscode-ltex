@@ -35,9 +35,9 @@ export default class DependencyManager {
   private static readonly _offlineInstructionsUrl: string = 'https://valentjn.github.io/'
       + 'vscode-ltex/docs/installation-and-usage.html#offline-installation';
 
-  private static readonly _toBeDownloadedLtexLsVersion: string = '12.0.0';
+  private static readonly _toBeDownloadedLtexLsVersion: string = '12.1.0-alpha.1';
   private static readonly _toBeDownloadedLtexLsHashDigest: string =
-      'c7cb124e42ce2d742fc3fe846aa5fc41f2973b7a59e192da7e764d38cb2ccad6';
+      'fa4f658291b9ab4fde26037cde6c224a2f4950f02b1626e6c30a4dee06133f66';
 
   private static readonly _toBeDownloadedJavaVersion: string = '11.0.11+9';
   private static readonly _toBeDownloadedJavaHashDigests: {[fileName: string]: string} = {
