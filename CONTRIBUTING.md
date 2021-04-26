@@ -70,7 +70,7 @@ In order for pull requests to be merged, a number of checks have to pass. This i
   - Successful build (strict mode)
   - No ESLint warnings
   - Successful Mocha end-to-end and unit tests
-  - Everything above is checked for Linux, Mac, and Windows
+  - Everything above is checked for Linux and Windows
   - No CodeQL warnings
 - ltex-ls (see [`ltex-ls-ci.yml`](https://github.com/valentjn/ltex-ls/blob/develop/.github/workflows/ltex-ls-ci.yml)):
   - Successful build

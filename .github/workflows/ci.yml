@@ -59,8 +59,8 @@ jobs:
       - name: "Run ESLint"
         run: "npm run lint"
 
-      - name: "Run Mocha Tests (Linux/Mac)"
-        if: "${{ !startsWith(matrix.os, 'windows-') }}"
+      - name: "Run Mocha Tests (Linux)"
+        if: "${{ startsWith(matrix.os, 'ubuntu-') }}"
         env:
           LTEX_GITHUB_OAUTH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           # to suppress "async hook stack has become corrupted" errors
