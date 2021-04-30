@@ -41,17 +41,29 @@ def main() -> None:
   parser = argparse.ArgumentParser(description="Update version and hash digest of LTeX LS")
   parser.add_argument("--allow-prerelease", action="store_true",
       help="Allow prerelease versions")
+  parser.add_argument("--tag",
+      help="Tag to use; if omitted, tag with latest semantic version will be used")
   args = parser.parse_args()
 
   print("Retrieving list of releases of LTeX LS...")
   releases = common.requestFromGitHub("https://api.github.com/repos/valentjn/ltex-ls/releases")
-  ltexLsVersion = getLatestLtexLsVersion([x["tag_name"] for x in releases],
-      allowPrerelease=args.allow_prerelease)
-  ltexLsVersion = str(ltexLsVersion)
+
+  if args.tag is not None:
+    ltexLsTag = args.tag
+
+    for release in releases:
+      if release["tag_name"] == ltexLsTag:
+        ltexLsVersion = release["name"]
+        break
+  else:
+    ltexLsVersion = getLatestLtexLsVersion([x["tag_name"] for x in releases],
+        allowPrerelease=args.allow_prerelease)
+    ltexLsVersion = str(ltexLsVersion)
+    ltexLsTag = ltexLsVersion
 
   print(f"Downloading LTeX LS {ltexLsVersion}...")
   ltexLsUrl = ("https://github.com/valentjn/ltex-ls/releases/download/"
-      f"{urllib.parse.quote_plus(ltexLsVersion)}/"
+      f"{urllib.parse.quote_plus(ltexLsTag)}/"
       f"ltex-ls-{urllib.parse.quote_plus(ltexLsVersion)}.tar.gz")
   response = common.requestFromGitHub(ltexLsUrl, decodeAsJson=False)
 
@@ -62,11 +74,13 @@ def main() -> None:
   print("Writing version and hash digest to 'src/DependencyManager.ts'...")
   dependencyManagerFilePath = os.path.join(common.repoDirPath, "src", "DependencyManager.ts")
   with open(dependencyManagerFilePath, "r") as f: dependencyManagerTypescript = f.read()
-  dependencyManagerTypescript = re.sub(r"(_toBeDownloadedLtexLsVersion: string = ').*?(';\n)",
+  dependencyManagerTypescript = re.sub(r"(_toBeDownloadedLtexLsTag: string =\n *').*?(';\n)",
+      rf"\g<1>{ltexLsTag}\g<2>", dependencyManagerTypescript)
+  dependencyManagerTypescript = re.sub(r"(_toBeDownloadedLtexLsVersion: string =\n *').*?(';\n)",
       rf"\g<1>{ltexLsVersion}\g<2>", dependencyManagerTypescript)
   dependencyManagerTypescript = re.sub(
       r"(_toBeDownloadedLtexLsHashDigest: string =\n *').*?(';\n)",
-      fr"\g<1>{ltexLsHashDigest}\g<2>", dependencyManagerTypescript)
+      rf"\g<1>{ltexLsHashDigest}\g<2>", dependencyManagerTypescript)
   with open(dependencyManagerFilePath, "w") as f: f.write(dependencyManagerTypescript)
 
 

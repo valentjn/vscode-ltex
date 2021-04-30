@@ -51,18 +51,12 @@ def getLtexVersion() -> semver.VersionInfo:
 
 
 def downloadLtexLs() -> None:
-  dependencyManagerFilePath = os.path.join(common.repoDirPath, "src", "DependencyManager.ts")
-  with open(dependencyManagerFilePath, "r") as f: dependencyManagerTypescript = f.read()
-  regexMatch = re.search(r"(?:_toBeDownloadedLtexLsVersion: string = ')(.*?)(?:';\n)",
-      dependencyManagerTypescript)
-  assert regexMatch is not None, \
-      f"Could not find _toBeDownloadedLtexLsVersion in '{dependencyManagerFilePath}."
-  ltexLsVersion = regexMatch.group(1)
-
   ltexLsUrl = ("https://github.com/valentjn/ltex-ls/releases/download/"
-      f"{ltexLsVersion}/ltex-ls-{ltexLsVersion}.tar.gz")
-  ltexLsArchivePath = os.path.join(libDirPath, f"ltex-ls-{ltexLsVersion}.tar.gz")
-  print(f"Downloading ltex-ls {ltexLsVersion} from '{ltexLsUrl}' to '{ltexLsArchivePath}'...")
+      f"{common.toBeDownloadedLtexLsTag}/ltex-ls-{common.toBeDownloadedLtexLsVersion}.tar.gz")
+  ltexLsArchivePath = os.path.join(libDirPath,
+      f"ltex-ls-{common.toBeDownloadedLtexLsVersion}.tar.gz")
+  print(f"Downloading ltex-ls {common.toBeDownloadedLtexLsVersion} from '{ltexLsUrl}' to "
+      f"'{ltexLsArchivePath}'...")
   urllib.request.urlretrieve(ltexLsUrl, ltexLsArchivePath)
 
   extractLtexLs(ltexLsArchivePath)

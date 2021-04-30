@@ -35,11 +35,15 @@ export default class DependencyManager {
   private static readonly _offlineInstructionsUrl: string = 'https://valentjn.github.io/'
       + 'vscode-ltex/docs/installation-and-usage.html#offline-installation';
 
-  private static readonly _toBeDownloadedLtexLsVersion: string = '12.1.0-alpha.1';
+  private static readonly _toBeDownloadedLtexLsTag: string =
+      '12.1.0-alpha.1';
+  private static readonly _toBeDownloadedLtexLsVersion: string =
+      '12.1.0-alpha.1';
   private static readonly _toBeDownloadedLtexLsHashDigest: string =
       'fa4f658291b9ab4fde26037cde6c224a2f4950f02b1626e6c30a4dee06133f66';
 
-  private static readonly _toBeDownloadedJavaVersion: string = '11.0.11+9';
+  private static readonly _toBeDownloadedJavaVersion: string =
+      '11.0.11+9';
   private static readonly _toBeDownloadedJavaHashDigests: {[fileName: string]: string} = {
     'OpenJDK11U-jre_aarch64_linux_hotspot_11.0.11_9.tar.gz':
       'fde6b29df23b6e7ed6e16a237a0f44273fb9e267fdfbd0b3de5add98e55649f6',
@@ -285,7 +289,7 @@ export default class DependencyManager {
           i18n('downloadingAndExtractingLtexLs'), progress);
 
       const ltexLsUrl: string = 'https://github.com/valentjn/ltex-ls/releases/download/'
-          + `${DependencyManager._toBeDownloadedLtexLsVersion}/`
+          + `${DependencyManager._toBeDownloadedLtexLsTag}/`
           + `ltex-ls-${DependencyManager._toBeDownloadedLtexLsVersion}.tar.gz`;
       await this.installDependency(ltexLsUrl, DependencyManager._toBeDownloadedLtexLsHashDigest,
           `ltex-ls ${DependencyManager._toBeDownloadedLtexLsVersion}`, codeProgress);

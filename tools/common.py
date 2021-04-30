@@ -22,15 +22,20 @@ repoDirPath = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__fil
 with open(os.path.join(repoDirPath, "src", "DependencyManager.ts"), "r") as f:
   dependencyManagerTypescript = f.read()
 
-matches = re.findall(r"_toBeDownloadedJavaVersion: string = '(.*?)';",
+matches = re.findall(r"_toBeDownloadedLtexLsTag: string =\n *'(.*?)';",
     dependencyManagerTypescript)
 assert len(matches) == 1
-toBeDownloadedJavaVersion = matches[0]
+toBeDownloadedLtexLsTag = matches[0]
 
-matches = re.findall(r"_toBeDownloadedLtexLsVersion: string = '(.*?)';",
+matches = re.findall(r"_toBeDownloadedLtexLsVersion: string =\n *'(.*?)';",
     dependencyManagerTypescript)
 assert len(matches) == 1
 toBeDownloadedLtexLsVersion = matches[0]
+
+matches = re.findall(r"_toBeDownloadedJavaVersion: string =\n *'(.*?)';",
+    dependencyManagerTypescript)
+assert len(matches) == 1
+toBeDownloadedJavaVersion = matches[0]
 
 del dependencyManagerTypescript
 del f
