@@ -125,14 +125,6 @@ jobs:
       - name: "Install Python Dependencies"
         run: "python -m pip install --upgrade pip && pip install semver==2.13.0"
 
-      - name: "Build Package with vsce"
-        run: "vsce package"
-
-      - name: "Build Offline Packages"
-        env:
-          LTEX_GITHUB_OAUTH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        run: "python tools/createOfflinePackages.py"
-
       - name: "Set VSCODE_LTEX_VERSION"
         run: "echo \"VSCODE_LTEX_VERSION=$(python -c \"import json; print(json.load(open('package.json', 'r'))['version'], end='')\")\" >> $GITHUB_ENV"
 
@@ -145,54 +137,27 @@ jobs:
       - name: "Check VSCODE_LTEX_IS_PRERELEASE"
         run: "if [[ -z \"$VSCODE_LTEX_IS_PRERELEASE\" ]]; then echo 'Error: VSCODE_LTEX_IS_PRERELEASE not set!'; (exit 1); fi; echo \"VSCODE_LTEX_IS_PRERELEASE set to '$VSCODE_LTEX_IS_PRERELEASE'\""
 
+      - name: "Set VSCODE_LTEX_CHANGELOG"
+        run: "if [ \"$VSCODE_LTEX_IS_PRERELEASE\" = \"false\" ]; then echo \"VSCODE_LTEX_CHANGELOG=$(python -c \"import re; print(re.search(r'\n## .*\n\n((?:.|\n)*?)\n\n## ', open('CHANGELOG.md', 'r').read()).group(1), end='')\")\" >> $GITHUB_ENV; else echo \"VSCODE_LTEX_CHANGELOG=This is an unfinished pre-release. Use at your own risk.\" >> $GITHUB_ENV; fi"
+
+      - name: "Build Package with vsce"
+        run: "vsce package"
+
+      - name: "Build Offline Packages"
+        env:
+          LTEX_GITHUB_OAUTH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        run: "python tools/createOfflinePackages.py"
+
       - name: "Create GitHub Release"
-        id: "create_github_release"
-        uses: "actions/create-release@v1"
+        uses: "softprops/action-gh-release@v1"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
           tag_name: "${{ github.ref }}"
+          name: "${{ github.ref }}"
           prerelease: "${{ env.VSCODE_LTEX_IS_PRERELEASE }}"
-
-      - name: "Upload Package to GitHub Release"
-        uses: "actions/upload-release-asset@v1"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        with:
-          asset_content_type: "application/octet-stream"
-          asset_name: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}.vsix"
-          asset_path: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}.vsix"
-          upload_url: "${{ steps.create_github_release.outputs.upload_url }}"
-
-      - name: "Upload Linux Offline Package to GitHub Release"
-        uses: "actions/upload-release-asset@v1"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        with:
-          asset_content_type: "application/octet-stream"
-          asset_name: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-linux-x64.vsix"
-          asset_path: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-linux-x64.vsix"
-          upload_url: "${{ steps.create_github_release.outputs.upload_url }}"
-
-      - name: "Upload Mac Offline Package to GitHub Release"
-        uses: "actions/upload-release-asset@v1"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        with:
-          asset_content_type: "application/octet-stream"
-          asset_name: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-mac-x64.vsix"
-          asset_path: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-mac-x64.vsix"
-          upload_url: "${{ steps.create_github_release.outputs.upload_url }}"
-
-      - name: "Upload Windows Offline Package to GitHub Release"
-        uses: "actions/upload-release-asset@v1"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        with:
-          asset_content_type: "application/octet-stream"
-          asset_name: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-windows-x64.vsix"
-          asset_path: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-windows-x64.vsix"
-          upload_url: "${{ steps.create_github_release.outputs.upload_url }}"
+          body: "${{ env.VSCODE_LTEX_CHANGELOG }}"
+          files: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-linux-x64.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-mac-x64.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-windows-x64.vsix"
 
       - name: "Publish Package on VS Marketplace"
         if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
