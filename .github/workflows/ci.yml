@@ -153,8 +153,6 @@ jobs:
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
-          tag_name: "${{ github.ref }}"
-          name: "${{ github.ref }}"
           prerelease: "${{ env.VSCODE_LTEX_IS_PRERELEASE }}"
           body: "${{ env.VSCODE_LTEX_CHANGELOG }}"
           files: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-linux-x64.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-mac-x64.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-windows-x64.vsix"
