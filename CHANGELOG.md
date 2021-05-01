@@ -8,7 +8,7 @@
 
 # Changelog
 
-## 10.2.0 (upcoming)
+## 10.2.0 — “The Long Document Reverberation” (May 1, 2021)
 
 - Show `Use ...` quick fixes before other quick fixes (fixes [#297](https://github.com/valentjn/vscode-ltex/issues/297))
 - Limit number of `Use ...` quick fixes to 5 (see [#297](https://github.com/valentjn/vscode-ltex/issues/297))
