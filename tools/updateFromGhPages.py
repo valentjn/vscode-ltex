@@ -125,13 +125,14 @@ def updateChangelog() -> None:
 
 # Changelog
 
-""".lstrip()
+## """.lstrip()
   changelog = changelog.replace("LaTeX", "L<sup>A</sup>T<sub>E</sub>X")
   changelog = changelog.replace("TeX", "T<sub>E</sub>X")
   changelog = changelog.replace("`LT<sub>E</sub>X", "`LTeX")
   changelog = changelog.replace("LT<sub>E</sub>X`", "LTeX`")
   changelog = re.sub(r"\]\((?!http)", "](https://valentjn.github.io/vscode-ltex/docs/", changelog)
-  changelog = re.sub(r"^---.*^---$\n\n", changelogHeader, changelog, flags=re.MULTILINE | re.DOTALL)
+  changelog = re.sub(r"^---.*?^---.*?^## ", changelogHeader, changelog,
+      flags=re.MULTILINE | re.DOTALL)
 
   with open(os.path.join(common.repoDirPath, "CHANGELOG.md"), "w") as f: f.write(changelog)
 
