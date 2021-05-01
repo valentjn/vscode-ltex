@@ -13,6 +13,17 @@ toc: false
 
 This is the changelog of vscode-ltex. If you use a different LTeX plugin for an editor other than VS Code, check the [changelog of LTeX LS](https://github.com/valentjn/ltex-ls/blob/release/CHANGELOG.md) (look up which version of LTeX LS your LTeX plugin uses).
 
+## 10.2.0 (upcoming)
+
+- Show `Use ...` quick fixes before other quick fixes (fixes [#297](https://github.com/valentjn/vscode-ltex/issues/297))
+- Limit number of `Use ...` quick fixes to 5 (see [#297](https://github.com/valentjn/vscode-ltex/issues/297))
+- Add checking status to output of [`LTeX: Show Status Information`](commands.html#ltex-show-status-information)
+- Add support for `\phantom`, `\hphantom`, and `\vphantom` (LaTeX)
+- Fix almost infinite loops when checking very long documents (fixes [#253](https://github.com/valentjn/vscode-ltex/issues/253))
+- Fix wrong underlining of words starting with markup (fixes [ltex-ls#69](https://github.com/valentjn/ltex-ls/issues/69))
+- Update bundled AdoptOpenJDK JRE to 11.0.11+9 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8264310?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.11%20ORDER%20BY%20created%20DESC))
+- Update LTeX LS to 12.1.0
+
 ## 10.1.0 — “The Org Summation” (April 18, 2021)
 
 - Add support for Org (fixes [#277](https://github.com/valentjn/vscode-ltex/issues/277))
@@ -51,7 +62,7 @@ This is the changelog of vscode-ltex. If you use a different LTeX plugin for an 
 - Fix space not added between two arguments of LaTeX commands
 - Fix manually checking BibTeX documents not working
 - Fix words in dictionary containing markup not recognized
-- Update bundled AdoptOpenJDK JRE to 11.0.10+9
+- Update bundled AdoptOpenJDK JRE to 11.0.10+9 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8258701?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.10%20ORDER%20BY%20created%20DESC))
 - Update LTeX LS to 10.0.0
 
 ## 8.4.0 — “The Math Optimization” (January 29, 2021)
@@ -110,7 +121,7 @@ This is the changelog of vscode-ltex. If you use a different LTeX plugin for an 
 - Add support for optional arguments of `\newtheorem`
 - Fix wrong position of diagnostics when using a recognized LaTeX command with a non-recognized set of arguments due to an infinite loop (fixes [#167](https://github.com/valentjn/vscode-ltex/issues/167))
 - Avoid misleading popup prompting to install Java on Mac, use [`ltex.java.forceTrySystemWide`](settings.html#ltexjavaforcetrysystemwide) to force trying a system-wide Java installation (fixes [#162](https://github.com/valentjn/vscode-ltex/issues/162))
-- Update bundled AdoptOpenJDK JRE to 11.0.9+11
+- Update bundled AdoptOpenJDK JRE to 11.0.9+11 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8253813?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.9%20ORDER%20BY%20created%20DESC))
 - Update LSP4J to 0.10.0
 - Update LTeX LS to 8.1.0
 
@@ -238,7 +249,7 @@ This is the changelog of vscode-ltex. If you use a different LTeX plugin for an 
 - Download Java 11 if only Java 8 is installed; LTeX support for Java 8 will end on November 1, 2020 (see [documentation](deprecation-of-java-8.html) and [#39](https://github.com/valentjn/vscode-ltex/issues/39))
 - Add support for babel commands (see [documentation](advanced-usage.html#multilingual-latex-documents-with-the-babel-package), fixes [#81](https://github.com/valentjn/vscode-ltex/issues/81))
 - Fix problems with spaces in paths when using LTeX LS on Windows (fixes [#80](https://github.com/valentjn/vscode-ltex/issues/80))
-- Update bundled AdoptOpenJDK JRE to 11.0.8+10
+- Update bundled AdoptOpenJDK JRE to 11.0.8+10 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8253009?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.8%20ORDER%20BY%20created%20DESC))
 - Update some NPM dependencies
 - Update LTeX LS to 6.1.0
 
