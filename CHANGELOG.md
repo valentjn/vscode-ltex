@@ -12,7 +12,10 @@
 
 - Show `Use ...` quick fixes before other quick fixes (fixes [#297](https://github.com/valentjn/vscode-ltex/issues/297))
 - Limit number of `Use ...` quick fixes to 5 (see [#297](https://github.com/valentjn/vscode-ltex/issues/297))
+- Add checking status to output of [`LTeX: Show Status Information`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-show-status-information)
+- Add support for `\phantom`, `\hphantom`, and `\vphantom` (L<sup>A</sup>T<sub>E</sub>X)
 - Fix almost infinite loops when checking very long documents (fixes [#253](https://github.com/valentjn/vscode-ltex/issues/253))
+- Fix wrong underlining of words starting with markup (fixes [ltex-ls#69](https://github.com/valentjn/ltex-ls/issues/69))
 - Update bundled AdoptOpenJDK JRE to 11.0.11+9 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8264310?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.11%20ORDER%20BY%20created%20DESC))
 - Update LT<sub>E</sub>X LS to 12.1.0
 
