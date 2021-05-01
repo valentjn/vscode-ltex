@@ -13,7 +13,7 @@ toc: false
 
 This is the changelog of vscode-ltex. If you use a different LTeX plugin for an editor other than VS Code, check the [changelog of LTeX LS](https://github.com/valentjn/ltex-ls/blob/release/CHANGELOG.md) (look up which version of LTeX LS your LTeX plugin uses).
 
-## 10.2.0 (upcoming)
+## 10.2.0 — “The Long Document Reverberation” (May 1, 2021)
 
 - Show `Use ...` quick fixes before other quick fixes (fixes [#297](https://github.com/valentjn/vscode-ltex/issues/297))
 - Limit number of `Use ...` quick fixes to 5 (see [#297](https://github.com/valentjn/vscode-ltex/issues/297))
