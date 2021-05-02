@@ -10,7 +10,7 @@ import datetime
 import json
 import os
 import traceback
-from typing import Any, Callable, Optional
+from typing import Any, Callable, List, Optional, Tuple
 
 import bokeh.io
 import bokeh.plotting
@@ -58,7 +58,7 @@ def plotStats() -> None:
   statsPath = os.path.join(repoDirPath, "_data", "stats", "stats.json")
   with open(statsPath, "r") as f: stats = json.load(f)
 
-  getUpdateCount: Callable[[str], int] = (
+  getUpdateCount: Callable[[datetime.datetime], int] = (
       lambda s: int(stats["statistics"][convertDateToString(s)]["uc"]))
   statDates = [parseDate(x) for x in stats["statistics"]]
   releaseDates = []
@@ -101,22 +101,22 @@ def plotStats() -> None:
     else:
       shortNames = name[0]
       if isinstance(shortNames, str): shortNames = [shortNames]
-      statsSubset = []
+      dates, values = [], []
 
       for x, y in stats["statistics"].items():
         value = 0
+        skipItem = False
 
         for shortName in shortNames:
           if shortName not in y:
-            value = None
+            skipItem = True
             break
 
           value += y[shortName]
 
-        if value is None: continue
-        statsSubset.append((parseDate(x), value))
-
-      dates, values = list(zip(*statsSubset))
+        if not skipItem:
+          dates.append(parseDate(x))
+          values.append(value)
 
     figure.line(dates, values)
     script, divs = bokeh.embed.components(figure)
