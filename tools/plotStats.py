@@ -12,8 +12,9 @@ import os
 import traceback
 from typing import Any, Callable, List, Optional, Tuple
 
-import bokeh.io
+import bokeh.embed
 import bokeh.plotting
+import bokeh.themes
 import cartopy
 import matplotlib as mpl
 mpl.use("Agg")
@@ -93,7 +94,7 @@ def plotStats() -> None:
       ]
 
   for name in names:
-    figure = bokeh.plotting.figure(title=name[1], width=1000, height=500, x_axis_type="datetime")
+    figure = bokeh.plotting.figure(title=name[1], width=750, height=400, x_axis_type="datetime")
 
     if name[1] == "users":
       dates = releaseDates
@@ -119,7 +120,8 @@ def plotStats() -> None:
           values.append(value)
 
     figure.line(dates, values)
-    script, divs = bokeh.embed.components(figure)
+    script, divs = bokeh.embed.components(figure,
+        theme=bokeh.themes.built_in_themes["dark_minimal"])
     html = script + divs
     htmlPath = os.path.join(repoDirPath, "_includes", "stats", "{}.html".format(name[1]))
     with open(htmlPath, "w") as f: f.write(html)
