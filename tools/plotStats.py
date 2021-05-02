@@ -19,6 +19,7 @@ import cartopy
 import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
+import numpy as np
 import yaml
 
 
@@ -62,28 +63,55 @@ def plotStats() -> None:
   getUpdateCount: Callable[[datetime.datetime], int] = (
       lambda s: int(stats["statistics"][convertDateToString(s)]["uc"]))
   statDates = [parseDate(x) for x in stats["statistics"]]
-  releaseDates = []
-  updateCounts = []
+  tomorrow = datetime.datetime.now() + datetime.timedelta(days=1)
 
-  for releaseDate in stats["versions"].values():
-    releaseDate = parseDate(releaseDate)
-    releaseDates.append(releaseDate)
+  releaseDates: List[datetime.datetime] = []
+  updateCounts: List[int] = []
+  users: List[float] = []
+  normalizedUsers = []
+  daysSinceFirstRelease = []
+
+  for releaseDate in list(stats["versions"].values()) + [tomorrow]:
+    if not isinstance(releaseDate, datetime.datetime): releaseDate = parseDate(releaseDate)
     feasibleDates = [x for x in statDates
         if (x < releaseDate) and ("uc" in stats["statistics"][convertDateToString(x)])]
-    updateCount: Optional[int] = None
-    if len(feasibleDates) > 0: updateCount = getUpdateCount(max(feasibleDates))
+    if len(feasibleDates) == 0: continue
+    updateCount = getUpdateCount(max(feasibleDates))
+
+    if len(releaseDates) > 0:
+      curUsers = updateCount - updateCounts[-1]
+      curNormalizedUsers = np.nan
+
+      if releaseDates[-1] + datetime.timedelta(days=7) <= releaseDate:
+        feasibleDates = [x for x in statDates
+            if (x < releaseDates[-1] + datetime.timedelta(days=7)) and
+            ("uc" in stats["statistics"][convertDateToString(x)])]
+
+        if len(feasibleDates) > 0:
+          curNormalizedUsers = getUpdateCount(max(feasibleDates)) - updateCounts[-1]
+
+      curDaysSinceFirstRelease = (releaseDate - releaseDates[0]).days
+    else:
+      curUsers = 0
+      curNormalizedUsers = 0
+      curDaysSinceFirstRelease = 0
+
+    releaseDates.append(releaseDate)
     updateCounts.append(updateCount)
+    users.append(curUsers)
+    normalizedUsers.append(curNormalizedUsers)
+    daysSinceFirstRelease.append(curDaysSinceFirstRelease)
 
-  updateCounts.append(getUpdateCount(max(statDates)))
-  deltaUpdateCounts = [(y - x if (x is not None) and (y is not None) else None)
-      for x, y in zip(updateCounts[:-1], updateCounts[1:])]
-
-  keep = [(x is not None) for x in deltaUpdateCounts]
-  releaseDates = [x for i, x in enumerate(releaseDates) if keep[i]]
-  deltaUpdateCounts = [x for i, x in enumerate(deltaUpdateCounts) if keep[i]]
+  daysSinceFirstReleaseArray = np.array(daysSinceFirstRelease)
+  normalizedUsersArray = np.array(normalizedUsers)
+  idx = np.isnan(normalizedUsersArray)
+  normalizedUsersArray[idx] = np.interp(daysSinceFirstReleaseArray[idx],
+      daysSinceFirstReleaseArray[~idx], normalizedUsersArray[~idx])
+  normalizedUsers = list(normalizedUsersArray)
 
   names = [
         (["s1", "s2"], "stars"),
+        ("nu", "normalizedUsers"),
         ("u", "users"),
         ("i", "install"),
         ("uc", "updateCount"),
@@ -96,9 +124,12 @@ def plotStats() -> None:
   for name in names:
     figure = bokeh.plotting.figure(title=name[1], width=750, height=400, x_axis_type="datetime")
 
-    if name[1] == "users":
+    if name[1] == "normalizedUsers":
       dates = releaseDates
-      values = deltaUpdateCounts
+      values = normalizedUsers
+    elif name[1] == "users":
+      dates = releaseDates
+      values = users
     else:
       shortNames = name[0]
       if isinstance(shortNames, str): shortNames = [shortNames]
@@ -139,8 +170,7 @@ def plotStats() -> None:
       (numberOfEmptyRatingStars * "<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"))
 
   numberOfStars = lastStatEntry["s1"] + lastStatEntry["s2"]
-  numberOfUsers = (max([x for x in deltaUpdateCounts[-5:] if x is not None])
-      if len(deltaUpdateCounts) > 0 else 0)
+  numberOfUsers = (max([x for x in users[-5:] if x is not None]) if len(users) > 0 else 0)
 
   writeToSummaryYaml("stars", numberOfStars)
   writeToSummaryYaml("users", numberOfUsers)
