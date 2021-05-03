@@ -101,6 +101,7 @@ async function startLanguageClient(context: Code.ExtensionContext,
   for (const codeLanguageId of enabledCodeLanguageIds) {
     documentSelector.push({scheme: 'file', language: codeLanguageId});
     documentSelector.push({scheme: 'untitled', language: codeLanguageId});
+    documentSelector.push({scheme: 'vscode-notebook-cell', language: codeLanguageId});
   }
 
   const clientOptions: CodeLanguageClient.LanguageClientOptions = {

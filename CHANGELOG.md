@@ -8,6 +8,10 @@
 
 # Changelog
 
+## 10.3.0 (upcoming)
+
+- Enable LT<sub>E</sub>X in notebooks (e.g., Jupyter notebooks) in VS Code Insiders (as soon as the new notebook API is released by VS Code, this will automatically work in regular VS Code)
+
 ## 10.2.0 — “The Long Document Reverberation” (May 1, 2021)
 
 - Show `Use ...` quick fixes before other quick fixes (fixes [#297](https://github.com/valentjn/vscode-ltex/issues/297))
