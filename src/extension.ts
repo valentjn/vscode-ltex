@@ -103,15 +103,13 @@ async function startLanguageClient(context: Code.ExtensionContext,
     documentSelector.push({scheme: 'untitled', language: codeLanguageId});
   }
 
-  // Options to control the language client
   const clientOptions: CodeLanguageClient.LanguageClientOptions = {
         documentSelector: documentSelector,
         synchronize: {
           configurationSection: 'ltex',
         },
-        // Until it is specified in the LSP that the locale is automatically sent with
-        // the initialization request, we have to do that manually.
-        // See https://github.com/microsoft/language-server-protocol/issues/754.
+        // LSP sends locale itself since LSP 3.16.0. However, this would require VS Code 1.53.0.
+        // Currently, we only require VS Code 1.52.0.
         initializationOptions: {
           locale: Code.env.language,
           customCapabilities: {
