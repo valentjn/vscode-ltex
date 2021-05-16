@@ -2061,7 +2061,7 @@
     "@types/mocha": "8.2.2",
     "@types/node": "15.3.0",
     "@types/rimraf": "3.0.0",
-    "@types/semver": "7.3.5",
+    "@types/semver": "7.3.6",
     "@types/tar": "4.0.4",
     "@types/vscode": "1.52.0",
     "@types/webpack": "5.28.0",
