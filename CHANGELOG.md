@@ -11,6 +11,9 @@
 ## 10.3.0 (upcoming)
 
 - Enable LT<sub>E</sub>X in Jupyter notebooks in VS Code Insiders (as soon as the native notebooks are released by VS Code, this will automatically work in regular VS Code)
+- Add support for `\setplength` (L<sup>A</sup>T<sub>E</sub>X)
+- Fix LT<sub>E</sub>X LS not closed when VS Code or workspace is closed (fixes [#325](https://github.com/valentjn/vscode-ltex/issues/325))
+- Update LT<sub>E</sub>X LS to 12.2.0
 
 ## 10.2.0 — “The Long Document Reverberation” (May 1, 2021)
 
