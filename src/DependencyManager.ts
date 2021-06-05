@@ -36,11 +36,11 @@ export default class DependencyManager {
       + 'vscode-ltex/docs/installation-and-usage.html#offline-installation';
 
   private static readonly _toBeDownloadedLtexLsTag: string =
-      '12.2.0-alpha.2';
+      '12.2.0';
   private static readonly _toBeDownloadedLtexLsVersion: string =
-      '12.2.0-alpha.2';
+      '12.2.0';
   private static readonly _toBeDownloadedLtexLsHashDigest: string =
-      '946cced8ece80bc240f0186907d3cf28fac07ec1c9896d965e9d1bd8cb4c25f2';
+      '3616bc6d1914195309ff4c3414fb451f90cd668544f4e71669bf1a9ce3122596';
 
   private static readonly _toBeDownloadedJavaVersion: string =
       '11.0.11+9';

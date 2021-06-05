@@ -8,7 +8,7 @@
 
 # Changelog
 
-## 10.3.0 (upcoming)
+## 10.3.0 — “The Orphan Disintegration” (June 5, 2021)
 
 - Enable LT<sub>E</sub>X in Jupyter notebooks in VS Code Insiders (as soon as the native notebooks are released by VS Code, this will automatically work in regular VS Code)
 - Add support for `\setplength` (L<sup>A</sup>T<sub>E</sub>X)
