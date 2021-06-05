@@ -13,6 +13,13 @@ toc: false
 
 This is the changelog of vscode-ltex. If you use a different LTeX plugin for an editor other than VS Code, check the [changelog of LTeX LS](https://github.com/valentjn/ltex-ls/blob/release/CHANGELOG.md) (look up which version of LTeX LS your LTeX plugin uses).
 
+## 10.3.0 — “The Orphan Disintegration” (June 5, 2021)
+
+- Enable LTeX in Jupyter notebooks in VS Code Insiders (as soon as the native notebooks are released by VS Code, this will automatically work in regular VS Code)
+- Add support for `\setplength` (LaTeX)
+- Fix LTeX LS not closed when VS Code or workspace is closed (fixes [#325](https://github.com/valentjn/vscode-ltex/issues/325))
+- Update LTeX LS to 12.2.0
+
 ## 10.2.0 — “The Long Document Reverberation” (May 1, 2021)
 
 - Show `Use ...` quick fixes before other quick fixes (fixes [#297](https://github.com/valentjn/vscode-ltex/issues/297))
