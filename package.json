@@ -38,6 +38,9 @@
     "Linters",
     "Other"
   ],
+  "extensionKind": [
+    "workspace"
+  ],
   "activationEvents": [
     "onCommand:ltex.activateExtension",
     "onCommand:ltex.checkSelection",
@@ -56,9 +59,6 @@
     "onLanguage:restructuredtext",
     "onLanguage:rsweave",
     "onNotebook:*"
-  ],
-  "extensionKind": [
-    "workspace"
   ],
   "main": "./dist/extension",
   "contributes": {
