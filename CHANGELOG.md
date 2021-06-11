@@ -8,6 +8,10 @@
 
 # Changelog
 
+## 10.4.0 (upcoming)
+
+- Enable LT<sub>E</sub>X in untrusted workspaces (introduced in VS Code 1.57.0)
+
 ## 10.3.0 — “The Orphan Disintegration” (June 5, 2021)
 
 - Enable LT<sub>E</sub>X in Jupyter notebooks in VS Code Insiders (as soon as the native notebooks are released by VS Code, this will automatically work in regular VS Code)

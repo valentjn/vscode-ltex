@@ -41,6 +41,11 @@
   "extensionKind": [
     "workspace"
   ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
   "activationEvents": [
     "onCommand:ltex.activateExtension",
     "onCommand:ltex.checkSelection",
