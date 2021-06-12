@@ -73,7 +73,7 @@ export default class CommandHandler {
     context.subscriptions.push(Code.commands.registerCommand('ltex.reportBug',
         this._bugReporter.report.bind(this._bugReporter)));
     context.subscriptions.push(Code.commands.registerCommand('ltex.requestFeature',
-        CommandHandler.requestFeature));
+        this.requestFeature.bind(this)));
 
     context.subscriptions.push(Code.commands.registerCommand('_ltex.addToDictionary',
         this.addToDictionary.bind(this)));
@@ -265,39 +265,39 @@ export default class CommandHandler {
     return Array.from(enabledFileExtensions).sort();
   }
 
-  private clearDiagnosticsInCurrentDocument(): Promise<boolean> {
+  private clearDiagnosticsInCurrentDocument(): boolean {
     if (this._languageClient == null) {
       Code.window.showErrorMessage(i18n('ltexNotInitialized'));
-      return Promise.resolve(false);
+      return false;
     }
 
     const diagnosticCollection: Code.DiagnosticCollection | undefined =
         this._languageClient.diagnostics;
-    if (diagnosticCollection == null) return Promise.resolve(true);
+    if (diagnosticCollection == null) return true;
 
     const textEditor: Code.TextEditor | undefined = Code.window.activeTextEditor;
     if (textEditor != null) diagnosticCollection.set(textEditor.document.uri, undefined);
 
-    return Promise.resolve(true);
+    return true;
   }
 
-  private clearAllDiagnostics(): Promise<boolean> {
+  private clearAllDiagnostics(): boolean {
     if (this._languageClient == null) {
       Code.window.showErrorMessage(i18n('ltexNotInitialized'));
-      return Promise.resolve(false);
+      return false;
     }
 
     const diagnosticCollection: Code.DiagnosticCollection | undefined =
         this._languageClient.diagnostics;
     if (diagnosticCollection != null) diagnosticCollection.clear();
 
-    return Promise.resolve(true);
+    return true;
   }
 
-  private async showStatusInformation(): Promise<boolean> {
+  private async showStatusInformation(): Promise<void> {
     await this._statusPrinter.print();
     Logger.showClientOutputChannel();
-    return Promise.resolve(true);
+    return Promise.resolve();
   }
 
   private async resetAndRestart(): Promise<void> {
@@ -306,17 +306,18 @@ export default class CommandHandler {
     }
 
     await Extension.activate(this._context);
+    return Promise.resolve();
   }
 
-  private static requestFeature(): Promise<boolean> {
-    Code.window.showInformationMessage(i18n('thanksForRequestingFeature'),
+  private async requestFeature(): Promise<void> {
+    await Code.window.showInformationMessage(i18n('thanksForRequestingFeature'),
           i18n('createIssue')).then(async (selectedItem: string | undefined) => {
       if (selectedItem == i18n('createIssue')) {
         Code.env.openExternal(Code.Uri.parse(CommandHandler._featureRequestUrl));
       }
     });
 
-    return Promise.resolve(true);
+    return Promise.resolve();
   }
 
   private addToDictionary(params: any): void {
