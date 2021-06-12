@@ -11,6 +11,7 @@
 ## 10.4.0 (upcoming)
 
 - Enable LT<sub>E</sub>X in untrusted workspaces (introduced in VS Code 1.57.0)
+- Add walkthrough for VS Code's *Getting Started* page (introduced in VS Code 1.57.0)
 
 ## 10.3.0 — “The Orphan Disintegration” (June 5, 2021)
 

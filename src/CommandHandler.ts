@@ -75,6 +75,11 @@ export default class CommandHandler {
     context.subscriptions.push(Code.commands.registerCommand('ltex.requestFeature',
         this.requestFeature.bind(this)));
 
+    context.subscriptions.push(Code.commands.registerCommand('_ltex.openMarkdownExample',
+        this.openMarkdownExample.bind(this)));
+    context.subscriptions.push(Code.commands.registerCommand('_ltex.openLatexExample',
+        this.openLatexExample.bind(this)));
+
     context.subscriptions.push(Code.commands.registerCommand('_ltex.addToDictionary',
         this.addToDictionary.bind(this)));
     context.subscriptions.push(Code.commands.registerCommand('_ltex.disableRules',
@@ -317,6 +322,28 @@ export default class CommandHandler {
       }
     });
 
+    return Promise.resolve();
+  }
+
+  private async openMarkdownExample(): Promise<void> {
+    await Code.workspace.openTextDocument({language: 'markdown',
+        content: `# Markdown Example
+
+This is a sentence *without any errors.*
+This is a sentence *with a speling error in it.*
+Finally, this is a sentence *with an grammar error in it.*
+`});
+    return Promise.resolve();
+  }
+
+  private async openLatexExample(): Promise<void> {
+    await Code.workspace.openTextDocument({language: 'latex',
+        content: `\\section{\\LaTeX{} Example}
+
+This is a sentence \\emph{without any errors.}
+This is a sentence \\emph{with a speling error.}
+Finally, this is a sentence \\emph{with an grammar error.}
+`});
     return Promise.resolve();
   }
 

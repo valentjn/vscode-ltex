@@ -57,6 +57,8 @@
     "onCommand:ltex.resetAndRestart",
     "onCommand:ltex.reportBug",
     "onCommand:ltex.requestFeature",
+    "onCommand:_ltex.openMarkdownExample",
+    "onCommand:_ltex.openLatexExample",
     "onLanguage:bibtex",
     "onLanguage:latex",
     "onLanguage:markdown",
@@ -67,6 +69,66 @@
   ],
   "main": "./dist/extension",
   "contributes": {
+    "walkthroughs": [
+      {
+        "id": "ltex.walkthrough",
+        "title": "%ltex.i18n.walkthrough.title%",
+        "description": "%ltex.i18n.walkthrough.description%",
+        "steps": [
+          {
+            "id": "ltex.walkthrough.checkMarkdownDocuments",
+            "title": "%ltex.i18n.walkthrough.checkMarkdownDocuments.title%",
+            "description": "%ltex.i18n.walkthrough.checkMarkdownDocuments.description%",
+            "media": {
+              "markdown": "%ltex.i18n.walkthrough.checkMarkdownDocuments.markdownPath%"
+            }
+          },
+          {
+            "id": "ltex.walkthrough.checkLatexDocuments",
+            "title": "%ltex.i18n.walkthrough.checkLatexDocuments.title%",
+            "description": "%ltex.i18n.walkthrough.checkLatexDocuments.description%",
+            "media": {
+              "markdown": "%ltex.i18n.walkthrough.checkLatexDocuments.markdownPath%"
+            },
+            "completionEvents": [
+              "onCommand:_ltex.openLatexExample"
+            ]
+          },
+          {
+            "id": "ltex.walkthrough.applyQuickFixes",
+            "title": "%ltex.i18n.walkthrough.applyQuickFixes.title%",
+            "description": "%ltex.i18n.walkthrough.applyQuickFixes.description%",
+            "media": {
+              "markdown": "%ltex.i18n.walkthrough.applyQuickFixes.markdownPath%"
+            }
+          },
+          {
+            "id": "ltex.walkthrough.customizeSettings",
+            "title": "%ltex.i18n.walkthrough.customizeSettings.title%",
+            "description": "%ltex.i18n.walkthrough.customizeSettings.description%",
+            "media": {
+              "markdown": "%ltex.i18n.walkthrough.customizeSettings.markdownPath%"
+            }
+          },
+          {
+            "id": "ltex.walkthrough.readDocumentation",
+            "title": "%ltex.i18n.walkthrough.readDocumentation.title%",
+            "description": "%ltex.i18n.walkthrough.readDocumentation.description%",
+            "media": {
+              "markdown": "%ltex.i18n.walkthrough.readDocumentation.markdownPath%"
+            }
+          },
+          {
+            "id": "ltex.walkthrough.getInvolved",
+            "title": "%ltex.i18n.walkthrough.getInvolved.title%",
+            "description": "%ltex.i18n.walkthrough.getInvolved.description%",
+            "media": {
+              "markdown": "%ltex.i18n.walkthrough.getInvolved.markdownPath%"
+            }
+          }
+        ]
+      }
+    ],
     "configuration": {
       "title": "LTeX",
       "properties": {
