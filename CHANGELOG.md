@@ -8,7 +8,7 @@
 
 # Changelog
 
-## 10.4.0 (upcoming)
+## 10.4.0 — “The Walkthrough Implementation” (June 12, 2021)
 
 - Enable LT<sub>E</sub>X in untrusted workspaces (introduced in VS Code 1.57.0)
 - Add walkthrough for VS Code's *Getting Started* page (introduced in VS Code 1.57.0)
