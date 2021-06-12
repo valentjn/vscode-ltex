@@ -13,6 +13,11 @@ toc: false
 
 This is the changelog of vscode-ltex. If you use a different LTeX plugin for an editor other than VS Code, check the [changelog of LTeX LS](https://github.com/valentjn/ltex-ls/blob/release/CHANGELOG.md) (look up which version of LTeX LS your LTeX plugin uses).
 
+## 10.4.0 — “The Walkthrough Implementation” (June 12, 2021)
+
+- Enable LTeX in untrusted workspaces (introduced in VS Code 1.57.0)
+- Add walkthrough for VS Code's *Getting Started* page (introduced in VS Code 1.57.0)
+
 ## 10.3.0 — “The Orphan Disintegration” (June 5, 2021)
 
 - Enable LTeX in Jupyter notebooks in VS Code Insiders (as soon as the native notebooks are released by VS Code, this will automatically work in regular VS Code)
