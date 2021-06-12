@@ -8,6 +8,10 @@
 
 # Changelog
 
+## 10.4.1 (upcoming)
+
+- Remove unnecessary files from packaged extension (reduces size from 570 KB to 160 KB)
+
 ## 10.4.0 — “The Walkthrough Implementation” (June 12, 2021)
 
 - Enable LT<sub>E</sub>X in untrusted workspaces (introduced in VS Code 1.57.0)
