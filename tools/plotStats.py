@@ -10,7 +10,7 @@ import datetime
 import json
 import os
 import traceback
-from typing import Any, Callable, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 import bokeh.embed
 import bokeh.plotting
@@ -20,7 +20,6 @@ import matplotlib as mpl
 mpl.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
-import yaml
 
 
 
@@ -33,35 +32,29 @@ else:
 
 
 
-def writeToSummaryYaml(key: str, value: Any) -> None:
-  yamlPath = os.path.join(repoDirPath, "_data", "stats", "summary.yml")
-
-  if os.path.exists(yamlPath):
-    with open(yamlPath, "r") as f: summaryYaml = yaml.load(f, Loader=yaml.SafeLoader)
-    if not isinstance(summaryYaml, dict): summaryYaml = {}
-  else:
-    summaryYaml = {}
-
-  summaryYaml[key] = value
-  with open(yamlPath, "w") as f: yaml.dump(summaryYaml, f)
-
-
-
 def parseDate(s: str) -> datetime.datetime:
   return datetime.datetime.combine(fromisoformat(s), datetime.datetime.min.time())
 
-def convertDateToString(date: datetime.datetime) -> str:
+def formatDate(date: datetime.datetime) -> str:
   return date.date().isoformat()
 
-def plotStats() -> None:
-  mapPath = os.path.join(repoDirPath, "_data", "stats", "map.json")
-  with open(mapPath, "r") as f: map_ = json.load(f)
+def formatInt(x: int) -> str:
+  return (f"{x:,}" if x >= 10000 else str(x))
 
+
+
+def writeToSummaryYaml(data: Dict[str, str]) -> None:
+  yamlPath = os.path.join(repoDirPath, "_data", "stats", "summary.yml")
+  with open(yamlPath, "w") as f: json.dump(data, f)
+
+
+
+def plotStats() -> None:
   statsPath = os.path.join(repoDirPath, "_data", "stats", "stats.json")
   with open(statsPath, "r") as f: stats = json.load(f)
 
   getUpdateCount: Callable[[datetime.datetime], int] = (
-      lambda s: int(stats["statistics"][convertDateToString(s)]["uc"]))
+      lambda s: int(stats["statistics"][formatDate(s)]["uc"]))
   statDates = [parseDate(x) for x in stats["statistics"]]
   tomorrow = datetime.datetime.now() + datetime.timedelta(days=1)
 
@@ -74,7 +67,7 @@ def plotStats() -> None:
   for releaseDate in list(stats["versions"].values()) + [tomorrow]:
     if not isinstance(releaseDate, datetime.datetime): releaseDate = parseDate(releaseDate)
     feasibleDates = [x for x in statDates
-        if (x < releaseDate) and ("uc" in stats["statistics"][convertDateToString(x)])]
+        if (x < releaseDate) and ("uc" in stats["statistics"][formatDate(x)])]
     if len(feasibleDates) == 0: continue
     updateCount = getUpdateCount(max(feasibleDates))
 
@@ -85,7 +78,7 @@ def plotStats() -> None:
       if releaseDates[-1] + datetime.timedelta(days=7) <= releaseDate:
         feasibleDates = [x for x in statDates
             if (x < releaseDates[-1] + datetime.timedelta(days=7)) and
-            ("uc" in stats["statistics"][convertDateToString(x)])]
+            ("uc" in stats["statistics"][formatDate(x)])]
 
         if len(feasibleDates) > 0:
           curNormalizedUsers = getUpdateCount(max(feasibleDates)) - updateCounts[-1]
@@ -170,13 +163,15 @@ def plotStats() -> None:
       (numberOfEmptyRatingStars * "<i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>"))
 
   numberOfStars = lastStatEntry["s1"] + lastStatEntry["s2"]
-  numberOfUsers = (max([x for x in users[-5:] if x is not None]) if len(users) > 0 else 0)
+  numberOfUsers = int(max([x for x in users[-5:] if x is not None]) if len(users) > 0 else 0)
 
-  writeToSummaryYaml("stars", numberOfStars)
-  writeToSummaryYaml("users", numberOfUsers)
-  writeToSummaryYaml("installs", lastStatEntry["i"])
-  writeToSummaryYaml("averageRating", averageRatingHtml)
-  writeToSummaryYaml("numberOfRatings", lastStatEntry["rc"])
+  writeToSummaryYaml({
+        "stars" : formatInt(numberOfStars),
+        "users" : formatInt(numberOfUsers),
+        "installs" : formatInt(lastStatEntry["i"]),
+        "averageRating" : averageRatingHtml,
+        "numberOfRatings" : formatInt(lastStatEntry["rc"]),
+      })
 
 
 
