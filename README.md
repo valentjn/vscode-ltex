@@ -22,7 +22,7 @@
 [![stars](https://badgen.net/github/stars/valentjn/ltex-ls)](https://github.com/valentjn/ltex-ls)&nbsp;
 [![open issues](https://badgen.net/github/open-issues/valentjn/ltex-ls?label=open/closed%20issues&color=blue)](https://github.com/valentjn/ltex-ls/issues)&nbsp;[![closed issues](https://badgen.net/github/closed-issues/valentjn/ltex-ls?label=)](https://github.com/valentjn/ltex-ls/issues)
 
-**LT<sub>E</sub>X** provides offline grammar checking of various markup languages in Visual Studio Code using [LanguageTool (LT)](https://languagetool.org/). LT<sub>E</sub>X currently supports BibT<sub>E</sub>X, L<sup>A</sup>T<sub>E</sub>X, Markdown, Org, reStructuredText, and R Sweave documents.
+**LT<sub>E</sub>X** provides offline grammar checking of various markup languages in Visual Studio Code using [LanguageTool (LT)](https://languagetool.org/). LT<sub>E</sub>X currently supports BibT<sub>E</sub>X, L<sup>A</sup>T<sub>E</sub>X, Markdown, Org, reStructuredText, R Sweave, and XHTML documents.
 
 The difference to regular spell checkers is that LT<sub>E</sub>X not only detects spelling errors, but also many grammar and stylistic errors such as:
 
@@ -41,7 +41,7 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
 
 ![Grammar/Spell Checker for VS Code with LanguageTool and LaTeX Support](https://github.com/valentjn/vscode-ltex/raw/release/img/banner-ltex.png)
 
-- **Supported markup languages:** BibT<sub>E</sub>X, L<sup>A</sup>T<sub>E</sub>X, Markdown, Org, reStructuredText, R Sweave
+- **Supported markup languages:** BibT<sub>E</sub>X, L<sup>A</sup>T<sub>E</sub>X, Markdown, Org, reStructuredText, R Sweave, XHTML
 - Comes with **everything included,** no need to install Java or LanguageTool
 - **Offline checking:** Does not upload anything to the internet
 - Supports **over 20 languages:** English, French, German, Dutch, Chinese, Russian, etc.

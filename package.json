@@ -60,6 +60,7 @@
     "onCommand:_ltex.openMarkdownExample",
     "onCommand:_ltex.openLatexExample",
     "onLanguage:bibtex",
+    "onLanguage:html",
     "onLanguage:latex",
     "onLanguage:markdown",
     "onLanguage:org",
@@ -147,6 +148,7 @@
           "scope": "window",
           "default": [
             "bibtex",
+            "html",
             "latex",
             "markdown",
             "org",
