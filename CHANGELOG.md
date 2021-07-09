@@ -10,6 +10,8 @@
 
 ## 10.4.1 (upcoming)
 
+- Fix error when checking L<sup>A</sup>T<sub>E</sub>X documents ending with specific commands (fixes [#341](https://github.com/valentjn/vscode-ltex/issues/341))
+- Fix name of Portuguese babel language names, add support for Brazilian Portuguese babel language names (fixes [ltex-ls#72](https://github.com/valentjn/ltex-ls/issues/72))
 - Remove unnecessary files from packaged extension (reduces size from 570 KB to 160 KB)
 
 ## 10.4.0 — “The Walkthrough Implementation” (June 12, 2021)
