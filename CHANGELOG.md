@@ -10,7 +10,9 @@
 
 ## 10.5.0 (upcoming)
 
+- Update LanguageTool to 5.4 (see [LT 5.4 release notes](https://github.com/languagetool-org/languagetool/blob/v5.4/languagetool-standalone/CHANGES.md#54-2021-06-25))
 - Add support for XHTML (fixes [#342](https://github.com/valentjn/vscode-ltex/issues/342))
+- Fix markup before actual grammar/spelling errors included in errors (fixes [#349](https://github.com/valentjn/vscode-ltex/issues/349))
 - Fix error when checking L<sup>A</sup>T<sub>E</sub>X documents ending with specific commands (fixes [#341](https://github.com/valentjn/vscode-ltex/issues/341))
 - Fix name of Portuguese babel language names, add support for Brazilian Portuguese babel language names (fixes [ltex-ls#72](https://github.com/valentjn/ltex-ls/issues/72))
 - Remove unnecessary files from packaged extension (reduces size from 570 KB to 160 KB)
