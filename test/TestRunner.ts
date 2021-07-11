@@ -156,7 +156,7 @@ async function main(): Promise<void> {
   }
 
   ltexDirPath = Path.resolve(__dirname, '..', '..');
-  const codeVersion: string = 'stable';
+  const codeVersion: string = '1.57.1';
   let codePlatform: string | undefined;
 
   console.log('Downloading and installing VS Code...');
