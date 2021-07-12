@@ -30,7 +30,7 @@ Nach Änderungen muss das Fenster von Visual Studio Code erneut geladen werden.
 
 *Typ:* `boolean` oder `array`
 
-*Voreinstellung:* `["bibtex", "latex", "markdown", "org", "restructuredtext", "rsweave"]`
+*Voreinstellung:* `["bibtex", "html", "latex", "markdown", "org", "restructuredtext", "rsweave"]`
 
 *Vollständige Beschreibung des Typs:* <button class='expandable-button btn btn-default'>Klick zum Zeigen/Verbergen</button>
 

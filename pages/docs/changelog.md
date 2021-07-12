@@ -13,6 +13,16 @@ toc: false
 
 This is the changelog of vscode-ltex. If you use a different LTeX plugin for an editor other than VS Code, check the [changelog of LTeX LS](https://github.com/valentjn/ltex-ls/blob/release/CHANGELOG.md) (look up which version of LTeX LS your LTeX plugin uses).
 
+## 10.5.0 — “The XHTML Calculation” (July 12, 2021)
+
+- Update LanguageTool to 5.4 (see [LT 5.4 release notes](https://github.com/languagetool-org/languagetool/blob/v5.4/languagetool-standalone/CHANGES.md#54-2021-06-25))
+- Add support for XHTML (fixes [#342](https://github.com/valentjn/vscode-ltex/issues/342))
+- Fix markup before actual grammar/spelling errors included in errors (fixes [#349](https://github.com/valentjn/vscode-ltex/issues/349))
+- Fix error when checking LaTeX documents ending with specific commands (fixes [#341](https://github.com/valentjn/vscode-ltex/issues/341))
+- Fix name of Portuguese babel language names, add support for Brazilian Portuguese babel language names (fixes [ltex-ls#72](https://github.com/valentjn/ltex-ls/issues/72))
+- Remove unnecessary files from packaged extension (reduces size from 570 KB to 160 KB)
+- Update LTeX LS to 12.3.0
+
 ## 10.4.0 — “The Walkthrough Implementation” (June 12, 2021)
 
 - Enable LTeX in untrusted workspaces (introduced in VS Code 1.57.0)

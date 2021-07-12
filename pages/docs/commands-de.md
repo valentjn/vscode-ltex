@@ -42,7 +42,7 @@ Es ist normalerweise nicht nötig, diesen Befehl auszuführen, da LTeX alle unte
 
 Löst eine Prüfung aller Markdown- und LaTeX-Dokumente im Arbeitsbereich aus.
 
-Dies führt eine Dateisuche nach `*.bib`-, `*.md`-, `*.org`-, `*.Rnw`-, `*.rst`- und `*.tex`-Dateien in allen Ordnern des Arbeitsbereiches durch, je nachdem, für welche Dateitypen LTeX aktiviert wurde (siehe [`ltex.enabled`](settings-de.html#ltexenabled)). Unbenannte und ungespeicherte Dokumente werden nicht überprüft. Die Dokumenttypen werden anhand der Dateinamen-Erweiterungen erkannt.
+Dies führt eine Dateisuche nach Dateien mit den Endungen `*.bib` (BibTeX), `*.tex` (LaTeX), `*.md` (Markdown), `*.org` (Org), `*.rst` (reStructuredText), `*.{Rnw,rnw}` (R Sweave) und `*.{htm,html,xht,xhtml}` (XHTML) in allen Ordnern des Arbeitsbereiches durch, je nachdem, für welche Dateitypen LTeX aktiviert wurde (siehe [`ltex.enabled`](settings-de.html#ltexenabled)). Unbenannte und ungespeicherte Dokumente werden nicht überprüft. Die Dokumenttypen werden anhand der Dateinamen-Erweiterungen erkannt.
 
 Die Dokumente müssen in der UTF-8-Kodierung vorliegen. Dies funktioniert nicht, falls keine Ordner im Arbeitsbereich geöffnet sind.
 

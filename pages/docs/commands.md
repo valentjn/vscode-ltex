@@ -42,7 +42,7 @@ It is usually not necessary to run this command as LTeX automatically checks sup
 
 Triggers a check of all Markdown and LaTeX documents in the workspace.
 
-This does a file search for `*.bib`, `*.md`, `*.org`, `*.Rnw`, `*.rst`, and `*.tex` files in all folders of the workspace, depending on for which file types LTeX has been enabled (see [`ltex.enabled`](settings.html#ltexenabled)). Untitled and unsaved documents are not checked. The types of the documents are recognized by their file extensions.
+This does a file search for `*.bib` (BibTeX), `*.tex` (LaTeX), `*.md` (Markdown), `*.org` (Org), `*.rst` (reStructuredText), `*.{Rnw,rnw}` (R Sweave), and `*.{htm,html,xht,xhtml}` (XHTML) files in all folders of the workspace, depending on for which file types LTeX has been enabled (see [`ltex.enabled`](settings.html#ltexenabled)). Untitled and unsaved documents are not checked. The types of the documents are recognized by their file extensions.
 
 The documents must be in UTF-8 encoding. This does not work if no folders are opened in the workspace.
 
