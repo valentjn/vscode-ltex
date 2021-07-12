@@ -90,8 +90,7 @@ async function startLanguageClient(context: Code.ExtensionContext,
   let enabledCodeLanguageIds: string[];
 
   if ((enabled === true) || (enabled === false)) {
-    enabledCodeLanguageIds = (enabled
-        ? ['bibtex', 'html', 'latex', 'markdown', 'org', 'restructuredtext', 'rsweave'] : []);
+    enabledCodeLanguageIds = (enabled ? CommandHandler.getDefaultCodeLanguageIds() : []);
   } else {
     enabledCodeLanguageIds = enabled;
   }

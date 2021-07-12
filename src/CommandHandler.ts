@@ -45,6 +45,16 @@ export default class CommandHandler {
       + 'issues/new?assignees=&labels=1-feature-request%20%E2%9C%A8&'
       + 'template=feature-request.md&title=';
 
+  private static readonly _defaultCodeLanguageIds: string[] = [
+    'bibtex',
+    'html',
+    'latex',
+    'markdown',
+    'org',
+    'restructuredtext',
+    'rsweave',
+  ];
+
   public constructor(context: Code.ExtensionContext, externalFileManager: ExternalFileManager,
         statusInformationPrinter: StatusPrinter, bugReporter: BugReporter) {
     this._context = context;
@@ -222,14 +232,17 @@ export default class CommandHandler {
     });
   }
 
+  public static getDefaultCodeLanguageIds(): string[] {
+    return CommandHandler._defaultCodeLanguageIds;
+  }
+
   private static getEnabledFileExtensions(): string[] {
     const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
     const enabled: any = workspaceConfig.get('enabled');
     let enabledCodeLanguageIds: string[];
 
     if ((enabled === true) || (enabled === false)) {
-      enabledCodeLanguageIds = (enabled
-          ? ['bibtex', 'html', 'latex', 'markdown', 'org', 'restructuredtext', 'rsweave'] : []);
+      enabledCodeLanguageIds = (enabled ? CommandHandler._defaultCodeLanguageIds : []);
     } else {
       enabledCodeLanguageIds = enabled;
     }
@@ -242,6 +255,68 @@ export default class CommandHandler {
           enabledFileExtensions.add('bib');
           break;
         }
+        case 'c': {
+          enabledFileExtensions.add('c');
+          enabledFileExtensions.add('h');
+          break;
+        }
+        case 'clojure': {
+          enabledFileExtensions.add('clj');
+          break;
+        }
+        case 'coffeescript': {
+          enabledFileExtensions.add('coffee');
+          break;
+        }
+        case 'cpp': {
+          enabledFileExtensions.add('cc');
+          enabledFileExtensions.add('cpp');
+          enabledFileExtensions.add('cxx');
+          enabledFileExtensions.add('hh');
+          enabledFileExtensions.add('hpp');
+          enabledFileExtensions.add('inl');
+          break;
+        }
+        case 'csharp': {
+          enabledFileExtensions.add('cs');
+          break;
+        }
+        case 'dart': {
+          enabledFileExtensions.add('dart');
+          break;
+        }
+        case 'elixir': {
+          enabledFileExtensions.add('ex');
+          break;
+        }
+        case 'elm': {
+          enabledFileExtensions.add('elm');
+          break;
+        }
+        case 'erlang': {
+          enabledFileExtensions.add('erl');
+          break;
+        }
+        case 'fortran-modern': {
+          enabledFileExtensions.add('f90');
+          break;
+        }
+        case 'fsharp': {
+          enabledFileExtensions.add('fs');
+          break;
+        }
+        case 'go': {
+          enabledFileExtensions.add('go');
+          break;
+        }
+        case 'groovy': {
+          enabledFileExtensions.add('groovy');
+          break;
+        }
+        case 'haskell': {
+          enabledFileExtensions.add('hs');
+          break;
+        }
         case 'html': {
           enabledFileExtensions.add('htm');
           enabledFileExtensions.add('html');
@@ -249,16 +324,68 @@ export default class CommandHandler {
           enabledFileExtensions.add('xhtml');
           break;
         }
+        case 'java': {
+          enabledFileExtensions.add('java');
+          break;
+        }
+        case 'javascript': {
+          enabledFileExtensions.add('js');
+          break;
+        }
+        case 'julia': {
+          enabledFileExtensions.add('jl');
+          break;
+        }
+        case 'kotlin': {
+          enabledFileExtensions.add('kt');
+          break;
+        }
         case 'latex': {
           enabledFileExtensions.add('tex');
+          break;
+        }
+        case 'lisp': {
+          enabledFileExtensions.add('lisp');
+          break;
+        }
+        case 'lua': {
+          enabledFileExtensions.add('lua');
           break;
         }
         case 'markdown': {
           enabledFileExtensions.add('md');
           break;
         }
+        case 'matlab': {
+          enabledFileExtensions.add('m');
+          break;
+        }
         case 'org': {
           enabledFileExtensions.add('org');
+          break;
+        }
+        case 'perl': {
+          enabledFileExtensions.add('pl');
+          break;
+        }
+        case 'php': {
+          enabledFileExtensions.add('php');
+          break;
+        }
+        case 'powershell': {
+          enabledFileExtensions.add('ps1');
+          break;
+        }
+        case 'puppet': {
+          enabledFileExtensions.add('pp');
+          break;
+        }
+        case 'python': {
+          enabledFileExtensions.add('py');
+          break;
+        }
+        case 'r': {
+          enabledFileExtensions.add('r');
           break;
         }
         case 'restructuredtext': {
@@ -269,6 +396,42 @@ export default class CommandHandler {
           enabledFileExtensions.add('Rnw');
           enabledFileExtensions.add('rnw');
           enabledFileExtensions.add('tex');
+          break;
+        }
+        case 'ruby': {
+          enabledFileExtensions.add('rb');
+          break;
+        }
+        case 'rust': {
+          enabledFileExtensions.add('rs');
+          break;
+        }
+        case 'scala': {
+          enabledFileExtensions.add('scala');
+          break;
+        }
+        case 'shellscript': {
+          enabledFileExtensions.add('sh');
+          break;
+        }
+        case 'sql': {
+          enabledFileExtensions.add('sql');
+          break;
+        }
+        case 'swift': {
+          enabledFileExtensions.add('swift');
+          break;
+        }
+        case 'typescript': {
+          enabledFileExtensions.add('ts');
+          break;
+        }
+        case 'vb': {
+          enabledFileExtensions.add('vb');
+          break;
+        }
+        case 'verilog': {
+          enabledFileExtensions.add('v');
           break;
         }
       }
