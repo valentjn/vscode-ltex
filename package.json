@@ -1660,7 +1660,7 @@
           "markdownDescription": "%ltex.i18n.configuration.ltex.latex.commands.markdownDescription%",
           "examples": [
             {
-              "\\ref{}": "ignore",
+              "\\label{}": "ignore",
               "\\documentclass[]{}": "ignore",
               "\\cite{}": "dummy",
               "\\cite[]{}": "dummy"
