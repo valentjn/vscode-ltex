@@ -85,6 +85,26 @@ However, for subscripts and superscripts in LaTeX, `\text` should not be used. T
 
 LTeX is a portmanteau word from LT (LanguageTool) and TeX/LaTeX. TeX itself is an abbreviation of the Greek “τέχνη” (art/craft), while LaTeX is short for “Lamport TeX” after its creator Leslie Lamport. The X is pronounced like the “ch” in “loch”.
 
+## How can I setup a shortcut to 'Use ...' ? 
+
+According to [this issue comment](https://github.com/valentjn/vscode-ltex/issues/297#issuecomment-817963890): 
+> I just found out [you can assign keyboard shortcuts to specific "kinds" of quick fixes](https://code.visualstudio.com/docs/editor/refactoring#_keybindings-for-code-actions). The kind for `Use '...'` is `quickfix.ltex.acceptSuggestions`, so how about adding something like this to your `keybindings.json`:
+> 
+> ```json
+>   {
+>     "key": "cmd+shift+q",
+>     "command": "editor.action.codeAction",
+>     "args": {
+>       "kind": "quickfix.ltex.acceptSuggestions"
+>     }
+>   }
+> ```
+> 
+> Then you can press `Cmd+Shift+Q` at an underlined word (without having to press `Cmd+.` first). If there is only one suggestion, it will use it without any further keystrokes. If there are multiple suggestions, a context menu will open that only contains the `Use '...'` quick fixes.
+
+
+
+
 ## Where can I ask a question that's not answered here?
 
 Head over to our [GitHub repo](https://github.com/valentjn/vscode-ltex)! Before you open an issue, be sure to read the [instructions on contributing](contributing-code-issues.html).
