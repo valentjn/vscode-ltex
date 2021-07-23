@@ -104,7 +104,7 @@ If you want to test a pre-release of vscode-ltex, [download the `*.vsix` file fr
 
 Sometimes, only a pre-release (especially when there are no major changes) of ltex-ls is available. In this case, you can test the pre-release of ltex-ls by [downloading the ltex-ls archive from GitHub](https://github.com/valentjn/ltex-ls/releases), extracting it, and pointing [`ltex.ltex-ls.path`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lspath) to the extracted directory.
 
-Be sure to check the list of current changes in the [changelog on the `develop` branch](https://github.com/valentjn/vscode-ltex/blob/develop/CHANGELOG.md) to know what to look for when testing.
+Be sure to check the list of current changes in the [changelog on the `develop` branch](https://github.com/valentjn/vscode-ltex/blob/develop/changelog.xml) to know what to look for when testing.
 
 ### Documentation
 
@@ -118,7 +118,7 @@ At the bottom of each page, you'll find an “Edit me” button that takes you d
 | ---- | ------- |
 | [Settings](https://valentjn.github.io/vscode-ltex/docs/settings.html) | [`package.json`](https://github.com/valentjn/vscode-ltex/blob/develop/package.json), [`package.nls.json`](https://github.com/valentjn/vscode-ltex/blob/develop/package.nls.json) |
 | [Commands](https://valentjn.github.io/vscode-ltex/docs/commands.html) | [`package.json`](https://github.com/valentjn/vscode-ltex/blob/develop/package.json), [`package.nls.json`](https://github.com/valentjn/vscode-ltex/blob/develop/package.nls.json) |
-| [Changelog](https://valentjn.github.io/vscode-ltex/docs/changelog.html) | [`CHANGELOG.md`](https://github.com/valentjn/vscode-ltex/blob/develop/CHANGELOG.md) |
+| [Changelog](https://valentjn.github.io/vscode-ltex/docs/changelog.html) | [`changelog.xml`](https://github.com/valentjn/vscode-ltex/blob/develop/changelog.xml) |
 | [Contributing Code/Issues](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html) | [`CONTRIBUTING.md`](https://github.com/valentjn/vscode-ltex/blob/develop/CONTRIBUTING.md) |
 | [Code of Conduct](https://valentjn.github.io/vscode-ltex/docs/code-of-conduct.html) | [`CODE_OF_CONDUCT.md`](https://github.com/valentjn/vscode-ltex/blob/develop/CODE_OF_CONDUCT.md) |
 | [Acknowledgments](https://valentjn.github.io/vscode-ltex/docs/acknowledgments.html) | [`ACKNOWLEDGMENTS.md`](https://github.com/valentjn/vscode-ltex/blob/develop/ACKNOWLEDGMENTS.md) |

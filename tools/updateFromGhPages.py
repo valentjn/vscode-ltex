@@ -110,37 +110,8 @@ def updateReadme() -> None:
 
 
 
-def updateChangelog() -> None:
-  changelogPath = os.path.join(pagesDirPath, "pages", "docs", "changelog.md")
-  with open(changelogPath, "r") as f: changelog = f.read()
-
-  changelogHeader = """
-<!--
-   - Copyright (C) 2020 Julian Valentin, LTeX Development Community
-   -
-   - This Source Code Form is subject to the terms of the Mozilla Public
-   - License, v. 2.0. If a copy of the MPL was not distributed with this
-   - file, You can obtain one at https://mozilla.org/MPL/2.0/.
-   -->
-
-# Changelog
-
-## """.lstrip()
-  changelog = changelog.replace("LaTeX", "L<sup>A</sup>T<sub>E</sub>X")
-  changelog = changelog.replace("TeX", "T<sub>E</sub>X")
-  changelog = changelog.replace("`LT<sub>E</sub>X", "`LTeX")
-  changelog = changelog.replace("LT<sub>E</sub>X`", "LTeX`")
-  changelog = re.sub(r"\]\((?!http)", "](https://valentjn.github.io/vscode-ltex/docs/", changelog)
-  changelog = re.sub(r"^---.*?^---.*?^## ", changelogHeader, changelog,
-      flags=re.MULTILINE | re.DOTALL)
-
-  with open(os.path.join(common.repoDirPath, "CHANGELOG.md"), "w") as f: f.write(changelog)
-
-
-
 def main() -> None:
   updateReadme()
-  updateChangelog()
 
 
 

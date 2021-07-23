@@ -1,0 +1,1205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   - Copyright (C) 2020 Julian Valentin, LTeX Development Community
+   -
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/.
+   -->
+<document xmlns="http://maven.apache.org/changes/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 https://maven.apache.org/xsd/changes-1.0.0.xsd">
+  <properties>
+    <title>Changelog</title>
+    <author>Julian Valentin, LTeX Development Community</author>
+  </properties>
+  <body>
+    <release version="10.5.0" description="The XHTML Calculation" date="2021-07-12">
+      <action type="update">
+        Update LanguageTool to 5.4 (see [LT 5.4 release notes](https://github.com/languagetool-org/languagetool/blob/v5.4/languagetool-standalone/CHANGES.md#54-2021-06-25))
+      </action>
+      <action type="add" issue="#342">
+        Add support for XHTML
+      </action>
+      <action type="fix" issue="#349">
+        Fix markup before actual grammar/spelling errors included in errors
+      </action>
+      <action type="fix" issue="#341">
+        Fix error when checking LaTeX documents ending with specific commands
+      </action>
+      <action type="add" issue="ltex-ls#72">
+        Fix name of Portuguese babel language names, add support for Brazilian Portuguese babel language names
+      </action>
+      <action type="remove">
+        Remove unnecessary files from packaged extension (reduces size from 570 KB to 160 KB)
+      </action>
+      <action type="update">
+        Update LTeX LS to 12.3.0
+      </action>
+    </release>
+    <release version="10.4.0" description="The Walkthrough Implementation" date="2021-06-12">
+      <action type="update">
+        Enable LTeX in untrusted workspaces (introduced in VS Code 1.57.0)
+      </action>
+      <action type="add">
+        Add walkthrough for VS Code's *Getting Started* page (introduced in VS Code 1.57.0)
+      </action>
+    </release>
+    <release version="10.3.0" description="The Orphan Disintegration" date="2021-06-05">
+      <action type="update">
+        Enable LTeX in Jupyter notebooks in VS Code Insiders (as soon as the native notebooks are released by VS Code, this will automatically work in regular VS Code)
+      </action>
+      <action type="add">
+        Add support for `\setplength` (LaTeX)
+      </action>
+      <action type="fix" issue="#325">
+        Fix LTeX LS not closed when VS Code or workspace is closed
+      </action>
+      <action type="update">
+        Update LTeX LS to 12.2.0
+      </action>
+    </release>
+    <release version="10.2.0" description="The Long Document Reverberation" date="2021-05-01">
+      <action type="update" issue="#297">
+        Show `Use ...` quick fixes before other quick fixes
+      </action>
+      <action type="update" issue="#297">
+        Limit number of `Use ...` quick fixes to 5
+      </action>
+      <action type="add">
+        Add checking status to output of [`LTeX: Show Status Information`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-show-status-information)
+      </action>
+      <action type="add">
+        Add support for `\phantom`, `\hphantom`, and `\vphantom` (LaTeX)
+      </action>
+      <action type="fix" issue="#253">
+        Fix almost infinite loops when checking very long documents
+      </action>
+      <action type="fix" issue="ltex-ls#69">
+        Fix wrong underlining of words starting with markup
+      </action>
+      <action type="update">
+        Update bundled AdoptOpenJDK JRE to 11.0.11+9 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8264310?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.11%20ORDER%20BY%20created%20DESC))
+      </action>
+      <action type="update">
+        Update LTeX LS to 12.1.0
+      </action>
+    </release>
+    <release version="10.1.0" description="The Org Summation" date="2021-04-18">
+      <action type="add" issue="#277">
+        Add support for Org
+      </action>
+      <action type="add" issue="#32">
+        Add basic support for reStructuredText
+      </action>
+      <action type="add">
+        Add [`LTeX: Reset and Restart`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-reset-and-restart) command to reset the extension and restart LTeX LS (equivalent to reloading the VS Code window)
+      </action>
+      <action type="fix">
+        Fix `.Rnw` not recognized for R Sweave documents when running [`LTeX: Check All Documents in Workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-all-documents-in-workspace)
+      </action>
+      <action type="fix">
+        Fix inconsistent titles of German commands
+      </action>
+      <action type="fix" issue="#282">
+        Hide internal commands in table of keyboard shortcuts to prevent confusion
+      </action>
+      <action type="update">
+        Engineering: A running instance of LTeX LS, if it has been started with `--server-type=tcpSocket`, will be chosen over starting a new instance; this enables simultaneous debugging of vscode-ltex and ltex-ls
+      </action>
+      <action type="update">
+        Update LTeX LS to 12.0.0
+      </action>
+    </release>
+    <release version="10.0.0" description="The Unicode Simulation" date="2021-04-05">
+      <action type="update">
+        Update required version of VS Code (now 1.52.0 or newer)
+      </action>
+      <action type="update">
+        Update LanguageTool to 5.3 (see [LT 5.3 release notes](https://github.com/languagetool-org/languagetool/blob/v5.3/languagetool-standalone/CHANGES.md#53-2021-03-29))
+      </action>
+      <action type="add">
+        Add [`LTeX: Activate Extension`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-activate-extension) to activate the extension in case it has not been activated before
+      </action>
+      <action type="update">
+        Automatically activate extension if one of the [LTeX commands](https://valentjn.github.io/vscode-ltex/docs/commands.html) is executed
+      </action>
+      <action type="add" issue="#269">
+        Enhance support of accents in LaTeX by using Unicode combining diacritical marks, normalized via [Unicode Normalization Form C](https://www.unicode.org/reports/tr15/tr15-50.html#Normalization_Forms_Table)
+      </action>
+      <action type="add" issue="ltex-ls#56,ltex-ls#57" due-to="@ed359">
+        Add support for many accents in LaTeX: double acute (e.g., `\H{O}`, &amp;#x0150;), line below (e.g., `\b{h}`, &amp;#x1e96;), dot below (e.g., `\d{A}`, &amp;#x1ea0;), ogonek (e.g., `\k{A}`, &amp;#x0104;), breve (e.g., `\u{A}`, &amp;#x0102;), and caron (e.g., `\v{C}`, &amp;#x010c;)
+      </action>
+      <action type="add" issue="ltex-ls#56,ltex-ls#57" due-to="@ed359">
+        Add support for special characters in LaTeX: `\L` (&amp;#x0141;), `\SS` (&amp;#x1e9e;), `\i` (&amp;#x0131;), `\j` (&amp;#x0237;), and `\l` (&amp;#x0142;)
+      </action>
+      <action type="add" issue="ltex-ls#47" due-to="Nicolas Sicard (@biozic)">
+        Add `FR_SPELLING_RULE` as a rule for unknown words
+      </action>
+      <action type="update" issue="ltex-ls#53,ltex-ls#54" due-to="Lucas Alber (@LDAP)">
+        Use LaTeX parser for documents with code language ID `tex`
+      </action>
+      <action type="update" issue="#260">
+        Change type of [`ltex.additionalRules.motherTongue`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexadditionalrulesmothertongue) to `enum` to clarify possible values
+      </action>
+      <action type="update">
+        Update LSP4J to 0.12.0
+      </action>
+      <action type="update">
+        Update LTeX LS to 11.0.0
+      </action>
+    </release>
+    <release version="9.0.0" description="The HTML Evaporation" date="2021-02-12">
+      <action type="remove">
+        Remove support for settings that are deprecated since 8.0.0: `ltex.workspaceDictionary`, `ltex.workspaceFolderDictionary`, `ltex.workspaceDisabledRules`, `ltex.workspaceFolderDisabledRules`, `ltex.workspaceEnabledRules`, `ltex.workspaceFolderEnabledRules`, `ltex.ignoreInRuleSentence`, `ltex.commands.ignore`, `ltex.commands.dummy`, `ltex.environments.ignore`, `ltex.markdown.ignore`, and `ltex.markdown.dummy`
+      </action>
+      <action type="remove">
+        Remove support for values for [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget) that are deprecated since 7.0.0 or 8.0.0: `&quot;global&quot;` (deprecated since 7.0.0), `&quot;addToDictionary&quot;`, `&quot;disableRule&quot;`, and `&quot;ignoreRuleInSentence&quot;`
+      </action>
+      <action type="add">
+        Add support for magic comments inside HTML comments in Markdown (`&lt;!-- ltex: SETTINGS --&gt;`)
+      </action>
+      <action type="update" issue="#239">
+        Check frame title in argument of LaTeX Beamer frames
+      </action>
+      <action type="add">
+        Add [`LTeX: Check Selection`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-selection) to check text in documents with unsupported code languages
+      </action>
+      <action type="fix" issue="#245">
+        Fix comment sign before babel commands not recognized
+      </action>
+      <action type="fix">
+        Fix removing items in settings with a hyphen prefix sometimes not working
+      </action>
+      <action type="fix">
+        Fix space not added between two arguments of LaTeX commands
+      </action>
+      <action type="fix">
+        Fix manually checking BibTeX documents not working
+      </action>
+      <action type="fix">
+        Fix words in dictionary containing markup not recognized
+      </action>
+      <action type="update">
+        Update bundled AdoptOpenJDK JRE to 11.0.10+9 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8258701?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.10%20ORDER%20BY%20created%20DESC))
+      </action>
+      <action type="update">
+        Update LTeX LS to 10.0.0
+      </action>
+    </release>
+    <release version="8.4.0" description="The Math Optimization" date="2021-01-29">
+      <action type="add" issue="#210">
+        Add support for Pandoc-style inline math (`$...$`) and display math (`$$...$$` with `$$` being at the beginning/end of a Markdown block) to Markdown parser
+      </action>
+      <action type="fix" issue="#221">
+        Fix false positives for words added by `Add to dictionary` for Slovak rule IDs `MUZSKY_ROD_NEZIV_A`, `ZENSKY_ROD_A`, and `STREDNY_ROD_A`
+      </action>
+      <action type="fix" issue="#211">
+        Fix BibTeX field `seealso` not ignored, ignore `category` and `parent`
+      </action>
+      <action type="update" issue="#211">
+        Disable `UPPERCASE_SENTENCE_START` in BibTeX files
+      </action>
+      <action type="update" issue="#233">
+        Move rule ID to the end of diagnostic messages as VS Code truncates the messages if the Problems panel is narrow
+      </action>
+      <action type="fix" issue="#161">
+        Fix regression that messages of possible spelling mistakes are not prepended with the respective unknown words
+      </action>
+      <action type="fix" issue="#236">
+        Fix crash when using `\begin` or `\end` without an argument
+      </action>
+      <action type="update">
+        Use Title Case for titles of commands
+      </action>
+      <action type="update">
+        Update LTeX LS to 9.2.0
+      </action>
+    </release>
+    <release version="8.3.0" description="The BibT&lt;sub&gt;E&lt;/sub&gt;X Experimentation" date="2021-01-24">
+      <action type="add" issue="#211">
+        Add support for BibTeX files (language code `bibtex`)
+      </action>
+      <action type="add">
+        Add setting [`ltex.bibtex.fields`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexbibtexfields) to control which BibTeX fields should be checked
+      </action>
+      <action type="add" issue="#210">
+        Add support for [GitLab Flavored Markdown](https://gitlab.com/gitlab-org/gitlab/blob/master/doc/user/markdown.md), especially inline math (e.g., ``$`E = mc^2`$``)
+      </action>
+      <action type="add" issue="#218">
+        Add support for Markdown tables as in [GitHub Flavored Markdown](https://github.github.com/gfm/#tables-extension-)
+      </action>
+      <action type="add">
+        Add support for more commands of the `glossaries` LaTeX package
+      </action>
+      <action type="update" issue="#221">
+        Enable `Add to dictionary` quick fix for Slovak rule IDs `MUZSKY_ROD_NEZIV_A`, `ZENSKY_ROD_A`, and `STREDNY_ROD_A`
+      </action>
+      <action type="remove">
+        Remove superfluous spaces in messages of diagnostics
+      </action>
+      <action type="fix" issue="#224">
+        Fix LTeX LS not starting if Java version string does not contain a minor version (e.g., `&quot;16&quot;`)
+      </action>
+      <action type="fix">
+        Fix handling of `\r\n` (Windows) line terminators in Markdown
+      </action>
+      <action type="update">
+        Use Flexmark's YAML Front Matter extension to ignore YAML front matter in Markdown instead of own handling
+      </action>
+      <action type="fix" issue="#232">
+        Fix documentation on the number of backslashes for [`ltex.latex.commands`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexcommands)
+      </action>
+      <action type="update">
+        Print Flexmark AST of Markdown documents to log when [`ltex.ltex-ls.logLevel`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lsloglevel) is `&quot;finest&quot;`
+      </action>
+      <action type="update">
+        Update LTeX LS to 9.1.0
+      </action>
+    </release>
+    <release version="8.2.1" description="The Accent Ramification" date="2021-01-13">
+      <action type="update">
+        Ignore `\pgfmathsetmacro`, `\setmainfont`, and `\theoremstyle`
+      </action>
+      <action type="fix" issue="#216">
+        Fix accent commands such as `\O` in math mode resulting in diagnostics
+      </action>
+      <action type="update">
+        Update issue labels when reporting bugs or requesting features
+      </action>
+      <action type="update">
+        Update LTeX LS to 9.0.1
+      </action>
+    </release>
+    <release version="8.2.0" description="The Separation Displacement" date="2021-01-03">
+      <action type="update">
+        Make versioning of LTeX LS independent of vscode-ltex; see the changelog of vscode-ltex to find out which version of LTeX LS a particular version of vscode-ltex uses
+      </action>
+      <action type="update">
+        Update LanguageTool to 5.2 (see [LT 5.2 release notes](https://github.com/languagetool-org/languagetool/blob/v5.2/languagetool-standalone/CHANGES.md#52-released-2020-12-29))
+      </action>
+      <action type="add">
+        Add [`ltex.additionalRules.enablePickyRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexadditionalrulesenablepickyrules) to still be able to detect false friends after the update of LanguageTool (default: `false`)
+      </action>
+      <action type="update" issue="#183">
+        Only check file types for which LTeX has been enabled when running [`LTeX: Check All Documents in Workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-all-documents-in-workspace)
+      </action>
+      <action type="fix">
+        Fix scope of [`ltex.hiddenFalsePositives`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexhiddenfalsepositives) (was application-scoped, is now resource-scoped)
+      </action>
+      <action type="update">
+        Replace `\dots` with Unicode ellipsis `&#x2026;` instead of three dots `...` to fix some false positives
+      </action>
+      <action type="update">
+        Update LTeX LS to 9.0.0
+      </action>
+    </release>
+    <release version="8.1.1" description="The Action Postulate" date="2020-11-24">
+      <action type="update">
+        Migrate from Travis CI to GitHub Actions
+      </action>
+      <action type="update">
+        Update LTeX LS to 8.1.1
+      </action>
+    </release>
+    <release version="8.1.0" description="The Prepending Annihilation" date="2020-11-15">
+      <action type="update" issue="#161">
+        Prepend messages of possible spelling mistakes with the respective unknown words
+      </action>
+      <action type="add">
+        Add support for optional arguments of `\newtheorem`
+      </action>
+      <action type="fix" issue="#167">
+        Fix wrong position of diagnostics when using a recognized LaTeX command with a non-recognized set of arguments due to an infinite loop
+      </action>
+      <action type="update" issue="#162">
+        Avoid misleading popup prompting to install Java on Mac, use [`ltex.java.forceTrySystemWide`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavaforcetrysystemwide) to force trying a system-wide Java installation
+      </action>
+      <action type="update">
+        Update bundled AdoptOpenJDK JRE to 11.0.9+11 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8253813?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.9%20ORDER%20BY%20created%20DESC))
+      </action>
+      <action type="update">
+        Update LSP4J to 0.10.0
+      </action>
+      <action type="update">
+        Update LTeX LS to 8.1.0
+      </action>
+    </release>
+    <release version="8.0.0" description="The Setting Transformation" date="2020-11-01">
+      <action type="update" issue="#39">
+        Upgrade from Java 8 to Java 11 (see [announcement](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html))
+      </action>
+      <action type="add">
+        Add workaround to eliminate the need for workspace-specific setting names; [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary), [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules), and [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules) can now be used in multiple setting scopes (user settings, workspace settings, and workspace folder settings) at the same time without overriding each other; instead, the settings of the different scopes will be properly merged (see [documentation](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#multi-scope-settings))
+      </action>
+      <action type="update">
+        Rename `ltex.workspaceDictionary`, `ltex.workspaceFolderDictionary` &#x2192; [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary)
+      </action>
+      <action type="update">
+        Rename `ltex.workspaceDisabledRules`, `ltex.workspaceFolderDisabledRules` &#x2192; [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules)
+      </action>
+      <action type="update">
+        Rename `ltex.workspaceEnabledRules`, `ltex.workspaceFolderEnabledRules` &#x2192; [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules)
+      </action>
+      <action type="update">
+        Rename `ltex.ignoreInRuleSentence` &#x2192; [`ltex.hiddenFalsePositives`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexhiddenfalsepositives)
+      </action>
+      <action type="update">
+        Rename `ltex.commands.ignore`, `ltex.commands.dummy` &#x2192; [`ltex.latex.commands`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexcommands)
+      </action>
+      <action type="update">
+        Rename `ltex.environments.ignore` &#x2192; [`ltex.latex.environments`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexenvironments)
+      </action>
+      <action type="update">
+        Rename `ltex.markdown.ignore`, `ltex.markdown.dummy` &#x2192; [`ltex.markdown.nodes`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdownnodes)
+      </action>
+      <action type="update">
+        Change format of [`ltex.latex.commands`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexcommands), [`ltex.latex.environments`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexenvironments), [`ltex.markdown.nodes`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdownnodes) to be objects (with key = command and value = action, e.g., `&quot;ignore&quot;`, `&quot;dummy&quot;`, etc.) instead of arrays
+      </action>
+      <action type="update">
+        Rename `addToDictionary` &#x2192; `dictionary` in [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget)
+      </action>
+      <action type="update">
+        Rename `disableRule` &#x2192; `disabledRules` in [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget)
+      </action>
+      <action type="update">
+        Rename `ignoreRuleInSentence` &#x2192; `hiddenFalsePositives` in [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget)
+      </action>
+      <action type="add" issue="#144,#145">
+        Add `userExternalFile`, `workspaceExternalFile`, and `workspaceFolderExternalFile` enumeration values to [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget), which enables saving settings to external files (see [documentation](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#external-setting-files))
+      </action>
+      <action type="update">
+        Change default of [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget) for `dictionary`, `disabledRules`, and `hiddenFalsePositives` to `workspaceFolderExternalFile`
+      </action>
+      <action type="add" issue="#141">
+        Add [`ltex.statusBarItem`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexstatusbaritem) to permanently display LTeX's status in the status bar
+      </action>
+      <action type="add" issue="#142">
+        Add [`ltex.checkFrequency`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexcheckfrequency) to control when LTeX checks documents
+      </action>
+      <action type="add">
+        Add [`LTeX: Show Status Information`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-show-status-information) command to show information about the status of LTeX
+      </action>
+      <action type="add" issue="#140">
+        Add support for `\usepackage[LANGUAGE]{babel}` if in the same file as the text to be checked
+      </action>
+      <action type="add" issue="#143">
+        Add support for more BibLaTeX commands such as `\autocite`, `\citeauthor`, etc.
+      </action>
+      <action type="add" issue="ltex-ls#27">
+        Add support for overriding hard-coded command signatures
+      </action>
+      <action type="add">
+        Add verification for downloaded files (LTeX LS and Java)
+      </action>
+      <action type="update">
+        Move handling of external setting files from ltex-ls to vscode-ltex
+      </action>
+      <action type="update" issue="#146">
+        Better resolve relative paths to external setting files, either with respect to the `.vscode` directory of the workspace folder if any, the `.vscode` directory of the workspace if any, or the global storage directory of the extension (see [documentation](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#external-setting-files))
+      </action>
+      <action type="update">
+        Slightly change logo
+      </action>
+      <action type="update">
+        Improve logging in case of problems with the initialization of ltex-ls
+      </action>
+      <action type="update">
+        Increase duration before sentences expire in the result cache to 60 minutes
+      </action>
+      <action type="fix" issue="#134">
+        Fix many settings changes cleared sentence cache, which led to performance issues, e.g., changing the [`ltex.enabled`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabled) setting via magic comments
+      </action>
+      <action type="remove">
+        Remove dependency on `org.apache.httpcomponents:httpclient` by using the HTTP client that comes with Java 11 when connecting to an HTTP LanguageTool server
+      </action>
+      <action type="update">
+        Update LTeX LS to 8.0.0
+      </action>
+    </release>
+    <release version="7.3.1" description="The Delay Correlation" date="2020-10-12">
+      <action type="fix">
+        Fix delayed publication of diagnostics by adding workaround to guess the caret position
+      </action>
+      <action type="fix">
+        Fix recheck being triggered when generating list of quick fixes; this should improve speed
+      </action>
+      <action type="fix">
+        Fix comment in readme
+      </action>
+      <action type="update">
+        Update LTeX LS to 7.3.1
+      </action>
+    </release>
+    <release version="7.3.0" description="The Debugging Formulation" date="2020-10-10">
+      <action type="add" issue="#131">
+        Add support for `\ell` as well as `\mathcal`, `\mathfrak`, etc. to vowel detection
+      </action>
+      <action type="add">
+        Add setting [`ltex.ltex-ls.logLevel`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lsloglevel) to control the verbosity of the server log of LTeX LS
+      </action>
+      <action type="add">
+        Add command [`ltex.requestFeature`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-request-feature-for-ltex) to quickly request a new feature in LTeX via VS Code
+      </action>
+      <action type="add">
+        Add button to set [`ltex.trace.server`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltextraceserver) to `&quot;verbose&quot;` when reporting a bug
+      </action>
+      <action type="fix">
+        Fix diagnostics sometimes not lined up with the text with switching back from incremental to full document updates; unfortunately, this disables the delayed publication of diagnostics at the caret position
+      </action>
+      <action type="update">
+        Restructure and simplify internal quick fix and command structure, removing the need for pseudo-telemetry notifications
+      </action>
+      <action type="update">
+        Update LTeX LS to 7.3.0
+      </action>
+    </release>
+    <release version="7.2.0" description="The LanguageTool Acquisition" date="2020-09-27">
+      <action type="update">
+        Update LanguageTool to 5.1 (see [LT 5.1 release notes](https://github.com/languagetool-org/languagetool/blob/v5.1/languagetool-standalone/CHANGES.md#51-released-2020-09-25))
+      </action>
+      <action type="add">
+        Add support for HTML entities such as `&amp;auml;` and `&amp;copy;` in Markdown
+      </action>
+      <action type="fix">
+        Fix missing tilde expansion for external dictionary files
+      </action>
+      <action type="update">
+        Improve logging of LTeX LS
+      </action>
+      <action type="update">
+        Update LTeX LS to 7.2.0
+      </action>
+    </release>
+    <release version="7.1.2" description="The Magic Configuration" date="2020-09-22">
+      <action type="fix" issue="#124">
+        Fix performance issue with multiple languages in one document via magic comments due to LanguageTool being reinitialized on each keystroke
+      </action>
+      <action type="update">
+        Update LTeX LS to 7.1.2
+      </action>
+    </release>
+    <release version="7.1.1" description="The Relative Malfunction" date="2020-09-20">
+      <action type="fix">
+        Fix `NullPointerException` when supplying relative paths to external dictionary files
+      </action>
+      <action type="fix">
+        Fix German log messages
+      </action>
+      <action type="update">
+        Update LTeX LS to 7.1.1
+      </action>
+    </release>
+    <release version="7.1.0" description="The External Accumulation" date="2020-09-20">
+      <action type="add" issue="#118">
+        Add support for external dictionary files
+      </action>
+      <action type="add" issue="#19">
+        Add support for enabling/disabling LTeX only for specific file types via [`ltex.enabled`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabled)
+      </action>
+      <action type="add" issue="#19">
+        Add support for `acro` commands such as `\DeclareAcronym` and `\ac`
+      </action>
+      <action type="add" issue="#19">
+        Add support for `\addcontentsline`
+      </action>
+      <action type="add">
+        Add support for `\printbibliography` and `\printglossary` without argument
+      </action>
+      <action type="update" issue="#19">
+        Ignore parenthesis arguments of `textblock`s
+      </action>
+      <action type="fix" issue="#123">
+        Fix optional argument of heading commands such as `\section` parsed incorrectly
+      </action>
+      <action type="update">
+        Include stack traces when logging exceptions
+      </action>
+      <action type="fix">
+        Fix some links (bug reporter, offline installation, readme)
+      </action>
+      <action type="update">
+        Update LTeX LS to 7.1.0
+      </action>
+    </release>
+    <release version="7.0.0" description="The Workspace Solution" date="2020-09-13">
+      <action type="update">
+        Change scope of [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary), [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules), and [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules) to `application`; these are now user-specific settings that can only be configured in user settings
+      </action>
+      <action type="add">
+        Add settings `ltex.workspaceDictionary`, `ltex.workspaceDisabledRules`, and `ltex.workspaceEnabledRules` with `window` scope to amend the corresponding user-specific settings; these are workspace-specific settings that should be configured in workspace settings
+      </action>
+      <action type="add">
+        Add settings `ltex.workspaceFolderDictionary`, `ltex.workspaceFolderDisabledRules`, and `ltex.workspaceFolderEnabledRules` with `resource` scope to amend the corresponding user-specific and workspace-specific settings; these are workspace-folder-specific settings that should be configured in workspace folder settings
+      </action>
+      <action type="update">
+        Change default of [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget) for `addToDictionary` to `workspaceFolder`, i.e., by default, words will now be added to the workspace-folder-specific settings instead of the user-specific settings
+      </action>
+      <action type="add">
+        Rename `&quot;global&quot;` value for [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget) to `&quot;user&quot;` (`&quot;global&quot;` is still supported, but deprecated)
+      </action>
+      <action type="remove">
+        Remove deprecated settings `ltex.javaHome`, `ltex.performance.initialJavaHeapSize`, `ltex.performance.maximumJavaHeapSize`, `ltex.performance.sentenceCacheSize`, `ltex.*.dictionary`, `ltex.*.enabledRules`, and `ltex.*.disabledRules` (deprecation since 5.0.0)
+      </action>
+      <action type="update">
+        Update LanguageTool to 5.0.2 (see [LT 5.0.2 release notes](https://github.com/languagetool-org/languagetool/blob/v5.0.2/languagetool-standalone/CHANGES.md#502-2020-08-28))
+      </action>
+      <action type="fix" issue="#104">
+        Fix skipping of YAML front matter
+      </action>
+      <action type="update">
+        Update LTeX LS to 7.0.0
+      </action>
+    </release>
+    <release version="6.3.0" description="The Vowel Extraction" date="2020-08-22">
+      <action type="add" issue="#92">
+        Add support for `an` article when before a formula starting with a vowel (e.g., `an $n$-dimensional problem`)
+      </action>
+      <action type="add" issue="#99">
+        Add support for `~/` and `~\` in settings
+      </action>
+      <action type="fix">
+        Fix links to documentation in various places (readme, changelog, error messages, etc.)
+      </action>
+      <action type="update">
+        Update LTeX LS to 6.3.0
+      </action>
+    </release>
+    <release version="6.2.0" description="The Command Isotope" date="2020-08-07">
+      <action type="add" issue="#84">
+        Add commands [`LTeX: Check Current Document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-current-document) and [`LTeX: Check All Documents in Workspace`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-check-all-documents-in-workspace)
+      </action>
+      <action type="add">
+        Add commands [`LTeX: Clear Diagnostics in Current Document`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-clear-diagnostics-in-current-document) and [`LTeX: Clear All Diagnostics`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-clear-all-diagnostics)
+      </action>
+      <action type="add">
+        Add setting [`ltex.clearDiagnosticsWhenClosingFile`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexcleardiagnosticswhenclosingfile)
+      </action>
+      <action type="update">
+        Skip front matter in Markdown
+      </action>
+      <action type="update">
+        Ignore more LaTeX preamble commands (e.g., `\automark`, `\color`, `\DeclareSIUnit`, `\directlua`, `\setuptoc`)
+      </action>
+      <action type="add">
+        Add support for German babel hyphenation commands `&quot;-`, `&quot;&quot;`, `&quot;|`, `&quot;=`, `&quot;~`
+      </action>
+      <action type="update">
+        Use non-breaking space for `~`
+      </action>
+      <action type="update">
+        Update LTeX LS to 6.2.0
+      </action>
+    </release>
+    <release version="6.1.1" description="The Space Saturation" date="2020-07-26">
+      <action type="fix" issue="#80">
+        Fix another problem with spaces in paths when using LTeX LS on Windows
+      </action>
+      <action type="update">
+        Update LTeX LS to 6.1.1
+      </action>
+    </release>
+    <release version="6.1.0" description="The babel Momentum" date="2020-07-26">
+      <action type="add" issue="#39">
+        Download Java 11 if only Java 8 is installed; LTeX support for Java 8 will end on November 1, 2020 (see [documentation](https://valentjn.github.io/vscode-ltex/docs/deprecation-of-java-8.html))
+      </action>
+      <action type="add" issue="#81">
+        Add support for babel commands (see [documentation](https://valentjn.github.io/vscode-ltex/docs/advanced-usage.html#multilingual-latex-documents-with-the-babel-package))
+      </action>
+      <action type="fix" issue="#80">
+        Fix problems with spaces in paths when using LTeX LS on Windows
+      </action>
+      <action type="update">
+        Update bundled AdoptOpenJDK JRE to 11.0.8+10 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8253009?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.8%20ORDER%20BY%20created%20DESC))
+      </action>
+      <action type="update">
+        Update some NPM dependencies
+      </action>
+      <action type="update">
+        Update LTeX LS to 6.1.0
+      </action>
+    </release>
+    <release version="6.0.2" description="The Startup Congruence" date="2020-07-11">
+      <action type="update" issue="#75">
+        Make Windows startup script of LTeX LS (`ltex-ls.bat`) honor `JAVA_HOME`
+      </action>
+      <action type="update">
+        Relicense vscode-ltex under the Mozilla Public License Version 2.0
+      </action>
+      <action type="update">
+        Update some NPM dependencies
+      </action>
+      <action type="update">
+        Update LTeX LS to 6.0.2
+      </action>
+    </release>
+    <release version="6.0.1" description="The Freeze Paradox" date="2020-07-02">
+      <action type="fix" issue="#68">
+        Fix freezes when checking German text by working around [languagetool-org/languagetool#3181](https://github.com/languagetool-org/languagetool/issues/3181) introduced by LanguageTool 5.0
+      </action>
+      <action type="update">
+        Update LTeX LS to 6.0.1
+      </action>
+    </release>
+    <release version="6.0.0" description="The Internationalization Proposition" date="2020-06-28">
+      <action type="update">
+        Update LanguageTool to 5.0 (see [LT 5.0 release notes](https://github.com/languagetool-org/languagetool/blob/v5.0/languagetool-standalone/CHANGES.md#50-2020-06-27))
+      </action>
+      <action type="add">
+        Add support for internationalized user interface of LTeX
+      </action>
+      <action type="add">
+        Add German translations for user interface of LTeX
+      </action>
+      <action type="update" issue="#46">
+        Delay diagnostics at the current caret position (e.g., incomplete word or sentence) until the user has finished typing
+      </action>
+      <action type="add" issue="#67">
+        Add `enabled` to magic comments
+      </action>
+      <action type="add">
+        Add command [`LTeX: Report Bug in LTeX`](https://valentjn.github.io/vscode-ltex/docs/commands.html#ltex-report-bug-in-ltex) for reporting LTeX bugs from within VS Code
+      </action>
+      <action type="fix" issue="#63">
+        Fix `\todo` couldn't be ignored
+      </action>
+      <action type="fix">
+        Fix wrong language-dependent settings used for magic comments
+      </action>
+      <action type="fix">
+        Fix add to dictionary and disable rule quick fixes using wrong language when used with magic comments
+      </action>
+      <action type="fix">
+        Fix deprecation message for `ltex.performance.maximumJavaHeapSize` not shown
+      </action>
+      <action type="fix">
+        Improve code quality of LTeX LS by fixing hundreds of Checkstyle, SpotBugs, and Checker Framework warnings
+      </action>
+      <action type="update">
+        Migrate LTeX LS from Gradle to Maven
+      </action>
+      <action type="update">
+        Update NPM dependencies
+      </action>
+      <action type="update">
+        Update Maven dependencies
+      </action>
+      <action type="update">
+        Update LTeX LS to 6.0.0
+      </action>
+    </release>
+    <release version="5.0.2" description="The Disabling Submergence" date="2020-06-18">
+      <action type="fix" issue="#61">
+        Fix `Disable rule` quick fix using wrong setting structure
+      </action>
+    </release>
+    <release version="5.0.1" description="The Acceptance Incursion" date="2020-06-07">
+      <action type="fix" issue="#44">
+        Fix `Value is not accepted` warning when using [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules) or [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules)
+      </action>
+      <action type="update">
+        Change badges in readme
+      </action>
+    </release>
+    <release version="5.0.0" description="The Rewrite Materialization" date="2020-06-01">
+      <action type="add" issue="#6">
+        Download LTeX LS on demand with all languages already included; this removes the need for language support extensions
+      </action>
+      <action type="update" issue="#5">
+        Download Java distribution on demand if no suitable Java installation has been found
+      </action>
+      <action type="update">
+        Adhere to [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html). This means that the version of LTeX is not tied to the version of LanguageTool anymore, as the version of LanguageTool is not a semantic version. LTeX 5.0.0 uses LanguageTool 4.9.
+      </action>
+      <action type="update">
+        Rename `ltex.&lt;LANGUAGE&gt;.dictionary` &#x2192; [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary) (object with `&lt;LANGUAGE&gt;` keys)
+      </action>
+      <action type="update">
+        Rename `ltex.&lt;LANGUAGE&gt;.disabledRules` &#x2192; [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules) (object with `&lt;LANGUAGE&gt;` keys)
+      </action>
+      <action type="update">
+        Rename `ltex.&lt;LANGUAGE&gt;.enabledRules` &#x2192; [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules) (object with `&lt;LANGUAGE&gt;` keys)
+      </action>
+      <action type="update">
+        Rename `ltex.javaHome` &#x2192; [`ltex.java.path`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavapath)
+      </action>
+      <action type="update">
+        Rename `ltex.performance.initialJavaHeapSize` &#x2192; [`ltex.java.initialHeapSize`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavainitialheapsize)
+      </action>
+      <action type="update">
+        Rename `ltex.performance.maximumJavaHeapSize` &#x2192; [`ltex.java.maximumHeapSize`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavamaximumheapsize)
+      </action>
+      <action type="update">
+        Rename `ltex.performance.sentenceCacheSize` &#x2192; [`ltex.sentenceCacheSize`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexsentencecachesize)
+      </action>
+      <action type="add" issue="#36">
+        Add support for external LanguageTool HTTP servers
+      </action>
+      <action type="add" issue="#21">
+        Add support for magic comments, enables changing the language in the middle of documents
+      </action>
+      <action type="fix" issue="#42">
+        Check `\footnote` and `\todo` contents separately, preventing &#x201c;double period&#x201d; warnings
+      </action>
+      <action type="add" issue="#43">
+        Add support for more BibLaTeX citation commands, add support for plural dummies, add support for `\eg`, `\egc`, `\ie`, `\iec`
+      </action>
+      <action type="add">
+        Add visual feedback in status bar during startup and checks that take a long time
+      </action>
+      <action type="remove" issue="#41">
+        Remove `null` types and default values from settings, use empty string/array/object instead
+      </action>
+      <action type="update">
+        Use proper server/client model for language server/client
+      </action>
+      <action type="update">
+        Make documentation more extensive, put it on own [website](https://valentjn.github.io/vscode-ltex/)
+      </action>
+      <action type="update">
+        Update LTeX LS to 5.0.0
+      </action>
+    </release>
+    <release version="4.9.3" description="The Java Collapse" date="2020-05-07">
+      <action type="update">
+        Revert to Java 8
+      </action>
+      <action type="remove">
+        Remove support for external LanguageTool HTTP servers
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.9.3
+      </action>
+    </release>
+    <release version="4.9.2" description="The Server Renormalization" date="2020-05-06">
+      <action type="update">
+        Update required version of Java (now 11 or newer)
+      </action>
+      <action type="add" issue="#36">
+        Add support for external LanguageTool HTTP servers
+      </action>
+      <action type="add" issue="#37">
+        Add support for `\autoref`, `\pageref`, `\autopageref`
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.9.2
+      </action>
+    </release>
+    <release version="4.9.1" description="The Sentence Cache Acceleration" date="2020-05-01">
+      <action type="fix" issue="#29">
+        Fix sentence cache was invalidated when a single ignore sentence rule was present
+      </action>
+      <action type="update" issue="#35">
+        Use thin non-breaking space for `\,`
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.9.1
+      </action>
+    </release>
+    <release version="4.9.0" description="The Update Alternative" date="2020-03-28">
+      <action type="update">
+        Update LanguageTool to 4.9 (see [LT 4.9 release notes](https://github.com/languagetool-org/languagetool/blob/v4.9/languagetool-standalone/CHANGES.md#49-2020-03-24))
+      </action>
+      <action type="update">
+        Update other Java dependencies
+      </action>
+      <action type="update">
+        Update NPM dependencies
+      </action>
+      <action type="update">
+        Update required version of VS Code (now 1.39.0 or newer)
+      </action>
+      <action type="update">
+        Reduce file size of extension (omitting unneeded dependencies)
+      </action>
+      <action type="add">
+        Add usage instructions to readme
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.9.0
+      </action>
+    </release>
+    <release version="4.7.10" description="The French Capacitance" date="2020-03-12">
+      <action type="fix" issue="#27">
+        Fix spelling errors for French dummies
+      </action>
+      <action type="fix">
+        Fix `\dots` in math mode being interpreted as `...`
+      </action>
+      <action type="update">
+        Minor changes in readme, changelog, and `package.json`
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.7.10
+      </action>
+    </release>
+    <release version="4.7.9" description="The Markdown Resonance" date="2020-02-29">
+      <action type="update">
+        Update Markdown parser Flexmark to 0.60.2; this increases the speed of parsing Markdown
+      </action>
+      <action type="add" issue="#26">
+        Add possibility to ignore Markdown elements or replace them by dummy words via `ltex.markdown.ignore` and `ltex.markdown.dummy`
+      </action>
+      <action type="update">
+        Ignore Markdown code blocks by default
+      </action>
+      <action type="update">
+        Replace auto-links and inline Markdown code with dummy words by default
+      </action>
+      <action type="fix">
+        Fix match positions were sometimes off by one, especially in Markdown documents
+      </action>
+      <action type="update">
+        Rewrite `MarkdownAnnotatedTextBuilder`
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.7.9
+      </action>
+    </release>
+    <release version="4.7.8" description="The Multi-Diagnostic Equivalency" date="2020-02-16">
+      <action type="add" issue="#22">
+        Add support for R Sweave `.rnw` files
+      </action>
+      <action type="update" issue="#23">
+        Enable fixing multiple diagnostics at once
+      </action>
+      <action type="add" issue="#24" due-to="@mpolitze">
+        Add `ltex.javaHome` setting to control the `JAVA_HOME` environment variable
+      </action>
+      <action type="add" issue="#25">
+        Add support for `\euro`
+      </action>
+      <action type="update">
+        Minor changes in readme
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.7.8
+      </action>
+    </release>
+    <release version="4.7.7" description="The Preview Perturbation" date="2019-11-23">
+      <action type="remove">
+        Remove preview status from extension
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.7.7
+      </action>
+    </release>
+    <release version="4.7.6" description="The Java Thermalization" date="2019-11-10">
+      <action type="add">
+        Add `ltex.performance` settings to give users more control over Java's RAM usage
+      </action>
+      <action type="update">
+        Change default initial Java heap size to 64 MB
+      </action>
+      <action type="update">
+        Change default maximum Java heap size to 512 MB
+      </action>
+      <action type="update">
+        Change default sentence cache size from 10000 to 2000 sentences
+      </action>
+      <action type="update">
+        Rename logs, enable logging of client messages even if no folder is open
+      </action>
+      <action type="add">
+        Add more examples to readme
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.7.6
+      </action>
+    </release>
+    <release version="4.7.5" description="The Listing Collapse" date="2019-10-22">
+      <action type="update">
+        Enable ignoring environments such as `lstlisting` and `verbatim`
+      </action>
+      <action type="add">
+        Add `ltex.environments.ignore` setting for defining own environments to ignore
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.7.5
+      </action>
+    </release>
+    <release version="4.7.4" description="The Disabling Allocation" date="2019-10-15">
+      <action type="add">
+        Add `disabledRules` and `enabledRules` settings (requires update of language extensions)
+      </action>
+      <action type="add">
+        Add `disable rule` quick fix
+      </action>
+      <action type="fix">
+        Fix a bug where the `codeAction` request gets stuck in infinite loop
+      </action>
+      <action type="fix">
+        Fix another `NullPointerException` for word2vec
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.7.4
+      </action>
+    </release>
+    <release version="4.7.3" description="The word2vec Erosion" date="2019-10-07">
+      <action type="fix" issue="#12">
+        Fix null pointer error for word2vec quick fixes
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.7.3
+      </action>
+    </release>
+    <release version="4.7.2" description="The Message Dissection" date="2019-10-02">
+      <action type="add">
+        Add missing error message if legacy false friends could not be loaded
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.7.2
+      </action>
+    </release>
+    <release version="4.7.1" description="The Mother Tongue Factor" date="2019-10-02">
+      <action type="add" issue="#11">
+        Add [`ltex.additionalRules.motherTongue`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexadditionalrulesmothertongue) setting to enable detection of false friends
+      </action>
+      <action type="update">
+        Change defaults for `ltex.additionalRules` settings from `&quot;&quot;` to `null`
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.7.1
+      </action>
+    </release>
+    <release version="4.7.0" description="The Multi-Root Observation" date="2019-10-01">
+      <action type="update">
+        Update LanguageTool to 4.7 (see [LT 4.7 release notes](https://github.com/languagetool-org/languagetool/blob/v4.7/languagetool-standalone/CHANGES.md#47-2019-09-28))
+      </action>
+      <action type="add" issue="#7">
+        Support multi-root workspaces, all configuration settings except [`ltex.enabled`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabled) are now resource-specific
+      </action>
+      <action type="update">
+        Save dictionary settings under full language short code (e.g., `en-US` instead of `en`). If you already have a dictionary under `ltex.en.dictionary` and use `en-US` as language (not `en`), you have to rename the settings name to `ltex.en-US.dictionary` (similarly for other languages).
+      </action>
+      <action type="remove">
+        Remove diagnostics when a file is closed
+      </action>
+      <action type="fix">
+        Prevent insertion of text in Ti*k*Z mode
+      </action>
+      <action type="add">
+        Add support for more commands such as `\newenvironment`, `\newgeometry`, and `\pagenumbering`
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.7.0
+      </action>
+    </release>
+    <release version="4.6.13" description="The Remote Permeability" date="2019-09-26">
+      <action type="fix" issue="#8">
+        Fix language extensions not installable on remote machines
+      </action>
+      <action type="fix">
+        Fix LTeX LS not reinitialized after a language extension has been installed (which was missing during initialization)
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.6.13
+      </action>
+    </release>
+    <release version="4.6.12" description="The Interpolation Entanglement" date="2019-09-25">
+      <action type="fix">
+        Patch LanguageTool's `AnnotatedText` with linear interpolation to hopefully fix the `fromPos must be less than toPos` LT errors for good
+      </action>
+      <action type="fix">
+        Fix `\footnote` in math mode messed up text mode and math mode
+      </action>
+      <action type="update">
+        Increase robustness in case locale or settings are not provided
+      </action>
+      <action type="update">
+        Ignore all brace and bracket arguments after `\begin{environment}` (`tabular`, `array`, etc.)
+      </action>
+      <action type="add">
+        Add support for some more commands and environments such as `\pagestyle` and `eqnarray`
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.6.12
+      </action>
+    </release>
+    <release version="4.6.11" description="The Infinite Loop Contraction" date="2019-09-23">
+      <action type="fix">
+        Detect and prevent infinite loops in `LatexAnnotatedTextBuilder`
+      </action>
+      <action type="fix">
+        Fix infinite loop with other line endings than `\n`
+      </action>
+      <action type="fix">
+        Fix some more `fromPos must be less than toPos` LT errors
+      </action>
+      <action type="update">
+        Check for interrupts to avoid 100% CPU usage on timeout (this doesn't fix any bugs though)
+      </action>
+      <action type="add">
+        Add support for `\email`, `\href`, and `\verb|...|`
+      </action>
+      <action type="add">
+        Add support for more citation commands (`\citep`, `\citet`, etc.)
+      </action>
+      <action type="add">
+        Add support for float/theorem definition commands and starred sectioning commands
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.6.11
+      </action>
+    </release>
+    <release version="4.6.10" description="The Plaintext Decay" date="2019-09-18">
+      <action type="update" issue="#4">
+        Don't check plaintext files
+      </action>
+      <action type="fix" issue="ltex-ls#1">
+        Fix `NullPointerException` if LanguageTool has not been initialized
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.6.10
+      </action>
+    </release>
+    <release version="4.6.9" description="The Bundle Valuation" date="2019-09-08">
+      <action type="update">
+        Bundle Node.js modules to decrease number of files in the extension (this means a slight performance gain)
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.6.9
+      </action>
+    </release>
+    <release version="4.6.8" description="The Severity Manifestation" date="2019-09-07">
+      <action type="add">
+        Add setting [`ltex.diagnosticSeverity`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdiagnosticseverity) to control where and how the diagnostics appear
+      </action>
+      <action type="fix">
+        Change default severity from `warning` to `info`
+      </action>
+      <action type="add">
+        Add possibility to ignore a LanguageTool rule in a sentence via quick fix
+      </action>
+      <action type="add">
+        Add setting [`ltex.configurationTarget`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexconfigurationtarget) to control which `settings.json` to update when using one of the quick fixes
+      </action>
+      <action type="fix">
+        More commands like `\PackageWarning` and `\addbibresource` are ignored
+      </action>
+      <action type="add">
+        Add support for `\url` and `\nolinkurl`
+      </action>
+      <action type="add">
+        Add support for more accents (`` \` ``, `\'`, `\^`, `\~`, `\&quot;`, `\=`, `\.`, ...)
+      </action>
+      <action type="update">
+        Command names can now include `@` (this assumes that users don't write something like `\example@gmail.com` with a command `\example`, otherwise replace with `\example{}@gmail.com`)
+      </action>
+      <action type="update">
+        Ignore alignment argument of tabular environment
+      </action>
+      <action type="update">
+        Update LTeX LS to 4.6.8
+      </action>
+    </release>
+    <release version="4.6.7" description="The Model Combustion" date="2019-09-02">
+      <action type="add">
+        Add possibility to use language model *n*-gram data, neural network model data, or word2vec model data
+      </action>
+      <action type="update">
+        `Add to dictionary` now always modifies global settings
+      </action>
+    </release>
+    <release version="4.6.6" description="The Timeout Theorem" date="2019-09-02">
+      <action type="fix">
+        Fix `fromPos must be less than toPos` LT errors
+      </action>
+      <action type="add">
+        Localization of diagnostics, initially support of English and German
+      </action>
+      <action type="add">
+        Add timeout for `latex.AnnotatedTextBuilder`; unfortunately this only displays an error, but does not kill the process
+      </action>
+      <action type="add">
+        Add support for `\(`, `\)`, `\[`, `\]`
+      </action>
+      <action type="update">
+        Don't insert spaces before `\text` in display math
+      </action>
+    </release>
+    <release version="4.6.5" description="The Consistency Integration" date="2019-09-02">
+      <action type="update">
+        Make readme and `package.json` consistent
+      </action>
+      <action type="fix">
+        Fix second arguments of `\(re)newcommand` not ignored
+      </action>
+    </release>
+    <release version="4.6.4" description="The Umlaut Expansion" date="2019-09-01">
+      <action type="update">
+        Ignore some commands often found in LaTeX preambles
+      </action>
+      <action type="add">
+        Support umlauts and eszett
+      </action>
+    </release>
+    <release version="4.6.3" description="The Version Interruption" date="2019-09-01">
+      <action type="fix">
+        Fix deployed `*.vsix` needed Java 11, not 8
+      </action>
+    </release>
+    <release version="4.6.2" description="The vsce Minimization" date="2019-09-01">
+      <action type="update">
+        Don't include vsce in extension
+      </action>
+    </release>
+    <release version="4.6.1" description="The Badges Vortex" date="2019-09-01">
+      <action type="update">
+        Link badges in readme
+      </action>
+    </release>
+    <release version="4.6.0" description="The LT&lt;sub&gt;E&lt;/sub&gt;X Resurgence" date="2019-09-01">
+      <action type="update">
+        Forked abandoned repository, rename to vscode-ltex
+      </action>
+      <action type="update">
+        Update LanguageTool to 4.6 (see [LT 4.6 release notes](https://github.com/languagetool-org/languagetool/blob/v4.6/languagetool-standalone/CHANGES.md#46-2019-06-26))
+      </action>
+      <action type="update">
+        Update other dependencies (vscode, vscode-languageclient, LSP, JUnit, Gradle)
+      </action>
+      <action type="update">
+        Implement simple LaTeX parser
+      </action>
+    </release>
+    <release version="3.8.0" date="2017-07-08">
+      <action type="update">
+        Update LanguageTool to 3.8 (see [LT 3.8 release notes](https://github.com/languagetool-org/languagetool/blob/v3.8/languagetool-standalone/CHANGES.md#38-2017-06-27))
+      </action>
+      <action type="update">
+        Update versioning to reflect LanguageTool versioning
+      </action>
+      <action type="remove">
+        Remove preview flag since no blocker issues have been reported
+      </action>
+    </release>
+    <release version="0.0.4" date="2017-06-22">
+      <action type="add" issue="adamvoss/vscode-languagetool#5" due-to="Faustino Aguilar (@faustinoaq)">
+        Add configuration to make extension opt-in by workspace
+      </action>
+      <action type="add">
+        Language-support extensions are now detected through the Visual Studio Code API rather than file-path assumptions
+      </action>
+    </release>
+    <release version="0.0.3" date="2017-06-14">
+      <action type="fix">
+        Fix checking of files when no folder was open
+      </action>
+      <action type="fix" issue="adamvoss/vscode-languagetool#2">
+        Prevent virtual files (including those from Git) from being checked
+      </action>
+    </release>
+    <release version="0.0.2" date="2017-06-12">
+      <action type="add">
+        Allow any LanguageTool supported language to be used through the use of supplemental extensions
+      </action>
+      <action type="remove">
+        Remove built-in English support
+      </action>
+    </release>
+    <release version="0.0.1" date="2017-06-03">
+      <action type="add">
+        Initial release
+      </action>
+    </release>
+  </body>
+</document>

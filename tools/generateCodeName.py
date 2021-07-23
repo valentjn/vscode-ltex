@@ -11,6 +11,8 @@ import pathlib
 import random
 import re
 import sys
+from typing import List
+import xml.etree.ElementTree as et
 
 sys.path.append(str(pathlib.Path(__file__).parent))
 import common
@@ -160,15 +162,30 @@ Vortex
 
 
 
+def getUsedSuffixes() -> List[str]:
+  xmlFilePath = pathlib.Path(common.repoDirPath.joinpath("changelog.xml"))
+  document = et.parse(xmlFilePath).getroot()
+  releases = document.findall("./{http://maven.apache.org/changes/1.0.0}body"
+      "/{http://maven.apache.org/changes/1.0.0}release")
+  usedSuffixes = []
+
+  for release in releases:
+    if ("description" not in release.attrib) or (release.attrib["date"] == "upcoming"): continue
+    regexMatch = re.search(r"The .* ([A-Za-z]+)", release.attrib["description"])
+    assert regexMatch is not None
+    usedSuffixes.append(regexMatch.group(1))
+
+  return usedSuffixes
+
+
+
 def main() -> None:
   parser = argparse.ArgumentParser(
       description="Generate a code name for the next release of LTeX")
   parser.add_argument("topic", metavar="TOPIC", help="Main topic of the release")
   args = parser.parse_args()
 
-  with open(common.repoDirPath.joinpath("CHANGELOG.md"), "r") as f: changelog = f.read()
-  usedSuffixes = re.findall(r"^## .*? \u2014 \u201cThe .* ([A-Za-z]+)\u201d", changelog,
-      flags=re.MULTILINE)
+  usedSuffixes = getUsedSuffixes()
 
   numberOfUsages = {x : 0 for x in suffixes}
   for x in usedSuffixes: numberOfUsages[x] += 1

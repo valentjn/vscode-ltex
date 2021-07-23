@@ -2117,7 +2117,7 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production",
+    "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production && python tools/convertChangelog.py --xml-file changelog.xml > CHANGELOG.md",
     "webpack": "webpack --config .webpack.config.js --mode development",
     "webpack-dev": "webpack --config .webpack.config.js --mode development --watch",
     "compile": "tsc",

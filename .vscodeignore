@@ -5,6 +5,7 @@
 .markdownlint.json
 .mocharc.json
 .webpack.config.js
+changelog.xml
 tsconfig.json
 *.vsix
 
