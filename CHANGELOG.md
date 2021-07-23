@@ -539,13 +539,13 @@
 
 ## 0.0.4 (June 22, 2017)
 
-- Add configuration to make extension opt-in by workspace thanks to [Faustino Aguilar](https://github.com/faustinoaq) ([PR vscode-languagetool#5](https://github.com/adamvoss/vscode-languagetool/pull/5), workaround for [microsoft/vscode#15611](https://github.com/Microsoft/vscode/issues/15611))
+- Add configuration to make extension opt-in by workspace ([PR adamvoss/vscode-languagetool#5](https://github.com/adamvoss/vscode-languagetool/pull/5) by [Faustino Aguilar (@faustinoaq)](https://github.com/faustinoaq), workaround for [microsoft/vscode#15611](https://github.com/Microsoft/vscode/issues/15611))
 - Language-support extensions are now detected through the Visual Studio Code API rather than file-path assumptions
 
 ## 0.0.3 (June 14, 2017)
 
 - Fix checking of files when no folder was open
-- Prevent virtual files (including those from Git) from being checked (fixes [vscode-languagetool#2](https://github.com/adamvoss/vscode-languagetool/issues/2))
+- Prevent virtual files (including those from Git) from being checked (fixes [adamvoss/vscode-languagetool#2](https://github.com/adamvoss/vscode-languagetool/issues/2))
 
 ## 0.0.2 (June 12, 2017)
 
