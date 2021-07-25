@@ -2141,7 +2141,7 @@
     "eslint-plugin-only-warn": "1.0.2",
     "mocha": "9.0.2",
     "rimraf": "3.0.2",
-    "ts-loader": "9.2.3",
+    "ts-loader": "9.2.4",
     "typescript": "4.3.5",
     "vscode-test": "1.6.1",
     "webpack": "5.45.1",
