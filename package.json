@@ -2127,7 +2127,7 @@
     "test": "mocha ./out/test/TestRunner.js"
   },
   "devDependencies": {
-    "@types/mocha": "8.2.3",
+    "@types/mocha": "9.0.0",
     "@types/node": "16.4.2",
     "@types/rimraf": "3.0.1",
     "@types/semver": "7.3.8",
