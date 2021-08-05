@@ -12,6 +12,26 @@
     <author>Julian Valentin, LTeX Development Community</author>
   </properties>
   <body>
+    <release version="10.6.0" date="upcoming">
+      <action type="add" issue="#350">
+        Add support for checking comments in many popular programming languages
+      </action>
+      <action type="add" issue="ltex-ls#92" due-to="Shuhao Cao (@scaomath)">
+        Add support for more LaTeX commands (`\mathop`, `\overline`, `\tilde`, `\alpha`, etc.) for automatic vowel detection in formulas in LaTeX
+      </action>
+      <action type="add" issue="ltex-ls#87" due-to="Alexander Zeilmann (@AlexanderZeilmann)">
+        Add support for `\counterwithin`, `\counterwithout`, and `\numberwithin` in LaTeX
+      </action>
+      <action type="remove">
+        Remove support for magic comments in XHTML
+      </action>
+      <action type="update">
+        Change format of changelog
+      </action>
+      <action type="update">
+        Update LTeX LS to 12.4.0
+      </action>
+    </release>
     <release version="10.5.0" description="The XHTML Calculation" date="2021-07-12">
       <action type="update">
         Update LanguageTool to 5.4 (see [LT 5.4 release notes](https://github.com/languagetool-org/languagetool/blob/v5.4/languagetool-standalone/CHANGES.md#54-2021-06-25))
