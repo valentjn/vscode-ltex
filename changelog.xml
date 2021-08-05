@@ -12,7 +12,10 @@
     <author>Julian Valentin, LTeX Development Community</author>
   </properties>
   <body>
-    <release version="10.6.0" date="upcoming">
+    <release version="11.0.0" date="upcoming">
+      <action type="update">
+        Migrate LTeX LS from Java to Kotlin
+      </action>
       <action type="add" issue="#350">
         Add support for checking comments in many popular programming languages
       </action>
