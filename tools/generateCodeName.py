@@ -7,12 +7,12 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import argparse
-import os
+import pathlib
 import random
 import re
 import sys
 
-sys.path.append(os.path.dirname(__file__))
+sys.path.append(str(pathlib.Path(__file__).parent))
 import common
 
 
@@ -166,7 +166,7 @@ def main() -> None:
   parser.add_argument("topic", metavar="TOPIC", help="Main topic of the release")
   args = parser.parse_args()
 
-  with open(os.path.join(common.repoDirPath, "CHANGELOG.md"), "r") as f: changelog = f.read()
+  with open(common.repoDirPath.joinpath("CHANGELOG.md"), "r") as f: changelog = f.read()
   usedSuffixes = re.findall(r"^## .*? \u2014 \u201cThe .* ([A-Za-z]+)\u201d", changelog,
       flags=re.MULTILINE)
 

@@ -6,13 +6,13 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import os
+import pathlib
 import re
 import urllib.parse
 import sys
 from typing import Dict
 
-sys.path.append(os.path.dirname(__file__))
+sys.path.append(str(pathlib.Path(__file__).parent))
 import common
 
 
@@ -50,7 +50,7 @@ def main() -> None:
       for x, y in zip(assetFileNames, hashDigests))
 
   print("Writing hash digests to 'src/DependencyManager.ts'...")
-  dependencyManagerFilePath = os.path.join(common.repoDirPath, "src", "DependencyManager.ts")
+  dependencyManagerFilePath = common.repoDirPath.joinpath("src", "DependencyManager.ts")
   with open(dependencyManagerFilePath, "r") as f: dependencyManagerTypescript = f.read()
   dependencyManagerTypescript = re.sub(
       r"(_toBeDownloadedJavaHashDigests: \{\[fileName: string\]: string\} = \{\n).*?(  \};\n)",

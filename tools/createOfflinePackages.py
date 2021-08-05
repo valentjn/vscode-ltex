@@ -8,7 +8,7 @@
 
 import argparse
 import json
-import os
+import pathlib
 import platform
 import re
 import shlex
@@ -24,12 +24,12 @@ import zipfile
 
 import semver
 
-sys.path.append(os.path.dirname(__file__))
+sys.path.append(str(pathlib.Path(__file__).parent))
 import common
 
 
 
-libDirPath = os.path.join(common.repoDirPath, "lib")
+libDirPath = common.repoDirPath.joinpath("lib")
 
 # to get proper logs with CI services
 oldPrint = print
@@ -38,14 +38,14 @@ print: Callable[..., None] = (lambda *args, **kwargs: oldPrint(*args, **kwargs, 
 
 
 def cleanLibDir() -> None:
-  cmd = ["git", "-C", common.repoDirPath, "clean", "-f", "-x", libDirPath]
+  cmd = ["git", "-C", str(common.repoDirPath), "clean", "-f", "-x", str(libDirPath)]
   print("Cleaning lib/ by running '{}'...".format(" ".join(shlex.quote(x) for x in cmd)))
   subprocess.run(cmd)
 
 
 
 def getLtexVersion() -> semver.VersionInfo:
-  with open(os.path.join(common.repoDirPath, "package.json"), "r") as f: packageJson = json.load(f)
+  with open(common.repoDirPath.joinpath("package.json"), "r") as f: packageJson = json.load(f)
   return semver.VersionInfo.parse(packageJson["version"])
 
 
@@ -53,8 +53,7 @@ def getLtexVersion() -> semver.VersionInfo:
 def downloadLtexLs() -> None:
   ltexLsUrl = ("https://github.com/valentjn/ltex-ls/releases/download/"
       f"{common.toBeDownloadedLtexLsTag}/ltex-ls-{common.toBeDownloadedLtexLsVersion}.tar.gz")
-  ltexLsArchivePath = os.path.join(libDirPath,
-      f"ltex-ls-{common.toBeDownloadedLtexLsVersion}.tar.gz")
+  ltexLsArchivePath = libDirPath.joinpath(f"ltex-ls-{common.toBeDownloadedLtexLsVersion}.tar.gz")
   print(f"Downloading ltex-ls {common.toBeDownloadedLtexLsVersion} from '{ltexLsUrl}' to "
       f"'{ltexLsArchivePath}'...")
   urllib.request.urlretrieve(ltexLsUrl, ltexLsArchivePath)
@@ -62,26 +61,26 @@ def downloadLtexLs() -> None:
   extractLtexLs(ltexLsArchivePath)
 
   print("Removing ltex-ls archive...")
-  os.remove(ltexLsArchivePath)
+  ltexLsArchivePath.unlink()
 
-def extractLtexLs(ltexLsArchivePath: str) -> None:
+def extractLtexLs(ltexLsArchivePath: pathlib.Path) -> None:
   print("Extracting ltex-ls archive...")
   with tarfile.open(ltexLsArchivePath, "r:gz") as f: f.extractall(path=libDirPath)
 
 
 
 def removeJava() -> None:
-  path = os.path.join(libDirPath, f"jdk-{common.toBeDownloadedJavaVersion}-jre")
+  path = libDirPath.joinpath(f"jdk-{common.toBeDownloadedJavaVersion}-jre")
 
-  if os.path.isdir(path):
+  if path.is_dir():
     print(f"Removing old Java directory '{path}'...")
     shutil.rmtree(path)
 
-  path = os.path.join(libDirPath, f"._jdk-{common.toBeDownloadedJavaVersion}-jre")
+  path = libDirPath.joinpath(f"._jdk-{common.toBeDownloadedJavaVersion}-jre")
 
-  if os.path.isfile(path):
+  if path.is_file():
     print(f"Removing old Java file '{path}'...")
-    os.remove(path)
+    path.unlink()
 
 def downloadJava(platform: str, arch: str) -> None:
   javaArchiveType = ("zip" if platform == "windows" else "tar.gz")
@@ -90,7 +89,7 @@ def downloadJava(platform: str, arch: str) -> None:
 
   javaUrl = ("https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/"
       f"jdk-{urllib.parse.quote_plus(common.toBeDownloadedJavaVersion)}/{javaArchiveName}")
-  javaArchivePath = os.path.join(libDirPath, javaArchiveName)
+  javaArchivePath = libDirPath.joinpath(javaArchiveName)
   print(f"Downloading Java from '{javaUrl}' to '{javaArchivePath}'...")
   urllib.request.urlretrieve(javaUrl, javaArchivePath)
   print("Extracting Java archive...")
@@ -101,7 +100,7 @@ def downloadJava(platform: str, arch: str) -> None:
     with tarfile.open(javaArchivePath, "r:gz") as tarFile: tarFile.extractall(path=libDirPath)
 
   print("Removing Java archive...")
-  os.remove(javaArchivePath)
+  javaArchivePath.unlink()
 
 
 

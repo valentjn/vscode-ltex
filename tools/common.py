@@ -8,51 +8,68 @@
 
 import json
 import os
+import pathlib
 import re
+import subprocess
 import sys
 import traceback
-from typing import Any
+from typing import Any, Optional, Tuple
 import urllib.parse
 import urllib.request
 
 
 
-repoDirPath = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
-
-with open(os.path.join(repoDirPath, "src", "DependencyManager.ts"), "r") as f:
-  dependencyManagerTypescript = f.read()
-
-matches = re.findall(r"_toBeDownloadedLtexLsTag: string =\n *'(.*?)';",
-    dependencyManagerTypescript)
-assert len(matches) == 1
-toBeDownloadedLtexLsTag = matches[0]
-
-matches = re.findall(r"_toBeDownloadedLtexLsVersion: string =\n *'(.*?)';",
-    dependencyManagerTypescript)
-assert len(matches) == 1
-toBeDownloadedLtexLsVersion = matches[0]
-
-matches = re.findall(r"_toBeDownloadedJavaVersion: string =\n *'(.*?)';",
-    dependencyManagerTypescript)
-assert len(matches) == 1
-toBeDownloadedJavaVersion = matches[0]
-
-del dependencyManagerTypescript
-del f
-del matches
+repoDirPath = pathlib.Path(__file__).parent.parent
 
 
 
-def requestFromGitHub(url: str, decodeAsJson: bool = True) -> Any:
+def getToBeDownloadedVersions() -> Tuple[str, str, str]:
+  with open(repoDirPath.joinpath("src", "DependencyManager.ts"), "r") as f:
+    dependencyManagerTypescript = f.read()
+
+  matches = re.findall(r"_toBeDownloadedLtexLsTag: string =\n *'(.*?)';",
+      dependencyManagerTypescript)
+  assert len(matches) == 1
+  toBeDownloadedLtexLsTag = matches[0]
+
+  matches = re.findall(r"_toBeDownloadedLtexLsVersion: string =\n *'(.*?)';",
+      dependencyManagerTypescript)
+  assert len(matches) == 1
+  toBeDownloadedLtexLsVersion = matches[0]
+
+  matches = re.findall(r"_toBeDownloadedJavaVersion: string =\n *'(.*?)';",
+      dependencyManagerTypescript)
+  assert len(matches) == 1
+  toBeDownloadedJavaVersion = matches[0]
+
+  return toBeDownloadedLtexLsTag, toBeDownloadedLtexLsVersion, toBeDownloadedJavaVersion
+
+toBeDownloadedLtexLsTag, toBeDownloadedLtexLsVersion, toBeDownloadedJavaVersion = (
+    getToBeDownloadedVersions())
+
+
+
+def getGitHubOrganizationRepository() -> Tuple[str, str]:
+  output = subprocess.run(["git", "remote", "get-url", "origin"],
+      stdout=subprocess.PIPE).stdout.decode()
+  regexMatch = re.search(r"github.com[:/](.*?)/(.*?)(?:\.git)?$", output)
+  assert regexMatch is not None, output
+  organization, repository = regexMatch.group(1), regexMatch.group(2)
+  return organization, repository
+
+organization, repository = getGitHubOrganizationRepository()
+
+
+
+def requestFromGitHub(url: str, decodeAsJson: bool = True,
+      method: Optional[str] = None, data: Optional[str] = None) -> Any:
   headers = {}
 
   if "LTEX_GITHUB_OAUTH_TOKEN" in os.environ:
-    print("Setting GitHub OAuth token...")
     headers["Authorization"] = "token {}".format(os.environ["LTEX_GITHUB_OAUTH_TOKEN"])
-  else:
-    print("LTEX_GITHUB_OAUTH_TOKEN not set.")
 
-  apiRequest = urllib.request.Request(url, headers=headers)
+  apiRequest = urllib.request.Request(url, headers=headers,
+      data=(None if data is None else data.encode()), method=method)
 
   try:
     with urllib.request.urlopen(apiRequest) as f: response = f.read()

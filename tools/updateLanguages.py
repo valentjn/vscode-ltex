@@ -10,18 +10,19 @@ import argparse
 import glob
 import json
 import os
+import pathlib
 import re
 import shlex
 import subprocess
 import sys
 from typing import Any, Dict, Sequence, Tuple
 
-sys.path.append(os.path.dirname(__file__))
+sys.path.append(str(pathlib.Path(__file__).parent))
 import common
 
 
 
-toolsDirPath = os.path.join(common.repoDirPath, "tools")
+toolsDirPath = common.repoDirPath.joinpath("tools")
 
 
 
@@ -29,8 +30,9 @@ def run(cmd: Sequence[str], **kwargs: Any) -> subprocess.CompletedProcess[bytes]
   print("Running {}...".format(" ".join(shlex.quote(x) for x in cmd)))
   return subprocess.run(cmd, stdout=subprocess.PIPE, cwd=toolsDirPath)
 
-def fetchLanguages(toolsDirPath: str, ltexLsPath: str) -> Tuple[Sequence[str], Sequence[str]]:
-  classPath = os.pathsep.join([toolsDirPath, os.path.join(ltexLsPath, "lib", "*")])
+def fetchLanguages(toolsDirPath: pathlib.Path,
+      ltexLsPath: pathlib.Path) -> Tuple[Sequence[str], Sequence[str]]:
+  classPath = os.pathsep.join([str(toolsDirPath), str(ltexLsPath.joinpath("lib", "*"))])
   run(["javac", "-cp", classPath, "LanguageToolLanguageLister.java"])
   process = run(["java", "-cp", classPath, "LanguageToolLanguageLister"])
   stdout = process.stdout.decode()
@@ -43,7 +45,7 @@ def fetchLanguages(toolsDirPath: str, ltexLsPath: str) -> Tuple[Sequence[str], S
 
 
 def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
-  packageJsonPath = os.path.join(common.repoDirPath, "package.json")
+  packageJsonPath = common.repoDirPath.joinpath("package.json")
   with open(packageJsonPath, "r") as f: packageJson = json.load(f)
   settings = packageJson["contributes"]["configuration"]["properties"]
 
@@ -81,7 +83,8 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
 
 def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: Sequence[str],
       uiLanguage: str) -> None:
-  packageNlsJsonPath = (os.path.join(common.repoDirPath, "package.nls.json") if uiLanguage == "en" else os.path.join(common.repoDirPath, f"package.nls.{uiLanguage}.json"))
+  packageNlsJsonPath = common.repoDirPath.joinpath("package.nls.json" if uiLanguage == "en" else
+      f"package.nls.{uiLanguage}.json")
   with open(packageNlsJsonPath, "r") as f: oldPackageNlsJson = json.load(f)
 
   newPackageNlsJson = {}
@@ -205,10 +208,10 @@ def main() -> None:
       help="Path to ltex-ls relative from the root directory of LTeX, supports wildcards")
   args = parser.parse_args()
 
-  ltexLsPaths = glob.glob(os.path.join(common.repoDirPath, args.ltex_ls_path))
+  ltexLsPaths = glob.glob(str(common.repoDirPath.joinpath(args.ltex_ls_path)))
   assert len(ltexLsPaths) > 0, "ltex-ls not found"
   assert len(ltexLsPaths) < 2, "multiple ltex-ls found via wildcard"
-  ltexLsPath = ltexLsPaths[0]
+  ltexLsPath = pathlib.Path(ltexLsPaths[0])
   print(f"Using ltex-ls from {ltexLsPath}")
 
   print("Fetching languages from LanguageTool...")
@@ -222,8 +225,8 @@ def main() -> None:
   print("Updating package.nls.json...")
   updatePackageNlsJson(ltLanguageShortCodes, ltLanguageNames, "en")
 
-  for fileName in sorted(os.listdir(os.path.join(common.repoDirPath))):
-    match = re.match(r"^package\.nls\.([A-Za-z0-9\-_]+)\.json$", fileName)
+  for childPath in sorted(common.repoDirPath.iterdir()):
+    match = re.match(r"^package\.nls\.([A-Za-z0-9\-_]+)\.json$", childPath.name)
     if match is None: continue
     uiLanguage = match.group(1)
     print(f"Updating package.nls.{uiLanguage}.json...")

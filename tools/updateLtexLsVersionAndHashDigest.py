@@ -8,7 +8,7 @@
 
 import argparse
 import hashlib
-import os
+import pathlib
 import re
 import sys
 from typing import Iterable
@@ -16,7 +16,7 @@ import urllib.parse
 
 import semver
 
-sys.path.append(os.path.dirname(__file__))
+sys.path.append(pathlib.Path(__file__).parent)
 import common
 
 
@@ -72,7 +72,7 @@ def main() -> None:
   print(f"Hash digest is '{ltexLsHashDigest}'.")
 
   print("Writing version and hash digest to 'src/DependencyManager.ts'...")
-  dependencyManagerFilePath = os.path.join(common.repoDirPath, "src", "DependencyManager.ts")
+  dependencyManagerFilePath = common.repoDirPath.joinpath("src", "DependencyManager.ts")
   with open(dependencyManagerFilePath, "r") as f: dependencyManagerTypescript = f.read()
   dependencyManagerTypescript = re.sub(r"(_toBeDownloadedLtexLsTag: string =\n *').*?(';\n)",
       rf"\g<1>{ltexLsTag}\g<2>", dependencyManagerTypescript)
