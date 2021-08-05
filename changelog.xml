@@ -31,6 +31,9 @@
       <action type="remove">
         Remove support for magic comments in XHTML
       </action>
+      <action type="fix" issue="#381">
+        Validate keys of [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary), [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules), [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules), and [`ltex.hiddenFalsePositives`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexhiddenfalsepositives)
+      </action>
       <action type="update">
         Change format of changelog
       </action>

@@ -63,6 +63,10 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
 
   for settingName in ["ltex.dictionary", "ltex.disabledRules", "ltex.enabledRules",
         "ltex.hiddenFalsePositives"]:
+    settings[settingName]["propertyNames"] = {
+          "type": "string",
+          "enum": ltLanguageShortCodes,
+        }
     settings[settingName]["properties"] = {
           languageShortCode: {
             "type" : "array",
