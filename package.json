@@ -1884,13 +1884,15 @@
                 "default",
                 "ignore",
                 "dummy",
-                "pluralDummy"
+                "pluralDummy",
+                "vowelDummy"
               ],
               "markdownEnumDescriptions": [
                 "%ltex.i18n.configuration.ltex.latex.commands.default.markdownEnumDescription%",
                 "%ltex.i18n.configuration.ltex.latex.commands.ignore.markdownEnumDescription%",
                 "%ltex.i18n.configuration.ltex.latex.commands.dummy.markdownEnumDescription%",
-                "%ltex.i18n.configuration.ltex.latex.commands.pluralDummy.markdownEnumDescription%"
+                "%ltex.i18n.configuration.ltex.latex.commands.pluralDummy.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.latex.commands.vowelDummy.markdownEnumDescription%"
               ]
             }
           },
@@ -1942,13 +1944,15 @@
                 "default",
                 "ignore",
                 "dummy",
-                "pluralDummy"
+                "pluralDummy",
+                "vowelDummy"
               ],
               "markdownEnumDescriptions": [
                 "%ltex.i18n.configuration.ltex.markdown.nodes.default.markdownEnumDescription%",
                 "%ltex.i18n.configuration.ltex.markdown.nodes.ignore.markdownEnumDescription%",
                 "%ltex.i18n.configuration.ltex.markdown.nodes.dummy.markdownEnumDescription%",
-                "%ltex.i18n.configuration.ltex.markdown.nodes.pluralDummy.markdownEnumDescription%"
+                "%ltex.i18n.configuration.ltex.markdown.nodes.pluralDummy.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.markdown.nodes.vowelDummy.markdownEnumDescription%"
               ]
             }
           },
