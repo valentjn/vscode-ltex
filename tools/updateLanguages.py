@@ -170,7 +170,7 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
         if uiLanguage == "de":
           newPackageNlsJson[f"{prefix}.markdownDescription"] = (
               "Liste von falschen Fehlern der Sprache "
-              f"`{ltLanguageShortCode}` ({ltLanguageName}), die verborgen werden sollen .")
+              f"`{ltLanguageShortCode}` ({ltLanguageName}), die verborgen werden sollen.")
         else:
           newPackageNlsJson[f"{prefix}.markdownDescription"] = (
               f"List of `{ltLanguageShortCode}` ({ltLanguageName}) false-positive diagnostics to hide.")
