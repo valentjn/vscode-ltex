@@ -74,13 +74,11 @@ In order for pull requests to be merged, a number of checks have to pass. This i
   - No CodeQL warnings
 - ltex-ls (see [`ltex-ls-ci.yml`](https://github.com/valentjn/ltex-ls/blob/develop/.github/workflows/ltex-ls-ci.yml)):
   - Successful build
-  - No Checkstyle warnings (we use a slightly modified Google style)
-  - No SpotBugs warnings
-  - No Checker Framework warnings
+  - No ktlint warnings
+  - No detekt warnings
   - Successful JUnit unit tests
   - Everything above is checked for Linux, Mac, and Windows
   - Code coverage of at least 90% (coverage reports are uploaded to [Coveralls](https://coveralls.io/github/valentjn/ltex-ls))
-  - No CodeQL warnings
 
 Look at the `*.yml` definition of the respective GitHub Actions workflow to learn how to execute the checks locally on your machine.
 
