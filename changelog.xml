@@ -19,6 +19,9 @@
       <action type="add" issue="#350">
         Add support for checking comments in many popular programming languages
       </action>
+      <action type="add" issue="#366">
+        Add support for vowel dummies in LaTeX (`"vowelDummy"` in [`ltex.latex.commands`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexcommands)) and Markdown (`"vowelDummy"` in [`ltex.markdown.nodes`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdownnodes))
+      </action>
       <action type="add" issue="ltex-ls#92" due-to="Shuhao Cao (@scaomath)">
         Add support for more LaTeX commands (`\mathop`, `\overline`, `\tilde`, `\alpha`, etc.) for automatic vowel detection in formulas in LaTeX
       </action>
@@ -27,6 +30,9 @@
       </action>
       <action type="add">
         Add missing support for Argentine Spanish (`es-AR`)
+      </action>
+      <action type="fix" issue="#373">
+        Don't ignore second argument of `\setkomavar` in LaTeX
       </action>
       <action type="remove">
         Remove support for magic comments in XHTML
@@ -38,7 +44,7 @@
         Change format of changelog
       </action>
       <action type="update">
-        Update LTeX LS to 12.4.0
+        Update LTeX LS to 13.0.0
       </action>
     </release>
     <release version="10.5.0" description="The XHTML Calculation" date="2021-07-12">
