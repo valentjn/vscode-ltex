@@ -16,7 +16,7 @@ import urllib.parse
 
 import semver
 
-sys.path.append(pathlib.Path(__file__).parent)
+sys.path.append(str(pathlib.Path(__file__).parent))
 import common
 
 

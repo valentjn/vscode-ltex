@@ -208,7 +208,7 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
 def main() -> None:
   parser = argparse.ArgumentParser(description="Fetch all supported language codes from "
       "LanguageTool and updates the language-specific parts of package.json accordingly")
-  parser.add_argument("--ltex-ls-path",
+  parser.add_argument("--ltex-ls-path", type=pathlib.Path,
       default=pathlib.Path(__file__).parent.parent.parent.joinpath(
         "ltex-ls", "target", "appassembler"),
       help="Path to ltex-ls relative from the root directory of LTeX, supports wildcards")

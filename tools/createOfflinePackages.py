@@ -123,7 +123,7 @@ def main() -> None:
   parser = argparse.ArgumentParser(description="Build offline packages of LTeX")
   parser.add_argument("--current-system", action="store_true",
       help="Build offline package only for current platform/architecture")
-  parser.add_argument("--ltex-ls-path", metavar="PATH",
+  parser.add_argument("--ltex-ls-path", type=pathlib.Path, metavar="PATH",
       help="Don't download ltex-ls from GitHub, but use *.tar.gz archive from this path")
   args = parser.parse_args()
 
