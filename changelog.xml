@@ -40,6 +40,9 @@
       <action type="fix" issue="#381">
         Validate keys of [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary), [`ltex.disabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdisabledrules), [`ltex.enabledRules`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexenabledrules), and [`ltex.hiddenFalsePositives`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexhiddenfalsepositives)
       </action>
+      <action type="add">
+        Improve interaction with VS Code's UI-based settings editor
+      </action>
       <action type="update">
         Change format of changelog
       </action>

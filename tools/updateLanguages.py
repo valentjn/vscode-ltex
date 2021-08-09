@@ -60,6 +60,10 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
         f"%ltex.i18n.configuration.{settingName}.{x if len(x) > 0 else 'emptyString'}."
         "markdownEnumDescription%"
         for x in curLtLanguageShortCodes]
+    settings[settingName]["enumDescriptions"] = [
+        f"%ltex.i18n.configuration.{settingName}.{x if len(x) > 0 else 'emptyString'}."
+        "enumDescription%"
+        for x in curLtLanguageShortCodes]
 
   for settingName in ["ltex.dictionary", "ltex.disabledRules", "ltex.enabledRules",
         "ltex.hiddenFalsePositives"]:
@@ -100,6 +104,7 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
         prefix = f"ltex.i18n.configuration.ltex.language.{ltLanguageShortCode}"
         newPackageNlsJson[f"{prefix}.markdownEnumDescription"] = ltLanguageName
+        newPackageNlsJson[f"{prefix}.enumDescription"] = ltLanguageName
 
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.language\..+\.", key) is not None:
       continue
@@ -185,12 +190,15 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
 
       if uiLanguage == "de":
         newPackageNlsJson[f"{prefix}.markdownEnumDescription"] = "Keine Muttersprache"
+        newPackageNlsJson[f"{prefix}.enumDescription"] = "Keine Muttersprache"
       else:
         newPackageNlsJson[f"{prefix}.markdownEnumDescription"] = "No mother tongue"
+        newPackageNlsJson[f"{prefix}.enumDescription"] = "No mother tongue"
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
         prefix = f"ltex.i18n.configuration.ltex.additionalRules.motherTongue.{ltLanguageShortCode}"
         newPackageNlsJson[f"{prefix}.markdownEnumDescription"] = ltLanguageName
+        newPackageNlsJson[f"{prefix}.enumDescription"] = ltLanguageName
 
     elif re.match(r"^ltex\.i18n\.configuration\.ltex\.additionalRules.motherTongue\..+\.",
           key) is not None:
