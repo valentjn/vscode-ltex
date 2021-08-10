@@ -2407,28 +2407,69 @@
           "markdownDescription": "%ltex.i18n.configuration.ltex.sentenceCacheSize.markdownDescription%"
         },
         "ltex.diagnosticSeverity": {
-          "type": "string",
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "error",
+                "warning",
+                "information",
+                "hint"
+              ],
+              "markdownEnumDescriptions": [
+                "%ltex.i18n.configuration.ltex.diagnosticSeverity.error.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.diagnosticSeverity.warning.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.diagnosticSeverity.information.markdownEnumDescription%",
+                "%ltex.i18n.configuration.ltex.diagnosticSeverity.hint.markdownEnumDescription%"
+              ],
+              "enumDescriptions": [
+                "%ltex.i18n.configuration.ltex.diagnosticSeverity.error.enumDescription%",
+                "%ltex.i18n.configuration.ltex.diagnosticSeverity.warning.enumDescription%",
+                "%ltex.i18n.configuration.ltex.diagnosticSeverity.information.enumDescription%",
+                "%ltex.i18n.configuration.ltex.diagnosticSeverity.hint.enumDescription%"
+              ]
+            },
+            {
+              "type": "object",
+              "patternProperties": {
+                "^.*$": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "information",
+                    "hint"
+                  ],
+                  "markdownEnumDescriptions": [
+                    "%ltex.i18n.configuration.ltex.diagnosticSeverity.error.markdownEnumDescription%",
+                    "%ltex.i18n.configuration.ltex.diagnosticSeverity.warning.markdownEnumDescription%",
+                    "%ltex.i18n.configuration.ltex.diagnosticSeverity.information.markdownEnumDescription%",
+                    "%ltex.i18n.configuration.ltex.diagnosticSeverity.hint.markdownEnumDescription%"
+                  ],
+                  "enumDescriptions": [
+                    "%ltex.i18n.configuration.ltex.diagnosticSeverity.error.enumDescription%",
+                    "%ltex.i18n.configuration.ltex.diagnosticSeverity.warning.enumDescription%",
+                    "%ltex.i18n.configuration.ltex.diagnosticSeverity.information.enumDescription%",
+                    "%ltex.i18n.configuration.ltex.diagnosticSeverity.hint.enumDescription%"
+                  ]
+                }
+              },
+              "required": [
+                "default"
+              ],
+              "additionalProperties": false
+            }
+          ],
           "scope": "resource",
           "default": "information",
-          "enum": [
-            "error",
-            "warning",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.diagnosticSeverity.markdownDescription%",
+          "examples": [
             "information",
-            "hint"
-          ],
-          "markdownEnumDescriptions": [
-            "%ltex.i18n.configuration.ltex.diagnosticSeverity.error.markdownEnumDescription%",
-            "%ltex.i18n.configuration.ltex.diagnosticSeverity.warning.markdownEnumDescription%",
-            "%ltex.i18n.configuration.ltex.diagnosticSeverity.information.markdownEnumDescription%",
-            "%ltex.i18n.configuration.ltex.diagnosticSeverity.hint.markdownEnumDescription%"
-          ],
-          "enumDescriptions": [
-            "%ltex.i18n.configuration.ltex.diagnosticSeverity.error.enumDescription%",
-            "%ltex.i18n.configuration.ltex.diagnosticSeverity.warning.enumDescription%",
-            "%ltex.i18n.configuration.ltex.diagnosticSeverity.information.enumDescription%",
-            "%ltex.i18n.configuration.ltex.diagnosticSeverity.hint.enumDescription%"
-          ],
-          "markdownDescription": "%ltex.i18n.configuration.ltex.diagnosticSeverity.markdownDescription%"
+            {
+              "PASSIVE_VOICE": "hint",
+              "default": "information"
+            }
+          ]
         },
         "ltex.checkFrequency": {
           "type": "string",

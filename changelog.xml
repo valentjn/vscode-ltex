@@ -19,6 +19,9 @@
       <action type="add" issue="#350">
         Add support for checking comments in many popular programming languages
       </action>
+      <action type="add" issue="ltex-ls#95">
+        Add support for rule-dependent diagnostic severities in [`ltex.diagnosticSeverity`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdiagnosticseverity)
+      </action>
       <action type="add" issue="#366">
         Add support for vowel dummies in LaTeX (`"vowelDummy"` in [`ltex.latex.commands`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexcommands)) and Markdown (`"vowelDummy"` in [`ltex.markdown.nodes`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexmarkdownnodes))
       </action>
