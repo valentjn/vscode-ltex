@@ -155,7 +155,15 @@
             "restructuredtext",
             "rsweave"
           ],
-          "markdownDescription": "%ltex.i18n.configuration.ltex.enabled.markdownDescription%"
+          "markdownDescription": "%ltex.i18n.configuration.ltex.enabled.markdownDescription%",
+          "examples": [
+            true,
+            false,
+            [
+              "latex",
+              "markdown"
+            ]
+          ]
         },
         "ltex.language": {
           "type": "string",
