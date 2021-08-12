@@ -14,7 +14,6 @@
   "extracting": "Entpacke {0} ...",
   "findingAllDocumentsInWorkspace": "Finde alle Dokumente im Arbeitsbereich ...",
   "ltexIsChecking": "LTeX prüft ...",
-  "ltexLanguageClient": "LTeX Language Client",
   "ltexLanguageServer": "LTeX Language Server",
   "ltexNotInitialized": "LTeX wurde aufgrund eines vorhergehenden Fehlers nicht initialisiert.",
   "ltexReady": "LTeX bereit",
