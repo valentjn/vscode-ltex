@@ -170,9 +170,8 @@ jobs:
 
       - name: "Create GitHub Release"
         uses: "softprops/action-gh-release@v0.1.8"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
+          token: "${{ secrets.VSCODE_LTEX_CREATE_GITHUB_RELEASE_TOKEN }}"
           prerelease: "${{ env.VSCODE_LTEX_IS_PRERELEASE }}"
           body: "${{ env.VSCODE_LTEX_CHANGELOG }}"
           files: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-linux-x64.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-mac-x64.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-windows-x64.vsix"
