@@ -12,6 +12,29 @@
     <author>Julian Valentin, LTeX Development Community</author>
   </properties>
   <body>
+    <release version="11.1.0" date="upcoming">
+      <action type="add">
+        Provide ID of LanguageTool rule via diagnostics code, not as part of diagnostics message
+      </action>
+      <action type="add" issue="vscode-ltex#391">
+        Add support for the `main` option of the babel package (LaTeX)
+      </action>
+      <action type="add">
+        Add support for [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary) when using a LanguageTool HTTP server
+      </action>
+      <action type="update" issue="vscode-ltex#390">
+        Handle disabled rules ourselves to prevent reinitialization of LanguageTool when running the `Disable rule` quick fix
+      </action>
+      <action type="fix" issue="vscode-ltex#390">
+        Fix LanguageTool reinitialized when running the `Add '...' to dictionary` quick fix
+      </action>
+      <action type="fix">
+        Fix used i18n keys removed in LTeX LS
+      </action>
+      <action type="update">
+        Update LTeX LS to 13.1.0
+      </action>
+    </release>
     <release version="11.0.0" description="The Kotlin Conundrum" date="2021-08-11">
       <action type="update">
         Migrate LTeX LS from Java to Kotlin
