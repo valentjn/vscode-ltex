@@ -2609,7 +2609,7 @@
     "typescript": "4.3.5",
     "vscode-test": "1.6.1",
     "webpack": "5.51.1",
-    "webpack-cli": "4.7.2"
+    "webpack-cli": "4.8.0"
   },
   "dependencies": {
     "extract-zip": "2.0.1",
