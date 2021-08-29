@@ -2343,6 +2343,18 @@
             "http://localhost:8081/"
           ]
         },
+        "ltex.ltex-ls.languageToolOrgUsername": {
+          "type": "string",
+          "scope": "window",
+          "default": "",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.languageToolOrgUsername.markdownDescription%"
+        },
+        "ltex.ltex-ls.languageToolOrgApiKey": {
+          "type": "string",
+          "scope": "window",
+          "default": "",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.languageToolOrgApiKey.markdownDescription%"
+        },
         "ltex.ltex-ls.logLevel": {
           "type": "string",
           "scope": "window",

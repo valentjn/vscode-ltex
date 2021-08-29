@@ -115,6 +115,8 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
     - [`ltex.additionalRules.word2VecModel`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexadditionalrulesword2vecmodel)
     - [`ltex.ltex-ls.path`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lspath)
     - [`ltex.ltex-ls.languageToolHttpServerUri`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lslanguagetoolhttpserveruri)
+    - [`ltex.ltex-ls.languageToolOrgUsername`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lslanguagetoolorgusername)
+    - [`ltex.ltex-ls.languageToolOrgApiKey`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lslanguagetoolorgapikey)
     - [`ltex.ltex-ls.logLevel`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexltex-lsloglevel)
     - [`ltex.java.path`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavapath)
     - [`ltex.java.forceTrySystemWide`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavaforcetrysystemwide)
