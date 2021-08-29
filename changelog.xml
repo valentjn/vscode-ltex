@@ -16,16 +16,16 @@
       <action type="add">
         Provide ID of LanguageTool rule via diagnostics code, not as part of diagnostics message
       </action>
-      <action type="add" issue="vscode-ltex#391">
+      <action type="add" issue="#391">
         Add support for the `main` option of the babel package (LaTeX)
       </action>
       <action type="add">
         Add support for [`ltex.dictionary`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexdictionary) when using a LanguageTool HTTP server
       </action>
-      <action type="update" issue="vscode-ltex#390">
+      <action type="update" issue="#390">
         Handle disabled rules ourselves to prevent reinitialization of LanguageTool when running the `Disable rule` quick fix
       </action>
-      <action type="fix" issue="vscode-ltex#390">
+      <action type="fix" issue="#390">
         Fix LanguageTool reinitialized when running the `Add '...' to dictionary` quick fix
       </action>
       <action type="fix">
