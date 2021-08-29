@@ -236,7 +236,7 @@ export default class DependencyManager {
         try {
           Logger.log(i18n('deleting', filePath));
           Fs.unlinkSync(filePath);
-        } catch (e) {
+        } catch (e: unknown) {
           Logger.warn(i18n('couldNotDeleteLeavingTemporaryFileOnDisk', filePath), e);
         }
       }
@@ -266,7 +266,7 @@ export default class DependencyManager {
     try {
       Logger.log(i18n('deleting', tmpDirPath));
       Fs.rmdirSync(tmpDirPath);
-    } catch (e) {
+    } catch (e: unknown) {
       Logger.warn(i18n('couldNotDeleteLeavingTemporaryDirectoryOnDisk', tmpDirPath), e);
     }
 
@@ -413,7 +413,7 @@ export default class DependencyManager {
           }
         }
       }
-    } catch (e) {
+    } catch (e: unknown) {
       Logger.error(i18n('downloadOrExtractionOfLtexLsFailed'), e);
       Logger.log(i18n('youMightWantToTryOfflineInstallationSee',
           DependencyManager._offlineInstructionsUrl));
@@ -479,7 +479,7 @@ export default class DependencyManager {
           Logger.log('');
           return true;
         }
-      } catch (e) {
+      } catch (e: unknown) {
         Logger.error(i18n('downloadExtractionRunOfJavaFailed', e));
       }
     }
@@ -552,7 +552,7 @@ export default class DependencyManager {
         if ((ltexLsVersion.length > 0) && (javaVersion.length > 0)) {
           success = true;
         }
-      } catch (e) {
+      } catch (e: unknown) {
         // don't throw error as debug info is printed below
       }
     }

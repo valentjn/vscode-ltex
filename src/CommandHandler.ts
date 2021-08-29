@@ -131,9 +131,9 @@ export default class CommandHandler {
       ]);
       result = await this._languageClient.sendRequest('workspace/executeCommand',
           {command: '_ltex.checkDocument', arguments: [params]});
-    } catch (e) {
+    } catch (e: unknown) {
       result.success = false;
-      result.errorMessage = e.message;
+      if (e instanceof Error) result.errorMessage = e.message;
     }
 
     if (result.success) {
@@ -603,7 +603,7 @@ Finally, this is a sentence \\emph{with an grammar error.}
       try {
         await resourceConfig.update(settingName, settingValue, scopes[i]);
         return;
-      } catch (e) {
+      } catch (e: unknown) {
         if (i == scopes.length - 1) Logger.error(i18n('couldNotSetConfiguration', settingName), e);
       }
     }

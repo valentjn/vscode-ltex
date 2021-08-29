@@ -118,7 +118,7 @@ export default class ExternalFileManager {
           // => supply file path ourselves
           watcher = Fs.watch(filePath, this.onFileWatcherEvent.bind(this, filePath));
           contents = Fs.readFileSync(filePath, {encoding: 'utf-8'});
-        } catch (e) {
+        } catch (e: unknown) {
           if (externalFile.explicit) {
             Logger.warn(i18n('couldNotReadExternalSettingFile', filePath), e);
           }
@@ -305,7 +305,7 @@ export default class ExternalFileManager {
 
       try {
         contents = Fs.readFileSync(filePath, {encoding: 'utf-8'});
-      } catch (e) {
+      } catch (e: unknown) {
         Logger.warn(i18n('couldNotReadExternalSettingFile', filePath), e);
         return;
       }
@@ -390,7 +390,7 @@ export default class ExternalFileManager {
 
       try {
         contents = Fs.readFileSync(filePath, {encoding: 'utf-8'});
-      } catch (e) {
+      } catch (e: unknown) {
         Logger.error(i18n('couldNotReadExternalSettingFile', filePath), e);
         return;
       }
@@ -405,7 +405,7 @@ export default class ExternalFileManager {
 
     try {
       Fs.writeFileSync(filePath, contents, {encoding: 'utf-8'});
-    } catch (e) {
+    } catch (e: unknown) {
       Logger.error(i18n('couldNotAppendNewEntriesToExternalSettingFile', filePath), e);
       return;
     }
@@ -421,7 +421,7 @@ export default class ExternalFileManager {
       try {
         Fs.mkdirSync(parentDirPath);
         Logger.log(i18n('createdDirectoryForExternalSettingFile', parentDirPath, filePath));
-      } catch (e) {
+      } catch (e: unknown) {
         Logger.warn(i18n('couldNotCreateDirectoryForExternalSettingFile',
             parentDirPath, filePath), e);
       }
@@ -433,7 +433,7 @@ export default class ExternalFileManager {
       try {
         Fs.writeFileSync(filePath, '', {encoding: 'utf-8'});
         Logger.log(i18n('createdExternalSettingFile', filePath));
-      } catch (e) {
+      } catch (e: unknown) {
         Logger.warn(i18n('couldNotCreateExternalSettingFile', filePath), e);
       }
     }

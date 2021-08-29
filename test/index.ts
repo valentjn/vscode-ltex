@@ -34,7 +34,7 @@ export function run(): Promise<void> {
             resolve();
           }
         });
-      } catch (e) {
+      } catch (e: unknown) {
         console.error(e);
         reject(e);
       }

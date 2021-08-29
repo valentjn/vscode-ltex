@@ -25,14 +25,14 @@ export default class Logger {
     });
   }
 
-  public static warn(message: string, e?: Error): void {
+  public static warn(message: string, e?: Error | unknown): void {
     Logger.log(message, 'Warning');
-    if (e != null) Logger.logError(e, 'Warning');
+    if (e instanceof Error) Logger.logError(e, 'Warning');
   }
 
-  public static error(message: string, e?: Error): void {
+  public static error(message: string, e?: Error | unknown): void {
     Logger.log(message, 'Error');
-    if (e != null) Logger.logError(e, 'Error');
+    if (e instanceof Error) Logger.logError(e, 'Error');
   }
 
   public static logError(e: Error, type: string = 'Info'): void {

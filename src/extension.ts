@@ -165,7 +165,7 @@ export async function activate(context: Code.ExtensionContext): Promise<Api> {
     try {
       api.languageClient = await startLanguageClient(context, externalFileManager, statusPrinter);
       commandHandler.languageClient = api.languageClient;
-    } catch (e) {
+    } catch (e: unknown) {
       Logger.error(i18n('couldNotStartLanguageClient'), e);
       Logger.showClientOutputChannel();
       Code.window.showErrorMessage(i18n('couldNotStartLanguageClient'));
