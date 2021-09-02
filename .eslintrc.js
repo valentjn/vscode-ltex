@@ -22,9 +22,13 @@ module.exports = {
   },
   "plugins": [
     "@typescript-eslint",
+    "deprecation",
     "only-warn",
   ],
   "rules": {
+    "deprecation/deprecation": [
+      "warn",
+    ],
     "@typescript-eslint/explicit-module-boundary-types": [
       "off",
     ],
