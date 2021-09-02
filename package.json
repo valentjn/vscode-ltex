@@ -1,6 +1,6 @@
 {
   "name": "vscode-ltex",
-  "displayName": "LTeX",
+  "displayName": "LTeX – LanguageTool grammar/spell checking",
   "version": "12.0.0-alpha.1.develop",
   "description": "Grammar/spell checker using LanguageTool with support for LaTeX, Markdown, and others",
   "icon": "img/logo-ltex.png",
