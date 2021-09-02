@@ -9,7 +9,7 @@ import * as Code from 'vscode';
 import * as Fs from 'fs';
 import * as Os from 'os';
 import * as Path from 'path';
-import * as Querystring from 'querystring';
+import * as Url from 'url';
 
 import DependencyManager from './DependencyManager';
 import {i18n} from './I18n';
@@ -157,8 +157,9 @@ export default class BugReporter {
         Code.window.showInformationMessage(i18n('ltexTraceServerSetToVerbose'));
       } else if (selectedItem == i18n('copyReportAndCreateIssue')) {
         Code.env.clipboard.writeText(bugReport);
-        Code.env.openExternal(Code.Uri.parse(BugReporter._bugReportUrl
-            + Querystring.escape(i18n('enterSummaryOfIssueInTitleFieldAndReplaceSentence'))));
+        const url: Url.URL = new Url.URL(BugReporter._bugReportUrl);
+        url.searchParams.set('body', i18n('enterSummaryOfIssueInTitleFieldAndReplaceSentence'));
+        Code.env.openExternal(Code.Uri.parse(url.toString()));
       }
     });
   }

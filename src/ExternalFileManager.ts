@@ -261,7 +261,7 @@ export default class ExternalFileManager {
   }
 
   public getUserSettingsDirPath(): string {
-    return Path.resolve(this._context.globalStoragePath);
+    return Path.resolve(this._context.globalStorageUri.fsPath);
   }
 
   public getWorkspaceSettingsDirPath(): string | null {

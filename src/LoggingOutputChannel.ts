@@ -78,8 +78,8 @@ export default class LoggingOutputChannel implements Code.OutputChannel {
 
   public show(preserveFocus?: boolean | undefined): void;
   public show(column?: Code.ViewColumn | undefined, preserveFocus?: boolean | undefined): void;
-  public show(column?: any, preserveFocus?: any): void {
-    this._outputChannel.show(column, preserveFocus);
+  public show(_column?: any, preserveFocus?: any): void {
+    this._outputChannel.show(preserveFocus);
   }
 
   public hide(): void {

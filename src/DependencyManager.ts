@@ -85,10 +85,10 @@ export default class DependencyManager {
   }
 
   private static parseUrl(urlStr: string): Https.RequestOptions {
-    const url: Url.UrlWithStringQuery = Url.parse(urlStr);
+    const url: Url.URL = new Url.URL(urlStr);
     return {
           hostname: url.hostname,
-          path: url.pathname + ((url.query != null) ? `?${url.query}` : ''),
+          path: url.pathname + url.search,
           headers: {'User-Agent': 'vscode-ltex'},
         };
   }
@@ -190,7 +190,7 @@ export default class DependencyManager {
   private async installDependency(urlStr: string, hashDigest: string, name: string,
         codeProgress: ProgressStack): Promise<void> {
     codeProgress.startTask(0.1, i18n('downloading', name));
-    const url: Url.UrlWithStringQuery = Url.parse(urlStr);
+    const url: Url.URL = new Url.URL(urlStr);
     if (url.pathname == null) throw new Error(i18n('couldNotGetPathNameFromUrl', urlStr));
     const archiveName: string = Path.basename(url.pathname);
     const archiveType: string = ((Path.extname(archiveName) == '.zip') ? 'zip' : 'tar.gz');
