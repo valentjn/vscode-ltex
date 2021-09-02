@@ -27,11 +27,11 @@
     "theme": "dark"
   },
   "keywords": [
-    "spell",
     "grammar",
-    "proofread",
-    "checker",
+    "spell",
+    "languagetool",
     "latex",
+    "markdown",
     "multi-root ready"
   ],
   "categories": [
