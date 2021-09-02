@@ -23,13 +23,11 @@ const originalJavaHome: string | undefined = process.env['JAVA_HOME'];
 
 async function runTestIteration(testIteration: number): Promise<void> {
   const useOfflinePackage: boolean = ((testIteration & 1) != 0);
-  const useMockJava: boolean = ((testIteration & 2) != 0);
 
   console.log('');
   console.log(`Running test iteration ${testIteration}...`);
   console.log('');
   console.log(`useOfflinePackage = ${useOfflinePackage}`);
-  console.log(`useMockJava = ${useMockJava}`);
   console.log('');
 
   const tmpDirPrefix: string = Path.join(ltexDirPath, 'tmp-');
@@ -75,32 +73,16 @@ async function runTestIteration(testIteration: number): Promise<void> {
 
     if (childProcess.status != 0) throw new Error('Could not install extensions.');
 
-    if (useMockJava) {
-      const mockJavaDirPath: string = Path.join(tmpDirPath, 'bin');
-      Fs.mkdirSync(mockJavaDirPath);
-      const mockJavaPath: string = Path.join(mockJavaDirPath, 'java');
-      console.log(`Creating mock Java executable '${mockJavaPath}'...`);
-      Fs.writeFileSync(mockJavaPath, '\n', {mode: 0o777});
-      process.env['PATH'] = ((process.env['PATH'] != null)
-          ? `${mockJavaDirPath}${Path.delimiter}${process.env['PATH']}` : mockJavaDirPath);
-      process.env['JAVA_HOME'] = '/nonExistentDirectory';
-      process.env['LTEX_JAVA_HOME'] = '/nonExistentDirectory';
-    } else {
-      if (originalPath != null) {
-        process.env['PATH'] = originalPath;
-      } else if (process.env['PATH'] != null) {
-        delete process.env['PATH'];
-      }
+    if (originalPath != null) {
+      process.env['PATH'] = originalPath;
+    } else if (process.env['PATH'] != null) {
+      delete process.env['PATH'];
+    }
 
-      if (originalJavaHome != null) {
-        process.env['JAVA_HOME'] = originalJavaHome;
-      } else if (process.env['JAVA_HOME'] != null) {
-        delete process.env['JAVA_HOME'];
-      }
-
-      if (process.env['LTEX_JAVA_HOME'] != null) {
-        delete process.env['LTEX_JAVA_HOME'];
-      }
+    if (originalJavaHome != null) {
+      process.env['JAVA_HOME'] = originalJavaHome;
+    } else if (process.env['JAVA_HOME'] != null) {
+      delete process.env['JAVA_HOME'];
     }
 
     if (useOfflinePackage) {
@@ -165,7 +147,7 @@ async function main(): Promise<void> {
   console.log('Resolving CLI path to VS Code...');
   cliPath = CodeTest.resolveCliPathFromVSCodeExecutablePath(vscodeExecutablePath);
 
-  for (let testIteration: number = 0; testIteration < 4; testIteration++) {
+  for (let testIteration: number = 0; testIteration < 2; testIteration++) {
     if (fastMode && (testIteration != 1)) continue;
     if ((onlyTestIteration != null) && (testIteration != onlyTestIteration)) continue;
     await runTestIteration(testIteration);

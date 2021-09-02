@@ -39,30 +39,13 @@ export default class DependencyManager {
       '13.0.0';
   private static readonly _toBeDownloadedLtexLsVersion: string =
       '13.0.0';
-  private static readonly _toBeDownloadedLtexLsHashDigest: string =
-      '0835d9ff9da1b04f32533896605465ff914dbbde6ebc4bad0c95184e40fb2f82';
-
-  private static readonly _toBeDownloadedJavaVersion: string =
-      '11.0.11+9';
-  private static readonly _toBeDownloadedJavaHashDigests: {[fileName: string]: string} = {
-    'OpenJDK11U-jre_aarch64_linux_hotspot_11.0.11_9.tar.gz':
-      'fde6b29df23b6e7ed6e16a237a0f44273fb9e267fdfbd0b3de5add98e55649f6',
-    'OpenJDK11U-jre_arm_linux_hotspot_11.0.11_9.tar.gz':
-      'ad02656f800fd64c2b090b23ad24a099d9cd1054948ecb0e9851bc39c51c8be8',
-    'OpenJDK11U-jre_ppc64_aix_hotspot_11.0.11_9.tar.gz':
-      '3bc5805069d993c750e2bce74b940f30dbfe69c081c73604f8783f12acb8b648',
-    'OpenJDK11U-jre_ppc64le_linux_hotspot_11.0.11_9.tar.gz':
-      '37c19c7c2d1cea627b854a475ef1a765d30357d765d20cf3f96590037e79d0f3',
-    'OpenJDK11U-jre_s390x_linux_hotspot_11.0.11_9.tar.gz':
-      'f18101fc50aad795a41b4d3bbc591308c83664fd2390bf2bc007fd9b3d531e6c',
-    'OpenJDK11U-jre_x64_linux_hotspot_11.0.11_9.tar.gz':
-      '144f2c6bcf64faa32016f2474b6c01031be75d25325e9c3097aed6589bc5d548',
-    'OpenJDK11U-jre_x64_mac_hotspot_11.0.11_9.tar.gz':
-      'ccb38c0b73bd0ba7006d00234a51eee9504ec8108c835e1f1763191806374707',
-    'OpenJDK11U-jre_x64_windows_hotspot_11.0.11_9.zip':
-      'a7377fb0807fa619de49eec02ad7e2110c257649341f5ccffbaafa43cc8cbcc8',
-    'OpenJDK11U-jre_x86-32_windows_hotspot_11.0.11_9.zip':
-      'e874c6643d74db10c53db1de608d4115e91e2b0f5cb2ed64bfb632212a78b361',
+  private static readonly _toBeDownloadedLtexLsHashDigests: {[fileName: string]: string} = {
+    'ltex-ls-13.0.0-linux-x64.tar.gz':
+      '215f7130226e6c83f2143f70ef971aef3fdc84e687fefacde96bb86c75083e38',
+    'ltex-ls-13.0.0-mac-x64.tar.gz':
+      '58b4d4d9d9b6383619908c26ac47770245b7d689243f3ff144afb58eeebcdd13',
+    'ltex-ls-13.0.0-windows-x64.zip':
+      '7f368bc660b17580045ccfe1bad9f549a14ed822f52202d375b11d5678ad6ef7',
   };
 
   public constructor(context: Code.ExtensionContext) {
@@ -288,61 +271,26 @@ export default class DependencyManager {
       const codeProgress: ProgressStack = new ProgressStack(
           i18n('downloadingAndExtractingLtexLs'), progress);
 
-      const ltexLsUrl: string = 'https://github.com/valentjn/ltex-ls/releases/download/'
-          + `${DependencyManager._toBeDownloadedLtexLsTag}/`
-          + `ltex-ls-${DependencyManager._toBeDownloadedLtexLsVersion}.tar.gz`;
-      await this.installDependency(ltexLsUrl, DependencyManager._toBeDownloadedLtexLsHashDigest,
-          `ltex-ls ${DependencyManager._toBeDownloadedLtexLsVersion}`, codeProgress);
-    });
-  }
-
-  private async installJava(): Promise<void> {
-    const progressOptions: Code.ProgressOptions = {
-          title: 'LTeX',
-          location: Code.ProgressLocation.Notification,
-          cancellable: false,
-        };
-
-    return Code.window.withProgress(progressOptions,
-          async (progress: Code.Progress<{increment?: number; message?: string}>):
-            Promise<void> => {
-      const codeProgress: ProgressStack = new ProgressStack(
-          i18n('downloadingAndExtractingJava'), progress);
-
       let platform: string = 'linux';
-      let arch: string = 'x64';
-      let javaArchiveType: string = 'tar.gz';
+      const arch: string = 'x64';
+      let archiveType: string = 'tar.gz';
 
       if (process.platform == 'win32') {
         platform = 'windows';
-        javaArchiveType = 'zip';
+        archiveType = 'zip';
       } else if (process.platform == 'darwin') {
         platform = 'mac';
       }
 
-      if (process.arch == 'ia32') {
-        arch = 'x86-32';
-      } else if (process.arch == 'arm') {
-        arch = 'arm';
-      } else if (process.arch == 'arm64') {
-        arch = 'aarch64';
-      } else if (process.arch == 'ppc64') {
-        arch = 'ppc64';
-      } else if (process.arch == 's390x') {
-        arch = 's390x';
-      }
+      const ltexLsArchiveName: string = 'ltex-ls-'
+          + `${DependencyManager._toBeDownloadedLtexLsVersion}-${platform}-${arch}.${archiveType}`;
+      const ltexLsUrl: string = 'https://github.com/valentjn/ltex-ls/releases/download/'
+          + `${DependencyManager._toBeDownloadedLtexLsTag}/${ltexLsArchiveName}`;
+      const ltexLsHashDigest: string =
+          DependencyManager._toBeDownloadedLtexLsHashDigests[ltexLsArchiveName];
 
-      const javaArchiveName: string = `OpenJDK11U-jre_${arch}_${platform}_hotspot_`
-          + `${DependencyManager._toBeDownloadedJavaVersion.replace('+', '_')}.${javaArchiveType}`;
-      Logger.log(i18n('guessedAdoptOpenJdkArchiveName', javaArchiveName));
-      const javaUrl: string = 'https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/'
-          + `download/jdk-${encodeURIComponent(DependencyManager._toBeDownloadedJavaVersion)}/`
-          + javaArchiveName;
-      const javaHashDigest: string =
-          DependencyManager._toBeDownloadedJavaHashDigests[javaArchiveName];
-
-      await this.installDependency(javaUrl, javaHashDigest,
-          `Java ${DependencyManager._toBeDownloadedJavaVersion}`, codeProgress);
+      await this.installDependency(ltexLsUrl, ltexLsHashDigest,
+          `ltex-ls ${DependencyManager._toBeDownloadedLtexLsVersion}`, codeProgress);
     });
   }
 
@@ -360,21 +308,6 @@ export default class DependencyManager {
     return ((ltexLsVersion != null) ? Path.join(libDirPath, `ltex-ls-${ltexLsVersion}`) : null);
   }
 
-  private static searchBundledJava(libDirPath: string): string | null {
-    const javaPath: string = Path.join(libDirPath,
-        `jdk-${DependencyManager._toBeDownloadedJavaVersion}-jre`);
-
-    if (Fs.existsSync(javaPath)) {
-      if (process.platform == 'darwin') {
-        return Path.join(javaPath, 'Contents', 'Home');
-      } else {
-        return javaPath;
-      }
-    } else {
-      return null;
-    }
-  }
-
   public async install(): Promise<boolean> {
     const libDirPath: string = Path.join(this._context.extensionPath, 'lib');
     const workspaceConfig: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
@@ -385,7 +318,7 @@ export default class DependencyManager {
     }
 
     try {
-      // try 0: use ltex.ltexLs.path
+      // try 0: use ltex.ltex-ls.path
       // try 1: use lib/ (don't download)
       // try 2: download and use lib/
       Logger.log('');
@@ -421,70 +354,34 @@ export default class DependencyManager {
       return this.showOfflineInstallationInstructions(i18n('couldNotInstallLtexLs'));
     }
 
-    const forceTrySystemWideJava: boolean = workspaceConfig.get('java.forceTrySystemWide', false);
+    try {
+      Logger.log('');
+      this._javaPath = DependencyManager.normalizePath(workspaceConfig.get('java.path'));
 
-    // try 0: use ltex.java.path
-    // try 1: use lib/ (don't download)
-    // try 2: download and use lib/
-    for (let i: number = 0; i < 3; i++) {
-      try {
-        Logger.log('');
-        this._javaPath = DependencyManager.normalizePath(workspaceConfig.get('java.path'));
-
-        if (DependencyManager.isValidPath(this._javaPath)) {
-          Logger.log(i18n('ltexJavaPathSetTo', this._javaPath));
-        } else if (i == 0) {
-          // On Mac, running the java command if Java is not installed will result in a popup
-          // prompting to install Java. Therefore, skip trying the system-wide Java on Mac
-          // by default (except when ltex.java.forceTrySystemWide is set to true).
-          if ((process.platform == 'darwin') && !forceTrySystemWideJava) {
-            Logger.log(i18n('skippingTryingSystemWideJava'));
-            continue;
-          }
-
-          Logger.log(i18n('ltexJavaPathNotSet'));
-        } else {
-          Logger.log(i18n('searchingForJavaIn', libDirPath));
-          this._javaPath = DependencyManager.searchBundledJava(libDirPath);
-
-          if (DependencyManager.isValidPath(this._javaPath)) {
-            Logger.log(i18n('javaFoundIn', this._javaPath));
-          } else {
-            Logger.log(i18n('couldNotFindJavaIn', libDirPath));
-
-            if (i <= 1) {
-              continue;
-            } else {
-              await this.installJava();
-              this._javaPath = DependencyManager.searchBundledJava(libDirPath);
-
-              if (DependencyManager.isValidPath(this._javaPath)) {
-                Logger.log(i18n('javaFoundIn', this._javaPath));
-              } else {
-                Logger.log(i18n('downloadOrExtractionOfJavaFailed'));
-              }
-            }
-          }
-        }
-
-        Logger.log(i18n('usingLtexLsFrom', this._ltexLsPath));
-
-        if (DependencyManager.isValidPath(this._javaPath)) {
-          Logger.log(i18n('usingJavaFrom', this._javaPath));
-        } else {
-          Logger.log(i18n('usingJavaFromPathOrJavaHome'));
-        }
-
-        if (await this.test()) {
-          Logger.log('');
-          return true;
-        }
-      } catch (e: unknown) {
-        Logger.error(i18n('downloadExtractionRunOfJavaFailed', e));
+      if (DependencyManager.isValidPath(this._javaPath)) {
+        Logger.log(i18n('ltexJavaPathSetTo', this._javaPath));
+      } else {
+        Logger.log(i18n('ltexJavaPathNotSet'));
       }
+
+      Logger.log(i18n('usingLtexLsFrom', this._ltexLsPath));
+
+      if (DependencyManager.isValidPath(this._javaPath)) {
+        Logger.log(i18n('usingJavaFrom', this._javaPath));
+      } else {
+        Logger.log(i18n('usingJavaBundledWithLtexLs'));
+      }
+
+      if (await this.test()) {
+        Logger.log('');
+        return true;
+      } else {
+        Logger.error(i18n('downloadExtractionRunOfJavaFailed'));
+      }
+    } catch (e: unknown) {
+      Logger.error(i18n('downloadExtractionRunOfJavaFailed', e));
     }
 
-    Logger.error(i18n('downloadExtractionRunOfJavaFailed'));
     Logger.log(i18n('youMightWantToTryOfflineInstallationSee',
         DependencyManager._offlineInstructionsUrl));
     Logger.showClientOutputChannel();
@@ -589,16 +486,13 @@ export default class DependencyManager {
     const env: NodeJS.ProcessEnv = {};
 
     for (const name in process.env) {
-      if (Object.prototype.hasOwnProperty.call(process.env, name)) {
+      if ((Object.prototype.hasOwnProperty.call(process.env, name)) && (name != 'JAVA_HOME')) {
         env[name] = process.env[name];
       }
     }
 
     if (DependencyManager.isValidPath(this._javaPath)) {
       env['JAVA_HOME'] = this._javaPath!;
-    } else if ((env['LTEX_JAVA_HOME'] != null)
-          && DependencyManager.isValidPath(env['LTEX_JAVA_HOME'])) {
-      env['JAVA_HOME'] = DependencyManager.normalizePath(env['LTEX_JAVA_HOME'])!;
     }
 
     const isWindows: boolean = (process.platform === 'win32');

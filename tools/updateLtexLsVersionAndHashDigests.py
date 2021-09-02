@@ -11,7 +11,7 @@ import hashlib
 import pathlib
 import re
 import sys
-from typing import Iterable
+from typing import Dict, Iterable
 import urllib.parse
 
 import semver
@@ -34,6 +34,15 @@ def getLatestLtexLsVersion(versions: Iterable[str],
         latestVersion = version
 
   return latestVersion
+
+
+
+def getDownloadUrlsOfGitHubReleases(organizationName: str, repositoryName: str,
+      tagName: str) -> Dict[str, str]:
+  apiUrl = (f"https://api.github.com/repos/{urllib.parse.quote_plus(organizationName)}/"
+      f"{urllib.parse.quote_plus(repositoryName)}/releases/tags/{urllib.parse.quote_plus(tagName)}")
+  response = common.requestFromGitHub(apiUrl)
+  return {x["name"] : x["browser_download_url"] for x in response["assets"]}
 
 
 
@@ -61,17 +70,27 @@ def main() -> None:
     ltexLsVersion = str(ltexLsVersion)
     ltexLsTag = ltexLsVersion
 
-  print(f"Downloading LTeX LS {ltexLsVersion}...")
-  ltexLsUrl = ("https://github.com/valentjn/ltex-ls/releases/download/"
-      f"{urllib.parse.quote_plus(ltexLsTag)}/"
-      f"ltex-ls-{urllib.parse.quote_plus(ltexLsVersion)}.tar.gz")
-  response = common.requestFromGitHub(ltexLsUrl, decodeAsJson=False)
+  print(f"Retrieving list of assets for LTeX LS {ltexLsVersion} (tag '{ltexLsTag}')...")
+  downloadUrls = getDownloadUrlsOfGitHubReleases("valentjn", "ltex-ls", ltexLsTag)
+  assetFileNames = [x for x in downloadUrls if x != f"ltex-ls-{ltexLsVersion}.tar.gz"]
+  assetFileNames.sort()
+  hashDigests = []
 
-  print("Computing hash digest...")
-  ltexLsHashDigest = hashlib.sha256(response).hexdigest()
-  print(f"Hash digest is '{ltexLsHashDigest}'.")
+  for assetFileName in assetFileNames:
+    print(f"Downloading '{assetFileName}'...")
+    ltexLsUrl = ("https://github.com/valentjn/ltex-ls/releases/download/"
+        f"{urllib.parse.quote_plus(ltexLsTag)}/{assetFileName}")
+    response = common.requestFromGitHub(ltexLsUrl, decodeAsJson=False)
 
-  print("Writing version and hash digest to 'src/DependencyManager.ts'...")
+    print("Computing hash digest...")
+    hashDigest = hashlib.sha256(response).hexdigest()
+    print(f"Hash digest is '{hashDigest}'.")
+    hashDigests.append(hashDigest)
+
+  hashDigestsTypescript = "".join(f"    '{x}':\n      '{y}',\n"
+      for x, y in zip(assetFileNames, hashDigests))
+
+  print("Writing version and hash digests to 'src/DependencyManager.ts'...")
   dependencyManagerFilePath = common.repoDirPath.joinpath("src", "DependencyManager.ts")
   with open(dependencyManagerFilePath, "r") as f: dependencyManagerTypescript = f.read()
   dependencyManagerTypescript = re.sub(r"(_toBeDownloadedLtexLsTag: string =\n *').*?(';\n)",
@@ -79,8 +98,8 @@ def main() -> None:
   dependencyManagerTypescript = re.sub(r"(_toBeDownloadedLtexLsVersion: string =\n *').*?(';\n)",
       rf"\g<1>{ltexLsVersion}\g<2>", dependencyManagerTypescript)
   dependencyManagerTypescript = re.sub(
-      r"(_toBeDownloadedLtexLsHashDigest: string =\n *').*?(';\n)",
-      rf"\g<1>{ltexLsHashDigest}\g<2>", dependencyManagerTypescript)
+      r"(_toBeDownloadedLtexLsHashDigests: \{\[fileName: string\]: string\} = \{\n).*?(  \};\n)",
+      fr"\g<1>{hashDigestsTypescript}\g<2>", dependencyManagerTypescript, flags=re.DOTALL)
   with open(dependencyManagerFilePath, "w") as f: f.write(dependencyManagerTypescript)
 
 

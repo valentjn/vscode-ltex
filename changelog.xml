@@ -12,7 +12,13 @@
     <author>Julian Valentin, LTeX Development Community</author>
   </properties>
   <body>
-    <release version="11.1.0" date="upcoming">
+    <release version="12.0.0" date="upcoming">
+      <action type="update">
+        Bundle Java with LTeX LS; Java is not downloaded separately anymore and bundled Java is used if [`ltex.java.path`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavapath) is not set
+      </action>
+      <action type="remove">
+        Remove setting [`ltex.java.forceTrySystemWide`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavaforcetrysystemwide)
+      </action>
       <action type="add">
         Provide ID of LanguageTool rule via diagnostics code, not as part of diagnostics message
       </action>
@@ -36,6 +42,9 @@
       </action>
       <action type="fix">
         Fix used i18n keys removed in LTeX LS
+      </action>
+      <action type="update">
+        Update bundled Java runtime to 11.0.12+7 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8269291?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.12))
       </action>
       <action type="update">
         Update LTeX LS to 13.1.0

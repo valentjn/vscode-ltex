@@ -50,10 +50,14 @@ def getLtexVersion() -> semver.VersionInfo:
 
 
 
-def downloadLtexLs() -> None:
+def downloadLtexLs(platform: str, arch: str) -> None:
+  ltexLsArchiveType = ("zip" if platform == "windows" else "tar.gz")
+  ltexLsArchiveName = (
+      f"ltex-ls-{common.toBeDownloadedLtexLsVersion}-{platform}-{arch}.{ltexLsArchiveType}")
+
   ltexLsUrl = ("https://github.com/valentjn/ltex-ls/releases/download/"
-      f"{common.toBeDownloadedLtexLsTag}/ltex-ls-{common.toBeDownloadedLtexLsVersion}.tar.gz")
-  ltexLsArchivePath = libDirPath.joinpath(f"ltex-ls-{common.toBeDownloadedLtexLsVersion}.tar.gz")
+      f"{common.toBeDownloadedLtexLsTag}/{ltexLsArchiveName}")
+  ltexLsArchivePath = libDirPath.joinpath(ltexLsArchiveName)
   print(f"Downloading ltex-ls {common.toBeDownloadedLtexLsVersion} from '{ltexLsUrl}' to "
       f"'{ltexLsArchivePath}'...")
   urllib.request.urlretrieve(ltexLsUrl, ltexLsArchivePath)
@@ -65,42 +69,11 @@ def downloadLtexLs() -> None:
 
 def extractLtexLs(ltexLsArchivePath: pathlib.Path) -> None:
   print("Extracting ltex-ls archive...")
-  with tarfile.open(ltexLsArchivePath, "r:gz") as f: f.extractall(path=libDirPath)
 
-
-
-def removeJava() -> None:
-  path = libDirPath.joinpath(f"jdk-{common.toBeDownloadedJavaVersion}-jre")
-
-  if path.is_dir():
-    print(f"Removing old Java directory '{path}'...")
-    shutil.rmtree(path)
-
-  path = libDirPath.joinpath(f"._jdk-{common.toBeDownloadedJavaVersion}-jre")
-
-  if path.is_file():
-    print(f"Removing old Java file '{path}'...")
-    path.unlink()
-
-def downloadJava(platform: str, arch: str) -> None:
-  javaArchiveType = ("zip" if platform == "windows" else "tar.gz")
-  javaArchiveName = (f"OpenJDK11U-jre_{arch}_{platform}_hotspot_"
-      f"{common.toBeDownloadedJavaVersion.replace('+', '_')}.{javaArchiveType}")
-
-  javaUrl = ("https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/"
-      f"jdk-{urllib.parse.quote_plus(common.toBeDownloadedJavaVersion)}/{javaArchiveName}")
-  javaArchivePath = libDirPath.joinpath(javaArchiveName)
-  print(f"Downloading Java from '{javaUrl}' to '{javaArchivePath}'...")
-  urllib.request.urlretrieve(javaUrl, javaArchivePath)
-  print("Extracting Java archive...")
-
-  if javaArchiveType == "zip":
-    with zipfile.ZipFile(javaArchivePath, "r") as zipFile: zipFile.extractall(path=libDirPath)
+  if ltexLsArchivePath.suffix == ".zip":
+    with zipfile.ZipFile(ltexLsArchivePath, "r") as zipFile: zipFile.extractall(path=libDirPath)
   else:
-    with tarfile.open(javaArchivePath, "r:gz") as tarFile: tarFile.extractall(path=libDirPath)
-
-  print("Removing Java archive...")
-  javaArchivePath.unlink()
+    with tarfile.open(ltexLsArchivePath, "r:gz") as tarFile: tarFile.extractall(path=libDirPath)
 
 
 
@@ -124,7 +97,7 @@ def main() -> None:
   parser.add_argument("--current-system", action="store_true",
       help="Build offline package only for current platform/architecture")
   parser.add_argument("--ltex-ls-path", type=pathlib.Path, metavar="PATH",
-      help="Don't download ltex-ls from GitHub, but use *.tar.gz archive from this path")
+      help="Don't download ltex-ls from GitHub, but use archive from this path")
   args = parser.parse_args()
 
   if args.current_system:
@@ -149,11 +122,10 @@ def main() -> None:
     print(f"Processing platform '{ltexPlatform}' and architecture '{ltexArch}'...")
 
     if ltexLsArchivePath is None:
-      downloadLtexLs()
+      downloadLtexLs(ltexPlatform, ltexArch)
     else:
       extractLtexLs(ltexLsArchivePath)
 
-    downloadJava(ltexPlatform, ltexArch)
     createPackage(ltexPlatform, ltexArch)
     cleanLibDir()
 

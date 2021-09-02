@@ -23,7 +23,7 @@ repoDirPath = pathlib.Path(__file__).parent.parent
 
 
 
-def getToBeDownloadedVersions() -> Tuple[str, str, str]:
+def getToBeDownloadedVersions() -> Tuple[str, str]:
   with open(repoDirPath.joinpath("src", "DependencyManager.ts"), "r") as f:
     dependencyManagerTypescript = f.read()
 
@@ -37,15 +37,9 @@ def getToBeDownloadedVersions() -> Tuple[str, str, str]:
   assert len(matches) == 1
   toBeDownloadedLtexLsVersion = matches[0]
 
-  matches = re.findall(r"_toBeDownloadedJavaVersion: string =\n *'(.*?)';",
-      dependencyManagerTypescript)
-  assert len(matches) == 1
-  toBeDownloadedJavaVersion = matches[0]
+  return toBeDownloadedLtexLsTag, toBeDownloadedLtexLsVersion
 
-  return toBeDownloadedLtexLsTag, toBeDownloadedLtexLsVersion, toBeDownloadedJavaVersion
-
-toBeDownloadedLtexLsTag, toBeDownloadedLtexLsVersion, toBeDownloadedJavaVersion = (
-    getToBeDownloadedVersions())
+toBeDownloadedLtexLsTag, toBeDownloadedLtexLsVersion = getToBeDownloadedVersions()
 
 
 

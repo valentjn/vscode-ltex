@@ -9,7 +9,6 @@
   "couldNotInstallLtexLs": "Installation von ltex-ls fehlgeschlagen, siehe das Protokoll 'LTeX Language Client' für mehr Informationen.",
   "couldNotStartLanguageClient": "Start des Language Clients fehlgeschlagen!",
   "downloading": "Lade {0} herunter ...",
-  "downloadingAndExtractingJava" : "Lade Java herunter und entpacke es ...",
   "downloadingAndExtractingLtexLs" : "Lade ltex-ls herunter und entpacke es ...",
   "extracting": "Entpacke {0} ...",
   "findingAllDocumentsInWorkspace": "Finde alle Dokumente im Arbeitsbereich ...",
