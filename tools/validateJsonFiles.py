@@ -21,10 +21,32 @@ with open(packageJsonFilePath, "r") as f: packageJson = json.load(f)
 
 
 
-class nls(object):
-  @staticmethod
-  def localize(key: str, defaultMessage: str) -> str:
-    return defaultMessage
+def getJsonSchemaFromVsCodeGitHub(typeScriptPath: str, regex: re.Pattern[str]) -> Any:
+  response = common.requestFromGitHub(
+      f"https://api.github.com/repos/microsoft/vscode/contents/{typeScriptPath}")
+  assert(response["encoding"] == "base64")
+  configurationExtensionPointJavaScript = base64.b64decode(response["content"]).decode()
+
+  regexMatch = regex.search(configurationExtensionPointJavaScript)
+  assert regexMatch is not None
+  string = regexMatch.group(1)
+
+  string = re.sub(r"^([ \t]*)([$A-Za-z]+):", r'\1"\2":', string, flags=re.MULTILINE)
+  string = string.replace("[{ body: {", "[{ \"body\": {")
+  string = string.replace("{ command: ", "{ \"command\": ")
+  string = string.replace("{ title: '', properties: {} }", "{ \"title\": '', \"properties\": {} }")
+
+  string = re.sub(r"^([ \t]*)\"([$A-Za-z]+)\": false(,)?$", r'\1"\2": False\3', string,
+      flags=re.MULTILINE)
+  string = re.sub(r"^([ \t]*)\"([$A-Za-z]+)\": true(,)?$", r'\1"\2": True\3', string,
+      flags=re.MULTILINE)
+
+  stringRegex = r"(?:'.*?'|\".*?\"|`.*?`)"
+  string = re.sub(rf"(?:nls\.)?localize\({stringRegex}, ({stringRegex})(?:, {stringRegex})*\)",
+      lambda x: f'"{x.group(1)[1:-1]}"', string)
+  jsonSchema = ast.literal_eval(string)
+
+  return jsonSchema
 
 
 
@@ -37,24 +59,24 @@ def validatePackageJsonWithSchema() -> None:
 
 
 
+def validatePackageJsonWalkthroughsWithSchema() -> None:
+  print("Validating package.json walkthroughs with schema from VS Code...")
+
+  jsonSchema = getJsonSchemaFromVsCodeGitHub(
+      "src/vs/workbench/contrib/welcome/gettingStarted/browser/gettingStartedExtensionPoint.ts",
+      re.compile(r"const walkthroughsExtensionPoint.* = (?s:.*?^\tjsonSchema: (\{.*?^\t\}))",
+        flags=re.MULTILINE))
+  jsonschema.validate(packageJson["contributes"]["walkthroughs"], jsonSchema)
+
+
+
 def validatePackageJsonConfigurationWithSchema() -> None:
   print("Validating package.json configuration with schema from VS Code...")
 
-  apiUrl = ("https://api.github.com/repos/microsoft/vscode/contents/"
-      "src/vs/workbench/api/common/configurationExtensionPoint.ts")
-  response = common.requestFromGitHub(apiUrl)
-  assert(response["encoding"] == "base64")
-  configurationExtensionPointJavaScript = base64.b64decode(response["content"]).decode()
-
-  regexMatch = re.search(r"^const configurationEntrySchema: IJSONSchema = (\{.*?^\})",
-      configurationExtensionPointJavaScript, flags=re.DOTALL | re.MULTILINE)
-  assert regexMatch is not None
-  string = regexMatch.group(1)
-  string = re.sub(r"(?<![\"'A-Za-z])([$A-Za-z]+):", r'"\1":', string)
-  string = re.sub(r": '(.*?)'", r': "\1"', string)
-  string = re.sub(r"nls\.localize\(['\"].*['\"], ['\"](.*)['\"]\)", r'"\1"', string)
-  configurationEntrySchema = ast.literal_eval(string)
-
+  configurationEntrySchema = getJsonSchemaFromVsCodeGitHub(
+      "src/vs/workbench/api/common/configurationExtensionPoint.ts",
+      re.compile(r"const configurationEntrySchema.* = (?s:(\{.*?^\}))",
+        flags=re.MULTILINE))
   configurationSchema = {
 		"description" : "Contributes configuration settings.",
 		"oneOf" : [
@@ -189,6 +211,7 @@ def getUsedNlsKeysFromTypeScript() -> List[str]:
 
 def main() -> None:
   validatePackageJsonWithSchema()
+  validatePackageJsonWalkthroughsWithSchema()
   validatePackageJsonConfigurationWithSchema()
   validatePackageJsonConfigurationWithCustomConstraints()
   validatePackageNlsJson()
