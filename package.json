@@ -75,6 +75,10 @@
         "id": "ltex.walkthrough",
         "title": "%ltex.i18n.walkthrough.title%",
         "description": "%ltex.i18n.walkthrough.description%",
+        "featuredFor": [
+          "**/*.md",
+          "**/*.tex"
+        ],
         "steps": [
           {
             "id": "ltex.walkthrough.checkMarkdownDocuments",
