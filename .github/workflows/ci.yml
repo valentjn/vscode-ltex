@@ -161,7 +161,7 @@ jobs:
         run: "if [[ -z \"$VSCODE_LTEX_IS_PRERELEASE\" ]]; then echo 'Error: VSCODE_LTEX_IS_PRERELEASE not set!'; (exit 1); fi; echo \"VSCODE_LTEX_IS_PRERELEASE set to '$VSCODE_LTEX_IS_PRERELEASE'\""
 
       - name: "Set VSCODE_LTEX_CHANGELOG"
-        run: "if [ \"$VSCODE_LTEX_IS_PRERELEASE\" = \"false\" ]; then echo \"VSCODE_LTEX_CHANGELOG<<EOF\" >> $GITHUB_ENV; python tools/convertChangelog.py --xml-file changelog.xml --version latest >> $GITHUB_ENV; echo \"EOF\" >> $GITHUB_ENV; else echo \"VSCODE_LTEX_CHANGELOG=This is an unfinished pre-release. Use at your own risk.\" >> $GITHUB_ENV; fi"
+        run: "if [ \"$VSCODE_LTEX_IS_PRERELEASE\" = \"false\" ]; then echo \"VSCODE_LTEX_CHANGELOG<<EOF\" >> $GITHUB_ENV; python tools/convertChangelog.py --xml-file changelog.xml --version latest >> $GITHUB_ENV; echo \"EOF\" >> $GITHUB_ENV; else echo \"VSCODE_LTEX_CHANGELOG=This is a pre-release. Use at your own risk.\" >> $GITHUB_ENV; fi"
 
       - name: "Build Package with vsce"
         run: "vsce package"
