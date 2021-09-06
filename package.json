@@ -176,6 +176,7 @@
           "enum": [
             "ar",
             "ast-ES",
+            "auto",
             "be-BY",
             "br-FR",
             "ca-ES",
@@ -225,6 +226,7 @@
           "markdownEnumDescriptions": [
             "%ltex.i18n.configuration.ltex.language.ar.markdownEnumDescription%",
             "%ltex.i18n.configuration.ltex.language.ast-ES.markdownEnumDescription%",
+            "%ltex.i18n.configuration.ltex.language.auto.markdownEnumDescription%",
             "%ltex.i18n.configuration.ltex.language.be-BY.markdownEnumDescription%",
             "%ltex.i18n.configuration.ltex.language.br-FR.markdownEnumDescription%",
             "%ltex.i18n.configuration.ltex.language.ca-ES.markdownEnumDescription%",
@@ -274,6 +276,7 @@
           "enumDescriptions": [
             "%ltex.i18n.configuration.ltex.language.ar.enumDescription%",
             "%ltex.i18n.configuration.ltex.language.ast-ES.enumDescription%",
+            "%ltex.i18n.configuration.ltex.language.auto.enumDescription%",
             "%ltex.i18n.configuration.ltex.language.be-BY.enumDescription%",
             "%ltex.i18n.configuration.ltex.language.br-FR.enumDescription%",
             "%ltex.i18n.configuration.ltex.language.ca-ES.enumDescription%",
@@ -331,6 +334,7 @@
             "enum": [
               "ar",
               "ast-ES",
+              "auto",
               "be-BY",
               "br-FR",
               "ca-ES",
@@ -392,6 +396,13 @@
                 "type": "string"
               },
               "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.ast-ES.markdownDescription%"
+            },
+            "auto": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.dictionary.auto.markdownDescription%"
             },
             "be-BY": {
               "type": "array",
@@ -734,6 +745,7 @@
             "enum": [
               "ar",
               "ast-ES",
+              "auto",
               "be-BY",
               "br-FR",
               "ca-ES",
@@ -795,6 +807,13 @@
                 "type": "string"
               },
               "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.ast-ES.markdownDescription%"
+            },
+            "auto": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.disabledRules.auto.markdownDescription%"
             },
             "be-BY": {
               "type": "array",
@@ -1133,6 +1152,7 @@
             "enum": [
               "ar",
               "ast-ES",
+              "auto",
               "be-BY",
               "br-FR",
               "ca-ES",
@@ -1194,6 +1214,13 @@
                 "type": "string"
               },
               "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.ast-ES.markdownDescription%"
+            },
+            "auto": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.enabledRules.auto.markdownDescription%"
             },
             "be-BY": {
               "type": "array",
@@ -1532,6 +1559,7 @@
             "enum": [
               "ar",
               "ast-ES",
+              "auto",
               "be-BY",
               "br-FR",
               "ca-ES",
@@ -1593,6 +1621,13 @@
                 "type": "string"
               },
               "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.ast-ES.markdownDescription%"
+            },
+            "auto": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "markdownDescription": "%ltex.i18n.configuration.ltex.hiddenFalsePositives.auto.markdownDescription%"
             },
             "be-BY": {
               "type": "array",
