@@ -5,7 +5,11 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Code from 'vscode';
+// #elseif TARGET == 'coc.nvim'
+// import * as Code from 'coc.nvim';
+// #endif
 import * as Fs from 'fs';
 import * as Os from 'os';
 import * as Path from 'path';
@@ -159,10 +163,28 @@ export default class ExternalFileManager {
         ? externalFiles[language][0].resolvedPath : null);
   }
 
+  // #if TARGET == 'vscode'
+  private static preprocessUri(uri: Code.Uri): Code.Uri {
+    return uri;
+  }
+
+  private static postprocessUri(uri: Code.Uri): Code.Uri {
+    return uri;
+  }
+  // #elseif TARGET == 'coc.nvim'
+  // private static preprocessUri(uri: Code.Uri): string {
+    // return uri.toString();
+  // }
+
+  // private static postprocessUri(uri: string): Code.Uri {
+    // return Code.Uri.parse(uri);
+  // }
+  // #endif
+
   private getExternalFilesFromSetting(uri: Code.Uri, settingName: string,
         language: string | null = null): LanguageSpecificExternalFiles {
     const resourceConfig: Code.WorkspaceConfiguration =
-        Code.workspace.getConfiguration('ltex', uri);
+        Code.workspace.getConfiguration('ltex', ExternalFileManager.preprocessUri(uri));
     const settingValuePerScope: SettingValuePerScope | undefined =
         resourceConfig.inspect(settingName);
     const externalFiles: LanguageSpecificExternalFiles = {};
@@ -193,7 +215,7 @@ export default class ExternalFileManager {
         settingValuePerScope: SettingValuePerScope | undefined = undefined): SettingAnalysis {
     if (settingValuePerScope == null) {
       const resourceConfig: Code.WorkspaceConfiguration =
-          Code.workspace.getConfiguration('ltex', uri);
+          Code.workspace.getConfiguration('ltex', ExternalFileManager.preprocessUri(uri));
       settingValuePerScope = resourceConfig.inspect(settingName);
     }
 
@@ -261,23 +283,27 @@ export default class ExternalFileManager {
   }
 
   public getUserSettingsDirPath(): string {
+    // #if TARGET == 'vscode'
     return Path.resolve(this._context.globalStorageUri.fsPath);
+    // #elseif TARGET == 'coc.nvim'
+    // return Path.resolve(this._context.storagePath);
+    // #endif
   }
 
   public getWorkspaceSettingsDirPath(): string | null {
     const workspaceFolders: readonly Code.WorkspaceFolder[] | undefined =
         Code.workspace.workspaceFolders;
     if ((workspaceFolders == null) || (workspaceFolders.length == 0)) return null;
-    const workspaceDirUri: Code.Uri = workspaceFolders[0].uri;
+    const workspaceDirUri: Code.Uri = ExternalFileManager.postprocessUri(workspaceFolders[0].uri);
     if (workspaceDirUri.scheme != 'file') return null;
     return Path.resolve(workspaceDirUri.fsPath, '.vscode');
   }
 
   public getWorkspaceFolderSettingsDirPath(uri: Code.Uri): string | null {
-    const workspaceFolder: Code.WorkspaceFolder | undefined =
-        Code.workspace.getWorkspaceFolder(uri);
+    const workspaceFolder: Code.WorkspaceFolder | undefined | null =
+        Code.workspace.getWorkspaceFolder(ExternalFileManager.preprocessUri(uri));
     if (workspaceFolder == null) return null;
-    const workspaceFolderDirUri: Code.Uri = workspaceFolder.uri;
+    const workspaceFolderDirUri: Code.Uri = ExternalFileManager.postprocessUri(workspaceFolder.uri);
     if (workspaceFolderDirUri.scheme != 'file') return null;
     return Path.resolve(workspaceFolderDirUri.fsPath, '.vscode');
   }

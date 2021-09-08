@@ -5,6 +5,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Assert from 'assert';
 
 import ProgressStack from '../src/ProgressStack';
@@ -15,3 +16,4 @@ describe('Test ProgressStack', () => {
     Assert.throws(progressStack.finishTask);
   });
 });
+// #endif

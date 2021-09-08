@@ -5,7 +5,12 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Code from 'vscode';
+// #elseif TARGET == 'coc.nvim'
+// import * as Clipboardy from 'clipboardy';
+// import * as Code from 'coc.nvim';
+// #endif
 import * as Fs from 'fs';
 import * as Os from 'os';
 import * as Path from 'path';
@@ -36,7 +41,7 @@ export default class BugReporter {
     this._statusPrinter = statusInformationPrinter;
   }
 
-  private createReport(): string {
+  private async createReport(): Promise<string> {
     this._statusPrinter.print();
 
     const templatePath: string = Path.resolve(
@@ -55,8 +60,14 @@ export default class BugReporter {
       }
     }
 
-    if (Code.window.activeTextEditor != null) {
-      const document: Code.TextDocument = Code.window.activeTextEditor.document;
+    const document: Code.TextDocument | undefined =
+    // #if TARGET == 'vscode'
+        Code.window.activeTextEditor?.document;
+    // #elseif TARGET == 'coc.nvim'
+        // (await Code.workspace.document).textDocument;
+    // #endif
+
+    if (document != null) {
       let codeLanguage: string;
 
       switch (document.languageId) {
@@ -93,10 +104,10 @@ export default class BugReporter {
     bugReport = bugReport.replace('REPLACE_THIS_WITH_LTEX_CONFIGURATION', configJson);
 
     const serverLog: string = BugReporter.truncateStringAtStart(
-        Logger.serverOutputChannel.getContents(), BugReporter._maxNumberOfServerLogLines);
+        Logger.serverOutputChannel.content, BugReporter._maxNumberOfServerLogLines);
     bugReport = bugReport.replace('REPLACE_THIS_WITH_LTEX_LANGUAGE_SERVER_LOG', serverLog);
 
-    let clientLog: string = Logger.clientOutputChannel.getContents();
+    let clientLog: string = Logger.clientOutputChannel.content;
     clientLog = BugReporter.truncateStringAtStart(
         clientLog, BugReporter._maxNumberOfClientLogLines);
     bugReport = bugReport.replace('REPLACE_THIS_WITH_LTEX_LANGUAGE_CLIENT_LOG', clientLog);
@@ -104,11 +115,22 @@ export default class BugReporter {
     const platform: string = `${Os.type} (${Os.platform}), ${Os.arch}, ${Os.release}`;
     bugReport = bugReport.replace(/^- Operating system: .*$/m, `- Operating system: ${platform}`);
 
-    bugReport = bugReport.replace(/^- VS Code: .*$/m, `- VS Code: ${Code.version}`);
+    const vscodeReplacement: string =
+    // #if TARGET == 'vscode'
+        `- VS Code: ${Code.version}`;
+    // #elseif TARGET == 'coc.nvim'
+        // '- coc.nvim';
+    // #endif
+    bugReport = bugReport.replace(/^- VS Code: .*$/m, vscodeReplacement);
 
     // deprecated: replace with self._context.extension starting with VS Code 1.55.0
     const extension: Code.Extension<any> | undefined =
+    // #if TARGET == 'vscode'
         Code.extensions.getExtension('valentjn.vscode-ltex');
+    // #elseif TARGET == 'coc.nvim'
+        // Code.extensions.all.find(
+            // (extension: Code.Extension<Code.ExtensionApi>) => extension.id == 'vscode-ltex');
+    // #endif
 
     if (extension != null) {
       bugReport = bugReport.replace(/^- vscode-ltex: .*$/m,
@@ -129,7 +151,7 @@ export default class BugReporter {
       }
     }
 
-    return bugReport;
+    return Promise.resolve(bugReport);
   }
 
   private static truncateStringAtStart(str: string, maxNumberOfLines: number): string {
@@ -144,22 +166,32 @@ export default class BugReporter {
         ? (lines.slice(0, maxNumberOfLines).join('\n') + '\n[... truncated]') : str);
   }
 
-  public report(): void {
+  public async report(): Promise<void> {
     Logger.log(i18n('creatingBugReport'));
-    const bugReport: string = this.createReport();
+    const bugReport: string = await this.createReport();
 
     Code.window.showInformationMessage(i18n('thanksForReportingBug'),
           i18n('setLtexTraceServerToVerbose'), i18n('copyReportAndCreateIssue')).then(
             async (selectedItem: string | undefined) => {
       if (selectedItem == i18n('setLtexTraceServerToVerbose')) {
         const config: Code.WorkspaceConfiguration = Code.workspace.getConfiguration('ltex');
+        // #if TARGET == 'vscode'
         config.update('trace.server', 'verbose', Code.ConfigurationTarget.Global);
+        // #elseif TARGET == 'coc.nvim'
+        // config.update('trace.server', 'verbose');
+        // #endif
         Code.window.showInformationMessage(i18n('ltexTraceServerSetToVerbose'));
       } else if (selectedItem == i18n('copyReportAndCreateIssue')) {
-        Code.env.clipboard.writeText(bugReport);
         const url: Url.URL = new Url.URL(BugReporter._bugReportUrl);
         url.searchParams.set('body', i18n('enterSummaryOfIssueInTitleFieldAndReplaceSentence'));
+
+        // #if TARGET == 'vscode'
+        Code.env.clipboard.writeText(bugReport);
         Code.env.openExternal(Code.Uri.parse(url.toString()));
+        // #elseif TARGET == 'coc.nvim'
+        // await Clipboardy.write(bugReport);
+        // Code.workspace.openResource(url.toString());
+        // #endif
       }
     });
   }

@@ -16,6 +16,7 @@ const config = {
   },
   devtool: 'source-map',
   externals: {
+    'coc.nvim': 'commonjs coc.nvim',
     vscode: 'commonjs vscode'
   },
   resolve: {

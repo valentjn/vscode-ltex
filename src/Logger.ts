@@ -5,8 +5,13 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient/node';
+// #elseif TARGET == 'coc.nvim'
+// import * as Code from 'coc.nvim';
+// import CodeLanguageClient = Code;
+// #endif
 
 import LoggingOutputChannel from './LoggingOutputChannel';
 
@@ -27,12 +32,22 @@ export default class Logger {
 
   public static warn(message: string, e?: Error | unknown): void {
     Logger.log(message, 'Warning');
-    if (e instanceof Error) Logger.logError(e, 'Warning');
+
+    try {
+      Logger.logError(e as Error, 'Warning');
+    } catch {
+      // do nothing
+    }
   }
 
   public static error(message: string, e?: Error | unknown): void {
     Logger.log(message, 'Error');
-    if (e instanceof Error) Logger.logError(e, 'Error');
+
+    try {
+      Logger.logError(e as Error, 'Error');
+    } catch {
+      // do nothing
+    }
   }
 
   public static logError(e: Error, type: string = 'Info'): void {

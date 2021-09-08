@@ -5,7 +5,11 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Code from 'vscode';
+// #elseif TARGET == 'coc.nvim'
+// import * as Code from 'coc.nvim';
+// #endif
 import * as Fs from 'fs';
 import * as Path from 'path';
 

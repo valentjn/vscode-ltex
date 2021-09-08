@@ -5,6 +5,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Assert from 'assert';
 
 import Logger from '../src/Logger';
@@ -32,7 +33,7 @@ describe('Test Logger', () => {
     Logger.clientOutputChannel.clear();
     Logger.warn('Test1');
     Logger.warn('Test2', new Error('Error1'));
-    const log: string = Logger.clientOutputChannel.getContents();
+    const log: string = Logger.clientOutputChannel.content;
     Assert.ok(log.includes('Warning'));
     Assert.ok(log.includes('Test1'));
     Assert.ok(log.includes('Test2'));
@@ -43,7 +44,7 @@ describe('Test Logger', () => {
     Logger.clientOutputChannel.clear();
     Logger.error('Test1');
     Logger.error('Test2', new Error('Error1'));
-    const log: string = Logger.clientOutputChannel.getContents();
+    const log: string = Logger.clientOutputChannel.content;
     Assert.ok(log.includes('Error'));
     Assert.ok(log.includes('Test1'));
     Assert.ok(log.includes('Test2'));
@@ -54,3 +55,4 @@ describe('Test Logger', () => {
     Logger.showClientOutputChannel();
   });
 });
+// #endif

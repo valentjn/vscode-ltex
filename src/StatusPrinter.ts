@@ -5,8 +5,13 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient/node';
+// #elseif TARGET == 'coc.nvim'
+// import * as Code from 'coc.nvim';
+// import CodeLanguageClient = Code;
+// #endif
 
 import DependencyManager from './DependencyManager';
 import ExternalFileManager from './ExternalFileManager';
@@ -81,12 +86,21 @@ export default class StatusPrinter {
     Logger.log(i18n('workspaceSettingsDirPath',
         StatusPrinter.formatString(this._externalFileManager.getWorkspaceSettingsDirPath())));
 
+    let activeDocumentUri: Code.Uri | null = null;
+
+    // #if TARGET == 'vscode'
     const activeTextEditor: Code.TextEditor | undefined = Code.window.activeTextEditor;
+    if (activeTextEditor != null) activeDocumentUri = activeTextEditor.document.uri;
+    // #elseif TARGET == 'coc.nvim'
+    // const activeDocument: Code.Document = await Code.workspace.document;
+    // activeDocumentUri = Code.Uri.parse(activeDocument.uri);
+    // #endif
+
     let workspaceFolderSettingsDirPath: string | null = null;
 
-    if (activeTextEditor != null) {
+    if (activeDocumentUri != null) {
       workspaceFolderSettingsDirPath = this._externalFileManager.getWorkspaceFolderSettingsDirPath(
-          activeTextEditor.document.uri);
+          activeDocumentUri);
     }
 
     Logger.log(i18n('workspaceFolderSettingsDirPath',

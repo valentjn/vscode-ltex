@@ -5,6 +5,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Code from 'vscode';
 
 export default class TestTools {
@@ -17,3 +18,4 @@ export default class TestTools {
     return new Promise((resolve: () => void) => setTimeout(resolve, ms));
   }
 }
+// #endif

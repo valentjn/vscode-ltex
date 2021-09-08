@@ -5,6 +5,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Assert from 'assert';
 import * as Code from 'vscode';
 
@@ -48,8 +49,9 @@ describe('Test settings', () => {
 
       Assert.strictEqual(Code.languages.getDiagnostics(document.uri).length, 1);
     } finally {
-      Code.workspace.getConfiguration('ltex').update('clearDiagnosticsWhenClosingFile', undefined,
-          Code.ConfigurationTarget.Global);
+      Code.workspace.getConfiguration('ltex').update(
+          'clearDiagnosticsWhenClosingFile', undefined, Code.ConfigurationTarget.Global);
     }
   });
 });
+// #endif

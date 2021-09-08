@@ -20,6 +20,9 @@
         Remove setting [`ltex.java.forceTrySystemWide`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavaforcetrysystemwide)
       </action>
       <action type="add" issue="ltex-ls#103">
+        Add support for coc.nvim (Vim/Neovim)
+      </action>
+      <action type="add" issue="ltex-ls#103">
         Add support for automatic language detection via language short code `auto`; language variants like `en-US` are not detected, only generic languages like `en`; this will result in spelling errors not being reported
       </action>
       <action type="add">

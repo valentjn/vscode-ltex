@@ -5,6 +5,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Assert from 'assert';
 import * as Code from 'vscode';
 import * as Path from 'path';
@@ -83,3 +84,4 @@ describe('Test commands', () => {
     Assert.strictEqual(Code.languages.getDiagnostics(fileUri3).length, 0);
   });
 });
+// #endif

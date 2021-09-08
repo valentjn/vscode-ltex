@@ -2626,14 +2626,15 @@
   },
   "main": "./dist/extension.js",
   "scripts": {
-    "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production && python tools/convertChangelog.py --xml-file changelog.xml > CHANGELOG.md",
-    "webpack": "webpack --config .webpack.config.js --mode development",
-    "webpack-dev": "webpack --config .webpack.config.js --mode development --watch",
     "compile": "tsc",
     "lint": "eslint --max-warnings 0 -c .eslintrc.js {src,test}/**/*.ts",
     "watch": "tsc -watch",
     "pretest": "git clean -f -x lib/ && npm run vscode:prepublish && python tools/createOfflinePackages.py --current-system",
-    "test": "mocha ./out/test/TestRunner.js"
+    "test": "mocha ./out/test/TestRunner.js",
+    "webpack": "webpack --config .webpack.config.js --mode development",
+    "webpack-dev": "webpack --config .webpack.config.js --mode development --watch",
+    "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production && python tools/convertChangelog.py --xml-file changelog.xml > CHANGELOG.md",
+    "coc.nvim:prepublish": "npm run vscode:prepublish"
   },
   "devDependencies": {
     "@types/mocha": "9.0.0",
@@ -2662,5 +2663,39 @@
     "tar": "6.1.11",
     "vscode-languageclient": "7.0.0",
     "vscode-languageserver-protocol": "3.16.0"
+  },
+  "ltexAdditionalInformation": {
+    "currentTarget": "vscode",
+    "targetChanges": {
+      "coc.nvim": {
+        "engines": {
+          "coc": "^0.0.80",
+          "vscode": "-"
+        },
+        "keywords": {
+          "coc.nvim": "+"
+        },
+        "activationEvents": {
+          "onNotebook:*": "-"
+        },
+        "devDependencies": {
+          "@types/node": "12.12.0",
+          "@types/vscode": "-",
+          "clipboardy": "2.3.0",
+          "coc.nvim": "0.0.81-next.7",
+          "glob": "7.1.7",
+          "vscode-test": "-"
+        },
+        "dependencies": {
+          "vscode-languageclient": "-"
+        },
+        "moveFromDependenciesToDevDependencies": [
+          "extract-zip",
+          "semver",
+          "tar",
+          "vscode-languageserver-protocol"
+        ]
+      }
+    }
   }
 }

@@ -5,8 +5,13 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient/node';
+// #elseif TARGET == 'coc.nvim'
+// import * as Code from 'coc.nvim';
+// import CodeLanguageClient = Code;
+// #endif
 
 import BugReporter from './BugReporter';
 import CommandHandler from './CommandHandler';
@@ -56,8 +61,13 @@ async function languageClientIsReady(languageClient: CodeLanguageClient.Language
     Code.window.showInformationMessage(message,
           i18n('moreInfoAboutLtex5x')).then((selectedItem: string | undefined) => {
       if (selectedItem != null) {
+        // #if TARGET == 'vscode'
         Code.env.openExternal(Code.Uri.parse(
             'https://valentjn.github.io/vscode-ltex/docs/transitioning-from-ltex-4x.html'));
+        // #elseif TARGET == 'coc.nvim'
+        // Code.workspace.openResource(
+            // 'https://valentjn.github.io/vscode-ltex/docs/transitioning-from-ltex-4x.html');
+        // #endif
       }
     });
   }
@@ -68,9 +78,11 @@ async function startLanguageClient(context: Code.ExtensionContext,
       Promise<CodeLanguageClient.LanguageClient | null> {
   let serverOptions: CodeLanguageClient.ServerOptions | null = null;
 
+  // #if TARGET == 'vscode'
   if (context.extensionMode == Code.ExtensionMode.Development) {
     serverOptions = DependencyManager.getDebugServerOptions();
   }
+  // #endif
 
   if (serverOptions == null) {
     if (dependencyManager == null) {
@@ -111,13 +123,17 @@ async function startLanguageClient(context: Code.ExtensionContext,
         // LSP sends locale itself since LSP 3.16.0. However, this would require VS Code 1.53.0.
         // Currently, we only require VS Code 1.52.0.
         initializationOptions: {
+          // #if TARGET == 'vscode'
           locale: Code.env.language,
+          // #endif
           customCapabilities: {
             workspaceSpecificConfiguration: true,
           },
         },
         revealOutputChannelOn: CodeLanguageClient.RevealOutputChannelOn.Never,
+        // #if TARGET == 'vscode'
         traceOutputChannel: Logger.clientOutputChannel,
+        // #endif
         outputChannel: Logger.serverOutputChannel,
       };
 

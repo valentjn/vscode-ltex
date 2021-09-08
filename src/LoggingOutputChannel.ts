@@ -5,7 +5,13 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Code from 'vscode';
+import EventEmitter = Code.EventEmitter;
+// #elseif TARGET == 'coc.nvim'
+// import * as Code from 'coc.nvim';
+// import EventEmitter = Code.Emitter;
+// #endif
 
 type Entry = {
   time: number;
@@ -16,7 +22,7 @@ export default class LoggingOutputChannel implements Code.OutputChannel {
   public readonly name: string;
   private _outputChannel: Code.OutputChannel;
   private _entries: Entry[];
-  private _onAppendEventEmitter: Code.EventEmitter<string>;
+  private _onAppendEventEmitter: EventEmitter<string>;
 
   private static readonly pruneDuration: number = 86400;
 
@@ -24,7 +30,7 @@ export default class LoggingOutputChannel implements Code.OutputChannel {
     this.name = name;
     this._outputChannel = Code.window.createOutputChannel(name);
     this._entries = [];
-    this._onAppendEventEmitter = new Code.EventEmitter<string>();
+    this._onAppendEventEmitter = new EventEmitter<string>();
   }
 
   private pruneOldEntries(): void {
@@ -57,7 +63,7 @@ export default class LoggingOutputChannel implements Code.OutputChannel {
     this._onAppendEventEmitter.fire(value + '\n');
   }
 
-  public getContents(): string {
+  public get content(): string {
     let contents: string = '';
 
     this._entries.forEach((entry: Entry) => {
@@ -76,9 +82,13 @@ export default class LoggingOutputChannel implements Code.OutputChannel {
     this._entries = [];
   }
 
+  // #if TARGET == 'vscode'
   public show(preserveFocus?: boolean | undefined): void;
   public show(column?: Code.ViewColumn | undefined, preserveFocus?: boolean | undefined): void;
   public show(_column?: any, preserveFocus?: any): void {
+  // #elseif TARGET == 'coc.nvim'
+  // public show(preserveFocus?: boolean): void {
+  // #endif
     this._outputChannel.show(preserveFocus);
   }
 

@@ -5,8 +5,13 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient/node';
+// #elseif TARGET == 'coc.nvim'
+// import * as Code from 'coc.nvim';
+// import CodeLanguageClient = Code;
+// #endif
 import * as ChildProcess from 'child_process';
 import * as Crypto from 'crypto';
 import extractZip from 'extract-zip';
@@ -52,7 +57,12 @@ export default class DependencyManager {
     this._context = context;
     // deprecated: replace with context.extension starting with VS Code 1.55.0
     const vscodeLtexExtension: Code.Extension<any> | undefined =
+        // #if TARGET == 'vscode'
         Code.extensions.getExtension('valentjn.vscode-ltex');
+        // #elseif TARGET == 'coc.nvim'
+        // Code.extensions.all.find(
+          // (extension: Code.Extension<Code.ExtensionApi>) => extension.id == 'vscode-ltex');
+        // #endif
     if (vscodeLtexExtension == null) throw new Error(i18n('couldNotGetVscodeLtexVersion'));
     this._vscodeLtexVersion = vscodeLtexExtension.packageJSON.version;
   }
@@ -261,7 +271,9 @@ export default class DependencyManager {
   private async installLtexLs(): Promise<void> {
     const progressOptions: Code.ProgressOptions = {
           title: 'LTeX',
+          // #if TARGET == 'vscode'
           location: Code.ProgressLocation.Notification,
+          // #endif
           cancellable: false,
         };
 
@@ -397,7 +409,12 @@ export default class DependencyManager {
           resolve(await this.install());
           return;
         } else if (selectedItem == i18n('offlineInstructions')) {
+          // #if TARGET == 'vscode'
           Code.env.openExternal(Code.Uri.parse(DependencyManager._offlineInstructionsUrl));
+          // #elseif TARGET == 'coc.nvim'
+          // Code.workspace.openResource(
+              // Code.Uri.parse(DependencyManager._offlineInstructionsUrl).toString());
+          // #endif
         }
 
         resolve(false);

@@ -5,6 +5,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as ChildProcess from 'child_process';
 import * as CodeTest from 'vscode-test';
 import * as CodeTestRunTest from 'vscode-test/out/runTest';
@@ -157,3 +158,4 @@ async function main(): Promise<void> {
 }
 
 main();
+// #endif

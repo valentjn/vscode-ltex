@@ -5,6 +5,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient/node';
 
@@ -38,7 +39,7 @@ export default class ExtensionInitializer {
       return Promise.reject(new Error('Client output channel not initialized.'));
     }
 
-    console.log(api.clientOutputChannel.getContents());
+    console.log(api.clientOutputChannel.content);
     api.clientOutputChannel.onAppend((text: string) => {
       console.log(text);
     });
@@ -47,7 +48,7 @@ export default class ExtensionInitializer {
       return Promise.reject(new Error('Server output channel not initialized.'));
     }
 
-    console.log(api.serverOutputChannel.getContents());
+    console.log(api.serverOutputChannel.content);
     api.serverOutputChannel.onAppend((text: string) => {
       console.log(text);
     });
@@ -102,3 +103,4 @@ export default class ExtensionInitializer {
     return Promise.resolve();
   }
 }
+// #endif

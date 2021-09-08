@@ -5,8 +5,14 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+// #if TARGET == 'vscode'
 import * as Code from 'vscode';
 import * as CodeLanguageClient from 'vscode-languageclient/node';
+// #elseif TARGET == 'coc.nvim'
+// import * as Code from 'coc.nvim';
+// import CodeLanguageClient = Code;
+// import * as Glob from 'glob';
+// #endif
 import * as Path from 'path';
 
 import BugReporter from './BugReporter';
@@ -133,7 +139,12 @@ export default class CommandHandler {
           {command: '_ltex.checkDocument', arguments: [params]});
     } catch (e: unknown) {
       result.success = false;
-      if (e instanceof Error) result.errorMessage = e.message;
+
+      try {
+        result.errorMessage = (e as Error).message;
+      } catch {
+        // do nothing
+      }
     }
 
     if (result.success) {
@@ -150,6 +161,7 @@ export default class CommandHandler {
       return Promise.resolve(false);
     }
 
+    // #if TARGET == 'vscode'
     const textEditor: Code.TextEditor | undefined = Code.window.activeTextEditor;
 
     if (textEditor == null) {
@@ -159,6 +171,17 @@ export default class CommandHandler {
 
     return this.checkDocument(textEditor.document.uri, textEditor.document.languageId,
         textEditor.document.getText(), textEditor.selection);
+    // #elseif TARGET == 'coc.nvim'
+    // const document: Code.Document = await Code.workspace.document;
+    // const range: Code.Range | null = await Code.workspace.getSelectedRange('v', document);
+
+    // if (range == null) {
+      // return Promise.resolve(false);
+    // }
+
+    // return this.checkDocument(Code.Uri.parse(document.uri), document.filetype,
+        // document.content, range);
+    // #endif
   }
 
   private async checkCurrentDocument(): Promise<boolean> {
@@ -167,6 +190,7 @@ export default class CommandHandler {
       return Promise.resolve(false);
     }
 
+    // #if TARGET == 'vscode'
     const textEditor: Code.TextEditor | undefined = Code.window.activeTextEditor;
 
     if (textEditor == null) {
@@ -176,6 +200,12 @@ export default class CommandHandler {
 
     return this.checkDocument(textEditor.document.uri, textEditor.document.languageId,
         textEditor.document.getText());
+    // #elseif TARGET == 'coc.nvim'
+    // const document: Code.Document = await Code.workspace.document;
+
+    // return this.checkDocument(Code.Uri.parse(document.uri), document.filetype,
+        // document.content);
+    // #endif
   }
 
   private async checkAllDocumentsInWorkspace(): Promise<boolean> {
@@ -186,7 +216,9 @@ export default class CommandHandler {
 
     const progressOptions: Code.ProgressOptions = {
           title: 'LTeX',
+          // #if TARGET == 'vscode'
           location: Code.ProgressLocation.Notification,
+          // #endif
           cancellable: true,
         };
 
@@ -203,8 +235,8 @@ export default class CommandHandler {
       if (fileExtensions.length == 0) return Promise.resolve(true);
       const fileExtensionWildcard: string = fileExtensions.join(',');
 
-      const uris: Code.Uri[] = await Code.workspace.findFiles(
-          `**/*.{${fileExtensionWildcard}}`, undefined, undefined, token);
+      const uris: Code.Uri[] =
+          await CommandHandler.findFiles(`**/*.{${fileExtensionWildcard}}`, token);
       uris.sort((lhs: Code.Uri, rhs: Code.Uri) => lhs.fsPath.localeCompare(rhs.fsPath));
       codeProgress.finishTask();
 
@@ -230,6 +262,23 @@ export default class CommandHandler {
         return Promise.resolve(false);
       }
     });
+  }
+
+  private static async findFiles(
+        globPattern: string, _token: Code.CancellationToken): Promise<Code.Uri[]> {
+    // #if TARGET == 'vscode'
+    return await Code.workspace.findFiles(globPattern, undefined, undefined, _token);
+    // #elseif TARGET == 'coc.nvim'
+    // const filePaths: Code.Uri[] = [];
+
+    // for (const workspaceFolder of Code.workspace.workspaceFolders) {
+      // const workspaceFolderPath: string = Code.Uri.parse(workspaceFolder.uri).fsPath;
+      // const curFilePaths: string[] = Glob.glob.sync(globPattern, {cwd: workspaceFolderPath});
+      // filePaths.concat(curFilePaths.map((filePath: string) => Code.Uri.file(filePath)));
+    // }
+
+    // return filePaths;
+    // #endif
   }
 
   public static getDefaultCodeLanguageIds(): string[] {
@@ -440,20 +489,25 @@ export default class CommandHandler {
     return Array.from(enabledFileExtensions).sort();
   }
 
-  private clearDiagnosticsInCurrentDocument(): boolean {
+  private async clearDiagnosticsInCurrentDocument(): Promise<boolean> {
     if (this._languageClient == null) {
       Code.window.showErrorMessage(i18n('ltexNotInitialized'));
-      return false;
+      return Promise.resolve(false);
     }
 
     const diagnosticCollection: Code.DiagnosticCollection | undefined =
         this._languageClient.diagnostics;
-    if (diagnosticCollection == null) return true;
+    if (diagnosticCollection == null) return Promise.resolve(true);
 
+    // #if TARGET == 'vscode'
     const textEditor: Code.TextEditor | undefined = Code.window.activeTextEditor;
     if (textEditor != null) diagnosticCollection.set(textEditor.document.uri, undefined);
+    // #elseif TARGET == 'coc.nvim'
+    // const document: Code.Document = await Code.workspace.document;
+    // diagnosticCollection.set(document.uri, null);
+    // #endif
 
-    return true;
+    return Promise.resolve(true);
   }
 
   private clearAllDiagnostics(): boolean {
@@ -477,7 +531,11 @@ export default class CommandHandler {
 
   private async resetAndRestart(): Promise<void> {
     for (const disposable of this._context.subscriptions) {
+      // #if TARGET == 'vscode'
       await disposable.dispose();
+      // #elseif TARGET == 'coc.nvim'
+      // disposable.dispose();
+      // #endif
     }
 
     await Extension.activate(this._context);
@@ -488,7 +546,11 @@ export default class CommandHandler {
     await Code.window.showInformationMessage(i18n('thanksForRequestingFeature'),
           i18n('createIssue')).then(async (selectedItem: string | undefined) => {
       if (selectedItem == i18n('createIssue')) {
+        // #if TARGET == 'vscode'
         Code.env.openExternal(Code.Uri.parse(CommandHandler._featureRequestUrl));
+        // #elseif TARGET == 'coc.nvim'
+        // Code.workspace.openResource(CommandHandler._featureRequestUrl);
+        // #endif
       }
     });
 
@@ -496,6 +558,7 @@ export default class CommandHandler {
   }
 
   private async openMarkdownExample(): Promise<void> {
+    // #if TARGET == 'vscode'
     await Code.workspace.openTextDocument({language: 'markdown',
         content: `# Markdown Example
 
@@ -503,10 +566,12 @@ This is a sentence *without any errors.*
 This is a sentence *with a speling error in it.*
 Finally, this is a sentence *with an grammar error in it.*
 `});
+    // #endif
     return Promise.resolve();
   }
 
   private async openLatexExample(): Promise<void> {
+    // #if TARGET == 'vscode'
     await Code.workspace.openTextDocument({language: 'latex',
         content: `\\section{\\LaTeX{} Example}
 
@@ -514,6 +579,7 @@ This is a sentence \\emph{without any errors.}
 This is a sentence \\emph{with a speling error.}
 Finally, this is a sentence \\emph{with an grammar error.}
 `});
+    // #endif
     return Promise.resolve();
   }
 
@@ -536,7 +602,11 @@ Finally, this is a sentence \\emph{with an grammar error.}
   private addToLanguageSpecificSetting(uri: Code.Uri, settingName: string,
         entries: LanguageSpecificSettingValue): void {
     const resourceConfig: Code.WorkspaceConfiguration =
+        // #if TARGET == 'vscode'
         Code.workspace.getConfiguration('ltex.configurationTarget', uri);
+        // #elseif TARGET == 'coc.nvim'
+        // Code.workspace.getConfiguration('ltex.configurationTarget', uri.toString());
+        // #endif
     const scopeString: string | undefined = resourceConfig.get(settingName);
     let scopes: Code.ConfigurationTarget[];
 
@@ -587,7 +657,11 @@ Finally, this is a sentence \\emph{with an grammar error.}
   private async addToLanguageSpecificSettingInternalSetting(uri: Code.Uri, settingName: string,
         scopes: Code.ConfigurationTarget[], entries: LanguageSpecificSettingValue): Promise<void> {
     const resourceConfig: Code.WorkspaceConfiguration =
+        // #if TARGET == 'vscode'
         Code.workspace.getConfiguration('ltex', uri);
+        // #elseif TARGET == 'coc.nvim'
+        // Code.workspace.getConfiguration('ltex', uri.toString());
+        // #endif
     const settingValue: {[language: string]: string[]} = resourceConfig.get(settingName, {});
 
     for (const language in entries) {
@@ -601,7 +675,12 @@ Finally, this is a sentence \\emph{with an grammar error.}
 
     for (let i: number = 0; i < scopes.length; i++) {
       try {
+        // #if TARGET == 'vscode'
         await resourceConfig.update(settingName, settingValue, scopes[i]);
+        // #elseif TARGET == 'coc.nvim'
+        // resourceConfig.update(settingName, settingValue,
+            // (scopes[i] == Code.ConfigurationTarget.Global));
+        // #endif
         return;
       } catch (e: unknown) {
         if (i == scopes.length - 1) Logger.error(i18n('couldNotSetConfiguration', settingName), e);
