@@ -47,7 +47,7 @@ jobs:
       - name: "Update Version of LTeX LS"
         env:
           LTEX_GITHUB_OAUTH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        run: "python tools/updateLtexLsVersionAndHashDigest.py --tag nightly"
+        run: "python tools/updateLtexLsVersionAndHashDigests.py --tag nightly"
 
       - name: "Build Package with vsce"
         run: "vsce package"
