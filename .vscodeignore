@@ -16,6 +16,7 @@ tsconfig.json
 img/
 node_modules/
 out/
+schemas/
 src/
 test/
 tmp-*/
