@@ -100,7 +100,7 @@ jobs:
       - name: "Validate JSON files"
         run: "python tools/validateJsonFiles.py"
 
-  analyze_codeql:
+  analyzeCodeQl:
     name: "CI - CodeQL Job"
     runs-on: "ubuntu-20.04"
 
@@ -125,7 +125,7 @@ jobs:
     needs:
       - "build"
       - "validate"
-      - "analyze_codeql"
+      - "analyzeCodeQl"
     runs-on: "ubuntu-20.04"
 
     steps:
