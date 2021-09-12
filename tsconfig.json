@@ -8,12 +8,9 @@
     "moduleResolution": "node",
     "outDir": "out",
     "resolveJsonModule": true,
+    "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
     "target": "es6"
-  },
-  "exclude": [
-    "node_modules",
-    "server"
-  ]
+  }
 }
