@@ -68,7 +68,6 @@
     "onLanguage:rsweave",
     "onNotebook:*"
   ],
-  "main": "./dist/extension",
   "contributes": {
     "walkthroughs": [
       {
@@ -2625,6 +2624,7 @@
       }
     ]
   },
+  "main": "./dist/extension.js",
   "scripts": {
     "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production && python tools/convertChangelog.py --xml-file changelog.xml > CHANGELOG.md",
     "webpack": "webpack --config .webpack.config.js --mode development",
