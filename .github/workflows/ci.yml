@@ -36,7 +36,7 @@ jobs:
       - name: "Set up Node.js"
         uses: "actions/setup-node@v1"
         with:
-          node-version: "12.14.1"
+          node-version: "16.11.0"
 
       - name: "Install Node.js Dependencies"
         run: "npm install && npm install -g vsce@1.100.0"
@@ -135,7 +135,7 @@ jobs:
       - name: "Set up Node.js"
         uses: "actions/setup-node@v1"
         with:
-          node-version: "12.14.1"
+          node-version: "16.11.0"
 
       - name: "Install Node.js Dependencies"
         run: "npm install && npm install -g vsce@1.100.0 ovsx@0.2.1"

@@ -22,13 +22,9 @@ module.exports = {
   },
   "plugins": [
     "@typescript-eslint",
-    "deprecation",
     "only-warn",
   ],
   "rules": {
-    "deprecation/deprecation": [
-      "warn",
-    ],
     "@typescript-eslint/explicit-module-boundary-types": [
       "off",
     ],
@@ -45,10 +41,10 @@ module.exports = {
       "off",
     ],
     "@typescript-eslint/no-unused-vars": [
-      "off",
-    ],
-    "@typescript-eslint/no-unused-vars-experimental": [
       "warn",
+      {
+        "argsIgnorePattern": "^_",
+      },
     ],
     "@typescript-eslint/typedef": [
       "warn",
