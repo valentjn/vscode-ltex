@@ -7,18 +7,19 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import os
+import pathlib
 import re
 import sys
 from typing import Any
 
 import yaml
 
-sys.path.append(os.path.dirname(__file__))
+sys.path.append(str(pathlib.Path(__file__).parent))
 import common
 
 
 
-pagesDirPath = os.path.abspath(os.path.join(common.repoDirPath, "..", "vscode-ltex-gh-pages"))
+pagesDirPath = pathlib.Path("/mnt/d/repos/vscode-ltex-gh-pages")
 
 
 
@@ -73,7 +74,7 @@ def processTitle(title: str) -> str:
 
 def updateReadme() -> None:
   serverUrl = "https://valentjn.github.io/vscode-ltex"
-  sidebarYamlPath = os.path.join(pagesDirPath, "_data", "sidebars", "sidebar.yml")
+  sidebarYamlPath = pagesDirPath.joinpath("_data", "sidebars", "sidebar.yml")
   with open(sidebarYamlPath, "r") as f: sidebarYaml = yaml.load(f, Loader=yaml.SafeLoader)
 
   structure = []
@@ -84,7 +85,7 @@ def updateReadme() -> None:
     for entry in folder["folderitems"]:
       if "url" in entry:
         url = serverUrl + entry["url"]
-        markdownPath = "{}{}.md".format(os.path.join(pagesDirPath, "pages"),
+        markdownPath = "{}{}.md".format(pagesDirPath.joinpath("pages"),
             os.path.splitext(entry["url"])[0])
         grandChildren = getMarkdownStructure(url, markdownPath)
       else:
@@ -99,7 +100,7 @@ def updateReadme() -> None:
 
   markdown = convertToMarkdown(structure)
 
-  readmePath = os.path.join(common.repoDirPath, "README.md")
+  readmePath = common.repoDirPath.joinpath("README.md")
   with open(readmePath, "r") as f: readme = f.read()
 
   readme = re.sub(r"## Information & Documentation\n\n.*?^( *[^\-\*\n ])",
