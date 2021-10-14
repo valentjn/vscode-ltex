@@ -366,38 +366,25 @@ export default class DependencyManager {
       return this.showOfflineInstallationInstructions(i18n('couldNotInstallLtexLs'));
     }
 
-    try {
-      Logger.log('');
-      this._javaPath = DependencyManager.normalizePath(workspaceConfig.get('java.path'));
+    Logger.log('');
+    Logger.log(i18n('usingLtexLsFrom', this._ltexLsPath));
+    this._javaPath = DependencyManager.normalizePath(workspaceConfig.get('java.path'));
 
-      if (DependencyManager.isValidPath(this._javaPath)) {
-        Logger.log(i18n('ltexJavaPathSetTo', this._javaPath));
-      } else {
-        Logger.log(i18n('ltexJavaPathNotSet'));
-      }
-
-      Logger.log(i18n('usingLtexLsFrom', this._ltexLsPath));
-
-      if (DependencyManager.isValidPath(this._javaPath)) {
-        Logger.log(i18n('usingJavaFrom', this._javaPath));
-      } else {
-        Logger.log(i18n('usingJavaBundledWithLtexLs'));
-      }
-
-      if (await this.test()) {
-        Logger.log('');
-        return true;
-      } else {
-        Logger.error(i18n('downloadExtractionRunOfJavaFailed'));
-      }
-    } catch (e: unknown) {
-      Logger.error(i18n('downloadExtractionRunOfJavaFailed', e));
+    if (DependencyManager.isValidPath(this._javaPath)) {
+      Logger.log(i18n('usingJavaFrom', this._javaPath));
+    } else {
+      Logger.log(i18n('usingJavaBundledWithLtexLs'));
     }
 
-    Logger.log(i18n('youMightWantToTryOfflineInstallationSee',
-        DependencyManager._offlineInstructionsUrl));
-    Logger.showClientOutputChannel();
-    return await this.showOfflineInstallationInstructions(i18n('couldNotDownloadExtractRunJava'));
+    if (await this.test()) {
+      Logger.log('');
+      return true;
+    } else {
+      Logger.log(i18n('youMightWantToTryOfflineInstallationSee',
+          DependencyManager._offlineInstructionsUrl));
+      Logger.showClientOutputChannel();
+      return await this.showOfflineInstallationInstructions(i18n('couldNotRunLtexLs'));
+    }
   }
 
   private async showOfflineInstallationInstructions(message: string): Promise<boolean> {
@@ -438,8 +425,16 @@ export default class DependencyManager {
 
     Logger.log(i18n('testingLtexLs'));
     Logger.logExecutable(executable);
-    const childProcess: ChildProcess.SpawnSyncReturns<string> = ChildProcess.spawnSync(
-        executable.command, executable.args, executableOptions);
+
+    let childProcess: ChildProcess.SpawnSyncReturns<string> | null = null;
+
+    try {
+      childProcess = ChildProcess.spawnSync(executable.command, executable.args, executableOptions);
+    } catch (e: unknown) {
+      Logger.error(i18n('testFailed'), e);
+      return Promise.resolve(false);
+    }
+
     let success: boolean = false;
     let ltexLsVersion: string = '';
     let javaVersion: string = '';
@@ -475,7 +470,7 @@ export default class DependencyManager {
       Logger.log(i18n('testSuccessful'));
       this._ltexLsVersion = ltexLsVersion;
       this._javaVersion = javaVersion;
-      return true;
+      return Promise.resolve(true);
     } else {
       Logger.error(i18n('testFailed'), childProcess.error);
 
@@ -491,7 +486,7 @@ export default class DependencyManager {
       Logger.log(childProcess.stdout);
       Logger.log(i18n('stderrOfLtexLs'));
       Logger.log(childProcess.stderr);
-      return false;
+      return Promise.resolve(false);
     }
   }
 
