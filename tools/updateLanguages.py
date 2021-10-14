@@ -37,11 +37,7 @@ def fetchLanguages(toolsDirPath: pathlib.Path,
   process = run(["java", "-cp", classPath, "LanguageToolLanguageLister"])
   stdout = process.stdout.decode()
   languages = sorted([dict(zip(("languageShortCode", "languageName"), line.split(";")))
-        for line in stdout.splitlines()]
-      + [{
-        "languageShortCode" : "auto",
-        "languageName" : "Automatic language detection (not recommended)",
-      }], key=lambda x: x["languageShortCode"])
+      for line in stdout.splitlines()], key=lambda x: x["languageShortCode"])
   ltLanguageShortCodes = [x["languageShortCode"] for x in languages]
   ltLanguageNames = [x["languageName"] for x in languages]
   return ltLanguageShortCodes, ltLanguageNames
@@ -56,9 +52,10 @@ def updatePackageJson(ltLanguageShortCodes: Sequence[str]) -> None:
   for settingName in ["ltex.language", "ltex.additionalRules.motherTongue"]:
     curLtLanguageShortCodes = list(ltLanguageShortCodes)
 
-    if settingName == "ltex.additionalRules.motherTongue":
+    if settingName == "ltex.language":
+      curLtLanguageShortCodes.insert(0, "auto")
+    elif settingName == "ltex.additionalRules.motherTongue":
       curLtLanguageShortCodes.insert(0, "")
-      curLtLanguageShortCodes.remove("auto")
 
     settings[settingName]["enum"] = curLtLanguageShortCodes
     settings[settingName]["markdownEnumDescriptions"] = [
@@ -105,8 +102,13 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
   for key, value in oldPackageNlsJson.items():
     if key == "ltex.i18n.configuration.ltex.language.fullMarkdownDescription":
       newPackageNlsJson[key] = value
+      curLtLanguageShortCodes = ["auto"] + ltLanguageShortCodes
+      curLtLanguageNames = [{
+            "en" : "Automatic language detection (not recommended)",
+            "de" : "Automatische Spracherkennung (nicht empfohlen)",
+          }[uiLanguage]] + ltLanguageNames
 
-      for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
+      for ltLanguageShortCode, ltLanguageName in zip(curLtLanguageShortCodes, curLtLanguageNames):
         prefix = f"ltex.i18n.configuration.ltex.language.{ltLanguageShortCode}"
         newPackageNlsJson[f"{prefix}.markdownEnumDescription"] = ltLanguageName
         newPackageNlsJson[f"{prefix}.enumDescription"] = ltLanguageName
@@ -201,7 +203,6 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
         newPackageNlsJson[f"{prefix}.enumDescription"] = "No mother tongue"
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
-        if ltLanguageShortCode == "auto": continue
         prefix = f"ltex.i18n.configuration.ltex.additionalRules.motherTongue.{ltLanguageShortCode}"
         newPackageNlsJson[f"{prefix}.markdownEnumDescription"] = ltLanguageName
         newPackageNlsJson[f"{prefix}.enumDescription"] = ltLanguageName
