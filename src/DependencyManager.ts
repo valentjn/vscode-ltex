@@ -41,16 +41,16 @@ export default class DependencyManager {
       + 'vscode-ltex/docs/installation-and-usage.html#offline-installation';
 
   private static readonly _toBeDownloadedLtexLsTag: string =
-      '13.0.0';
+      '14.0.0';
   private static readonly _toBeDownloadedLtexLsVersion: string =
-      '13.0.0';
+      '14.0.0';
   private static readonly _toBeDownloadedLtexLsHashDigests: {[fileName: string]: string} = {
-    'ltex-ls-13.0.0-linux-x64.tar.gz':
-      '215f7130226e6c83f2143f70ef971aef3fdc84e687fefacde96bb86c75083e38',
-    'ltex-ls-13.0.0-mac-x64.tar.gz':
-      '58b4d4d9d9b6383619908c26ac47770245b7d689243f3ff144afb58eeebcdd13',
-    'ltex-ls-13.0.0-windows-x64.zip':
-      '7f368bc660b17580045ccfe1bad9f549a14ed822f52202d375b11d5678ad6ef7',
+    'ltex-ls-14.0.0-linux-x64.tar.gz':
+      '8e23eda7be94aa0a43cf74d6491e9bdc5af9b8da9d547c7f74bbc18d27016cab',
+    'ltex-ls-14.0.0-mac-x64.tar.gz':
+      '21bf39614d0c817970b07b5637f985664354dbedca31d489d36d4a5248cf1217',
+    'ltex-ls-14.0.0-windows-x64.zip':
+      '007744460f24505b03b3d9b3477eade45df27d9b0874590f74ecf520813f8f1d',
   };
 
   public constructor(context: Code.ExtensionContext) {

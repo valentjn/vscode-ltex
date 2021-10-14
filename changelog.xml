@@ -12,7 +12,7 @@
     <author>Julian Valentin, LTeX Development Community</author>
   </properties>
   <body>
-    <release version="12.0.0" date="upcoming">
+    <release version="12.0.0" description="The Premium Emanation" date="2021-10-14">
       <action type="update">
         Bundle Java with LTeX LS; Java is not downloaded separately anymore and bundled Java is used if [`ltex.java.path`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavapath) is not set
       </action>
