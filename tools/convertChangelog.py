@@ -63,6 +63,11 @@ def convertChangelogFromXmlToMarkdown(xmlFilePath: pathlib.Path,
     title = document.findtext("./{http://maven.apache.org/changes/1.0.0}properties"
         "/{http://maven.apache.org/changes/1.0.0}title")
     markdown += f"# {title}\n"
+    markdown += """
+## Upcoming Fundamental Changes
+
+- New versions of LT<sub>E</sub>X released on or after January 14, 2022, will require VS Code 1.61.0 or later
+"""
   else:
     markdown = ""
 
