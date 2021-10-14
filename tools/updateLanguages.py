@@ -103,7 +103,7 @@ def updatePackageNlsJson(ltLanguageShortCodes: Sequence[str], ltLanguageNames: S
   newPackageNlsJson = {}
 
   for key, value in oldPackageNlsJson.items():
-    if key == "ltex.i18n.configuration.ltex.language.markdownDescription":
+    if key == "ltex.i18n.configuration.ltex.language.fullMarkdownDescription":
       newPackageNlsJson[key] = value
 
       for ltLanguageShortCode, ltLanguageName in zip(ltLanguageShortCodes, ltLanguageNames):
