@@ -13,5 +13,6 @@
 /tmp-*/
 
 /.vscode/ltex.*.txt
+/.vscode/settings.json
 
 !/lib/.keep
