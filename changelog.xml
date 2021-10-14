@@ -19,14 +19,17 @@
       <action type="remove">
         Remove setting [`ltex.java.forceTrySystemWide`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexjavaforcetrysystemwide)
       </action>
-      <action type="add" issue="ltex-ls#103">
-        Add support for coc.nvim (Vim/Neovim)
+      <action type="update">
+        Update LanguageTool to 5.5 (see [LT 5.5 release notes](https://github.com/languagetool-org/languagetool/blob/v5.5/languagetool-standalone/CHANGES.md#55-2021-10-02))
       </action>
       <action type="add" issue="ltex-ls#103">
         Add support for automatic language detection via language short code `auto`; language variants like `en-US` are not detected, only generic languages like `en`; this will result in spelling errors not being reported
       </action>
       <action type="add">
         Provide ID of LanguageTool rule via diagnostics code, not as part of diagnostics message
+      </action>
+      <action type="add">
+        Link diagnostics to LanguageTool website with more information
       </action>
       <action type="add" issue="#391">
         Add support for the `main` option of the babel package (LaTeX)
@@ -47,7 +50,16 @@
         Fix LanguageTool reinitialized when running the `Add '...' to dictionary` quick fix
       </action>
       <action type="fix">
+        Fix wrong parsing of inline math formulas in Markdown when using dollar signs as delimiters and containing only one character (e.g., `$a$`)
+      </action>
+      <action type="fix">
         Fix used i18n keys removed in LTeX LS
+      </action>
+      <action type="fix">
+        Fix fallback from German to English i18n in LTeX LS
+      </action>
+      <action type="add" issue="ltex-ls#103">
+        Add support for coc.nvim (Vim/Neovim)
       </action>
       <action type="update">
         Update bundled Java runtime to 11.0.12+7 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8269291?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.12))
@@ -56,7 +68,7 @@
         Remove transition code for upgrading from LTeX 4.x
       </action>
       <action type="update">
-        Update LTeX LS to 13.1.0
+        Update LTeX LS to 14.0.0
       </action>
     </release>
     <release version="11.0.0" description="The Kotlin Conundrum" date="2021-08-11">
