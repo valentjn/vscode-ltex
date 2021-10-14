@@ -43,34 +43,6 @@ async function languageClientIsReady(languageClient: CodeLanguageClient.Language
       new WorkspaceConfigurationRequestHandler(externalFileManager);
   languageClient.onRequest('ltex/workspaceSpecificConfiguration',
       workspaceConfigurationRequestHandler.handle.bind(workspaceConfigurationRequestHandler));
-
-  const numberOfLanguageSupportExtensions: number = Code.extensions.all.filter(
-      (x: Code.Extension<any>) => x.id.startsWith('valentjn.vscode-ltex-')).length;
-
-  if (numberOfLanguageSupportExtensions > 0) {
-    let message: string = `${i18n('thanksForUpgradingFromLtex4x')} `;
-
-    if (numberOfLanguageSupportExtensions > 1) {
-      message += `${i18n('removeLanguageSupportExtensions')} `;
-    } else {
-      message += `${i18n('removeLanguageSupportExtension')} `;
-    }
-
-    message += i18n('reviewSummaryOfImportantMajorChanges');
-
-    Code.window.showInformationMessage(message,
-          i18n('moreInfoAboutLtex5x')).then((selectedItem: string | undefined) => {
-      if (selectedItem != null) {
-        // #if TARGET == 'vscode'
-        Code.env.openExternal(Code.Uri.parse(
-            'https://valentjn.github.io/vscode-ltex/docs/transitioning-from-ltex-4x.html'));
-        // #elseif TARGET == 'coc.nvim'
-        // Code.workspace.openResource(
-            // 'https://valentjn.github.io/vscode-ltex/docs/transitioning-from-ltex-4x.html');
-        // #endif
-      }
-    });
-  }
 }
 
 async function startLanguageClient(context: Code.ExtensionContext,

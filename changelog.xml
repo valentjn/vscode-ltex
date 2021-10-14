@@ -52,6 +52,9 @@
       <action type="update">
         Update bundled Java runtime to 11.0.12+7 (see [list of OpenJDK fixes](https://bugs.openjdk.java.net/browse/JDK-8269291?jql=project%20%3D%20JDK%20AND%20fixVersion%20%3D%2011.0.12))
       </action>
+      <action type="remove">
+        Remove transition code for upgrading from LTeX 4.x
+      </action>
       <action type="update">
         Update LTeX LS to 13.1.0
       </action>
