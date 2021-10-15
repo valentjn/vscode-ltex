@@ -33,21 +33,21 @@ jobs:
           python-version: "3.9.0"
 
       - name: "Install Python Dependencies"
-        run: "python -m pip install --upgrade pip && pip install semver==2.13.0"
+        run: "python -u -m pip install --upgrade pip && pip install semver==2.13.0"
 
       - name: "Set VSCODE_LTEX_VERSION"
-        run: "echo \"VSCODE_LTEX_VERSION=$(python -c \"import datetime; import json; version = json.load(open('package.json', 'r'))['version']; print('{}.nightly.{}'.format((version[:-8] if version.endswith('.develop') else version), datetime.datetime.today().strftime('%Y-%m-%d')), end='')\")\" >> $GITHUB_ENV"
+        run: "echo \"VSCODE_LTEX_VERSION=$(python -u -c \"import datetime; import json; version = json.load(open('package.json', 'r'))['version']; print('{}.nightly.{}'.format((version[:-8] if version.endswith('.develop') else version), datetime.datetime.today().strftime('%Y-%m-%d')), end='')\")\" >> $GITHUB_ENV"
 
       - name: "Check VSCODE_LTEX_VERSION"
         run: "if [[ -z \"$VSCODE_LTEX_VERSION\" ]]; then echo 'Error: VSCODE_LTEX_VERSION not set!'; (exit 1); fi; echo \"VSCODE_LTEX_VERSION set to '$VSCODE_LTEX_VERSION'\""
 
       - name: "Bump Version"
-        run: "python -c \"import json; file = open('package.json', 'r+'); json_ = json.loads(file.read()); json_['version'] = '${{ env.VSCODE_LTEX_VERSION }}'; file.seek(0); file.truncate(); file.write(json.dumps(json_, indent=2) + '\\n')\""
+        run: "python -u -c \"import json; file = open('package.json', 'r+'); json_ = json.loads(file.read()); json_['version'] = '${{ env.VSCODE_LTEX_VERSION }}'; file.seek(0); file.truncate(); file.write(json.dumps(json_, indent=2) + '\\n')\""
 
       - name: "Update Version of LTeX LS"
         env:
           LTEX_GITHUB_OAUTH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        run: "python tools/updateLtexLsVersionAndHashDigests.py --tag nightly"
+        run: "python -u tools/updateLtexLsVersionAndHashDigests.py --tag nightly"
 
       - name: "Build Package with vsce"
         run: "vsce package"
@@ -55,7 +55,7 @@ jobs:
       - name: "Build Offline Packages"
         env:
           LTEX_GITHUB_OAUTH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        run: "python tools/createOfflinePackages.py"
+        run: "python -u tools/createOfflinePackages.py"
 
       - name: "Delete Old Nightly Releases"
         uses: "dev-drprasad/delete-older-releases@v0.2.0"

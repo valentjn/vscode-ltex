@@ -12,11 +12,10 @@ import pathlib
 import platform
 import re
 import shlex
-import shutil
 import subprocess
 import sys
 import tarfile
-from typing import Callable, Optional
+from typing import Optional
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -30,10 +29,6 @@ import common
 
 
 libDirPath = common.repoDirPath.joinpath("lib")
-
-# to get proper logs with CI services
-oldPrint = print
-print: Callable[..., None] = (lambda *args, **kwargs: oldPrint(*args, **kwargs, flush=True))
 
 
 

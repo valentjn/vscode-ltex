@@ -2597,11 +2597,11 @@
     "compile": "tsc",
     "lint": "eslint --max-warnings 0 -c .eslintrc.js {src,test}/**/*.ts",
     "watch": "tsc -watch",
-    "pretest": "git clean -f -x lib/ && npm run vscode:prepublish && python tools/createOfflinePackages.py --current-system",
+    "pretest": "git clean -f -x lib/ && npm run vscode:prepublish && python -u tools/createOfflinePackages.py --current-system",
     "test": "mocha ./out/test/TestRunner.js",
     "webpack": "webpack --config .webpack.config.js --mode development",
     "webpack-dev": "webpack --config .webpack.config.js --mode development --watch",
-    "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production && python tools/convertChangelog.py --xml-file changelog.xml > CHANGELOG.md",
+    "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production && python -u tools/convertChangelog.py --xml-file changelog.xml > CHANGELOG.md",
     "coc.nvim:prepublish": "npm run vscode:prepublish"
   },
   "devDependencies": {
