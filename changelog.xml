@@ -12,7 +12,7 @@
     <author>Julian Valentin, LTeX Development Community</author>
   </properties>
   <body>
-    <release version="12.1.0" date="upcoming">
+    <release version="12.1.0" description="The coc.nvim Diffusion" date="2021-10-16">
       <action type="add">
         Publish coc.nvim version as coc-ltex to npm
       </action>
