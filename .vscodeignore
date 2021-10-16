@@ -4,6 +4,8 @@
 .gitmodules
 .markdownlint.json
 .mocharc.json
+.npmignore
+.vscodeignore
 .webpack.config.js
 changelog.xml
 tsconfig.json
