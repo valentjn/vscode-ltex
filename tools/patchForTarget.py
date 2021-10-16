@@ -147,8 +147,8 @@ def patchPackageJson(newTarget: str) -> str:
 
 
 
-def patchSourceFiles(sourceDirName: str, oldTarget: str, newTarget: str) -> None:
-  sourceDirPath = pathlib.Path(__file__).parent.parent.joinpath(sourceDirName)
+def patchSourceFiles(sourceDirPath: pathlib.Path, oldTarget: str, newTarget: str) -> None:
+  assert sourceDirPath.is_dir(), f"'{sourceDirPath}' is not a directory"
 
   for rootDirPathStr, dirPathStrs, filePathStrs in os.walk(sourceDirPath):
     dirPathStrs.sort()
@@ -161,22 +161,38 @@ def patchSourceFiles(sourceDirName: str, oldTarget: str, newTarget: str) -> None
 
 def patchSourceFile(sourceFilePath: pathlib.Path, oldTarget: str, newTarget: str) -> None:
   print(f"Patching '{sourceFilePath}'...")
+
   with open(sourceFilePath, "r") as f: sourceLines = f.read().split("\n")
-  i = 0
+
+  if sourceFilePath.suffix == ".md":
+    lineCommentStart = r"<!-- "
+    lineCommentEnd = r" -->"
+  elif sourceFilePath.suffix == ".ts":
+    lineCommentStart = r"// "
+    lineCommentEnd = r""
+  else:
+    raise RuntimeError(f"Unknown source file suffix '{sourceFilePath.suffix}'")
+
+  ifElseIfLineRegex = (r"^[ \t]*" + re.escape(lineCommentStart)
+      + r"#(?:else)?if TARGET == '(.*?)'" + re.escape(lineCommentEnd) + r"$")
+  endIfLineRegex = (r"^[ \t]*" + re.escape(lineCommentStart) + r"#endif"
+      + re.escape(lineCommentEnd) + r"$")
+  commentLineRegex = ("^([ \t]*)(?:" + re.escape(lineCommentStart) + r"(.*)"
+      + re.escape(lineCommentEnd) + r"|" + re.escape(lineCommentStart.rstrip()) + ")$")
+
   blockTarget = None
   newSourceLines = []
 
   for sourceLine in sourceLines:
     newSourceLine = sourceLine
 
-    if ((regexMatch := re.match(r"^[ \t]*// #(?:else)?if TARGET == '(.*?)'$", sourceLine))
-          is not None):
+    if ((regexMatch := re.match(ifElseIfLineRegex, sourceLine)) is not None):
       blockTarget = regexMatch.group(1)
-    elif re.match(r"^[ \t]*// #endif$", sourceLine) is not None:
+    elif re.match(endIfLineRegex, sourceLine) is not None:
       blockTarget = None
     elif len(sourceLine) > 0:
       if oldTarget != blockTarget == newTarget:
-        regexMatch = re.match("^([ \t]*)//(?: (.*))?$", sourceLine)
+        regexMatch = re.match(commentLineRegex, sourceLine)
         assert regexMatch is not None
         commentedSourceLine = regexMatch.group(2)
         newSourceLine = (regexMatch.group(1) + commentedSourceLine
@@ -184,7 +200,8 @@ def patchSourceFile(sourceFilePath: pathlib.Path, oldTarget: str, newTarget: str
       elif oldTarget == blockTarget != newTarget:
         regexMatch = re.match("^([ \t]*)(.*)$", sourceLine)
         assert regexMatch is not None
-        newSourceLine = f"{regexMatch.group(1)}// {regexMatch.group(2)}"
+        newSourceLine = (regexMatch.group(1) + lineCommentStart + regexMatch.group(2)
+            + lineCommentEnd).rstrip()
 
     newSourceLines.append(newSourceLine)
 
@@ -194,8 +211,9 @@ def patchSourceFile(sourceFilePath: pathlib.Path, oldTarget: str, newTarget: str
 
 def patchForTarget(target: str) -> None:
   oldTarget = patchPackageJson(target)
-  patchSourceFiles("src", oldTarget, target)
-  patchSourceFiles("test", oldTarget, target)
+  patchSourceFile(common.repoDirPath.joinpath("README.md"), oldTarget, target)
+  patchSourceFiles(common.repoDirPath.joinpath("src"), oldTarget, target)
+  patchSourceFiles(common.repoDirPath.joinpath("test"), oldTarget, target)
 
 
 

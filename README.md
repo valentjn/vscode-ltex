@@ -6,7 +6,11 @@
    - file, You can obtain one at https://mozilla.org/MPL/2.0/.
    -->
 
+<!-- #if TARGET == 'vscode' -->
 # LT<sub>E</sub>X Extension for VS Code: Grammar/Spell Checker Using LanguageTool with Support for L<sup>A</sup>T<sub>E</sub>X, Markdown, and Others
+<!-- #elseif TARGET == 'coc.nvim' -->
+<!-- # LT<sub>E</sub>X Extension for coc.nvim: Grammar/Spell Checker Using LanguageTool with Support for L<sup>A</sup>T<sub>E</sub>X, Markdown, and Others -->
+<!-- #endif -->
 
 [![latest release](https://badgen.net/badge/-/release/585858?label=)![version number](https://badgen.net/vs-marketplace/v/valentjn.vscode-ltex?label=)![release date](https://badgen.net/github/last-commit/valentjn/vscode-ltex/release?label=)][website]&nbsp;
 [![installs](https://badgen.net/vs-marketplace/i/valentjn.vscode-ltex)][website]&nbsp;
@@ -31,7 +35,7 @@ The difference to regular spell checkers is that LT<sub>E</sub>X not only detect
 - `We look forward to welcome you.`
 - `Are human beings any different than animals?`
 
-A classic use case of LT<sub>E</sub>X is checking scientific L<sup>A</sup>T<sub>E</sub>X papers in VS Code, but why not check your next blog post, book chapter, or long e-mail before you send it to someone else?
+A classic use case of LT<sub>E</sub>X is checking scientific L<sup>A</sup>T<sub>E</sub>X papers, but why not check your next blog post, book chapter, or long e-mail before you send it to someone else?
 
 [Find more information and documentation about LT<sub>E</sub>X on the official website.][website]
 
@@ -55,10 +59,15 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
 
 ## Requirements
 
+<!-- #if TARGET == 'vscode' -->
 - 64-bit operating system
 - [VS Code 1.52.0 or newer](https://code.visualstudio.com/)
 - Optional:
   - If you want to check documents written in a markup language that VS Code does not support out-of-the-box (e.g., L<sup>A</sup>T<sub>E</sub>X), install an extension that provides support for that language (e.g., [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)) in addition to this extension.
+<!-- #elseif TARGET == 'coc.nvim' -->
+<!-- - 64-bit operating system -->
+<!-- - [Vim](https://www.vim.org/) or [Neovim](https://neovim.io/) with [coc.nvim 0.0.80 or newer](https://github.com/neoclide/coc.nvim) -->
+<!-- #endif -->
 
 ## How to Use
 
