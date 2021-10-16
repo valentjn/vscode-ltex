@@ -2636,6 +2636,7 @@
     "currentTarget": "vscode",
     "targetChanges": {
       "coc.nvim": {
+        "name": "coc-ltex",
         "engines": {
           "coc": "^0.0.80",
           "vscode": "-"

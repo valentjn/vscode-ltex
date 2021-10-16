@@ -61,7 +61,7 @@ export default class DependencyManager {
         Code.extensions.getExtension('valentjn.vscode-ltex');
         // #elseif TARGET == 'coc.nvim'
         // Code.extensions.all.find(
-          // (extension: Code.Extension<Code.ExtensionApi>) => extension.id == 'vscode-ltex');
+          // (extension: Code.Extension<Code.ExtensionApi>) => extension.id == 'coc-ltex');
         // #endif
     if (vscodeLtexExtension == null) throw new Error(i18n('couldNotGetVscodeLtexVersion'));
     this._vscodeLtexVersion = vscodeLtexExtension.packageJSON.version;

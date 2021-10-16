@@ -129,7 +129,7 @@ export default class BugReporter {
         Code.extensions.getExtension('valentjn.vscode-ltex');
     // #elseif TARGET == 'coc.nvim'
         // Code.extensions.all.find(
-            // (extension: Code.Extension<Code.ExtensionApi>) => extension.id == 'vscode-ltex');
+            // (extension: Code.Extension<Code.ExtensionApi>) => extension.id == 'coc-ltex');
     // #endif
 
     if (extension != null) {

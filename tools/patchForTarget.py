@@ -80,23 +80,32 @@ def patchPackageJson(newTarget: str) -> str:
       if target == newTarget: continue
       ltexAdditionalInformation["targetChanges"][target].setdefault(changeKey, {})
 
-    for key, value in changeValue.items():
+    if isinstance(changeValue, str):
       for target in allTargets:
         if target == newTarget: continue
-        targetChanges = ltexAdditionalInformation["targetChanges"][target][changeKey]
+        ltexAdditionalInformation["targetChanges"][target][changeKey] = packageJson[changeKey]
 
-        if key not in targetChanges:
-          if isinstance(packageJson[changeKey], list):
-            targetChanges[key] = ("+" if key in packageJson[changeKey] else "-")
-          else:
-            targetChanges[key] = packageJson[changeKey].get(key, "-")
+      packageJson[changeKey] = changeValue
+    elif isinstance(changeValue, dict):
+      for key, value in changeValue.items():
+        for target in allTargets:
+          if target == newTarget: continue
+          targetChanges = ltexAdditionalInformation["targetChanges"][target][changeKey]
 
-        if value == targetChanges[key]: deleteFromListOrDict(targetChanges, key)
+          if key not in targetChanges:
+            if isinstance(packageJson[changeKey], list):
+              targetChanges[key] = ("+" if key in packageJson[changeKey] else "-")
+            else:
+              targetChanges[key] = packageJson[changeKey].get(key, "-")
 
-      if value == "-":
-        deleteFromListOrDict(packageJson[changeKey], key)
-      else:
-        setInListOrDict(packageJson[changeKey], key, value)
+          if value == targetChanges[key]: deleteFromListOrDict(targetChanges, key)
+
+        if value == "-":
+          deleteFromListOrDict(packageJson[changeKey], key)
+        else:
+          setInListOrDict(packageJson[changeKey], key, value)
+    else:
+      raise RuntimeError(f"Unsupported value type '{type(changeValue)}'")
 
   movedDependencies = moveFromDictToDict(
       packageJson["dependencies"], packageJson["devDependencies"],
