@@ -2,25 +2,28 @@
 
 'use strict';
 
-const path = require('path');
+const Path = require('path');
 
 /**@type {import('webpack').Configuration}*/
 const config = {
   target: 'node',
   entry: './src/extension.ts',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: Path.resolve(__dirname, 'dist'),
     filename: 'extension.js',
     libraryTarget: 'commonjs2',
-    devtoolModuleFilenameTemplate: '../[resource-path]'
+    devtoolModuleFilenameTemplate: '../[resource-path]',
   },
   devtool: 'source-map',
   externals: {
     'coc.nvim': 'commonjs coc.nvim',
-    vscode: 'commonjs vscode'
+    vscode: 'commonjs vscode',
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: [
+      '.ts',
+      '.js',
+    ],
   },
   module: {
     rules: [
@@ -31,13 +34,13 @@ const config = {
           {
             loader: 'ts-loader',
             options: {
-              configFile: 'tsconfig.json'
-            }
-          }
-        ]
-      }
-    ]
-  }
+              configFile: 'tsconfig.json',
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 module.exports = config;
