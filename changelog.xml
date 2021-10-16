@@ -13,6 +13,12 @@
   </properties>
   <body>
     <release version="12.2.0" date="upcoming">
+      <action type="add" issue="#409">
+        Add completion support for English and German (begin typing a word and press `Ctrl+Space`)
+      </action>
+      <action type="fix" issue="#431">
+        Fix `Add '...' to dictionary` quick fix missing for Austrian and Swiss German
+      </action>
       <action type="update">
         Move documentation to &lt;https://valentjn.github.io/ltex&gt;
       </action>
