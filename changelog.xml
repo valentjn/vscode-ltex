@@ -13,6 +13,15 @@
   </properties>
   <body>
     <release version="12.2.0" date="upcoming">
+      <action type="update">
+        Rename `ltex.ltex-ls.languageToolHttpServerUri` &#x2192; [`ltex.languageToolHttpServerUri`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolhttpserveruri); the previous name is deprecated
+      </action>
+      <action type="update">
+        Rename `ltex.ltex-ls.languageToolOrgUsername` &#x2192; [`ltex.languageToolOrg.username`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolorgusername); the previous name is deprecated
+      </action>
+      <action type="update">
+        Rename `ltex.ltex-ls.languageToolOrgApiKey` &#x2192; [`ltex.languageToolOrg.apiKey`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolorgapikey); the previous name is deprecated
+      </action>
       <action type="add" issue="#409">
         Add completion support for English and German (begin typing a word and press `Ctrl+Space`)
       </action>

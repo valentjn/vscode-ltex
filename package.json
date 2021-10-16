@@ -2334,32 +2334,32 @@
           "default": "",
           "markdownDescription": "%ltex.i18n.configuration.ltex.additionalRules.word2VecModel.markdownDescription%"
         },
+        "ltex.languageToolHttpServerUri": {
+          "type": "string",
+          "scope": "window",
+          "default": "",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.languageToolHttpServerUri.markdownDescription%",
+          "examples": [
+            "http://localhost:8081/"
+          ]
+        },
+        "ltex.languageToolOrg.username": {
+          "type": "string",
+          "scope": "window",
+          "default": "",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.languageToolOrg.username.markdownDescription%"
+        },
+        "ltex.languageToolOrg.apiKey": {
+          "type": "string",
+          "scope": "window",
+          "default": "",
+          "markdownDescription": "%ltex.i18n.configuration.ltex.languageToolOrg.apiKey.markdownDescription%"
+        },
         "ltex.ltex-ls.path": {
           "type": "string",
           "scope": "window",
           "default": "",
           "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.path.markdownDescription%"
-        },
-        "ltex.ltex-ls.languageToolHttpServerUri": {
-          "type": "string",
-          "scope": "window",
-          "default": "",
-          "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.languageToolHttpServerUri.markdownDescription%",
-          "examples": [
-            "http://localhost:8081/"
-          ]
-        },
-        "ltex.ltex-ls.languageToolOrgUsername": {
-          "type": "string",
-          "scope": "window",
-          "default": "",
-          "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.languageToolOrgUsername.markdownDescription%"
-        },
-        "ltex.ltex-ls.languageToolOrgApiKey": {
-          "type": "string",
-          "scope": "window",
-          "default": "",
-          "markdownDescription": "%ltex.i18n.configuration.ltex.ltex-ls.languageToolOrgApiKey.markdownDescription%"
         },
         "ltex.ltex-ls.logLevel": {
           "type": "string",
@@ -2536,6 +2536,27 @@
             "%ltex.i18n.configuration.ltex.trace.server.verbose.enumDescription%"
           ],
           "markdownDescription": "%ltex.i18n.configuration.ltex.trace.server.markdownDescription%"
+        },
+        "ltex.ltex-ls.languageToolHttpServerUri": {
+          "type": "string",
+          "scope": "window",
+          "default": "",
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.languageToolHttpServerUri`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolhttpserveruri).",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.languageToolHttpServerUri', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolhttpserveruri."
+        },
+        "ltex.ltex-ls.languageToolOrgUsername": {
+          "type": "string",
+          "scope": "window",
+          "default": "",
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.languageToolOrg.username`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolorgusername).",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.languageToolOrg.username', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolorgusername."
+        },
+        "ltex.ltex-ls.languageToolOrgApiKey": {
+          "type": "string",
+          "scope": "window",
+          "default": "",
+          "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.languageToolOrg.apiKey`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolorgapikey).",
+          "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.languageToolOrg.apiKey', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolorgapikey."
         }
       }
     },

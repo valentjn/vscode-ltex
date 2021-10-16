@@ -100,7 +100,8 @@ def validatePackageJsonConfigurationWithCustomConstraints() -> None:
       jsonschema.validate(setting["default"], setting)
       for example in setting.get("examples", []): jsonschema.validate(example, setting)
 
-      assert "markdownDescription" in setting
+      assert ("markdownDescription" in setting) or (
+          ("markdownDeprecationMessage" in setting) and ("deprecationMessage" in setting))
       validateSetting(setting)
     except:
       print("")
