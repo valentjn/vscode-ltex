@@ -41,6 +41,15 @@ const config = {
       },
     ],
   },
+  optimization: {
+    minimizer: [
+      () => ({
+        terserOptions: {
+          extractComments: false,
+        },
+      }),
+    ],
+  },
 };
 
 module.exports = config;
