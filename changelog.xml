@@ -12,7 +12,7 @@
     <author>Julian Valentin, LTeX Development Community</author>
   </properties>
   <body>
-    <release version="12.2.0" date="upcoming">
+    <release version="12.2.0" description="The Completion Hypothesis" date="2021-10-19">
       <action type="update">
         Rename `ltex.ltex-ls.languageToolHttpServerUri` &#x2192; [`ltex.languageToolHttpServerUri`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolhttpserveruri); the previous name is deprecated
       </action>
@@ -30,6 +30,9 @@
       </action>
       <action type="update">
         Move documentation to &lt;https://valentjn.github.io/ltex&gt;
+      </action>
+      <action type="update">
+        Update LTeX LS to 14.1.0
       </action>
     </release>
     <release version="12.1.0" description="The coc.nvim Diffusion" date="2021-10-16">
