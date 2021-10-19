@@ -415,7 +415,7 @@ export default class DependencyManager {
     executable.args.push('--version');
     const executableOptions: ChildProcess.SpawnSyncOptionsWithStringEncoding = {
           encoding: 'utf-8',
-          timeout: 10000,
+          timeout: 15000,
         };
 
     if (executable.options != null) {
@@ -526,7 +526,7 @@ export default class DependencyManager {
   public static getDebugServerOptions(): CodeLanguageClient.ServerOptions | null {
     const executableOptions: ChildProcess.SpawnSyncOptionsWithStringEncoding = {
           encoding: 'utf-8',
-          timeout: 10000,
+          timeout: 15000,
         };
     const childProcess: ChildProcess.SpawnSyncReturns<string> = ((process.platform == 'win32')
         ? ChildProcess.spawnSync('wmic', ['process', 'list', 'FULL'], executableOptions)

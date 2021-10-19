@@ -12,4 +12,4 @@ Auf GitHub können Sie bei LT<sub>E</sub>X auf verschiedene Art und Weise mitmac
 - Sie können Fehler melden, um zu helfen, LT<sub>E</sub>X zu verbessern.
 - Sie können Funktionen vorschlagen, um LT<sub>E</sub>X leistungsfähiger zu machen.
 
-Wenn Sie Fehler melden, Funktionen vorschlagen oder anderweitig zu LT<sub>E</sub>X beitragen möchten, [lesen Sie zunächst die Dokumentation über Beiträge zu LT<sub>E</sub>X](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html).
+Wenn Sie Fehler melden, Funktionen vorschlagen oder anderweitig zu LT<sub>E</sub>X beitragen möchten, [lesen Sie zunächst die Dokumentation über Beiträge zu LT<sub>E</sub>X](https://valentjn.github.io/ltex/vscode-ltex/contributing.html).

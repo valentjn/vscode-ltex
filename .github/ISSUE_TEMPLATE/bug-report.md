@@ -1,12 +1,12 @@
 ---
 name: "Bug Report"
-about: "Something isn't working as expected? Create a bug report. See https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#how-to-report-bugs to learn how to report bugs."
+about: "Something isn't working as expected? Create a bug report. See https://valentjn.github.io/ltex/vscode-ltex/contributing.html#how-to-report-bugs to learn how to report bugs."
 title: ""
 labels: "1-bug 🐛, 2-unconfirmed"
 assignees: ""
 ---
 
-Note: It is highly recommended to follow the instructions at https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#how-to-report-bugs and use the `LTeX: Report bug in LTeX` command from within Visual Studio Code. Per the contribution guidelines, deleting parts of the template or not filling in vital information may result in the issue to be immediately closed as invalid.
+Note: It is highly recommended to follow the instructions at https://valentjn.github.io/ltex/vscode-ltex/contributing.html#how-to-report-bugs and use the `LTeX: Report bug in LTeX` command from within Visual Studio Code. Per the contribution guidelines, deleting parts of the template or not filling in vital information may result in the issue to be immediately closed as invalid.
 
 **Describe the bug**
 A clear and concise description of what the bug is.

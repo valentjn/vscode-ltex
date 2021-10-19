@@ -19,7 +19,7 @@ import common
 
 
 
-pagesDirPath = pathlib.Path("/mnt/d/repos/vscode-ltex-gh-pages")
+pagesDirPath = pathlib.Path("/mnt/d/repos/ltex")
 
 
 
@@ -73,7 +73,7 @@ def processTitle(title: str) -> str:
 
 
 def updateReadme() -> None:
-  serverUrl = "https://valentjn.github.io/vscode-ltex"
+  serverUrl = "https://valentjn.github.io/ltex"
   sidebarYamlPath = pagesDirPath.joinpath("_data", "sidebars", "sidebar.yml")
   with open(sidebarYamlPath, "r") as f: sidebarYaml = yaml.load(f, Loader=yaml.SafeLoader)
 

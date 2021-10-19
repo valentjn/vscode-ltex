@@ -6,6 +6,6 @@ Click on the *Open LTeX settings* button to open the settings of LT<sub>E</sub>X
 
 Some settings are:
 
-- [`ltex.language`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguage) sets the language in which the documents are checked. The default language is English.
-- [`ltex.latex.commands`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlatexcommands) allows ignoring custom L<sup>A</sup>T<sub>E</sub>X commands.
-- There are many more settings. [Check the extensive documentation for detailed descriptions.](https://valentjn.github.io/vscode-ltex/docs/settings.html)
+- [`ltex.language`](https://valentjn.github.io/ltex/settings.html#ltexlanguage) sets the language in which the documents are checked. The default language is English.
+- [`ltex.latex.commands`](https://valentjn.github.io/ltex/settings.html#ltexlatexcommands) allows ignoring custom L<sup>A</sup>T<sub>E</sub>X commands.
+- There are many more settings. [Check the extensive documentation for detailed descriptions.](https://valentjn.github.io/ltex/settings.html)

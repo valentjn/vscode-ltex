@@ -1,6 +1,6 @@
 ---
 name: "Feature Request"
-about: "Suggest a desirable, nice-to-have feature. See https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html#how-to-request-features to learn how to request features."
+about: "Suggest a desirable, nice-to-have feature. See https://valentjn.github.io/ltex/vscode-ltex/contributing.html#how-to-request-features to learn how to request features."
 title: ""
 labels: "1-feature-request ✨"
 assignees: ""

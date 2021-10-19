@@ -10,4 +10,4 @@ On GitHub, you get involved in LT<sub>E</sub>X in various ways:
 - You can report bugs to help make LT<sub>E</sub>X better.
 - You can request features to make LT<sub>E</sub>X more powerful.
 
-If you want to report bugs, request features, or otherwise contribute to LT<sub>E</sub>X, [check the documentation on contributing to LT<sub>E</sub>X first](https://valentjn.github.io/vscode-ltex/docs/contributing-code-issues.html).
+If you want to report bugs, request features, or otherwise contribute to LT<sub>E</sub>X, [check the documentation on contributing to LT<sub>E</sub>X first](https://valentjn.github.io/ltex/vscode-ltex/contributing.html).

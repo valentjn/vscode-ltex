@@ -5,5 +5,5 @@ contact_links:
     url: "https://github.com/valentjn/vscode-ltex/discussions?discussions_q=category%3AQ%26A"
     about: "Got a question about LTeX, not a bug report or feature request? Ask here for help!"
   - name: "Website/Documentation of LTeX"
-    url: "https://valentjn.github.io/vscode-ltex/"
+    url: "https://valentjn.github.io/ltex/"
     about: "Browse through the official documentation of LTeX."
