@@ -8,7 +8,7 @@
 // #if TARGET == 'vscode'
 import * as Code from 'vscode';
 // #elseif TARGET == 'coc.nvim'
-// import * as Clipboardy from 'clipboardy';
+// import clipboard from 'clipboardy';
 // import * as Code from 'coc.nvim';
 // #endif
 import * as Fs from 'fs';
@@ -189,7 +189,7 @@ export default class BugReporter {
         Code.env.clipboard.writeText(bugReport);
         Code.env.openExternal(Code.Uri.parse(url.toString()));
         // #elseif TARGET == 'coc.nvim'
-        // await Clipboardy.write(bugReport);
+        // await clipboard.write(bugReport);
         // Code.workspace.openResource(url.toString());
         // #endif
       }
