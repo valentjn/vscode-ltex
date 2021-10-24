@@ -2630,7 +2630,7 @@
     "@types/node": "16.11.4",
     "@types/rimraf": "3.0.2",
     "@types/semver": "7.3.8",
-    "@types/tar": "4.0.5",
+    "@types/tar": "6.1.0",
     "@types/vscode": "1.52.0",
     "@types/webpack": "5.28.0",
     "@typescript-eslint/eslint-plugin": "5.0.0",
