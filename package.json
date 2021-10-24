@@ -2633,7 +2633,7 @@
     "@types/tar": "4.0.5",
     "@types/vscode": "1.52.0",
     "@types/webpack": "5.28.0",
-    "@typescript-eslint/eslint-plugin": "5.0.0",
+    "@typescript-eslint/eslint-plugin": "5.1.0",
     "@typescript-eslint/parser": "5.0.0",
     "eslint": "8.0.1",
     "eslint-config-google": "0.14.0",
