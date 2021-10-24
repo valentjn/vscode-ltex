@@ -75,12 +75,21 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
 
 ## How to Use
 
+<!-- #if TARGET == 'vscode' -->
 1. Install the requirements listed above
 2. Install this extension (see [download options](https://valentjn.github.io/ltex/vscode-ltex/installation-usage-vscode-ltex.html#how-to-install-and-use))
 3. Reload the VS Code window if necessary
 4. Open a L<sup>A</sup>T<sub>E</sub>X or a Markdown document, or open a new file and change the language mode to `LaTeX` or `Markdown` (open the Command Palette and select `Change Language Mode`)
 5. Wait until [ltex-ls](https://valentjn.github.io/ltex/faq.html#whats-the-difference-between-vscode-ltex-ltex-ls-and-languagetool) has been found; if necessary, LT<sub>E</sub>X downloads it for you. Alternatively, you can choose [offline installation](https://valentjn.github.io/ltex/vscode-ltex/installation-usage-vscode-ltex.html#offline-installation).
 6. Grammar/spelling errors will be displayed! (if there are any)
+<!-- #elseif TARGET == 'coc.nvim' -->
+<!-- 1. Install the requirements listed above -->
+<!-- 2. Install coc-ltex by running `:CocInstall coc-ltex` -->
+<!-- 3. If you want to check LaTeX documents: Add `let g:coc_filetype_map = {'tex': 'latex'}` to `~/.vimrc` (Vim) or `~/.config/nvim/init.vim` (workaround for [#425](https://github.com/valentjn/vscode-ltex/issues/425), until [neoclide/coc.nvim#3433](https://github.com/neoclide/coc.nvim/pull/3433) is released) -->
+<!-- 4. Open a LaTeX or a Markdown document -->
+<!-- 5. Wait until [ltex-ls](https://valentjn.github.io/ltex/faq.html#whats-the-difference-between-vscode-ltex-ltex-ls-and-languagetool) has been downloaded and started -->
+<!-- 6. Grammar/spelling errors will be displayed! (if there are any) -->
+<!-- #endif -->
 
 ## Information & Documentation
 
