@@ -2673,7 +2673,7 @@
           "@types/vscode": "-",
           "clipboardy": "3.0.0",
           "coc.nvim": "0.0.81-next.7",
-          "glob": "7.1.7",
+          "glob": "7.2.0",
           "vscode-test": "-"
         },
         "dependencies": {
