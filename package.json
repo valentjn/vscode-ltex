@@ -1,7 +1,7 @@
 {
   "name": "vscode-ltex",
   "displayName": "LTeX – LanguageTool grammar/spell checking",
-  "version": "12.2.1-alpha.1.develop",
+  "version": "13.0.0-alpha.1.develop",
   "description": "Grammar/spell checker using LanguageTool with support for LaTeX, Markdown, and others",
   "icon": "img/logo-ltex.png",
   "author": "Julian Valentin",
@@ -2417,6 +2417,12 @@
           "scope": "resource",
           "default": 2000,
           "markdownDescription": "%ltex.i18n.configuration.ltex.sentenceCacheSize.markdownDescription%"
+        },
+        "ltex.completionEnabled": {
+          "type": "boolean",
+          "scope": "resource",
+          "default": false,
+          "markdownDescription": "%ltex.i18n.configuration.ltex.completionEnabled.markdownDescription%"
         },
         "ltex.diagnosticSeverity": {
           "oneOf": [
