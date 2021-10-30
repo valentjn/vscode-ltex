@@ -12,7 +12,7 @@
     <author>Julian Valentin, LTeX Development Community</author>
   </properties>
   <body>
-    <release version="13.0.0" date="upcoming">
+    <release version="13.0.0" description="The Completion Setting Excitation" date="2021-10-30">
       <action type="update" issue="#443">
         Add [`ltex.completionEnabled`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexcompletionenabled) to disable completion by default
       </action>
@@ -21,6 +21,9 @@
       </action>
       <action type="fix">
         Fix handling of multiple subsequent whitespace characters in XHTML (e.g., CRLF)
+      </action>
+      <action type="update">
+        Update LTeX LS to 15.0.0
       </action>
     </release>
     <release version="12.2.0" description="The Completion Hypothesis" date="2021-10-19">
