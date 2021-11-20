@@ -70,6 +70,7 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
   - If you want to check documents written in a markup language that VS Code does not support out-of-the-box (e.g., L<sup>A</sup>T<sub>E</sub>X), install an extension that provides support for that language (e.g., [LaTeX Workshop Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)) in addition to this extension.
 <!-- #elseif TARGET == 'coc.nvim' -->
 <!-- - 64-bit Linux, Mac, or Windows operating system -->
+<!-- - [Node.js 14.16.0 or later](https://nodejs.org/) -->
 <!-- - [Vim](https://www.vim.org/) or [Neovim](https://neovim.io/) with [coc.nvim 0.0.80 or newer](https://github.com/neoclide/coc.nvim) -->
 <!-- #endif -->
 
