@@ -110,6 +110,7 @@ LT<sub>E</sub>X is a successor (since it's a fork) of the abandoned [LanguageToo
   - [Advanced Usage](https://valentjn.github.io/ltex/advanced-usage.html)
     - [Magic Comments](https://valentjn.github.io/ltex/advanced-usage.html#magic-comments)
     - [Multilingual L<sup>A</sup>T<sub>E</sub>X Documents with the babel Package](https://valentjn.github.io/ltex/advanced-usage.html#multilingual-latex-documents-with-the-babel-package)
+    - [Set Language in Markdown with YAML Front Matter](https://valentjn.github.io/ltex/advanced-usage.html#set-language-in-markdown-with-yaml-front-matter)
     - [Hiding False Positives with Regular Expressions](https://valentjn.github.io/ltex/advanced-usage.html#hiding-false-positives-with-regular-expressions)
     - [LanguageTool HTTP Servers](https://valentjn.github.io/ltex/advanced-usage.html#languagetool-http-servers)
   - [Settings](https://valentjn.github.io/ltex/settings.html)
