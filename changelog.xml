@@ -12,6 +12,23 @@
     <author>Julian Valentin, LTeX Development Community</author>
   </properties>
   <body>
+    <release version="13.1.0" date="upcoming">
+      <action type="add" issue="ltex-ls#123">
+        Add support for strikethrough as in [GitHub Flavored Markdown](https://github.github.com/gfm/#strikethrough-extension-)
+      </action>
+      <action type="add" issue="#457">
+        Always check selected text when running [`LTeX: Check Selection`](https://valentjn.github.io/ltex/vscode-ltex/commands.html#ltex-check-selection), even non-comment parts of programs
+      </action>
+      <action type="add" issue="#463">
+        Add support for the `minted` package (LaTeX)
+      </action>
+      <action type="add" issue="#465">
+        Add support for the Pandoc language variable `lang` in YAML front matter (Markdown)
+      </action>
+      <action type="update">
+        Update LTeX LS to 15.2.0
+      </action>
+    </release>
     <release version="13.0.0" description="The Completion Setting Excitation" date="2021-10-30">
       <action type="update" issue="#443">
         Add [`ltex.completionEnabled`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexcompletionenabled) to disable completion by default
