@@ -53,6 +53,8 @@ export default class CommandHandler {
 
   private static readonly _defaultCodeLanguageIds: string[] = [
     'bibtex',
+    'context',
+    'context.tex',
     'html',
     'latex',
     'markdown',
@@ -328,6 +330,14 @@ export default class CommandHandler {
         }
         case 'csharp': {
           enabledFileExtensions.add('cs');
+          break;
+        }
+        case 'context': {
+          enabledFileExtensions.add('tex');
+          break;
+        }
+        case 'context.tex': {
+          enabledFileExtensions.add('tex');
           break;
         }
         case 'dart': {

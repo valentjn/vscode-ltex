@@ -60,6 +60,8 @@
     "onCommand:_ltex.openMarkdownExample",
     "onCommand:_ltex.openLatexExample",
     "onLanguage:bibtex",
+    "onLanguage:context",
+    "onLanguage:context.tex",
     "onLanguage:html",
     "onLanguage:latex",
     "onLanguage:markdown",
@@ -151,6 +153,8 @@
           "scope": "window",
           "default": [
             "bibtex",
+            "context",
+            "context.tex",
             "html",
             "latex",
             "markdown",
