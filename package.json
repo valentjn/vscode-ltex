@@ -2643,7 +2643,7 @@
     "@types/tar": "6.1.1",
     "@types/vscode": "1.52.0",
     "@types/webpack": "5.28.0",
-    "@typescript-eslint/eslint-plugin": "5.8.1",
+    "@typescript-eslint/eslint-plugin": "5.15.0",
     "@typescript-eslint/parser": "5.8.0",
     "eslint": "8.6.0",
     "eslint-config-google": "0.14.0",
