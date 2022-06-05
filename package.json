@@ -2653,7 +2653,7 @@
     "ts-loader": "9.2.6",
     "typescript": "4.5.4",
     "vscode-test": "1.6.1",
-    "webpack": "5.65.0",
+    "webpack": "5.73.0",
     "webpack-cli": "4.9.1"
   },
   "dependencies": {
