@@ -31,6 +31,7 @@ export class Api {
 }
 
 let dependencyManager: DependencyManager | null = null;
+let api: Api | null = null;
 
 async function languageClientIsReady(languageClient: CodeLanguageClient.LanguageClient,
       externalFileManager: ExternalFileManager,
@@ -133,7 +134,7 @@ export async function activate(context: Code.ExtensionContext): Promise<Api> {
   Logger.createOutputChannels(context);
   I18n.initialize(context);
 
-  const api: Api = new Api();
+  api = new Api();
   api.clientOutputChannel = Logger.clientOutputChannel;
   api.serverOutputChannel = Logger.serverOutputChannel;
 
@@ -161,4 +162,14 @@ export async function activate(context: Code.ExtensionContext): Promise<Api> {
   }
 
   return Promise.resolve(api);
+}
+
+export function deactivate(): Thenable<void> | undefined {
+  if (!api) {
+    return undefined;
+  }
+  if (!api.languageClient) {
+    return undefined;
+  }
+  return api.languageClient.stop();
 }
