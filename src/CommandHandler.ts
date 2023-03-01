@@ -61,6 +61,7 @@ export default class CommandHandler {
     'org',
     'restructuredtext',
     'rsweave',
+    'rmd',
   ];
 
   public constructor(context: Code.ExtensionContext, externalFileManager: ExternalFileManager,
@@ -449,6 +450,11 @@ export default class CommandHandler {
         }
         case 'restructuredtext': {
           enabledFileExtensions.add('rst');
+          break;
+        }
+        case 'rmd': {
+          enabledFileExtensions.add('rmd');
+          enabledFileExtensions.add('Rmd');
           break;
         }
         case 'rsweave': {

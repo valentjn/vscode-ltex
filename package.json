@@ -66,6 +66,7 @@
     "onLanguage:latex",
     "onLanguage:markdown",
     "onLanguage:org",
+    "onLanguage:rmd",
     "onLanguage:restructuredtext",
     "onLanguage:rsweave",
     "onNotebook:*"
@@ -159,6 +160,7 @@
             "latex",
             "markdown",
             "org",
+            "rmd",
             "restructuredtext",
             "rsweave"
           ],
