@@ -61,6 +61,7 @@ export default class CommandHandler {
     'org',
     'restructuredtext',
     'rsweave',
+    'typst'
   ];
 
   public constructor(context: Code.ExtensionContext, externalFileManager: ExternalFileManager,
@@ -483,6 +484,10 @@ export default class CommandHandler {
         }
         case 'typescript': {
           enabledFileExtensions.add('ts');
+          break;
+        }
+        case 'typst': {
+          enabledFileExtensions.add('typ');
           break;
         }
         case 'vb': {

@@ -68,6 +68,7 @@
     "onLanguage:org",
     "onLanguage:restructuredtext",
     "onLanguage:rsweave",
+    "onLanguage: typst",
     "onNotebook:*"
   ],
   "contributes": {
@@ -160,7 +161,8 @@
             "markdown",
             "org",
             "restructuredtext",
-            "rsweave"
+            "rsweave",
+            "typst"
           ],
           "markdownDescription": "%ltex.i18n.configuration.ltex.enabled.markdownDescription%",
           "examples": [
