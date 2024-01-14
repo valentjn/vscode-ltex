@@ -26,6 +26,11 @@
 [![stars](https://badgen.net/github/stars/valentjn/ltex-ls)](https://github.com/valentjn/ltex-ls)&nbsp;
 [![open issues](https://badgen.net/github/open-issues/valentjn/ltex-ls?label=open/closed%20issues&color=blue)](https://github.com/valentjn/ltex-ls/issues)&nbsp;[![closed issues](https://badgen.net/github/closed-issues/valentjn/ltex-ls?label=)](https://github.com/valentjn/ltex-ls/issues)
 
+NOTICE: This is a fork of [@valentjn's vscode-ltex](https://github.com/valentjn/vscode-ltex) as it seems to be not maintained.
+
+The current version 13.1.0 is identical to the original.
+It serves as a base version before adding fixes and improvements.
+
 <!-- #if TARGET == 'vscode' -->
 **LT<sub>E</sub>X** provides offline grammar checking of various markup languages in Visual Studio Code using [LanguageTool (LT)](https://languagetool.org/). LT<sub>E</sub>X currently supports BibT<sub>E</sub>X, ConT<sub>E</sub>Xt, L<sup>A</sup>T<sub>E</sub>X, Markdown, Org, reStructuredText, R Sweave, and XHTML documents. In addition, LT<sub>E</sub>X can check comments in many popular programming languages (optional, opt-in).
 <!-- #elseif TARGET == 'coc.nvim' -->
