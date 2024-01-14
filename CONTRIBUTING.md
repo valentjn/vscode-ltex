@@ -65,6 +65,28 @@ If you like LT<sub>E</sub>X, but are not able to contribute in any of these ways
 5. Install the npm dependencies: `cd vscode-ltex && npm install`
 6. Run the `Launch extension` task to launch and debug the extension.
 
+### Setup Windows WSL env
+
+`Python` is required to develop this project. For reference you can check out [Get started using Python for web development on Windows](https://learn.microsoft.com/en-us/windows/python/web-frameworks).
+
+```sh
+sudo apt update && sudo apt upgrade
+
+sudo apt install libxshmfence1 libnss3 libatk1.0-0 libatk-bridge2.0-0 librust-gdk-pixbuf-sys-dev libgtk-3-0 libgbm1 libasound2 openjdk-21-jdk
+
+sudo apt upgrade python3
+
+sudo apt install python3-pip
+
+# optional
+sudo apt install python3-venv
+
+# required as python2 is deprecated
+sudo apt install python-is-python3
+
+pip install semver
+```
+
 ## How to Contribute Code
 
 1. [Set up the project.](#how-to-set-up-the-project)
