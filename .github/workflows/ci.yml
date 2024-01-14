@@ -135,25 +135,6 @@ jobs:
       # - name: "Validate JSON files"
       #   run: "python -u tools/validateJsonFiles.py"
 
-  analyzeCodeQl:
-    name: "CI - CodeQL Job"
-    runs-on: "ubuntu-20.04"
-
-    steps:
-      - name: "Checkout Repository"
-        uses: "actions/checkout@v4"
-
-      - name: "Initialize CodeQL"
-        uses: "github/codeql-action/init@v2"
-        with:
-          languages: "javascript,python"
-
-      - name: "Autobuild"
-        uses: "github/codeql-action/autobuild@v2"
-
-      - name: "Perform CodeQL Analysis"
-        uses: "github/codeql-action/analyze@v2"
-
   deployForVsCode:
     name: "CI - Deploy for VS Code Job"
     if: "${{ startsWith(github.ref, 'refs/tags/') }}"
@@ -161,7 +142,6 @@ jobs:
       - "buildForVsCode"
       - "buildForCocNvim"
       - "validate"
-      - "analyzeCodeQl"
     runs-on: "ubuntu-20.04"
 
     steps:
@@ -234,7 +214,6 @@ jobs:
       - "buildForVsCode"
       - "buildForCocNvim"
       - "validate"
-      - "analyzeCodeQl"
     runs-on: "ubuntu-20.04"
 
     steps:
