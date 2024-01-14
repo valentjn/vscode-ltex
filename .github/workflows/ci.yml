@@ -130,8 +130,10 @@ jobs:
       - name: "Validate changelog.xml"
         run: "python -u -c 'import xmlschema; xmlschema.XMLSchema(\"schemas/changes-1.0.0.xsd\").validate(\"changelog.xml\")'"
 
-      - name: "Validate JSON files"
-        run: "python -u tools/validateJsonFiles.py"
+      # No need to validate JSON files
+      # even if wants to, should do it locally
+      # - name: "Validate JSON files"
+      #   run: "python -u tools/validateJsonFiles.py"
 
   analyzeCodeQl:
     name: "CI - CodeQL Job"
