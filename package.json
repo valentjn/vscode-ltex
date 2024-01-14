@@ -1,31 +1,12 @@
 {
-  "name": "vscode-ltex",
-  "displayName": "LTeX – LanguageTool grammar/spell checking",
+  "name": "vscode-neo-ltex",
+  "displayName": "LTeX – LanguageTool grammar/spell checking (neo)",
   "version": "13.1.1-alpha.1.develop",
   "description": "Grammar/spell checker using LanguageTool with support for LaTeX, Markdown, and others",
-  "icon": "img/logo-ltex.png",
-  "author": "Julian Valentin",
-  "publisher": "valentjn",
-  "contributors": [
-    "Julian Valentin"
+  "categories": [
+    "Linters",
+    "Other"
   ],
-  "license": "MPL-2.0",
-  "homepage": "https://valentjn.github.io/ltex",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/valentjn/vscode-ltex"
-  },
-  "bugs": {
-    "url": "https://github.com/valentjn/vscode-ltex/issues"
-  },
-  "qna": "https://github.com/valentjn/vscode-ltex/discussions",
-  "engines": {
-    "vscode": "^1.52.0"
-  },
-  "galleryBanner": {
-    "color": "#6565f6",
-    "theme": "dark"
-  },
   "keywords": [
     "grammar",
     "spell",
@@ -34,105 +15,85 @@
     "markdown",
     "multi-root ready"
   ],
-  "categories": [
-    "Linters",
-    "Other"
-  ],
-  "extensionKind": [
-    "workspace"
-  ],
-  "capabilities": {
-    "untrustedWorkspaces": {
-      "supported": true
-    }
+  "homepage": "https://valentjn.github.io/ltex",
+  "bugs": {
+    "url": "https://github.com/neo-ltex/vscode-ltex/issues"
   },
-  "activationEvents": [
-    "onCommand:ltex.activateExtension",
-    "onCommand:ltex.checkSelection",
-    "onCommand:ltex.checkCurrentDocument",
-    "onCommand:ltex.checkAllDocumentsInWorkspace",
-    "onCommand:ltex.clearDiagnosticsInCurrentDocument",
-    "onCommand:ltex.clearAllDiagnostics",
-    "onCommand:ltex.showStatusInformation",
-    "onCommand:ltex.resetAndRestart",
-    "onCommand:ltex.reportBug",
-    "onCommand:ltex.requestFeature",
-    "onCommand:_ltex.openMarkdownExample",
-    "onCommand:_ltex.openLatexExample",
-    "onLanguage:bibtex",
-    "onLanguage:context",
-    "onLanguage:context.tex",
-    "onLanguage:html",
-    "onLanguage:latex",
-    "onLanguage:markdown",
-    "onLanguage:org",
-    "onLanguage:restructuredtext",
-    "onLanguage:rsweave",
-    "onNotebook:*"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neo-ltex/vscode-ltex"
+  },
+  "license": "MPL-2.0",
+  "qna": "https://github.com/neo-ltex/vscode-ltex/discussions",
+  "author": "Julian Valentin",
+  "contributors": [
+    "Julian Valentin",
+    "unional"
   ],
+  "publisher": "neo-ltex",
+  "main": "./dist/extension.js",
+  "scripts": {
+    "coc.nvim:prepublish": "npm run vscode:prepublish",
+    "compile": "tsc",
+    "lint": "eslint --max-warnings 0 -c .eslintrc.js {src,test}/**/*.ts",
+    "pretest": "git clean -f -x lib/ && npm run vscode:prepublish && python -u tools/createOfflinePackages.py --current-system",
+    "test": "mocha ./out/test/TestRunner.js",
+    "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production && python -u tools/convertChangelog.py --xml-file changelog.xml > CHANGELOG.md",
+    "watch": "tsc -watch",
+    "webpack": "webpack --config .webpack.config.js --mode development",
+    "webpack-dev": "webpack --config .webpack.config.js --mode development --watch"
+  },
   "contributes": {
-    "walkthroughs": [
+    "commands": [
       {
-        "id": "ltex.walkthrough",
-        "title": "%ltex.i18n.walkthrough.title%",
-        "description": "%ltex.i18n.walkthrough.description%",
-        "featuredFor": [
-          "**/*.md",
-          "**/*.tex"
-        ],
-        "steps": [
-          {
-            "id": "ltex.walkthrough.checkMarkdownDocuments",
-            "title": "%ltex.i18n.walkthrough.checkMarkdownDocuments.title%",
-            "description": "%ltex.i18n.walkthrough.checkMarkdownDocuments.description%",
-            "media": {
-              "markdown": "%ltex.i18n.walkthrough.checkMarkdownDocuments.markdownPath%"
-            }
-          },
-          {
-            "id": "ltex.walkthrough.checkLatexDocuments",
-            "title": "%ltex.i18n.walkthrough.checkLatexDocuments.title%",
-            "description": "%ltex.i18n.walkthrough.checkLatexDocuments.description%",
-            "media": {
-              "markdown": "%ltex.i18n.walkthrough.checkLatexDocuments.markdownPath%"
-            },
-            "completionEvents": [
-              "onCommand:_ltex.openLatexExample"
-            ]
-          },
-          {
-            "id": "ltex.walkthrough.applyQuickFixes",
-            "title": "%ltex.i18n.walkthrough.applyQuickFixes.title%",
-            "description": "%ltex.i18n.walkthrough.applyQuickFixes.description%",
-            "media": {
-              "markdown": "%ltex.i18n.walkthrough.applyQuickFixes.markdownPath%"
-            }
-          },
-          {
-            "id": "ltex.walkthrough.customizeSettings",
-            "title": "%ltex.i18n.walkthrough.customizeSettings.title%",
-            "description": "%ltex.i18n.walkthrough.customizeSettings.description%",
-            "media": {
-              "markdown": "%ltex.i18n.walkthrough.customizeSettings.markdownPath%"
-            }
-          },
-          {
-            "id": "ltex.walkthrough.readDocumentation",
-            "title": "%ltex.i18n.walkthrough.readDocumentation.title%",
-            "description": "%ltex.i18n.walkthrough.readDocumentation.description%",
-            "media": {
-              "markdown": "%ltex.i18n.walkthrough.readDocumentation.markdownPath%"
-            }
-          },
-          {
-            "id": "ltex.walkthrough.getInvolved",
-            "title": "%ltex.i18n.walkthrough.getInvolved.title%",
-            "description": "%ltex.i18n.walkthrough.getInvolved.description%",
-            "media": {
-              "markdown": "%ltex.i18n.walkthrough.getInvolved.markdownPath%"
-            }
-          }
-        ]
+        "command": "ltex.activateExtension",
+        "title": "%ltex.i18n.commands.ltex.activateExtension.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.checkSelection",
+        "title": "%ltex.i18n.commands.ltex.checkSelection.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.checkCurrentDocument",
+        "title": "%ltex.i18n.commands.ltex.checkCurrentDocument.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.checkAllDocumentsInWorkspace",
+        "title": "%ltex.i18n.commands.ltex.checkAllDocumentsInWorkspace.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.clearDiagnosticsInCurrentDocument",
+        "title": "%ltex.i18n.commands.ltex.clearDiagnosticsInCurrentDocument.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.clearAllDiagnostics",
+        "title": "%ltex.i18n.commands.ltex.clearAllDiagnostics.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.showStatusInformation",
+        "title": "%ltex.i18n.commands.ltex.showStatusInformation.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.resetAndRestart",
+        "title": "%ltex.i18n.commands.ltex.resetAndRestart.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.reportBug",
+        "title": "%ltex.i18n.commands.ltex.reportBug.title%",
+        "category": "LTeX"
+      },
+      {
+        "command": "ltex.requestFeature",
+        "title": "%ltex.i18n.commands.ltex.requestFeature.title%",
+        "category": "LTeX"
       }
     ],
     "configuration": {
@@ -2570,70 +2531,101 @@
         }
       }
     },
-    "commands": [
+    "walkthroughs": [
       {
-        "command": "ltex.activateExtension",
-        "title": "%ltex.i18n.commands.ltex.activateExtension.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.checkSelection",
-        "title": "%ltex.i18n.commands.ltex.checkSelection.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.checkCurrentDocument",
-        "title": "%ltex.i18n.commands.ltex.checkCurrentDocument.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.checkAllDocumentsInWorkspace",
-        "title": "%ltex.i18n.commands.ltex.checkAllDocumentsInWorkspace.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.clearDiagnosticsInCurrentDocument",
-        "title": "%ltex.i18n.commands.ltex.clearDiagnosticsInCurrentDocument.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.clearAllDiagnostics",
-        "title": "%ltex.i18n.commands.ltex.clearAllDiagnostics.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.showStatusInformation",
-        "title": "%ltex.i18n.commands.ltex.showStatusInformation.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.resetAndRestart",
-        "title": "%ltex.i18n.commands.ltex.resetAndRestart.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.reportBug",
-        "title": "%ltex.i18n.commands.ltex.reportBug.title%",
-        "category": "LTeX"
-      },
-      {
-        "command": "ltex.requestFeature",
-        "title": "%ltex.i18n.commands.ltex.requestFeature.title%",
-        "category": "LTeX"
+        "id": "ltex.walkthrough",
+        "title": "%ltex.i18n.walkthrough.title%",
+        "description": "%ltex.i18n.walkthrough.description%",
+        "featuredFor": [
+          "**/*.md",
+          "**/*.tex"
+        ],
+        "steps": [
+          {
+            "id": "ltex.walkthrough.checkMarkdownDocuments",
+            "title": "%ltex.i18n.walkthrough.checkMarkdownDocuments.title%",
+            "description": "%ltex.i18n.walkthrough.checkMarkdownDocuments.description%",
+            "media": {
+              "markdown": "%ltex.i18n.walkthrough.checkMarkdownDocuments.markdownPath%"
+            }
+          },
+          {
+            "id": "ltex.walkthrough.checkLatexDocuments",
+            "title": "%ltex.i18n.walkthrough.checkLatexDocuments.title%",
+            "description": "%ltex.i18n.walkthrough.checkLatexDocuments.description%",
+            "media": {
+              "markdown": "%ltex.i18n.walkthrough.checkLatexDocuments.markdownPath%"
+            },
+            "completionEvents": [
+              "onCommand:_ltex.openLatexExample"
+            ]
+          },
+          {
+            "id": "ltex.walkthrough.applyQuickFixes",
+            "title": "%ltex.i18n.walkthrough.applyQuickFixes.title%",
+            "description": "%ltex.i18n.walkthrough.applyQuickFixes.description%",
+            "media": {
+              "markdown": "%ltex.i18n.walkthrough.applyQuickFixes.markdownPath%"
+            }
+          },
+          {
+            "id": "ltex.walkthrough.customizeSettings",
+            "title": "%ltex.i18n.walkthrough.customizeSettings.title%",
+            "description": "%ltex.i18n.walkthrough.customizeSettings.description%",
+            "media": {
+              "markdown": "%ltex.i18n.walkthrough.customizeSettings.markdownPath%"
+            }
+          },
+          {
+            "id": "ltex.walkthrough.readDocumentation",
+            "title": "%ltex.i18n.walkthrough.readDocumentation.title%",
+            "description": "%ltex.i18n.walkthrough.readDocumentation.description%",
+            "media": {
+              "markdown": "%ltex.i18n.walkthrough.readDocumentation.markdownPath%"
+            }
+          },
+          {
+            "id": "ltex.walkthrough.getInvolved",
+            "title": "%ltex.i18n.walkthrough.getInvolved.title%",
+            "description": "%ltex.i18n.walkthrough.getInvolved.description%",
+            "media": {
+              "markdown": "%ltex.i18n.walkthrough.getInvolved.markdownPath%"
+            }
+          }
+        ]
       }
     ]
   },
-  "main": "./dist/extension.js",
-  "scripts": {
-    "compile": "tsc",
-    "lint": "eslint --max-warnings 0 -c .eslintrc.js {src,test}/**/*.ts",
-    "watch": "tsc -watch",
-    "pretest": "git clean -f -x lib/ && npm run vscode:prepublish && python -u tools/createOfflinePackages.py --current-system",
-    "test": "mocha ./out/test/TestRunner.js",
-    "webpack": "webpack --config .webpack.config.js --mode development",
-    "webpack-dev": "webpack --config .webpack.config.js --mode development --watch",
-    "vscode:prepublish": "tsc && webpack --config .webpack.config.js --mode production && python -u tools/convertChangelog.py --xml-file changelog.xml > CHANGELOG.md",
-    "coc.nvim:prepublish": "npm run vscode:prepublish"
+  "activationEvents": [
+    "onCommand:ltex.activateExtension",
+    "onCommand:ltex.checkSelection",
+    "onCommand:ltex.checkCurrentDocument",
+    "onCommand:ltex.checkAllDocumentsInWorkspace",
+    "onCommand:ltex.clearDiagnosticsInCurrentDocument",
+    "onCommand:ltex.clearAllDiagnostics",
+    "onCommand:ltex.showStatusInformation",
+    "onCommand:ltex.resetAndRestart",
+    "onCommand:ltex.reportBug",
+    "onCommand:ltex.requestFeature",
+    "onCommand:_ltex.openMarkdownExample",
+    "onCommand:_ltex.openLatexExample",
+    "onLanguage:bibtex",
+    "onLanguage:context",
+    "onLanguage:context.tex",
+    "onLanguage:html",
+    "onLanguage:latex",
+    "onLanguage:markdown",
+    "onLanguage:org",
+    "onLanguage:restructuredtext",
+    "onLanguage:rsweave",
+    "onNotebook:*"
+  ],
+  "dependencies": {
+    "extract-zip": "2.0.1",
+    "semver": "7.3.5",
+    "tar": "6.1.11",
+    "vscode-languageclient": "7.0.0",
+    "vscode-languageserver-protocol": "3.16.0"
   },
   "devDependencies": {
     "@types/mocha": "9.0.0",
@@ -2656,13 +2648,22 @@
     "webpack": "5.65.0",
     "webpack-cli": "4.9.1"
   },
-  "dependencies": {
-    "extract-zip": "2.0.1",
-    "semver": "7.3.5",
-    "tar": "6.1.11",
-    "vscode-languageclient": "7.0.0",
-    "vscode-languageserver-protocol": "3.16.0"
+  "engines": {
+    "vscode": "^1.52.0"
   },
+  "icon": "img/logo-ltex.png",
+  "galleryBanner": {
+    "color": "#6565f6",
+    "theme": "dark"
+  },
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "extensionKind": [
+    "workspace"
+  ],
   "ltexAdditionalInformation": {
     "currentTarget": "vscode",
     "targetChanges": {

@@ -185,7 +185,7 @@ jobs:
       - name: "Create GitHub Release"
         uses: "softprops/action-gh-release@v0.1.8"
         with:
-          token: "${{ secrets.VSCODE_LTEX_CREATE_GITHUB_RELEASE_TOKEN }}"
+          # token: "${{ secrets.VSCODE_LTEX_CREATE_GITHUB_RELEASE_TOKEN }}"
           prerelease: "${{ env.VSCODE_LTEX_IS_PRERELEASE }}"
           body: "${{ env.VSCODE_LTEX_CHANGELOG }}"
           files: "vscode-ltex-${{ env.VSCODE_LTEX_VERSION }}.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-linux-x64.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-mac-x64.vsix\nvscode-ltex-${{ env.VSCODE_LTEX_VERSION }}-offline-windows-x64.vsix"
@@ -193,69 +193,72 @@ jobs:
       - name: "Publish Package on VS Marketplace"
         if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
         env:
-          VSCODE_LTEX_VSCE_TOKEN: "${{ secrets.VSCODE_LTEX_VSCE_TOKEN }}"
+          VSCODE_LTEX_VSCE_TOKEN: "${{ secrets.VSCODE_ITEX_VSCE_TOKEN }}"
         run: "vsce publish -p \"$VSCODE_LTEX_VSCE_TOKEN\""
 
       - name: "Publish Package on Open VSX"
         if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
         env:
-          VSCODE_LTEX_OVSX_TOKEN: "${{ secrets.VSCODE_LTEX_OVSX_TOKEN }}"
+          VSCODE_LTEX_OVSX_TOKEN: "${{ secrets.VSCODE_ITEX_OVSX_TOKEN }}"
         run: "ovsx publish -p \"$VSCODE_LTEX_OVSX_TOKEN\""
 
-  deployForCocNvim:
-    name: "CI - Deploy for coc.nvim Job"
-    if: "${{ startsWith(github.ref, 'refs/tags/') }}"
-    needs:
-      - "buildForVsCode"
-      - "buildForCocNvim"
-      - "validate"
-    runs-on: "ubuntu-20.04"
+  # not ready for coc:nvim deployment
+  # the package name needs to be changed to `@neo-ltex/coc-ltex`
+  # But the consumption rate is pretty low, so this is lower priority.
+  # deployForCocNvim:
+  #   name: "CI - Deploy for coc.nvim Job"
+  #   if: "${{ startsWith(github.ref, 'refs/tags/') }}"
+  #   needs:
+  #     - "buildForVsCode"
+  #     - "buildForCocNvim"
+  #     - "validate"
+  #   runs-on: "ubuntu-20.04"
 
-    steps:
-      - name: "Checkout Repository"
-        uses: "actions/checkout@v2"
+  #   steps:
+  #     - name: "Checkout Repository"
+  #       uses: "actions/checkout@v2"
 
-      - name: "Set up Node.js"
-        uses: "actions/setup-node@v1"
-        with:
-          node-version: "16.11.0"
-          registry-url: "https://registry.npmjs.org"
+  #     - name: "Set up Node.js"
+  #       uses: "actions/setup-node@v1"
+  #       with:
+  #         node-version: "16.11.0"
+  #         registry-url: "https://registry.npmjs.org"
 
-      - name: "Set up Python"
-        uses: "actions/setup-python@v2"
-        with:
-          python-version: "3.9.0"
+  #     - name: "Set up Python"
+  #       uses: "actions/setup-python@v2"
+  #       with:
+  #         python-version: "3.9.0"
 
-      - name: "Install Python Dependencies"
-        run: "python -u -m pip install --upgrade pip && pip install semver==2.13.0"
+  #     - name: "Install Python Dependencies"
+  #       run: "python -u -m pip install --upgrade pip && pip install semver==2.13.0"
 
-      - name: "Patch for coc.nvim Target"
-        run: "python -u tools/patchForTarget.py --target coc.nvim"
+  #     - name: "Patch for coc.nvim Target"
+  #       run: "python -u tools/patchForTarget.py --target coc.nvim"
 
-      - name: "Install Node.js Dependencies"
-        run: "npm install"
+  #     - name: "Install Node.js Dependencies"
+  #       run: "npm install"
 
-      - name: "Set VSCODE_LTEX_VERSION"
-        run: "echo \"VSCODE_LTEX_VERSION=$(python -u -c \"import json; print(json.load(open('package.json', 'r'))['version'], end='')\")\" >> $GITHUB_ENV"
+  #     - name: "Set VSCODE_LTEX_VERSION"
+  #       run: "echo \"VSCODE_LTEX_VERSION=$(python -u -c \"import json; print(json.load(open('package.json', 'r'))['version'], end='')\")\" >> $GITHUB_ENV"
 
-      - name: "Check VSCODE_LTEX_VERSION"
-        run: "if [[ -z \"$VSCODE_LTEX_VERSION\" ]]; then echo 'Error: VSCODE_LTEX_VERSION not set!'; (exit 1); fi; echo \"VSCODE_LTEX_VERSION set to '$VSCODE_LTEX_VERSION'\""
+  #     - name: "Check VSCODE_LTEX_VERSION"
+  #       run: "if [[ -z \"$VSCODE_LTEX_VERSION\" ]]; then echo 'Error: VSCODE_LTEX_VERSION not set!'; (exit 1); fi; echo \"VSCODE_LTEX_VERSION set to '$VSCODE_LTEX_VERSION'\""
 
-      - name: "Set VSCODE_LTEX_IS_PRERELEASE"
-        run: "if [[ -z \"$VSCODE_LTEX_VERSION\" ]]; then echo 'Error: VSCODE_LTEX_VERSION not set!'; (exit 1); fi; echo \"VSCODE_LTEX_IS_PRERELEASE=$(python -u -c \"import semver; print('true' if semver.VersionInfo.parse('$VSCODE_LTEX_VERSION').prerelease is not None else 'false', end='')\")\" >> $GITHUB_ENV"
+  #     - name: "Set VSCODE_LTEX_IS_PRERELEASE"
+  #       run: "if [[ -z \"$VSCODE_LTEX_VERSION\" ]]; then echo 'Error: VSCODE_LTEX_VERSION not set!'; (exit 1); fi; echo \"VSCODE_LTEX_IS_PRERELEASE=$(python -u -c \"import semver; print('true' if semver.VersionInfo.parse('$VSCODE_LTEX_VERSION').prerelease is not None else 'false', end='')\")\" >> $GITHUB_ENV"
 
-      - name: "Check VSCODE_LTEX_IS_PRERELEASE"
-        run: "if [[ -z \"$VSCODE_LTEX_IS_PRERELEASE\" ]]; then echo 'Error: VSCODE_LTEX_IS_PRERELEASE not set!'; (exit 1); fi; echo \"VSCODE_LTEX_IS_PRERELEASE set to '$VSCODE_LTEX_IS_PRERELEASE'\""
+  #     - name: "Check VSCODE_LTEX_IS_PRERELEASE"
+  #       run: "if [[ -z \"$VSCODE_LTEX_IS_PRERELEASE\" ]]; then echo 'Error: VSCODE_LTEX_IS_PRERELEASE not set!'; (exit 1); fi; echo \"VSCODE_LTEX_IS_PRERELEASE set to '$VSCODE_LTEX_IS_PRERELEASE'\""
 
-      - name: "Compile and Package"
-        run: "npm run coc.nvim:prepublish"
+  #     - name: "Compile and Package"
+  #       run: "npm run coc.nvim:prepublish"
 
-      - name: "Publish on npm (Dry Run)"
-        if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'true' }}"
-        run: "npm publish --dry-run"
+  #     - name: "Publish on npm (Dry Run)"
+  #       if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'true' }}"
+  #       run: "npm publish --dry-run"
 
-      - name: "Publish on npm"
-        if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
-        env:
-          NODE_AUTH_TOKEN: "${{ secrets.VSCODE_LTEX_NPM_TOKEN }}"
-        run: "npm publish"
+  #     - name: "Publish on npm"
+  #       if: "${{ env.VSCODE_LTEX_IS_PRERELEASE == 'false' }}"
+  #       env:
+  #         NODE_AUTH_TOKEN: "${{ secrets.VSCODE_LTEX_NPM_TOKEN }}"
+  #       run: "npm publish"
