@@ -141,18 +141,18 @@ jobs:
 
     steps:
       - name: "Checkout Repository"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v4"
 
       - name: "Initialize CodeQL"
-        uses: "github/codeql-action/init@v1"
+        uses: "github/codeql-action/init@v2"
         with:
           languages: "javascript,python"
 
       - name: "Autobuild"
-        uses: "github/codeql-action/autobuild@v1"
+        uses: "github/codeql-action/autobuild@v2"
 
       - name: "Perform CodeQL Analysis"
-        uses: "github/codeql-action/analyze@v1"
+        uses: "github/codeql-action/analyze@v2"
 
   deployForVsCode:
     name: "CI - Deploy for VS Code Job"
