@@ -84,7 +84,7 @@ sudo apt install python3-venv
 # required as python2 is deprecated
 sudo apt install python-is-python3
 
-pip install semver
+pip install semver jsonschema
 ```
 
 ## How to Contribute Code
